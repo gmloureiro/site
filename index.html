@@ -10,16 +10,20 @@
   />
   <style>
     :root {
-      --primary: #1c4ce0;
-      --primary-dark: #1538a8;
-      --secondary: #0f172a;
-      --bg-light: #f3f4f6;
-      --bg: #020617;
-      --text: #0f172a;
-      --text-light: #6b7280;
+      --primary: #0F6FFF;         /* Azul principal Inbotix */
+      --primary-dark: #041833;    /* Azul escuro profundo */
+      --secondary: #010A17;       /* Fundo quase preto */
+      --accent: #36D9FF;          /* Azul ciano neon */
+      --purple: #6F4AFF;          /* Roxo neon leve */
+
+      --bg: #010A17;
+      --bg-light: #041833;
+      --text: #FFFFFF;
+      --text-light: #C8D3E0;
+
       --white: #ffffff;
       --radius: 14px;
-      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.22);
+      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.35);
       --max-width: 1100px;
     }
 
@@ -32,8 +36,8 @@
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
         sans-serif;
-      background: #020617;
-      color: var(--white);
+      background: var(--bg);
+      color: var(--text);
       line-height: 1.6;
     }
 
@@ -56,10 +60,10 @@
       backdrop-filter: blur(20px);
       background: linear-gradient(
         to bottom,
-        rgba(2, 6, 23, 0.9),
-        rgba(2, 6, 23, 0.6)
+        rgba(1, 10, 23, 0.96),
+        rgba(1, 10, 23, 0.75)
       );
-      border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+      border-bottom: 1px solid rgba(54, 217, 255, 0.3);
     }
 
     .nav-container {
@@ -85,12 +89,12 @@
       width: 26px;
       height: 26px;
       border-radius: 999px;
-      background: radial-gradient(circle at 30% 30%, #60a5fa, #1d4ed8);
+      background: radial-gradient(circle at 30% 30%, #36D9FF, #0F6FFF);
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 0.8rem;
-      box-shadow: 0 0 18px rgba(59, 130, 246, 0.7);
+      box-shadow: 0 0 18px rgba(54, 217, 255, 0.7);
     }
 
     nav ul {
@@ -101,14 +105,14 @@
     }
 
     nav a {
-      color: #e5e7eb;
-      opacity: 0.8;
+      color: var(--text-light);
+      opacity: 0.85;
       transition: opacity 0.2s, color 0.2s;
     }
 
     nav a:hover {
       opacity: 1;
-      color: #ffffff;
+      color: var(--white);
     }
 
     .nav-cta {
@@ -133,32 +137,33 @@
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, #2563eb, #4f46e5);
+      background: linear-gradient(135deg, #0F6FFF, #36D9FF);
       color: var(--white);
-      box-shadow: 0 12px 30px rgba(37, 99, 235, 0.5);
+      box-shadow: 0 12px 30px rgba(15, 111, 255, 0.6);
     }
 
     .btn-primary:hover {
       transform: translateY(-1px);
-      box-shadow: 0 18px 40px rgba(59, 130, 246, 0.6);
-      background: linear-gradient(135deg, #1d4ed8, #4338ca);
+      box-shadow: 0 18px 40px rgba(54, 217, 255, 0.7);
+      background: linear-gradient(135deg, #0B5ACC, #24BEE8);
     }
 
     .btn-outline {
-      border: 1px solid rgba(148, 163, 184, 0.7);
-      color: #e5e7eb;
+      border: 1px solid rgba(200, 211, 224, 0.5);
+      color: var(--text-light);
       background: transparent;
     }
 
     .btn-outline:hover {
-      background: rgba(15, 23, 42, 0.9);
+      background: rgba(4, 24, 51, 0.9);
+      color: var(--white);
     }
 
     .mobile-toggle {
       display: none;
       border: none;
       background: transparent;
-      color: #e5e7eb;
+      color: var(--text-light);
       font-size: 1.4rem;
       cursor: pointer;
     }
@@ -185,7 +190,7 @@
     }
 
     .section-subtitle {
-      color: #9ca3af;
+      color: var(--text-light);
       max-width: 650px;
       font-size: 0.96rem;
       margin-bottom: 2rem;
@@ -196,16 +201,10 @@
     .hero {
       padding-top: 3.5rem;
       padding-bottom: 4rem;
-      background: radial-gradient(
-          circle at top left,
-          rgba(37, 99, 235, 0.2),
-          transparent 50%
-        ),
-        radial-gradient(
-          circle at bottom right,
-          rgba(8, 47, 73, 0.65),
-          transparent 55%
-        );
+      background:
+        radial-gradient(circle at top left, rgba(15, 111, 255, 0.28), transparent 55%),
+        radial-gradient(circle at bottom right, rgba(54, 217, 255, 0.35), transparent 55%),
+        linear-gradient(to bottom, #010A17, #010A17);
     }
 
     .hero-grid {
@@ -219,7 +218,7 @@
       font-size: 0.8rem;
       text-transform: uppercase;
       letter-spacing: 0.18em;
-      color: #a5b4fc;
+      color: #36D9FF;
       margin-bottom: 0.9rem;
     }
 
@@ -231,13 +230,13 @@
     }
 
     .hero-title span {
-      background: linear-gradient(135deg, #60a5fa, #a855f7);
+      background: linear-gradient(135deg, #36D9FF, #6F4AFF);
       -webkit-background-clip: text;
       color: transparent;
     }
 
     .hero-subtitle {
-      color: #9ca3af;
+      color: var(--text-light);
       font-size: 0.98rem;
       max-width: 480px;
       margin-bottom: 1.5rem;
@@ -255,32 +254,29 @@
       flex-wrap: wrap;
       gap: 0.75rem;
       font-size: 0.78rem;
-      color: #9ca3af;
+      color: var(--text-light);
     }
 
     .hero-badge {
       border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.3);
+      border: 1px solid rgba(54, 217, 255, 0.45);
       padding: 0.25rem 0.7rem;
-      background: rgba(15, 23, 42, 0.7);
+      background: rgba(4, 24, 51, 0.9);
     }
 
     .hero-card {
-      background: radial-gradient(
-          circle at top,
-          rgba(248, 250, 252, 0.06),
-          transparent 55%
-        ),
-        rgba(15, 23, 42, 0.95);
+      background:
+        radial-gradient(circle at top, rgba(54, 217, 255, 0.2), transparent 55%),
+        rgba(4, 24, 51, 0.96);
       border-radius: 22px;
       padding: 1.6rem 1.5rem;
       box-shadow: var(--shadow-soft);
-      border: 1px solid rgba(148, 163, 184, 0.35);
+      border: 1px solid rgba(54, 217, 255, 0.45);
     }
 
     .hero-card-title {
       font-size: 0.9rem;
-      color: #e5e7eb;
+      color: var(--text-light);
       margin-bottom: 0.9rem;
     }
 
@@ -293,7 +289,7 @@
     }
 
     .metric-label {
-      color: #9ca3af;
+      color: #9CA3AF;
       font-size: 0.8rem;
     }
 
@@ -303,8 +299,8 @@
 
     .hero-tagline {
       font-size: 0.75rem;
-      color: #6b7280;
-      border-top: 1px solid rgba(51, 65, 85, 0.9);
+      color: #94A3B8;
+      border-top: 1px solid rgba(15, 23, 42, 0.9);
       padding-top: 0.8rem;
       margin-top: 0.6rem;
     }
@@ -324,11 +320,11 @@
     }
 
     .card {
-      background: rgba(15, 23, 42, 0.95);
+      background: rgba(4, 24, 51, 0.96);
       border-radius: var(--radius);
       padding: 1.2rem;
-      border: 1px solid rgba(30, 64, 175, 0.5);
-      box-shadow: 0 16px 35px rgba(15, 23, 42, 0.45);
+      border: 1px solid rgba(54, 217, 255, 0.45);
+      box-shadow: 0 16px 35px rgba(0, 0, 0, 0.55);
     }
 
     .card h3 {
@@ -338,12 +334,12 @@
 
     .card p {
       font-size: 0.86rem;
-      color: #9ca3af;
+      color: var(--text-light);
     }
 
     .card small {
       font-size: 0.78rem;
-      color: #6b7280;
+      color: #94A3B8;
     }
 
     /* SOLUÇÕES */
@@ -351,10 +347,10 @@
     .solutions-section {
       background: radial-gradient(
           circle at top right,
-          rgba(56, 189, 248, 0.12),
+          rgba(15, 111, 255, 0.18),
           transparent 55%
         ),
-        #020617;
+        #010A17;
     }
 
     .solutions-header {
@@ -368,14 +364,14 @@
 
     .solutions-badge {
       font-size: 0.8rem;
-      color: #a5b4fc;
+      color: #36D9FF;
       text-transform: uppercase;
       letter-spacing: 0.18em;
     }
 
     .solutions-note {
       font-size: 0.82rem;
-      color: #9ca3af;
+      color: var(--text-light);
       max-width: 320px;
       text-align: right;
     }
@@ -385,7 +381,7 @@
       font-size: 0.7rem;
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      color: #a5b4fc;
+      color: #36D9FF;
       margin-bottom: 0.4rem;
     }
 
@@ -400,7 +396,61 @@
 
     .card-link {
       font-size: 0.8rem;
-      color: #93c5fd;
+      color: #36D9FF;
+    }
+
+    /* VÍDEOS DOS PRODUTOS */
+
+    .videos-section {
+      background: radial-gradient(
+          circle at top right,
+          rgba(15, 111, 255, 0.25),
+          transparent 55%
+        ),
+        #010A17;
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.5rem;
+    }
+
+    .video-card {
+      background: rgba(4, 24, 51, 0.96);
+      border-radius: 18px;
+      padding: 1rem 1rem 1.2rem;
+      border: 1px solid rgba(54, 217, 255, 0.5);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+    }
+
+    .video-card h3 {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .video-card p {
+      font-size: 0.82rem;
+      color: var(--text-light);
+      margin-bottom: 0.7rem;
+    }
+
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 */
+      height: 0;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 14px 35px rgba(0, 0, 0, 0.6);
+    }
+
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
     }
 
     /* PARA AGÊNCIAS */
@@ -408,8 +458,8 @@
     .agencies-section {
       background: radial-gradient(
           circle at center,
-          rgba(30, 64, 175, 0.7),
-          rgba(15, 23, 42, 1)
+          rgba(15, 111, 255, 0.6),
+          #010A17
         );
     }
 
@@ -430,19 +480,20 @@
     .pill {
       font-size: 0.78rem;
       border-radius: 999px;
-      border: 1px solid rgba(191, 219, 254, 0.5);
+      border: 1px solid rgba(200, 211, 224, 0.5);
       padding: 0.25rem 0.65rem;
-      color: #e5e7eb;
+      color: var(--text);
+      background: rgba(4, 24, 51, 0.8);
     }
 
     .agencies-card {
-      background: rgba(15, 23, 42, 0.9);
+      background: rgba(4, 24, 51, 0.96);
       border-radius: 18px;
       padding: 1.2rem 1.3rem;
-      border: 1px solid rgba(129, 140, 248, 0.6);
+      border: 1px solid rgba(111, 74, 255, 0.6);
       font-size: 0.85rem;
-      color: #e5e7eb;
-      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.8);
+      color: var(--text-light);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.85);
     }
 
     .agencies-card ul {
@@ -453,7 +504,7 @@
 
     .agencies-card li::before {
       content: "• ";
-      color: #60a5fa;
+      color: #36D9FF;
     }
 
     /* METODOLOGIA */
@@ -465,10 +516,10 @@
     }
 
     .step {
-      background: rgba(15, 23, 42, 0.95);
+      background: rgba(4, 24, 51, 0.96);
       border-radius: var(--radius);
       padding: 1rem;
-      border: 1px solid rgba(31, 41, 55, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.6);
       font-size: 0.85rem;
     }
 
@@ -481,7 +532,7 @@
 
     .step-number {
       font-size: 0.75rem;
-      color: #9ca3af;
+      color: #94A3B8;
       text-transform: uppercase;
       letter-spacing: 0.15em;
     }
@@ -501,16 +552,16 @@
     }
 
     .case-card {
-      background: rgba(15, 23, 42, 0.95);
+      background: rgba(4, 24, 51, 0.96);
       border-radius: var(--radius);
       padding: 1rem;
-      border: 1px solid rgba(55, 65, 81, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.6);
       font-size: 0.85rem;
     }
 
     .case-tag {
       font-size: 0.7rem;
-      color: #9ca3af;
+      color: #94A3B8;
       text-transform: uppercase;
       letter-spacing: 0.15em;
       margin-bottom: 0.3rem;
@@ -519,7 +570,7 @@
     .case-result {
       font-size: 0.9rem;
       margin-top: 0.3rem;
-      color: #bbf7d0;
+      color: #BBF7D0;
     }
 
     .testimonials {
@@ -529,19 +580,19 @@
     }
 
     .testimonial {
-      background: rgba(15, 23, 42, 0.95);
+      background: rgba(4, 24, 51, 0.96);
       border-radius: var(--radius);
       padding: 1rem;
-      border: 1px solid rgba(31, 41, 55, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.6);
       font-size: 0.83rem;
-      color: #e5e7eb;
+      color: var(--text-light);
     }
 
     .testimonial strong {
       display: block;
       margin-top: 0.6rem;
       font-size: 0.78rem;
-      color: #9ca3af;
+      color: #9CA3AF;
     }
 
     /* SOBRE */
@@ -557,7 +608,7 @@
       list-style: none;
       padding-left: 0;
       font-size: 0.85rem;
-      color: #e5e7eb;
+      color: var(--text-light);
     }
 
     .about-list li {
@@ -572,7 +623,7 @@
       display: inline-block;
       margin-right: 0.3rem;
       margin-bottom: 0.3rem;
-      color: #9ca3af;
+      color: #9CA3AF;
     }
 
     /* CONTATO */
@@ -580,10 +631,10 @@
     .contact-section {
       background: radial-gradient(
           circle at top,
-          rgba(129, 140, 248, 0.35),
+          rgba(111, 74, 255, 0.35),
           transparent 50%
         ),
-        #020617;
+        #010A17;
     }
 
     .contact-grid {
@@ -594,11 +645,11 @@
     }
 
     form {
-      background: rgba(15, 23, 42, 0.96);
+      background: rgba(4, 24, 51, 0.96);
       border-radius: 18px;
       padding: 1.5rem 1.3rem;
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.85);
       font-size: 0.9rem;
     }
 
@@ -618,7 +669,7 @@
       display: block;
       margin-bottom: 0.25rem;
       font-size: 0.78rem;
-      color: #9ca3af;
+      color: #9CA3AF;
     }
 
     input,
@@ -626,9 +677,9 @@
     textarea {
       width: 100%;
       border-radius: 10px;
-      border: 1px solid rgba(51, 65, 85, 0.9);
-      background: rgba(15, 23, 42, 0.95);
-      color: #e5e7eb;
+      border: 1px solid rgba(30, 64, 118, 0.9);
+      background: rgba(15, 23, 42, 0.96);
+      color: var(--text);
       padding: 0.55rem 0.7rem;
       font-family: inherit;
       font-size: 0.86rem;
@@ -638,8 +689,8 @@
     input:focus,
     select:focus,
     textarea:focus {
-      border-color: #4f46e5;
-      box-shadow: 0 0 0 1px rgba(79, 70, 229, 0.7);
+      border-color: #0F6FFF;
+      box-shadow: 0 0 0 1px rgba(15, 111, 255, 0.7);
     }
 
     textarea {
@@ -649,17 +700,60 @@
 
     .contact-note {
       font-size: 0.82rem;
-      color: #9ca3af;
+      color: var(--text-light);
       margin-top: 0.8rem;
+    }
+
+    /* BOTÃO FLUTUANTE WHATSAPP */
+
+    .whatsapp-float {
+      position: fixed;
+      bottom: 18px;
+      right: 18px;
+      z-index: 60;
+    }
+
+    .whatsapp-float a {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: linear-gradient(135deg, #22C55E, #16A34A);
+      color: #ffffff;
+      padding: 0.65rem 1rem;
+      border-radius: 999px;
+      font-size: 0.86rem;
+      font-weight: 600;
+      box-shadow: 0 18px 35px rgba(22, 163, 74, 0.7);
+    }
+
+    .whatsapp-float a span.icon {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 2px solid rgba(255, 255, 255, 0.85);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 480px) {
+      .whatsapp-float a {
+        padding: 0.55rem 0.8rem;
+        font-size: 0.8rem;
+      }
+      .whatsapp-float a span.text {
+        display: none; /* deixa só o ícone no mobile */
+      }
     }
 
     /* FOOTER */
 
     footer {
-      border-top: 1px solid rgba(30, 64, 175, 0.5);
+      border-top: 1px solid rgba(54, 217, 255, 0.4);
       padding: 1.5rem 1rem;
       font-size: 0.78rem;
-      color: #6b7280;
+      color: #9CA3AF;
     }
 
     .footer-inner {
@@ -679,7 +773,7 @@
     }
 
     .footer-links a {
-      color: #9ca3af;
+      color: #9CA3AF;
     }
 
     /* RESPONSIVO */
@@ -698,6 +792,10 @@
 
       .card-grid-4 {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .video-grid {
+        grid-template-columns: 1fr;
       }
 
       .steps,
@@ -724,11 +822,11 @@
         top: 110%;
         right: 1rem;
         flex-direction: column;
-        background: rgba(15, 23, 42, 0.98);
+        background: rgba(4, 24, 51, 0.98);
         padding: 0.8rem 1rem;
         border-radius: 12px;
         border: 1px solid rgba(51, 65, 85, 0.9);
-        box-shadow: 0 22px 45px rgba(15, 23, 42, 0.95);
+        box-shadow: 0 22px 45px rgba(0, 0, 0, 0.95);
       }
 
       .nav-cta {
@@ -762,6 +860,7 @@
         <ul>
           <li><a href="#home">Home</a></li>
           <li><a href="#solucoes">Soluções</a></li>
+          <li><a href="#videos">Vídeos</a></li>
           <li><a href="#agencias">Para agências</a></li>
           <li><a href="#metodologia">Metodologia</a></li>
           <li><a href="#cases">Cases</a></li>
@@ -772,9 +871,9 @@
       <div class="nav-cta">
         <button
           class="btn btn-outline"
-          onclick="document.querySelector('#contato').scrollIntoView({behavior:'smooth'})"
+          onclick="window.open('https://wa.me/5511972769986?text=Ol%C3%A1%20Guilherme,%20vi%20o%20site%20da%20Inbotix%20e%20quero%20falar%20sobre%20SDR%20Digital.', '_blank')"
         >
-          Falar com especialista
+          Falar no WhatsApp
         </button>
         <button
           class="btn btn-primary"
@@ -811,9 +910,9 @@
               </button>
               <button
                 class="btn btn-outline"
-                onclick="document.querySelector('#metodologia').scrollIntoView({behavior:'smooth'})"
+                onclick="window.open('https://wa.me/5511972769986?text=Ol%C3%A1%20Guilherme,%20vi%20o%20site%20da%20Inbotix%20e%20quero%20falar%20sobre%20SDR%20Digital.', '_blank')"
               >
-                Ver como funciona na prática
+                Falar no WhatsApp
               </button>
             </div>
             <div class="hero-badges">
@@ -905,7 +1004,7 @@
             </p>
             <div class="card-actions">
               <small>Automação + personalização</small>
-              <a href="#metodologia" class="card-link">Ver na jornada →</a>
+              <a href="#videos" class="card-link">Ver vídeo →</a>
             </div>
           </div>
 
@@ -918,7 +1017,7 @@
             </p>
             <div class="card-actions">
               <small>WhatsApp como canal de vendas</small>
-              <a href="#contato" class="card-link">Falar sobre WhatsApp →</a>
+              <a href="#videos" class="card-link">Ver vídeo →</a>
             </div>
           </div>
 
@@ -931,7 +1030,85 @@
             </p>
             <div class="card-actions">
               <small>Base viva, leads acionáveis</small>
-              <a href="#metodologia" class="card-link">Ver como usamos →</a>
+              <a href="#videos" class="card-link">Ver vídeo →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VÍDEOS DOS PRODUTOS -->
+    <section class="videos-section" id="videos">
+      <div class="section-inner">
+        <h2 class="section-title">Veja os produtos Inbotix na prática</h2>
+        <p class="section-subtitle">
+          Assista às demonstrações rápidas dos principais produtos da Inbotix e
+          entenda como cada um deles entra na sua máquina de vendas.
+        </p>
+
+        <div class="video-grid">
+          <div class="video-card">
+            <h3>SDR Digital Inbotix</h3>
+            <p>Como funciona a operação de SDR Digital operada pela Inbotix.</p>
+            <div class="video-wrapper">
+              <iframe
+                src="https://www.youtube.com/embed/cWPfZcu7Pio"
+                title="SDR Digital Inbotix"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+
+          <div class="video-card">
+            <h3>Dadus Cadastrais</h3>
+            <p>Enriquecimento de dados para turbinar sua prospecção ativa.</p>
+            <div class="video-wrapper">
+              <iframe
+                src="https://www.youtube.com/embed/LPiaaVSwhug"
+                title="Dadus Cadastrais"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+
+          <div class="video-card">
+            <h3>Dinbot / New Dinbot</h3>
+            <p>Automação inteligente no LinkedIn com foco em geração de reuniões.</p>
+            <div class="video-wrapper">
+              <iframe
+                src="https://www.youtube.com/embed/9mkPYEb03iQ"
+                title="Dinbot"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+
+          <div class="video-card">
+            <h3>Atendi & Atendi Disparos</h3>
+            <p>Atendimento omnichannel e disparos inteligentes via WhatsApp.</p>
+            <div class="video-wrapper" style="margin-bottom: 0.75rem;">
+              <iframe
+                src="https://www.youtube.com/embed/yk13tTLBxRE"
+                title="Atendi"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+              ></iframe>
+            </div>
+            <div class="video-wrapper">
+              <iframe
+                src="https://www.youtube.com/embed/ZICMUVA1yIQ"
+                title="Atendi Disparos"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+              ></iframe>
             </div>
           </div>
         </div>
@@ -1188,7 +1365,7 @@
             <span class="about-pill">Tecnologia & pessoas</span>
             <span class="about-pill">Foco em resultado</span>
             <span class="about-pill">Parcerias estratégicas</span>
-            <p style="font-size: 0.85rem; color: #e5e7eb; margin-top: 0.8rem;">
+            <p style="font-size: 0.85rem; color: var(--text-light); margin-top: 0.8rem;">
               Em cada projeto, atuamos como extensão do seu time. Planejamos,
               implementamos, operamos e ajustamos a máquina junto com você — da
               estratégia ao relatório de performance.
@@ -1218,28 +1395,36 @@
             </p>
           </div>
 
-          <form>
+          <form action="https://formsubmit.co/guilherme@inbotix.com" method="POST">
+            <!-- Configurações do FormSubmit -->
+            <input type="hidden" name="_subject" value="Novo lead do site da Inbotix" />
+            <input type="hidden" name="_captcha" value="false" />
+            <!-- Você pode configurar uma página de obrigado depois:
+            <input type="hidden" name="_next" value="https://seu-dominio/obrigado.html" />
+            -->
+
             <div class="form-row">
               <div class="form-group">
                 <label for="nome">Nome</label>
-                <input type="text" id="nome" placeholder="Seu nome completo" />
+                <input type="text" id="nome" name="nome" placeholder="Seu nome completo" />
               </div>
               <div class="form-group">
                 <label for="empresa">Empresa</label>
-                <input type="text" id="empresa" placeholder="Nome da empresa" />
+                <input type="text" id="empresa" name="empresa" placeholder="Nome da empresa" />
               </div>
             </div>
 
             <div class="form-row">
               <div class="form-group">
                 <label for="cargo">Cargo</label>
-                <input type="text" id="cargo" placeholder="Seu cargo" />
+                <input type="text" id="cargo" name="cargo" placeholder="Seu cargo" />
               </div>
               <div class="form-group">
                 <label for="email">E-mail</label>
                 <input
                   type="email"
                   id="email"
+                  name="email"
                   placeholder="seuemail@empresa.com"
                 />
               </div>
@@ -1251,12 +1436,13 @@
                 <input
                   type="tel"
                   id="telefone"
+                  name="telefone"
                   placeholder="(11) 99999-9999"
                 />
               </div>
               <div class="form-group">
                 <label for="vendedores">Quantos vendedores você tem hoje?</label>
-                <select id="vendedores">
+                <select id="vendedores" name="vendedores">
                   <option value="">Selecione</option>
                   <option value="0-1">0–1</option>
                   <option value="2-5">2–5</option>
@@ -1268,7 +1454,7 @@
 
             <div class="form-group">
               <label for="objetivo">Qual o principal objetivo com a Inbotix?</label>
-              <select id="objetivo">
+              <select id="objetivo" name="objetivo">
                 <option value="">Selecione</option>
                 <option value="reunioes">Gerar mais reuniões de vendas</option>
                 <option value="outbound">
@@ -1287,6 +1473,7 @@
               <label for="mensagem">Fale um pouco sobre o momento da empresa</label>
               <textarea
                 id="mensagem"
+                name="mensagem"
                 placeholder="Ex.: Temos X vendedores, já fazemos ou não fazemos outbound, ticket médio aproximado, etc."
               ></textarea>
             </div>
@@ -1306,11 +1493,24 @@
       <div class="footer-links">
         <a href="#home">Home</a>
         <a href="#solucoes">Soluções</a>
+        <a href="#videos">Vídeos</a>
         <a href="#agencias">Para agências</a>
         <a href="#contato">Contato</a>
       </div>
     </div>
   </footer>
+
+  <!-- BOTÃO FLUTUANTE WHATSAPP -->
+  <div class="whatsapp-float">
+    <a
+      href="https://wa.me/5511972769986?text=Ol%C3%A1%20Guilherme,%20vi%20o%20site%20da%20Inbotix%20e%20quero%20falar%20sobre%20SDR%20Digital."
+      target="_blank"
+      rel="noopener"
+    >
+      <span class="icon">W</span>
+      <span class="text">Falar no WhatsApp</span>
+    </a>
+  </div>
 
   <script>
     function toggleNav() {
