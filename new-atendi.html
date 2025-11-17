@@ -2,22 +2,27 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <title>New Atendi – Omnichannel e Atendimento Inbotix</title>
+  <title>New Atendi – Plataforma Omnichannel | WhatsApp, Instagram, Facebook em um só lugar</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta
-    name="description"
-    content="New Atendi – Plataforma omnichannel para centralizar WhatsApp, Instagram, Facebook e outros canais em um único lugar. Perfeito para atendimento, pré-vendas e SDR Digital."
-  />
-  <link rel="icon" type="image/png" href="icon-inbotix.png" />
+  <meta name="description" content="New Atendi: Plataforma omnichannel que centraliza WhatsApp, Instagram, Facebook e outros canais. Atendimento organizado, filas inteligentes, métricas em tempo real. Integrado com SDR Digital." />
+  <link rel="icon" type="image/x-icon" href="logo-inbotix.ico" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Bicubik:wght@400;700&display=swap" rel="stylesheet" />
 
   <style>
     :root {
-      --primary: #0f6fff;
-      --primary-strong: #0050c8;
-      --bg: #f5f7fb;
-      --dark: #0f172a;
-      --text: #1f2933;
-      --muted: #6b7280;
+      --primary-dark: #041056;
+      --primary-deep: #07197E;
+      --primary-blue: #17ABE3;
+      --accent-green: #10B981;
+      --accent-orange: #F97316;
+      --white: #FFFFFF;
+      --bg-light: #F8F9FB;
+      --text-dark: #0f172a;
+      --text-muted: #6b7280;
+      --gray-100: #f3f4f6;
+      --gray-200: #e5e7eb;
     }
 
     * {
@@ -27,10 +32,10 @@
     }
 
     body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-        sans-serif;
-      background: var(--bg);
-      color: var(--text);
+      margin: 0;
+      background: var(--bg-light);
+      font-family: 'Barlow', sans-serif;
+      color: var(--text-dark);
       -webkit-font-smoothing: antialiased;
     }
 
@@ -41,784 +46,982 @@
 
     .container {
       max-width: 1100px;
-      margin: 0 auto;
+      margin: auto;
       padding: 0 20px;
     }
 
     /* HEADER */
-
     header {
-      background: #ffffff;
-      border-bottom: 1px solid #e5e7eb;
+      background: var(--white);
+      border-bottom: 1px solid var(--gray-200);
       position: sticky;
       top: 0;
-      z-index: 10;
+      z-index: 40;
+      box-shadow: 0 2px 8px rgba(4, 16, 86, 0.05);
     }
 
     .header-inner {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      padding: 14px 0;
+      justify-content: space-between;
+      padding: 12px 0;
+      gap: 12px;
+    }
+
+    .logo-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    .logo-link:hover {
+      opacity: 0.8;
+    }
+
+    .logo-img {
+      height: 36px;
+      width: auto;
+      max-width: 130px;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .logo-text span:first-child {
+      font-family: 'Bicubik', sans-serif;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      font-size: 12px;
+      color: var(--primary-dark);
+    }
+
+    .logo-text span:last-child {
+      font-size: 10px;
+      color: var(--text-muted);
+      font-family: 'Barlow', sans-serif;
+      font-weight: 500;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
     }
 
     nav a {
-      margin-right: 22px;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 600;
-      color: #374151;
-    }
-
-    nav a:last-child {
-      margin-right: 0;
+      color: var(--text-dark);
+      font-family: 'Barlow', sans-serif;
+      transition: color 0.2s;
     }
 
     nav a:hover {
-      color: var(--primary);
+      color: var(--primary-blue);
     }
 
-    .btn {
-      display: inline-block;
-      padding: 11px 20px;
-      border-radius: 999px;
-      font-weight: 600;
-      font-size: 14px;
+    .nav-btn {
+      padding: 10px 18px;
+      border-radius: 6px;
       border: none;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--white);
+      background: linear-gradient(135deg, var(--primary-deep), var(--primary-dark));
+      box-shadow: 0 10px 24px rgba(4, 16, 86, 0.25);
+      transition: all 0.2s;
       cursor: pointer;
-      transition: 0.18s ease-out;
-      text-align: center;
+      font-family: 'Barlow', sans-serif;
     }
 
-    .btn-primary {
-      background: linear-gradient(135deg, var(--primary), var(--primary-strong));
-      color: #ffffff;
-      box-shadow: 0 10px 25px rgba(15, 111, 255, 0.25);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 16px 35px rgba(15, 111, 255, 0.3);
-    }
-
-    .btn-outline {
-      background: #ffffff;
-      color: var(--primary);
-      border: 2px solid var(--primary);
-    }
-
-    .btn-outline:hover {
-      background: var(--primary);
-      color: #ffffff;
+    .nav-btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 14px 32px rgba(4, 16, 86, 0.35);
     }
 
     /* HERO */
-
     .hero {
-      padding: 48px 0 42px;
-      background: linear-gradient(to bottom, #e6f0ff, #f9fafb);
+      padding: 80px 0;
+      background: linear-gradient(135deg, #f0f4ff 0%, var(--bg-light) 100%);
+      position: relative;
+      overflow: hidden;
     }
 
-    .hero-grid {
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -10%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(23, 171, 227, 0.1) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
       display: grid;
-      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
-      gap: 32px;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
       align-items: center;
     }
 
-    .hero-tag {
+    .hero-text {
+      max-width: 550px;
+    }
+
+    .hero-kicker {
       font-size: 12px;
-      letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: #6b7280;
-      margin-bottom: 8px;
-    }
-
-    .hero-title {
-      font-size: 36px;
-      color: var(--dark);
-      letter-spacing: -0.03em;
+      letter-spacing: 0.18em;
+      color: var(--accent-orange);
       margin-bottom: 12px;
-    }
-
-    .hero-title span {
-      color: var(--primary);
-    }
-
-    .hero-sub {
-      font-size: 16px;
-      color: var(--muted);
-      max-width: 560px;
-      line-height: 1.5;
-      margin-bottom: 18px;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 18px;
-    }
-
-    .hero-note {
-      font-size: 13px;
-      color: #4b5563;
-    }
-
-    .hero-card {
-      background: #ffffff;
-      border-radius: 20px;
-      padding: 20px 20px 18px;
-      border: 1px solid #e5e7eb;
-      box-shadow: 0 12px 32px rgba(15, 23, 42, 0.08);
-    }
-
-    .hero-card-title {
-      font-size: 16px;
+      font-family: 'Barlow', sans-serif;
       font-weight: 700;
-      margin-bottom: 6px;
-      color: var(--dark);
     }
 
-    .hero-card-text {
-      font-size: 13px;
-      color: var(--muted);
-      margin-bottom: 12px;
+    .hero h1 {
+      font-family: 'Bicubik', sans-serif;
+      font-size: 48px;
+      color: var(--primary-dark);
+      margin-bottom: 16px;
+      font-weight: 700;
+      line-height: 1.2;
     }
 
-    .hero-card-list {
-      font-size: 13px;
-      color: var(--muted);
+    .hero h1 span {
+      color: var(--primary-blue);
+      background: linear-gradient(135deg, var(--primary-blue), #00B4DB);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
-    .hero-card-list li {
-      margin-left: 18px;
+    .hero p {
+      font-size: 16px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .stat {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: 12px;
+      padding: 16px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(4, 16, 86, 0.05);
+    }
+
+    .stat-number {
+      font-family: 'Bicubik', sans-serif;
+      font-size: 24px;
+      color: var(--primary-blue);
+      font-weight: 700;
       margin-bottom: 4px;
     }
 
-    /* SECTION GENERIC */
+    .stat-label {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
 
+    .hero-buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: 'Barlow', sans-serif;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary-deep), var(--primary-dark));
+      color: var(--white);
+      box-shadow: 0 10px 25px rgba(4, 16, 86, 0.25);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 32px rgba(4, 16, 86, 0.35);
+    }
+
+    .btn-outline {
+      background: var(--white);
+      color: var(--primary-blue);
+      border: 2px solid var(--primary-blue);
+    }
+
+    .btn-outline:hover {
+      background: var(--primary-blue);
+      color: var(--white);
+    }
+
+    .hero-visual {
+      background: linear-gradient(135deg, var(--primary-deep), var(--primary-blue));
+      border-radius: 12px;
+      padding: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 400px;
+      box-shadow: 0 20px 48px rgba(4, 16, 86, 0.15);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-visual::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .hero-visual-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: var(--white);
+    }
+
+    .hero-visual-icon {
+      font-size: 64px;
+      margin-bottom: 12px;
+    }
+
+    .hero-visual-text {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    /* SECTION */
     .section {
-      padding: 40px 0;
+      padding: 80px 0;
     }
 
     .section-header {
-      margin-bottom: 18px;
+      margin-bottom: 60px;
+      text-align: center;
     }
 
     .section-eyebrow {
       font-size: 12px;
       letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: #9ca3af;
-      margin-bottom: 4px;
+      color: var(--accent-orange);
+      margin-bottom: 12px;
+      font-family: 'Barlow', sans-serif;
+      font-weight: 700;
     }
 
     .section-title {
-      font-size: 26px;
-      color: var(--dark);
-      letter-spacing: -0.02em;
-      margin-bottom: 8px;
-    }
-
-    .section-sub {
-      font-size: 14px;
-      color: var(--muted);
-      max-width: 640px;
-    }
-
-    /* BENEFÍCIOS */
-
-    .benefits-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-      margin-top: 18px;
-    }
-
-    .benefit-card {
-      background: #ffffff;
-      border-radius: 16px;
-      padding: 16px 16px 14px;
-      border: 1px solid #e5e7eb;
-      box-shadow: 0 8px 22px rgba(15, 23, 42, 0.06);
-      font-size: 13px;
-      color: var(--muted);
-    }
-
-    .benefit-title {
-      font-size: 15px;
+      font-family: 'Bicubik', sans-serif;
+      font-size: 36px;
+      color: var(--primary-dark);
       font-weight: 700;
-      color: var(--dark);
-      margin-bottom: 6px;
+      margin-bottom: 16px;
+      line-height: 1.3;
     }
 
-    /* VÍDEO */
+    .section-subtitle {
+      font-size: 16px;
+      color: var(--text-muted);
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
 
-    .video-wrapper {
-      margin-top: 18px;
-      border-radius: 16px;
+    /* CARDS */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: 12px;
+      padding: 28px;
+      box-shadow: 0 10px 28px rgba(4, 16, 86, 0.05);
+      transition: all 0.2s;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary-blue), var(--accent-green));
+      border-radius: 12px 12px 0 0;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 48px rgba(4, 16, 86, 0.12);
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    .card-icon {
+      font-size: 32px;
+      margin-bottom: 12px;
+    }
+
+    .card h3 {
+      font-family: 'Bicubik', sans-serif;
+      font-size: 18px;
+      color: var(--primary-dark);
+      margin-bottom: 12px;
+      font-weight: 700;
+    }
+
+    .card p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      flex-grow: 1;
+    }
+
+    /* VIDEO */
+    .video-section {
+      background: var(--white);
+      border-radius: 12px;
+      border: 1px solid var(--gray-200);
       overflow: hidden;
-      box-shadow: 0 12px 32px rgba(15, 23, 42, 0.16);
+      box-shadow: 0 20px 48px rgba(4, 16, 86, 0.1);
     }
 
-    .video-wrapper iframe {
+    .video-container {
+      position: relative;
       width: 100%;
-      height: 360px;
-      border: 0;
-      display: block;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
     }
 
-    /* PARA QUEM É */
-
-    .two-col {
-      display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-      gap: 20px;
-      margin-top: 16px;
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
     }
 
-    .box {
-      background: #ffffff;
-      border-radius: 16px;
-      padding: 16px 16px 14px;
-      border: 1px solid #e5e7eb;
-      font-size: 14px;
-      color: var(--muted);
-      box-shadow: 0 10px 26px rgba(15, 23, 42, 0.06);
-    }
-
-    .box h3 {
-      font-size: 15px;
-      font-weight: 700;
-      margin-bottom: 6px;
-      color: var(--dark);
-    }
-
-    .box ul {
-      margin-top: 6px;
-      font-size: 13px;
-    }
-
-    .box ul li {
-      margin-left: 18px;
-      margin-bottom: 4px;
-    }
-
-    /* DEPOIMENTOS */
-
+    /* TESTIMONIALS */
     .testimonials-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-      margin-top: 18px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
     }
 
-    .testimonial-card {
-      background: #ffffff;
-      border-radius: 16px;
-      border: 1px solid #e5e7eb;
-      padding: 16px 16px 14px;
-      box-shadow: 0 8px 22px rgba(15, 23, 42, 0.06);
-      font-size: 13px;
-      color: var(--muted);
+    .testimonial {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 10px 28px rgba(4, 16, 86, 0.05);
     }
 
-    .testimonial-name {
+    .stars {
+      color: #FFD700;
+      font-size: 16px;
+      margin-bottom: 12px;
+      letter-spacing: 2px;
+    }
+
+    .testimonial-text {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 16px;
+      font-style: italic;
+    }
+
+    .testimonial-author {
       font-weight: 700;
-      color: var(--dark);
+      color: var(--primary-dark);
+      font-size: 14px;
       margin-bottom: 4px;
     }
 
     .testimonial-role {
       font-size: 12px;
-      color: #9ca3af;
-      margin-bottom: 6px;
+      color: var(--text-muted);
     }
 
-    .testimonial-stars {
-      color: #f59e0b;
-      font-size: 14px;
-      margin-bottom: 4px;
+    /* CTA */
+    .cta-section {
+      padding: 60px 0;
+      background: linear-gradient(135deg, var(--primary-deep), var(--primary-blue));
+      margin-top: 80px;
+      border-radius: 12px;
     }
 
-    /* CTA FINAL */
-
-    .cta-wrap {
-      margin-top: 18px;
-      border-radius: 20px;
-      padding: 24px 20px;
-      background: linear-gradient(120deg, #0f6fff, #22c1c3);
-      color: #ffffff;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 14px;
-      box-shadow: 0 18px 45px rgba(15, 111, 255, 0.42);
-    }
-
-    .cta-text-main {
-      font-size: 18px;
-      font-weight: 700;
-      margin-bottom: 4px;
-    }
-
-    .cta-text-sub {
-      font-size: 13px;
-      opacity: 0.95;
-    }
-
-    /* FORMULÁRIO RÁPIDO */
-
-    .form-card {
-      margin-top: 18px;
-      background: #ffffff;
-      border-radius: 18px;
-      padding: 18px 18px 16px;
-      border: 1px solid #e5e7eb;
-      box-shadow: 0 10px 28px rgba(15, 23, 42, 0.06);
-      max-width: 520px;
-    }
-
-    .form-grid {
+    .cta-container {
       display: grid;
-      gap: 10px;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 40px;
+      align-items: center;
     }
 
-    .form-row {
+    .cta-content {
+      color: var(--white);
+      position: relative;
+      z-index: 2;
+    }
+
+    .cta-kicker {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent-orange);
+      margin-bottom: 12px;
+      font-family: 'Barlow', sans-serif;
+      font-weight: 700;
+    }
+
+    .cta-title {
+      font-family: 'Bicubik', sans-serif;
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+
+    .cta-text {
+      font-size: 15px;
+      opacity: 0.95;
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .cta-benefits {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .cta-benefit {
+      display: flex;
+      gap: 8px;
+      font-size: 14px;
+    }
+
+    .cta-benefit::before {
+      content: '✓';
+      color: var(--accent-green);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .cta-form {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 20px 48px rgba(4, 16, 86, 0.08);
+      position: relative;
+      z-index: 2;
+    }
+
+    .cta-form h3 {
+      font-family: 'Bicubik', sans-serif;
+      font-size: 18px;
+      color: var(--primary-dark);
+      margin-bottom: 6px;
+      font-weight: 700;
+    }
+
+    .cta-form p {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+      font-family: 'Barlow', sans-serif;
+    }
+
+    .form-group {
       display: flex;
       gap: 10px;
+      margin-bottom: 10px;
     }
 
-    .form-row > div {
+    .form-group > div {
       flex: 1;
     }
 
     label {
       display: block;
+      margin-bottom: 6px;
       font-size: 12px;
       font-weight: 600;
-      margin-bottom: 4px;
-      color: #4b5563;
+      color: var(--text-dark);
+      font-family: 'Barlow', sans-serif;
     }
 
-    input,
-    select,
-    textarea {
+    input, select, textarea {
       width: 100%;
-      border-radius: 10px;
-      border: 1px solid #d1d5db;
-      padding: 8px 10px;
+      padding: 10px 12px;
       font-size: 13px;
+      border-radius: 6px;
+      border: 1px solid var(--gray-200);
+      background: var(--gray-100);
       outline: none;
-      transition: 0.16s ease-out;
-      background: #f9fafb;
+      transition: all 0.16s;
+      font-family: 'Barlow', sans-serif;
     }
 
-    input:focus,
-    select:focus,
-    textarea:focus {
-      border-color: var(--primary);
-      box-shadow: 0 0 0 1px rgba(15, 111, 255, 0.28);
-      background: #ffffff;
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--primary-blue);
+      box-shadow: 0 0 0 2px rgba(23, 171, 227, 0.1);
+      background: var(--white);
     }
 
     textarea {
       resize: vertical;
       min-height: 70px;
-      max-height: 140px;
+    }
+
+    .btn-submit {
+      width: 100%;
+      padding: 14px 28px;
+      border-radius: 6px;
+      border: none;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--white);
+      background: linear-gradient(135deg, var(--primary-deep), var(--primary-dark));
+      box-shadow: 0 10px 25px rgba(4, 16, 86, 0.25);
+      transition: all 0.2s;
+      cursor: pointer;
+      font-family: 'Barlow', sans-serif;
+      margin-top: 8px;
+    }
+
+    .btn-submit:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 14px 32px rgba(4, 16, 86, 0.35);
     }
 
     .form-note {
       font-size: 11px;
-      color: var(--muted);
+      color: var(--text-muted);
       margin-top: 6px;
+      text-align: center;
+      font-family: 'Barlow', sans-serif;
     }
 
     /* FOOTER */
-
     footer {
-      padding: 18px 0 22px;
       text-align: center;
+      padding: 32px 0;
       font-size: 12px;
-      color: #9ca3af;
-      border-top: 1px solid #e5e7eb;
-      background: #ffffff;
-      margin-top: 24px;
+      color: var(--text-muted);
+      background: var(--white);
+      border-top: 1px solid var(--gray-200);
+      font-family: 'Barlow', sans-serif;
+    }
+
+    footer a {
+      color: var(--primary-blue);
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    footer a:hover {
+      color: var(--primary-dark);
     }
 
     /* RESPONSIVO */
-
-    @media (max-width: 900px) {
-      .hero-grid {
-        grid-template-columns: minmax(0, 1fr);
+    @media (max-width: 1024px) {
+      .cards-grid, .testimonials-grid {
+        grid-template-columns: 1fr;
       }
 
-      .benefits-grid,
-      .testimonials-grid,
-      .two-col {
-        grid-template-columns: minmax(0, 1fr);
+      .hero-content {
+        grid-template-columns: 1fr;
       }
 
-      .video-wrapper iframe {
-        height: 260px;
+      .cta-container {
+        grid-template-columns: 1fr;
+      }
+
+      .section-title {
+        font-size: 28px;
+      }
+
+      .hero h1 {
+        font-size: 36px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        padding: 50px 0;
+      }
+
+      .hero-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+      }
+
+      nav {
+        gap: 12px;
+      }
+
+      .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .form-group {
+        flex-direction: column;
       }
     }
   </style>
 </head>
 <body>
-  <!-- HEADER -->
-  <header>
-    <div class="container">
-      <div class="header-inner">
-        <div style="font-weight:800; letter-spacing:0.1em; font-size:14px;">
-          INBOTIX
+
+<header>
+  <div class="container">
+    <div class="header-inner">
+      <a href="index.html" class="logo-link">
+        <img src="logo-inbotix.png" alt="Logo Inbotix" class="logo-img" />
+        <div class="logo-text">
+          <span>INBOTIX</span>
+          <span>New Atendi</span>
         </div>
-        <nav>
-          <a href="index.html"><strong>Home</strong></a>
-          <a href="new-dinbot.html"><strong>New Dinbot</strong></a>
-          <a href="#"><strong>Contato</strong></a>
-        </nav>
-      </div>
+      </a>
+      <nav>
+        <a href="index.html"><strong>Home</strong></a>
+        <a href="#"><strong>Produtos</strong></a>
+        <a href="index.html#sobre"><strong>Sobre</strong></a>
+        <a href="index.html#contato" class="nav-btn">Começar Agora</a>
+      </nav>
     </div>
-  </header>
+  </div>
+</header>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="container">
-      <div class="hero-grid">
-        <div>
-          <div class="hero-tag">Produto INBOTIX</div>
-          <h1 class="hero-title">
-            New Atendi – <span>Omnichannel de verdade</span> para o seu atendimento.
-          </h1>
-          <p class="hero-sub">
-            Centralize WhatsApp, Instagram, Facebook e outros canais em um único painel.
-            Organize filas, distribua conversas entre atendentes, acompanhe métricas
-            e transforme cada contato em oportunidade real de venda.
-          </p>
-
-          <div class="hero-actions">
-            <a
-              href="https://newatendi.app/"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="btn btn-primary"
-            >
-              Testar New Atendi por 7 dias
-            </a>
-            <a href="index.html" class="btn btn-outline">
-              Voltar ao site principal
-            </a>
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-text">
+        <div class="hero-kicker">📲 Omnichannel de Verdade</div>
+        <h1>Todos os canais em <span>um único painel</span></h1>
+        <p>New Atendi centraliza WhatsApp, Instagram, Facebook e outros canais. Organize filas, distribua conversas, acompanhe métricas e transforme cada contato em oportunidade de venda.</p>
+        
+        <div class="hero-stats">
+          <div class="stat">
+            <div class="stat-number">-70%</div>
+            <div class="stat-label">Tempo Resposta</div>
           </div>
-
-          <div class="hero-note">
-            Ideal para times de atendimento, pré-vendas, SDRs e agências que precisam
-            ter controle total das conversas em todos os canais.
+          <div class="stat">
+            <div class="stat-number">5 Canais</div>
+            <div class="stat-label">Integrados</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">100%</div>
+            <div class="stat-label">Visibilidade</div>
           </div>
         </div>
 
-        <div class="hero-card">
-          <div class="hero-card-title">O que o New Atendi resolve na prática?</div>
-          <p class="hero-card-text">
-            Perfeito para empresas e agências que querem parar de perder leads no
-            WhatsApp e nas redes sociais.
-          </p>
-          <ul class="hero-card-list">
-            <li>Centralização de todos os canais em uma única tela.</li>
-            <li>Distribuição inteligente das conversas por atendente/filas.</li>
-            <li>Histórico completo do cliente, sem perder contexto.</li>
-            <li>Indicadores de tempo de resposta e quantidade de atendimentos.</li>
-          </ul>
+        <div class="hero-buttons">
+          <a href="https://newatendi.app/" class="btn btn-primary">🚀 Testar por 7 dias</a>
+          <a href="#video" class="btn btn-outline">▶️ Ver demo</a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-visual-content">
+          <div class="hero-visual-icon">💬</div>
+          <div class="hero-visual-text">Atendimento Centralizado</div>
+          <div style="font-size: 13px; opacity: 0.9;">Todos os canais em uma única tela</div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- BENEFÍCIOS PRINCIPAIS -->
-  <section class="section">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-eyebrow">Benefícios principais</div>
-        <h2 class="section-title">Por que usar o New Atendi na sua operação?</h2>
-        <p class="section-sub">
-          O New Atendi foi desenhado para ser o “hub” de atendimento e pré-venda:
-          centraliza conversas, organiza filas e entrega visibilidade para gestores.
-        </p>
+<!-- BENEFÍCIOS -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">💎 Benefícios</div>
+      <h2 class="section-title">Por que usar o New Atendi?</h2>
+      <p class="section-subtitle">Transforme o caos de múltiplos canais em atendimento organizado, com visibilidade total e produtividade</p>
+    </div>
+
+    <div class="cards-grid">
+      <div class="card">
+        <div class="card-icon">🎯</div>
+        <h3>Todos os canais unificados</h3>
+        <p>WhatsApp, Instagram, Facebook, site e outros em um único painel. Sem múltiplos chips ou celulares.</p>
       </div>
 
-      <div class="benefits-grid">
-        <div class="benefit-card">
-          <div class="benefit-title">🎯 Todos os canais em um só lugar</div>
-          <p>
-            Unifique WhatsApp, Instagram, Facebook e outros canais em um painel único.
-            Acabe com o caos de chips, celulares e contas separadas.
-          </p>
-        </div>
+      <div class="card">
+        <div class="card-icon">👥</div>
+        <h3>Filas inteligentes</h3>
+        <p>Distribua conversas por setor (vendas, suporte, financeiro). Cada atendente recebe leads certos.</p>
+      </div>
 
-        <div class="benefit-card">
-          <div class="benefit-title">👥 Filas e atendentes organizados</div>
-          <p>
-            Crie filas por setor (comercial, suporte, financeiro) e direcione cada
-            conversa para o atendente certo, sem perder nenhum contato.
-          </p>
-        </div>
+      <div class="card">
+        <div class="card-icon">📊</div>
+        <h3>Métricas em tempo real</h3>
+        <p>Volume de atendimentos, tempo de resposta, conversas em aberto e produtividade da equipe.</p>
+      </div>
 
-        <div class="benefit-card">
-          <div class="benefit-title">📊 Indicadores em tempo real</div>
-          <p>
-            Acompanhe volume de atendimentos, tempo médio de resposta,
-            conversas em aberto e produtividade da equipe.
-          </p>
-        </div>
+      <div class="card">
+        <div class="card-icon">📁</div>
+        <h3>Histórico completo</h3>
+        <p>Veja todo o histórico de conversas com cliente, independente de quem atendeu ou por qual canal.</p>
+      </div>
 
-        <div class="benefit-card">
-          <div class="benefit-title">⚙️ Integração com SDR Digital</div>
-          <p>
-            Combine New Atendi com New Dinbot e Dadus para ter a jornada completa:
-            do lead gerado até o atendimento e agendamento de reuniões.
-          </p>
-        </div>
+      <div class="card">
+        <div class="card-icon">⚡</div>
+        <h3>Integração com SDR Digital</h3>
+        <p>Combine New Atendi + Dinbot + New Dinbot para automação completa: lead → atendimento → reunião.</p>
+      </div>
 
-        <div class="benefit-card">
-          <div class="benefit-title">📁 Histórico centralizado</div>
-          <p>
-            Visualize todo o histórico de conversas com o cliente,
-            independente de quem começou o atendimento ou por qual canal.
-          </p>
-        </div>
-
-        <div class="benefit-card">
-          <div class="benefit-title">🧩 Ideal para agências</div>
-          <p>
-            Sua agência pode oferecer atendimento omnichannel como serviço,
-            agregando valor ao cliente e gerando receita recorrente.
-          </p>
-        </div>
+      <div class="card">
+        <div class="card-icon">🧩</div>
+        <h3>Para empresas e agências</h3>
+        <p>Agências podem oferecer omnichannel como serviço, criando receita recorrente para clientes.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- VÍDEO DEMO -->
-  <section class="section">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-eyebrow">Veja na prática</div>
-        <h2 class="section-title">Assista ao New Atendi em funcionamento.</h2>
-        <p class="section-sub">
-          Entenda como a interface funciona, como organizar filas, cadastrar usuários
-          e acompanhar os atendimentos em tempo real.
-        </p>
-      </div>
+<!-- VIDEO -->
+<section class="section" style="background: var(--white); border-top: 1px solid var(--gray-200);" id="video">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">▶️ Demonstração</div>
+      <h2 class="section-title">Veja o New Atendi em ação</h2>
+      <p class="section-subtitle">Como organizar filas, distribuir conversas e acompanhar métricas em tempo real</p>
+    </div>
 
-      <div class="video-wrapper">
-        <!-- Usando o vídeo principal do Atendi que você já passou -->
-        <iframe
-          src="https://www.youtube.com/embed/yk13tTLBxRE"
-          title="New Atendi – Omnichannel de Atendimento"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen
-        ></iframe>
+    <div class="video-section">
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/yk13tTLBxRE" allowfullscreen></iframe>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- PARA QUEM É / COMO USAR -->
-  <section class="section">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-eyebrow">Quem usa</div>
-        <h2 class="section-title">Para quem o New Atendi é perfeito?</h2>
-        <p class="section-sub">
-          Se sua empresa ou agência recebe muitos contatos por WhatsApp e redes sociais
-          e sente que está perdendo oportunidades, o New Atendi é para você.
-        </p>
+<!-- PARA QUEM É -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">👥 Público</div>
+      <h2 class="section-title">Para quem é o New Atendi?</h2>
+      <p class="section-subtitle">Empresas que recebem muitos contatos e precisam de visibilidade total</p>
+    </div>
+
+    <div class="cards-grid">
+      <div class="card">
+        <div class="card-icon">🏢</div>
+        <h3>Times de Vendas B2B</h3>
+        <p>Gerencie conversas com prospects, acompanhe follow-ups e tenha histórico completo de negociações.</p>
       </div>
 
-      <div class="two-col">
-        <div class="box">
-          <h3>Times internos de atendimento e vendas</h3>
-          <p>
-            Empresas que precisam ter visibilidade de tudo que acontece no WhatsApp
-            e redes, com controle sobre quem está respondendo e qual o status de cada cliente.
-          </p>
-          <ul>
-            <li>Comerciais B2B e B2C.</li>
-            <li>Centrais de atendimento e suporte.</li>
-            <li>Equipes de pré-vendas e SDRs.</li>
-          </ul>
-        </div>
+      <div class="card">
+        <div class="card-icon">🏪</div>
+        <h3>E-commerce e Varejo</h3>
+        <p>Atenda dúvidas de produtos, processe pedidos e reduza tempo de resposta em 70%.</p>
+      </div>
 
-        <div class="box">
-          <h3>Agências de marketing e performance</h3>
-          <p>
-            Agências que querem oferecer atendimento omnichannel como parte do pacote,
-            conectando mídia, landing pages, SDR Digital e atendimento em um só fluxo.
-          </p>
-          <ul>
-            <li>Reforça o valor do tráfego pago.</li>
-            <li>Aumenta conversão de leads em oportunidades.</li>
-            <li>Cria um serviço recorrente de alto valor.</li>
-          </ul>
-        </div>
+      <div class="card">
+        <div class="card-icon">🏥</div>
+        <h3>Clínicas e Saúde</h3>
+        <p>Organize agendamentos, responda dúvidas de pacientes e mantenha histórico médico organizado.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🎓</div>
+        <h3>Educação</h3>
+        <p>Atenda alunos e pais, envie comunicados e organize matrículas sem perder conversas.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">📱</div>
+        <h3>Agências</h3>
+        <p>Ofereça omnichannel como serviço recorrente. Conecte mídia paga com atendimento organizado.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🎯</div>
+        <h3>SDRs e Pré-vendas</h3>
+        <p>Qualifique leads, agende reuniões e integre com New Dinbot para prospecção automatizada.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- DEPOIMENTOS -->
-  <section class="section">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-eyebrow">Depoimentos</div>
-        <h2 class="section-title">O que clientes falam do New Atendi.</h2>
-        <p class="section-sub">
-          Alguns relatos de empresas que organizaram o atendimento e pararam de perder
-          leads no meio do caminho.
-        </p>
+<!-- TESTIMONIALS -->
+<section class="section" style="background: var(--white); border-top: 1px solid var(--gray-200);">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">⭐ Resultados Reais</div>
+      <h2 class="section-title">O que nossos clientes conquistaram</h2>
+      <p class="section-subtitle">Empresas que organizaram atendimento e pararam de perder leads</p>
+    </div>
+
+    <div class="testimonials-grid">
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <div class="testimonial-text">"Reduzimos tempo de resposta de 4 horas para 15 minutos. Organizamos WhatsApp e Instagram em uma tela. Agora eu sei exatamente quantos atendimentos cada pessoa fez."</div>
+        <div class="testimonial-author">Ana Paula Martins</div>
+        <div class="testimonial-role">Coordenadora de Atendimento · E-commerce</div>
       </div>
 
-      <div class="testimonials-grid">
-        <div class="testimonial-card">
-          <div class="testimonial-stars">★★★★★</div>
-          <div class="testimonial-name">Ana Paula</div>
-          <div class="testimonial-role">Coordenadora de Atendimento · E-commerce</div>
-          <p>
-            “Conseguimos organizar o fluxo de WhatsApp e Instagram em uma única tela.
-            Hoje eu sei exatamente quantos atendimentos cada pessoa fez e quanto tempo
-            estamos levando para responder.”
-          </p>
-        </div>
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <div class="testimonial-text">"New Atendi virou serviço recorrente. Entregamos não só mídia, mas também estrutura de atendimento omnichannel. Aumentou nosso MRR em 40%."</div>
+        <div class="testimonial-author">Marcos Silva</div>
+        <div class="testimonial-role">Sócio · Agência Digital</div>
+      </div>
 
-        <div class="testimonial-card">
-          <div class="testimonial-stars">★★★★★</div>
-          <div class="testimonial-name">Marcos Silva</div>
-          <div class="testimonial-role">Sócio · Agência de Marketing</div>
-          <p>
-            “O New Atendi virou um dos nossos serviços recorrentes.
-            Entregamos não só mídia, mas também estrutura de atendimento
-            omnichannel para nossos clientes.”
-          </p>
-        </div>
-
-        <div class="testimonial-card">
-          <div class="testimonial-stars">★★★★★</div>
-          <div class="testimonial-name">Fernanda Costa</div>
-          <div class="testimonial-role">Gestora Comercial · Serviços B2B</div>
-          <p>
-            “Parou aquela bagunça de atender pelo celular pessoal.
-            Tudo passa pelo New Atendi, com fila, histórico e registro
-            do que foi combinado com o cliente.”
-          </p>
-        </div>
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <div class="testimonial-text">"Acabou bagunça de celular pessoal. Tudo passa pelo New Atendi, com fila, histórico e registro do que foi combinado. Controle total da operação."</div>
+        <div class="testimonial-author">Fernanda Costa</div>
+        <div class="testimonial-role">Gestora Comercial · Serviços B2B</div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- FORM + CTA FINAL -->
-  <section class="section">
-    <div class="container">
-      <div class="cta-wrap">
-        <div>
-          <div class="cta-text-main">
-            Quer ver o New Atendi rodando na sua empresa ou agência?
-          </div>
-          <div class="cta-text-sub">
-            Podemos configurar um ambiente de teste de 7 dias para o seu time
-            validar na prática antes de decidir.
+<!-- CTA FINAL -->
+<section style="padding: 0;">
+  <div class="container">
+    <div class="cta-section">
+      <div class="cta-container">
+        <div class="cta-content">
+          <div class="cta-kicker">🚀 Comece Agora</div>
+          <h2 class="cta-title">Pronto para organizar seu atendimento?</h2>
+          <p class="cta-text">Teste New Atendi por 7 dias gratuitamente. Sem cartão de crédito, sem compromisso.</p>
+          
+          <div class="cta-benefits">
+            <div class="cta-benefit">Todos os canais em um único painel</div>
+            <div class="cta-benefit">Filas inteligentes e distribuição automática</div>
+            <div class="cta-benefit">Métricas em tempo real</div>
+            <div class="cta-benefit">Suporte especializado 24/7</div>
           </div>
         </div>
-        <div>
-          <a
-            href="https://wa.me/5511972769986?text=Quero%20testar%20o%20New%20Atendi%20por%207%20dias"
-            class="btn btn-outline"
-            style="background:#ffffff; color:#0f6fff;"
-          >
-            Falar no WhatsApp sobre o New Atendi
-          </a>
-        </div>
-      </div>
 
-      <div class="form-card">
-        <div class="section-header" style="margin-bottom:10px;">
-          <div class="section-eyebrow" style="color:#9ca3af;">Formulário rápido</div>
-          <h3 class="section-title" style="font-size:18px;">
-            Peça seu acesso de teste ao New Atendi.
-          </h3>
-          <p class="section-sub" style="font-size:13px;">
-            Preencha abaixo e nosso time entra em contato para liberar o ambiente ideal
-            para a sua operação.
-          </p>
-        </div>
-
-        <form class="form-grid" action="#" method="POST">
-          <div class="form-row">
-            <div>
-              <label for="nome">Nome</label>
-              <input type="text" id="nome" name="nome" required />
+        <div class="cta-form">
+          <h3>📋 Solicitar Teste</h3>
+          <p>Preencha e receba acesso em minutos.</p>
+          
+          <form action="https://formspree.io/f/managrzo" method="POST">
+            
+            <div class="form-group">
+              <div>
+                <label>Nome Completo</label>
+                <input type="text" name="nome" placeholder="Seu nome" required />
+              </div>
+              <div>
+                <label>Empresa</label>
+                <input type="text" name="empresa" placeholder="Sua empresa" required />
+              </div>
             </div>
-            <div>
-              <label for="empresa">Empresa</label>
-              <input type="text" id="empresa" name="empresa" required />
+
+            <div class="form-group">
+              <div>
+                <label>E-mail</label>
+                <input type="email" name="email" placeholder="seu@email.com" required />
+              </div>
+              <div>
+                <label>WhatsApp</label>
+                <input type="tel" name="whats" placeholder="(11) 97276-9986" required />
+              </div>
             </div>
-          </div>
 
-          <div class="form-row">
-            <div>
-              <label for="email">E-mail</label>
-              <input type="email" id="email" name="email" required />
+            <div class="form-group">
+              <div>
+                <label>Canais a integrar</label>
+                <select name="canais" required>
+                  <option value="">Selecione</option>
+                  <option value="whatsapp">WhatsApp</option>
+                  <option value="whatsapp-instagram">WhatsApp + Instagram</option>
+                  <option value="multicanal">Todos (WhatsApp + Instagram + Facebook + Site)</option>
+                </select>
+              </div>
             </div>
-            <div>
-              <label for="whats">WhatsApp</label>
-              <input
-                type="tel"
-                id="whats"
-                name="whats"
-                placeholder="(11) 97276-9986"
-                required
-              />
+
+            <button type="submit" class="btn-submit">✅ Testar por 7 dias grátis</button>
+
+            <div class="form-note">
+              ✓ Sem cartão de crédito | Sem compromisso | Cancelar a qualquer hora
             </div>
-          </div>
-
-          <div>
-            <label for="canais">Quais canais você quer integrar?</label>
-            <select id="canais" name="canais">
-              <option value="">Selecione uma opção</option>
-              <option value="whatsapp">WhatsApp</option>
-              <option value="whatsapp-instagram">WhatsApp + Instagram</option>
-              <option value="whatsapp-instagram-facebook">WhatsApp + Instagram + Facebook</option>
-              <option value="todos">Todos os disponíveis</option>
-            </select>
-          </div>
-
-          <div>
-            <label for="contexto">Contexto rápido</label>
-            <textarea
-              id="contexto"
-              name="contexto"
-              placeholder="Ex.: time de 5 atendentes, atendemos via WhatsApp e Instagram, hoje usamos celulares separados..."
-            ></textarea>
-          </div>
-
-          <button type="submit" class="btn btn-primary" style="margin-top:4px;">
-            Enviar pedido de teste
-          </button>
-
-          <div class="form-note">
-            Ao enviar, você autoriza a Inbotix a entrar em contato por WhatsApp e e-mail
-            sobre o New Atendi e outras soluções relacionadas à sua necessidade.
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- FOOTER -->
-  <footer>
-    © <span id="year"></span> Inbotix. New Atendi – Omnichannel e Atendimento.
-  </footer>
+<footer>
+  <div class="container">
+    <p>© <span id="year"></span> INBOTIX — New Atendi | Plataforma Omnichannel para Atendimento</p>
+    <p style="margin-top: 12px; font-size: 11px;">
+      <a href="index.html">Home</a> • 
+      <a href="index.html#sobre">Sobre</a> • 
+      <a href="index.html#contato">Contato</a>
+    </p>
+  </div>
+</footer>
 
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
 </body>
 </html>
