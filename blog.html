@@ -1,104 +1,879 @@
-<!-- COPIE E COLE ISSO NO FIM DE TODA LANDING PAGE (ANTES DO </section> FINAL OU DO </body>) -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Blog Inbotix – Conteúdos sobre Vendas, Outbound, SDR Digital e Automação</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Artigos sobre outbound, SDR Digital, automação de vendas, dados, enriquecimento, produtividade comercial e estratégias para gerar reuniões todos os meses." />
+  <link rel="icon" type="image/x-icon" href="logo-inbotix.ico" />
 
-<section style="padding: 60px 0; background: linear-gradient(135deg, #041056, #07197E); margin-top: 40px;">
-  <div style="max-width: 1100px; margin: auto; padding: 0 20px;">
-    <div style="text-align: center; margin-bottom: 40px;">
-      <div style="font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: #F97316; margin-bottom: 8px; font-family: 'Barlow', sans-serif; font-weight: 700;">
-        📋 Próximo Passo
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Bicubik:wght@400;700&family=Opinion+Pro:wght@400;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --primary-dark: #041056;
+      --primary-deep: #07197E;
+      --primary-blue: #17ABE3;
+      --accent-green: #10B981;
+      --accent-orange: #F97316;
+      --white: #FFFFFF;
+      --bg-light: #F8F9FB;
+      --text-dark: #0f172a;
+      --text-muted: #6b7280;
+      --gray-100: #f3f4f6;
+      --gray-200: #e5e7eb;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg-light);
+      font-family: 'Barlow', sans-serif;
+      color: var(--text-dark);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 0 20px;
+    }
+
+    /* HEADER IDÊNTICO AO SITE PRINCIPAL */
+    header {
+      background: var(--white);
+      border-bottom: 1px solid var(--gray-200);
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      box-shadow: 0 2px 8px rgba(4, 16, 86, 0.05);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 0;
+      gap: 12px;
+    }
+
+    .logo-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    .logo-link:hover {
+      opacity: 0.8;
+    }
+
+    .logo-img {
+      height: 36px;
+      width: auto;
+      max-width: 130px;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .logo-text span:first-child {
+      font-family: 'Bicubik', sans-serif;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      font-size: 12px;
+      color: var(--primary-dark);
+    }
+
+    .logo-text span:last-child {
+      font-size: 10px;
+      color: var(--text-muted);
+      font-family: 'Barlow', sans-serif;
+      font-weight: 500;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    nav a {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-dark);
+      font-family: 'Barlow', sans-serif;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: var(--primary-blue);
+    }
+
+    .nav-btn {
+      padding: 10px 18px;
+      border-radius: 6px;
+      border: none;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--white);
+      background: linear-gradient(135deg, var(--primary-deep), var(--primary-dark));
+      box-shadow: 0 10px 24px rgba(4, 16, 86, 0.25);
+      transition: all 0.2s;
+      cursor: pointer;
+      font-family: 'Barlow', sans-serif;
+    }
+
+    .nav-btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 14px 32px rgba(4, 16, 86, 0.35);
+    }
+
+    /* HERO */
+    .hero {
+      padding: 60px 0;
+      background: linear-gradient(to bottom, #f0f4ff 0%, var(--bg-light) 100%);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -10%;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(23, 171, 227, 0.1) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-kicker {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent-orange);
+      margin-bottom: 8px;
+      font-family: 'Barlow', sans-serif;
+      font-weight: 700;
+    }
+
+    .hero h1 {
+      font-family: 'Bicubik', sans-serif;
+      font-size: 42px;
+      color: var(--primary-dark);
+      margin-bottom: 12px;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .hero h1 span {
+      color: var(--primary-blue);
+      background: linear-gradient(135deg, var(--primary-blue), #00B4DB);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      color: var(--text-muted);
+      font-size: 16px;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* POSTS */
+    .posts-section {
+      padding: 60px 0;
+    }
+
+    .section-header {
+      margin-bottom: 40px;
+      text-align: center;
+    }
+
+    .section-eyebrow {
+      font-size: 12px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent-orange);
+      margin-bottom: 8px;
+      font-family: 'Barlow', sans-serif;
+      font-weight: 700;
+    }
+
+    .section-title {
+      font-family: 'Bicubik', sans-serif;
+      font-size: 32px;
+      color: var(--primary-dark);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .posts {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+
+    .post {
+      background: var(--white);
+      border-radius: 12px;
+      border: 1px solid var(--gray-200);
+      padding: 0;
+      box-shadow: 0 10px 28px rgba(4, 16, 86, 0.05);
+      transition: all 0.2s;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .post::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary-blue), var(--accent-green));
+      opacity: 0;
+      transition: opacity 0.2s;
+      z-index: 10;
+    }
+
+    .post:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 48px rgba(4, 16, 86, 0.12);
+    }
+
+    .post:hover::before {
+      opacity: 1;
+    }
+
+    .post-image {
+      width: 100%;
+      height: 200px;
+      background: linear-gradient(135deg, #E0F2FE, #BAE6FD);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+      overflow: hidden;
+    }
+
+    .post-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .post-content {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .post-tag {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--primary-blue);
+      margin-bottom: 8px;
+      font-family: 'Barlow', sans-serif;
+      font-weight: 700;
+    }
+
+    .post h3 {
+      font-family: 'Bicubik', sans-serif;
+      font-size: 18px;
+      color: var(--primary-dark);
+      margin-bottom: 10px;
+      font-weight: 700;
+      line-height: 1.4;
+    }
+
+    .post p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      flex-grow: 1;
+      margin-bottom: 16px;
+    }
+
+    .post-meta {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      font-family: 'Barlow', sans-serif;
+    }
+
+    .post a {
+      color: var(--primary-blue);
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+
+    .post a:hover {
+      gap: 10px;
+    }
+
+    /* FEATURED POST */
+    .featured-post {
+      background: linear-gradient(135deg, var(--primary-deep), var(--primary-blue));
+      color: var(--white);
+      border-radius: 12px;
+      padding: 40px;
+      margin-bottom: 40px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 32px;
+      align-items: center;
+      box-shadow: 0 20px 48px rgba(4, 16, 86, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .featured-post::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -10%;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .featured-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .featured-tag {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--accent-orange);
+      margin-bottom: 8px;
+      font-family: 'Barlow', sans-serif;
+      font-weight: 700;
+    }
+
+    .featured-post h2 {
+      font-family: 'Bicubik', sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+
+    .featured-post p {
+      font-size: 15px;
+      opacity: 0.95;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 12px 24px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: all 0.18s;
+      font-family: 'Barlow', sans-serif;
+    }
+
+    .btn-white {
+      background: var(--white);
+      color: var(--primary-deep);
+    }
+
+    .btn-white:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
+    }
+
+    /* CTA SECTION */
+    .cta-section {
+      padding: 60px 0;
+      background: linear-gradient(135deg, #041056, #07197E);
+      margin-top: 60px;
+    }
+
+    .cta-container {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 24px;
+      align-items: stretch;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .cta-form {
+      background: var(--white);
+      border-radius: 12px;
+      border: 1px solid var(--gray-200);
+      padding: 24px;
+      box-shadow: 0 20px 48px rgba(4, 16, 86, 0.08);
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .cta-form h3 {
+      font-family: 'Bicubik', sans-serif;
+      font-size: 18px;
+      color: var(--primary-dark);
+      margin-bottom: 6px;
+      font-weight: 700;
+    }
+
+    .cta-form p {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+      font-family: 'Barlow', sans-serif;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .form-row > div {
+      flex: 1;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-dark);
+      font-family: 'Barlow', sans-serif;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px 12px;
+      font-size: 13px;
+      border-radius: 6px;
+      border: 1px solid var(--gray-200);
+      background: var(--gray-100);
+      outline: none;
+      transition: all 0.16s;
+      font-family: 'Barlow', sans-serif;
+    }
+
+    input:focus, select:focus {
+      border-color: var(--primary-blue);
+      box-shadow: 0 0 0 2px rgba(23, 171, 227, 0.1);
+      background: var(--white);
+    }
+
+    .form-submit {
+      width: 100%;
+      padding: 14px 28px;
+      border-radius: 6px;
+      border: none;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--white);
+      background: linear-gradient(135deg, var(--primary-deep), var(--primary-dark));
+      box-shadow: 0 10px 25px rgba(4, 16, 86, 0.25);
+      transition: all 0.2s;
+      cursor: pointer;
+      font-family: 'Barlow', sans-serif;
+      margin-top: 8px;
+    }
+
+    .form-submit:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 14px 32px rgba(4, 16, 86, 0.35);
+    }
+
+    .form-note {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 6px;
+      font-family: 'Barlow', sans-serif;
+    }
+
+    .cta-info {
+      background: rgba(255,255,255,0.1);
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.2);
+      padding: 24px;
+      color: var(--white);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .cta-info-item {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .cta-info-icon {
+      font-size: 32px;
+      margin-bottom: 8px;
+    }
+
+    .cta-info-title {
+      font-family: 'Bicubik', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .cta-info-desc {
+      font-size: 13px;
+      opacity: 0.9;
+      font-family: 'Barlow', sans-serif;
+      line-height: 1.5;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 32px 0;
+      font-size: 12px;
+      color: var(--text-muted);
+      background: var(--white);
+      border-top: 1px solid var(--gray-200);
+      font-family: 'Barlow', sans-serif;
+    }
+
+    footer a {
+      color: var(--primary-blue);
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    footer a:hover {
+      color: var(--primary-dark);
+    }
+
+    /* RESPONSIVO */
+    @media (max-width: 900px) {
+      .posts {
+        grid-template-columns: 1fr;
+      }
+
+      .featured-post {
+        grid-template-columns: 1fr;
+        padding: 28px;
+      }
+
+      .hero h1 {
+        font-size: 32px;
+      }
+
+      .section-title {
+        font-size: 26px;
+      }
+
+      nav {
+        gap: 12px;
+      }
+
+      .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .cta-container {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="header-inner">
+      <a href="index.html" class="logo-link">
+        <img src="logo-inbotix.png" alt="Logo Inbotix" class="logo-img" />
+        <div class="logo-text">
+          <span>INBOTIX</span>
+          <span>Blog & Insights</span>
+        </div>
+      </a>
+      <nav>
+        <a href="index.html"><strong>Home</strong></a>
+        <a href="blog.html"><strong>Blog</strong></a>
+        <a href="index.html#sobre"><strong>Sobre</strong></a>
+        <a href="index.html#contato" class="nav-btn">Começar Agora</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-kicker">📚 Blog Oficial</div>
+      <h1>Conteúdos que <span>transformam sua estratégia</span> de vendas</h1>
+      <p>Artigos sobre outbound, SDR Digital, automação, dados e tudo que você precisa para estruturar uma máquina de vendas de verdade.</p>
+    </div>
+  </div>
+</section>
+
+<section class="posts-section">
+  <div class="container">
+    
+    <!-- FEATURED POST -->
+    <div class="featured-post">
+      <div class="featured-content">
+        <div class="featured-tag">🔥 Artigo em Destaque</div>
+        <h2>Como montar uma operação de SDR Digital que gera 50+ reuniões/mês</h2>
+        <p>
+          Tudo o que você precisa saber sobre estrutura, ICP, cadências, dados e automação para começar a gerar reuniões qualificadas todos os meses.
+        </p>
+        <a href="post-operacao-sdr-digital.html" class="btn btn-white">Ler artigo completo →</a>
       </div>
-      <h2 style="font-family: 'Bicubik', sans-serif; font-size: 32px; color: #ffffff; font-weight: 700; margin-bottom: 12px; letter-spacing: -0.02em;">
-        Quer saber mais sobre sua empresa?
-      </h2>
+      <div style="position: relative; z-index: 2;">
+        <div style="background: rgba(255,255,255,0.1); border-radius: 12px; padding: 32px; text-align: center;">
+          <div style="font-size: 48px; margin-bottom: 12px;">🎯</div>
+          <div style="font-size: 14px; font-weight: 600;">Método Receita Previsível</div>
+          <div style="font-size: 12px; opacity: 0.9; margin-top: 6px;">Estrutura comprovada em 150+ empresas</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEÇÃO DE POSTS -->
+    <div class="section-header">
+      <div class="section-eyebrow">Últimos Artigos</div>
+      <h2 class="section-title">Aprenda com especialistas do mercado</h2>
+    </div>
+
+    <div class="posts">
+
+      <div class="post">
+        <div class="post-image">
+          <img src="blog-imagem-01.jpg" alt="SDR Digital" />
+        </div>
+        <div class="post-content">
+          <div class="post-tag">📊 Dados</div>
+          <h3>Por que dados são o novo poder no outbound?</h3>
+          <p>Empresas que usam informações corretas de CNPJ, contatos e perfis têm 4x mais conversas reais e muito mais previsibilidade.</p>
+          <div class="post-meta">10 min de leitura • 15 de Nov</div>
+          <a href="#">Ler mais →</a>
+        </div>
+      </div>
+
+      <div class="post">
+        <div class="post-image">
+          <img src="blog-imagem-02.jpg" alt="Automação" />
+        </div>
+        <div class="post-content">
+          <div class="post-tag">⚡ Automação</div>
+          <h3>Automação que realmente ajuda vendas</h3>
+          <p>Chatbots, prospecção automatizada e omnichannel: como usar automação sem perder qualidade no relacionamento.</p>
+          <div class="post-meta">12 min de leitura • 12 de Nov</div>
+          <a href="#">Ler mais →</a>
+        </div>
+      </div>
+
+      <div class="post">
+        <div class="post-image">
+          <img src="blog-imagem-03.jpg" alt="ICP" />
+        </div>
+        <div class="post-content">
+          <div class="post-tag">🎯 Estratégia</div>
+          <h3>O ICP que você pensa que tem vs o que funciona</h3>
+          <p>A maioria das empresas define ICP errado e passa meses prospectando para pessoas que nunca vão comprar.</p>
+          <div class="post-meta">8 min de leitura • 10 de Nov</div>
+          <a href="#">Ler mais →</a>
+        </div>
+      </div>
+
+      <div class="post">
+        <div class="post-image">
+          <img src="blog-imagem-04.jpg" alt="LinkedIn" />
+        </div>
+        <div class="post-content">
+          <div class="post-tag">💬 LinkedIn</div>
+          <h3>Cadências de LinkedIn que convertam: 5 exemplos</h3>
+          <p>Sequências de mensagens testadas em campo que geram interesse, qualificam leads e conduzem ao agendamento.</p>
+          <div class="post-meta">14 min de leitura • 08 de Nov</div>
+          <a href="#">Ler mais →</a>
+        </div>
+      </div>
+
+      <div class="post">
+        <div class="post-image">
+          <img src="blog-imagem-05.jpg" alt="Métricas" />
+        </div>
+        <div class="post-content">
+          <div class="post-tag">📈 Métricas</div>
+          <h3>As 7 métricas que você deve acompanhar</h3>
+          <p>Taxa de resposta, conversão, custo por reunião: as métricas que realmente importam em prospecção.</p>
+          <div class="post-meta">9 min de leitura • 05 de Nov</div>
+          <a href="#">Ler mais →</a>
+        </div>
+      </div>
+
+      <div class="post">
+        <div class="post-image">
+          <img src="blog-imagem-06.jpg" alt="Ferramentas" />
+        </div>
+        <div class="post-content">
+          <div class="post-tag">🚀 Ferramentas</div>
+          <h3>Stack de ferramentas para SDR Digital</h3>
+          <p>Quais ferramentas funcionam, quanto custam e como integrar tudo para um fluxo de leads automatizado.</p>
+          <div class="post-meta">11 min de leitura • 02 de Nov</div>
+          <a href="#">Ler mais →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA SECTION - FORMULÁRIO "SABER MAIS" -->
+<section class="cta-section">
+  <div class="container">
+    <div style="text-align: center; margin-bottom: 40px;">
+      <div class="section-eyebrow" style="color: var(--accent-orange);">📋 Próximo Passo</div>
+      <h2 class="section-title" style="color: var(--white);">Quer saber mais sobre sua empresa?</h2>
       <p style="color: rgba(255,255,255,0.9); font-size: 15px; max-width: 600px; margin: 0 auto; line-height: 1.6; font-family: 'Barlow', sans-serif;">
         Preencha o formulário abaixo e nosso time especializado entrará em contato em até 2 horas para entender sua situação e propor a melhor solução.
       </p>
     </div>
 
-    <div style="display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 24px; align-items: stretch; max-width: 900px; margin: 0 auto;">
+    <div class="cta-container">
       
       <!-- FORMULÁRIO -->
-      <div style="background: #ffffff; border-radius: 12px; border: 1px solid #e5e7eb; padding: 24px; box-shadow: 0 20px 48px rgba(4, 16, 86, 0.08); font-size: 13px; color: #6b7280;">
-        <h3 style="font-family: 'Bicubik', sans-serif; font-size: 18px; color: #041056; margin-bottom: 6px; font-weight: 700;">📋 Informações Básicas</h3>
-        <p style="font-size: 13px; color: #6b7280; margin-bottom: 14px; font-family: 'Barlow', sans-serif;">Preencha e receba uma análise gratuita.</p>
+      <div class="cta-form">
+        <h3>📋 Informações Básicas</h3>
+        <p>Preencha e receba uma análise gratuita.</p>
         
         <form action="https://formspree.io/f/managrzo" method="POST">
           
-          <div style="display: flex; gap: 10px; margin-bottom: 10px;">
-            <div style="flex: 1;">
-              <label style="display: block; margin-bottom: 6px; font-size: 12px; font-weight: 600; color: #0f172a; font-family: 'Barlow', sans-serif;">Nome Completo</label>
-              <input type="text" name="nome" placeholder="Seu nome" required style="width: 100%; padding: 10px 12px; font-size: 13px; border-radius: 6px; border: 1px solid #e5e7eb; background: #f3f4f6; outline: none; transition: all 0.16s; font-family: 'Barlow', sans-serif;" />
+          <div class="form-row">
+            <div>
+              <label>Nome Completo</label>
+              <input type="text" name="nome" placeholder="Seu nome" required />
             </div>
-            <div style="flex: 1;">
-              <label style="display: block; margin-bottom: 6px; font-size: 12px; font-weight: 600; color: #0f172a; font-family: 'Barlow', sans-serif;">Empresa</label>
-              <input type="text" name="empresa" placeholder="Sua empresa" required style="width: 100%; padding: 10px 12px; font-size: 13px; border-radius: 6px; border: 1px solid #e5e7eb; background: #f3f4f6; outline: none; transition: all 0.16s; font-family: 'Barlow', sans-serif;" />
-            </div>
-          </div>
-
-          <div style="display: flex; gap: 10px; margin-bottom: 10px;">
-            <div style="flex: 1;">
-              <label style="display: block; margin-bottom: 6px; font-size: 12px; font-weight: 600; color: #0f172a; font-family: 'Barlow', sans-serif;">E-mail</label>
-              <input type="email" name="email" placeholder="seu@email.com" required style="width: 100%; padding: 10px 12px; font-size: 13px; border-radius: 6px; border: 1px solid #e5e7eb; background: #f3f4f6; outline: none; transition: all 0.16s; font-family: 'Barlow', sans-serif;" />
-            </div>
-            <div style="flex: 1;">
-              <label style="display: block; margin-bottom: 6px; font-size: 12px; font-weight: 600; color: #0f172a; font-family: 'Barlow', sans-serif;">WhatsApp</label>
-              <input type="tel" name="whats" placeholder="(11) 97276-9986" required style="width: 100%; padding: 10px 12px; font-size: 13px; border-radius: 6px; border: 1px solid #e5e7eb; background: #f3f4f6; outline: none; transition: all 0.16s; font-family: 'Barlow', sans-serif;" />
+            <div>
+              <label>Empresa</label>
+              <input type="text" name="empresa" placeholder="Sua empresa" required />
             </div>
           </div>
 
-          <div style="margin-bottom: 10px;">
-            <label style="display: block; margin-bottom: 6px; font-size: 12px; font-weight: 600; color: #0f172a; font-family: 'Barlow', sans-serif;">O que você busca?</label>
-            <select name="interesse" required style="width: 100%; padding: 10px 12px; font-size: 13px; border-radius: 6px; border: 1px solid #e5e7eb; background: #f3f4f6; outline: none; transition: all 0.16s; font-family: 'Barlow', sans-serif;">
-              <option value="">Selecione uma opção</option>
-              <option value="SDR Digital">Montar SDR Digital</option>
-              <option value="Automação">Automação de Vendas</option>
-              <option value="Dados">Enriquecimento de Dados</option>
-              <option value="Consultoria">Consultoria</option>
-              <option value="Outro">Outro</option>
-            </select>
+          <div class="form-row">
+            <div>
+              <label>E-mail</label>
+              <input type="email" name="email" placeholder="seu@email.com" required />
+            </div>
+            <div>
+              <label>WhatsApp</label>
+              <input type="tel" name="whats" placeholder="(11) 97276-9986" required />
+            </div>
           </div>
 
-          <button type="submit" style="width: 100%; padding: 14px 28px; border-radius: 6px; border: none; font-size: 14px; font-weight: 600; color: #ffffff; background: linear-gradient(135deg, #07197E, #041056); box-shadow: 0 10px 25px rgba(4, 16, 86, 0.25); transition: all 0.18s; cursor: pointer; font-family: 'Barlow', sans-serif; margin-top: 8px;">
-            ✅ Enviar Informações
-          </button>
+          <div class="form-row">
+            <div>
+              <label>O que você busca?</label>
+              <select name="interesse" required>
+                <option value="">Selecione uma opção</option>
+                <option value="SDR Digital">Montar SDR Digital</option>
+                <option value="Automação">Automação de Vendas</option>
+                <option value="Dados">Enriquecimento de Dados</option>
+                <option value="Consultoria">Consultoria</option>
+                <option value="Outro">Outro</option>
+              </select>
+            </div>
+          </div>
 
-          <div style="font-size: 11px; color: #6b7280; margin-top: 6px; font-family: 'Barlow', sans-serif;">
+          <button type="submit" class="form-submit">✅ Enviar Informações</button>
+
+          <div class="form-note">
             ✓ Avaliação gratuita | Sem compromisso | Resposta em até 2h
           </div>
         </form>
       </div>
 
       <!-- SIDE INFO -->
-      <div style="background: rgba(255,255,255,0.1); border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); padding: 24px; color: #ffffff; display: flex; flex-direction: column; gap: 20px;">
-        
-        <div>
-          <div style="font-size: 32px; margin-bottom: 8px;">🎯</div>
-          <div style="font-family: 'Bicubik', sans-serif; font-size: 16px; font-weight: 700; margin-bottom: 4px;">Método Receita Previsível</div>
-          <div style="font-size: 13px; opacity: 0.9; font-family: 'Barlow', sans-serif; line-height: 1.5;">
-            Estrutura comprovada que gerou 50+ reuniões/mês para 150+ empresas.
-          </div>
+      <div class="cta-info">
+        <div class="cta-info-item">
+          <div class="cta-info-icon">🎯</div>
+          <div class="cta-info-title">Método Receita Previsível</div>
+          <div class="cta-info-desc">Estrutura comprovada que gerou 50+ reuniões/mês para 150+ empresas.</div>
         </div>
 
-        <div>
-          <div style="font-size: 32px; margin-bottom: 8px;">⚡</div>
-          <div style="font-family: 'Bicubik', sans-serif; font-size: 16px; font-weight: 700; margin-bottom: 4px;">Suporte Expert 24/7</div>
-          <div style="font-size: 13px; opacity: 0.9; font-family: 'Barlow', sans-serif; line-height: 1.5;">
-            Time especializado pronto para ajudar você a estruturar sua máquina de vendas.
-          </div>
+        <div class="cta-info-item">
+          <div class="cta-info-icon">⚡</div>
+          <div class="cta-info-title">Suporte Expert 24/7</div>
+          <div class="cta-info-desc">Time especializado pronto para ajudar você a estruturar sua máquina de vendas.</div>
         </div>
 
-        <div>
-          <div style="font-size: 32px; margin-bottom: 8px;">🚀</div>
-          <div style="font-family: 'Bicubik', sans-serif; font-size: 16px; font-weight: 700; margin-bottom: 4px;">Zoho Partner Certificado</div>
-          <div style="font-size: 13px; opacity: 0.9; font-family: 'Barlow', sans-serif; line-height: 1.5;">
-            Integrado com as melhores ferramentas de CRM e automação do mercado.
-          </div>
+        <div class="cta-info-item">
+          <div class="cta-info-icon">🚀</div>
+          <div class="cta-info-title">Zoho Partner Certificado</div>
+          <div class="cta-info-desc">Integrado com as melhores ferramentas de CRM e automação do mercado.</div>
         </div>
-
       </div>
 
     </div>
-
   </div>
 </section>
 
-<!-- FIM DO FORMULÁRIO -->
+<footer>
+  <div class="container">
+    <p>© <span id="year"></span> INBOTIX — Blog Oficial de Vendas e Automação.</p>
+    <p style="margin-top: 12px; font-size: 11px;">
+      <a href="index.html">Home</a> • 
+      <a href="index.html#sobre">Sobre</a> • 
+      <a href="index.html#contato">Contato</a>
+    </p>
+  </div>
+</footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
