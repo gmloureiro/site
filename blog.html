@@ -599,6 +599,8 @@
       width: 100%;
       border-radius: 12px;
       margin: 24px 0;
+      max-height: 400px;
+      object-fit: cover;
       box-shadow: 0 10px 28px rgba(4, 16, 86, 0.1);
     }
 
@@ -621,10 +623,13 @@
       line-height: 1.6;
     }
 
-    .article-expanded a {
-      color: var(--primary-blue);
-      font-weight: 600;
-      text-decoration: underline;
+    .article-expanded h3 {
+      font-family: 'Bicubik', sans-serif;
+      font-size: 18px;
+      color: var(--primary-dark);
+      margin-top: 24px;
+      margin-bottom: 12px;
+      font-weight: 700;
     }
 
     .close-article {
@@ -637,6 +642,12 @@
       cursor: pointer;
       margin-top: 20px;
       font-family: 'Barlow', sans-serif;
+      transition: all 0.2s;
+    }
+
+    .close-article:hover {
+      background: #E07C1C;
+      transform: translateY(-2px);
     }
 
     /* FOOTER */
@@ -763,12 +774,12 @@
       <!-- POST 1 -->
       <div class="post">
         <div class="post-image">
-          <img src="blog-imagem-01.jpg" alt="Dados em Outbound" />
+          <img src="https://raw.githubusercontent.com/gmloureiro/gmloureiro.github.io/main/site/blog-imagem-01.jpg" alt="Dados em Outbound" onerror="this.style.display='none'" />
         </div>
         <div class="post-content">
           <div class="post-tag">📊 Dados</div>
           <h3>Por que dados são o novo poder no outbound?</h3>
-          <p>Empresas que usam informações corretas têm 4x mais conversas reais e muito mais previsibilidade em suas operações.</p>
+          <p>Empresas que usam informações corretas de CNPJ, contatos e perfis têm 4x mais conversas reais e muito mais previsibilidade em suas operações.</p>
           <div class="post-meta">10 min de leitura • 15 de Nov</div>
           <a href="javascript:expandArticle(1)">Ler mais →</a>
         </div>
@@ -777,7 +788,7 @@
       <!-- POST 2 -->
       <div class="post">
         <div class="post-image">
-          <img src="blog-imagem-02.jpg" alt="Automação" />
+          <img src="https://raw.githubusercontent.com/gmloureiro/gmloureiro.github.io/main/site/blog-imagem-02.jpg" alt="Automação" onerror="this.style.display='none'" />
         </div>
         <div class="post-content">
           <div class="post-tag">⚡ Automação</div>
@@ -791,7 +802,7 @@
       <!-- POST 3 -->
       <div class="post">
         <div class="post-image">
-          <img src="blog-imagem-03.jpg" alt="ICP" />
+          <img src="https://raw.githubusercontent.com/gmloureiro/gmloureiro.github.io/main/site/blog-imagem-03.jpg" alt="ICP" onerror="this.style.display='none'" />
         </div>
         <div class="post-content">
           <div class="post-tag">🎯 Estratégia</div>
@@ -805,7 +816,7 @@
       <!-- POST 4 -->
       <div class="post">
         <div class="post-image">
-          <img src="blog-imagem-04.jpg" alt="LinkedIn" />
+          <img src="https://raw.githubusercontent.com/gmloureiro/gmloureiro.github.io/main/site/blog-imagem-04.jpg" alt="LinkedIn" onerror="this.style.display='none'" />
         </div>
         <div class="post-content">
           <div class="post-tag">💬 LinkedIn</div>
@@ -819,7 +830,7 @@
       <!-- POST 5 -->
       <div class="post">
         <div class="post-image">
-          <img src="blog-imagem-05.jpg" alt="Métricas" />
+          <img src="https://raw.githubusercontent.com/gmloureiro/gmloureiro.github.io/main/site/blog-imagem-05.jpg" alt="Métricas" onerror="this.style.display='none'" />
         </div>
         <div class="post-content">
           <div class="post-tag">📈 Métricas</div>
@@ -833,7 +844,7 @@
       <!-- POST 6 -->
       <div class="post">
         <div class="post-image">
-          <img src="blog-imagem-06.jpg" alt="Ferramentas" />
+          <img src="https://raw.githubusercontent.com/gmloureiro/gmloureiro.github.io/main/site/blog-imagem-06.jpg" alt="Ferramentas" onerror="this.style.display='none'" />
         </div>
         <div class="post-content">
           <div class="post-tag">🚀 Ferramentas</div>
@@ -846,57 +857,33 @@
 
     </div>
 
-    <!-- ARTIGOS EXPANDIDOS (OCULTOS POR PADRÃO) -->
+    <!-- ARTIGOS EXPANDIDOS -->
 
-    <!-- ARTIGO 1 EXPANDIDO -->
+    <!-- ARTIGO 1 -->
     <div class="article-expanded" id="article-1">
       <h2>Por que dados são o novo poder no outbound?</h2>
-      <img src="blog-imagem-01.jpg" alt="Dados em Outbound" />
-      <p>
-        No outbound moderno, dados não são apenas um diferencial. Eles são a base de tudo. Empresas que usam informações corretas de CNPJ, contatos verificados e perfis enriquecidos têm 4x mais conversas reais e muito mais previsibilidade.
-      </p>
-      <p>
-        Mas qual é a diferença entre dados "genéricos" e dados de qualidade? E como isso impacta seus resultados?
-      </p>
+      <img src="https://raw.githubusercontent.com/gmloureiro/gmloureiro.github.io/main/site/blog-imagem-01.jpg" alt="Dados em Outbound" />
+      <p>No outbound moderno, dados não são apenas um diferencial. Eles são a base de tudo. Empresas que usam informações corretas de CNPJ, contatos verificados e perfis enriquecidos têm 4x mais conversas reais e muito mais previsibilidade.</p>
       <h3>O problema dos dados ruins</h3>
-      <p>
-        Quantas vezes você enviou mensagem no LinkedIn para alguém que:
-      </p>
-      <ul>
-        <li>Não é o decisor (manda para assistente em vez do CFO)</li>
-        <li>Trabalha em empresa que não é seu ICP (porte errado, segmento errado)</li>
-        <li>O email está desatualizado ou errado</li>
-        <li>Não existe mais naquele cargo</li>
-      </ul>
-      <p>
-        Se você respondeu "sempre", você está prospectando às cegas. Seus números caem drasticamente.
-      </p>
+      <p>Quantas vezes você enviou mensagem no LinkedIn para alguém que: não é o decisor, trabalha em empresa que não é seu ICP, o email está desatualizado ou não existe mais naquele cargo?</p>
+      <p>Se você respondeu "sempre", você está prospectando às cegas. Seus números caem drasticamente.</p>
       <h3>Dados de qualidade = Conversas reais</h3>
-      <p>
-        Com dados enriquecidos, você consegue:
-      </p>
+      <p>Com dados enriquecidos, você consegue:</p>
       <ul>
         <li><strong>Identificar o decisor certo:</strong> CEO, CFO, VP de RH, etc</li>
         <li><strong>Validar o ICP:</strong> Faturamento, número de funcionários, segmento</li>
         <li><strong>Emails verificados:</strong> Taxa de abertura 30-40% vs 5-10% com emails ruins</li>
         <li><strong>Contexto real:</strong> Redes sociais, links profissionais, informações recentes</li>
       </ul>
-      <p>
-        Resultado? Suas mensagens chegam no lugar certo, para a pessoa certa, com contexto certo. Taxa de resposta sobe de 3% para 12-15%.
-      </p>
+      <p>Resultado? Taxa de resposta sobe de 3% para 12-15%.</p>
       <button class="close-article" onclick="closeArticle(1)">← Voltar ao Blog</button>
     </div>
 
-    <!-- ARTIGO 2 EXPANDIDO -->
+    <!-- ARTIGO 2 -->
     <div class="article-expanded" id="article-2">
       <h2>Automação que realmente ajuda vendas</h2>
-      <img src="blog-imagem-02.jpg" alt="Automação" />
-      <p>
-        Existe um mito que automação é "impessoal" e "não funciona". Mentira. Automação bem feita é invisível. O cliente nem percebe que está falando com um robô.
-      </p>
-      <p>
-        O segredo é: automação não substitui humanos. Ela multiplica o trabalho deles.
-      </p>
+      <img src="https://raw.githubusercontent.com/gmloureiro/gmloureiro.github.io/main/site/blog-imagem-02.jpg" alt="Automação" />
+      <p>Existe um mito que automação é "impessoal" e "não funciona". Mentira. Automação bem feita é invisível. O cliente nem percebe que está falando com um robô.</p>
       <h3>O que pode ser automatizado</h3>
       <ul>
         <li><strong>Prospecção em escala:</strong> Enviar 500+ mensagens por mês sem perder qualidade</li>
@@ -904,41 +891,19 @@
         <li><strong>Qualificação de leads:</strong> Chatbots respondem dúvidas comuns 24/7</li>
         <li><strong>Agendamento:</strong> Lead clica e marca call automaticamente</li>
       </ul>
-      <h3>O que NÃO deve ser automatizado</h3>
-      <ul>
-        <li>Primeiro contato de relacionamento importante</li>
-        <li>Negociação de valores</li>
-        <li>Resolução de problemas complexos</li>
-        <li>Seguimento de leads em estágio avançado</li>
-      </ul>
-      <p>
-        Quando você automatiza o "trabalho chato" (prospectação em massa, qualificação inicial, agendamento), sua operação consegue:
-      </p>
-      <ul>
-        <li>Gerar 50+ reuniões por mês com 1-2 SDRs</li>
-        <li>Reduzir custo por reunião em 80%</li>
-        <li>Focar em relacionamento, não em tarefas repetitivas</li>
-      </ul>
+      <h3>Quando funciona</h3>
+      <p>Quando você automatiza o "trabalho chato", sua operação consegue gerar 50+ reuniões por mês com 1-2 SDRs, reduzir custo por reunião em 80% e focar em relacionamento.</p>
       <button class="close-article" onclick="closeArticle(2)">← Voltar ao Blog</button>
     </div>
 
-    <!-- ARTIGO 3 EXPANDIDO -->
+    <!-- ARTIGO 3 -->
     <div class="article-expanded" id="article-3">
       <h2>O ICP que você pensa que tem vs o que funciona</h2>
-      <img src="blog-imagem-03.jpg" alt="ICP" />
-      <p>
-        ICP = Ideal Customer Profile. É o "retrato" da empresa perfeita para você.
-      </p>
-      <p>
-        Mas aqui está o problema: 90% das empresas define ICP errado. Prospectam para "qualquer um que tenha dinheiro" e depois se frustram com taxa de conversão baixa.
-      </p>
+      <img src="https://raw.githubusercontent.com/gmloureiro/gmloureiro.github.io/main/site/blog-imagem-03.jpg" alt="ICP" />
+      <p>ICP = Ideal Customer Profile. É o "retrato" da empresa perfeita para você. Mas 90% das empresas define ICP errado.</p>
       <h3>ICP Genérico vs ICP Preciso</h3>
-      <p>
-        <strong>Genérico (errado):</strong> "Empresas B2B com mais de 10 funcionários"
-      </p>
-      <p>
-        <strong>Preciso (certo):</strong> "Software houses com 15-50 funcionários, faturamento 1-5M/ano, que já usam CRM mas não têm SDR, localizada em SP, com pelo menos 1 pessoa em vendas"
-      </p>
+      <p><strong>Genérico (errado):</strong> "Empresas B2B com mais de 10 funcionários"</p>
+      <p><strong>Preciso (certo):</strong> "Software houses com 15-50 funcionários, faturamento 1-5M/ano, com pelo menos 1 pessoa em vendas"</p>
       <h3>Como calcular seu ICP correto</h3>
       <ul>
         <li>Olhe seus 3 maiores clientes. O que eles têm em comum?</li>
@@ -946,92 +911,67 @@
         <li>Olhe seus 5 deals mais difíceis. Por que demoraram?</li>
         <li>Identifique padrões: tamanho, segmento, localização, dor, budget</li>
       </ul>
-      <p>
-        Quando seu ICP está claro, sua prospecção fica 10x mais eficiente. Você para de enviar 500 mensagens para 490 empresas que nunca vão comprar.
-      </p>
+      <p>Quando seu ICP está claro, sua prospecção fica 10x mais eficiente.</p>
       <button class="close-article" onclick="closeArticle(3)">← Voltar ao Blog</button>
     </div>
 
-    <!-- ARTIGO 4 EXPANDIDO -->
+    <!-- ARTIGO 4 -->
     <div class="article-expanded" id="article-4">
       <h2>Cadências de LinkedIn que convertam: 5 exemplos</h2>
-      <img src="blog-imagem-04.jpg" alt="LinkedIn" />
-      <p>
-        Uma boa cadência no LinkedIn tem 5-7 toques espaçados ao longo de 3 semanas. Cada toque é diferente e tem um objetivo.
-      </p>
-      <h3>Estrutura de uma cadência que funciona</h3>
+      <img src="https://raw.githubusercontent.com/gmloureiro/gmloureiro.github.io/main/site/blog-imagem-04.jpg" alt="LinkedIn" />
+      <p>Uma boa cadência no LinkedIn tem 5-7 toques espaçados ao longo de 3 semanas. Cada toque é diferente e tem um objetivo.</p>
+      <h3>Estrutura que funciona</h3>
       <ul>
-        <li><strong>Toque 1 (Dia 1):</strong> Conexão com mensagem personalizada (60 caracteres)</li>
+        <li><strong>Toque 1 (Dia 1):</strong> Conexão com mensagem personalizada</li>
         <li><strong>Toque 2 (Dia 3):</strong> Se aceitou, direct message com valor</li>
         <li><strong>Toque 3 (Dia 5):</strong> Conteúdo útil (artigo, insight)</li>
-        <li><strong>Toque 4 (Dia 8):</strong> Pergunta provocativa (não é venda!)</li>
+        <li><strong>Toque 4 (Dia 8):</strong> Pergunta provocativa</li>
         <li><strong>Toque 5 (Dia 12):</strong> Social proof (caso de sucesso)</li>
         <li><strong>Toque 6 (Dia 15):</strong> CTA claro (reunião de 15min)</li>
-        <li><strong>Toque 7 (Dia 21):</strong> Última tentativa (tom diferente, mais direto)</li>
+        <li><strong>Toque 7 (Dia 21):</strong> Última tentativa</li>
       </ul>
-      <h3>Exemplo de mensagem de abertura que funciona</h3>
-      <p>
-        "Oi [NOME], vi seu perfil e achei interessante sua atuação em [ÁREA]. Estou ajudando [TIPO DE EMPRESA] a [RESULTADO]. Quer conversar?"
-      </p>
-      <p>
-        Simples. Claro. Sem spammy. Taxa de resposta: 8-12%.
-      </p>
+      <p>Taxa de resposta: 8-12% com essa estrutura.</p>
       <button class="close-article" onclick="closeArticle(4)">← Voltar ao Blog</button>
     </div>
 
-    <!-- ARTIGO 5 EXPANDIDO -->
+    <!-- ARTIGO 5 -->
     <div class="article-expanded" id="article-5">
       <h2>As 7 métricas que você deve acompanhar</h2>
-      <img src="blog-imagem-05.jpg" alt="Métricas" />
-      <p>
-        Sem métricas, você está dirigindo de olhos fechados. Aqui estão as 7 métricas que realmente importam:
-      </p>
+      <img src="https://raw.githubusercontent.com/gmloureiro/gmloureiro.github.io/main/site/blog-imagem-05.jpg" alt="Métricas" />
+      <p>Sem métricas, você está dirigindo de olhos fechados. Aqui estão as 7 que realmente importam:</p>
       <h3>1. Taxa de Resposta</h3>
-      <p>Quanto % dos contatos respondeu suas mensagens. Meta: 10-15%</p>
-      
-      <h3>2. Taxa de Conversão (Resposta → Reunião)</h3>
-      <p>De quem respondeu, quantos viraram reunião agendada. Meta: 5-10%</p>
-      
-      <h3>3. Custo por Reunião Agendada</h3>
-      <p>Total gasto / reuniões agendadas. Meta: R$ 50-150 por reunião</p>
-      
+      <p>Quanto % dos contatos respondeu. Meta: 10-15%</p>
+      <h3>2. Taxa de Conversão</h3>
+      <p>De quem respondeu, quantos viraram reunião. Meta: 5-10%</p>
+      <h3>3. Custo por Reunião</h3>
+      <p>Total gasto / reuniões agendadas. Meta: R$ 50-150</p>
       <h3>4. Taxa de No-Show</h3>
-      <p>Quanto % não comparece nas reuniões. Meta: abaixo de 20%</p>
-      
-      <h3>5. Tempo Médio até Reunião</h3>
+      <p>Quanto % não comparece. Meta: abaixo de 20%</p>
+      <h3>5. Tempo até Reunião</h3>
       <p>Do primeiro contato até agendar. Meta: 7-14 dias</p>
-      
       <h3>6. Taxa de Qualificação</h3>
-      <p>Quantos % dos leads são realmente qualificados (ICP). Meta: 70%+</p>
-      
+      <p>% de leads realmente qualificados. Meta: 70%+</p>
       <h3>7. ROI do Outbound</h3>
-      <p>Revenue gerado / custo de prospecção. Meta: 5:1 ou melhor</p>
-      
+      <p>Revenue gerado / custo. Meta: 5:1 ou melhor</p>
       <button class="close-article" onclick="closeArticle(5)">← Voltar ao Blog</button>
     </div>
 
-    <!-- ARTIGO 6 EXPANDIDO -->
+    <!-- ARTIGO 6 -->
     <div class="article-expanded" id="article-6">
       <h2>Stack de ferramentas para SDR Digital</h2>
-      <img src="blog-imagem-06.jpg" alt="Ferramentas" />
-      <p>
-        Você não precisa de 50 ferramentas. Precisa de ferramentas certas bem integradas.
-      </p>
+      <img src="https://raw.githubusercontent.com/gmloureiro/gmloureiro.github.io/main/site/blog-imagem-06.jpg" alt="Ferramentas" />
+      <p>Você não precisa de 50 ferramentas. Precisa de ferramentas certas bem integradas.</p>
       <h3>As 5 essenciais</h3>
       <ul>
-        <li><strong>Dados (Dadus Cadastrais):</strong> Base de 5M+ empresas brasileiras</li>
+        <li><strong>Dados (Dadus):</strong> Base de 5M+ empresas brasileiras</li>
         <li><strong>Prospecção (New Dinbot):</strong> Automação de LinkedIn com IA</li>
         <li><strong>Atendimento (Atendi):</strong> WhatsApp, email, chat integrados</li>
-        <li><strong>CRM (Bigin by Zoho):</strong> Pipeline, forecasting, integrações</li>
-        <li><strong>Comunicação (WhatsApp Business):</strong> Disparos em massa</li>
+        <li><strong>CRM (Bigin):</strong> Pipeline, forecasting, integrações</li>
+        <li><strong>Comunicação (WhatsApp):</strong> Disparos em massa</li>
       </ul>
-      <h3>Como integrar tudo</h3>
-      <p>
-        Dados → Prospecção → CRM → Atendimento → Follow-up
-      </p>
-      <p>
-        Cada ferramenta passa dados para a próxima. Resultado: fluxo automático de leads sem você mexer.
-      </p>
+      <h3>Como integrar</h3>
+      <p>Dados → Prospecção → CRM → Atendimento → Follow-up</p>
+      <p>Cada ferramenta passa dados para a próxima. Resultado: fluxo automático sem você mexer.</p>
       <button class="close-article" onclick="closeArticle(6)">← Voltar ao Blog</button>
     </div>
 
