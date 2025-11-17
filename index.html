@@ -4,1525 +4,1594 @@
   <meta charset="UTF-8" />
   <title>Inbotix – Outbound, SDR Digital e Automação de Vendas</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta
-    name="description"
-    content="A Inbotix constrói sua máquina de vendas com SDR Digital, automação e dados para gerar reuniões todos os meses, sem depender de indicação."
-  />
+  <meta name="description" content="A Inbotix constrói sua máquina de vendas com SDR Digital, automação e dados para gerar reuniões todos os meses, sem depender de indicação." />
   <link rel="icon" type="image/png" href="icon-inbotix.png" />
 
   <style>
     :root {
-      --primary: #0F6FFF;
-      --primary-light: #36D9FF;
-      --primary-soft: #EAF6FF;
-
-      --bg: #F7FBFF;
-      --bg-alt: #FFFFFF;
-
-      --text: #041833;
-      --text-light: #42536A;
-
-      --card-border: rgba(15, 111, 255, 0.16);
-      --card-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
-
-      --radius: 16px;
-      --max-width: 1100px;
+      --primary: #0f6fff;
+      --primary-strong: #0050c8;
+      --bg: #f5f7fb;
+      --dark: #0f172a;
+      --text: #1f2933;
+      --muted: #6b7280;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      margin: 0;
       background: var(--bg);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
       color: var(--text);
-      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
     }
 
-    a { text-decoration: none; color: inherit; }
-    img { max-width: 100%; display: block; }
-
-    .top-bar {
-      background: linear-gradient(90deg, #0F6FFF, #36D9FF);
-      color: #ffffff;
-      font-size: 0.8rem;
-      text-align: center;
-      padding: 0.35rem 0.5rem;
+    a {
+      text-decoration: none;
+      color: inherit;
     }
-    .top-bar strong { font-weight: 700; }
 
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 0 20px;
+    }
+
+    /* HEADER */
     header {
+      background: #fff;
+      border-bottom: 1px solid #e5e7eb;
       position: sticky;
       top: 0;
-      z-index: 50;
-      backdrop-filter: blur(16px);
-      background: rgba(247, 251, 255, 0.95);
-      border-bottom: 1px solid rgba(15, 111, 255, 0.08);
+      z-index: 40;
     }
-    .nav-container {
-      max-width: var(--max-width);
-      margin: 0 auto;
+
+    .header-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0.6rem 1rem;
+      padding: 14px 0;
+      gap: 12px;
     }
-    .logo { display: flex; align-items: center; gap: 0.5rem; }
-    .logo img { height: 32px; width: auto; }
 
-    nav ul {
-      display: flex;
-      list-style: none;
-      gap: 1.5rem;
-      font-size: 0.9rem;
-    }
-    nav a {
-      color: var(--text-light);
-      opacity: 0.85;
-      transition: opacity 0.2s, color 0.2s;
-    }
-    nav a:hover { opacity: 1; color: var(--primary); }
-
-    .nav-cta {
+    .logo {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 8px;
+    }
+
+    .logo-mark {
+      width: 28px;
+      height: 28px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--primary), #22c1c3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 800;
+      font-size: 14px;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .logo-text span:first-child {
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      font-size: 11px;
+      color: var(--dark);
+    }
+
+    .logo-text span:last-child {
+      font-size: 11px;
+      color: #9ca3af;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    nav a {
+      font-size: 13px;
+      font-weight: 700;
+      color: #374151;
+    }
+
+    nav a:hover {
+      color: var(--primary);
+    }
+
+    .nav-btn {
+      padding: 8px 16px;
+      border-radius: 999px;
+      border: 1px solid var(--primary);
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+      background: linear-gradient(135deg, var(--primary), var(--primary-strong));
+      box-shadow: 0 10px 24px rgba(15,111,255,0.35);
+    }
+
+    .nav-btn:hover {
+      background: var(--primary-strong);
+    }
+
+    .nav-item.dropdown {
+      position: relative;
+      font-size: 13px;
+      font-weight: 700;
+      color: #374151;
+      cursor: pointer;
+    }
+
+    .nav-item.dropdown span {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .nav-item.dropdown:hover {
+      color: var(--primary);
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      top: 140%;
+      right: 0;
+      background: #fff;
+      border-radius: 12px;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 18px 40px rgba(15,23,42,0.18);
+      padding: 10px 0;
+      min-width: 210px;
+      display: none;
+      z-index: 50;
+    }
+
+    .nav-item.dropdown:hover .dropdown-menu {
+      display: block;
+    }
+
+    .dropdown-menu a {
+      display: block;
+      padding: 8px 14px;
+      font-size: 13px;
+      color: #374151;
+      white-space: nowrap;
+    }
+
+    .dropdown-menu a span {
+      font-size: 11px;
+      color: #9ca3af;
+      font-weight: 400;
+      display: block;
+      margin-top: 2px;
+    }
+
+    .dropdown-menu a:hover {
+      background: #f3f4ff;
+      color: var(--primary);
+    }
+
+    /* HERO */
+    .hero {
+      padding: 56px 0 44px;
+      background: linear-gradient(to bottom, #e6f0ff, #f9fafb);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0,1.25fr) minmax(0,1fr);
+      gap: 28px;
+      align-items: flex-start;
+    }
+
+    .hero-kicker {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: #9ca3af;
+      margin-bottom: 6px;
+    }
+
+    .hero-title {
+      font-size: 36px;
+      color: var(--dark);
+      letter-spacing: -0.03em;
+      margin-bottom: 10px;
+    }
+
+    .hero-title span {
+      color: var(--primary);
+    }
+
+    .hero-sub {
+      font-size: 16px;
+      color: var(--muted);
+      max-width: 580px;
+      line-height: 1.5;
+      margin-bottom: 18px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 10px;
     }
 
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 0.7rem 1.3rem;
+      gap: 6px;
+      padding: 12px 22px;
       border-radius: 999px;
+      font-size: 14px;
+      font-weight: 700;
       border: none;
       cursor: pointer;
-      font-size: 0.9rem;
-      font-weight: 600;
-      transition: transform 0.15s, box-shadow 0.15s, background 0.15s, color 0.15s;
-      white-space: nowrap;
+      transition: .18s;
     }
+
     .btn-primary {
-      background: linear-gradient(135deg, #0F6FFF, #36D9FF);
-      color: #ffffff;
-      box-shadow: 0 8px 22px rgba(15, 111, 255, 0.35);
+      background: linear-gradient(135deg, var(--primary), var(--primary-strong));
+      color: #fff;
+      box-shadow: 0 10px 25px rgba(15,111,255,0.25);
     }
+
     .btn-primary:hover {
+      background: var(--primary-strong);
       transform: translateY(-1px);
-      box-shadow: 0 14px 32px rgba(15, 111, 255, 0.45);
-      background: linear-gradient(135deg, #0B5ACC, #24BEE8);
+      box-shadow: 0 16px 36px rgba(15,111,255,0.35);
     }
+
     .btn-outline {
-      border: 1px solid rgba(15, 111, 255, 0.28);
+      border: 2px solid var(--primary);
       color: var(--primary);
-      background: #ffffff;
+      background: #fff;
     }
+
     .btn-outline:hover {
-      background: #EEF4FF;
-      color: #0B5ACC;
+      background: var(--primary);
+      color: #fff;
     }
 
-    .mobile-toggle {
-      display: none;
-      border: none;
-      background: transparent;
-      color: var(--text-light);
-      font-size: 1.4rem;
-      cursor: pointer;
+    .hero-footnote {
+      font-size: 13px;
+      color: #4b5563;
+      max-width: 520px;
     }
 
-    main { padding-bottom: 4rem; }
-    section { padding: 4rem 1rem; }
-    .section-inner { max-width: var(--max-width); margin: 0 auto; }
-
-    .section-title {
-      font-size: 1.9rem;
-      margin-bottom: 0.75rem;
-      letter-spacing: -0.03em;
-      color: var(--text);
-    }
-    .section-subtitle {
-      color: var(--text-light);
-      max-width: 650px;
-      font-size: 0.96rem;
-      margin-bottom: 2rem;
-    }
-
-    .hero {
-      padding-top: 3.5rem;
-      padding-bottom: 4rem;
-      background: linear-gradient(135deg, #EAF6FF 0%, #D4ECFF 40%, #F7FBFF 100%);
-      border-bottom: 1px solid rgba(15, 111, 255, 0.12);
-    }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(0, 2.3fr);
-      gap: 3rem;
-      align-items: center;
-    }
-    .hero-eyebrow {
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: #0F6FFF;
-      margin-bottom: 0.9rem;
-    }
-    .hero-title {
-      font-size: 2.6rem;
-      line-height: 1.1;
-      letter-spacing: -0.05em;
-      margin-bottom: 1rem;
-    }
-    .hero-title span {
-      background: linear-gradient(135deg, #0F6FFF, #36D9FF);
-      -webkit-background-clip: text;
-      color: transparent;
-    }
-    .hero-subtitle {
-      color: var(--text-light);
-      font-size: 0.98rem;
-      max-width: 480px;
-      margin-bottom: 1.5rem;
-    }
-    .hero-ctas { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
-    .hero-ctas small { font-size: 0.8rem; color: var(--text-light); display: block; margin-top: 0.35rem; }
-
-    .hero-badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      font-size: 0.78rem;
-      color: var(--text-light);
-    }
-    .hero-badge {
-      border-radius: 999px;
-      border: 1px solid rgba(15, 111, 255, 0.28);
-      padding: 0.25rem 0.7rem;
-      background: rgba(255, 255, 255, 0.85);
-    }
-
-    .hero-card {
-      background: rgba(255, 255, 255, 0.95);
-      border-radius: 22px;
-      padding: 1.6rem 1.5rem;
-      box-shadow: var(--card-shadow);
-      border: 1px solid rgba(15, 111, 255, 0.18);
-    }
-    .hero-card-title {
-      font-size: 0.9rem;
-      color: var(--text-light);
-      margin-bottom: 0.9rem;
-    }
-    .metric-row {
-      display: flex;
-      justify-content: space-between;
-      gap: 1rem;
-      margin-bottom: 0.9rem;
-      font-size: 0.85rem;
-    }
-    .metric-label { color: #6B7280; font-size: 0.8rem; }
-    .metric-value { font-weight: 600; }
-
-    .hero-tagline {
-      font-size: 0.78rem;
-      color: #6B7280;
-      border-top: 1px solid #E5E7EB;
-      padding-top: 0.8rem;
-      margin-top: 0.6rem;
-    }
-
-    .card-grid-3 {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1.3rem;
-    }
-    .card-grid-4 {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 1.3rem;
-    }
-    .card {
-      background: var(--bg-alt);
-      border-radius: var(--radius);
-      padding: 1.4rem;
-      border: 1px solid var(--card-border);
-      box-shadow: var(--card-shadow);
-    }
-    .card h3 { font-size: 1rem; margin-bottom: 0.4rem; }
-    .card p { font-size: 0.86rem; color: var(--text-light); }
-    .card small { font-size: 0.78rem; color: #6B7280; }
-
-    .solutions-section { background: #F7FBFF; }
-    .solutions-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      gap: 2rem;
-      margin-bottom: 2rem;
-      flex-wrap: wrap;
-    }
-    .solutions-badge {
-      font-size: 0.8rem;
-      color: #0F6FFF;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-    }
-    .solutions-note {
-      font-size: 0.82rem;
-      color: var(--text-light);
-      max-width: 320px;
-      text-align: right;
-    }
-    .solution-tag {
-      display: inline-block;
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: #0F6FFF;
-      margin-bottom: 0.4rem;
-    }
-    .card-actions {
-      margin-top: 0.7rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.8rem;
-    }
-    .card-link { font-size: 0.8rem; color: #0F6FFF; }
-
-    .videos-section {
-      background: #FFFFFF;
-      border-top: 1px solid rgba(15, 111, 255, 0.08);
-      border-bottom: 1px solid rgba(15, 111, 255, 0.08);
-    }
-    .video-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 1.5rem;
-    }
-    .video-card {
-      background: #FFFFFF;
+    /* HERO FORM */
+    .hero-form {
+      background: #fff;
       border-radius: 18px;
-      padding: 1rem 1rem 1.2rem;
-      border: 1px solid rgba(15, 111, 255, 0.16);
-      box-shadow: var(--card-shadow);
-    }
-    .video-card h3 { font-size: 1rem; margin-bottom: 0.5rem; }
-    .video-card p { font-size: 0.82rem; color: var(--text-light); margin-bottom: 0.7rem; }
-
-    .video-wrapper {
-      position: relative;
-      padding-bottom: 56.25%;
-      height: 0;
-      overflow: hidden;
-      border-radius: 12px;
-      box-shadow: 0 14px 35px rgba(15, 23, 42, 0.12);
-    }
-    .video-wrapper iframe {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      border: 0;
+      border: 1px solid #e5e7eb;
+      padding: 18px 18px 14px;
+      box-shadow: 0 14px 36px rgba(15,23,42,0.16);
+      font-size: 13px;
+      color: var(--muted);
     }
 
-    .products-landing {
-      background: #FFFFFF;
+    .hero-form h3 {
+      font-size: 16px;
+      color: var(--dark);
+      margin-bottom: 6px;
     }
-    .product-hero {
-      margin-bottom: 2rem;
-      padding: 1.5rem 1.4rem;
-      background: linear-gradient(135deg, #EAF6FF 0%, #FFFFFF 100%);
-      border-radius: 18px;
-      border: 1px solid rgba(15, 111, 255, 0.18);
-      box-shadow: var(--card-shadow);
+
+    .hero-form p {
+      font-size: 12px;
+      color: #6b7280;
+      margin-bottom: 10px;
     }
-    .product-hero h3 { margin-bottom: 0.4rem; }
-    .product-hero-tags {
+
+    .hero-form .form-row {
       display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-      margin-top: 0.5rem;
-      font-size: 0.78rem;
-    }
-    .product-tag {
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.6);
-      padding: 0.2rem 0.6rem;
-      background: #FFFFFF;
-      color: #6B7280;
+      gap: 8px;
+      margin-bottom: 8px;
     }
 
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1.1rem;
-    }
-    .product-card {
-      background: #FFFFFF;
-      border-radius: 16px;
-      padding: 1rem;
-      border: 1px solid var(--card-border);
-      box-shadow: var(--card-shadow);
-      font-size: 0.86rem;
-    }
-    .product-card h4 { margin-bottom: 0.35rem; font-size: 0.98rem; }
-
-    .agencies-section {
-      background: linear-gradient(135deg, #EAF6FF 0%, #F7FBFF 50%, #FFFFFF 100%);
-    }
-    .agencies-grid {
-      display: grid;
-      grid-template-columns: 1.4fr 1fr;
-      gap: 2rem;
-      align-items: center;
-    }
-    .pill-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 0.7rem;
-    }
-    .pill {
-      font-size: 0.78rem;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      padding: 0.25rem 0.65rem;
-      color: var(--text-light);
-      background: #FFFFFF;
-    }
-    .agencies-card {
-      background: #FFFFFF;
-      border-radius: 18px;
-      padding: 1.2rem 1.3rem;
-      border: 1px solid rgba(15, 111, 255, 0.18);
-      font-size: 0.85rem;
-      color: var(--text-light);
-      box-shadow: var(--card-shadow);
-    }
-    .agencies-card ul { list-style: none; padding-left: 0; margin: 0.5rem 0 0.8rem; }
-    .agencies-card li::before { content: "• "; color: #0F6FFF; }
-
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1rem;
-    }
-    .step {
-      background: #FFFFFF;
-      border-radius: var(--radius);
-      padding: 1rem;
-      border: 1px solid var(--card-border);
-      font-size: 0.85rem;
-      box-shadow: var(--card-shadow);
-    }
-    .step-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 0.4rem;
-    }
-    .step-number {
-      font-size: 0.75rem;
-      color: #6B7280;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-    }
-    .step-title { font-size: 0.95rem; font-weight: 600; }
-
-    .cases-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1.3rem;
-      margin-bottom: 2.5rem;
-    }
-    .case-card {
-      background: #FFFFFF;
-      border-radius: var(--radius);
-      padding: 1rem;
-      border: 1px solid var(--card-border);
-      font-size: 0.85rem;
-      box-shadow: var(--card-shadow);
-    }
-    .case-tag {
-      font-size: 0.7rem;
-      color: #6B7280;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      margin-bottom: 0.3rem;
-    }
-    .case-result {
-      font-size: 0.9rem;
-      margin-top: 0.3rem;
-      color: #15803D;
+    .hero-form .form-row > div {
+      flex: 1;
     }
 
-    .testimonials {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1.2rem;
-    }
-    .testimonial {
-      background: #FFFFFF;
-      border-radius: var(--radius);
-      padding: 1rem;
-      border: 1px solid var(--card-border);
-      font-size: 0.83rem;
-      color: var(--text-light);
-      box-shadow: var(--card-shadow);
-    }
-    .stars {
-      color: #F59E0B;
-      margin-bottom: 0.4rem;
-      font-size: 0.85rem;
-    }
-    .testimonial strong {
-      display: block;
-      margin-top: 0.6rem;
-      font-size: 0.78rem;
-      color: #6B7280;
-    }
-
-    .blog-section { background: #F7FBFF; }
-    .blog-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1.2rem;
-    }
-    .blog-card {
-      background: #FFFFFF;
-      border-radius: var(--radius);
-      padding: 1rem;
-      border: 1px solid var(--card-border);
-      box-shadow: var(--card-shadow);
-      font-size: 0.86rem;
-    }
-    .blog-card h3 { font-size: 1rem; margin-bottom: 0.4rem; }
-    .blog-meta { font-size: 0.75rem; color: #6B7280; margin-bottom: 0.4rem; }
-
-    .about-section { background: #F7FBFF; }
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1.4fr 1fr;
-      gap: 2rem;
-      align-items: start;
-    }
-    .about-list {
-      list-style: none;
-      padding-left: 0;
-      font-size: 0.85rem;
-      color: var(--text-light);
-    }
-    .about-list li { margin-bottom: 0.4rem; }
-    .about-pill {
-      font-size: 0.75rem;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      padding: 0.2rem 0.6rem;
-      display: inline-block;
-      margin-right: 0.3rem;
-      margin-bottom: 0.3rem;
-      color: #6B7280;
-      background: #FFFFFF;
-    }
-
-    .contact-section {
-      background: #FFFFFF;
-      border-top: 1px solid rgba(15, 111, 255, 0.08);
-    }
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1.4fr 1fr;
-      gap: 2rem;
-      align-items: start;
-    }
-    form {
-      background: #FFFFFF;
-      border-radius: 18px;
-      padding: 1.5rem 1.3rem;
-      border: 1px solid rgba(148, 163, 184, 0.6);
-      box-shadow: var(--card-shadow);
-      font-size: 0.9rem;
-    }
-    .form-row { display: flex; gap: 0.8rem; flex-wrap: wrap; }
-    .form-group { margin-bottom: 0.9rem; flex: 1; min-width: 140px; }
     label {
       display: block;
-      margin-bottom: 0.25rem;
-      font-size: 0.78rem;
-      color: #6B7280;
+      margin-bottom: 4px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #4b5563;
     }
+
     input, select, textarea {
       width: 100%;
+      padding: 8px 10px;
+      font-size: 13px;
       border-radius: 10px;
-      border: 1px solid rgba(148, 163, 184, 0.9);
-      background: #F9FAFB;
-      color: var(--text);
-      padding: 0.55rem 0.7rem;
-      font-family: inherit;
-      font-size: 0.86rem;
+      border: 1px solid #d1d5db;
+      background: #f9fafb;
       outline: none;
+      transition: .16s;
     }
-    input:focus, select:focus, textarea:focus {
-      border-color: #0F6FFF;
-      box-shadow: 0 0 0 1px rgba(15, 111, 255, 0.16);
-      background: #FFFFFF;
-    }
-    textarea { resize: vertical; min-height: 90px; }
-    .contact-note { font-size: 0.82rem; color: var(--text-light); margin-top: 0.8rem; }
 
-    .whatsapp-float {
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 1px rgba(15,111,255,0.22);
+      background: #fff;
+    }
+
+    .hero-form .form-note {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    /* SECTION BASE */
+    .section {
+      padding: 44px 0;
+    }
+
+    .section-header {
+      margin-bottom: 18px;
+    }
+
+    .section-eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #9ca3af;
+      margin-bottom: 4px;
+    }
+
+    .section-title {
+      font-size: 26px;
+      color: var(--dark);
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+    }
+
+    .section-sub {
+      font-size: 14px;
+      color: var(--muted);
+      max-width: 650px;
+    }
+
+    /* GRID / CARDS */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3,minmax(0,1fr));
+      gap: 18px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2,minmax(0,1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 16px;
+      border: 1px solid #e5e7eb;
+      padding: 14px 16px 12px;
+      box-shadow: 0 10px 28px rgba(15,23,42,0.06);
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .card h3 {
+      font-size: 15px;
+      color: var(--dark);
+      margin-bottom: 6px;
+    }
+
+    .card-tag {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--primary);
+      margin-bottom: 4px;
+    }
+
+    .card-link {
+      display: inline-flex;
+      align-items: center;
+      margin-top: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .card-link span {
+      margin-left: 3px;
+    }
+
+    /* TESTES GRÁTIS */
+    .highlight {
+      margin-top: 16px;
+      padding: 20px;
+      border-radius: 20px;
+      background: linear-gradient(120deg,#0f6fff,#22c1c3);
+      color: #fff;
+      display: grid;
+      grid-template-columns: minmax(0,1.2fr) minmax(0,1fr);
+      gap: 20px;
+      align-items: center;
+      box-shadow: 0 22px 50px rgba(15,111,255,0.5);
+    }
+
+    .highlight h3 {
+      font-size: 20px;
+      margin-bottom: 6px;
+    }
+
+    .highlight p {
+      font-size: 13px;
+      opacity: .96;
+      margin-bottom: 4px;
+    }
+
+    .highlight-list {
+      font-size: 13px;
+      margin-top: 8px;
+    }
+
+    .highlight-list span {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.12);
+      margin: 3px;
+    }
+
+    /* VÍDEOS */
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(3,minmax(0,1fr));
+      gap: 18px;
+    }
+
+    .video-card {
+      background: #fff;
+      border-radius: 16px;
+      border: 1px solid #e5e7eb;
+      padding: 12px 12px 14px;
+      box-shadow: 0 10px 26px rgba(15,23,42,0.06);
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .video-card h3 {
+      font-size: 14px;
+      color: var(--dark);
+      margin-bottom: 4px;
+    }
+
+    .video-box {
+      margin-top: 8px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 12px 28px rgba(15,23,42,0.18);
+    }
+
+    .video-box iframe {
+      width: 100%;
+      height: 190px;
+      border: none;
+      display: block;
+    }
+
+    /* CASE */
+    .case-wrap {
+      display: grid;
+      grid-template-columns: minmax(0,1.1fr) minmax(0,1fr);
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .case-main {
+      background: #0f172a;
+      color: #e5e7eb;
+      border-radius: 18px;
+      padding: 18px 18px 14px;
+      box-shadow: 0 18px 42px rgba(15,23,42,0.55);
+    }
+
+    .case-label {
+      font-size: 11px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: #9ca3af;
+      margin-bottom: 6px;
+    }
+
+    .case-title {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: #f9fafb;
+    }
+
+    .case-number {
+      font-size: 24px;
+      font-weight: 800;
+      color: #4ade80;
+      margin-bottom: 4px;
+    }
+
+    .case-text {
+      font-size: 13px;
+      opacity: .9;
+    }
+
+    .case-side {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    /* CLIENTES */
+    .client-pills {
+      margin-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .client-pill {
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      font-size: 12px;
+      color: #4b5563;
+      box-shadow: 0 4px 12px rgba(15,23,42,0.04);
+    }
+
+    /* MISSAO VISAO VALORES */
+    .mv-grid {
+      display: grid;
+      grid-template-columns: repeat(3,minmax(0,1fr));
+      gap: 18px;
+    }
+
+    .mv-card {
+      background: #fff;
+      border-radius: 16px;
+      border: 1px solid #e5e7eb;
+      padding: 14px 16px;
+      box-shadow: 0 10px 24px rgba(15,23,42,0.05);
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .mv-card h3 {
+      font-size: 15px;
+      color: var(--dark);
+      margin-bottom: 6px;
+    }
+
+    .values-list {
+      margin-top: 6px;
+      padding-left: 16px;
+    }
+
+    .values-list li {
+      margin-bottom: 3px;
+    }
+
+    /* SOBRE */
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0,1.1fr) minmax(0,1fr);
+      gap: 18px;
+    }
+
+    .about-block {
+      background: #fff;
+      border-radius: 16px;
+      border: 1px solid #e5e7eb;
+      padding: 16px 18px;
+      box-shadow: 0 10px 26px rgba(15,23,42,0.06);
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .about-block h3 {
+      font-size: 15px;
+      color: var(--dark);
+      margin-bottom: 6px;
+    }
+
+    /* BLOG PREVIEW */
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(3,minmax(0,1fr));
+      gap: 18px;
+    }
+
+    .blog-card {
+      background: #fff;
+      border-radius: 16px;
+      border: 1px solid #e5e7eb;
+      padding: 14px 16px 12px;
+      box-shadow: 0 8px 22px rgba(15,23,42,0.06);
+      font-size: 13px;
+      color: var(--muted);
+      transition: .18s;
+    }
+
+    .blog-card h3 {
+      font-size: 15px;
+      color: var(--dark);
+      margin-bottom: 6px;
+    }
+
+    .blog-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 34px rgba(15,23,42,0.10);
+    }
+
+    /* REDES SOCIAIS */
+    .social-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+      font-size: 13px;
+    }
+
+    .social-link {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 6px 16px rgba(15,23,42,0.06);
+      color: #374151;
+      font-weight: 500;
+    }
+
+    .social-link:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    /* DEPOIMENTOS */
+    .testimonials {
+      display: grid;
+      grid-template-columns: repeat(3,minmax(0,1fr));
+      gap: 18px;
+    }
+
+    .test {
+      background: #fff;
+      border-radius: 16px;
+      border: 1px solid #e5e7eb;
+      padding: 14px 16px 12px;
+      box-shadow: 0 8px 22px rgba(15,23,42,0.06);
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .stars {
+      color: #f59e0b;
+      font-size: 15px;
+      margin-bottom: 4px;
+    }
+
+    .tname {
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 2px;
+    }
+
+    .trole {
+      font-size: 11px;
+      color: #9ca3af;
+      margin-bottom: 4px;
+    }
+
+    /* CONTATO */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0,1.1fr) minmax(0,1fr);
+      gap: 18px;
+    }
+
+    .form-wrap {
+      background: #fff;
+      border-radius: 16px;
+      border: 1px solid #e5e7eb;
+      padding: 18px 18px 14px;
+      box-shadow: 0 10px 26px rgba(15,23,42,0.06);
+      font-size: 13px;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .form-row > div {
+      flex: 1;
+    }
+
+    .form-note {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+      max-height: 160px;
+    }
+
+    /* FOOTER */
+    footer {
+      margin-top: 30px;
+      padding: 18px 0 22px;
+      background: #fff;
+      border-top: 1px solid #e5e7eb;
+      font-size: 12px;
+      color: #9ca3af;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-links a {
+      color: #6b7280;
+    }
+
+    .footer-links a:hover {
+      color: var(--primary);
+    }
+
+    /* WHATSAPP FLOAT */
+    .whats-float {
       position: fixed;
-      bottom: 18px;
       right: 18px;
+      bottom: 18px;
       z-index: 60;
     }
-    .whatsapp-float a {
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      background: linear-gradient(135deg, #22C55E, #16A34A);
-      color: #ffffff;
-      padding: 0.65rem 1rem;
+
+    .whats-button {
+      width: 54px;
+      height: 54px;
       border-radius: 999px;
-      font-size: 0.86rem;
-      font-weight: 600;
-      box-shadow: 0 18px 35px rgba(22, 163, 74, 0.7);
-    }
-    .whatsapp-float a span.icon {
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      border: 2px solid rgba(255, 255, 255, 0.85);
+      background: #25D366;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.9rem;
-    }
-    @media (max-width: 480px) {
-      .whatsapp-float a { padding: 0.55rem 0.8rem; font-size: 0.8rem; }
-      .whatsapp-float a span.text { display: none; }
+      box-shadow: 0 18px 40px rgba(0,0,0,0.35);
+      cursor: pointer;
     }
 
-    footer {
-      border-top: 1px solid rgba(148, 163, 184, 0.4);
-      padding: 1.5rem 1rem;
-      font-size: 0.78rem;
-      color: #6B7280;
-      background: #F9FAFB;
+    .whats-button span {
+      font-size: 28px;
+      color: #fff;
     }
-    .footer-inner {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-    .footer-logo {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    .footer-logo img { height: 20px; width: auto; }
-    .footer-links { display: flex; gap: 1rem; flex-wrap: wrap; }
-    .footer-links a { color: #6B7280; }
 
+    .whats-label {
+      position: absolute;
+      right: 64px;
+      bottom: 12px;
+      background: #0f172a;
+      color: #f9fafb;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 11px;
+      white-space: nowrap;
+      box-shadow: 0 10px 26px rgba(15,23,42,0.5);
+    }
+
+    /* RESPONSIVO */
     @media (max-width: 900px) {
       .hero-grid,
-      .agencies-grid,
+      .case-wrap,
       .about-grid,
-      .contact-grid {
-        grid-template-columns: 1fr;
+      .contact-grid,
+      .highlight {
+        grid-template-columns: minmax(0,1fr);
       }
-      .card-grid-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .card-grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .video-grid { grid-template-columns: 1fr; }
-      .steps, .cases-grid, .testimonials, .blog-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+      .grid-3,
+      .grid-2,
+      .mv-grid,
+      .blog-grid,
+      .video-grid,
+      .testimonials {
+        grid-template-columns: minmax(0,1fr);
       }
-      nav ul { display: none; }
-      .mobile-toggle { display: block; }
-      .nav-container { position: relative; }
-      .nav-open nav ul {
-        display: flex;
-        position: absolute;
-        top: 110%;
-        right: 1rem;
+
+      nav {
+        justify-content: flex-start;
+      }
+
+      .header-inner {
         flex-direction: column;
-        background: #FFFFFF;
-        padding: 0.8rem 1rem;
-        border-radius: 12px;
-        border: 1px solid rgba(148, 163, 184, 0.7);
-        box-shadow: 0 18px 35px rgba(15, 23, 42, 0.18);
+        align-items: flex-start;
       }
-      .nav-cta { display: none; }
-    }
-    @media (max-width: 640px) {
-      .hero-title { font-size: 2.1rem; }
-      .card-grid-3, .card-grid-4, .steps, .cases-grid, .testimonials, .blog-grid {
-        grid-template-columns: 1fr;
+
+      .hero {
+        padding-top: 32px;
+      }
+
+      .video-box iframe {
+        height: 220px;
       }
     }
   </style>
 </head>
 <body>
-  <div class="top-bar">
-    <strong>SDR Digital + Automação + Dados</strong> para gerar reuniões todos os meses com o cliente certo.
-  </div>
 
-  <header>
-    <div class="nav-container" id="nav">
+<header>
+  <div class="container">
+    <div class="header-inner">
       <div class="logo">
-        <img src="logo-inbotix.png" alt="Logo Inbotix" />
+        <div class="logo-mark">IB</div>
+        <div class="logo-text">
+          <span>INBOTIX</span>
+          <span>Inteligência comercial para o seu negócio</span>
+        </div>
       </div>
       <nav>
-        <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#solucoes">Soluções</a></li>
-          <li><a href="#produtos">Produtos</a></li>
-          <li><a href="#videos">Vídeos</a></li>
-          <li><a href="#agencias">Para agências</a></li>
-          <li><a href="#metodologia">Metodologia</a></li>
-          <li><a href="#cases">Cases</a></li>
-          <li><a href="#blog">Blog</a></li>
-          <li><a href="#sobre">Sobre</a></li>
-          <li><a href="#contato">Contato</a></li>
-        </ul>
+        <a href="#solucoes"><strong>Soluções</strong></a>
+        <a href="#para-agencias"><strong>Para Agências</strong></a>
+        <a href="blog.html"><strong>Blog</strong></a>
+        <a href="#sobre"><strong>Sobre</strong></a>
+        <a href="https://www.linkedin.com/in/guilhermeloureiro/" target="_blank" rel="noopener noreferrer"><strong>Conheça nosso CEO</strong></a>
+
+        <div class="nav-item.dropdown">
+          <span>Login ▾</span>
+          <div class="dropdown-menu">
+            <a href="https://www.dinbot.app/" target="_blank" rel="noopener noreferrer">
+              DINBOT
+              <span>Chatbots e automação</span>
+            </a>
+            <a href="https://app.atendi.io/#/login" target="_blank" rel="noopener noreferrer">
+              ATENDI
+              <span>Atendimento omnichannel</span>
+            </a>
+            <a href="https://newatendi.app/" target="_blank" rel="noopener noreferrer">
+              NEW ATENDI
+              <span>Nova experiência de atendimento</span>
+            </a>
+            <a href="https://daduscadastrais.com/" target="_blank" rel="noopener noreferrer">
+              DADUS CADASTRAIS
+              <span>Dados e enriquecimento</span>
+            </a>
+            <a href="https://newdinbot.app/" target="_blank" rel="noopener noreferrer">
+              NEW DINBOT
+              <span>Prospecção e cadências</span>
+            </a>
+            <a href="https://atendilight.com.br/" target="_blank" rel="noopener noreferrer">
+              ATENDI LIGHT
+              <span>Atendimento simples e acessível</span>
+            </a>
+          </div>
+        </div>
+
+        <a href="#contato" class="nav-btn">Fale Conosco</a>
       </nav>
-      <div class="nav-cta">
-        <button
-          class="btn btn-outline"
-          onclick="window.open('https://wa.me/5511972769986?text=Ol%C3%A1%20Guilherme,%20vi%20o%20site%20da%20Inbotix%20e%20quero%20falar%20sobre%20SDR%20Digital.', '_blank')"
-        >
-          Falar no WhatsApp
-        </button>
-        <button
-          class="btn btn-primary"
-          onclick="document.querySelector('#contato').scrollIntoView({behavior:'smooth'})"
-        >
-          Agendar diagnóstico
-        </button>
-      </div>
-      <button class="mobile-toggle" onclick="toggleNav()">☰</button>
     </div>
-  </header>
+  </div>
+</header>
 
-  <main>
-    <!-- HERO -->
-    <section class="hero" id="home">
-      <div class="section-inner">
-        <div class="hero-grid">
-          <div>
-            <div class="hero-eyebrow">Outbound, SDR Digital & Automação</div>
-            <h1 class="hero-title">
-              Venda todo mês com <span>SDR Digital, dados e IA</span>.
-            </h1>
-            <p class="hero-subtitle">
-              A Inbotix constrói e opera sua máquina de prospecção ativa:
-              LinkedIn, e-mail, WhatsApp e dados integrados para gerar reuniões
-              todos os dias, sem depender só de indicação ou anúncios.
-            </p>
-            <div class="hero-ctas">
-              <div>
-                <button
-                  class="btn btn-primary"
-                  onclick="document.querySelector('#contato').scrollIntoView({behavior:'smooth'})"
-                >
-                  Agendar diagnóstico de Outbound
-                </button>
-                <small>Conversamos sobre seu cenário atual e desenhamos um plano.</small>
-              </div>
-              <button
-                class="btn btn-outline"
-                onclick="window.open('https://wa.me/5511972769986?text=Ol%C3%A1%20Guilherme,%20vi%20o%20site%20da%20Inbotix%20e%20quero%20falar%20sobre%20SDR%20Digital.', '_blank')"
-              >
-                Falar no WhatsApp
-              </button>
-            </div>
-            <div class="hero-badges">
-              <div class="hero-badge">Foco em agências de marketing</div>
-              <div class="hero-badge">SDR Digital + Dinbot + Atendi + Dadus</div>
-              <div class="hero-badge">Operação feita por especialistas</div>
-            </div>
-          </div>
-
-          <aside class="hero-card">
-            <div class="hero-card-title">
-              Máquina de vendas Inbotix — visão em números
-            </div>
-            <div class="metric-row">
-              <div>
-                <div class="metric-label">Reuniões geradas / mês</div>
-                <div class="metric-value">pipeline previsível para o comercial</div>
-              </div>
-              <div>
-                <div class="metric-label">Canais</div>
-                <div class="metric-value">LinkedIn · WhatsApp · E-mail</div>
-              </div>
-            </div>
-            <div class="metric-row">
-              <div>
-                <div class="metric-label">ICP definido</div>
-                <div class="metric-value">segmento, porte, região, cargo</div>
-              </div>
-              <div>
-                <div class="metric-label">Tecnologia</div>
-                <div class="metric-value">Dinbot · Atendi · Dadus</div>
-              </div>
-            </div>
-            <p class="hero-tagline">
-              A Inbotix combina metodologia, SDR Digital e tecnologia própria
-              para transformar visitas e listas frias em oportunidades reais de venda.
-            </p>
-          </aside>
-        </div>
-      </div>
-    </section>
-
-    <!-- SOLUÇÕES GERAIS -->
-    <section class="solutions-section" id="solucoes">
-      <div class="section-inner">
-        <div class="solutions-header">
-          <div>
-            <div class="solutions-badge">Soluções Inbotix</div>
-            <h2 class="section-title">O que fazemos pela sua empresa</h2>
-            <p class="section-subtitle">
-              Mais do que ferramentas, entregamos uma operação completa de
-              prospecção ativa: estratégia, cadências, tecnologia, dados e
-              pessoas focadas em gerar reuniões para o seu time de vendas.
-            </p>
-          </div>
-          <p class="solutions-note">
-            Comece pelo diagnóstico de Outbound e, a partir dele, definimos
-            juntos o melhor desenho entre SDR Digital, tecnologias Inbotix e
-            parcerias white label.
-          </p>
-        </div>
-
-        <div class="card-grid-4">
-          <div class="card">
-            <div class="solution-tag">Serviço</div>
-            <h3>SDR Digital Inbotix</h3>
-            <p>
-              Montamos e operamos a rotina diária de prospecção da sua empresa:
-              ICP, cadências, abordagens, follow-ups e agendamento direto na
-              agenda do seu time comercial.
-            </p>
-            <div class="card-actions">
-              <small>Foco em geração de reuniões qualificadas</small>
-              <a href="#produto-sdr" class="card-link">Ver página do SDR →</a>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="solution-tag">Plataformas</div>
-            <h3>Dinbot / New Dinbot</h3>
-            <p>
-              Automação avançada no LinkedIn com inteligência de dados para
-              encontrar, abordar e nutrir decisores nos canais certos, na hora
-              certa.
-            </p>
-            <div class="card-actions">
-              <small>Automação + personalização</small>
-              <a href="#produto-dinbot" class="card-link">Ver página do Dinbot →</a>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="solution-tag">Plataforma</div>
-            <h3>Atendi & Atendi Disparos</h3>
-            <p>
-              Omnichannel com WhatsApp API oficial, atendimento e disparos
-              inteligentes conectados à sua operação de SDR e marketing.
-            </p>
-            <div class="card-actions">
-              <small>WhatsApp como canal de vendas</small>
-              <a href="#produto-atendi" class="card-link">Ver página do Atendi →</a>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="solution-tag">Dados</div>
-            <h3>Dadus Cadastrais & Enriquecimento</h3>
-            <p>
-              Enriquecimento de leads com telefone, e-mail e dados
-              empresariais, garantindo base qualificada para prospecção ativa.
-            </p>
-            <div class="card-actions">
-              <small>Base viva, leads acionáveis</small>
-              <a href="#produto-dadus" class="card-link">Ver página da Dadus →</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- MINI LANDINGS – PRODUTOS -->
-    <section class="products-landing" id="produtos">
-      <div class="section-inner">
-        <div class="product-hero">
-          <h2 class="section-title">Páginas dos produtos Inbotix</h2>
-          <p class="section-subtitle">
-            Cada produto da Inbotix tem um papel na sua máquina de vendas. Abaixo
-            você encontra uma “mini landing page” de cada solução, com foco na
-            proposta de valor, para usar em apresentações, reuniões e envio direto.
-          </p>
-          <div class="product-hero-tags">
-            <span class="product-tag">SDR Digital</span>
-            <span class="product-tag">Dinbot</span>
-            <span class="product-tag">Dadus Cadastrais</span>
-            <span class="product-tag">Atendi</span>
-            <span class="product-tag">Atendi Disparos</span>
-          </div>
-        </div>
-
-        <div id="produto-sdr" style="margin-bottom: 2.5rem;">
-          <h3 class="section-title" style="font-size:1.4rem;">SDR Digital Inbotix</h3>
-          <p class="section-subtitle">
-            Um time de SDR Digital operado pela Inbotix, com tecnologia, dados e
-            rotina diária focada em gerar reuniões qualificadas para o seu time de
-            vendas, sem contratar internamente.
-          </p>
-          <div class="product-grid">
-            <div class="product-card">
-              <h4>Para quem é</h4>
-              <p>
-                Empresas B2B, agências de marketing, SaaS, consultorias e negócios
-                que precisam de previsibilidade de pipeline e não têm um processo
-                de prospecção ativa rodando todo dia.
-              </p>
-            </div>
-            <div class="product-card">
-              <h4>Principais entregas</h4>
-              <p>
-                ICP definido, cadências de outbound, operação diária de SDR,
-                agendamento de reuniões e relatórios de desempenho com foco em
-                oportunidades geradas.
-              </p>
-            </div>
-            <div class="product-card">
-              <h4>Call to action</h4>
-              <p>
-                <b>Próximo passo:</b> agende um diagnóstico de Outbound para entender
-                em que estágio você está e qual formato de SDR Digital faz mais
-                sentido para o seu momento.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div id="produto-dinbot" style="margin-bottom: 2.5rem;">
-          <h3 class="section-title" style="font-size:1.4rem;">Dinbot / New Dinbot</h3>
-          <p class="section-subtitle">
-            Automação inteligente no LinkedIn para escalar a prospecção sem perder
-            personalização, conectada com dados e outros canais de contato.
-          </p>
-          <div class="product-grid">
-            <div class="product-card">
-              <h4>O que faz</h4>
-              <p>
-                Gera listas de decisores no LinkedIn, cria cadências de conexão e
-                abordagem, e integra com dados da Dadus e fluxos de atendimento no
-                Atendi.
-              </p>
-            </div>
-            <div class="product-card">
-              <h4>Diferenciais</h4>
-              <p>
-                Foco em ICP, combinações de filtros, multi-contas, personalização
-                por segmento e integração com enriquecimento de dados para aumentar
-                o aproveitamento dos leads.
-              </p>
-            </div>
-            <div class="product-card">
-              <h4>Call to action</h4>
-              <p>
-                <b>Próximo passo:</b> veja o vídeo do Dinbot e agende uma conversa
-                para entender como encaixar a automação de LinkedIn na sua
-                realidade.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div id="produto-dadus" style="margin-bottom: 2.5rem;">
-          <h3 class="section-title" style="font-size:1.4rem;">Dadus Cadastrais</h3>
-          <p class="section-subtitle">
-            Enriquecimento de dados para transformar listas frias em leads
-            acionáveis, com telefone, e-mail e informações empresariais.
-          </p>
-          <div class="product-grid">
-            <div class="product-card">
-              <h4>O problema que resolve</h4>
-              <p>
-                Bases velhas, listas incompletas, leads sem telefone e e-mail.
-                Dadus ajuda a “dar vida” aos seus contatos e à sua base de ICP.
-              </p>
-            </div>
-            <div class="product-card">
-              <h4>Aplicações</h4>
-              <p>
-                Outbound, campanhas de reengajamento, campanhas de upsell para
-                clientes, campanhas de geração de demanda em eventos e webinars.
-              </p>
-            </div>
-            <div class="product-card">
-              <h4>Call to action</h4>
-              <p>
-                <b>Próximo passo:</b> converse com a Inbotix sobre como enriquecer
-                sua base atual e como usar a Dadus integrada ao SDR Digital.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div id="produto-atendi">
-          <h3 class="section-title" style="font-size:1.4rem;">Atendi & Atendi Disparos</h3>
-          <p class="section-subtitle">
-            Omnichannel conectado ao WhatsApp API oficial, e disparos inteligentes
-            para apoiar tanto o atendimento quanto as campanhas de outbound.
-          </p>
-          <div class="product-grid">
-            <div class="product-card">
-              <h4>Atendi – Omnichannel</h4>
-              <p>
-                Centraliza conversas em diferentes canais, integra com CRM e
-                conecta atendimento com as campanhas de SDR Digital.
-              </p>
-            </div>
-            <div class="product-card">
-              <h4>Atendi Disparos</h4>
-              <p>
-                Disparos de WhatsApp (dentro das regras da API oficial), com
-                segmentação, templates aprovados e foco em conversão e
-                relacionamento.
-              </p>
-            </div>
-            <div class="product-card">
-              <h4>Call to action</h4>
-              <p>
-                <b>Próximo passo:</b> assista aos vídeos do Atendi e Atendi Disparos
-                e agende um diagnóstico para desenhar fluxos e jornadas de
-                atendimento e vendas.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- VÍDEOS DOS PRODUTOS -->
-    <section class="videos-section" id="videos">
-      <div class="section-inner">
-        <h2 class="section-title">Vídeos dos produtos Inbotix</h2>
-        <p class="section-subtitle">
-          Assista às demonstrações rápidas dos principais produtos da Inbotix e
-          entenda como cada um deles entra na sua máquina de vendas.
+<section class="hero" id="topo">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-kicker">Máquina de vendas e atendimento</div>
+        <h1 class="hero-title">
+          A INBOTIX constrói sua <span>máquina de geração de reuniões</span>
+          com outbound, automação e dados.
+        </h1>
+        <p class="hero-sub">
+          SDR Digital, automação de LinkedIn, WhatsApp e e-mail, dados enriquecidos
+          e atendimento omnichannel – tudo para seu time comercial falar todos os
+          meses com os decisores certos, sem depender de indicação.
         </p>
 
-        <div class="video-grid">
-          <div class="video-card">
-            <h3>SDR Digital Inbotix</h3>
-            <p>Como funciona a operação de SDR Digital operada pela Inbotix.</p>
-            <div class="video-wrapper">
-              <iframe
-                src="https://www.youtube.com/embed/cWPfZcu7Pio"
-                title="SDR Digital Inbotix"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen
-              ></iframe>
-            </div>
-          </div>
+        <div class="hero-actions">
+          <a href="#testes-gratis" class="btn btn-primary">
+            Teste grátis nossas soluções
+          </a>
+          <a href="sdr-digital.html" class="btn btn-outline">
+            Ver SDR Digital em detalhes
+          </a>
+        </div>
 
-          <div class="video-card">
-            <h3>Dadus Cadastrais</h3>
-            <p>Enriquecimento de dados para turbinar sua prospecção ativa.</p>
-            <div class="video-wrapper">
-              <iframe
-                src="https://www.youtube.com/embed/LPiaaVSwhug"
-                title="Dadus Cadastrais"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen
-              ></iframe>
-            </div>
-          </div>
-
-          <div class="video-card">
-            <h3>Dinbot / New Dinbot</h3>
-            <p>Automação inteligente no LinkedIn com foco em geração de reuniões.</p>
-            <div class="video-wrapper">
-              <iframe
-                src="https://www.youtube.com/embed/9mkPYEb03iQ"
-                title="Dinbot"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen
-              ></iframe>
-            </div>
-          </div>
-
-          <div class="video-card">
-            <h3>Atendi & Atendi Disparos</h3>
-            <p>Atendimento omnichannel e disparos inteligentes via WhatsApp.</p>
-            <div class="video-wrapper" style="margin-bottom: 0.75rem;">
-              <iframe
-                src="https://www.youtube.com/embed/yk13tTLBxRE"
-                title="Atendi"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen
-              ></iframe>
-            </div>
-            <div class="video-wrapper">
-              <iframe
-                src="https://www.youtube.com/embed/ZICMUVA1yIQ"
-                title="Atendi Disparos"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen
-              ></iframe>
-            </div>
-          </div>
+        <div class="hero-footnote">
+          Metodologia inspirada em Receita Previsível, adaptada para a realidade das
+          empresas e agências no Brasil e em outros mercados.
         </div>
       </div>
-    </section>
 
-    <!-- PARA AGÊNCIAS -->
-    <section class="agencies-section" id="agencias">
-      <div class="section-inner">
-        <div class="agencies-grid">
-          <div>
-            <h2 class="section-title">Agências de marketing, esse bloco é de vocês.</h2>
-            <p class="section-subtitle">
-              Sua agência ajuda clientes a venderem mais, mas muitas vezes não
-              tem uma máquina de vendas para ela mesma. A Inbotix resolve isso
-              em duas frentes: gerar reuniões para a sua agência e criar uma
-              oferta de SDR Digital para os seus clientes.
-            </p>
-            <div class="pill-list">
-              <span class="pill">Leads e reuniões para a agência</span>
-              <span class="pill">Oferta white label para seus clientes</span>
-              <span class="pill">Time Inbotix por trás da operação</span>
-              <span class="pill">Escala sem inflar equipe interna</span>
+      <div class="hero-form">
+        <h3>Quero saber mais sobre a INBOTIX.</h3>
+        <p>Preencha e nosso time entra em contato para entender sua necessidade.</p>
+        <form action="#" method="POST">
+          <div class="form-row">
+            <div>
+              <label for="nome-topo">Nome</label>
+              <input type="text" id="nome-topo" name="nome-topo" required />
             </div>
-            <div style="margin-top: 1.5rem;">
-              <button
-                class="btn btn-primary"
-                onclick="document.querySelector('#contato').scrollIntoView({behavior:'smooth'})"
-              >
-                Quero aplicar SDR Digital na minha agência
-              </button>
+            <div>
+              <label for="empresa-topo">Empresa</label>
+              <input type="text" id="empresa-topo" name="empresa-topo" required />
             </div>
           </div>
-
-          <aside class="agencies-card">
-            <strong>Modelos para agências:</strong>
-            <ul>
-              <li><b>Agência como cliente:</b> operamos SDR Digital para você.</li>
-              <li>
-                <b>Agência como parceira / white label:</b> você vende a solução e a Inbotix opera.
-              </li>
-              <li>
-                <b>Combo agência + clientes:</b> rodamos campanhas para sua
-                carteira, com estratégia desenhada em conjunto.
-              </li>
-            </ul>
-            <p>
-              A ideia é simples: sua agência deixa de depender apenas de
-              indicação e passa a ter uma máquina de prospecção ativa para si e
-              para seus clientes, com tecnologia e operação já testadas em
-              diversos mercados.
-            </p>
-          </aside>
-        </div>
-      </div>
-    </section>
-
-    <!-- METODOLOGIA -->
-    <section id="metodologia">
-      <div class="section-inner">
-        <h2 class="section-title">Como funciona a metodologia Inbotix</h2>
-        <p class="section-subtitle">
-          Entender sua realidade, desenhar a estratégia, implementar a
-          tecnologia e cuidar da rotina de prospecção todos os dias. Abaixo, um
-          resumo dos principais passos.
-        </p>
-
-        <div class="steps">
-          <div class="step">
-            <div class="step-header">
-              <span class="step-number">Passo 1</span>
-              <span class="step-title">Diagnóstico comercial</span>
+          <div class="form-row">
+            <div>
+              <label for="email-topo">E-mail</label>
+              <input type="email" id="email-topo" name="email-topo" required />
             </div>
-            <p>
-              Entendemos o momento da empresa, ticket, ciclo de vendas, time
-              atual e histórico de prospecção para enxergar onde o outbound
-              pode acelerar seu crescimento.
-            </p>
-          </div>
-
-          <div class="step">
-            <div class="step-header">
-              <span class="step-number">Passo 2</span>
-              <span class="step-title">ICP e oferta</span>
+            <div>
+              <label for="whats-topo">WhatsApp</label>
+              <input type="tel" id="whats-topo" name="whats-topo" placeholder="(11) 97276-9986" required />
             </div>
-            <p>
-              Definimos o perfil ideal de cliente (segmento, porte, região,
-              cargos) e ajustamos a oferta de abordagem para gerar valor logo no
-              primeiro contato.
-            </p>
           </div>
-
-          <div class="step">
-            <div class="step-header">
-              <span class="step-number">Passo 3</span>
-              <span class="step-title">Cadências e copy</span>
-            </div>
-            <p>
-              Criamos sequências de mensagens para LinkedIn, e-mail, WhatsApp e
-              telefone, alinhadas com a linguagem da sua marca e foco em
-              agendamento de reuniões.
-            </p>
-          </div>
-
-          <div class="step">
-            <div class="step-header">
-              <span class="step-number">Passo 4</span>
-              <span class="step-title">Tecnologia & Dados</span>
-            </div>
-            <p>
-              Integramos Dinbot, Atendi, Dadus e outras ferramentas necessárias,
-              garantindo base qualificada e automações estáveis.
-            </p>
-          </div>
-
-          <div class="step">
-            <div class="step-header">
-              <span class="step-number">Passo 5</span>
-              <span class="step-title">Operação de SDR Digital</span>
-            </div>
-            <p>
-              A rotina diária de prospecção passa a ser executada por SDRs
-              digitais (operadores + tecnologia), com foco em gerar leads
-              qualificados e agendar reuniões.
-            </p>
-          </div>
-
-          <div class="step">
-            <div class="step-header">
-              <span class="step-number">Passo 6</span>
-              <span class="step-title">Relatórios e otimização</span>
-            </div>
-            <p>
-              Acompanhamos os resultados, ajustamos ICP, mensagens e cadências
-              e tomamos decisões em conjunto com o seu time para aumentar a
-              conversão em vendas.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CASES & DEPOIMENTOS COM ESTRELAS -->
-    <section id="cases">
-      <div class="section-inner">
-        <h2 class="section-title">Cases e depoimentos</h2>
-        <p class="section-subtitle">
-          Cada operação é única, mas o objetivo é sempre o mesmo: transformar
-          prospecção em reuniões que viram receita. Abaixo alguns exemplos de
-          resultados e feedbacks que você pode usar como prova social.
-        </p>
-
-        <div class="cases-grid">
-          <div class="case-card">
-            <div class="case-tag">Agência de marketing</div>
-            <h3>Agência X – oferta de mídia e performance</h3>
-            <p>
-              Agência que vivia de indicação e não tinha rotina de outbound.
-              Reestruturamos ICP, criamos cadências e conectamos automações.
-            </p>
-            <p class="case-result">
-              +XX reuniões em 90 dias · pipeline previsível para o time de vendas.
-            </p>
-          </div>
-
-          <div class="case-card">
-            <div class="case-tag">Software B2B</div>
-            <h3>Empresa Y – SaaS para empresas</h3>
-            <p>
-              Time comercial sobrecarregado por atendimento, sem foco em
-              prospecção ativa. Implementamos SDR Digital para abrir novas
-              contas no ICP ideal.
-            </p>
-            <p class="case-result">
-              Aumento significativo de reuniões qualificadas e novas oportunidades.
-            </p>
-          </div>
-
-          <div class="case-card">
-            <div class="case-tag">Educação / Cursos</div>
-            <h3>Negócio Z – soluções em educação</h3>
-            <p>
-              Estratégia de inbound forte, mas sem outbound estruturado. Usamos
-              dados para mapear empresas-alvo e cargos decisores.
-            </p>
-            <p class="case-result">
-              Canal adicional de aquisição com custo por oportunidade competitivo.
-            </p>
-          </div>
-        </div>
-
-        <div class="testimonials">
-          <div class="testimonial">
-            <div class="stars">★★★★★</div>
-            “A Inbotix nos ajudou a sair da dependência total de indicação. Hoje
-            sabemos quantas reuniões vamos gerar por mês e conseguimos planejar
-            o crescimento.”
-            <strong>Nome · Cargo – Empresa</strong>
-          </div>
-          <div class="testimonial">
-            <div class="stars">★★★★★</div>
-            “A combinação de SDR Digital com automação de LinkedIn e WhatsApp
-            trouxe escala sem perder personalização. Nosso time de vendas só
-            fala com quem realmente faz sentido.”
-            <strong>Nome · Cargo – Empresa</strong>
-          </div>
-          <div class="testimonial">
-            <div class="stars">★★★★☆</div>
-            “Tínhamos ferramentas soltas. A Inbotix conectou tudo e montou um
-            processo de fato, do ICP à reunião agendada.”
-            <strong>Nome · Cargo – Empresa</strong>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- BLOG / CONTEÚDOS -->
-    <section class="blog-section" id="blog">
-      <div class="section-inner">
-        <h2 class="section-title">Blog e conteúdos Inbotix</h2>
-        <p class="section-subtitle">
-          Use esses temas para alimentar o blog, newsletter e postagens da sua
-          comunicação. Depois podemos trocar os links para os artigos reais.
-        </p>
-
-        <div class="blog-grid">
-          <div class="blog-card">
-            <div class="blog-meta">Guia de Outbound · 8 min de leitura</div>
-            <h3>Como montar sua primeira máquina de SDR Digital</h3>
-            <p>
-              Um passo a passo prático para sair do zero na prospecção ativa,
-              mesmo que sua empresa nunca tenha tido SDR ou outbound estruturado.
-            </p>
-            <a href="#" class="card-link">Ler artigo →</a>
-          </div>
-          <div class="blog-card">
-            <div class="blog-meta">Dados & IA · 6 min de leitura</div>
-            <h3>O papel do enriquecimento de dados na prospecção B2B</h3>
-            <p>
-              Por que dados são o combustível da sua operação de vendas, e como
-              conectar ferramentas como Dadus, Dinbot e Atendi.
-            </p>
-            <a href="#" class="card-link">Ler artigo →</a>
-          </div>
-          <div class="blog-card">
-            <div class="blog-meta">Agências · 7 min de leitura</div>
-            <h3>Como agências podem vender SDR Digital como serviço</h3>
-            <p>
-              Ideias de oferta, posicionamento e precificação para agências que
-              querem oferecer prospecção ativa para sua carteira de clientes.
-            </p>
-            <a href="#" class="card-link">Ler artigo →</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SOBRE -->
-    <section class="about-section" id="sobre">
-      <div class="section-inner">
-        <h2 class="section-title">Sobre a Inbotix</h2>
-        <p class="section-subtitle">
-          A Inbotix nasceu com um objetivo claro: ajudar empresas e agências a
-          terem previsibilidade de vendas por meio de outbound estruturado,
-          SDRs digitais e tecnologia própria.
-        </p>
-
-        <div class="about-grid">
-          <div>
-            <h3 style="font-size: 1rem; margin-bottom: 0.4rem;">
-              O que nos move
-            </h3>
-            <ul class="about-list">
-              <li>
-                <b>Missão:</b> tirar empresas da dependência de sorte nas
-                vendas, construindo máquinas de prospecção ativa que funcionam
-                todos os meses.
-              </li>
-              <li>
-                <b>Visão:</b> ser referência em outbound, SDR Digital e
-                automação comercial no Brasil e em novos mercados.
-              </li>
-              <li>
-                <b>Valores:</b> ética no uso de dados, transparência, foco em
-                resultado, parceria de longo prazo e respeito à cultura de cada
-                cliente.
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h3 style="font-size: 1rem; margin-bottom: 0.4rem;">
-              Como trabalhamos
-            </h3>
-            <span class="about-pill">Metodologia própria</span>
-            <span class="about-pill">Tecnologia & pessoas</span>
-            <span class="about-pill">Foco em resultado</span>
-            <span class="about-pill">Parcerias estratégicas</span>
-            <p style="font-size: 0.85rem; color: var(--text-light); margin-top: 0.8rem;">
-              Em cada projeto, atuamos como extensão do seu time. Planejamos,
-              implementamos, operamos e ajustamos a máquina junto com você — da
-              estratégia ao relatório de performance.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTATO -->
-    <section class="contact-section" id="contato">
-      <div class="section-inner">
-        <div class="contact-grid">
-          <div>
-            <h2 class="section-title">
-              Pronto para tirar o outbound do papel?
-            </h2>
-            <p class="section-subtitle">
-              Preencha os dados abaixo e agende um diagnóstico gratuito de
-              Outbound e SDR Digital com a Inbotix. Vamos entender sua realidade
-              e sugerir um plano prático para gerar mais reuniões e oportunidades.
-            </p>
-            <p class="contact-note">
-              Em até 1 dia útil alguém do time entra em contato para confirmar o
-              melhor horário. Se preferir, você também pode falar direto pelo
-              WhatsApp da Inbotix.
-            </p>
-          </div>
-
-          <form action="https://formsubmit.co/guilherme@inbotix.com" method="POST">
-            <input type="hidden" name="_subject" value="Novo lead do site da Inbotix" />
-            <input type="hidden" name="_captcha" value="false" />
-
-            <div class="form-row">
-              <div class="form-group">
-                <label for="nome">Nome</label>
-                <input type="text" id="nome" name="nome" placeholder="Seu nome completo" />
-              </div>
-              <div class="form-group">
-                <label for="empresa">Empresa</label>
-                <input type="text" id="empresa" name="empresa" placeholder="Nome da empresa" />
-              </div>
-            </div>
-
-            <div class="form-row">
-              <div class="form-group">
-                <label for="cargo">Cargo</label>
-                <input type="text" id="cargo" name="cargo" placeholder="Seu cargo" />
-              </div>
-              <div class="form-group">
-                <label for="email">E-mail</label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  placeholder="seuemail@empresa.com"
-                />
-              </div>
-            </div>
-
-            <div class="form-row">
-              <div class="form-group">
-                <label for="telefone">Telefone / WhatsApp</label>
-                <input
-                  type="tel"
-                  id="telefone"
-                  name="telefone"
-                  placeholder="(11) 99999-9999"
-                />
-              </div>
-              <div class="form-group">
-                <label for="vendedores">Quantos vendedores você tem hoje?</label>
-                <select id="vendedores" name="vendedores">
-                  <option value="">Selecione</option>
-                  <option value="0-1">0–1</option>
-                  <option value="2-5">2–5</option>
-                  <option value="6-10">6–10</option>
-                  <option value="11+">11 ou mais</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="objetivo">Qual o principal objetivo com a Inbotix?</label>
-              <select id="objetivo" name="objetivo">
+          <div class="form-row">
+            <div>
+              <label for="interesse-topo">O que você busca?</label>
+              <select id="interesse-topo" name="interesse-topo">
                 <option value="">Selecione</option>
-                <option value="reunioes">Gerar mais reuniões de vendas</option>
-                <option value="outbound">Estruturar ou reorganizar o outbound</option>
-                <option value="agencia">SDR Digital para minha agência e clientes</option>
-                <option value="tecnologia">Entender melhor as plataformas Inbotix</option>
+                <option value="sdr-digital">Montar SDR Digital</option>
+                <option value="plataformas">Conhecer as plataformas Inbotix</option>
+                <option value="parceria">Parceria / White Label</option>
+                <option value="agencia">Sou agência e quero levar para meus clientes</option>
+                <option value="outro">Outro assunto</option>
               </select>
             </div>
-
-            <div class="form-group">
-              <label for="mensagem">Fale um pouco sobre o momento da empresa</label>
-              <textarea
-                id="mensagem"
-                name="mensagem"
-                placeholder="Ex.: Temos X vendedores, já fazemos ou não fazemos outbound, ticket médio aproximado, etc."
-              ></textarea>
-            </div>
-
-            <button type="submit" class="btn btn-primary" style="width: 100%;">
-              Enviar e agendar diagnóstico
-            </button>
-          </form>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="footer-inner">
-      <div class="footer-logo">
-        <img src="logo-inbotix.png" alt="Inbotix" />
-        <span>© Inbotix – Outbound, SDR Digital & Automação de Vendas.</span>
-      </div>
-      <div class="footer-links">
-        <a href="#home">Home</a>
-        <a href="#solucoes">Soluções</a>
-        <a href="#produtos">Produtos</a>
-        <a href="#blog">Blog</a>
-        <a href="#contato">Contato</a>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%; margin-top:6px;">
+            Enviar e falar com a INBOTIX
+          </button>
+          <div class="form-note">
+            Ao enviar, você autoriza a INBOTIX a entrar em contato por WhatsApp e e-mail
+            com informações sobre nossas soluções e serviços.
+          </div>
+        </form>
       </div>
     </div>
-  </footer>
-
-  <!-- BOTÃO FLUTUANTE WHATSAPP -->
-  <div class="whatsapp-float">
-    <a
-      href="https://wa.me/5511972769986?text=Ol%C3%A1%20Guilherme,%20vi%20o%20site%20da%20Inbotix%20e%20quero%20falar%20sobre%20SDR%20Digital."
-      target="_blank"
-      rel="noopener"
-    >
-      <span class="icon">W</span>
-      <span class="text">Falar no WhatsApp</span>
-    </a>
   </div>
+</section>
 
-  <script>
-    function toggleNav() {
-      const nav = document.getElementById("nav");
-      nav.classList.toggle("nav-open");
-    }
-  </script>
+<section class="section" id="solucoes">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">PORTFÓLIO INBOTIX</div>
+      <h2 class="section-title">Soluções para montar sua máquina de vendas.</h2>
+      <p class="section-sub">
+        Você pode contratar um projeto completo de SDR Digital ou combinar nossas
+        plataformas de prospecção, atendimento e dados conforme a sua necessidade.
+      </p>
+    </div>
+
+    <div class="grid-3">
+      <div class="card">
+        <div class="card-tag">SDR Digital</div>
+        <h3>Método e operação de geração de reuniões.</h3>
+        <p>
+          Montamos a estrutura de SDR Digital com base em Receita Previsível:
+          ICP, cadências, dados, ferramentas e rotina de geração de oportunidades.
+        </p>
+        <a href="sdr-digital.html" class="card-link">Ver detalhes <span>→</span></a>
+      </div>
+
+      <div class="card">
+        <div class="card-tag">New Dinbot</div>
+        <h3>Prospecção automatizada com cadências.</h3>
+        <p>
+          Se conecte a decisores via LinkedIn e e-mail usando cadências inteligentes,
+          segmentação e integrações com dados e atendimento.
+        </p>
+        <a href="new-dinbot.html" class="card-link">Ver New Dinbot <span>→</span></a>
+      </div>
+
+      <div class="card">
+        <div class="card-tag">Dadus Cadastrais</div>
+        <h3>Dados completos para outbound.</h3>
+        <p>
+          Enriquecimento de empresas e contatos com CNPJ, CNAE, faturamento, telefones,
+          e-mails, redes sociais e muito mais.
+        </p>
+        <a href="dadus.html" class="card-link">Ver Dadus <span>→</span></a>
+      </div>
+
+      <div class="card">
+        <div class="card-tag">Atendimento</div>
+        <h3>New Atendi e Atendi Light.</h3>
+        <p>
+          Organize o atendimento via WhatsApp e outros canais, com histórico,
+          filas, tags e funis simples para não perder oportunidades.
+        </p>
+        <a href="new-atendi.html" class="card-link">Ver New Atendi <span>→</span></a>
+      </div>
+
+      <div class="card">
+        <div class="card-tag">Chatbots</div>
+        <h3>Dinbot – automação de atendimento.</h3>
+        <p>
+          Crie chatbots para WhatsApp, site e redes sociais para responder
+          dúvidas, qualificar leads e encaminhar conversas para humanos.
+        </p>
+        <a href="dinbot.html" class="card-link">Ver Dinbot <span>→</span></a>
+      </div>
+
+      <div class="card">
+        <div class="card-tag">Zoho Partner</div>
+        <h3>CRM Bigin integrado à sua operação.</h3>
+        <p>
+          Indicamos e ajudamos a usar o Bigin da Zoho – um CRM simples,
+          acessível e perfeito para organizar as oportunidades geradas.
+        </p>
+        <a href="https://store.zoho.com/ResellerCustomerSignUp.do?id=3c03906f4ba0277bcfda0fe73bbbf54f" target="_blank" rel="noopener noreferrer" class="card-link">
+          Testar Bigin <span>→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="videos">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">NA PRÁTICA</div>
+      <h2 class="section-title">Veja as soluções funcionando.</h2>
+      <p class="section-sub">
+        Uma visão rápida dos principais produtos da INBOTIX na prática, para você
+        entender como eles podem se encaixar no seu cenário.
+      </p>
+    </div>
+
+    <div class="video-grid">
+      <div class="video-card">
+        <h3>SDR Digital</h3>
+        <p>Como funciona a estrutura de SDR Digital da Inbotix.</p>
+        <div class="video-box">
+          <iframe src="https://www.youtube.com/embed/cWPfZcu7Pio" title="SDR Digital" allowfullscreen></iframe>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <h3>Dadus Cadastrais</h3>
+        <p>Dados e enriquecimento para turbinar seu outbound.</p>
+        <div class="video-box">
+          <iframe src="https://www.youtube.com/embed/LPiaaVSwhug" title="Dadus Cadastrais" allowfullscreen></iframe>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <h3>Dinbot</h3>
+        <p>Chatbots e automação de atendimento em diferentes canais.</p>
+        <div class="video-box">
+          <iframe src="https://www.youtube.com/embed/9mkPYEb03iQ" title="Dinbot" allowfullscreen></iframe>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <h3>Atendi Disparos</h3>
+        <p>Disparos inteligentes de mensagens e campanhas.</p>
+        <div class="video-box">
+          <iframe src="https://www.youtube.com/embed/ZICMUVA1yIQ" title="Atendi Disparos" allowfullscreen></iframe>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <h3>Atendi</h3>
+        <p>Atendimento omnichannel organizado em um só lugar.</p>
+        <div class="video-box">
+          <iframe src="https://www.youtube.com/embed/yk13tTLBxRE" title="Atendi" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="testes-gratis">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">TESTE GRÁTIS</div>
+      <h2 class="section-title">Teste grátis nossas soluções por 7 dias.</h2>
+      <p class="section-sub">
+        Valide na prática como nossas plataformas podem ajudar seu time. Sem
+        compromisso, com suporte para configurar os primeiros passos.
+      </p>
+    </div>
+
+    <div class="highlight">
+      <div>
+        <h3>Comece pequeno, veja resultado rápido.</h3>
+        <p>
+          Podemos liberar período de teste para você conhecer o fluxo e a
+          usabilidade das ferramentas antes de qualquer decisão.
+        </p>
+        <div class="highlight-list">
+          <span>New Atendi</span>
+          <span>New Dinbot</span>
+          <span>Atendi Light</span>
+          <span>Bigin (Zoho CRM)</span>
+        </div>
+      </div>
+      <div>
+        <a href="https://wa.me/5511972769986?text=Quero%20testar%20as%20solu%C3%A7%C3%B5es%20por%207%20dias" class="btn btn-outline" style="background:#fff; color:#0f6fff; width:100%; justify-content:center;">
+          Falar no WhatsApp e solicitar teste
+        </a>
+        <p style="font-size:11px; margin-top:8px; opacity:.9;">
+          Em muitos casos, conseguimos ativar o acesso no mesmo dia útil,
+          dependendo da solução e do seu cenário atual.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="para-agencias">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">PARA AGÊNCIAS E PARCEIROS</div>
+      <h2 class="section-title">Ajude seus clientes a vender mais com a sua marca.</h2>
+      <p class="section-sub">
+        Se você é agência, consultoria ou empresa de tecnologia, pode usar a
+        INBOTIX como motor por trás da sua oferta de máquina de vendas, mantendo
+        a sua marca na frente do cliente.
+      </p>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <h3>Programa de Parceiros White Label.</h3>
+        <p>
+          Revenda soluções de SDR Digital, automação e dados com sua própria
+          marca, enquanto nós cuidamos de tecnologia, metodologia e suporte.
+        </p>
+        <a href="parceiros-whitelabel.html" class="card-link">Conhecer o programa <span>→</span></a>
+      </div>
+
+      <div class="card">
+        <h3>Por que faz sentido para agências?</h3>
+        <p>
+          Você aumenta o ticket médio, melhora retenção e passa a entregar uma
+          solução recorrente de crescimento, e não apenas mídia ou projetos pontuais.
+        </p>
+        <p style="margin-top:6px;">
+          Muitos clientes preferem contratar a agência que consegue juntar
+          <strong>atração, prospecção e atendimento</strong> em uma mesma estratégia.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">RESULTADOS REAIS</div>
+      <h2 class="section-title">Casos de sucesso conectados à máquina de vendas.</h2>
+      <p class="section-sub">
+        Mais do que ferramentas, nosso foco é construir processos que geram
+        negócios de verdade ao longo do tempo.
+      </p>
+    </div>
+
+    <div class="case-wrap">
+      <div class="case-main">
+        <div class="case-label">Case · Rocha & Queiroz Advogados</div>
+        <div class="case-title">Máquina de prospecção jurídica em operação.</div>
+        <div class="case-number">+ R$ 6.000.000,00</div>
+        <div class="case-text">
+          em negócios fechados a partir de uma estrutura de prospecção recorrente,
+          combinando estratégia, dados e automação, com foco em oportunidades
+          qualificadas para o time jurídico.
+        </div>
+      </div>
+
+      <div class="case-side">
+        <div class="card">
+          <h3>O que essa máquina de vendas tinha?</h3>
+          <ul style="padding-left:16px; margin-top:6px;">
+            <li>Definição clara de ICP e ofertas prioritárias.</li>
+            <li>Uso de dados para encontrar empresas com perfil ideal.</li>
+            <li>Cadências consistentes de contato e follow up.</li>
+            <li>Processo de passagem de bastão bem definido para o time comercial.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>O que pode ser adaptado para o seu cenário?</h3>
+          <p>
+            A mesma lógica pode ser aplicada em outros segmentos B2B – tecnologia,
+            serviços, educação, financeiro, indústria, saúde e muito mais.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="depoimentos">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">DEPOIMENTOS</div>
+      <h2 class="section-title">O que clientes e parceiros comentam.</h2>
+      <p class="section-sub">
+        Alguns relatos de quem passou a usar a INBOTIX como base para sua máquina
+        de vendas, atendimento e dados.
+      </p>
+    </div>
+
+    <div class="testimonials">
+      <div class="test">
+        <div class="stars">★★★★★</div>
+        <div class="tname">Roodney</div>
+        <div class="trole">CEO · Agência e parceiro Inbotix</div>
+        <p>
+          “Com o modelo white label, conseguimos escalar uma oferta própria de
+          máquina de vendas usando toda a tecnologia e metodologia da Inbotix por trás.”
+        </p>
+      </div>
+
+      <div class="test">
+        <div class="stars">★★★★★</div>
+        <div class="tname">Rafael Souto</div>
+        <div class="trole">Diretor Comercial · Operação B2B</div>
+        <p>
+          “A estrutura de SDR Digital trouxe previsibilidade de reuniões e clareza
+          sobre o funil. Hoje sabemos exatamente o que precisa ser feito a cada semana.”
+        </p>
+      </div>
+
+      <div class="test">
+        <div class="stars">★★★★★</div>
+        <div class="tname">Danielle</div>
+        <div class="trole">Gestora · Parceira de projetos</div>
+        <p>
+          “A combinação de dados, automação e atendimento em um fluxo só nos ajudou
+          a aproveitar melhor cada oportunidade gerada.”
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">QUEM JÁ CONTOU COM A NOSSA INTELIGÊNCIA</div>
+      <h2 class="section-title">Algumas das marcas conectadas às nossas soluções.</h2>
+      <p class="section-sub">
+        Atendemos empresas de diferentes portes e segmentos, sempre com foco em
+        construir estruturas que façam sentido para cada realidade.
+      </p>
+    </div>
+
+    <div class="client-pills">
+      <span class="client-pill">UNIMED</span>
+      <span class="client-pill">C6</span>
+      <span class="client-pill">TICKET</span>
+      <span class="client-pill">QUINTOANDAR</span>
+      <span class="client-pill">XP</span>
+      <span class="client-pill">SESTINI</span>
+      <span class="client-pill">METLIFE</span>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="missao-visao">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">CULTURA E POSICIONAMENTO</div>
+      <h2 class="section-title">Missão, visão e valores que guiam a INBOTIX.</h2>
+    </div>
+
+    <div class="mv-grid">
+      <div class="mv-card">
+        <h3>Missão</h3>
+        <p>
+          Transformar o futuro das empresas democratizando o acesso ao que realmente
+          gera crescimento: conhecimento, tecnologia e serviços de alto valor.
+          Na INBOTIX, acreditamos que cada negócio — grande ou pequeno — merece
+          as ferramentas certas para prosperar.
+        </p>
+        <p style="margin-top:6px;">
+          Nossa missão é tornar acessível o que antes era exclusivo, ajudando
+          nossos clientes a alcançar novos patamares de sucesso.
+        </p>
+      </div>
+
+      <div class="mv-card">
+        <h3>Visão</h3>
+        <p>
+          Ser reconhecida globalmente como a parceira estratégica que mais democratizou
+          o acesso a ferramentas, conhecimento e serviços de crescimento, tornando
+          possível que qualquer empresa prospere, independentemente do seu tamanho
+          ou orçamento.
+        </p>
+      </div>
+
+      <div class="mv-card">
+        <h3>Valores</h3>
+        <ul class="values-list">
+          <li><strong>Acessibilidade</strong> – Tornar ferramentas e serviços de alto nível acessíveis a todos.</li>
+          <li><strong>Inovação</strong> – Buscar constantemente novas formas de ajudar nossos clientes a crescerem.</li>
+          <li><strong>Transparência</strong> – Relacionamentos claros, éticos e de confiança.</li>
+          <li><strong>Foco no Cliente</strong> – O sucesso do cliente é o nosso sucesso.</li>
+          <li><strong>Colaboração</strong> – Crescemos junto com parceiros, clientes e equipe.</li>
+          <li><strong>Excelência com Simplicidade</strong> – Soluções de qualidade sem complicar.</li>
+          <li><strong>Impacto Sustentável</strong> – Resultados consistentes e de longo prazo.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="sobre">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">SOBRE A INBOTIX</div>
+      <h2 class="section-title">Quem somos e por que fazemos o que fazemos.</h2>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-block">
+        <h3>Sobre a INBOTIX</h3>
+        <p>
+          A INBOTIX nasceu com o propósito de ajudar empresas a estruturarem máquinas
+          de vendas sustentáveis, unindo tecnologia, dados e método. Em vez de falar
+          apenas de “ferramentas”, falamos de processos que funcionam na prática – da
+          prospecção até a reunião agendada.
+        </p>
+        <p style="margin-top:6px;">
+          Atuamos com projetos de SDR Digital, automação de prospecção, atendimento
+          omnichannel, enriquecimento de dados e modelo white label para parceiros que
+          desejam levar tudo isso para seus próprios clientes.
+        </p>
+      </div>
+
+      <div class="about-block">
+        <h3>Sobre Guilherme Loureiro</h3>
+        <p>
+          Guilherme Loureiro é o fundador da INBOTIX e atua há anos na construção de
+          máquinas de vendas, com foco em outbound, automação e dados. Seu trabalho
+          combina visão estratégica, prática de operação e cuidado real com o resultado
+          de cada cliente e parceiro.
+        </p>
+        <p style="margin-top:6px;">
+          No LinkedIn, compartilha aprendizados sobre SDR Digital, prospecção, parcerias
+          e crescimento de negócios.
+        </p>
+        <p style="margin-top:8px;">
+          <a href="https://www.linkedin.com/in/guilhermeloureiro/" target="_blank" rel="noopener noreferrer" class="card-link">
+            Conhecer o perfil do CEO <span>→</span>
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="blog-preview">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">CONTEÚDO</div>
+      <h2 class="section-title">Aprendizados sobre vendas, outbound e automação.</h2>
+      <p class="section-sub">
+        Publicamos conteúdos para ajudar times comerciais, agências e parceiros a
+        estruturarem suas próprias máquinas de crescimento.
+      </p>
+    </div>
+
+    <div class="blog-grid">
+      <div class="blog-card">
+        <h3>Como montar uma operação de SDR Digital eficiente</h3>
+        <p>
+          Estrutura, cadências, dados e rotina diária de um SDR Digital moderno.
+        </p>
+        <a href="post-operacao-sdr-digital.html" class="card-link">Ler artigo <span>→</span></a>
+      </div>
+
+      <div class="blog-card">
+        <h3>Por que dados mudam o jogo no outbound?</h3>
+        <p>
+          O impacto de ter contatos certos, com informações completas e atualizadas.
+        </p>
+        <a href="post-dados-no-outbound.html" class="card-link">Ler artigo <span>→</span></a>
+      </div>
+
+      <div class="blog-card">
+        <h3>Automação que ajuda (e não atrapalha) vendas</h3>
+        <p>
+          Como equilibrar tecnologia e relacionamento humano na jornada comercial.
+        </p>
+        <a href="post-automacao-que-ajuda.html" class="card-link">Ler artigo <span>→</span></a>
+      </div>
+    </div>
+
+    <p style="margin-top:16px; font-size:13px;">
+      <a href="blog.html" class="card-link">Ver todos os artigos no blog <span>→</span></a>
+    </p>
+  </div>
+</section>
+
+<section class="section" id="redes-sociais">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">REDES SOCIAIS</div>
+      <h2 class="section-title">Acompanhe a INBOTIX nas redes.</h2>
+      <p class="section-sub">
+        Conteúdos, bastidores, dicas práticas e novidades sobre nossas soluções
+        e parcerias.
+      </p>
+    </div>
+
+    <div class="social-row">
+      <a href="https://www.linkedin.com/search/results/all/?keywords=inbotix%3A%20intelig%C3%AAncia%20comercial%20para%20o%20seu%20neg%C3%B3cio&fetchDeterministicClustersOnly=true&heroEntityKey=urn%3Ali%3Aorganization%3A37009939&position=0&origin=RICH_QUERY_SUGGESTION" target="_blank" rel="noopener noreferrer" class="social-link">
+        LinkedIn da empresa
+      </a>
+      <a href="https://www.instagram.com/inbotix/" target="_blank" rel="noopener noreferrer" class="social-link">
+        Instagram
+      </a>
+      <a href="https://www.youtube.com/@inbotix" target="_blank" rel="noopener noreferrer" class="social-link">
+        YouTube
+      </a>
+      <a href="https://www.tiktok.com/@inbotix?lang=pt-BR" target="_blank" rel="noopener noreferrer" class="social-link">
+        TikTok
+      </a>
+      <span class="social-link">
+        Facebook (em breve)
+      </span>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="contato">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">FALE CONOSCO</div>
+      <h2 class="section-title">Vamos falar sobre a sua máquina de vendas?</h2>
+      <p class="section-sub">
+        Preencha o formulário abaixo ou chame direto no WhatsApp. Vamos entender
+        a sua realidade e indicar o melhor caminho com as soluções da INBOTIX.
+      </p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="form-wrap">
+        <form action="#" method="POST">
+          <div class="form-row">
+            <div>
+              <label for="nome">Nome</label>
+              <input type="text" id="nome" name="nome" required />
+            </div>
+            <div>
+              <label for="empresa">Empresa</label>
+              <input type="text" id="empresa" name="empresa" required />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div>
+              <label for="email">E-mail</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+            <div>
+              <label for="whats">WhatsApp</label>
+              <input type="tel" id="whats" name="whats" placeholder="(11) 97276-9986" required />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div>
+              <label for="interesse">O que você busca?</label>
+              <select id="interesse" name="interesse">
+                <option value="">Selecione</option>
+                <option value="sdr-digital">Montar SDR Digital</option>
+                <option value="plataformas">Conhecer as plataformas Inbotix</option>
+                <option value="parceria">Parceria / White Label</option>
+                <option value="agencia">Sou agência e quero levar para meus clientes</option>
+                <option value="outro">Outro assunto</option>
+              </select>
+            </div>
+            <div>
+              <label for="regiao">Cidade / Estado / País</label>
+              <input type="text" id="regiao" name="regiao" placeholder="Ex.: São Paulo/SP – Brasil" />
+            </div>
+          </div>
+
+          <div style="margin-bottom:10px;">
+            <label for="mensagem">Conte rapidamente o seu contexto</label>
+            <textarea id="mensagem" name="mensagem" placeholder="Ex.: Já temos time comercial, mas queremos trazer previsibilidade de reuniões; ou somos agência e queremos oferecer máquina de vendas para nossos clientes..."></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary">
+            Enviar mensagem
+          </button>
+
+          <div class="form-note">
+            Ao enviar, você autoriza a INBOTIX a entrar em contato por WhatsApp e e-mail
+            com informações sobre nossas soluções e serviços.
+          </div>
+        </form>
+      </div>
+
+      <div class="card">
+        <h3>Prefere falar direto no WhatsApp?</h3>
+        <p>
+          Se quiser acelerar, clique abaixo para falar imediatamente com a INBOTIX
+          e já começarmos a entender o seu cenário.
+        </p>
+        <p style="margin-top:10px;">
+          <a href="https://wa.me/5511972769986?text=Quero%20falar%20com%20a%20INBOTIX%20sobre%20vendas%20e%20automa%C3%A7%C3%A3o" class="btn btn-outline">
+            Abrir conversa no WhatsApp
+          </a>
+        </p>
+        <p style="margin-top:10px; font-size:12px; color:#6b7280;">
+          Canal oficial da INBOTIX para dúvidas rápidas, alinhamento inicial e
+          próximos passos.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        © <span id="year"></span> INBOTIX – Inteligência comercial para o seu negócio.
+      </div>
+      <div class="footer-links">
+        <a href="#solucoes">Soluções</a>
+        <a href="#para-agencias">Para Agências</a>
+        <a href="parceiros-whitelabel.html">Programa de Parceiros</a>
+        <a href="blog.html">Blog</a>
+        <a href="#redes-sociais">Redes Sociais</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/5511972769986" class="whats-float" target="_blank" rel="noopener noreferrer">
+  <div class="whats-button">
+    <span>💬</span>
+  </div>
+  <div class="whats-label">
+    Falar com a INBOTIX no WhatsApp
+  </div>
+</a>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
 </body>
 </html>
-
-
