@@ -192,6 +192,68 @@
       background: #22c55e;
     }
 
+    /* LOGIN DROPDOWN */
+
+    .login-container {
+      position: relative;
+    }
+
+    .login-button {
+      border-radius: 999px;
+      padding: 7px 14px;
+      font-size: 13px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: #ffffff;
+      color: var(--primary-strong);
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .login-button:hover {
+      border-color: var(--primary);
+      background: var(--primary-soft);
+    }
+
+    .login-menu {
+      position: absolute;
+      top: 115%;
+      right: 0;
+      background: #ffffff;
+      border-radius: 16px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      box-shadow: 0 16px 30px rgba(15, 23, 42, 0.12);
+      padding: 10px 12px;
+      min-width: 220px;
+      display: none;
+      z-index: 30;
+    }
+
+    .login-container:hover .login-menu {
+      display: block;
+    }
+
+    .login-menu-title {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .login-menu a {
+      display: block;
+      font-size: 13px;
+      padding: 6px 6px;
+      border-radius: 10px;
+      color: var(--dark);
+    }
+
+    .login-menu a:hover {
+      background: var(--primary-soft);
+      color: var(--primary-strong);
+    }
+
     /* HERO */
 
     .hero {
@@ -539,7 +601,7 @@
 
     .testimonial-header {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       justify-content: space-between;
       margin-bottom: 10px;
       gap: 10px;
@@ -547,29 +609,8 @@
 
     .testimonial-profile {
       display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .testimonial-avatar {
-      width: 44px;
-      height: 44px;
-      border-radius: 999px;
-      background: #e5e7eb;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 15px;
-      font-weight: 700;
-      color: #4b5563;
-      overflow: hidden;
-    }
-
-    .testimonial-avatar img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 999px;
+      flex-direction: column;
+      gap: 2px;
     }
 
     .testimonial-name {
@@ -590,7 +631,7 @@
     }
 
     .testimonial-stars {
-      color: #f59e0b;
+      color: #f59e0b; /* dourado */
       font-size: 14px;
       margin-bottom: 2px;
     }
@@ -605,7 +646,80 @@
       line-height: 1.45;
     }
 
-    /* VIDEOS */
+    /* TESTE GRÁTIS 7 DIAS */
+
+    .trial-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .trial-card {
+      background: #ffffff;
+      border-radius: var(--radius-md);
+      padding: 16px 16px 14px;
+      border: 1px solid rgba(59, 130, 246, 0.35);
+      box-shadow: 0 10px 26px rgba(37, 99, 235, 0.12);
+    }
+
+    .trial-name {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 6px;
+    }
+
+    .trial-text {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    /* CULTURA (MISSÃO, VISÃO, VALORES) */
+
+    .culture-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 18px;
+    }
+
+    .culture-card {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      padding: 18px 18px 16px;
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .culture-title-small {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .culture-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 6px;
+    }
+
+    .values-list {
+      margin-top: 8px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .values-list li {
+      margin-left: 18px;
+      margin-bottom: 4px;
+    }
+
+    /* VÍDEOS */
 
     .videos-grid {
       display: grid;
@@ -654,15 +768,60 @@
       border: 0;
     }
 
-    /* CULTURA (MISSÃO, VISÃO, VALORES) */
+    /* ZOHO PARTNER */
 
-    .culture-grid {
+    .zoho-card {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      padding: 18px 18px 16px;
+      border: 1px solid rgba(37, 99, 235, 0.35);
+      box-shadow: 0 12px 30px rgba(37, 99, 235, 0.18);
+    }
+
+    .zoho-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--primary-strong);
+      margin-bottom: 6px;
+    }
+
+    .zoho-badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #22c55e;
+    }
+
+    .zoho-text {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .zoho-list {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .zoho-list li {
+      margin-left: 18px;
+      margin-bottom: 4px;
+    }
+
+    /* SOBRE */
+
+    .about-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
       gap: 18px;
     }
 
-    .culture-card {
+    .about-card {
       background: #ffffff;
       border-radius: var(--radius-lg);
       padding: 18px 18px 16px;
@@ -672,30 +831,11 @@
       color: var(--muted);
     }
 
-    .culture-title-small {
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--muted);
-      margin-bottom: 4px;
-    }
-
-    .culture-title {
+    .about-title {
       font-size: 16px;
       font-weight: 700;
       color: var(--dark);
       margin-bottom: 6px;
-    }
-
-    .values-list {
-      margin-top: 8px;
-      font-size: 13px;
-      color: var(--muted);
-    }
-
-    .values-list li {
-      margin-left: 18px;
-      margin-bottom: 4px;
     }
 
     /* CTA SECTION */
@@ -768,7 +908,7 @@
     }
 
     .whats-float span {
-      font-size: 28px;
+      font-size: 30px;
       color: #ffffff;
     }
 
@@ -792,7 +932,9 @@
       .videos-grid,
       .testimonials-grid,
       .agencies-grid,
-      .culture-grid {
+      .culture-grid,
+      .trial-grid,
+      .about-grid {
         grid-template-columns: minmax(0, 1fr);
       }
 
@@ -834,10 +976,23 @@
           <nav>
             <a href="#como-funciona">Método</a>
             <a href="#agencias">Para agências</a>
+            <a href="#testes">Testes grátis</a>
+            <a href="#zoho">Zoho CRM</a>
             <a href="#cases">Cases</a>
             <a href="#cultura">Cultura</a>
-            <a href="#videos">Vídeos</a>
-            <a href="#contato">Contato</a>
+            <a href="#sobre">Sobre</a>
+            <div class="login-container">
+              <button class="login-button">Entrar nas soluções ▾</button>
+              <div class="login-menu">
+                <div class="login-menu-title">Escolha a solução para acessar:</div>
+                <a href="https://www.dinbot.app/" target="_blank" rel="noopener noreferrer">Dinbot</a>
+                <a href="https://app.atendi.io/#/login" target="_blank" rel="noopener noreferrer">Atendi</a>
+                <a href="https://newatendi.app/" target="_blank" rel="noopener noreferrer">New Atendi</a>
+                <a href="https://daduscadastrais.com/" target="_blank" rel="noopener noreferrer">Dadus Cadastrais</a>
+                <a href="https://newdinbot.app/" target="_blank" rel="noopener noreferrer">New Dinbot</a>
+                <a href="https://atendilight.com.br/" target="_blank" rel="noopener noreferrer">Atendi Light</a>
+              </div>
+            </div>
             <a href="https://wa.me/5511972769986?text=Quero%20falar%20sobre%20Outbound%20e%20SDR%20Digital%20da%20Inbotix" class="btn btn-outline btn-sm">
               <span class="whats-dot"></span> Falar no WhatsApp
             </a>
@@ -1068,6 +1223,55 @@
         </div>
       </section>
 
+      <!-- TESTE GRÁTIS 7 DIAS -->
+      <section id="testes" class="section">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-eyebrow">Teste grátis</div>
+            <h2 class="section-title">Teste agora por 7 dias as soluções Inbotix.</h2>
+            <p class="section-sub">
+              Comece com uma conta de teste, valide na prática e só depois decida se quer seguir
+              com a operação completa. Sem burocracia, sem cartão e com acompanhamento do nosso time.
+            </p>
+          </div>
+
+          <div class="trial-grid">
+            <div class="trial-card">
+              <div class="trial-name">New Atendi</div>
+              <p class="trial-text">
+                Plataforma omnichannel para centralizar WhatsApp, Instagram, Facebook
+                e outros canais em um único lugar. Ideal para times de atendimento e pré-vendas.
+              </p>
+              <a href="https://newatendi.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="width:100%; justify-content:center;">
+                Testar New Atendi por 7 dias
+              </a>
+            </div>
+
+            <div class="trial-card">
+              <div class="trial-name">New Dinbot</div>
+              <p class="trial-text">
+                Automação de prospecção ativa integrada ao LinkedIn e e-mail, com cadências inteligentes
+                e integração com dados da Dadus Cadastrais.
+              </p>
+              <a href="https://newdinbot.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="width:100%; justify-content:center;">
+                Testar New Dinbot por 7 dias
+              </a>
+            </div>
+
+            <div class="trial-card">
+              <div class="trial-name">Atendi Light</div>
+              <p class="trial-text">
+                Versão enxuta e acessível do Atendi para quem quer começar bem no WhatsApp,
+                com funil de atendimento e disparos organizados.
+              </p>
+              <a href="https://atendilight.com.br/" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="width:100%; justify-content:center;">
+                Testar Atendi Light por 7 dias
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!-- CASES DE SUCESSO -->
       <section id="cases" class="section">
         <div class="container">
@@ -1099,11 +1303,8 @@
             <div class="testimonial-card">
               <div class="testimonial-header">
                 <div class="testimonial-profile">
-                  <div class="testimonial-avatar">MN</div>
-                  <div>
-                    <div class="testimonial-name">Michele Naglieri</div>
-                    <div class="testimonial-role">Sócia · Rocha &amp; Queiroz Advogados</div>
-                  </div>
+                  <div class="testimonial-name">Michele Naglieri</div>
+                  <div class="testimonial-role">Sócia · Rocha &amp; Queiroz Advogados</div>
                 </div>
                 <div class="testimonial-rating">
                   <div class="testimonial-stars">★★★★★</div>
@@ -1120,11 +1321,8 @@
             <div class="testimonial-card">
               <div class="testimonial-header">
                 <div class="testimonial-profile">
-                  <div class="testimonial-avatar">RF</div>
-                  <div>
-                    <div class="testimonial-name">Rodney Fernandes</div>
-                    <div class="testimonial-role">CEO · Agência de Performance</div>
-                  </div>
+                  <div class="testimonial-name">Rodney Fernandes</div>
+                  <div class="testimonial-role">CEO · Agência de Performance</div>
                 </div>
                 <div class="testimonial-rating">
                   <div class="testimonial-stars">★★★★★</div>
@@ -1141,11 +1339,8 @@
             <div class="testimonial-card">
               <div class="testimonial-header">
                 <div class="testimonial-profile">
-                  <div class="testimonial-avatar">RS</div>
-                  <div>
-                    <div class="testimonial-name">Rafael Souto</div>
-                    <div class="testimonial-role">Diretor Comercial · SaaS B2B</div>
-                  </div>
+                  <div class="testimonial-name">Rafael Souto</div>
+                  <div class="testimonial-role">Diretor Comercial · SaaS B2B</div>
                 </div>
                 <div class="testimonial-rating">
                   <div class="testimonial-stars">★★★★★</div>
@@ -1162,11 +1357,8 @@
             <div class="testimonial-card">
               <div class="testimonial-header">
                 <div class="testimonial-profile">
-                  <div class="testimonial-avatar">MR</div>
-                  <div>
-                    <div class="testimonial-name">Marcos Rodriguez</div>
-                    <div class="testimonial-role">Sócio · Agência Full Service</div>
-                  </div>
+                  <div class="testimonial-name">Marcos Rodriguez</div>
+                  <div class="testimonial-role">Sócio · Agência Full Service</div>
                 </div>
                 <div class="testimonial-rating">
                   <div class="testimonial-stars">★★★★★</div>
@@ -1201,7 +1393,7 @@
               <div class="culture-title">Transformar o futuro das empresas.</div>
               <p>
                 “Transformar o futuro das empresas democratizando o acesso ao que realmente gera crescimento:
-                conhecimento, tecnologia e serviços de alto valor.  
+                conhecimento, tecnologia e serviços de alto valor.
                 Na INBOTIX, acreditamos que cada negócio — grande ou pequeno — merece as ferramentas certas
                 para prosperar. Nossa missão é tornar acessível o que antes era exclusivo, ajudando nossos
                 clientes a alcançar novos patamares de sucesso.”
@@ -1230,6 +1422,101 @@
                 <li><strong>Excelência com Simplicidade</strong> – Entregar soluções de qualidade sem complicar.</li>
                 <li><strong>Impacto Sustentável</strong> – Gerar resultados consistentes e de longo prazo para quem confia em nós.</li>
               </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ZOHO PARTNER / BIGIN -->
+      <section id="zoho" class="section">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-eyebrow">Zoho Partner</div>
+            <h2 class="section-title">CRM simples, poderoso e acessível com Zoho Bigin.</h2>
+            <p class="section-sub">
+              Além da prospecção, ajudamos você a organizar o funil de vendas com um CRM leve e integrado
+              à sua operação de SDR Digital.
+            </p>
+          </div>
+
+          <div class="zoho-card">
+            <div class="zoho-badge">
+              <span class="zoho-badge-dot"></span>
+              Zoho Partner · Bigin CRM
+            </div>
+            <p class="zoho-text">
+              Como parceiros Zoho, indicamos o <strong>Bigin</strong>, CRM pensado para times comerciais que
+              precisam de uma ferramenta simples, visual e acessível para controlar o funil de vendas.
+            </p>
+            <ul class="zoho-list">
+              <li>Teste gratuito por <strong>7 dias</strong> para conhecer todos os recursos.</li>
+              <li>Planos a partir de <strong>R$ 45,00/mês</strong> por usuário (ótimo custo-benefício).</li>
+              <li>Kanban de negócios, automações básicas e integrações com e-mail e telefonia.</li>
+              <li>Perfeito para quem está começando a estruturar o CRM de vendas sem complicar.</li>
+            </ul>
+            <p class="zoho-text">
+              Comece seu teste gratuito pelo nosso link de parceiro e, se quiser, a Inbotix ajuda na
+              configuração do pipeline e integrações.
+            </p>
+            <a
+              href="https://store.zoho.com/ResellerCustomerSignUp.do?id=3c03906f4ba0277bcfda0fe73bbbf54f"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-primary"
+              style="margin-top:4px;"
+            >
+              Testar Bigin (Zoho CRM) por 7 dias
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- SOBRE INBOTIX / GUILHERME -->
+      <section id="sobre" class="section">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-eyebrow">Sobre</div>
+            <h2 class="section-title">Quem está por trás da Inbotix.</h2>
+            <p class="section-sub">
+              Unimos metodologia, dados e tecnologia para que empresas de qualquer porte possam ter
+              uma máquina de vendas previsível, acessível e escalável.
+            </p>
+          </div>
+
+          <div class="about-grid">
+            <div class="about-card">
+              <div class="about-title">Sobre a Inbotix</div>
+              <p>
+                A Inbotix nasceu com o propósito de democratizar o acesso a soluções de crescimento que,
+                por muito tempo, ficaram restritas a grandes empresas. Nossa especialidade é construir e
+                operar máquinas de prospecção ativa para negócios B2B — com foco especial em
+                <strong>agências de marketing</strong> que desejam revender outbound, SDR Digital e
+                automação como serviços recorrentes.
+              </p>
+              <br />
+              <p>
+                Combinamos tecnologia própria (Dinbot, Atendi, Dadus Cadastrais, New Dinbot, New Atendi e Atendi Light),
+                dados enriquecidos e playbooks inspirados em <strong>Receita Previsível</strong> para gerar
+                reuniões de qualidade todo mês. Tudo isso com um modelo acessível, transparente e orientado
+                a resultados de longo prazo.
+              </p>
+            </div>
+
+            <div class="about-card">
+              <div class="about-title">Sobre Guilherme Loureiro</div>
+              <p>
+                Guilherme Moura Loureiro é fundador da Inbotix e especialista em outbound, SDR Digital
+                e automação de vendas. Ao longo dos últimos anos, participou da construção de operações
+                comerciais para dezenas de empresas e agências, ajudando times de vendas a saírem da
+                dependência de indicação e começarem a trabalhar com <strong>pipeline previsível</strong>.
+              </p>
+              <br />
+              <p>
+                Além de liderar o desenvolvimento das soluções Dinbot, Atendi, Dadus e New Dinbot,
+                Guilherme atua diretamente em estratégias, treinamentos e playbooks de prospecção,
+                sempre com foco em tornar acessíveis ferramentas e metodologias que antes eram exclusivas
+                de grandes estruturas.
+              </p>
             </div>
           </div>
         </div>
@@ -1375,7 +1662,7 @@
     class="whats-float"
     aria-label="Falar com a Inbotix no WhatsApp"
   >
-    <span>🟢</span>
+    <span>💬</span>
   </a>
 
   <script>
@@ -1384,4 +1671,7 @@
   </script>
 </body>
 </html>
+
+</html>
+
 
