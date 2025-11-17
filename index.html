@@ -1019,38 +1019,50 @@
             </div>
           </div>
 
-          <aside class="hero-card">
-            <div class="hero-card-title">
-              Máquina de vendas Inbotix — visão em números
-            </div>
-            <div class="metric-row">
-              <div>
-                <div class="metric-label">Reuniões geradas / mês</div>
-                <div class="metric-value">pipeline previsível para o comercial</div>
-              </div>
-              <div>
-                <div class="metric-label">Canais</div>
-                <div class="metric-value">LinkedIn · WhatsApp · E-mail</div>
-              </div>
-            </div>
-            <div class="metric-row">
-              <div>
-                <div class="metric-label">ICP definido</div>
-                <div class="metric-value">segmento, porte, região, cargo</div>
-              </div>
-              <div>
-                <div class="metric-label">Tecnologia</div>
-                <div class="metric-value">Dinbot · Atendi · Dadus</div>
-              </div>
-            </div>
-            <p class="hero-tagline">
-              A Inbotix combina metodologia, SDR Digital e tecnologia própria
-              para transformar visitas e listas frias em oportunidades reais de venda.
-            </p>
-          </aside>
-        </div>
-      </div>
-    </section>
+       <div class="info-box" style="
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 28px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+  max-width: 420px;
+">
+
+  <h3 style="font-size: 20px; margin-bottom: 12px; font-weight: 600;">
+    Quero saber mais sobre a INBOTIX
+  </h3>
+
+  <p style="font-size: 14px; margin-bottom: 18px; color: #444;">
+    Preencha para receber informações e falar com um especialista.
+  </p>
+
+  <form action="https://api.gupshup.io/sm/api/v1/msg" method="POST">
+
+    <label style="font-size: 14px; font-weight: 500;">Nome</label>
+    <input type="text" name="nome" required
+      style="width: 100%; padding: 10px; margin: 6px 0 14px; border-radius: 10px; border: 1px solid #ccc;">
+
+    <label style="font-size: 14px; font-weight: 500;">Empresa</label>
+    <input type="text" name="empresa" required
+      style="width: 100%; padding: 10px; margin: 6px 0 14px; border-radius: 10px; border: 1px solid #ccc;">
+
+    <label style="font-size: 14px; font-weight: 500;">WhatsApp</label>
+    <input type="tel" name="whats" required placeholder="(11) 97276-9986"
+      style="width: 100%; padding: 10px; margin: 6px 0 18px; border-radius: 10px; border: 1px solid #ccc;">
+
+    <button type="submit"
+      style="width: 100%; padding: 12px; border: none; border-radius: 10px;
+      background: #0F6FFF; color: #fff; font-weight: 600; cursor: pointer;
+      font-size: 16px;">
+      Quero saber mais
+    </button>
+  </form>
+
+  <p style="font-size: 12px; margin-top: 12px; color: #777;">
+    Entraremos em contato pelo WhatsApp.
+  </p>
+
+</div>
+
 
     <!-- SOLUÇÕES -->
     <section class="solutions-section" id="solucoes">
@@ -1621,4 +1633,5 @@
   </script>
 </body>
 </html>
+
 
