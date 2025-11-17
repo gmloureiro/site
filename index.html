@@ -5,7 +5,7 @@
   <title>Inbotix – Outbound, SDR Digital e Automação de Vendas | Zoho Partner</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="A Inbotix constrói sua máquina de vendas com SDR Digital, automação e dados para gerar reuniões todos os meses, sem depender de indicação. Zoho Partner com metodologia Receita Previsível." />
- <link rel="icon" type="image/x-icon" href="logo-inbotix.ico" />
+  <link rel="icon" type="image/x-icon" href="logo-inbotix.ico" />
   
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Bicubik:wght@400;700&family=Opinion+Pro:wght@400;700&display=swap" rel="stylesheet" />
@@ -382,6 +382,17 @@
       transform: translateY(-1px);
     }
 
+    .btn-white {
+      background: var(--white);
+      color: var(--primary-blue);
+      border: 2px solid var(--white);
+    }
+
+    .btn-white:hover {
+      background: var(--primary-blue);
+      color: var(--white);
+    }
+
     .hero-footnote {
       font-size: 12px;
       color: var(--text-muted);
@@ -458,31 +469,6 @@
       color: var(--text-muted);
       margin-top: 6px;
       font-family: 'Barlow', sans-serif;
-    }
-
-    .form-status {
-      display: none;
-      padding: 12px;
-      border-radius: 6px;
-      font-size: 12px;
-      font-weight: 600;
-      margin-top: 10px;
-      text-align: center;
-      font-family: 'Barlow', sans-serif;
-    }
-
-    .form-status.success {
-      display: block;
-      background: #D1FAE5;
-      border: 1px solid #6EE7B7;
-      color: #065F46;
-    }
-
-    .form-status.error {
-      display: block;
-      background: #FEE2E2;
-      border: 1px solid #FCA5A5;
-      color: #991B1B;
     }
 
     /* SECTION BASE */
@@ -643,7 +629,7 @@
       font-family: 'Barlow', sans-serif;
     }
 
-    /* TESTES GRÁTIS */
+    /* HIGHLIGHT / CTA */
     .highlight {
       margin-top: 0;
       padding: 32px;
@@ -901,6 +887,183 @@
       z-index: 2;
     }
 
+    /* PARCEIROS SECTION */
+    .parceiros-section {
+      padding: 80px 0;
+      background: linear-gradient(135deg, #f0f4ff 0%, var(--bg-light) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .parceiros-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -10%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(16, 185, 129, 0.08) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .parceiros-content {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .parceiros-kicker {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: #F97316;
+      margin-bottom: 12px;
+      font-weight: 700;
+      font-family: 'Barlow', sans-serif;
+    }
+
+    .parceiros-text h2 {
+      font-family: 'Bicubik', sans-serif;
+      font-size: 42px;
+      color: #041056;
+      margin-bottom: 16px;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .parceiros-text p {
+      font-size: 16px;
+      color: #6b7280;
+      line-height: 1.7;
+      margin-bottom: 32px;
+      max-width: 500px;
+    }
+
+    .parceiros-features {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .feature-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .feature-icon {
+      font-size: 24px;
+      color: #10B981;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .feature-item strong {
+      display: block;
+      color: #041056;
+      margin-bottom: 4px;
+      font-size: 15px;
+    }
+
+    .feature-item p {
+      font-size: 13px;
+      color: #6b7280;
+      margin: 0;
+    }
+
+    .btn-parceiros {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 16px 32px;
+      background: linear-gradient(135deg, #07197E, #041056);
+      color: #ffffff;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 14px;
+      transition: all 0.2s;
+      box-shadow: 0 10px 25px rgba(4, 16, 86, 0.25);
+    }
+
+    .btn-parceiros:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 32px rgba(4, 16, 86, 0.35);
+    }
+
+    .parceiros-visual {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .visual-badge {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 10px 28px rgba(4, 16, 86, 0.08);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .badge-icon {
+      font-size: 48px;
+    }
+
+    .badge-text strong {
+      display: block;
+      color: #041056;
+      font-size: 18px;
+      margin-bottom: 4px;
+    }
+
+    .badge-text p {
+      font-size: 13px;
+      color: #6b7280;
+      line-height: 1.4;
+      margin: 0;
+    }
+
+    .visual-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      width: 100%;
+    }
+
+    .stat-item {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      padding: 16px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(4, 16, 86, 0.05);
+    }
+
+    .stat-number {
+      font-family: 'Bicubik', sans-serif;
+      font-size: 24px;
+      color: #17ABE3;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .stat-label {
+      font-size: 12px;
+      color: #6b7280;
+      font-weight: 600;
+    }
+
     /* SOBRE */
     .about-grid {
       display: grid;
@@ -1038,11 +1201,25 @@
       pointer-events: none;
     }
 
+    .form-wrap {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 24px;
+    }
+
     /* RESPONSIVO */
     @media (max-width: 900px) {
       .hero-grid,
       .case-wrap,
-      .about-grid {
+      .about-grid,
+      .parceiros-content,
+      .contact-grid {
         grid-template-columns: minmax(0, 1fr);
       }
 
@@ -1082,6 +1259,14 @@
 
       .metric-number {
         font-size: 28px;
+      }
+
+      .parceiros-text h2 {
+        font-size: 32px;
+      }
+
+      .visual-stats {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -1379,10 +1564,10 @@
         </div>
       </div>
       <div>
-        <a href="https://wa.me/5511972769986?text=Quero%20testar%20as%20solu%C3%A7%C3%B5es%20da%20Inbotix%20por%207%20dias" class="btn btn-outline" style="background:var(--white); color:var(--primary-blue); width:100%; justify-content:center; padding: 16px 28px; font-size: 15px;">
+        <a href="https://wa.me/5511972769986?text=Quero%20testar%20as%20solu%C3%A7%C3%B5es%20da%20Inbotix%20por%207%20dias" class="btn btn-white" style="width:100%; justify-content:center; padding: 16px 28px; font-size: 15px;">
           💬 Solicitar Teste via WhatsApp
         </a>
-        <p style="font-size:12px; margin-top:12px; opacity:.9; font-family: 'Barlow', sans-serif; line-height: 1.6;">
+        <p style="font-size:12px; margin-top:12px; opacity:.9; font-family: 'Barlow', sans-serif; line-height: 1.6; color: var(--white);">
           Resposta em até 2 horas. Em muitos casos, ativamos no mesmo dia útil.
         </p>
       </div>
@@ -1514,6 +1699,80 @@
   </div>
 </section>
 
+<!-- ✨ SEÇÃO: SEJA UM PARCEIRO ✨ -->
+<section class="parceiros-section" id="parceiros">
+  <div class="container">
+    <div class="parceiros-content">
+      <div class="parceiros-text">
+        <div class="parceiros-kicker">🤝 Oportunidade de Crescimento</div>
+        <h2>Seja um Parceiro Inbotix</h2>
+        <p>Programa White Label completo para agências, consultorias e software houses. Revenda nossas soluções com sua marca, sua operação e aumente seu ticket médio em até 5x.</p>
+        
+        <div class="parceiros-features">
+          <div class="feature-item">
+            <span class="feature-icon">✓</span>
+            <div>
+              <strong>White Label Completo</strong>
+              <p>Sua marca, seu relacionamento, nossa tecnologia e operação por trás.</p>
+            </div>
+          </div>
+          
+          <div class="feature-item">
+            <span class="feature-icon">✓</span>
+            <div>
+              <strong>Receita Recorrente</strong>
+              <p>Cobrança mensal por assinatura. Clientes que ficam porque têm resultado.</p>
+            </div>
+          </div>
+          
+          <div class="feature-item">
+            <span class="feature-icon">✓</span>
+            <div>
+              <strong>Suporte Estratégico</strong>
+              <p>Acompanhamento mensal para estruturar ofertas, onboardings e entregas.</p>
+            </div>
+          </div>
+          
+          <div class="feature-item">
+            <span class="feature-icon">✓</span>
+            <div>
+              <strong>150+ Parceiros Ativos</strong>
+              <p>Agências, consultores e software houses que já crescem com a Inbotix.</p>
+            </div>
+          </div>
+        </div>
+        
+        <a href="parceiros.html" class="btn-parceiros">Conhecer Programa de Parceiros →</a>
+      </div>
+      
+      <div class="parceiros-visual">
+        <div class="visual-badge">
+          <div class="badge-icon">📈</div>
+          <div class="badge-text">
+            <strong>Crescer Juntos</strong>
+            <p>Mais você vende,<br>mais você ganha</p>
+          </div>
+        </div>
+        
+        <div class="visual-stats">
+          <div class="stat-item">
+            <div class="stat-number">150+</div>
+            <div class="stat-label">Parceiros</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">∞</div>
+            <div class="stat-label">Escalabilidade</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">5x</div>
+            <div class="stat-label">Ticket</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="section" id="sobre">
   <div class="container">
     <div class="section-header">
@@ -1624,6 +1883,7 @@
         <a href="#solucoes">Soluções</a>
         <a href="#resultados">Resultados</a>
         <a href="#depoimentos">Depoimentos</a>
+        <a href="#parceiros">Parceiros</a>
         <a href="#sobre">Sobre</a>
         <a href="#contato">Contato</a>
       </div>
@@ -1650,4 +1910,3 @@
 
 </body>
 </html>
-
