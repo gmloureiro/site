@@ -654,6 +654,50 @@
       border: 0;
     }
 
+    /* CULTURA (MISSÃO, VISÃO, VALORES) */
+
+    .culture-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 18px;
+    }
+
+    .culture-card {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      padding: 18px 18px 16px;
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .culture-title-small {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .culture-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 6px;
+    }
+
+    .values-list {
+      margin-top: 8px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .values-list li {
+      margin-left: 18px;
+      margin-bottom: 4px;
+    }
+
     /* CTA SECTION */
 
     .cta-strip {
@@ -705,6 +749,29 @@
       gap: 12px;
     }
 
+    /* BOTÃO FLUTUANTE WHATSAPP */
+
+    .whats-float {
+      position: fixed;
+      bottom: 18px;
+      right: 18px;
+      width: 56px;
+      height: 56px;
+      border-radius: 999px;
+      background: #25d366;
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 40;
+    }
+
+    .whats-float span {
+      font-size: 28px;
+      color: #ffffff;
+    }
+
     /* RESPONSIVO */
 
     @media (max-width: 900px) {
@@ -724,7 +791,8 @@
       .steps-grid,
       .videos-grid,
       .testimonials-grid,
-      .agencies-grid {
+      .agencies-grid,
+      .culture-grid {
         grid-template-columns: minmax(0, 1fr);
       }
 
@@ -767,6 +835,7 @@
             <a href="#como-funciona">Método</a>
             <a href="#agencias">Para agências</a>
             <a href="#cases">Cases</a>
+            <a href="#cultura">Cultura</a>
             <a href="#videos">Vídeos</a>
             <a href="#contato">Contato</a>
             <a href="https://wa.me/5511972769986?text=Quero%20falar%20sobre%20Outbound%20e%20SDR%20Digital%20da%20Inbotix" class="btn btn-outline btn-sm">
@@ -1114,6 +1183,58 @@
         </div>
       </section>
 
+      <!-- CULTURA: MISSÃO, VISÃO, VALORES -->
+      <section id="cultura" class="section">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-eyebrow">Cultura INBOTIX</div>
+            <h2 class="section-title">Missão, visão e valores que guiam cada projeto.</h2>
+            <p class="section-sub">
+              Mais do que tecnologia, somos movidos por uma missão clara de democratizar o acesso
+              ao que realmente gera crescimento: conhecimento, ferramentas e serviços de alto valor.
+            </p>
+          </div>
+
+          <div class="culture-grid">
+            <div class="culture-card">
+              <div class="culture-title-small">Missão</div>
+              <div class="culture-title">Transformar o futuro das empresas.</div>
+              <p>
+                “Transformar o futuro das empresas democratizando o acesso ao que realmente gera crescimento:
+                conhecimento, tecnologia e serviços de alto valor.  
+                Na INBOTIX, acreditamos que cada negócio — grande ou pequeno — merece as ferramentas certas
+                para prosperar. Nossa missão é tornar acessível o que antes era exclusivo, ajudando nossos
+                clientes a alcançar novos patamares de sucesso.”
+              </p>
+
+              <div style="height:14px;"></div>
+
+              <div class="culture-title-small">Visão</div>
+              <div class="culture-title">Onde queremos chegar.</div>
+              <p>
+                “Ser reconhecida globalmente como a parceira estratégica que mais democratizou o acesso
+                a ferramentas, conhecimento e serviços de crescimento, tornando possível que qualquer
+                empresa prospere, independentemente do seu tamanho ou orçamento.”
+              </p>
+            </div>
+
+            <div class="culture-card">
+              <div class="culture-title-small">Valores</div>
+              <div class="culture-title">Como fazemos isso acontecer.</div>
+              <ul class="values-list">
+                <li><strong>Acessibilidade</strong> – Tornar ferramentas e serviços de alto nível acessíveis a todos.</li>
+                <li><strong>Inovação</strong> – Buscar constantemente novas formas de ajudar nossos clientes a crescerem.</li>
+                <li><strong>Transparência</strong> – Relacionamentos claros, éticos e de confiança.</li>
+                <li><strong>Foco no Cliente</strong> – O sucesso do cliente é o nosso sucesso.</li>
+                <li><strong>Colaboração</strong> – Crescemos junto com nossos parceiros, clientes e equipe.</li>
+                <li><strong>Excelência com Simplicidade</strong> – Entregar soluções de qualidade sem complicar.</li>
+                <li><strong>Impacto Sustentável</strong> – Gerar resultados consistentes e de longo prazo para quem confia em nós.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!-- VÍDEOS DOS PRODUTOS -->
       <section id="videos" class="section">
         <div class="container">
@@ -1247,6 +1368,15 @@
       </div>
     </footer>
   </div>
+
+  <!-- BOTÃO FLUTUANTE WHATSAPP -->
+  <a
+    href="https://wa.me/5511972769986?text=Quero%20falar%20com%20a%20INBOTIX"
+    class="whats-float"
+    aria-label="Falar com a Inbotix no WhatsApp"
+  >
+    <span>🟢</span>
+  </a>
 
   <script>
     // Ajusta ano automaticamente no rodapé
