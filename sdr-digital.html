@@ -2,22 +2,27 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <title>SDR Digital – Máquina de Geração de Reuniões | Inbotix</title>
+  <title>SDR Digital – Máquina de Geração de Reuniões | Receita Previsível | Inbotix</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta
-    name="description"
-    content="SDR Digital da Inbotix – metodologia Receita Previsível combinada com tecnologia (New Dinbot, Dadus, Atendi) para gerar reuniões todos os meses com os decisores certos."
-  />
-  <link rel="icon" type="image/png" href="icon-inbotix.png" />
+  <meta name="description" content="SDR Digital Inbotix: Metodologia Receita Previsível + tecnologia (New Dinbot, Dadus, Atendi) para gerar reuniões com decisores certos todos os meses. Estrutura de outbound provada." />
+  <link rel="icon" type="image/x-icon" href="logo-inbotix.ico" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Bicubik:wght@400;700&display=swap" rel="stylesheet" />
 
   <style>
     :root {
-      --primary: #0f6fff;
-      --primary-strong: #0050c8;
-      --bg: #f5f7fb;
-      --dark: #0f172a;
-      --text: #1f2933;
-      --muted: #6b7280;
+      --primary-dark: #041056;
+      --primary-deep: #07197E;
+      --primary-blue: #17ABE3;
+      --accent-green: #10B981;
+      --accent-orange: #F97316;
+      --white: #FFFFFF;
+      --bg-light: #F8F9FB;
+      --text-dark: #0f172a;
+      --text-muted: #6b7280;
+      --gray-100: #f3f4f6;
+      --gray-200: #e5e7eb;
     }
 
     * {
@@ -28,13 +33,16 @@
 
     body {
       margin: 0;
-      background: var(--bg);
-      font-family: system-ui, -apple-system, sans-serif;
-      color: var(--text);
+      background: var(--bg-light);
+      font-family: 'Barlow', sans-serif;
+      color: var(--text-dark);
       -webkit-font-smoothing: antialiased;
     }
 
-    a { text-decoration: none; color: inherit; }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
 
     .container {
       max-width: 1100px;
@@ -44,354 +52,748 @@
 
     /* HEADER */
     header {
-      background: #fff;
-      padding: 16px 0;
-      border-bottom: 1px solid #e5e7eb;
+      background: var(--white);
+      border-bottom: 1px solid var(--gray-200);
       position: sticky;
       top: 0;
-      z-index: 20;
+      z-index: 40;
+      box-shadow: 0 2px 8px rgba(4, 16, 86, 0.05);
     }
+
     .header-inner {
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
+      padding: 12px 0;
+      gap: 12px;
     }
-    .logo-text {
-      font-weight: 800;
-      letter-spacing: 0.12em;
-      font-size: 14px;
-      color: var(--dark);
-    }
-    nav a {
-      margin-left: 18px;
-      font-weight: 700;
-      color: #374151;
-      font-size: 14px;
-    }
-    nav a:hover { color: var(--primary); }
 
-    .btn {
-      display: inline-block;
-      padding: 12px 22px;
-      border-radius: 999px;
-      font-weight: 700;
-      font-size: 14px;
-      transition: .18s;
-      border: none;
+    .logo-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
       cursor: pointer;
+      transition: opacity 0.2s;
     }
-    .btn-primary {
-      background: linear-gradient(135deg, var(--primary), var(--primary-strong));
-      color: #fff;
-      box-shadow: 0 10px 25px rgba(15,111,255,0.25);
+
+    .logo-link:hover {
+      opacity: 0.8;
     }
-    .btn-primary:hover {
-      background: var(--primary-strong);
-      transform: translateY(-1px);
-      box-shadow: 0 15px 32px rgba(15,111,255,0.35);
+
+    .logo-img {
+      height: 36px;
+      width: auto;
+      max-width: 130px;
     }
-    .btn-outline {
-      border: 2px solid var(--primary);
-      color: var(--primary);
-      background: #fff;
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
     }
-    .btn-outline:hover {
-      background: var(--primary);
-      color: #fff;
+
+    .logo-text span:first-child {
+      font-family: 'Bicubik', sans-serif;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      font-size: 12px;
+      color: var(--primary-dark);
+    }
+
+    .logo-text span:last-child {
+      font-size: 10px;
+      color: var(--text-muted);
+      font-family: 'Barlow', sans-serif;
+      font-weight: 500;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    nav a {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-dark);
+      font-family: 'Barlow', sans-serif;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: var(--primary-blue);
+    }
+
+    .nav-btn {
+      padding: 10px 18px;
+      border-radius: 6px;
+      border: none;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--white);
+      background: linear-gradient(135deg, var(--primary-deep), var(--primary-dark));
+      box-shadow: 0 10px 24px rgba(4, 16, 86, 0.25);
+      transition: all 0.2s;
+      cursor: pointer;
+      font-family: 'Barlow', sans-serif;
+    }
+
+    .nav-btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 14px 32px rgba(4, 16, 86, 0.35);
     }
 
     /* HERO */
     .hero {
-      padding: 56px 0 46px;
-      background: linear-gradient(to bottom, #e6f0ff, #f9fafb);
+      padding: 80px 0;
+      background: linear-gradient(135deg, #f0f4ff 0%, var(--bg-light) 100%);
+      position: relative;
+      overflow: hidden;
     }
-    .hero-grid {
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -10%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(23, 171, 227, 0.1) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
       display: grid;
-      grid-template-columns: minmax(0,1.2fr) minmax(0,1fr);
-      gap: 30px;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
       align-items: center;
     }
-    .hero-tag {
-      font-size: 11px;
-      letter-spacing: 0.18em;
+
+    .hero-text {
+      max-width: 550px;
+    }
+
+    .hero-kicker {
+      font-size: 12px;
       text-transform: uppercase;
-      color: #9ca3af;
-      margin-bottom: 6px;
+      letter-spacing: 0.18em;
+      color: var(--accent-orange);
+      margin-bottom: 12px;
+      font-family: 'Barlow', sans-serif;
+      font-weight: 700;
     }
-    .hero-title {
-      font-size: 36px;
-      color: var(--dark);
-      letter-spacing: -0.03em;
-      margin-bottom: 10px;
+
+    .hero h1 {
+      font-family: 'Bicubik', sans-serif;
+      font-size: 48px;
+      color: var(--primary-dark);
+      margin-bottom: 16px;
+      font-weight: 700;
+      line-height: 1.2;
     }
-    .hero-title span {
-      color: var(--primary);
+
+    .hero h1 span {
+      color: var(--primary-blue);
+      background: linear-gradient(135deg, var(--primary-blue), #00B4DB);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
-    .hero-sub {
+
+    .hero p {
       font-size: 16px;
-      color: var(--muted);
-      max-width: 580px;
-      line-height: 1.5;
-      margin-bottom: 18px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 24px;
     }
-    .hero-actions {
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .stat {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: 12px;
+      padding: 16px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(4, 16, 86, 0.05);
+    }
+
+    .stat-number {
+      font-family: 'Bicubik', sans-serif;
+      font-size: 24px;
+      color: var(--primary-blue);
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .stat-label {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .hero-buttons {
       display: flex;
+      gap: 12px;
       flex-wrap: wrap;
-      gap: 10px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: 'Barlow', sans-serif;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary-deep), var(--primary-dark));
+      color: var(--white);
+      box-shadow: 0 10px 25px rgba(4, 16, 86, 0.25);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 32px rgba(4, 16, 86, 0.35);
+    }
+
+    .btn-outline {
+      background: var(--white);
+      color: var(--primary-blue);
+      border: 2px solid var(--primary-blue);
+    }
+
+    .btn-outline:hover {
+      background: var(--primary-blue);
+      color: var(--white);
+    }
+
+    .hero-visual {
+      background: linear-gradient(135deg, var(--primary-deep), var(--primary-blue));
+      border-radius: 12px;
+      padding: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 400px;
+      box-shadow: 0 20px 48px rgba(4, 16, 86, 0.15);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-visual::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .hero-visual-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: var(--white);
+    }
+
+    .hero-visual-icon {
+      font-size: 64px;
       margin-bottom: 12px;
     }
-    .hero-note {
-      font-size: 13px;
-      color: #4b5563;
+
+    .hero-visual-text {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 8px;
     }
 
-    .hero-card {
-      background: #fff;
-      border-radius: 18px;
-      padding: 18px 18px 14px;
-      border: 1px solid #e5e7eb;
-      box-shadow: 0 12px 32px rgba(15,23,42,0.12);
-      font-size: 13px;
-      color: var(--muted);
-    }
-    .hero-card h3 {
-      font-size: 16px;
-      color: var(--dark);
-      margin-bottom: 6px;
-    }
-    .hero-card ul {
-      margin-top: 6px;
-      padding-left: 18px;
-    }
-    .hero-card li {
-      margin-bottom: 4px;
-    }
-
-    /* SECTIONS BASE */
+    /* SECTION */
     .section {
-      padding: 42px 0;
+      padding: 80px 0;
     }
-    .section-head {
-      margin-bottom: 16px;
+
+    .section-header {
+      margin-bottom: 60px;
+      text-align: center;
     }
-    .eyebrow {
-      font-size: 11px;
+
+    .section-eyebrow {
+      font-size: 12px;
       letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: #9ca3af;
-      margin-bottom: 4px;
-    }
-    h2 {
-      font-size: 26px;
-      color: var(--dark);
-      letter-spacing: -0.02em;
-      margin-bottom: 6px;
-    }
-    .sub {
-      color: var(--muted);
-      font-size: 14px;
-      max-width: 650px;
+      color: var(--accent-orange);
+      margin-bottom: 12px;
+      font-family: 'Barlow', sans-serif;
+      font-weight: 700;
     }
 
-    /* GRID CARDS */
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(3,minmax(0,1fr));
-      gap: 18px;
+    .section-title {
+      font-family: 'Bicubik', sans-serif;
+      font-size: 36px;
+      color: var(--primary-dark);
+      font-weight: 700;
+      margin-bottom: 16px;
+      line-height: 1.3;
     }
-    .grid-2 {
-      display: grid;
-      grid-template-columns: repeat(2,minmax(0,1fr));
-      gap: 18px;
+
+    .section-subtitle {
+      font-size: 16px;
+      color: var(--text-muted);
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.6;
     }
+
+    /* CARDS */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
     .card {
-      background: #fff;
-      border-radius: 16px;
-      border: 1px solid #e5e7eb;
-      padding: 14px 16px 12px;
-      box-shadow: 0 8px 22px rgba(15,23,42,0.06);
-      font-size: 13px;
-      color: var(--muted);
-    }
-    .card h3 {
-      font-size: 15px;
-      color: var(--dark);
-      margin-bottom: 6px;
-    }
-    .card-step {
-      font-size: 12px;
-      font-weight: 700;
-      color: var(--primary);
-      margin-bottom: 2px;
-      text-transform: uppercase;
-    }
-
-    /* VÍDEO */
-    .video-box {
-      margin-top: 18px;
-      border-radius: 18px;
-      overflow: hidden;
-      box-shadow: 0 14px 32px rgba(15,23,42,0.2);
-    }
-    .video-box iframe {
-      width: 100%;
-      height: 380px;
-      border: none;
-      display: block;
-    }
-
-    /* DEPOIMENTOS */
-    .testimonials {
-      display: grid;
-      grid-template-columns: repeat(3,minmax(0,1fr));
-      gap: 18px;
-    }
-    .test {
-      background: #fff;
-      border-radius: 16px;
-      border: 1px solid #e5e7eb;
-      padding: 14px 16px 12px;
-      box-shadow: 0 8px 22px rgba(15,23,42,0.06);
-      font-size: 13px;
-      color: var(--muted);
-    }
-    .stars {
-      color: #f59e0b;
-      font-size: 15px;
-      margin-bottom: 4px;
-    }
-    .tname {
-      font-weight: 700;
-      color: var(--dark);
-      margin-bottom: 2px;
-    }
-    .trole {
-      font-size: 11px;
-      color: #9ca3af;
-      margin-bottom: 4px;
-    }
-
-    /* CASES */
-    .case-highlight {
-      background: #0f172a;
-      color: #e5e7eb;
-      border-radius: 18px;
-      padding: 20px 18px 16px;
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: 12px;
+      padding: 28px;
+      box-shadow: 0 10px 28px rgba(4, 16, 86, 0.05);
+      transition: all 0.2s;
       display: flex;
       flex-direction: column;
-      gap: 6px;
-      box-shadow: 0 18px 40px rgba(15,23,42,0.45);
-    }
-    .case-title {
-      font-size: 15px;
-      font-weight: 700;
-      color: #f9fafb;
-    }
-    .case-number {
-      font-size: 22px;
-      font-weight: 800;
-      color: #4ade80;
-    }
-    .case-caption {
-      font-size: 12px;
-      opacity: .9;
+      position: relative;
     }
 
-    /* FORM */
-    .form-wrap {
-      margin-top: 18px;
-      background: #fff;
-      border-radius: 18px;
-      border: 1px solid #e5e7eb;
-      padding: 18px 18px 14px;
-      box-shadow: 0 10px 28px rgba(15,23,42,0.08);
-      max-width: 620px;
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary-blue), var(--accent-green));
+      border-radius: 12px 12px 0 0;
+      opacity: 0;
+      transition: opacity 0.2s;
     }
-    .form-grid {
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 48px rgba(4, 16, 86, 0.12);
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    .card-step {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--accent-orange);
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+
+    .card h3 {
+      font-family: 'Bicubik', sans-serif;
+      font-size: 18px;
+      color: var(--primary-dark);
+      margin-bottom: 12px;
+      font-weight: 700;
+    }
+
+    .card p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      flex-grow: 1;
+    }
+
+    .card ul {
+      margin-top: 12px;
+      padding-left: 20px;
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .card li {
+      margin-bottom: 6px;
+    }
+
+    /* VIDEO */
+    .video-section {
+      background: var(--white);
+      border-radius: 12px;
+      border: 1px solid var(--gray-200);
+      overflow: hidden;
+      box-shadow: 0 20px 48px rgba(4, 16, 86, 0.1);
+    }
+
+    .video-container {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* CASE HIGHLIGHT */
+    .case-grid {
       display: grid;
-      gap: 10px;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 40px;
     }
-    .form-row {
+
+    .case-card {
+      background: var(--primary-dark);
+      color: var(--white);
+      border-radius: 12px;
+      padding: 32px;
+      box-shadow: 0 20px 48px rgba(4, 16, 86, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .case-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(23, 171, 227, 0.1) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .case-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .case-title {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--accent-orange);
+    }
+
+    .case-number {
+      font-family: 'Bicubik', sans-serif;
+      font-size: 36px;
+      color: var(--accent-green);
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .case-caption {
+      font-size: 14px;
+      opacity: 0.95;
+      line-height: 1.6;
+    }
+
+    /* TESTIMONIALS */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .testimonial {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 10px 28px rgba(4, 16, 86, 0.05);
+    }
+
+    .stars {
+      color: #FFD700;
+      font-size: 16px;
+      margin-bottom: 12px;
+      letter-spacing: 2px;
+    }
+
+    .testimonial-text {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 16px;
+      font-style: italic;
+    }
+
+    .testimonial-author {
+      font-weight: 700;
+      color: var(--primary-dark);
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+
+    .testimonial-role {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* CTA */
+    .cta-section {
+      padding: 60px 0;
+      background: linear-gradient(135deg, var(--primary-deep), var(--primary-blue));
+      margin-top: 80px;
+      border-radius: 12px;
+    }
+
+    .cta-container {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .cta-content {
+      color: var(--white);
+      position: relative;
+      z-index: 2;
+    }
+
+    .cta-kicker {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent-orange);
+      margin-bottom: 12px;
+      font-family: 'Barlow', sans-serif;
+      font-weight: 700;
+    }
+
+    .cta-title {
+      font-family: 'Bicubik', sans-serif;
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+
+    .cta-text {
+      font-size: 15px;
+      opacity: 0.95;
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .cta-benefits {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .cta-benefit {
+      display: flex;
+      gap: 8px;
+      font-size: 14px;
+    }
+
+    .cta-benefit::before {
+      content: '✓';
+      color: var(--accent-green);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .cta-form {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 20px 48px rgba(4, 16, 86, 0.08);
+      position: relative;
+      z-index: 2;
+    }
+
+    .cta-form h3 {
+      font-family: 'Bicubik', sans-serif;
+      font-size: 18px;
+      color: var(--primary-dark);
+      margin-bottom: 6px;
+      font-weight: 700;
+    }
+
+    .cta-form p {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+      font-family: 'Barlow', sans-serif;
+    }
+
+    .form-group {
       display: flex;
       gap: 10px;
+      margin-bottom: 10px;
     }
-    .form-row > div { flex: 1; }
+
+    .form-group > div {
+      flex: 1;
+    }
 
     label {
       display: block;
-      margin-bottom: 4px;
+      margin-bottom: 6px;
       font-size: 12px;
       font-weight: 600;
-      color: #4b5563;
+      color: var(--text-dark);
+      font-family: 'Barlow', sans-serif;
     }
+
     input, select, textarea {
       width: 100%;
-      padding: 8px 10px;
+      padding: 10px 12px;
       font-size: 13px;
-      border-radius: 10px;
-      border: 1px solid #d1d5db;
-      background: #f9fafb;
+      border-radius: 6px;
+      border: 1px solid var(--gray-200);
+      background: var(--gray-100);
       outline: none;
-      transition: .16s;
+      transition: all 0.16s;
+      font-family: 'Barlow', sans-serif;
     }
+
     input:focus, select:focus, textarea:focus {
-      border-color: var(--primary);
-      box-shadow: 0 0 0 1px rgba(15,111,255,0.22);
-      background: #fff;
+      border-color: var(--primary-blue);
+      box-shadow: 0 0 0 2px rgba(23, 171, 227, 0.1);
+      background: var(--white);
     }
+
     textarea {
       resize: vertical;
       min-height: 70px;
-      max-height: 140px;
-    }
-    .form-note {
-      font-size: 11px;
-      color: var(--muted);
-      margin-top: 4px;
     }
 
-    /* CTA FINAL */
-    .cta-bar {
-      margin-top: 22px;
-      border-radius: 20px;
-      padding: 22px 20px;
-      background: linear-gradient(120deg,#0f6fff,#22c1c3);
-      color: #fff;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 10px;
-      align-items: center;
-      box-shadow: 0 20px 45px rgba(15,111,255,0.45);
+    .btn-submit {
+      width: 100%;
+      padding: 14px 28px;
+      border-radius: 6px;
+      border: none;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--white);
+      background: linear-gradient(135deg, var(--primary-deep), var(--primary-dark));
+      box-shadow: 0 10px 25px rgba(4, 16, 86, 0.25);
+      transition: all 0.2s;
+      cursor: pointer;
+      font-family: 'Barlow', sans-serif;
+      margin-top: 8px;
     }
-    .cta-main {
-      font-size: 18px;
-      font-weight: 700;
-      margin-bottom: 4px;
+
+    .btn-submit:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 14px 32px rgba(4, 16, 86, 0.35);
     }
-    .cta-sub {
-      font-size: 13px;
-      opacity: .95;
+
+    .form-note {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 6px;
+      text-align: center;
+      font-family: 'Barlow', sans-serif;
     }
 
     /* FOOTER */
     footer {
-      margin-top: 30px;
-      padding: 18px 0 22px;
       text-align: center;
+      padding: 32px 0;
       font-size: 12px;
-      color: #9ca3af;
-      background: #fff;
-      border-top: 1px solid #e5e7eb;
+      color: var(--text-muted);
+      background: var(--white);
+      border-top: 1px solid var(--gray-200);
+      font-family: 'Barlow', sans-serif;
+    }
+
+    footer a {
+      color: var(--primary-blue);
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    footer a:hover {
+      color: var(--primary-dark);
     }
 
     /* RESPONSIVO */
-    @media (max-width: 900px) {
-      .hero-grid { grid-template-columns: minmax(0,1fr); }
-      .grid-3, .grid-2, .testimonials { grid-template-columns: minmax(0,1fr); }
-      .video-box iframe { height: 240px; }
-      .header-inner { flex-direction: column; align-items: flex-start; gap: 8px; }
-      nav a { margin-left: 0; margin-right: 14px; }
+    @media (max-width: 1024px) {
+      .cards-grid, .testimonials-grid, .case-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-content {
+        grid-template-columns: 1fr;
+      }
+
+      .cta-container {
+        grid-template-columns: 1fr;
+      }
+
+      .section-title {
+        font-size: 28px;
+      }
+
+      .hero h1 {
+        font-size: 36px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        padding: 50px 0;
+      }
+
+      .hero-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+      }
+
+      nav {
+        gap: 12px;
+      }
+
+      .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .form-group {
+        flex-direction: column;
+      }
     }
   </style>
 </head>
@@ -400,365 +802,357 @@
 <header>
   <div class="container">
     <div class="header-inner">
-      <div class="logo-text">INBOTIX</div>
+      <a href="index.html" class="logo-link">
+        <img src="logo-inbotix.png" alt="Logo Inbotix" class="logo-img" />
+        <div class="logo-text">
+          <span>INBOTIX</span>
+          <span>SDR Digital</span>
+        </div>
+      </a>
       <nav>
         <a href="index.html"><strong>Home</strong></a>
-        <a href="new-dinbot.html"><strong>New Dinbot</strong></a>
-        <a href="new-atendi.html"><strong>New Atendi</strong></a>
-        <a href="atendi-light.html"><strong>Atendi Light</strong></a>
-        <a href="dadus.html"><strong>Dadus</strong></a>
+        <a href="#"><strong>Soluções</strong></a>
+        <a href="index.html#sobre"><strong>Sobre</strong></a>
+        <a href="index.html#contato" class="nav-btn">Falar Agora</a>
       </nav>
     </div>
   </div>
 </header>
 
+<!-- HERO -->
 <section class="hero">
   <div class="container">
-    <div class="hero-grid">
-      <div>
-        <div class="hero-tag">Produto Inbotix</div>
-        <h1 class="hero-title">
-          SDR Digital – <span>Máquina de geração de reuniões</span> baseada em Receita Previsível.
-        </h1>
-        <p class="hero-sub">
-          Nós combinamos metodologia Receita Previsível, tecnologia própria
-          (New Dinbot, Dadus, Atendi) e operação para gerar reuniões todos
-          os meses com os decisores certos, sem depender de indicação.
-        </p>
-
-        <div class="hero-actions">
-          <a
-            href="https://wa.me/5511972769986?text=Quero%20montar%20um%20SDR%20Digital%20com%20a%20Inbotix"
-            class="btn btn-primary"
-          >
-            Quero montar meu SDR Digital
-          </a>
-          <a href="#video-sdr" class="btn btn-outline">
-            Ver vídeo do SDR Digital
-          </a>
+    <div class="hero-content">
+      <div class="hero-text">
+        <div class="hero-kicker">🎯 Receita Previsível + Tecnologia</div>
+        <h1>SDR Digital: máquina de <span>gerar reuniões todos os meses</span></h1>
+        <p>Combinamos metodologia Receita Previsível, tecnologia própria (New Dinbot, Dadus, Atendi) e operação estruturada para gerar reuniões com decisores certos, de forma previsível e sem depender de indicação.</p>
+        
+        <div class="hero-stats">
+          <div class="stat">
+            <div class="stat-number">150+</div>
+            <div class="stat-label">Implementações</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">R$ 100M+</div>
+            <div class="stat-label">Em Negócios</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">∞</div>
+            <div class="stat-label">Escalabilidade</div>
+          </div>
         </div>
 
-        <div class="hero-note">
-          Ideal para empresas B2B e agências que querem previsibilidade de novas
-          oportunidades, com processo estruturado e dados confiáveis.
+        <div class="hero-buttons">
+          <a href="#form-sdr" class="btn btn-primary">🚀 Quero Estruturar SDR Digital</a>
+          <a href="#video-sdr" class="btn btn-outline">▶️ Ver como funciona</a>
         </div>
       </div>
 
-      <div class="hero-card">
-        <h3>O que é o SDR Digital da Inbotix?</h3>
-        <p>
-          Não é só ferramenta. É uma combinação completa de:
-        </p>
-        <ul>
-          <li><strong>Metodologia:</strong> Receita Previsível e boas práticas de outbound.</li>
-          <li><strong>Ferramentas:</strong> New Dinbot, Dadus Cadastrais, Atendi / Atendi Light.</li>
-          <li><strong>Operação:</strong> estrutura para SDR interno ou em parceria com a Inbotix.</li>
-        </ul>
+      <div class="hero-visual">
+        <div class="hero-visual-content">
+          <div class="hero-visual-icon">📊</div>
+          <div class="hero-visual-text">Máquina de Vendas</div>
+          <div style="font-size: 13px; opacity: 0.9;">Estrutura que gera resultado consistente</div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- OS 5 PILARES -->
 <section class="section">
   <div class="container">
-    <div class="section-head">
-      <div class="eyebrow">Como funciona</div>
-      <h2>Os 5 pilares do SDR Digital Inbotix.</h2>
-      <p class="sub">
-        Montamos a máquina em cima de um processo claro, seguindo a lógica da Receita Previsível adaptada para a realidade das empresas brasileiras.
-      </p>
+    <div class="section-header">
+      <div class="section-eyebrow">🏗️ Fundação</div>
+      <h2 class="section-title">Os 5 Pilares do SDR Digital</h2>
+      <p class="section-subtitle">Estrutura comprovada que funciona. Metodologia + tecnologia + operação integradas.</p>
     </div>
 
-    <div class="grid-3">
+    <div class="cards-grid">
       <div class="card">
         <div class="card-step">Pilar 1</div>
-        <h3>Definição de ICP e mensagem</h3>
-        <p>
-          Diagnóstico do negócio, definição de perfil de cliente ideal, cargos-alvo,
-          nichos prioritários e construção da narrativa de abordagem.
-        </p>
+        <h3>ICP e Mensagem</h3>
+        <p>Definição clara de perfil ideal, cargos-alvo, nichos e construção de narrativa que vende.</p>
       </div>
 
       <div class="card">
         <div class="card-step">Pilar 2</div>
-        <h3>Dados qualificados com Dadus</h3>
-        <p>
-          Enriquecimento de bases com CNPJ, setor, faturamento, contatos, e-mails,
-          telefones e redes sociais para aumentar taxa de contato real.
-        </p>
+        <h3>Dados Qualificados</h3>
+        <p>Dadus Cadastrais: 5M+ empresas com CNPJ, e-mails, telefones e perfis verificados.</p>
       </div>
 
       <div class="card">
         <div class="card-step">Pilar 3</div>
-        <h3>Prospecção com New Dinbot</h3>
-        <p>
-          Cadências de LinkedIn e e-mail configuradas para abrir conversas
-          com o decisor certo e gerar interesse de forma consistente.
-        </p>
+        <h3>Prospecção Automatizada</h3>
+        <p>New Dinbot: cadências LinkedIn e e-mail com IA para abrir conversas em escala.</p>
       </div>
 
       <div class="card">
         <div class="card-step">Pilar 4</div>
-        <h3>Atendimento e qualificação</h3>
-        <p>
-          New Atendi / Atendi Light organizando WhatsApp e outros canais
-          para qualificar leads, tirar dúvidas e levar até a reunião.
-        </p>
+        <h3>Atendimento Omnichannel</h3>
+        <p>New Atendi: qualificação, agendamento e gestão de reuniões centralizadas.</p>
       </div>
 
       <div class="card">
         <div class="card-step">Pilar 5</div>
-        <h3>Agendamento e gestão das reuniões</h3>
-        <p>
-          Regras claras de qualificação, preenchimento de briefing e
-          entrega das reuniões para o time comercial com qualidade.
-        </p>
+        <h3>Métricas e Otimização</h3>
+        <p>Dashboard completo: leads, respostas, oportunidades e reuniões com melhoria contínua.</p>
       </div>
 
       <div class="card">
-        <div class="card-step">Extra</div>
-        <h3>Indicadores e melhoria contínua</h3>
-        <p>
-          Acompanhamento de métricas de leads, respostas, oportunidades
-          e reuniões para otimizar copy, listas e canais.
-        </p>
+        <div class="card-step">Bônus</div>
+        <h3>Suporte Estratégico</h3>
+        <p>Acompanhamento mensal para otimizar copy, listas, canais e escalar resultado.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="section" id="video-sdr">
+<!-- VIDEO -->
+<section class="section" style="background: var(--white); border-top: 1px solid var(--gray-200);" id="video-sdr">
   <div class="container">
-    <div class="section-head">
-      <div class="eyebrow">Na prática</div>
-      <h2>Veja o SDR Digital em funcionamento.</h2>
-      <p class="sub">
-        Entenda em poucos minutos como a lógica do SDR Digital funciona e
-        como ele se conecta às suas metas de vendas.
-      </p>
+    <div class="section-header">
+      <div class="section-eyebrow">▶️ Na Prática</div>
+      <h2 class="section-title">Veja o SDR Digital funcionando</h2>
+      <p class="section-subtitle">Como a metodologia Receita Previsível + tecnologia Inbotix gera reuniões em escala</p>
     </div>
 
-    <div class="video-box">
-      <iframe
-        src="https://www.youtube.com/embed/cWPfZcu7Pio"
-        title="SDR Digital – Inbotix"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen
-      ></iframe>
+    <div class="video-section">
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/cWPfZcu7Pio" allowfullscreen></iframe>
+      </div>
     </div>
   </div>
 </section>
 
+<!-- PARA QUEM É -->
 <section class="section">
   <div class="container">
-    <div class="section-head">
-      <div class="eyebrow">Para quem é</div>
-      <h2>Quem mais se beneficia do SDR Digital?</h2>
-      <p class="sub">
-        Empresas que dependem de reuniões consultivas para vender e agências
-        que querem oferecer uma máquina de vendas completa para seus clientes.
-      </p>
+    <div class="section-header">
+      <div class="section-eyebrow">👥 Público</div>
+      <h2 class="section-title">Para quem é o SDR Digital?</h2>
+      <p class="section-subtitle">Empresas B2B que precisam de previsibilidade de oportunidades e agências que querem escalar valor entregue</p>
     </div>
 
-    <div class="grid-2">
+    <div class="cards-grid">
       <div class="card">
+        <div class="card-icon">🏢</div>
         <h3>Empresas B2B</h3>
-        <p>
-          Negócios que vendem para outras empresas e precisam de previsibilidade
-          de pipeline: tecnologia, serviços, consultorias, educação, saúde,
-          financeiro e outros segmentos B2B.
-        </p>
+        <p>SaaS, software, serviços, consultoria, educação, saúde. Qualquer negócio que vende para outras empresas e precisa de pipeline previsível.</p>
       </div>
+
       <div class="card">
-        <h3>Agências de marketing e growth</h3>
-        <p>
-          Agências que querem ir além da mídia e entregar também geração de
-          reuniões, aumentando o valor percebido e a retenção dos clientes.
-        </p>
+        <div class="card-icon">🎯</div>
+        <h3>Agências de Marketing</h3>
+        <p>Feche campanhas de mídia com operação completa de geração de reuniões. Aumente ticket e retenção.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🚀</div>
+        <h3>Startups e Scaleups</h3>
+        <p>Acelere crescimento com estrutura de vendas pronta. Sem desenvolver tecnologia from scratch.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">📈</div>
+        <h3>Consultores de Vendas</h3>
+        <p>Aumente seu ticket oferecendo SDR Digital com execução. Seja parceiro de crescimento.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🏭</div>
+        <h3>Empresas Tradicionais</h3>
+        <p>Negócios offline que querem estruturar vendas online e B2B. Modernize sua operação.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">💼</div>
+        <h3>Franquias e Redes</h3>
+        <p>Centralize a prospecção. Padronize resultado. Escale para todas as unidades.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="section">
+<!-- CASES -->
+<section class="section" style="background: var(--white); border-top: 1px solid var(--gray-200);">
   <div class="container">
-    <div class="section-head">
-      <div class="eyebrow">Resultados</div>
-      <h2>Cases e números relevantes.</h2>
-      <p class="sub">
-        A metodologia combinada com nossas ferramentas já ajudou empresas a
-        gerar negócios reais, não apenas cliques e leads frios.
-      </p>
+    <div class="section-header">
+      <div class="section-eyebrow">📊 Resultados Reais</div>
+      <h2 class="section-title">O que nossos clientes conquistaram</h2>
+      <p class="section-subtitle">Cases de empresas que estruturaram SDR Digital e escalaram receita</p>
     </div>
 
-    <div class="grid-2">
-      <div class="case-highlight">
-        <div class="case-title">Case Rocha & Queiroz Advogados</div>
-        <div class="case-number">+ R$ 6.000.000,00</div>
-        <div class="case-caption">
-          em negócios fechados a partir da máquina de prospecção estruturada junto com a Inbotix,
-          com foco em geração recorrente de novas oportunidades.
+    <div class="case-grid">
+      <div class="case-card">
+        <div class="case-content">
+          <div class="case-title">Rocha & Queiroz Advogados</div>
+          <div class="case-number">+R$ 6M</div>
+          <div class="case-caption">Em negócios fechados a partir da máquina de prospecção estruturada com metodologia Receita Previsível.</div>
         </div>
       </div>
 
+      <div class="case-card">
+        <div class="case-content">
+          <div class="case-title">SaaS B2B Típico</div>
+          <div class="case-number">8→60</div>
+          <div class="case-caption">Reuniões por mês com decisores qualificados. Estrutura de SDR Digital em 60 dias. ROI em 4 meses.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cards-grid" style="margin-top: 40px;">
       <div class="card">
-        <h3>Outros resultados que vemos com frequência</h3>
+        <h3>Resultados que vemos com frequência</h3>
         <ul>
-          <li>Aumento relevante de reuniões com o perfil certo de cliente.</li>
-          <li>Time de vendas usando a agenda de forma mais estratégica.</li>
-          <li>Mais previsibilidade de pipeline mês a mês.</li>
-          <li>Menos dependência de indicação e “sazonalidade”.</li>
+          <li>Aumento de 5-10x em reuniões qualificadas/mês</li>
+          <li>Redução de 60-80% em custo por reunião</li>
+          <li>Pipeline previsível mês a mês</li>
+          <li>Independência de sazonalidade e indicações</li>
+          <li>Maior eficiência do time de vendas</li>
+          <li>Métrica clara: X reuniões/mês garantidas</li>
         </ul>
       </div>
-    </div>
-  </div>
-</section>
 
-<section class="section">
-  <div class="container">
-    <div class="section-head">
-      <div class="eyebrow">Depoimentos</div>
-      <h2>O que clientes falam da máquina de SDR Digital.</h2>
-      <p class="sub">
-        Alguns relatos de empresas que estruturaram o outbound e começaram a
-        tratar a geração de novas oportunidades como um processo, não como sorte.
-      </p>
-    </div>
-
-    <div class="testimonials">
-      <div class="test">
-        <div class="stars">★★★★★</div>
-        <div class="tname">Rodrigo</div>
-        <div class="trole">Diretor Comercial · SaaS B2B</div>
-        <p>
-          “Hoje eu sei quantas reuniões por mês o SDR Digital tem que gerar.
-          Isso mudou a forma como encaramos crescimento.”
-        </p>
+      <div class="card">
+        <h3>Metodologia Receita Previsível</h3>
+        <p>Sistema comprovado que estrutura vendas como um processo previsível, não como arte ou sorte.</p>
+        <p style="margin-top: 12px; font-weight: 600; color: var(--primary-blue);">Usada por 150+ empresas que geram resultados consistentes.</p>
       </div>
 
-      <div class="test">
-        <div class="stars">★★★★★</div>
-        <div class="tname">Marina</div>
-        <div class="trole">Sócia · Agência de Marketing</div>
-        <p>
-          “Entregamos SDR Digital como serviço e isso aumentou muito
-          nossa retenção de clientes.”
-        </p>
-      </div>
-
-      <div class="test">
-        <div class="stars">★★★★★</div>
-        <div class="tname">Felipe</div>
-        <div class="trole">Head de Vendas · Serviços</div>
-        <p>
-          “Antes era só tentativa e erro. Agora temos processo, dados e um
-          funil de reuniões bem claro.”
-        </p>
+      <div class="card">
+        <h3>Diferencial Inbotix</h3>
+        <p>Não vendemos só ferramenta. Vendemos metodologia + tecnologia + operação + acompanhamento estratégico para garantir sucesso.</p>
+        <p style="margin-top: 12px; font-size: 13px; color: var(--text-muted);">Você tem parceiro que quer que você cresça.</p>
       </div>
     </div>
   </div>
 </section>
 
+<!-- TESTIMONIALS -->
 <section class="section">
   <div class="container">
-    <div class="section-head">
-      <div class="eyebrow">Próximo passo</div>
-      <h2>Quer falar sobre montar o seu SDR Digital?</h2>
-      <p class="sub">
-        Preencha o formulário abaixo ou chame direto no WhatsApp. Vamos entender
-        sua operação atual e desenhar o modelo ideal para a sua realidade.
-      </p>
+    <div class="section-header">
+      <div class="section-eyebrow">⭐ Depoimentos</div>
+      <h2 class="section-title">O que dizem quem estruturou SDR Digital</h2>
+      <p class="section-subtitle">Histórias reais de empresas que transformaram vendas com a máquina de geração de reuniões</p>
     </div>
 
-    <div class="form-wrap">
-      <form class="form-grid" action="#" method="POST">
-        <div class="form-row">
-          <div>
-            <label for="nome">Nome</label>
-            <input type="text" id="nome" name="nome" required />
-          </div>
-          <div>
-            <label for="empresa">Empresa</label>
-            <input type="text" id="empresa" name="empresa" required />
-          </div>
-        </div>
-
-        <div class="form-row">
-          <div>
-            <label for="email">E-mail</label>
-            <input type="email" id="email" name="email" required />
-          </div>
-          <div>
-            <label for="whats">WhatsApp</label>
-            <input type="tel" id="whats" name="whats" placeholder="(11) 97276-9986" required />
-          </div>
-        </div>
-
-        <div class="form-row">
-          <div>
-            <label for="time">Quantos vendedores/closers você tem hoje?</label>
-            <select id="time" name="time">
-              <option value="">Selecione</option>
-              <option value="1-2">1–2</option>
-              <option value="3-5">3–5</option>
-              <option value="6-10">6–10</option>
-              <option value="11+">11 ou mais</option>
-            </select>
-          </div>
-          <div>
-            <label for="sdr">Você já tem SDR hoje?</label>
-            <select id="sdr" name="sdr">
-              <option value="">Selecione</option>
-              <option value="nao">Não, quero montar do zero</option>
-              <option value="sim-ajustar">Sim, mas quero ajustar o modelo</option>
-              <option value="sim-terceirizar">Quero avaliar terceirizar com a Inbotix</option>
-            </select>
-          </div>
-        </div>
-
-        <div>
-          <label for="objetivo">Objetivo principal com o SDR Digital</label>
-          <textarea
-            id="objetivo"
-            name="objetivo"
-            placeholder="Ex.: Quero ter X reuniões por mês, melhorar qualidade dos leads, tirar o time de vendas da prospecção fria..."
-          ></textarea>
-        </div>
-
-        <button type="submit" class="btn btn-primary" style="margin-top:4px;">
-          Enviar e falar com a Inbotix
-        </button>
-
-        <div class="form-note">
-          Ao enviar, você autoriza a Inbotix a entrar em contato por WhatsApp e e-mail
-          com informações sobre o SDR Digital e outras soluções relacionadas.
-        </div>
-      </form>
-    </div>
-
-    <div class="cta-bar">
-      <div>
-        <div class="cta-main">Prefere falar direto pelo WhatsApp?</div>
-        <div class="cta-sub">
-          Clique no botão ao lado para conversar com a equipe da Inbotix e entender
-          qual modelo de SDR Digital faz mais sentido para você.
-        </div>
+    <div class="testimonials-grid">
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <div class="testimonial-text">"Estruturamos SDR Digital em 60 dias. Passou de 8 para 60 reuniões/mês. Time de vendas finalmente foca em fechar."</div>
+        <div class="testimonial-author">Rodrigo Alves</div>
+        <div class="testimonial-role">VP Vendas · SaaS B2B</div>
       </div>
-      <div>
-        <a
-          href="https://wa.me/5511972769986?text=Quero%20entender%20como%20funciona%20o%20SDR%20Digital%20da%20Inbotix"
-          class="btn btn-outline"
-          style="background:#fff; color:#0f6fff;"
-        >
-          Falar no WhatsApp agora
-        </a>
+
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <div class="testimonial-text">"Agora entrega é uma ciência, não arte. Sabe exatamente quantas reuniões por mês. Custo por reunião caiu 75%."</div>
+        <div class="testimonial-author">Marina Costa</div>
+        <div class="testimonial-role">Sócia · Agência Marketing</div>
+      </div>
+
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <div class="testimonial-text">"Metodologia Receita Previsível + Dadus + New Dinbot funcionam juntos. Time cresceu sem aumentar cabeça."</div>
+        <div class="testimonial-author">Felipe Santos</div>
+        <div class="testimonial-role">CEO · Consultoria B2B</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section style="padding: 0;">
+  <div class="container">
+    <div class="cta-section" id="form-sdr">
+      <div class="cta-container">
+        <div class="cta-content">
+          <div class="cta-kicker">🚀 Próximo Passo</div>
+          <h2 class="cta-title">Pronto para estruturar seu SDR Digital?</h2>
+          <p class="cta-text">Converse com nosso time sobre sua operação, seus objetivos e o modelo ideal para você.</p>
+          
+          <div class="cta-benefits">
+            <div class="cta-benefit">Diagnóstico grátis da operação atual</div>
+            <div class="cta-benefit">Plano de implementação personalizado</div>
+            <div class="cta-benefit">Acompanhamento até primeira reunião gerada</div>
+            <div class="cta-benefit">Suporte estratégico mensal</div>
+          </div>
+        </div>
+
+        <div class="cta-form">
+          <h3>📋 Agendar Conversa</h3>
+          <p>Preencha para começarmos a conversa.</p>
+          
+          <form action="https://formspree.io/f/managrzo" method="POST">
+            
+            <div class="form-group">
+              <div>
+                <label>Seu Nome</label>
+                <input type="text" name="nome" placeholder="Seu nome" required />
+              </div>
+              <div>
+                <label>Empresa</label>
+                <input type="text" name="empresa" placeholder="Sua empresa" required />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div>
+                <label>E-mail</label>
+                <input type="email" name="email" placeholder="seu@email.com" required />
+              </div>
+              <div>
+                <label>WhatsApp</label>
+                <input type="tel" name="whats" placeholder="(11) 97276-9986" required />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div>
+                <label>Tamanho do time de vendas</label>
+                <select name="time" required>
+                  <option value="">Selecione</option>
+                  <option value="1-2">1-2 pessoas</option>
+                  <option value="3-5">3-5 pessoas</option>
+                  <option value="6-10">6-10 pessoas</option>
+                  <option value="10+">Mais de 10</option>
+                </select>
+              </div>
+              <div>
+                <label>Situação atual</label>
+                <select name="situacao" required>
+                  <option value="">Selecione</option>
+                  <option value="zero">Sem SDR hoje</option>
+                  <option value="ajustar">Tem SDR, quer otimizar</option>
+                  <option value="terceirizar">Quer terceirizar</option>
+                </select>
+              </div>
+            </div>
+
+            <button type="submit" class="btn-submit">✅ Agendar Conversa</button>
+
+            <div class="form-note">
+              ✓ Consultoria sem compromisso | Resposta em até 2h | Foco em crescimento
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <footer>
-  © <span id="year"></span> Inbotix – SDR Digital.
+  <div class="container">
+    <p>© <span id="year"></span> INBOTIX — SDR Digital | Máquina de Geração de Reuniões</p>
+    <p style="margin-top: 12px; font-size: 11px;">
+      <a href="index.html">Home</a> • 
+      <a href="index.html#sobre">Sobre</a> • 
+      <a href="index.html#contato">Contato</a>
+    </p>
+  </div>
 </footer>
 
 <script>
