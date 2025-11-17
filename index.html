@@ -6,15 +6,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="A Inbotix constrói sua máquina de vendas com SDR Digital, automação e dados para gerar reuniões todos os meses, sem depender de indicação." />
   <link rel="icon" type="image/png" href="icon-inbotix.png" />
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Bicubik:wght@400;700&family=Opinion+Pro:wght@400;700&display=swap" rel="stylesheet" />
 
   <style>
     :root {
-      --primary: #0f6fff;
-      --primary-strong: #0050c8;
-      --bg: #f5f7fb;
-      --dark: #0f172a;
-      --text: #1f2933;
-      --muted: #6b7280;
+      --primary-dark: #041056;
+      --primary-deep: #07197E;
+      --primary-blue: #17ABE3;
+      --black: #000000;
+      --white: #FFFFFF;
+      --bg-light: #F8F9FB;
+      --text-dark: #0f172a;
+      --text-muted: #6b7280;
     }
 
     * {
@@ -25,9 +30,9 @@
 
     body {
       margin: 0;
-      background: var(--bg);
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      color: var(--text);
+      background: var(--bg-light);
+      font-family: 'Barlow', sans-serif;
+      color: var(--text-dark);
       -webkit-font-smoothing: antialiased;
     }
 
@@ -44,7 +49,7 @@
 
     /* HEADER */
     header {
-      background: #fff;
+      background: var(--white);
       border-bottom: 1px solid #e5e7eb;
       position: sticky;
       top: 0;
@@ -59,10 +64,16 @@
       gap: 12px;
     }
 
-    .logo {
+    .logo-link {
       display: flex;
       align-items: center;
       gap: 8px;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    .logo-link:hover {
+      opacity: 0.8;
     }
 
     .logo-img {
@@ -78,15 +89,18 @@
     }
 
     .logo-text span:first-child {
-      font-weight: 800;
+      font-family: 'Bicubik', sans-serif;
+      font-weight: 700;
       letter-spacing: 0.16em;
       font-size: 11px;
-      color: var(--dark);
+      color: var(--primary-dark);
     }
 
     .logo-text span:last-child {
       font-size: 11px;
-      color: #9ca3af;
+      color: var(--text-muted);
+      font-family: 'Barlow', sans-serif;
+      font-weight: 400;
     }
 
     nav {
@@ -99,35 +113,41 @@
 
     nav a {
       font-size: 13px;
-      font-weight: 700;
-      color: #374151;
+      font-weight: 600;
+      color: var(--text-dark);
+      font-family: 'Barlow', sans-serif;
+      transition: color 0.2s;
     }
 
     nav a:hover {
-      color: var(--primary);
+      color: var(--primary-blue);
     }
 
     .nav-btn {
       padding: 8px 16px;
-      border-radius: 999px;
-      border: 1px solid var(--primary);
+      border-radius: 6px;
+      border: 1px solid var(--primary-deep);
       font-size: 13px;
-      font-weight: 700;
-      color: #fff;
-      background: linear-gradient(135deg, var(--primary), var(--primary-strong));
-      box-shadow: 0 10px 24px rgba(15,111,255,0.35);
+      font-weight: 600;
+      color: var(--white);
+      background: linear-gradient(135deg, var(--primary-deep), var(--primary-dark));
+      box-shadow: 0 10px 24px rgba(4, 16, 86, 0.25);
+      transition: all 0.2s;
     }
 
     .nav-btn:hover {
-      background: var(--primary-strong);
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(4, 16, 86, 0.35);
     }
 
     .nav-item.dropdown {
       position: relative;
       font-size: 13px;
-      font-weight: 700;
-      color: #374151;
+      font-weight: 600;
+      color: var(--text-dark);
       cursor: pointer;
+      font-family: 'Barlow', sans-serif;
     }
 
     .nav-item.dropdown span {
@@ -137,17 +157,17 @@
     }
 
     .nav-item.dropdown:hover {
-      color: var(--primary);
+      color: var(--primary-blue);
     }
 
     .dropdown-menu {
       position: absolute;
       top: 140%;
       right: 0;
-      background: #fff;
-      border-radius: 12px;
+      background: var(--white);
+      border-radius: 8px;
       border: 1px solid #e5e7eb;
-      box-shadow: 0 18px 40px rgba(15,23,42,0.18);
+      box-shadow: 0 18px 40px rgba(4, 16, 86, 0.15);
       padding: 10px 0;
       min-width: 210px;
       display: none;
@@ -162,32 +182,34 @@
       display: block;
       padding: 8px 14px;
       font-size: 13px;
-      color: #374151;
+      color: var(--text-dark);
       white-space: nowrap;
+      font-family: 'Barlow', sans-serif;
+      transition: background 0.2s;
     }
 
     .dropdown-menu a span {
       font-size: 11px;
-      color: #9ca3af;
+      color: var(--text-muted);
       font-weight: 400;
       display: block;
       margin-top: 2px;
     }
 
     .dropdown-menu a:hover {
-      background: #f3f4ff;
-      color: var(--primary);
+      background: #f0f4f8;
+      color: var(--primary-blue);
     }
 
     /* HERO */
     .hero {
       padding: 56px 0 44px;
-      background: linear-gradient(to bottom, #e6f0ff, #f9fafb);
+      background: linear-gradient(to bottom, #f0f4ff, var(--bg-light));
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: minmax(0,1.25fr) minmax(0,1fr);
+      grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
       gap: 28px;
       align-items: flex-start;
     }
@@ -196,27 +218,32 @@
       font-size: 11px;
       text-transform: uppercase;
       letter-spacing: 0.18em;
-      color: #9ca3af;
+      color: var(--text-muted);
       margin-bottom: 6px;
+      font-family: 'Barlow', sans-serif;
+      font-weight: 600;
     }
 
     .hero-title {
+      font-family: 'Bicubik', sans-serif;
       font-size: 36px;
-      color: var(--dark);
+      color: var(--primary-dark);
       letter-spacing: -0.03em;
       margin-bottom: 10px;
+      font-weight: 700;
     }
 
     .hero-title span {
-      color: var(--primary);
+      color: var(--primary-blue);
     }
 
     .hero-sub {
       font-size: 16px;
-      color: var(--muted);
+      color: var(--text-muted);
       max-width: 580px;
-      line-height: 1.5;
+      line-height: 1.6;
       margin-bottom: 18px;
+      font-family: 'Barlow', sans-serif;
     }
 
     .hero-actions {
@@ -232,64 +259,69 @@
       justify-content: center;
       gap: 6px;
       padding: 12px 22px;
-      border-radius: 999px;
+      border-radius: 6px;
       font-size: 14px;
-      font-weight: 700;
+      font-weight: 600;
       border: none;
       cursor: pointer;
-      transition: .18s;
+      transition: all 0.18s;
+      font-family: 'Barlow', sans-serif;
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, var(--primary), var(--primary-strong));
-      color: #fff;
-      box-shadow: 0 10px 25px rgba(15,111,255,0.25);
+      background: linear-gradient(135deg, var(--primary-deep), var(--primary-dark));
+      color: var(--white);
+      box-shadow: 0 10px 25px rgba(4, 16, 86, 0.25);
     }
 
     .btn-primary:hover {
-      background: var(--primary-strong);
+      background: var(--primary-dark);
       transform: translateY(-1px);
-      box-shadow: 0 16px 36px rgba(15,111,255,0.35);
+      box-shadow: 0 16px 36px rgba(4, 16, 86, 0.35);
     }
 
     .btn-outline {
-      border: 2px solid var(--primary);
-      color: var(--primary);
-      background: #fff;
+      border: 2px solid var(--primary-blue);
+      color: var(--primary-blue);
+      background: var(--white);
     }
 
     .btn-outline:hover {
-      background: var(--primary);
-      color: #fff;
+      background: var(--primary-blue);
+      color: var(--white);
     }
 
     .hero-footnote {
       font-size: 13px;
-      color: #4b5563;
+      color: var(--text-muted);
       max-width: 520px;
+      font-family: 'Barlow', sans-serif;
     }
 
     /* HERO FORM */
     .hero-form {
-      background: #fff;
-      border-radius: 18px;
+      background: var(--white);
+      border-radius: 12px;
       border: 1px solid #e5e7eb;
       padding: 18px 18px 14px;
-      box-shadow: 0 14px 36px rgba(15,23,42,0.16);
+      box-shadow: 0 14px 36px rgba(4, 16, 86, 0.1);
       font-size: 13px;
-      color: var(--muted);
+      color: var(--text-muted);
     }
 
     .hero-form h3 {
+      font-family: 'Bicubik', sans-serif;
       font-size: 16px;
-      color: var(--dark);
+      color: var(--primary-dark);
       margin-bottom: 6px;
+      font-weight: 700;
     }
 
     .hero-form p {
       font-size: 12px;
-      color: #6b7280;
+      color: var(--text-muted);
       margin-bottom: 10px;
+      font-family: 'Barlow', sans-serif;
     }
 
     .hero-form .form-row {
@@ -307,30 +339,33 @@
       margin-bottom: 4px;
       font-size: 12px;
       font-weight: 600;
-      color: #4b5563;
+      color: var(--text-dark);
+      font-family: 'Barlow', sans-serif;
     }
 
     input, select, textarea {
       width: 100%;
       padding: 8px 10px;
       font-size: 13px;
-      border-radius: 10px;
+      border-radius: 6px;
       border: 1px solid #d1d5db;
       background: #f9fafb;
       outline: none;
-      transition: .16s;
+      transition: all 0.16s;
+      font-family: 'Barlow', sans-serif;
     }
 
     input:focus, select:focus, textarea:focus {
-      border-color: var(--primary);
-      box-shadow: 0 0 0 1px rgba(15,111,255,0.22);
-      background: #fff;
+      border-color: var(--primary-blue);
+      box-shadow: 0 0 0 1px rgba(23, 171, 227, 0.22);
+      background: var(--white);
     }
 
     .hero-form .form-note {
       font-size: 11px;
-      color: var(--muted);
+      color: var(--text-muted);
       margin-top: 4px;
+      font-family: 'Barlow', sans-serif;
     }
 
     /* SECTION BASE */
@@ -346,58 +381,74 @@
       font-size: 11px;
       letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: #9ca3af;
+      color: var(--text-muted);
       margin-bottom: 4px;
+      font-family: 'Barlow', sans-serif;
+      font-weight: 600;
     }
 
     .section-title {
+      font-family: 'Bicubik', sans-serif;
       font-size: 26px;
-      color: var(--dark);
+      color: var(--primary-dark);
       letter-spacing: -0.02em;
       margin-bottom: 6px;
+      font-weight: 700;
     }
 
     .section-sub {
       font-size: 14px;
-      color: var(--muted);
+      color: var(--text-muted);
       max-width: 650px;
+      font-family: 'Barlow', sans-serif;
     }
 
     /* GRID / CARDS */
     .grid-3 {
       display: grid;
-      grid-template-columns: repeat(3,minmax(0,1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 18px;
     }
 
     .grid-2 {
       display: grid;
-      grid-template-columns: repeat(2,minmax(0,1fr));
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 18px;
     }
 
     .card {
-      background: #fff;
-      border-radius: 16px;
+      background: var(--white);
+      border-radius: 12px;
       border: 1px solid #e5e7eb;
       padding: 14px 16px 12px;
-      box-shadow: 0 10px 28px rgba(15,23,42,0.06);
+      box-shadow: 0 10px 28px rgba(4, 16, 86, 0.05);
       font-size: 13px;
-      color: var(--muted);
+      color: var(--text-muted);
+      font-family: 'Barlow', sans-serif;
+      transition: all 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(4, 16, 86, 0.12);
     }
 
     .card h3 {
+      font-family: 'Bicubik', sans-serif;
       font-size: 15px;
-      color: var(--dark);
+      color: var(--primary-dark);
       margin-bottom: 6px;
+      font-weight: 700;
     }
 
     .card-tag {
       font-size: 11px;
       text-transform: uppercase;
       letter-spacing: 0.14em;
-      color: var(--primary);
+      color: var(--primary-blue);
       margin-bottom: 4px;
+      font-family: 'Barlow', sans-serif;
+      font-weight: 600;
     }
 
     .card-link {
@@ -405,8 +456,9 @@
       align-items: center;
       margin-top: 8px;
       font-size: 13px;
-      font-weight: 700;
-      color: var(--primary);
+      font-weight: 600;
+      color: var(--primary-blue);
+      font-family: 'Barlow', sans-serif;
     }
 
     .card-link span {
@@ -417,68 +469,76 @@
     .highlight {
       margin-top: 16px;
       padding: 20px;
-      border-radius: 20px;
-      background: linear-gradient(120deg,#0f6fff,#22c1c3);
-      color: #fff;
+      border-radius: 12px;
+      background: linear-gradient(120deg, var(--primary-deep), var(--primary-blue));
+      color: var(--white);
       display: grid;
-      grid-template-columns: minmax(0,1.2fr) minmax(0,1fr);
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
       gap: 20px;
       align-items: center;
-      box-shadow: 0 22px 50px rgba(15,111,255,0.5);
+      box-shadow: 0 22px 50px rgba(4, 16, 86, 0.35);
     }
 
     .highlight h3 {
+      font-family: 'Bicubik', sans-serif;
       font-size: 20px;
       margin-bottom: 6px;
+      font-weight: 700;
     }
 
     .highlight p {
       font-size: 13px;
-      opacity: .96;
+      opacity: 0.96;
       margin-bottom: 4px;
+      font-family: 'Barlow', sans-serif;
     }
 
     .highlight-list {
       font-size: 13px;
       margin-top: 8px;
+      font-family: 'Barlow', sans-serif;
     }
 
     .highlight-list span {
       display: inline-block;
       padding: 4px 10px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.12);
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.15);
       margin: 3px;
+      font-weight: 500;
     }
 
     /* VÍDEOS */
     .video-grid {
       display: grid;
-      grid-template-columns: repeat(3,minmax(0,1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 18px;
     }
 
     .video-card {
-      background: #fff;
-      border-radius: 16px;
+      background: var(--white);
+      border-radius: 12px;
       border: 1px solid #e5e7eb;
       padding: 12px 12px 14px;
-      box-shadow: 0 10px 26px rgba(15,23,42,0.06);
+      box-shadow: 0 10px 26px rgba(4, 16, 86, 0.05);
       font-size: 13px;
-      color: var(--muted);
+      color: var(--text-muted);
+      font-family: 'Barlow', sans-serif;
     }
 
     .video-card h3 {
+      font-family: 'Bicubik', sans-serif;
       font-size: 14px;
-      color: var(--dark);
+      color: var(--primary-dark);
       margin-bottom: 4px;
+      font-weight: 700;
     }
 
     .video-box {
       margin-top: 8px;
-      border-radius: 12px;
+      border-radius: 8px;
       overflow: hidden;
-      box-shadow: 0 12px 28px rgba(15,23,42,0.18);
+      box-shadow: 0 12px 28px rgba(4, 16, 86, 0.12);
     }
 
     .video-box iframe {
@@ -491,32 +551,35 @@
     /* CASE */
     .case-wrap {
       display: grid;
-      grid-template-columns: minmax(0,1.1fr) minmax(0,1fr);
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
       gap: 18px;
       align-items: stretch;
     }
 
     .case-main {
-      background: #0f172a;
+      background: var(--primary-dark);
       color: #e5e7eb;
-      border-radius: 18px;
+      border-radius: 12px;
       padding: 18px 18px 14px;
-      box-shadow: 0 18px 42px rgba(15,23,42,0.55);
+      box-shadow: 0 18px 42px rgba(4, 16, 86, 0.4);
     }
 
     .case-label {
       font-size: 11px;
-      letter-spacing: .16em;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: #9ca3af;
+      color: var(--text-muted);
       margin-bottom: 6px;
+      font-family: 'Barlow', sans-serif;
+      font-weight: 600;
     }
 
     .case-title {
+      font-family: 'Bicubik', sans-serif;
       font-size: 18px;
       font-weight: 700;
       margin-bottom: 6px;
-      color: #f9fafb;
+      color: var(--white);
     }
 
     .case-number {
@@ -524,11 +587,13 @@
       font-weight: 800;
       color: #4ade80;
       margin-bottom: 4px;
+      font-family: 'Barlow', sans-serif;
     }
 
     .case-text {
       font-size: 13px;
-      opacity: .9;
+      opacity: 0.9;
+      font-family: 'Barlow', sans-serif;
     }
 
     .case-side {
@@ -547,35 +612,39 @@
 
     .client-pill {
       padding: 6px 12px;
-      border-radius: 999px;
-      background: #fff;
+      border-radius: 4px;
+      background: var(--white);
       border: 1px solid #e5e7eb;
       font-size: 12px;
-      color: #4b5563;
-      box-shadow: 0 4px 12px rgba(15,23,42,0.04);
+      color: var(--text-dark);
+      box-shadow: 0 4px 12px rgba(4, 16, 86, 0.04);
+      font-family: 'Barlow', sans-serif;
     }
 
     /* MISSAO VISAO VALORES */
     .mv-grid {
       display: grid;
-      grid-template-columns: repeat(3,minmax(0,1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 18px;
     }
 
     .mv-card {
-      background: #fff;
-      border-radius: 16px;
+      background: var(--white);
+      border-radius: 12px;
       border: 1px solid #e5e7eb;
       padding: 14px 16px;
-      box-shadow: 0 10px 24px rgba(15,23,42,0.05);
+      box-shadow: 0 10px 24px rgba(4, 16, 86, 0.05);
       font-size: 13px;
-      color: var(--muted);
+      color: var(--text-muted);
+      font-family: 'Barlow', sans-serif;
     }
 
     .mv-card h3 {
+      font-family: 'Bicubik', sans-serif;
       font-size: 15px;
-      color: var(--dark);
+      color: var(--primary-dark);
       margin-bottom: 6px;
+      font-weight: 700;
     }
 
     .values-list {
@@ -585,58 +654,65 @@
 
     .values-list li {
       margin-bottom: 3px;
+      font-family: 'Barlow', sans-serif;
     }
 
     /* SOBRE */
     .about-grid {
       display: grid;
-      grid-template-columns: minmax(0,1.1fr) minmax(0,1fr);
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
       gap: 18px;
     }
 
     .about-block {
-      background: #fff;
-      border-radius: 16px;
+      background: var(--white);
+      border-radius: 12px;
       border: 1px solid #e5e7eb;
       padding: 16px 18px;
-      box-shadow: 0 10px 26px rgba(15,23,42,0.06);
+      box-shadow: 0 10px 26px rgba(4, 16, 86, 0.05);
       font-size: 13px;
-      color: var(--muted);
+      color: var(--text-muted);
+      font-family: 'Barlow', sans-serif;
     }
 
     .about-block h3 {
+      font-family: 'Bicubik', sans-serif;
       font-size: 15px;
-      color: var(--dark);
+      color: var(--primary-dark);
       margin-bottom: 6px;
+      font-weight: 700;
     }
 
     /* BLOG PREVIEW */
     .blog-grid {
       display: grid;
-      grid-template-columns: repeat(3,minmax(0,1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 18px;
     }
 
     .blog-card {
-      background: #fff;
-      border-radius: 16px;
+      background: var(--white);
+      border-radius: 12px;
       border: 1px solid #e5e7eb;
       padding: 14px 16px 12px;
-      box-shadow: 0 8px 22px rgba(15,23,42,0.06);
+      box-shadow: 0 8px 22px rgba(4, 16, 86, 0.05);
       font-size: 13px;
-      color: var(--muted);
-      transition: .18s;
+      color: var(--text-muted);
+      transition: all 0.18s;
+      font-family: 'Barlow', sans-serif;
     }
 
     .blog-card h3 {
+      font-family: 'Bicubik', sans-serif;
       font-size: 15px;
-      color: var(--dark);
+      color: var(--primary-dark);
       margin-bottom: 6px;
+      font-weight: 700;
     }
 
     .blog-card:hover {
       transform: translateY(-3px);
-      box-shadow: 0 16px 34px rgba(15,23,42,0.10);
+      box-shadow: 0 16px 34px rgba(4, 16, 86, 0.12);
     }
 
     /* REDES SOCIAIS */
@@ -646,38 +722,42 @@
       gap: 10px;
       margin-top: 10px;
       font-size: 13px;
+      font-family: 'Barlow', sans-serif;
     }
 
     .social-link {
       padding: 8px 12px;
-      border-radius: 999px;
-      background: #fff;
+      border-radius: 4px;
+      background: var(--white);
       border: 1px solid #e5e7eb;
-      box-shadow: 0 6px 16px rgba(15,23,42,0.06);
-      color: #374151;
+      box-shadow: 0 6px 16px rgba(4, 16, 86, 0.05);
+      color: var(--text-dark);
       font-weight: 500;
+      font-family: 'Barlow', sans-serif;
+      transition: all 0.2s;
     }
 
     .social-link:hover {
-      border-color: var(--primary);
-      color: var(--primary);
+      border-color: var(--primary-blue);
+      color: var(--primary-blue);
     }
 
     /* DEPOIMENTOS */
     .testimonials {
       display: grid;
-      grid-template-columns: repeat(3,minmax(0,1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 18px;
     }
 
     .test {
-      background: #fff;
-      border-radius: 16px;
+      background: var(--white);
+      border-radius: 12px;
       border: 1px solid #e5e7eb;
       padding: 14px 16px 12px;
-      box-shadow: 0 8px 22px rgba(15,23,42,0.06);
+      box-shadow: 0 8px 22px rgba(4, 16, 86, 0.05);
       font-size: 13px;
-      color: var(--muted);
+      color: var(--text-muted);
+      font-family: 'Barlow', sans-serif;
     }
 
     .stars {
@@ -687,31 +767,34 @@
     }
 
     .tname {
-      font-weight: 700;
-      color: var(--dark);
+      font-weight: 600;
+      color: var(--primary-dark);
       margin-bottom: 2px;
+      font-family: 'Barlow', sans-serif;
     }
 
     .trole {
       font-size: 11px;
-      color: #9ca3af;
+      color: var(--text-muted);
       margin-bottom: 4px;
+      font-family: 'Barlow', sans-serif;
     }
 
     /* CONTATO */
     .contact-grid {
       display: grid;
-      grid-template-columns: minmax(0,1.1fr) minmax(0,1fr);
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
       gap: 18px;
     }
 
     .form-wrap {
-      background: #fff;
-      border-radius: 16px;
+      background: var(--white);
+      border-radius: 12px;
       border: 1px solid #e5e7eb;
       padding: 18px 18px 14px;
-      box-shadow: 0 10px 26px rgba(15,23,42,0.06);
+      box-shadow: 0 10px 26px rgba(4, 16, 86, 0.05);
       font-size: 13px;
+      font-family: 'Barlow', sans-serif;
     }
 
     .form-row {
@@ -726,8 +809,9 @@
 
     .form-note {
       font-size: 11px;
-      color: var(--muted);
+      color: var(--text-muted);
       margin-top: 4px;
+      font-family: 'Barlow', sans-serif;
     }
 
     textarea {
@@ -740,10 +824,11 @@
     footer {
       margin-top: 30px;
       padding: 18px 0 22px;
-      background: #fff;
+      background: var(--white);
       border-top: 1px solid #e5e7eb;
       font-size: 12px;
-      color: #9ca3af;
+      color: var(--text-muted);
+      font-family: 'Barlow', sans-serif;
     }
 
     .footer-inner {
@@ -761,11 +846,13 @@
     }
 
     .footer-links a {
-      color: #6b7280;
+      color: var(--text-muted);
+      font-family: 'Barlow', sans-serif;
+      transition: color 0.2s;
     }
 
     .footer-links a:hover {
-      color: var(--primary);
+      color: var(--primary-blue);
     }
 
     /* WHATSAPP FLOAT */
@@ -779,31 +866,37 @@
     .whats-button {
       width: 54px;
       height: 54px;
-      border-radius: 999px;
+      border-radius: 12px;
       background: #25D366;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 18px 40px rgba(0,0,0,0.35);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.2);
       cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .whats-button:hover {
+      transform: scale(1.1);
     }
 
     .whats-button span {
       font-size: 28px;
-      color: #fff;
+      color: var(--white);
     }
 
     .whats-label {
       position: absolute;
       right: 64px;
       bottom: 12px;
-      background: #0f172a;
-      color: #f9fafb;
+      background: var(--primary-dark);
+      color: var(--white);
       padding: 8px 12px;
-      border-radius: 999px;
+      border-radius: 4px;
       font-size: 11px;
       white-space: nowrap;
-      box-shadow: 0 10px 26px rgba(15,23,42,0.5);
+      box-shadow: 0 10px 26px rgba(4, 16, 86, 0.4);
+      font-family: 'Barlow', sans-serif;
     }
 
     /* RESPONSIVO */
@@ -813,7 +906,7 @@
       .about-grid,
       .contact-grid,
       .highlight {
-        grid-template-columns: minmax(0,1fr);
+        grid-template-columns: minmax(0, 1fr);
       }
 
       .grid-3,
@@ -822,7 +915,7 @@
       .blog-grid,
       .video-grid,
       .testimonials {
-        grid-template-columns: minmax(0,1fr);
+        grid-template-columns: minmax(0, 1fr);
       }
 
       nav {
@@ -841,6 +934,14 @@
       .video-box iframe {
         height: 220px;
       }
+
+      .hero-title {
+        font-size: 28px;
+      }
+
+      .section-title {
+        font-size: 22px;
+      }
     }
   </style>
 </head>
@@ -849,13 +950,13 @@
 <header>
   <div class="container">
     <div class="header-inner">
-      <div class="logo">
+      <a href="#topo" class="logo-link">
         <img src="logo-inbotix.png" alt="Logo Inbotix" class="logo-img" />
         <div class="logo-text">
           <span>INBOTIX</span>
           <span>Inteligência comercial para o seu negócio</span>
         </div>
-      </div>
+      </a>
       <nav>
         <a href="#solucoes"><strong>Soluções</strong></a>
         <a href="#para-agencias"><strong>Para Agências</strong></a>
@@ -899,9 +1000,415 @@
   </div>
 </header>
 
-<!-- RESTO DO HTML SEGUE IGUAL -->
-<!-- ... (todo o conteúdo restante permanece idêntico) ... -->
+<section class="hero" id="topo">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-kicker">Máquina de vendas e atendimento</div>
+        <h1 class="hero-title">
+          A INBOTIX constrói sua <span>máquina de geração de reuniões</span>
+          com outbound, automação e dados.
+        </h1>
+        <p class="hero-sub">
+          SDR Digital, automação de LinkedIn, WhatsApp e e-mail, dados enriquecidos
+          e atendimento omnichannel – tudo para seu time comercial falar todos os
+          meses com os decisores certos, sem depender de indicação.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#testes-gratis" class="btn btn-primary">
+            Teste grátis nossas soluções
+          </a>
+          <a href="sdr-digital.html" class="btn btn-outline">
+            Ver SDR Digital em detalhes
+          </a>
+        </div>
+
+        <div class="hero-footnote">
+          Metodologia inspirada em Receita Previsível, adaptada para a realidade das
+          empresas e agências no Brasil e em outros mercados.
+        </div>
+      </div>
+
+      <div class="hero-form">
+        <h3>Quero saber mais sobre a INBOTIX.</h3>
+        <p>Preencha e nosso time entra em contato para entender sua necessidade.</p>
+        <form action="#" method="POST">
+          <div class="form-row">
+            <div>
+              <label for="nome-topo">Nome</label>
+              <input type="text" id="nome-topo" name="nome-topo" required />
+            </div>
+            <div>
+              <label for="empresa-topo">Empresa</label>
+              <input type="text" id="empresa-topo" name="empresa-topo" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div>
+              <label for="email-topo">E-mail</label>
+              <input type="email" id="email-topo" name="email-topo" required />
+            </div>
+            <div>
+              <label for="whats-topo">WhatsApp</label>
+              <input type="tel" id="whats-topo" name="whats-topo" placeholder="(11) 97276-9986" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div>
+              <label for="interesse-topo">O que você busca?</label>
+              <select id="interesse-topo" name="interesse-topo">
+                <option value="">Selecione</option>
+                <option value="sdr-digital">Montar SDR Digital</option>
+                <option value="plataformas">Conhecer as plataformas Inbotix</option>
+                <option value="parceria">Parceria / White Label</option>
+                <option value="agencia">Sou agência e quero levar para meus clientes</option>
+                <option value="outro">Outro assunto</option>
+              </select>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%; margin-top:6px;">
+            Enviar e falar com a INBOTIX
+          </button>
+          <div class="form-note">
+            Ao enviar, você autoriza a INBOTIX a entrar em contato por WhatsApp e e-mail
+            com informações sobre nossas soluções e serviços.
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="solucoes">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">PORTFÓLIO INBOTIX</div>
+      <h2 class="section-title">Soluções para montar sua máquina de vendas.</h2>
+      <p class="section-sub">
+        Você pode contratar um projeto completo de SDR Digital ou combinar nossas
+        plataformas de prospecção, atendimento e dados conforme a sua necessidade.
+      </p>
+    </div>
+
+    <div class="grid-3">
+      <div class="card">
+        <div class="card-tag">SDR Digital</div>
+        <h3>Método e operação de geração de reuniões.</h3>
+        <p>
+          Montamos a estrutura de SDR Digital com base em Receita Previsível:
+          ICP, cadências, dados, ferramentas e rotina de geração de oportunidades.
+        </p>
+        <a href="sdr-digital.html" class="card-link">Ver detalhes <span>→</span></a>
+      </div>
+
+      <div class="card">
+        <div class="card-tag">New Dinbot</div>
+        <h3>Prospecção automatizada com cadências.</h3>
+        <p>
+          Se conecte a decisores via LinkedIn e e-mail usando cadências inteligentes,
+          segmentação e integrações com dados e atendimento.
+        </p>
+        <a href="new-dinbot.html" class="card-link">Ver New Dinbot <span>→</span></a>
+      </div>
+
+      <div class="card">
+        <div class="card-tag">Dadus Cadastrais</div>
+        <h3>Dados completos para outbound.</h3>
+        <p>
+          Enriquecimento de empresas e contatos com CNPJ, CNAE, faturamento, telefones,
+          e-mails, redes sociais e muito mais.
+        </p>
+        <a href="dadus.html" class="card-link">Ver Dadus <span>→</span></a>
+      </div>
+
+      <div class="card">
+        <div class="card-tag">Atendimento</div>
+        <h3>New Atendi e Atendi Light.</h3>
+        <p>
+          Organize o atendimento via WhatsApp e outros canais, com histórico,
+          filas, tags e funis simples para não perder oportunidades.
+        </p>
+        <a href="new-atendi.html" class="card-link">Ver New Atendi <span>→</span></a>
+      </div>
+
+      <div class="card">
+        <div class="card-tag">Chatbots</div>
+        <h3>Dinbot – automação de atendimento.</h3>
+        <p>
+          Crie chatbots para WhatsApp, site e redes sociais para responder
+          dúvidas, qualificar leads e encaminhar conversas para humanos.
+        </p>
+        <a href="dinbot.html" class="card-link">Ver Dinbot <span>→</span></a>
+      </div>
+
+      <div class="card">
+        <div class="card-tag">Zoho Partner</div>
+        <h3>CRM Bigin integrado à sua operação.</h3>
+        <p>
+          Indicamos e ajudamos a usar o Bigin da Zoho – um CRM simples,
+          acessível e perfeito para organizar as oportunidades geradas.
+        </p>
+        <a href="https://store.zoho.com/ResellerCustomerSignUp.do?id=3c03906f4ba0277bcfda0fe73bbbf54f" target="_blank" rel="noopener noreferrer" class="card-link">
+          Testar Bigin <span>→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="videos">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">NA PRÁTICA</div>
+      <h2 class="section-title">Veja as soluções funcionando.</h2>
+      <p class="section-sub">
+        Uma visão rápida dos principais produtos da INBOTIX na prática, para você
+        entender como eles podem se encaixar no seu cenário.
+      </p>
+    </div>
+
+    <div class="video-grid">
+      <div class="video-card">
+        <h3>SDR Digital</h3>
+        <p>Como funciona a estrutura de SDR Digital da Inbotix.</p>
+        <div class="video-box">
+          <iframe src="https://www.youtube.com/embed/cWPfZcu7Pio" title="SDR Digital" allowfullscreen></iframe>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <h3>Dadus Cadastrais</h3>
+        <p>Dados e enriquecimento para turbinar seu outbound.</p>
+        <div class="video-box">
+          <iframe src="https://www.youtube.com/embed/LPiaaVSwhug" title="Dadus Cadastrais" allowfullscreen></iframe>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <h3>Dinbot</h3>
+        <p>Chatbots e automação de atendimento em diferentes canais.</p>
+        <div class="video-box">
+          <iframe src="https://www.youtube.com/embed/9mkPYEb03iQ" title="Dinbot" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="testes-gratis">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">TESTE GRÁTIS</div>
+      <h2 class="section-title">Teste grátis nossas soluções por 7 dias.</h2>
+      <p class="section-sub">
+        Valide na prática como nossas plataformas podem ajudar seu time. Sem
+        compromisso, com suporte para configurar os primeiros passos.
+      </p>
+    </div>
+
+    <div class="highlight">
+      <div>
+        <h3>Comece pequeno, veja resultado rápido.</h3>
+        <p>
+          Podemos liberar período de teste para você conhecer o fluxo e a
+          usabilidade das ferramentas antes de qualquer decisão.
+        </p>
+        <div class="highlight-list">
+          <span>New Atendi</span>
+          <span>New Dinbot</span>
+          <span>Atendi Light</span>
+          <span>Bigin (Zoho CRM)</span>
+        </div>
+      </div>
+      <div>
+        <a href="https://wa.me/5511972769986?text=Quero%20testar%20as%20solu%C3%A7%C3%B5es%20por%207%20dias" class="btn btn-outline" style="background:var(--white); color:var(--primary-blue); width:100%; justify-content:center;">
+          Falar no WhatsApp e solicitar teste
+        </a>
+        <p style="font-size:11px; margin-top:8px; opacity:.9; font-family: 'Barlow', sans-serif;">
+          Em muitos casos, conseguimos ativar o acesso no mesmo dia útil,
+          dependendo da solução e do seu cenário atual.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="para-agencias">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">PARA AGÊNCIAS E PARCEIROS</div>
+      <h2 class="section-title">Ajude seus clientes a vender mais com a sua marca.</h2>
+      <p class="section-sub">
+        Se você é agência, consultoria ou empresa de tecnologia, pode usar a
+        INBOTIX como motor por trás da sua oferta de máquina de vendas, mantendo
+        a sua marca na frente do cliente.
+      </p>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <h3>Programa de Parceiros White Label.</h3>
+        <p>
+          Revenda soluções de SDR Digital, automação e dados com sua própria
+          marca, enquanto nós cuidamos de tecnologia, metodologia e suporte.
+        </p>
+        <a href="parceiros-whitelabel.html" class="card-link">Conhecer o programa <span>→</span></a>
+      </div>
+
+      <div class="card">
+        <h3>Por que faz sentido para agências?</h3>
+        <p>
+          Você aumenta o ticket médio, melhora retenção e passa a entregar uma
+          solução recorrente de crescimento, e não apenas mídia ou projetos pontuais.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">RESULTADOS REAIS</div>
+      <h2 class="section-title">Casos de sucesso conectados à máquina de vendas.</h2>
+    </div>
+
+    <div class="case-wrap">
+      <div class="case-main">
+        <div class="case-label">Case · Rocha & Queiroz Advogados</div>
+        <div class="case-title">Máquina de prospecção jurídica em operação.</div>
+        <div class="case-number">+ R$ 6.000.000,00</div>
+        <div class="case-text">
+          em negócios fechados a partir de uma estrutura de prospecção recorrente.
+        </div>
+      </div>
+
+      <div class="case-side">
+        <div class="card">
+          <h3>O que essa máquina de vendas tinha?</h3>
+          <ul style="padding-left:16px; margin-top:6px;">
+            <li>Definição clara de ICP e ofertas prioritárias.</li>
+            <li>Uso de dados para encontrar empresas com perfil ideal.</li>
+            <li>Cadências consistentes de contato.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="sobre">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">SOBRE A INBOTIX</div>
+      <h2 class="section-title">Quem somos e por que fazemos o que fazemos.</h2>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-block">
+        <h3>Sobre a INBOTIX</h3>
+        <p>
+          A INBOTIX nasceu com o propósito de ajudar empresas a estruturarem máquinas
+          de vendas sustentáveis, unindo tecnologia, dados e método.
+        </p>
+      </div>
+
+      <div class="about-block">
+        <h3>Sobre Guilherme Loureiro</h3>
+        <p>
+          Guilherme Loureiro é o fundador da INBOTIX e atua há anos na construção de
+          máquinas de vendas com foco em outbound, automação e dados.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="contato">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">FALE CONOSCO</div>
+      <h2 class="section-title">Vamos falar sobre a sua máquina de vendas?</h2>
+    </div>
+
+    <div class="contact-grid">
+      <div class="form-wrap">
+        <form action="#" method="POST">
+          <div class="form-row">
+            <div>
+              <label for="nome">Nome</label>
+              <input type="text" id="nome" name="nome" required />
+            </div>
+            <div>
+              <label for="empresa">Empresa</label>
+              <input type="text" id="empresa" name="empresa" required />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div>
+              <label for="email">E-mail</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+            <div>
+              <label for="whats">WhatsApp</label>
+              <input type="tel" id="whats" name="whats" placeholder="(11) 97276-9986" required />
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width:100%; margin-top:6px;">
+            Enviar mensagem
+          </button>
+
+          <div class="form-note">
+            Ao enviar, você autoriza a INBOTIX a entrar em contato.
+          </div>
+        </form>
+      </div>
+
+      <div class="card">
+        <h3>Prefere falar no WhatsApp?</h3>
+        <p>
+          Clique abaixo para falar imediatamente com a INBOTIX.
+        </p>
+        <p style="margin-top:10px;">
+          <a href="https://wa.me/5511972769986?text=Quero%20falar%20com%20a%20INBOTIX%20sobre%20vendas%20e%20automa%C3%A7%C3%A3o" class="btn btn-outline">
+            Abrir conversa no WhatsApp
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        © <span id="year"></span> INBOTIX – Inteligência comercial para o seu negócio.
+      </div>
+      <div class="footer-links">
+        <a href="#solucoes">Soluções</a>
+        <a href="#para-agencias">Para Agências</a>
+        <a href="#sobre">Sobre</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/5511972769986" class="whats-float" target="_blank" rel="noopener noreferrer">
+  <div class="whats-button">
+    <span>💬</span>
+  </div>
+  <div class="whats-label">
+    Falar com a INBOTIX no WhatsApp
+  </div>
+</a>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
 
 </body>
 </html>
-
