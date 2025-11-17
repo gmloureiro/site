@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>New Atendi – Omnichannel e Atendimento Inbotix</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="New Atendi – Plataforma omnichannel para centralizar WhatsApp, Instagram, Facebook e outros canais em um único lugar. Perfeito para atendimento, pré-vendas e SDR Digital."
+  />
+  <link rel="icon" type="image/png" href="icon-inbotix.png" />
+
+  <style>
+    :root {
+      --primary: #0f6fff;
+      --primary-strong: #0050c8;
+      --bg: #f5f7fb;
+      --dark: #0f172a;
+      --text: #1f2933;
+      --muted: #6b7280;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* HEADER */
+
+    header {
+      background: #ffffff;
+      border-bottom: 1px solid #e5e7eb;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 0;
+    }
+
+    nav a {
+      margin-right: 22px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #374151;
+    }
+
+    nav a:last-child {
+      margin-right: 0;
+    }
+
+    nav a:hover {
+      color: var(--primary);
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 11px 20px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 14px;
+      border: none;
+      cursor: pointer;
+      transition: 0.18s ease-out;
+      text-align: center;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-strong));
+      color: #ffffff;
+      box-shadow: 0 10px 25px rgba(15, 111, 255, 0.25);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 35px rgba(15, 111, 255, 0.3);
+    }
+
+    .btn-outline {
+      background: #ffffff;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+    }
+
+    .btn-outline:hover {
+      background: var(--primary);
+      color: #ffffff;
+    }
+
+    /* HERO */
+
+    .hero {
+      padding: 48px 0 42px;
+      background: linear-gradient(to bottom, #e6f0ff, #f9fafb);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 32px;
+      align-items: center;
+    }
+
+    .hero-tag {
+      font-size: 12px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #6b7280;
+      margin-bottom: 8px;
+    }
+
+    .hero-title {
+      font-size: 36px;
+      color: var(--dark);
+      letter-spacing: -0.03em;
+      margin-bottom: 12px;
+    }
+
+    .hero-title span {
+      color: var(--primary);
+    }
+
+    .hero-sub {
+      font-size: 16px;
+      color: var(--muted);
+      max-width: 560px;
+      line-height: 1.5;
+      margin-bottom: 18px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .hero-note {
+      font-size: 13px;
+      color: #4b5563;
+    }
+
+    .hero-card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 20px 20px 18px;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 12px 32px rgba(15, 23, 42, 0.08);
+    }
+
+    .hero-card-title {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: var(--dark);
+    }
+
+    .hero-card-text {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .hero-card-list {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .hero-card-list li {
+      margin-left: 18px;
+      margin-bottom: 4px;
+    }
+
+    /* SECTION GENERIC */
+
+    .section {
+      padding: 40px 0;
+    }
+
+    .section-header {
+      margin-bottom: 18px;
+    }
+
+    .section-eyebrow {
+      font-size: 12px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #9ca3af;
+      margin-bottom: 4px;
+    }
+
+    .section-title {
+      font-size: 26px;
+      color: var(--dark);
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+
+    .section-sub {
+      font-size: 14px;
+      color: var(--muted);
+      max-width: 640px;
+    }
+
+    /* BENEFÍCIOS */
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .benefit-card {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 16px 16px 14px;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 8px 22px rgba(15, 23, 42, 0.06);
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .benefit-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 6px;
+    }
+
+    /* VÍDEO */
+
+    .video-wrapper {
+      margin-top: 18px;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 12px 32px rgba(15, 23, 42, 0.16);
+    }
+
+    .video-wrapper iframe {
+      width: 100%;
+      height: 360px;
+      border: 0;
+      display: block;
+    }
+
+    /* PARA QUEM É */
+
+    .two-col {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 20px;
+      margin-top: 16px;
+    }
+
+    .box {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 16px 16px 14px;
+      border: 1px solid #e5e7eb;
+      font-size: 14px;
+      color: var(--muted);
+      box-shadow: 0 10px 26px rgba(15, 23, 42, 0.06);
+    }
+
+    .box h3 {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: var(--dark);
+    }
+
+    .box ul {
+      margin-top: 6px;
+      font-size: 13px;
+    }
+
+    .box ul li {
+      margin-left: 18px;
+      margin-bottom: 4px;
+    }
+
+    /* DEPOIMENTOS */
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .testimonial-card {
+      background: #ffffff;
+      border-radius: 16px;
+      border: 1px solid #e5e7eb;
+      padding: 16px 16px 14px;
+      box-shadow: 0 8px 22px rgba(15, 23, 42, 0.06);
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .testimonial-name {
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 4px;
+    }
+
+    .testimonial-role {
+      font-size: 12px;
+      color: #9ca3af;
+      margin-bottom: 6px;
+    }
+
+    .testimonial-stars {
+      color: #f59e0b;
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+
+    /* CTA FINAL */
+
+    .cta-wrap {
+      margin-top: 18px;
+      border-radius: 20px;
+      padding: 24px 20px;
+      background: linear-gradient(120deg, #0f6fff, #22c1c3);
+      color: #ffffff;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      box-shadow: 0 18px 45px rgba(15, 111, 255, 0.42);
+    }
+
+    .cta-text-main {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .cta-text-sub {
+      font-size: 13px;
+      opacity: 0.95;
+    }
+
+    /* FORMULÁRIO RÁPIDO */
+
+    .form-card {
+      margin-top: 18px;
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 18px 18px 16px;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 10px 28px rgba(15, 23, 42, 0.06);
+      max-width: 520px;
+    }
+
+    .form-grid {
+      display: grid;
+      gap: 10px;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 10px;
+    }
+
+    .form-row > div {
+      flex: 1;
+    }
+
+    label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: #4b5563;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      border-radius: 10px;
+      border: 1px solid #d1d5db;
+      padding: 8px 10px;
+      font-size: 13px;
+      outline: none;
+      transition: 0.16s ease-out;
+      background: #f9fafb;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 1px rgba(15, 111, 255, 0.28);
+      background: #ffffff;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 70px;
+      max-height: 140px;
+    }
+
+    .form-note {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+
+    /* FOOTER */
+
+    footer {
+      padding: 18px 0 22px;
+      text-align: center;
+      font-size: 12px;
+      color: #9ca3af;
+      border-top: 1px solid #e5e7eb;
+      background: #ffffff;
+      margin-top: 24px;
+    }
+
+    /* RESPONSIVO */
+
+    @media (max-width: 900px) {
+      .hero-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .benefits-grid,
+      .testimonials-grid,
+      .two-col {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .video-wrapper iframe {
+        height: 260px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header>
+    <div class="container">
+      <div class="header-inner">
+        <div style="font-weight:800; letter-spacing:0.1em; font-size:14px;">
+          INBOTIX
+        </div>
+        <nav>
+          <a href="index.html"><strong>Home</strong></a>
+          <a href="new-dinbot.html"><strong>New Dinbot</strong></a>
+          <a href="#"><strong>Contato</strong></a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <div class="hero-tag">Produto INBOTIX</div>
+          <h1 class="hero-title">
+            New Atendi – <span>Omnichannel de verdade</span> para o seu atendimento.
+          </h1>
+          <p class="hero-sub">
+            Centralize WhatsApp, Instagram, Facebook e outros canais em um único painel.
+            Organize filas, distribua conversas entre atendentes, acompanhe métricas
+            e transforme cada contato em oportunidade real de venda.
+          </p>
+
+          <div class="hero-actions">
+            <a
+              href="https://newatendi.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-primary"
+            >
+              Testar New Atendi por 7 dias
+            </a>
+            <a href="index.html" class="btn btn-outline">
+              Voltar ao site principal
+            </a>
+          </div>
+
+          <div class="hero-note">
+            Ideal para times de atendimento, pré-vendas, SDRs e agências que precisam
+            ter controle total das conversas em todos os canais.
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <div class="hero-card-title">O que o New Atendi resolve na prática?</div>
+          <p class="hero-card-text">
+            Perfeito para empresas e agências que querem parar de perder leads no
+            WhatsApp e nas redes sociais.
+          </p>
+          <ul class="hero-card-list">
+            <li>Centralização de todos os canais em uma única tela.</li>
+            <li>Distribuição inteligente das conversas por atendente/filas.</li>
+            <li>Histórico completo do cliente, sem perder contexto.</li>
+            <li>Indicadores de tempo de resposta e quantidade de atendimentos.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFÍCIOS PRINCIPAIS -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-eyebrow">Benefícios principais</div>
+        <h2 class="section-title">Por que usar o New Atendi na sua operação?</h2>
+        <p class="section-sub">
+          O New Atendi foi desenhado para ser o “hub” de atendimento e pré-venda:
+          centraliza conversas, organiza filas e entrega visibilidade para gestores.
+        </p>
+      </div>
+
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <div class="benefit-title">🎯 Todos os canais em um só lugar</div>
+          <p>
+            Unifique WhatsApp, Instagram, Facebook e outros canais em um painel único.
+            Acabe com o caos de chips, celulares e contas separadas.
+          </p>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-title">👥 Filas e atendentes organizados</div>
+          <p>
+            Crie filas por setor (comercial, suporte, financeiro) e direcione cada
+            conversa para o atendente certo, sem perder nenhum contato.
+          </p>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-title">📊 Indicadores em tempo real</div>
+          <p>
+            Acompanhe volume de atendimentos, tempo médio de resposta,
+            conversas em aberto e produtividade da equipe.
+          </p>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-title">⚙️ Integração com SDR Digital</div>
+          <p>
+            Combine New Atendi com New Dinbot e Dadus para ter a jornada completa:
+            do lead gerado até o atendimento e agendamento de reuniões.
+          </p>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-title">📁 Histórico centralizado</div>
+          <p>
+            Visualize todo o histórico de conversas com o cliente,
+            independente de quem começou o atendimento ou por qual canal.
+          </p>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-title">🧩 Ideal para agências</div>
+          <p>
+            Sua agência pode oferecer atendimento omnichannel como serviço,
+            agregando valor ao cliente e gerando receita recorrente.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VÍDEO DEMO -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-eyebrow">Veja na prática</div>
+        <h2 class="section-title">Assista ao New Atendi em funcionamento.</h2>
+        <p class="section-sub">
+          Entenda como a interface funciona, como organizar filas, cadastrar usuários
+          e acompanhar os atendimentos em tempo real.
+        </p>
+      </div>
+
+      <div class="video-wrapper">
+        <!-- Usando o vídeo principal do Atendi que você já passou -->
+        <iframe
+          src="https://www.youtube.com/embed/yk13tTLBxRE"
+          title="New Atendi – Omnichannel de Atendimento"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARA QUEM É / COMO USAR -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-eyebrow">Quem usa</div>
+        <h2 class="section-title">Para quem o New Atendi é perfeito?</h2>
+        <p class="section-sub">
+          Se sua empresa ou agência recebe muitos contatos por WhatsApp e redes sociais
+          e sente que está perdendo oportunidades, o New Atendi é para você.
+        </p>
+      </div>
+
+      <div class="two-col">
+        <div class="box">
+          <h3>Times internos de atendimento e vendas</h3>
+          <p>
+            Empresas que precisam ter visibilidade de tudo que acontece no WhatsApp
+            e redes, com controle sobre quem está respondendo e qual o status de cada cliente.
+          </p>
+          <ul>
+            <li>Comerciais B2B e B2C.</li>
+            <li>Centrais de atendimento e suporte.</li>
+            <li>Equipes de pré-vendas e SDRs.</li>
+          </ul>
+        </div>
+
+        <div class="box">
+          <h3>Agências de marketing e performance</h3>
+          <p>
+            Agências que querem oferecer atendimento omnichannel como parte do pacote,
+            conectando mídia, landing pages, SDR Digital e atendimento em um só fluxo.
+          </p>
+          <ul>
+            <li>Reforça o valor do tráfego pago.</li>
+            <li>Aumenta conversão de leads em oportunidades.</li>
+            <li>Cria um serviço recorrente de alto valor.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEPOIMENTOS -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-eyebrow">Depoimentos</div>
+        <h2 class="section-title">O que clientes falam do New Atendi.</h2>
+        <p class="section-sub">
+          Alguns relatos de empresas que organizaram o atendimento e pararam de perder
+          leads no meio do caminho.
+        </p>
+      </div>
+
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <div class="testimonial-name">Ana Paula</div>
+          <div class="testimonial-role">Coordenadora de Atendimento · E-commerce</div>
+          <p>
+            “Conseguimos organizar o fluxo de WhatsApp e Instagram em uma única tela.
+            Hoje eu sei exatamente quantos atendimentos cada pessoa fez e quanto tempo
+            estamos levando para responder.”
+          </p>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <div class="testimonial-name">Marcos Silva</div>
+          <div class="testimonial-role">Sócio · Agência de Marketing</div>
+          <p>
+            “O New Atendi virou um dos nossos serviços recorrentes.
+            Entregamos não só mídia, mas também estrutura de atendimento
+            omnichannel para nossos clientes.”
+          </p>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <div class="testimonial-name">Fernanda Costa</div>
+          <div class="testimonial-role">Gestora Comercial · Serviços B2B</div>
+          <p>
+            “Parou aquela bagunça de atender pelo celular pessoal.
+            Tudo passa pelo New Atendi, com fila, histórico e registro
+            do que foi combinado com o cliente.”
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORM + CTA FINAL -->
+  <section class="section">
+    <div class="container">
+      <div class="cta-wrap">
+        <div>
+          <div class="cta-text-main">
+            Quer ver o New Atendi rodando na sua empresa ou agência?
+          </div>
+          <div class="cta-text-sub">
+            Podemos configurar um ambiente de teste de 7 dias para o seu time
+            validar na prática antes de decidir.
+          </div>
+        </div>
+        <div>
+          <a
+            href="https://wa.me/5511972769986?text=Quero%20testar%20o%20New%20Atendi%20por%207%20dias"
+            class="btn btn-outline"
+            style="background:#ffffff; color:#0f6fff;"
+          >
+            Falar no WhatsApp sobre o New Atendi
+          </a>
+        </div>
+      </div>
+
+      <div class="form-card">
+        <div class="section-header" style="margin-bottom:10px;">
+          <div class="section-eyebrow" style="color:#9ca3af;">Formulário rápido</div>
+          <h3 class="section-title" style="font-size:18px;">
+            Peça seu acesso de teste ao New Atendi.
+          </h3>
+          <p class="section-sub" style="font-size:13px;">
+            Preencha abaixo e nosso time entra em contato para liberar o ambiente ideal
+            para a sua operação.
+          </p>
+        </div>
+
+        <form class="form-grid" action="#" method="POST">
+          <div class="form-row">
+            <div>
+              <label for="nome">Nome</label>
+              <input type="text" id="nome" name="nome" required />
+            </div>
+            <div>
+              <label for="empresa">Empresa</label>
+              <input type="text" id="empresa" name="empresa" required />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div>
+              <label for="email">E-mail</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+            <div>
+              <label for="whats">WhatsApp</label>
+              <input
+                type="tel"
+                id="whats"
+                name="whats"
+                placeholder="(11) 97276-9986"
+                required
+              />
+            </div>
+          </div>
+
+          <div>
+            <label for="canais">Quais canais você quer integrar?</label>
+            <select id="canais" name="canais">
+              <option value="">Selecione uma opção</option>
+              <option value="whatsapp">WhatsApp</option>
+              <option value="whatsapp-instagram">WhatsApp + Instagram</option>
+              <option value="whatsapp-instagram-facebook">WhatsApp + Instagram + Facebook</option>
+              <option value="todos">Todos os disponíveis</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="contexto">Contexto rápido</label>
+            <textarea
+              id="contexto"
+              name="contexto"
+              placeholder="Ex.: time de 5 atendentes, atendemos via WhatsApp e Instagram, hoje usamos celulares separados..."
+            ></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="margin-top:4px;">
+            Enviar pedido de teste
+          </button>
+
+          <div class="form-note">
+            Ao enviar, você autoriza a Inbotix a entrar em contato por WhatsApp e e-mail
+            sobre o New Atendi e outras soluções relacionadas à sua necessidade.
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    © <span id="year"></span> Inbotix. New Atendi – Omnichannel e Atendimento.
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
