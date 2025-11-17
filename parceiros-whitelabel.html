@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Programa de Parceiros White Label | Inbotix</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="Programa de Parceiros White Label Inbotix – Agências, consultorias e software houses que desejam revender soluções de SDR Digital, automação e dados com a própria marca."
+  />
+  <link rel="icon" type="image/png" href="icon-inbotix.png" />
+
+  <style>
+    :root {
+      --primary: #0f6fff;
+      --primary-strong: #0050c8;
+      --bg: #f5f7fb;
+      --dark: #0f172a;
+      --text: #1f2933;
+      --muted: #6b7280;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      font-family: system-ui, -apple-system, sans-serif;
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 0 20px;
+    }
+
+    /* HEADER */
+    header {
+      background: #fff;
+      padding: 16px 0;
+      border-bottom: 1px solid #e5e7eb;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo-text {
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      font-size: 14px;
+      color: var(--dark);
+    }
+    nav a {
+      margin-left: 16px;
+      font-weight: 700;
+      color: #374151;
+      font-size: 14px;
+    }
+    nav a:hover { color: var(--primary); }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 22px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 14px;
+      transition: .18s;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-strong));
+      color: #fff;
+      box-shadow: 0 10px 25px rgba(15,111,255,0.25);
+    }
+    .btn-primary:hover {
+      background: var(--primary-strong);
+      transform: translateY(-1px);
+      box-shadow: 0 15px 32px rgba(15,111,255,0.35);
+    }
+    .btn-outline {
+      border: 2px solid var(--primary);
+      color: var(--primary);
+      background: #fff;
+    }
+    .btn-outline:hover {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    /* HERO */
+    .hero {
+      padding: 56px 0 46px;
+      background: linear-gradient(to bottom, #e6f0ff, #f9fafb);
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0,1.25fr) minmax(0,1fr);
+      gap: 30px;
+      align-items: center;
+    }
+    .hero-tag {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #9ca3af;
+      margin-bottom: 6px;
+    }
+    .hero-title {
+      font-size: 34px;
+      color: var(--dark);
+      letter-spacing: -0.03em;
+      margin-bottom: 10px;
+    }
+    .hero-title span {
+      color: var(--primary);
+    }
+    .hero-sub {
+      font-size: 16px;
+      color: var(--muted);
+      max-width: 580px;
+      line-height: 1.5;
+      margin-bottom: 18px;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .hero-note {
+      font-size: 13px;
+      color: #4b5563;
+    }
+
+    .hero-card {
+      background: #fff;
+      border-radius: 18px;
+      padding: 18px 18px 14px;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 12px 32px rgba(15,23,42,0.12);
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .hero-card h3 {
+      font-size: 16px;
+      color: var(--dark);
+      margin-bottom: 6px;
+    }
+    .hero-card ul {
+      margin-top: 6px;
+      padding-left: 18px;
+    }
+    .hero-card li {
+      margin-bottom: 4px;
+    }
+
+    /* SECTIONS BASE */
+    .section {
+      padding: 42px 0;
+    }
+    .section-head {
+      margin-bottom: 16px;
+    }
+    .eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #9ca3af;
+      margin-bottom: 4px;
+    }
+    h2 {
+      font-size: 26px;
+      color: var(--dark);
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+    }
+    .sub {
+      color: var(--muted);
+      font-size: 14px;
+      max-width: 650px;
+    }
+
+    /* GRID CARDS */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3,minmax(0,1fr));
+      gap: 18px;
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2,minmax(0,1fr));
+      gap: 18px;
+    }
+    .card {
+      background: #fff;
+      border-radius: 16px;
+      border: 1px solid #e5e7eb;
+      padding: 14px 16px 12px;
+      box-shadow: 0 8px 22px rgba(15,23,42,0.06);
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .card h3 {
+      font-size: 15px;
+      color: var(--dark);
+      margin-bottom: 6px;
+    }
+
+    /* LISTA DE PRODUTOS */
+    .pill-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .pill {
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid #d1d5db;
+      background: #f9fafb;
+      font-size: 12px;
+      color: #4b5563;
+    }
+
+    /* DEPOIMENTOS */
+    .testimonials {
+      display: grid;
+      grid-template-columns: repeat(3,minmax(0,1fr));
+      gap: 18px;
+    }
+    .test {
+      background: #fff;
+      border-radius: 16px;
+      border: 1px solid #e5e7eb;
+      padding: 14px 16px 12px;
+      box-shadow: 0 8px 22px rgba(15,23,42,0.06);
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .stars {
+      color: #f59e0b;
+      font-size: 15px;
+      margin-bottom: 4px;
+    }
+    .tname {
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 2px;
+    }
+    .trole {
+      font-size: 11px;
+      color: #9ca3af;
+      margin-bottom: 4px;
+    }
+
+    /* PASSO A PASSO */
+    .step-badge {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      color: var(--primary);
+      margin-bottom: 4px;
+    }
+
+    /* FORM */
+    .form-wrap {
+      margin-top: 18px;
+      background: #fff;
+      border-radius: 18px;
+      border: 1px solid #e5e7eb;
+      padding: 18px 18px 14px;
+      box-shadow: 0 10px 28px rgba(15,23,42,0.08);
+      max-width: 720px;
+    }
+    .form-grid {
+      display: grid;
+      gap: 10px;
+    }
+    .form-row {
+      display: flex;
+      gap: 10px;
+    }
+    .form-row > div { flex: 1; }
+
+    label {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #4b5563;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 8px 10px;
+      font-size: 13px;
+      border-radius: 10px;
+      border: 1px solid #d1d5db;
+      background: #f9fafb;
+      outline: none;
+      transition: .16s;
+    }
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 1px rgba(15,111,255,0.22);
+      background: #fff;
+    }
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+      max-height: 160px;
+    }
+    .form-note {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    /* CTA FINAL */
+    .cta-bar {
+      margin-top: 22px;
+      border-radius: 20px;
+      padding: 22px 20px;
+      background: linear-gradient(120deg,#0f6fff,#22c1c3);
+      color: #fff;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: center;
+      box-shadow: 0 20px 45px rgba(15,111,255,0.45);
+    }
+    .cta-main {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .cta-sub {
+      font-size: 13px;
+      opacity: .95;
+    }
+
+    /* FOOTER */
+    footer {
+      margin-top: 30px;
+      padding: 18px 0 22px;
+      text-align: center;
+      font-size: 12px;
+      color: #9ca3af;
+      background: #fff;
+      border-top: 1px solid #e5e7eb;
+    }
+
+    /* RESPONSIVO */
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: minmax(0,1fr); }
+      .grid-3, .grid-2, .testimonials { grid-template-columns: minmax(0,1fr); }
+      .header-inner { flex-direction: column; align-items: flex-start; }
+      nav a { margin-left: 0; margin-right: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="header-inner">
+      <div class="logo-text">INBOTIX</div>
+      <nav>
+        <a href="index.html"><strong>Home</strong></a>
+        <a href="sdr-digital.html"><strong>SDR Digital</strong></a>
+        <a href="new-dinbot.html"><strong>New Dinbot</strong></a>
+        <a href="new-atendi.html"><strong>New Atendi</strong></a>
+        <a href="atendi-light.html"><strong>Atendi Light</strong></a>
+        <a href="dadus.html"><strong>Dadus</strong></a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-tag">Programa de Parceria</div>
+        <h1 class="hero-title">
+          Programa de Parceiros <span>White Label</span> Inbotix.
+        </h1>
+        <p class="hero-sub">
+          Para agências, consultorias e software houses que querem revender
+          soluções de SDR Digital, automação de vendas e atendimento com
+          sua própria marca – com metodologia, tecnologia e operação por trás.
+        </p>
+
+        <div class="hero-actions">
+          <a
+            href="#form-parceiro"
+            class="btn btn-primary"
+          >
+            Quero ser parceiro white label
+          </a>
+          <a
+            href="https://wa.me/5511972769986?text=Quero%20entender%20melhor%20o%20programa%20de%20parceiros%20white%20label"
+            class="btn btn-outline"
+          >
+            Falar no WhatsApp
+          </a>
+        </div>
+
+        <div class="hero-note">
+          Modelo ideal para quem já tem carteira de clientes e quer aumentar
+          o ticket médio oferecendo soluções completas de outbound, atendimento
+          e dados, sem precisar construir tudo do zero.
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <h3>Como funciona o modelo white label?</h3>
+        <ul>
+          <li>Você vende com a <strong>sua marca</strong> (marca branca).</li>
+          <li>A Inbotix fornece <strong>plataforma, metodologia e suporte técnico</strong>.</li>
+          <li>Você define o posicionamento, atendimento e relacionamento com seus clientes.</li>
+          <li>Receita recorrente: cobrança mensal pelos serviços e licenças.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">O que você pode oferecer</div>
+      <h2>Portfólio white label que você pode revender.</h2>
+      <p class="sub">
+        Você pode montar sua “máquina de crescimento” usando as soluções da
+        Inbotix como motor, mas com a sua própria marca, frente comercial e
+        relacionamento com o cliente final.
+      </p>
+    </div>
+
+    <div class="grid-3">
+      <div class="card">
+        <h3>SDR Digital como serviço</h3>
+        <p>
+          Venda projetos de geração de reuniões e prospecção outbound contínua,
+          usando nossa metodologia baseada em Receita Previsível.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Automação e dados</h3>
+        <p>
+          Combine ferramentas como New Dinbot, Dinbot, Dadus Cadastrais,
+          New Atendi e Atendi Light em pacotes sob medida para seus clientes.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Máquina completa de vendas</h3>
+        <p>
+          Posicione-se como parceiro estratégico de crescimento, unindo mídia,
+          SDR Digital, atendimento e dados em uma solução única.
+        </p>
+      </div>
+    </div>
+
+    <div class="pill-wrap">
+      <span class="pill">New Dinbot</span>
+      <span class="pill">Dinbot (chatbots)</span>
+      <span class="pill">New Atendi</span>
+      <span class="pill">Atendi Light</span>
+      <span class="pill">Dadus Cadastrais</span>
+      <span class="pill">SDR Digital</span>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Para quem é</div>
+      <h2>Quem pode se tornar parceiro white label?</h2>
+      <p class="sub">
+        O programa foi pensado para quem já tem base de clientes e quer escalar
+        soluções recorrentes sem precisar investir anos em desenvolvimento de produto.
+      </p>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <h3>Agências, consultorias e growth</h3>
+        <p>
+          Agências de marketing, performance, vendas, growth, consultorias de
+          negócios e especialistas em geração de demanda que querem ter um produto
+          próprio de máquina de vendas e atendimento.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Software houses e integradores</h3>
+        <p>
+          Empresas de tecnologia, integradores, revendas de CRM e parceiros que
+          desejam agregar automação de prospecção, atendimento omni e dados
+          sem construir tudo do zero.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Diferenciais</div>
+      <h2>Por que o modelo white label da Inbotix é diferente?</h2>
+      <p class="sub">
+        Não é apenas revenda de licença. É uma estrutura pensada para você
+        crescer junto, com suporte, visão de negócio e foco em retenção.
+      </p>
+    </div>
+
+    <div class="grid-3">
+      <div class="card">
+        <h3>Metodologia + tecnologia</h3>
+        <p>
+          Combinação de Receita Previsível, experiência prática com SDR Digital
+          e um ecossistema próprio de plataformas.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Recorrência real</h3>
+        <p>
+          Estrutura para você construir uma base de receita recorrente com
+          projetos que acompanham o cliente mês a mês.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Suporte estratégico</h3>
+        <p>
+          Acompanhamento para ajudar você a estruturar ofertas, onboardings e
+          entregas que façam sentido para sua realidade e a dos seus clientes.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Depoimentos</div>
+      <h2>O que parceiros comentam sobre a parceria.</h2>
+      <p class="sub">
+        Alguns relatos de parceiros que passaram a usar a Inbotix como motor
+        técnico e metodológico por trás das soluções que vendem.
+      </p>
+    </div>
+
+    <div class="testimonials">
+      <div class="test">
+        <div class="stars">★★★★★</div>
+        <div class="tname">André</div>
+        <div class="trole">Sócio · Agência de Performance</div>
+        <p>
+          “Hoje vendemos máquina de vendas com a nossa marca, mas com a
+          tranquilidade de ter a Inbotix na retaguarda.”
+        </p>
+      </div>
+
+      <div class="test">
+        <div class="stars">★★★★★</div>
+        <div class="tname">Renata</div>
+        <div class="trole">Consultora · Vendas B2B</div>
+        <p>
+          “O modelo white label aumentou meu ticket e meu LTV com os mesmos clientes.”
+        </p>
+      </div>
+
+      <div class="test">
+        <div class="stars">★★★★★</div>
+        <div class="tname">Carlos</div>
+        <div class="trole">CEO · Software House</div>
+        <p>
+          “Integramos as soluções da Inbotix aos nossos projetos e passamos a
+          entregar muito mais valor.”
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="form-parceiro">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Próximo passo</div>
+      <h2>Cadastre-se para conversar sobre a parceria.</h2>
+      <p class="sub">
+        Preencha o formulário abaixo com algumas informações sobre seu negócio.
+        Vamos analisar o fit e entrar em contato para apresentar o modelo em detalhes.
+      </p>
+    </div>
+
+    <div class="form-wrap">
+      <form class="form-grid" action="#" method="POST">
+        <div class="form-row">
+          <div>
+            <label for="nome">Seu nome</label>
+            <input type="text" id="nome" name="nome" required />
+          </div>
+          <div>
+            <label for="empresa">Nome da empresa / projeto</label>
+            <input type="text" id="empresa" name="empresa" required />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div>
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+          <div>
+            <label for="whats">WhatsApp</label>
+            <input type="tel" id="whats" name="whats" placeholder="(11) 97276-9986" required />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div>
+            <label for="tipo">Tipo de negócio</label>
+            <select id="tipo" name="tipo">
+              <option value="">Selecione</option>
+              <option value="agencia">Agência de marketing / performance</option>
+              <option value="consultoria">Consultoria de vendas / negócios</option>
+              <option value="software">Software house / integrador</option>
+              <option value="freelancer">Profissional independente</option>
+              <option value="outro">Outro</option>
+            </select>
+          </div>
+          <div>
+            <label for="clientes">Clientes ativos hoje</label>
+            <select id="clientes" name="clientes">
+              <option value="">Selecione</option>
+              <option value="ate-10">Até 10</option>
+              <option value="11-30">De 11 a 30</option>
+              <option value="31-100">De 31 a 100</option>
+              <option value="100+">Mais de 100</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div>
+            <label for="regiao">Cidade / Estado / País</label>
+            <input type="text" id="regiao" name="regiao" placeholder="Ex.: São Paulo/SP – Brasil" />
+          </div>
+          <div>
+            <label for="foco">Quais soluções quer priorizar?</label>
+            <select id="foco" name="foco">
+              <option value="">Selecione</option>
+              <option value="sdr">SDR Digital</option>
+              <option value="automacao-atendimento">Atendimento e chatbots</option>
+              <option value="dados">Dados e enriquecimento (Dadus)</option>
+              <option value="combo">Combinação de todas</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label for="contexto">Conte um pouco do seu contexto</label>
+          <textarea
+            id="contexto"
+            name="contexto"
+            placeholder="Ex.: Já vendemos mídia para 30 clientes e queremos oferecer uma máquina de vendas completa em modelo recorrente..."
+          ></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="margin-top:4px;">
+          Enviar e falar sobre parceria
+        </button>
+
+        <div class="form-note">
+          Ao enviar, você autoriza a Inbotix a entrar em contato por WhatsApp e e-mail
+          com informações sobre o programa de parceiros white label.
+        </div>
+      </form>
+    </div>
+
+    <div class="cta-bar">
+      <div>
+        <div class="cta-main">Prefere falar direto com o Guilherme e o time?</div>
+        <div class="cta-sub">
+          Clique no botão ao lado para conversar via WhatsApp sobre o modelo de
+          parceria, exemplos de oferta e estrutura de operação.
+        </div>
+      </div>
+      <div>
+        <a
+          href="https://wa.me/5511972769986?text=Quero%20ser%20parceiro%20white%20label%20Inbotix"
+          class="btn btn-outline"
+          style="background:#fff; color:#0f6fff;"
+        >
+          Falar no WhatsApp agora
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © <span id="year"></span> Inbotix – Programa de Parceiros White Label.
+</footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
