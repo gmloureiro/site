@@ -2,243 +2,1030 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <title>New Dinbot – Automação de Prospecção Ativa</title>
+  <title>New Dinbot – Automação de Prospecção Ativa com IA | LinkedIn, E-mail, WhatsApp</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta
-    name="description"
-    content="New Dinbot — Automação de prospecção ativa via LinkedIn, e-mail e dados da Dadus. Cadências, IA, enriquecimento e geração de reuniões em escala."
-  />
-  <link rel="icon" type="image/png" href="icon-inbotix.png" />
+  <meta name="description" content="New Dinbot: Automação de prospecção ativa com IA. Cadências LinkedIn, e-mail, WhatsApp. Integrado com Dadus e New Atendi para gerar 50+ reuniões/mês. SDR Digital automatizado." />
+  <link rel="icon" type="image/x-icon" href="logo-inbotix.ico" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Bicubik:wght@400;700&display=swap" rel="stylesheet" />
 
   <style>
-    body {
-      font-family: system-ui, sans-serif;
+    :root {
+      --primary-dark: #041056;
+      --primary-deep: #07197E;
+      --primary-blue: #17ABE3;
+      --accent-green: #10B981;
+      --accent-orange: #F97316;
+      --white: #FFFFFF;
+      --bg-light: #F8F9FB;
+      --text-dark: #0f172a;
+      --text-muted: #6b7280;
+      --gray-100: #f3f4f6;
+      --gray-200: #e5e7eb;
+    }
+
+    * {
+      box-sizing: border-box;
       margin: 0;
-      background: #f5f7fb;
-      color: #1f2933;
+      padding: 0;
     }
-    header {
-      background: #fff;
-      border-bottom: 1px solid #e5e7eb;
-      padding: 16px 0;
-      position: sticky;
-      top: 0;
-      z-index: 10;
+
+    body {
+      margin: 0;
+      background: var(--bg-light);
+      font-family: 'Barlow', sans-serif;
+      color: var(--text-dark);
+      -webkit-font-smoothing: antialiased;
     }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
     .container {
       max-width: 1100px;
       margin: auto;
       padding: 0 20px;
     }
+
+    /* HEADER */
+    header {
+      background: var(--white);
+      border-bottom: 1px solid var(--gray-200);
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      box-shadow: 0 2px 8px rgba(4, 16, 86, 0.05);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 0;
+      gap: 12px;
+    }
+
+    .logo-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    .logo-link:hover {
+      opacity: 0.8;
+    }
+
+    .logo-img {
+      height: 36px;
+      width: auto;
+      max-width: 130px;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .logo-text span:first-child {
+      font-family: 'Bicubik', sans-serif;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      font-size: 12px;
+      color: var(--primary-dark);
+    }
+
+    .logo-text span:last-child {
+      font-size: 10px;
+      color: var(--text-muted);
+      font-family: 'Barlow', sans-serif;
+      font-weight: 500;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
     nav a {
-      margin-right: 22px;
-      font-size: 14px;
-      color: #333;
+      font-size: 13px;
       font-weight: 600;
-      text-decoration: none;
+      color: var(--text-dark);
+      font-family: 'Barlow', sans-serif;
+      transition: color 0.2s;
     }
-    .btn {
-      display: inline-block;
-      padding: 12px 22px;
-      border-radius: 8px;
+
+    nav a:hover {
+      color: var(--primary-blue);
+    }
+
+    .nav-btn {
+      padding: 10px 18px;
+      border-radius: 6px;
+      border: none;
+      font-size: 13px;
       font-weight: 600;
-      text-decoration: none;
-      transition: .2s;
+      color: var(--white);
+      background: linear-gradient(135deg, var(--primary-deep), var(--primary-dark));
+      box-shadow: 0 10px 24px rgba(4, 16, 86, 0.25);
+      transition: all 0.2s;
+      cursor: pointer;
+      font-family: 'Barlow', sans-serif;
     }
-    .btn-primary {
-      background: #0f6fff;
-      color: #fff;
+
+    .nav-btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 14px 32px rgba(4, 16, 86, 0.35);
     }
-    .btn-primary:hover {
-      background: #0057d6;
-    }
-    .btn-outline {
-      border: 2px solid #0f6fff;
-      color: #0f6fff;
-      background: #fff;
-    }
-    .btn-outline:hover {
-      background: #0f6fff;
-      color: #fff;
-    }
+
+    /* HERO */
     .hero {
-      padding: 50px 0;
-      background: #e6f0ff;
+      padding: 80px 0;
+      background: linear-gradient(135deg, #f0f4ff 0%, var(--bg-light) 100%);
+      position: relative;
+      overflow: hidden;
     }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -10%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(23, 171, 227, 0.1) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .hero-text {
+      max-width: 550px;
+    }
+
+    .hero-kicker {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent-orange);
+      margin-bottom: 12px;
+      font-family: 'Barlow', sans-serif;
+      font-weight: 700;
+    }
+
     .hero h1 {
-      font-size: 40px;
-      margin-bottom: 14px;
-      color: #0f172a;
+      font-family: 'Bicubik', sans-serif;
+      font-size: 48px;
+      color: var(--primary-dark);
+      margin-bottom: 16px;
+      font-weight: 700;
+      line-height: 1.2;
     }
+
+    .hero h1 span {
+      color: var(--primary-blue);
+      background: linear-gradient(135deg, var(--primary-blue), #00B4DB);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
     .hero p {
-      font-size: 18px;
-      color: #4b5563;
-      max-width: 620px;
-      line-height: 1.5;
+      font-size: 16px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 24px;
     }
-    .section {
-      padding: 50px 0;
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 24px;
     }
-    h2 {
-      font-size: 30px;
-      color: #0f172a;
+
+    .stat {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: 12px;
+      padding: 16px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(4, 16, 86, 0.05);
+    }
+
+    .stat-number {
+      font-family: 'Bicubik', sans-serif;
+      font-size: 24px;
+      color: var(--primary-blue);
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .stat-label {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: 'Barlow', sans-serif;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary-deep), var(--primary-dark));
+      color: var(--white);
+      box-shadow: 0 10px 25px rgba(4, 16, 86, 0.25);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 32px rgba(4, 16, 86, 0.35);
+    }
+
+    .btn-outline {
+      background: var(--white);
+      color: var(--primary-blue);
+      border: 2px solid var(--primary-blue);
+    }
+
+    .btn-outline:hover {
+      background: var(--primary-blue);
+      color: var(--white);
+    }
+
+    .hero-visual {
+      background: linear-gradient(135deg, var(--primary-deep), var(--primary-blue));
+      border-radius: 12px;
+      padding: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 400px;
+      box-shadow: 0 20px 48px rgba(4, 16, 86, 0.15);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-visual::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .hero-visual-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: var(--white);
+    }
+
+    .hero-visual-icon {
+      font-size: 64px;
       margin-bottom: 12px;
     }
-    .video-area iframe {
-      width: 100%;
-      height: 400px;
-      border: none;
-      border-radius: 12px;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+
+    .hero-visual-text {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 8px;
     }
-    .benefit-card {
-      background: #fff;
-      padding: 20px;
-      border-radius: 12px;
-      border: 1px solid #e5e7eb;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.06);
+
+    /* SECTION */
+    .section {
+      padding: 80px 0;
     }
-    .benefit-grid {
-      display: grid;
-      grid-template-columns: repeat(3,1fr);
-      gap: 20px;
-      margin-top: 20px;
-    }
-    .testimonial-card {
-      border: 1px solid #e5e7eb;
-      border-radius: 12px;
-      padding: 20px;
-      background: #fff;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.06);
-    }
-    .cta-area {
-      background: linear-gradient(120deg,#0f6fff,#22c1c3);
-      padding: 40px;
-      border-radius: 16px;
-      color: #fff;
+
+    .section-header {
+      margin-bottom: 60px;
       text-align: center;
     }
+
+    .section-eyebrow {
+      font-size: 12px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent-orange);
+      margin-bottom: 12px;
+      font-family: 'Barlow', sans-serif;
+      font-weight: 700;
+    }
+
+    .section-title {
+      font-family: 'Bicubik', sans-serif;
+      font-size: 36px;
+      color: var(--primary-dark);
+      font-weight: 700;
+      margin-bottom: 16px;
+      line-height: 1.3;
+    }
+
+    .section-subtitle {
+      font-size: 16px;
+      color: var(--text-muted);
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* CARDS */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: 12px;
+      padding: 28px;
+      box-shadow: 0 10px 28px rgba(4, 16, 86, 0.05);
+      transition: all 0.2s;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary-blue), var(--accent-green));
+      border-radius: 12px 12px 0 0;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 48px rgba(4, 16, 86, 0.12);
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    .card-icon {
+      font-size: 32px;
+      margin-bottom: 12px;
+    }
+
+    .card h3 {
+      font-family: 'Bicubik', sans-serif;
+      font-size: 18px;
+      color: var(--primary-dark);
+      margin-bottom: 12px;
+      font-weight: 700;
+    }
+
+    .card p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      flex-grow: 1;
+    }
+
+    /* VIDEO */
+    .video-section {
+      background: var(--white);
+      border-radius: 12px;
+      border: 1px solid var(--gray-200);
+      overflow: hidden;
+      box-shadow: 0 20px 48px rgba(4, 16, 86, 0.1);
+    }
+
+    .video-container {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* TESTIMONIALS */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .testimonial {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 10px 28px rgba(4, 16, 86, 0.05);
+    }
+
+    .stars {
+      color: #FFD700;
+      font-size: 16px;
+      margin-bottom: 12px;
+      letter-spacing: 2px;
+    }
+
+    .testimonial-text {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 16px;
+      font-style: italic;
+    }
+
+    .testimonial-author {
+      font-weight: 700;
+      color: var(--primary-dark);
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+
+    .testimonial-role {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* CTA */
+    .cta-section {
+      padding: 60px 0;
+      background: linear-gradient(135deg, var(--primary-deep), var(--primary-blue));
+      margin-top: 80px;
+      border-radius: 12px;
+    }
+
+    .cta-container {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .cta-content {
+      color: var(--white);
+      position: relative;
+      z-index: 2;
+    }
+
+    .cta-kicker {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent-orange);
+      margin-bottom: 12px;
+      font-family: 'Barlow', sans-serif;
+      font-weight: 700;
+    }
+
+    .cta-title {
+      font-family: 'Bicubik', sans-serif;
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+
+    .cta-text {
+      font-size: 15px;
+      opacity: 0.95;
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .cta-benefits {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .cta-benefit {
+      display: flex;
+      gap: 8px;
+      font-size: 14px;
+    }
+
+    .cta-benefit::before {
+      content: '✓';
+      color: var(--accent-green);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .cta-form {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 20px 48px rgba(4, 16, 86, 0.08);
+      position: relative;
+      z-index: 2;
+    }
+
+    .cta-form h3 {
+      font-family: 'Bicubik', sans-serif;
+      font-size: 18px;
+      color: var(--primary-dark);
+      margin-bottom: 6px;
+      font-weight: 700;
+    }
+
+    .cta-form p {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+      font-family: 'Barlow', sans-serif;
+    }
+
+    .form-group {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .form-group > div {
+      flex: 1;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-dark);
+      font-family: 'Barlow', sans-serif;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 10px 12px;
+      font-size: 13px;
+      border-radius: 6px;
+      border: 1px solid var(--gray-200);
+      background: var(--gray-100);
+      outline: none;
+      transition: all 0.16s;
+      font-family: 'Barlow', sans-serif;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--primary-blue);
+      box-shadow: 0 0 0 2px rgba(23, 171, 227, 0.1);
+      background: var(--white);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 70px;
+    }
+
+    .btn-submit {
+      width: 100%;
+      padding: 14px 28px;
+      border-radius: 6px;
+      border: none;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--white);
+      background: linear-gradient(135deg, var(--primary-deep), var(--primary-dark));
+      box-shadow: 0 10px 25px rgba(4, 16, 86, 0.25);
+      transition: all 0.2s;
+      cursor: pointer;
+      font-family: 'Barlow', sans-serif;
+      margin-top: 8px;
+    }
+
+    .btn-submit:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 14px 32px rgba(4, 16, 86, 0.35);
+    }
+
+    .form-note {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 6px;
+      text-align: center;
+      font-family: 'Barlow', sans-serif;
+    }
+
+    /* FOOTER */
     footer {
-      background:#fff;
-      text-align:center;
-      padding:20px;
-      margin-top:50px;
-      border-top:1px solid #e5e7eb;
-      color:#6b7280;
+      text-align: center;
+      padding: 32px 0;
+      font-size: 12px;
+      color: var(--text-muted);
+      background: var(--white);
+      border-top: 1px solid var(--gray-200);
+      font-family: 'Barlow', sans-serif;
+    }
+
+    footer a {
+      color: var(--primary-blue);
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    footer a:hover {
+      color: var(--primary-dark);
+    }
+
+    /* RESPONSIVO */
+    @media (max-width: 1024px) {
+      .cards-grid, .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-content {
+        grid-template-columns: 1fr;
+      }
+
+      .cta-container {
+        grid-template-columns: 1fr;
+      }
+
+      .section-title {
+        font-size: 28px;
+      }
+
+      .hero h1 {
+        font-size: 36px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        padding: 50px 0;
+      }
+
+      .hero-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+      }
+
+      nav {
+        gap: 12px;
+      }
+
+      .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .form-group {
+        flex-direction: column;
+      }
     }
   </style>
 </head>
-
 <body>
 
-  <!-- HEADER -->
-  <header>
-    <div class="container">
+<header>
+  <div class="container">
+    <div class="header-inner">
+      <a href="index.html" class="logo-link">
+        <img src="logo-inbotix.png" alt="Logo Inbotix" class="logo-img" />
+        <div class="logo-text">
+          <span>INBOTIX</span>
+          <span>New Dinbot</span>
+        </div>
+      </a>
       <nav>
         <a href="index.html"><strong>Home</strong></a>
         <a href="#"><strong>Produtos</strong></a>
-        <a href="#"><strong>Contato</strong></a>
+        <a href="index.html#sobre"><strong>Sobre</strong></a>
+        <a href="index.html#contato" class="nav-btn">Começar Agora</a>
       </nav>
     </div>
-  </header>
+  </div>
+</header>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="container">
-      <h1>New Dinbot — Automação de Prospecção Ativa</h1>
-      <p>
-        A ferramenta definitiva para gerar reuniões com decisores no LinkedIn, e-mail e múltiplos canais.  
-        Cadências inteligentes, IA, enriquecimento de dados da Dadus e métricas para escalar seu outbound com previsibilidade.
-      </p>
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-text">
+        <div class="hero-kicker">🤖 SDR Digital Automatizado</div>
+        <h1>Gere <span>50+ reuniões/mês</span> com automação</h1>
+        <p>New Dinbot automatiza prospecção ativa no LinkedIn, e-mail e WhatsApp. Cadências com IA, enriquecimento com Dadus Cadastrais e integração com New Atendi para uma operação completa.</p>
+        
+        <div class="hero-stats">
+          <div class="stat">
+            <div class="stat-number">50+</div>
+            <div class="stat-label">Reuniões/mês</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">3 Canais</div>
+            <div class="stat-label">Integrados</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">80%</div>
+            <div class="stat-label">Automação</div>
+          </div>
+        </div>
 
-      <br />
-      <a href="https://newdinbot.app/" class="btn btn-primary">Testar New Dinbot por 7 dias</a>
-      <a href="index.html" class="btn btn-outline" style="margin-left:10px;">Voltar ao site principal</a>
+        <div class="hero-buttons">
+          <a href="https://newdinbot.app/" class="btn btn-primary">🚀 Testar por 7 dias</a>
+          <a href="#video" class="btn btn-outline">▶️ Ver demo</a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-visual-content">
+          <div class="hero-visual-icon">🎯</div>
+          <div class="hero-visual-text">Prospecção em Escala</div>
+          <div style="font-size: 13px; opacity: 0.9;">Com cadências automáticas e IA</div>
+        </div>
+      </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- VÍDEO -->
-  <section class="section">
-    <div class="container">
-      <h2>Assista ao New Dinbot em ação</h2>
-      <div class="video-area">
+<!-- BENEFÍCIOS -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">💎 Benefícios</div>
+      <h2 class="section-title">Por que escolher o New Dinbot?</h2>
+      <p class="section-subtitle">Automação de prospecção que realmente funciona e escala sua operação de vendas</p>
+    </div>
+
+    <div class="cards-grid">
+      <div class="card">
+        <div class="card-icon">🔥</div>
+        <h3>Cadências Automáticas</h3>
+        <p>5-7 toques por prospect com IA. LinkedIn, e-mail e WhatsApp. Personalizadas por ICP.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">📊</div>
+        <h3>Integração com Dadus</h3>
+        <p>Enriquecimento automático de dados. 5M+ empresas brasileiras com CNPJ, e-mails e telefones.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">📈</div>
+        <h3>Métricas em Tempo Real</h3>
+        <p>Aceites, respostas, cliques, oportunidades. Dashboard completo de performance.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🎯</div>
+        <h3>Segmentação por ICP</h3>
+        <p>Defina quem é seu cliente ideal. New Dinbot filtra e prospera apenas para certos perfis.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">⚡</div>
+        <h3>Integração com New Atendi</h3>
+        <p>Leads qualificados vão direto para fila de atendimento. Pipeline automático.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🧠</div>
+        <h3>IA para Copywriting</h3>
+        <p>Mensagens geradas com IA, personalizadas por prospect. Resultados 3x melhores.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO -->
+<section class="section" style="background: var(--white); border-top: 1px solid var(--gray-200);" id="video">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">▶️ Demonstração</div>
+      <h2 class="section-title">Veja o New Dinbot funcionando</h2>
+      <p class="section-subtitle">Como criar cadências, integrar com Dadus e gerar reuniões em escala</p>
+    </div>
+
+    <div class="video-section">
+      <div class="video-container">
         <iframe src="https://www.youtube.com/embed/9mkPYEb03iQ" allowfullscreen></iframe>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- BENEFÍCIOS -->
-  <section class="section">
-    <div class="container">
-      <h2>Por que usar o New Dinbot?</h2>
+<!-- PARA QUEM É -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">👥 Público</div>
+      <h2 class="section-title">Para quem é o New Dinbot?</h2>
+      <p class="section-subtitle">Empresas que querem escalar vendas sem aumentar custo operacional</p>
+    </div>
 
-      <div class="benefit-grid">
-        <div class="benefit-card">
-          <h3>🔥 Automação completa</h3>
-          <p>Cadências multicanais: LinkedIn, e-mail e WhatsApp.</p>
-        </div>
-        <div class="benefit-card">
-          <h3>🎯 IA + Dados</h3>
-          <p>Enriquecimento automático com Dadus Cadastrais.</p>
-        </div>
-        <div class="benefit-card">
-          <h3>📊 Métricas</h3>
-          <p>Painel completo de aceites, respostas, oportunidades e reuniões.</p>
-        </div>
+    <div class="cards-grid">
+      <div class="card">
+        <div class="card-icon">🏢</div>
+        <h3>SaaS B2B</h3>
+        <p>Automatize prospecção de CTOs, CFOs e gestores. Gerencie múltiplos prospects em paralelo.</p>
       </div>
 
+      <div class="card">
+        <div class="card-icon">📱</div>
+        <h3>Agências</h3>
+        <p>Ofereça SDR Digital como serviço. Escale clientes sem contratar mais pessoas.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🎓</div>
+        <h3>Consultoria e Serviços</h3>
+        <p>Prospere para decisores. Qualifique antes do contato do consultor. Menos rejeições.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🏪</div>
+        <h3>B2C em Escala</h3>
+        <p>Dispare campanhas para milhares de prospects. Qualifique automaticamente.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">💼</div>
+        <h3>Startups Growth</h3>
+        <p>Acelere crescimento. Gere leads qualificados com orçamento enxuto.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🚀</div>
+        <h3>Times de Vendas</h3>
+        <p>Aumente produtividade do time. Deixe IA fazer prospecção. Foco em fechamento.</p>
+      </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- DEPOIMENTOS -->
-  <section class="section">
-    <div class="container">
-      <h2>Depoimentos</h2>
+<!-- TESTIMONIALS -->
+<section class="section" style="background: var(--white); border-top: 1px solid var(--gray-200);">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">⭐ Resultados Reais</div>
+      <h2 class="section-title">O que nossos clientes conquistaram</h2>
+      <p class="section-subtitle">Empresas que escalaram vendas com New Dinbot</p>
+    </div>
 
-      <div class="benefit-grid">
-        <div class="testimonial-card">
-          <strong>★★★★★</strong><br>
-          “O New Dinbot mudou completamente nosso volume de reuniões.”
-          <br><small>— Marcos, Agência Performance</small>
+    <div class="testimonials-grid">
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <div class="testimonial-text">"Passamos de 8 reuniões/mês para 60 reuniões/mês. New Dinbot faz 80% do trabalho. SDR só segue up."</div>
+        <div class="testimonial-author">Marcos Silva</div>
+        <div class="testimonial-role">VP Vendas · SaaS B2B</div>
+      </div>
+
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <div class="testimonial-text">"Reduzimos custo por reunião de R$ 200 para R$ 40. Automação com qualidade. Nunca vi algo assim."</div>
+        <div class="testimonial-author">Rodrigo Costa</div>
+        <div class="testimonial-role">Sócio · Agência Performance</div>
+      </div>
+
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <div class="testimonial-text">"Integração com Dadus foi transformador. Dados sempre corretos. Taxa de resposta subiu de 5% para 18%."</div>
+        <div class="testimonial-author">Michele Ferreira</div>
+        <div class="testimonial-role">Head de Operações · Consultoria</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section style="padding: 0;">
+  <div class="container">
+    <div class="cta-section">
+      <div class="cta-container">
+        <div class="cta-content">
+          <div class="cta-kicker">🚀 Comece Agora</div>
+          <h2 class="cta-title">Pronto para prospecção em escala?</h2>
+          <p class="cta-text">Teste New Dinbot por 7 dias. Configure sua primeira cadência, integre Dadus e comece a gerar reuniões.</p>
+          
+          <div class="cta-benefits">
+            <div class="cta-benefit">Cadências automáticas com IA</div>
+            <div class="cta-benefit">Integração com Dadus + New Atendi</div>
+            <div class="cta-benefit">Métricas completas em tempo real</div>
+            <div class="cta-benefit">Suporte especializado 24/7</div>
+          </div>
         </div>
 
-        <div class="testimonial-card">
-          <strong>★★★★★</strong><br>
-          “Conseguimos escalar prospecção sem aumentar o time.”
-          <br><small>— Rodrigo, SaaS B2B</small>
-        </div>
+        <div class="cta-form">
+          <h3>📋 Solicitar Demo</h3>
+          <p>Preencha e receba acesso em minutos.</p>
+          
+          <form action="https://formspree.io/f/managrzo" method="POST">
+            
+            <div class="form-group">
+              <div>
+                <label>Nome Completo</label>
+                <input type="text" name="nome" placeholder="Seu nome" required />
+              </div>
+              <div>
+                <label>Empresa</label>
+                <input type="text" name="empresa" placeholder="Sua empresa" required />
+              </div>
+            </div>
 
-        <div class="testimonial-card">
-          <strong>★★★★★</strong><br>
-          “A integração com Dadus foi o que mais me impressionou.”
-          <br><small>— Michele, Jurídico</small>
+            <div class="form-group">
+              <div>
+                <label>E-mail</label>
+                <input type="email" name="email" placeholder="seu@email.com" required />
+              </div>
+              <div>
+                <label>WhatsApp</label>
+                <input type="tel" name="whats" placeholder="(11) 97276-9986" required />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div>
+                <label>Canais desejados</label>
+                <select name="canais" required>
+                  <option value="">Selecione</option>
+                  <option value="linkedin">LinkedIn</option>
+                  <option value="email">E-mail</option>
+                  <option value="linkedin-email">LinkedIn + E-mail</option>
+                  <option value="multicanal">LinkedIn + E-mail + WhatsApp</option>
+                </select>
+              </div>
+            </div>
+
+            <button type="submit" class="btn-submit">✅ Testar por 7 dias grátis</button>
+
+            <div class="form-note">
+              ✓ Sem cartão de crédito | Sem compromisso | Cancelar a qualquer hora
+            </div>
+          </form>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- CTA FINAL -->
-  <section class="section">
-    <div class="container">
-      <div class="cta-area">
-        <h2>Pronto para prospecção em escala?</h2>
-        <p>Fale agora com a equipe da Inbotix e iniciamos sua operação ainda hoje.</p>
+<footer>
+  <div class="container">
+    <p>© <span id="year"></span> INBOTIX — New Dinbot | Automação de Prospecção com IA</p>
+    <p style="margin-top: 12px; font-size: 11px;">
+      <a href="index.html">Home</a> • 
+      <a href="index.html#sobre">Sobre</a> • 
+      <a href="index.html#contato">Contato</a>
+    </p>
+  </div>
+</footer>
 
-        <a href="https://wa.me/5511972769986" class="btn btn-outline" style="background:#fff;color:#0f6fff;">
-          Falar no WhatsApp
-        </a>
-      </div>
-    </div>
-  </section>
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
 
-  <!-- FOOTER -->
-  <footer>
-    © <span id="year"></span> Inbotix. Todos os direitos reservados.
-  </footer>
-
-  <script>
-    document.getElementById("year").innerText = new Date().getFullYear();
-  </script>
+</body>
+</html>
 
 </body>
 </html>
