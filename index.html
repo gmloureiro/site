@@ -123,6 +123,7 @@
     nav a {
       position: relative;
       padding: 4px 0;
+      font-weight: 600; /* MENU EM NEGRITO */
     }
 
     nav a::after {
@@ -247,6 +248,7 @@
       padding: 6px 6px;
       border-radius: 10px;
       color: var(--dark);
+      font-weight: 500;
     }
 
     .login-menu a:hover {
@@ -294,11 +296,25 @@
       line-height: 1.5;
       color: var(--muted);
       max-width: 560px;
-      margin-bottom: 22px;
+      margin-bottom: 16px;
     }
 
     .hero-sub strong {
       color: var(--dark);
+    }
+
+    /* BOTÃO GRANDE TESTE GRÁTIS NO TOPO */
+
+    .hero-big-cta {
+      margin-bottom: 18px;
+    }
+
+    .hero-big-cta .btn {
+      width: 100%;
+      max-width: 360px;
+      font-size: 15px;
+      padding: 11px 22px;
+      justify-content: center;
     }
 
     .hero-actions {
@@ -956,6 +972,10 @@
         flex-direction: column;
         align-items: flex-start;
       }
+
+      .hero-big-cta .btn {
+        max-width: 100%;
+      }
     }
   </style>
 </head>
@@ -981,6 +1001,9 @@
             <a href="#cases">Cases</a>
             <a href="#cultura">Cultura</a>
             <a href="#sobre">Sobre</a>
+            <!-- Substitua o link abaixo pelo seu LinkedIn real -->
+            <a href="https://www.linkedin.com/in/seu-perfil-linkedin" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+
             <div class="login-container">
               <button class="login-button">Entrar nas soluções ▾</button>
               <div class="login-menu">
@@ -1022,9 +1045,16 @@
                 MRR e diminuindo churn.
               </p>
 
+              <!-- BOTÃO GRANDE TESTE GRÁTIS -->
+              <div class="hero-big-cta">
+                <a href="#testes" class="btn btn-primary">
+                  Teste grátis nossas soluções por 7 dias
+                </a>
+              </div>
+
               <div class="hero-actions">
                 <a href="https://wa.me/5511972769986?text=Quero%20agendar%20um%20diagn%C3%B3stico%20de%20Outbound%20com%20a%20Inbotix"
-                  class="btn btn-primary">
+                  class="btn btn-outline">
                   Agendar diagnóstico de Outbound
                 </a>
                 <a href="https://wa.me/5511972769986?text=Sou%20ag%C3%AAncia%20e%20quero%20revender%20SDR%20Digital"
@@ -1231,7 +1261,7 @@
             <h2 class="section-title">Teste agora por 7 dias as soluções Inbotix.</h2>
             <p class="section-sub">
               Comece com uma conta de teste, valide na prática e só depois decida se quer seguir
-              com a operação completa. Sem burocracia, sem cartão e com acompanhamento do nosso time.
+              com a operação completa. Sem burocracia e com acompanhamento do nosso time.
             </p>
           </div>
 
@@ -1450,7 +1480,7 @@
             </p>
             <ul class="zoho-list">
               <li>Teste gratuito por <strong>7 dias</strong> para conhecer todos os recursos.</li>
-              <li>Planos a partir de <strong>R$ 45,00/mês</strong> por usuário (ótimo custo-benefício).</li>
+              <li>Planos a partir de <strong>R$ 45,00/mês</strong> por usuário.</li>
               <li>Kanban de negócios, automações básicas e integrações com e-mail e telefonia.</li>
               <li>Perfeito para quem está começando a estruturar o CRM de vendas sem complicar.</li>
             </ul>
@@ -1517,6 +1547,16 @@
                 sempre com foco em tornar acessíveis ferramentas e metodologias que antes eram exclusivas
                 de grandes estruturas.
               </p>
+              <br />
+              <!-- Troque o link abaixo pelo seu LinkedIn real -->
+              <a
+                href="https://www.linkedin.com/in/seu-perfil-linkedin"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-outline"
+              >
+                Ver perfil no LinkedIn
+              </a>
             </div>
           </div>
         </div>
@@ -1650,6 +1690,12 @@
           <div class="footer-links">
             <span>Outbound · SDR Digital · Automação de Vendas</span>
             <span>WhatsApp: (11) 97276-9986</span>
+            <!-- Substitua pelo seu LinkedIn -->
+            <span>
+              <a href="https://www.linkedin.com/in/seu-perfil-linkedin" target="_blank" rel="noopener noreferrer">
+                LinkedIn do Guilherme
+              </a>
+            </span>
           </div>
         </div>
       </div>
@@ -1672,6 +1718,6 @@
 </body>
 </html>
 
-</html>
+
 
 
