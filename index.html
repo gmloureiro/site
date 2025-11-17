@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta
     name="description"
-    content="A Inbotix constrói sua máquina de vendas com SDR Digital, automação e dados para gerar reuniões todos os meses, sem depender de indicação."
+    content="A Inbotix constrói sua máquina de vendas com SDR Digital, automação e dados para gerar reuniões todos os meses, com foco em agências de marketing que revendem outbound como serviço recorrente."
   />
   <link rel="icon" type="image/png" href="icon-inbotix.png" />
 
@@ -231,8 +231,12 @@
       font-size: 16px;
       line-height: 1.5;
       color: var(--muted);
-      max-width: 540px;
+      max-width: 560px;
       margin-bottom: 22px;
+    }
+
+    .hero-sub strong {
+      color: var(--dark);
     }
 
     .hero-actions {
@@ -357,7 +361,7 @@
       color: var(--muted);
     }
 
-    /* HOW IT WORKS */
+    /* GENERIC SECTIONS */
 
     .section {
       padding: 18px 0 32px;
@@ -386,8 +390,10 @@
     .section-sub {
       font-size: 14px;
       color: var(--muted);
-      max-width: 520px;
+      max-width: 620px;
     }
+
+    /* HOW IT WORKS */
 
     .steps-grid {
       display: grid;
@@ -422,6 +428,181 @@
     .step-text {
       font-size: 13px;
       color: var(--muted);
+    }
+
+    /* LOGOS (texto) */
+
+    .logos-strip {
+      margin-top: 10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      font-size: 12px;
+    }
+
+    .logos-label {
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+    }
+
+    .logos-pill {
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: var(--primary-soft);
+      color: var(--primary-strong);
+      font-weight: 600;
+    }
+
+    /* AGÊNCIAS */
+
+    .agencies-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 18px;
+    }
+
+    .agencies-card {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      padding: 18px 18px 16px;
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+    }
+
+    .agencies-list {
+      margin-top: 10px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .agencies-list li {
+      margin-left: 18px;
+      margin-bottom: 4px;
+    }
+
+    /* CASES DE SUCESSO */
+
+    .cases-highlight {
+      margin-bottom: 18px;
+      padding: 12px 16px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #ecf3ff, #ffffff);
+      border: 1px solid rgba(37, 99, 235, 0.25);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .cases-highlight-main {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--dark);
+    }
+
+    .cases-highlight-sub {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .cases-highlight-tag {
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--primary-soft);
+      color: var(--primary-strong);
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .testimonial-card {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 16px 18px 14px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      box-shadow: 0 8px 22px rgba(15, 23, 42, 0.04);
+    }
+
+    .testimonial-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      gap: 10px;
+    }
+
+    .testimonial-profile {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .testimonial-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      background: #e5e7eb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      font-weight: 700;
+      color: #4b5563;
+      overflow: hidden;
+    }
+
+    .testimonial-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 999px;
+    }
+
+    .testimonial-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--dark);
+    }
+
+    .testimonial-role {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .testimonial-rating {
+      text-align: right;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .testimonial-stars {
+      color: #f59e0b;
+      font-size: 14px;
+      margin-bottom: 2px;
+    }
+
+    .testimonial-time {
+      font-size: 11px;
+    }
+
+    .testimonial-text {
+      font-size: 14px;
+      color: var(--text);
+      line-height: 1.45;
     }
 
     /* VIDEOS */
@@ -471,36 +652,6 @@
       width: 100%;
       height: 100%;
       border: 0;
-    }
-
-    /* LOGOS (texto) */
-
-    .logos-strip {
-      margin-top: 10px;
-      padding: 10px 14px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.9);
-      border: 1px solid rgba(148, 163, 184, 0.3);
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      align-items: center;
-      font-size: 12px;
-    }
-
-    .logos-label {
-      font-weight: 600;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-    }
-
-    .logos-pill {
-      padding: 5px 10px;
-      border-radius: 999px;
-      background: var(--primary-soft);
-      color: var(--primary-strong);
-      font-weight: 600;
     }
 
     /* CTA SECTION */
@@ -571,8 +722,10 @@
       }
 
       .steps-grid,
-      .videos-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+      .videos-grid,
+      .testimonials-grid,
+      .agencies-grid {
+        grid-template-columns: minmax(0, 1fr);
       }
 
       nav {
@@ -587,11 +740,6 @@
 
       .hero-form-row {
         flex-direction: column;
-      }
-
-      .steps-grid,
-      .videos-grid {
-        grid-template-columns: minmax(0, 1fr);
       }
 
       .cta-strip {
@@ -616,8 +764,10 @@
           </div>
 
           <nav>
-            <a href="#como-funciona">Como funciona</a>
-            <a href="#videos">Vídeos dos produtos</a>
+            <a href="#como-funciona">Método</a>
+            <a href="#agencias">Para agências</a>
+            <a href="#cases">Cases</a>
+            <a href="#videos">Vídeos</a>
             <a href="#contato">Contato</a>
             <a href="https://wa.me/5511972769986?text=Quero%20falar%20sobre%20Outbound%20e%20SDR%20Digital%20da%20Inbotix" class="btn btn-outline btn-sm">
               <span class="whats-dot"></span> Falar no WhatsApp
@@ -641,7 +791,11 @@
               <p class="hero-sub">
                 A Inbotix constrói e opera sua máquina de prospecção ativa:
                 LinkedIn, e-mail, WhatsApp e dados integrados para gerar reuniões
-                todos os dias, sem depender só de indicação ou anúncios.
+                todos os dias, sem depender só de indicação ou anúncios.  
+                <br /><br />
+                <strong>Especializada em agências de marketing</strong> que querem
+                revender outbound e SDR Digital como serviço recorrente, aumentando
+                MRR e diminuindo churn.
               </p>
 
               <div class="hero-actions">
@@ -649,9 +803,9 @@
                   class="btn btn-primary">
                   Agendar diagnóstico de Outbound
                 </a>
-                <a href="https://wa.me/5511972769986?text=Gostaria%20de%20entender%20melhor%20o%20SDR%20Digital"
+                <a href="https://wa.me/5511972769986?text=Sou%20ag%C3%AAncia%20e%20quero%20revender%20SDR%20Digital"
                   class="btn btn-outline">
-                  Falar no WhatsApp
+                  Sou agência e quero revender
                 </a>
               </div>
 
@@ -664,7 +818,7 @@
                   SDR Digital + Dinbot + Atendi + Dadus
                 </span>
                 <span class="badge">
-                  Operação feita por especialistas
+                  Metodologia baseada em Receita Previsível
                 </span>
               </div>
             </div>
@@ -748,11 +902,12 @@
       <section id="como-funciona" class="section">
         <div class="container">
           <div class="section-header">
-            <div class="section-eyebrow">Método Inbotix</div>
+            <div class="section-eyebrow">Método Inbotix + Receita Previsível</div>
             <h2 class="section-title">Sua máquina de vendas operada por especialistas.</h2>
             <p class="section-sub">
-              A Inbotix combina metodologia, SDR Digital e tecnologia própria para transformar visitas
-              e listas frias em oportunidades reais de venda.
+              Aplicamos na prática os princípios da metodologia <strong>Receita Previsível</strong>:
+              separação de funções (SDR x Closers), cadências multicanais, ICP bem definido
+              e acompanhamento de métricas — tudo rodando em cima da nossa stack de automação.
             </p>
           </div>
 
@@ -771,7 +926,7 @@
               <div class="step-title">SDR Digital + Dados</div>
               <p class="step-text">
                 Rodamos campanhas multicanais em LinkedIn, e-mail e WhatsApp com Dinbot, Atendi e Dadus,
-                enriquecendo os dados e qualificando leads.
+                enriquecendo os dados e qualificando leads antes de chegar no vendedor.
               </p>
             </div>
 
@@ -780,7 +935,7 @@
               <div class="step-title">Reuniões para o comercial</div>
               <p class="step-text">
                 Entregamos reuniões agendadas para o seu time de vendas com acompanhamento de métricas
-                e ajustes contínuos do playbook.
+                semanais e ajustes contínuos do playbook, mantendo a operação sempre em melhoria.
               </p>
             </div>
           </div>
@@ -791,6 +946,170 @@
             <span class="logos-pill">Dinbot</span>
             <span class="logos-pill">Dadus</span>
             <span class="logos-pill">Atendi</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- PARA AGÊNCIAS -->
+      <section id="agencias" class="section">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-eyebrow">Para agências de marketing</div>
+            <h2 class="section-title">Revenda SDR Digital e outbound como serviço.</h2>
+            <p class="section-sub">
+              A Inbotix foi pensada para agências que querem aumentar o ticket médio e o LTV,
+              oferecendo <strong>prospecção ativa e geração de reuniões</strong> como produto
+              recorrente, sem precisar montar toda a operação do zero.
+            </p>
+          </div>
+
+          <div class="agencies-grid">
+            <div class="agencies-card">
+              <h3 style="font-size:16px; font-weight:700; margin-bottom:6px; color:var(--dark);">
+                White label ou co-delivery, você escolhe.
+              </h3>
+              <p style="font-size:13px; color:var(--muted); margin-bottom:8px;">
+                Operamos o bastidor de outbound (SDR Digital, dados, cadências, integrações),
+                enquanto sua agência segue como ponta estratégica com o cliente.
+              </p>
+              <ul class="agencies-list">
+                <li>Aumente o MRR adicionando um novo serviço recorrente ao portfólio.</li>
+                <li>Diminua churn: clientes que fazem outbound + inbound tendem a ficar mais tempo.</li>
+                <li>Use nossos playbooks, scripts e templates baseados em Receita Previsível.</li>
+                <li>Tenha relatórios claros para mostrar resultado de reuniões geradas mês a mês.</li>
+              </ul>
+            </div>
+            <div class="agencies-card">
+              <h3 style="font-size:16px; font-weight:700; margin-bottom:6px; color:var(--dark);">
+                Quer entender como funcionaria para sua agência?
+              </h3>
+              <p style="font-size:13px; color:var(--muted); margin-bottom:10px;">
+                Montamos um modelo financeiro junto com você, simulando número de contas,
+                margens e precificação do serviço de SDR Digital para seus clientes.
+              </p>
+              <a
+                href="https://wa.me/5511972769986?text=Sou%20ag%C3%AAncia%20e%20quero%20entender%20como%20revender%20a%20Inbotix"
+                class="btn btn-primary"
+                style="width:100%; justify-content:center; margin-top:4px;"
+              >
+                Falar sobre parceria para agências
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CASES DE SUCESSO -->
+      <section id="cases" class="section">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-eyebrow">Cases de sucesso</div>
+            <h2 class="section-title">Resultados reais com Inbotix + SDR Digital.</h2>
+            <p class="section-sub">
+              Do jurídico ao B2B de tecnologia, nossas operações de outbound geram reuniões de alta
+              qualidade e negócios concretos para nossos clientes e agências parceiras.
+            </p>
+          </div>
+
+          <div class="cases-highlight">
+            <div>
+              <div class="cases-highlight-main">Rocha &amp; Queiroz Advogados</div>
+              <div class="cases-highlight-sub">
+                Mais de <strong>R$ 6.000.000,00</strong> em contratos fechados a partir de reuniões
+                geradas pela operação de outbound conduzida pela Inbotix, em parceria com o time interno
+                do escritório.
+              </div>
+            </div>
+            <div class="cases-highlight-tag">
+              + R$ 6 milhões em negócios
+            </div>
+          </div>
+
+          <div class="testimonials-grid">
+            <!-- 1 -->
+            <div class="testimonial-card">
+              <div class="testimonial-header">
+                <div class="testimonial-profile">
+                  <div class="testimonial-avatar">MN</div>
+                  <div>
+                    <div class="testimonial-name">Michele Naglieri</div>
+                    <div class="testimonial-role">Sócia · Rocha &amp; Queiroz Advogados</div>
+                  </div>
+                </div>
+                <div class="testimonial-rating">
+                  <div class="testimonial-stars">★★★★★</div>
+                  <div class="testimonial-time">Há 1 mês</div>
+                </div>
+              </div>
+              <p class="testimonial-text">
+                "A Inbotix transformou nossa prospecção. Hoje temos um fluxo constante de reuniões
+                com empresas que realmente fazem sentido para o nosso escritório."
+              </p>
+            </div>
+
+            <!-- 2 -->
+            <div class="testimonial-card">
+              <div class="testimonial-header">
+                <div class="testimonial-profile">
+                  <div class="testimonial-avatar">RF</div>
+                  <div>
+                    <div class="testimonial-name">Rodney Fernandes</div>
+                    <div class="testimonial-role">CEO · Agência de Performance</div>
+                  </div>
+                </div>
+                <div class="testimonial-rating">
+                  <div class="testimonial-stars">★★★★★</div>
+                  <div class="testimonial-time">Há 2 semanas</div>
+                </div>
+              </div>
+              <p class="testimonial-text">
+                "O que antes levava meses para acontecer, agora acontece em semanas.
+                Além disso, conseguimos revender o serviço de SDR Digital para nossos clientes."
+              </p>
+            </div>
+
+            <!-- 3 -->
+            <div class="testimonial-card">
+              <div class="testimonial-header">
+                <div class="testimonial-profile">
+                  <div class="testimonial-avatar">RS</div>
+                  <div>
+                    <div class="testimonial-name">Rafael Souto</div>
+                    <div class="testimonial-role">Diretor Comercial · SaaS B2B</div>
+                  </div>
+                </div>
+                <div class="testimonial-rating">
+                  <div class="testimonial-stars">★★★★★</div>
+                  <div class="testimonial-time">Há 1 semana</div>
+                </div>
+              </div>
+              <p class="testimonial-text">
+                "A combinação de tecnologia, dados e metodologia de Receita Previsível
+                aplicada pela Inbotix é fora da curva. Nosso pipeline nunca esteve tão saudável."
+              </p>
+            </div>
+
+            <!-- 4 -->
+            <div class="testimonial-card">
+              <div class="testimonial-header">
+                <div class="testimonial-profile">
+                  <div class="testimonial-avatar">MR</div>
+                  <div>
+                    <div class="testimonial-name">Marcos Rodriguez</div>
+                    <div class="testimonial-role">Sócio · Agência Full Service</div>
+                  </div>
+                </div>
+                <div class="testimonial-rating">
+                  <div class="testimonial-stars">★★★★★</div>
+                  <div class="testimonial-time">Há 1 mês</div>
+                </div>
+              </div>
+              <p class="testimonial-text">
+                "Mais do que um fornecedor, encontramos um parceiro estratégico.
+                A operação de SDR Digital que montamos com a Inbotix hoje é um dos nossos
+                serviços mais lucrativos."
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -878,7 +1197,7 @@
               </div>
             </div>
 
-            <!-- Espaço extra / futuro case -->
+            <!-- Extra / futuro case -->
             <div class="video-card">
               <div class="video-tag">Em breve</div>
               <div class="video-title">Cases de agências e operações em escala</div>
@@ -895,14 +1214,15 @@
 
           <div class="cta-strip" id="contato">
             <div>
-              <div class="cta-text-main">Quer ver como isso se encaixa no seu comercial?</div>
+              <div class="cta-text-main">Quer ver como isso se encaixa no seu comercial ou na sua agência?</div>
               <div class="cta-text-sub">
-                Enviamos um diagnóstico rápido de oportunidades de outbound e SDR Digital para a sua operação.
+                Enviamos um diagnóstico rápido de oportunidades de outbound e SDR Digital para a sua operação
+                ou para o portfólio da sua agência.
               </div>
             </div>
             <div style="display:flex; gap:8px; flex-wrap:wrap;">
               <a
-                href="https://wa.me/5511972769986?text=Quero%20um%20diagn%C3%B3stico%20de%20Outbound%20e%20SDR%20Digital%20para%20a%20minha%20empresa"
+                href="https://wa.me/5511972769986?text=Quero%20um%20diagn%C3%B3stico%20de%20Outbound%20e%20SDR%20Digital%20para%20a%20minha%20empresa%20ou%20ag%C3%AAncia"
                 class="btn btn-outline"
                 style="background: #ffffff; color: #0f6fff;"
               >
