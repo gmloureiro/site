@@ -5,26 +5,44 @@
   <title>Blog Inbotix – Conteúdos sobre Vendas, Outbound, SDR Digital e Automação</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Artigos sobre outbound, SDR Digital, automação de vendas, dados, enriquecimento, produtividade comercial e estratégias para gerar reuniões todos os meses." />
-  <link rel="icon" type="image/png" href="icon-inbotix.png" />
+  <link rel="icon" type="image/x-icon" href="logo-inbotix.ico" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Bicubik:wght@400;700&display=swap" rel="stylesheet" />
 
   <style>
     :root {
-      --primary: #0f6fff;
-      --primary-strong: #0050c8;
-      --bg: #f5f7fb;
-      --dark: #0f172a;
-      --text: #1f2933;
-      --muted: #6b7280;
+      --primary-dark: #041056;
+      --primary-deep: #07197E;
+      --primary-blue: #17ABE3;
+      --accent-green: #10B981;
+      --accent-orange: #F97316;
+      --white: #FFFFFF;
+      --bg-light: #F8F9FB;
+      --text-dark: #0f172a;
+      --text-muted: #6b7280;
+      --gray-100: #f3f4f6;
+      --gray-200: #e5e7eb;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     body {
       margin: 0;
-      background: var(--bg);
-      font-family: system-ui, -apple-system, sans-serif;
-      color: var(--text);
+      background: var(--bg-light);
+      font-family: 'Barlow', sans-serif;
+      color: var(--text-dark);
+      -webkit-font-smoothing: antialiased;
     }
 
-    a { text-decoration: none; color: inherit; }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
 
     .container {
       max-width: 1100px;
@@ -34,81 +52,365 @@
 
     /* HEADER */
     header {
-      background: #fff;
-      padding: 16px 0;
-      border-bottom: 1px solid #e5e7eb;
+      background: var(--white);
+      border-bottom: 1px solid var(--gray-200);
       position: sticky;
       top: 0;
-      z-index: 20;
+      z-index: 40;
+      box-shadow: 0 2px 8px rgba(4, 16, 86, 0.05);
     }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 0;
+      gap: 16px;
+    }
+
+    .logo-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    .logo-link:hover {
+      opacity: 0.8;
+    }
+
+    .logo-img {
+      height: 36px;
+      width: auto;
+      max-width: 130px;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .logo-text span:first-child {
+      font-family: 'Bicubik', sans-serif;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      font-size: 12px;
+      color: var(--primary-dark);
+    }
+
+    .logo-text span:last-child {
+      font-size: 10px;
+      color: var(--text-muted);
+      font-family: 'Barlow', sans-serif;
+      font-weight: 500;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
     nav a {
-      margin-right: 20px;
-      font-weight: 700;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-dark);
+      font-family: 'Barlow', sans-serif;
+      transition: color 0.2s;
     }
-    nav a:hover { color: var(--primary); }
+
+    nav a:hover {
+      color: var(--primary-blue);
+    }
 
     /* HERO */
     .hero {
-      padding: 50px 0;
+      padding: 60px 0;
+      background: linear-gradient(to bottom, #f0f4ff 0%, var(--bg-light) 100%);
       text-align: center;
+      position: relative;
+      overflow: hidden;
     }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -10%;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(23, 171, 227, 0.1) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-kicker {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent-orange);
+      margin-bottom: 8px;
+      font-family: 'Barlow', sans-serif;
+      font-weight: 700;
+    }
+
     .hero h1 {
-      font-size: 36px;
-      color: var(--dark);
+      font-family: 'Bicubik', sans-serif;
+      font-size: 42px;
+      color: var(--primary-dark);
+      margin-bottom: 12px;
+      font-weight: 700;
+      line-height: 1.2;
     }
+
     .hero p {
-      color: var(--muted);
+      color: var(--text-muted);
       font-size: 16px;
-      margin-top: 8px;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
     }
 
     /* POSTS */
+    .posts-section {
+      padding: 60px 0;
+    }
+
+    .section-header {
+      margin-bottom: 40px;
+      text-align: center;
+    }
+
+    .section-eyebrow {
+      font-size: 12px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent-orange);
+      margin-bottom: 8px;
+      font-family: 'Barlow', sans-serif;
+      font-weight: 700;
+    }
+
+    .section-title {
+      font-family: 'Bicubik', sans-serif;
+      font-size: 32px;
+      color: var(--primary-dark);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
     .posts {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      padding-bottom: 50px;
+      gap: 24px;
+      margin-bottom: 40px;
     }
+
     .post {
-      background: #fff;
-      border-radius: 16px;
-      padding: 18px;
-      border: 1px solid #e5e7eb;
-      box-shadow: 0 12px 32px rgba(15,23,42,0.06);
-      transition: .2s;
+      background: var(--white);
+      border-radius: 12px;
+      border: 1px solid var(--gray-200);
+      padding: 24px;
+      box-shadow: 0 10px 28px rgba(4, 16, 86, 0.05);
+      transition: all 0.2s;
+      position: relative;
+      display: flex;
+      flex-direction: column;
     }
+
+    .post::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary-blue), var(--accent-green));
+      border-radius: 12px 12px 0 0;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
     .post:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 18px 40px rgba(15,23,42,0.10);
+      transform: translateY(-6px);
+      box-shadow: 0 20px 48px rgba(4, 16, 86, 0.12);
     }
-    .post h3 {
-      font-size: 18px;
+
+    .post:hover::before {
+      opacity: 1;
+    }
+
+    .post-tag {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--primary-blue);
       margin-bottom: 8px;
-      color: var(--dark);
+      font-family: 'Barlow', sans-serif;
+      font-weight: 700;
     }
-    .post p {
-      font-size: 14px;
-      color: var(--muted);
+
+    .post h3 {
+      font-family: 'Bicubik', sans-serif;
+      font-size: 18px;
+      color: var(--primary-dark);
+      margin-bottom: 10px;
+      font-weight: 700;
       line-height: 1.4;
     }
-    .post a {
-      color: var(--primary);
-      font-weight: bold;
-      display: inline-block;
-      margin-top: 10px;
+
+    .post p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      flex-grow: 1;
+      margin-bottom: 16px;
     }
 
+    .post-meta {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      font-family: 'Barlow', sans-serif;
+    }
+
+    .post a {
+      color: var(--primary-blue);
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+
+    .post a:hover {
+      gap: 10px;
+    }
+
+    /* FEATURED POST */
+    .featured-post {
+      background: linear-gradient(135deg, var(--primary-deep), var(--primary-blue));
+      color: var(--white);
+      border-radius: 12px;
+      padding: 40px;
+      margin-bottom: 40px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 32px;
+      align-items: center;
+      box-shadow: 0 20px 48px rgba(4, 16, 86, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .featured-post::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -10%;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .featured-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .featured-tag {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--accent-orange);
+      margin-bottom: 8px;
+      font-family: 'Barlow', sans-serif;
+      font-weight: 700;
+    }
+
+    .featured-post h2 {
+      font-family: 'Bicubik', sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+
+    .featured-post p {
+      font-size: 15px;
+      opacity: 0.95;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .featured-post a {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--white);
+      color: var(--primary-deep);
+      padding: 12px 24px;
+      border-radius: 6px;
+      font-weight: 700;
+      transition: all 0.2s;
+    }
+
+    .featured-post a:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
+    }
+
+    /* FOOTER */
     footer {
       text-align: center;
-      padding: 25px 0;
+      padding: 32px 0;
       font-size: 12px;
-      color: #9ca3af;
-      background: #fff;
-      border-top: 1px solid #eee;
+      color: var(--text-muted);
+      background: var(--white);
+      border-top: 1px solid var(--gray-200);
+      font-family: 'Barlow', sans-serif;
     }
 
-    @media(max-width:900px){
-      .posts { grid-template-columns: 1fr; }
+    footer a {
+      color: var(--primary-blue);
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    footer a:hover {
+      color: var(--primary-dark);
+    }
+
+    /* RESPONSIVO */
+    @media (max-width: 900px) {
+      .posts {
+        grid-template-columns: 1fr;
+      }
+
+      .featured-post {
+        grid-template-columns: 1fr;
+        padding: 28px;
+      }
+
+      .hero h1 {
+        font-size: 32px;
+      }
+
+      .section-title {
+        font-size: 26px;
+      }
+
+      nav {
+        gap: 16px;
+      }
     }
   </style>
 </head>
@@ -116,61 +418,137 @@
 
 <header>
   <div class="container">
-    <nav>
-      <a href="index.html"><strong>Home</strong></a>
-      <a href="blog.html"><strong>Blog</strong></a>
-      <a href="parceiros-whitelabel.html"><strong>Seja Parceiro</strong></a>
-    </nav>
+    <div class="header-inner">
+      <a href="index.html" class="logo-link">
+        <img src="logo-inbotix.png" alt="Logo Inbotix" class="logo-img" />
+        <div class="logo-text">
+          <span>INBOTIX</span>
+          <span>Blog & Insights</span>
+        </div>
+      </a>
+      <nav>
+        <a href="index.html"><strong>Home</strong></a>
+        <a href="blog.html"><strong>Blog</strong></a>
+        <a href="#"><strong>Recursos</strong></a>
+        <a href="index.html#contato"><strong>Contato</strong></a>
+      </nav>
+    </div>
   </div>
 </header>
 
 <section class="hero">
   <div class="container">
-    <h1>Blog da INBOTIX</h1>
-    <p>Conteúdos para ajudar você a vender mais com outbound, SDR Digital, automação e dados.</p>
+    <div class="hero-content">
+      <div class="hero-kicker">📚 Blog Oficial</div>
+      <h1>Conteúdos que transformam sua estratégia de vendas</h1>
+      <p>Artigos sobre outbound, SDR Digital, automação, dados e tudo que você precisa para estruturar uma máquina de vendas de verdade.</p>
+    </div>
   </div>
 </section>
 
-<section>
+<section class="posts-section">
   <div class="container">
+    
+    <!-- FEATURED POST -->
+    <div class="featured-post">
+      <div class="featured-content">
+        <div class="featured-tag">🔥 Artigo em Destaque</div>
+        <h2>Como montar uma operação de SDR Digital que gera 50+ reuniões/mês</h2>
+        <p>
+          Tudo o que você precisa saber sobre estrutura, ICP, cadências, dados e automação para começar a gerar reuniões qualificadas todos os meses sem depender de indicação ou anúncios.
+        </p>
+        <a href="post-operacao-sdr-digital.html">Ler artigo completo →</a>
+      </div>
+      <div style="position: relative; z-index: 2;">
+        <div style="background: rgba(255,255,255,0.1); border-radius: 12px; padding: 32px; text-align: center;">
+          <div style="font-size: 48px; margin-bottom: 12px;">🎯</div>
+          <div style="font-size: 14px; font-weight: 600;">Método Receita Previsível</div>
+          <div style="font-size: 12px; opacity: 0.9; margin-top: 6px;">Estrutura comprovada em 150+ empresas</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEÇÃO DE POSTS -->
+    <div class="section-header">
+      <div class="section-eyebrow">Últimos Artigos</div>
+      <h2 class="section-title">Aprenda com especialistas do mercado</h2>
+    </div>
+
     <div class="posts">
 
-      <!-- EXEMPLO DE POST – VOCÊ VAI SUBSTITUIR/ADICIONAR -->
       <div class="post">
-        <h3>Como montar uma operação de SDR Digital eficiente</h3>
-        <p>
-          Tudo o que você precisa saber sobre estrutura, processos, cadências e dados 
-          para começar a gerar reuniões todos os meses.
-        </p>
-        <a href="post-operacao-sdr-digital.html">Ler mais →</a>
-      </div>
-
-      <div class="post">
+        <div class="post-tag">📊 Dados</div>
         <h3>Por que dados são o novo poder no outbound?</h3>
         <p>
-          Empresas que usam informações corretas de CNPJ, contatos e perfis têm 4x mais 
-          conversa real e muito mais previsibilidade.
+          Empresas que usam informações corretas de CNPJ, contatos e perfis têm 4x mais conversas reais e muito mais previsibilidade. Descubra como enriquecer suas listas.
         </p>
+        <div class="post-meta">10 min de leitura • 15 de Nov</div>
         <a href="post-dados-no-outbound.html">Ler mais →</a>
       </div>
 
       <div class="post">
+        <div class="post-tag">⚡ Automação</div>
         <h3>Automação que realmente ajuda vendas</h3>
         <p>
-          Chatbots, prospecção automatizada e omnichannel: como usar automação sem 
-          perder qualidade no relacionamento.
+          Chatbots, prospecção automatizada e omnichannel: como usar automação sem perder qualidade no relacionamento com seus leads.
         </p>
+        <div class="post-meta">12 min de leitura • 12 de Nov</div>
         <a href="post-automacao-que-ajuda.html">Ler mais →</a>
       </div>
 
-      <!-- Quando quiser adicionar um novo post, copie esse bloco acima -->
+      <div class="post">
+        <div class="post-tag">🎯 Estratégia</div>
+        <h3>O ICP que você pensa que tem vs o que funciona</h3>
+        <p>
+          A maioria das empresas define ICP errado e passa meses prospecctando para pessoas que nunca vão comprar. Aprenda a calcular corretamente.
+        </p>
+        <div class="post-meta">8 min de leitura • 10 de Nov</div>
+        <a href="#"><strong>Ler mais →</strong></a>
+      </div>
+
+      <div class="post">
+        <div class="post-tag">💬 LinkedIn</div>
+        <h3>Cadências de LinkedIn que convertam: 5 exemplos prontos</h3>
+        <p>
+          Sequências de mensagens testadas em campo que geram interesse, qualificam leads e conduzem à conversação até o agendamento.
+        </p>
+        <div class="post-meta">14 min de leitura • 08 de Nov</div>
+        <a href="#"><strong>Ler mais →</strong></a>
+      </div>
+
+      <div class="post">
+        <div class="post-tag">📈 Métricas</div>
+        <h3>As 7 métricas que você precisa acompanhar em prospecção</h3>
+        <p>
+          Taxa de resposta, taxa de conversão, custo por reunião: conheça as métricas que realmente importam e como calculá-las.
+        </p>
+        <div class="post-meta">9 min de leitura • 05 de Nov</div>
+        <a href="#"><strong>Ler mais →</strong></a>
+      </div>
+
+      <div class="post">
+        <div class="post-tag">🚀 Ferramentas</div>
+        <h3>Stack de ferramentas para uma operação SDR Digital</h3>
+        <p>
+          Quais ferramentas realmente funcionam, quanto custam e como integrar tudo para ter um fluxo automático de leads qualificados.
+        </p>
+        <div class="post-meta">11 min de leitura • 02 de Nov</div>
+        <a href="#"><strong>Ler mais →</strong></a>
+      </div>
 
     </div>
   </div>
 </section>
 
 <footer>
-  © <span id="year"></span> Inbotix — Blog Oficial.
+  <div class="container">
+    <p>© <span id="year"></span> INBOTIX — Blog Oficial de Vendas e Automação.</p>
+    <p style="margin-top: 12px; font-size: 11px;">
+      <a href="index.html">Home</a> • 
+      <a href="index.html#sobre">Sobre</a> • 
+      <a href="index.html#contato">Contato</a>
+    </p>
+  </div>
 </footer>
 
 <script>
