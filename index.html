@@ -1,4 +1,4 @@
-html_content = """<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
@@ -12,15 +12,15 @@ html_content = """<!DOCTYPE html>
 
   <style>
     :root {
-      --primary: #0F6FFF;           /* Azul principal INBOTIX */
-      --primary-light: #36D9FF;     /* Azul ciano leve */
-      --primary-soft: #EAF6FF;      /* Azul bebê para fundos claros */
+      --primary: #0F6FFF;
+      --primary-light: #36D9FF;
+      --primary-soft: #EAF6FF;
 
-      --bg: #F7FBFF;                /* Fundo quase branco */
-      --bg-alt: #FFFFFF;            /* Blocos brancos */
+      --bg: #F7FBFF;
+      --bg-alt: #FFFFFF;
 
-      --text: #041833;              /* Azul escuro para textos */
-      --text-light: #42536A;        /* Cinza azulado suave */
+      --text: #041833;
+      --text-light: #42536A;
 
       --card-border: rgba(15, 111, 255, 0.16);
       --card-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
@@ -29,31 +29,17 @@ html_content = """<!DOCTYPE html>
       --max-width: 1100px;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-        sans-serif;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background: var(--bg);
       color: var(--text);
       line-height: 1.6;
     }
 
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    /* TOP BAR */
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
 
     .top-bar {
       background: linear-gradient(90deg, #0F6FFF, #36D9FF);
@@ -62,12 +48,7 @@ html_content = """<!DOCTYPE html>
       text-align: center;
       padding: 0.35rem 0.5rem;
     }
-
-    .top-bar strong {
-      font-weight: 700;
-    }
-
-    /* HEADER */
+    .top-bar strong { font-weight: 700; }
 
     header {
       position: sticky;
@@ -77,7 +58,6 @@ html_content = """<!DOCTYPE html>
       background: rgba(247, 251, 255, 0.95);
       border-bottom: 1px solid rgba(15, 111, 255, 0.08);
     }
-
     .nav-container {
       max-width: var(--max-width);
       margin: 0 auto;
@@ -86,17 +66,8 @@ html_content = """<!DOCTYPE html>
       justify-content: space-between;
       padding: 0.6rem 1rem;
     }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .logo img {
-      height: 32px;
-      width: auto;
-    }
+    .logo { display: flex; align-items: center; gap: 0.5rem; }
+    .logo img { height: 32px; width: auto; }
 
     nav ul {
       display: flex;
@@ -104,17 +75,12 @@ html_content = """<!DOCTYPE html>
       gap: 1.5rem;
       font-size: 0.9rem;
     }
-
     nav a {
       color: var(--text-light);
       opacity: 0.85;
       transition: opacity 0.2s, color 0.2s;
     }
-
-    nav a:hover {
-      opacity: 1;
-      color: var(--primary);
-    }
+    nav a:hover { opacity: 1; color: var(--primary); }
 
     .nav-cta {
       display: flex;
@@ -132,29 +98,24 @@ html_content = """<!DOCTYPE html>
       cursor: pointer;
       font-size: 0.9rem;
       font-weight: 600;
-      transition: transform 0.15s ease, box-shadow 0.15s ease,
-        background 0.15s ease, color 0.15s ease;
+      transition: transform 0.15s, box-shadow 0.15s, background 0.15s, color 0.15s;
       white-space: nowrap;
     }
-
     .btn-primary {
       background: linear-gradient(135deg, #0F6FFF, #36D9FF);
       color: #ffffff;
       box-shadow: 0 8px 22px rgba(15, 111, 255, 0.35);
     }
-
     .btn-primary:hover {
       transform: translateY(-1px);
       box-shadow: 0 14px 32px rgba(15, 111, 255, 0.45);
       background: linear-gradient(135deg, #0B5ACC, #24BEE8);
     }
-
     .btn-outline {
       border: 1px solid rgba(15, 111, 255, 0.28);
       color: var(--primary);
       background: #ffffff;
     }
-
     .btn-outline:hover {
       background: #EEF4FF;
       color: #0B5ACC;
@@ -169,20 +130,9 @@ html_content = """<!DOCTYPE html>
       cursor: pointer;
     }
 
-    /* LAYOUT GERAL */
-
-    main {
-      padding-bottom: 4rem;
-    }
-
-    section {
-      padding: 4rem 1rem;
-    }
-
-    .section-inner {
-      max-width: var(--max-width);
-      margin: 0 auto;
-    }
+    main { padding-bottom: 4rem; }
+    section { padding: 4rem 1rem; }
+    .section-inner { max-width: var(--max-width); margin: 0 auto; }
 
     .section-title {
       font-size: 1.9rem;
@@ -190,7 +140,6 @@ html_content = """<!DOCTYPE html>
       letter-spacing: -0.03em;
       color: var(--text);
     }
-
     .section-subtitle {
       color: var(--text-light);
       max-width: 650px;
@@ -198,27 +147,18 @@ html_content = """<!DOCTYPE html>
       margin-bottom: 2rem;
     }
 
-    /* HERO */
-
     .hero {
       padding-top: 3.5rem;
       padding-bottom: 4rem;
-      background: linear-gradient(
-          135deg,
-          #EAF6FF 0%,
-          #D4ECFF 40%,
-          #F7FBFF 100%
-      );
+      background: linear-gradient(135deg, #EAF6FF 0%, #D4ECFF 40%, #F7FBFF 100%);
       border-bottom: 1px solid rgba(15, 111, 255, 0.12);
     }
-
     .hero-grid {
       display: grid;
       grid-template-columns: minmax(0, 3fr) minmax(0, 2.3fr);
       gap: 3rem;
       align-items: center;
     }
-
     .hero-eyebrow {
       font-size: 0.8rem;
       text-transform: uppercase;
@@ -226,41 +166,25 @@ html_content = """<!DOCTYPE html>
       color: #0F6FFF;
       margin-bottom: 0.9rem;
     }
-
     .hero-title {
       font-size: 2.6rem;
       line-height: 1.1;
       letter-spacing: -0.05em;
       margin-bottom: 1rem;
-      color: var(--text);
     }
-
     .hero-title span {
       background: linear-gradient(135deg, #0F6FFF, #36D9FF);
       -webkit-background-clip: text;
       color: transparent;
     }
-
     .hero-subtitle {
       color: var(--text-light);
       font-size: 0.98rem;
       max-width: 480px;
       margin-bottom: 1.5rem;
     }
-
-    .hero-ctas {
-      display: flex;
-      gap: 0.75rem;
-      flex-wrap: wrap;
-      margin-bottom: 1.5rem;
-    }
-
-    .hero-ctas small {
-      font-size: 0.8rem;
-      color: var(--text-light);
-      display: block;
-      margin-top: 0.35rem;
-    }
+    .hero-ctas { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+    .hero-ctas small { font-size: 0.8rem; color: var(--text-light); display: block; margin-top: 0.35rem; }
 
     .hero-badges {
       display: flex;
@@ -269,7 +193,6 @@ html_content = """<!DOCTYPE html>
       font-size: 0.78rem;
       color: var(--text-light);
     }
-
     .hero-badge {
       border-radius: 999px;
       border: 1px solid rgba(15, 111, 255, 0.28);
@@ -284,13 +207,11 @@ html_content = """<!DOCTYPE html>
       box-shadow: var(--card-shadow);
       border: 1px solid rgba(15, 111, 255, 0.18);
     }
-
     .hero-card-title {
       font-size: 0.9rem;
       color: var(--text-light);
       margin-bottom: 0.9rem;
     }
-
     .metric-row {
       display: flex;
       justify-content: space-between;
@@ -298,16 +219,8 @@ html_content = """<!DOCTYPE html>
       margin-bottom: 0.9rem;
       font-size: 0.85rem;
     }
-
-    .metric-label {
-      color: #6B7280;
-      font-size: 0.8rem;
-    }
-
-    .metric-value {
-      font-weight: 600;
-      color: var(--text);
-    }
+    .metric-label { color: #6B7280; font-size: 0.8rem; }
+    .metric-value { font-weight: 600; }
 
     .hero-tagline {
       font-size: 0.78rem;
@@ -317,20 +230,16 @@ html_content = """<!DOCTYPE html>
       margin-top: 0.6rem;
     }
 
-    /* CARDS GERAIS */
-
     .card-grid-3 {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 1.3rem;
     }
-
     .card-grid-4 {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 1.3rem;
     }
-
     .card {
       background: var(--bg-alt);
       border-radius: var(--radius);
@@ -338,29 +247,11 @@ html_content = """<!DOCTYPE html>
       border: 1px solid var(--card-border);
       box-shadow: var(--card-shadow);
     }
+    .card h3 { font-size: 1rem; margin-bottom: 0.4rem; }
+    .card p { font-size: 0.86rem; color: var(--text-light); }
+    .card small { font-size: 0.78rem; color: #6B7280; }
 
-    .card h3 {
-      font-size: 1rem;
-      margin-bottom: 0.4rem;
-      color: var(--text);
-    }
-
-    .card p {
-      font-size: 0.86rem;
-      color: var(--text-light);
-    }
-
-    .card small {
-      font-size: 0.78rem;
-      color: #6B7280;
-    }
-
-    /* SOLUÇÕES */
-
-    .solutions-section {
-      background: #F7FBFF;
-    }
-
+    .solutions-section { background: #F7FBFF; }
     .solutions-header {
       display: flex;
       justify-content: space-between;
@@ -369,21 +260,18 @@ html_content = """<!DOCTYPE html>
       margin-bottom: 2rem;
       flex-wrap: wrap;
     }
-
     .solutions-badge {
       font-size: 0.8rem;
       color: #0F6FFF;
       text-transform: uppercase;
       letter-spacing: 0.18em;
     }
-
     .solutions-note {
       font-size: 0.82rem;
       color: var(--text-light);
       max-width: 320px;
       text-align: right;
     }
-
     .solution-tag {
       display: inline-block;
       font-size: 0.7rem;
@@ -392,7 +280,6 @@ html_content = """<!DOCTYPE html>
       color: #0F6FFF;
       margin-bottom: 0.4rem;
     }
-
     .card-actions {
       margin-top: 0.7rem;
       display: flex;
@@ -401,26 +288,18 @@ html_content = """<!DOCTYPE html>
       gap: 0.5rem;
       font-size: 0.8rem;
     }
-
-    .card-link {
-      font-size: 0.8rem;
-      color: #0F6FFF;
-    }
-
-    /* VÍDEOS DOS PRODUTOS */
+    .card-link { font-size: 0.8rem; color: #0F6FFF; }
 
     .videos-section {
       background: #FFFFFF;
       border-top: 1px solid rgba(15, 111, 255, 0.08);
       border-bottom: 1px solid rgba(15, 111, 255, 0.08);
     }
-
     .video-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 1.5rem;
     }
-
     .video-card {
       background: #FFFFFF;
       border-radius: 18px;
@@ -428,62 +307,81 @@ html_content = """<!DOCTYPE html>
       border: 1px solid rgba(15, 111, 255, 0.16);
       box-shadow: var(--card-shadow);
     }
-
-    .video-card h3 {
-      font-size: 1rem;
-      margin-bottom: 0.5rem;
-      color: var(--text);
-    }
-
-    .video-card p {
-      font-size: 0.82rem;
-      color: var(--text-light);
-      margin-bottom: 0.7rem;
-    }
+    .video-card h3 { font-size: 1rem; margin-bottom: 0.5rem; }
+    .video-card p { font-size: 0.82rem; color: var(--text-light); margin-bottom: 0.7rem; }
 
     .video-wrapper {
       position: relative;
-      padding-bottom: 56.25%; /* 16:9 */
+      padding-bottom: 56.25%;
       height: 0;
       overflow: hidden;
       border-radius: 12px;
       box-shadow: 0 14px 35px rgba(15, 23, 42, 0.12);
     }
-
     .video-wrapper iframe {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
       border: 0;
     }
 
-    /* PARA AGÊNCIAS */
-
-    .agencies-section {
-      background: linear-gradient(
-        135deg,
-        #EAF6FF 0%,
-        #F7FBFF 50%,
-        #FFFFFF 100%
-      );
+    .products-landing {
+      background: #FFFFFF;
+    }
+    .product-hero {
+      margin-bottom: 2rem;
+      padding: 1.5rem 1.4rem;
+      background: linear-gradient(135deg, #EAF6FF 0%, #FFFFFF 100%);
+      border-radius: 18px;
+      border: 1px solid rgba(15, 111, 255, 0.18);
+      box-shadow: var(--card-shadow);
+    }
+    .product-hero h3 { margin-bottom: 0.4rem; }
+    .product-hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.5rem;
+      font-size: 0.78rem;
+    }
+    .product-tag {
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      padding: 0.2rem 0.6rem;
+      background: #FFFFFF;
+      color: #6B7280;
     }
 
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.1rem;
+    }
+    .product-card {
+      background: #FFFFFF;
+      border-radius: 16px;
+      padding: 1rem;
+      border: 1px solid var(--card-border);
+      box-shadow: var(--card-shadow);
+      font-size: 0.86rem;
+    }
+    .product-card h4 { margin-bottom: 0.35rem; font-size: 0.98rem; }
+
+    .agencies-section {
+      background: linear-gradient(135deg, #EAF6FF 0%, #F7FBFF 50%, #FFFFFF 100%);
+    }
     .agencies-grid {
       display: grid;
       grid-template-columns: 1.4fr 1fr;
       gap: 2rem;
       align-items: center;
     }
-
     .pill-list {
       display: flex;
       flex-wrap: wrap;
       gap: 0.5rem;
       margin-top: 0.7rem;
     }
-
     .pill {
       font-size: 0.78rem;
       border-radius: 999px;
@@ -492,7 +390,6 @@ html_content = """<!DOCTYPE html>
       color: var(--text-light);
       background: #FFFFFF;
     }
-
     .agencies-card {
       background: #FFFFFF;
       border-radius: 18px;
@@ -502,26 +399,14 @@ html_content = """<!DOCTYPE html>
       color: var(--text-light);
       box-shadow: var(--card-shadow);
     }
-
-    .agencies-card ul {
-      list-style: none;
-      padding-left: 0;
-      margin: 0.5rem 0 0.8rem;
-    }
-
-    .agencies-card li::before {
-      content: "• ";
-      color: #0F6FFF;
-    }
-
-    /* METODOLOGIA */
+    .agencies-card ul { list-style: none; padding-left: 0; margin: 0.5rem 0 0.8rem; }
+    .agencies-card li::before { content: "• "; color: #0F6FFF; }
 
     .steps {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 1rem;
     }
-
     .step {
       background: #FFFFFF;
       border-radius: var(--radius);
@@ -530,28 +415,19 @@ html_content = """<!DOCTYPE html>
       font-size: 0.85rem;
       box-shadow: var(--card-shadow);
     }
-
     .step-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
       margin-bottom: 0.4rem;
     }
-
     .step-number {
       font-size: 0.75rem;
       color: #6B7280;
       text-transform: uppercase;
       letter-spacing: 0.15em;
     }
-
-    .step-title {
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: var(--text);
-    }
-
-    /* CASES & DEPOIMENTOS */
+    .step-title { font-size: 0.95rem; font-weight: 600; }
 
     .cases-grid {
       display: grid;
@@ -559,7 +435,6 @@ html_content = """<!DOCTYPE html>
       gap: 1.3rem;
       margin-bottom: 2.5rem;
     }
-
     .case-card {
       background: #FFFFFF;
       border-radius: var(--radius);
@@ -568,7 +443,6 @@ html_content = """<!DOCTYPE html>
       font-size: 0.85rem;
       box-shadow: var(--card-shadow);
     }
-
     .case-tag {
       font-size: 0.7rem;
       color: #6B7280;
@@ -576,7 +450,6 @@ html_content = """<!DOCTYPE html>
       letter-spacing: 0.15em;
       margin-bottom: 0.3rem;
     }
-
     .case-result {
       font-size: 0.9rem;
       margin-top: 0.3rem;
@@ -588,7 +461,6 @@ html_content = """<!DOCTYPE html>
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 1.2rem;
     }
-
     .testimonial {
       background: #FFFFFF;
       border-radius: var(--radius);
@@ -598,7 +470,11 @@ html_content = """<!DOCTYPE html>
       color: var(--text-light);
       box-shadow: var(--card-shadow);
     }
-
+    .stars {
+      color: #F59E0B;
+      margin-bottom: 0.4rem;
+      font-size: 0.85rem;
+    }
     .testimonial strong {
       display: block;
       margin-top: 0.6rem;
@@ -606,30 +482,37 @@ html_content = """<!DOCTYPE html>
       color: #6B7280;
     }
 
-    /* SOBRE */
-
-    .about-section {
-      background: #F7FBFF;
+    .blog-section { background: #F7FBFF; }
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.2rem;
     }
+    .blog-card {
+      background: #FFFFFF;
+      border-radius: var(--radius);
+      padding: 1rem;
+      border: 1px solid var(--card-border);
+      box-shadow: var(--card-shadow);
+      font-size: 0.86rem;
+    }
+    .blog-card h3 { font-size: 1rem; margin-bottom: 0.4rem; }
+    .blog-meta { font-size: 0.75rem; color: #6B7280; margin-bottom: 0.4rem; }
 
+    .about-section { background: #F7FBFF; }
     .about-grid {
       display: grid;
       grid-template-columns: 1.4fr 1fr;
       gap: 2rem;
       align-items: start;
     }
-
     .about-list {
       list-style: none;
       padding-left: 0;
       font-size: 0.85rem;
       color: var(--text-light);
     }
-
-    .about-list li {
-      margin-bottom: 0.4rem;
-    }
-
+    .about-list li { margin-bottom: 0.4rem; }
     .about-pill {
       font-size: 0.75rem;
       border-radius: 999px;
@@ -642,20 +525,16 @@ html_content = """<!DOCTYPE html>
       background: #FFFFFF;
     }
 
-    /* CONTATO */
-
     .contact-section {
       background: #FFFFFF;
       border-top: 1px solid rgba(15, 111, 255, 0.08);
     }
-
     .contact-grid {
       display: grid;
       grid-template-columns: 1.4fr 1fr;
       gap: 2rem;
       align-items: start;
     }
-
     form {
       background: #FFFFFF;
       border-radius: 18px;
@@ -664,29 +543,15 @@ html_content = """<!DOCTYPE html>
       box-shadow: var(--card-shadow);
       font-size: 0.9rem;
     }
-
-    .form-row {
-      display: flex;
-      gap: 0.8rem;
-      flex-wrap: wrap;
-    }
-
-    .form-group {
-      margin-bottom: 0.9rem;
-      flex: 1;
-      min-width: 140px;
-    }
-
+    .form-row { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+    .form-group { margin-bottom: 0.9rem; flex: 1; min-width: 140px; }
     label {
       display: block;
       margin-bottom: 0.25rem;
       font-size: 0.78rem;
       color: #6B7280;
     }
-
-    input,
-    select,
-    textarea {
+    input, select, textarea {
       width: 100%;
       border-radius: 10px;
       border: 1px solid rgba(148, 163, 184, 0.9);
@@ -697,27 +562,13 @@ html_content = """<!DOCTYPE html>
       font-size: 0.86rem;
       outline: none;
     }
-
-    input:focus,
-    select:focus,
-    textarea:focus {
+    input:focus, select:focus, textarea:focus {
       border-color: #0F6FFF;
       box-shadow: 0 0 0 1px rgba(15, 111, 255, 0.16);
       background: #FFFFFF;
     }
-
-    textarea {
-      resize: vertical;
-      min-height: 90px;
-    }
-
-    .contact-note {
-      font-size: 0.82rem;
-      color: var(--text-light);
-      margin-top: 0.8rem;
-    }
-
-    /* BOTÃO FLUTUANTE WHATSAPP */
+    textarea { resize: vertical; min-height: 90px; }
+    .contact-note { font-size: 0.82rem; color: var(--text-light); margin-top: 0.8rem; }
 
     .whatsapp-float {
       position: fixed;
@@ -725,7 +576,6 @@ html_content = """<!DOCTYPE html>
       right: 18px;
       z-index: 60;
     }
-
     .whatsapp-float a {
       display: flex;
       align-items: center;
@@ -738,7 +588,6 @@ html_content = """<!DOCTYPE html>
       font-weight: 600;
       box-shadow: 0 18px 35px rgba(22, 163, 74, 0.7);
     }
-
     .whatsapp-float a span.icon {
       width: 22px;
       height: 22px;
@@ -749,18 +598,10 @@ html_content = """<!DOCTYPE html>
       justify-content: center;
       font-size: 0.9rem;
     }
-
     @media (max-width: 480px) {
-      .whatsapp-float a {
-        padding: 0.55rem 0.8rem;
-        font-size: 0.8rem;
-      }
-      .whatsapp-float a span.text {
-        display: none;
-      }
+      .whatsapp-float a { padding: 0.55rem 0.8rem; font-size: 0.8rem; }
+      .whatsapp-float a span.text { display: none; }
     }
-
-    /* FOOTER */
 
     footer {
       border-top: 1px solid rgba(148, 163, 184, 0.4);
@@ -769,7 +610,6 @@ html_content = """<!DOCTYPE html>
       color: #6B7280;
       background: #F9FAFB;
     }
-
     .footer-inner {
       max-width: var(--max-width);
       margin: 0 auto;
@@ -779,29 +619,14 @@ html_content = """<!DOCTYPE html>
       gap: 1rem;
       flex-wrap: wrap;
     }
-
     .footer-logo {
       display: flex;
       align-items: center;
       gap: 0.5rem;
     }
-
-    .footer-logo img {
-      height: 20px;
-      width: auto;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .footer-links a {
-      color: #6B7280;
-    }
-
-    /* RESPONSIVO */
+    .footer-logo img { height: 20px; width: auto; }
+    .footer-links { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .footer-links a { color: #6B7280; }
 
     @media (max-width: 900px) {
       .hero-grid,
@@ -810,37 +635,15 @@ html_content = """<!DOCTYPE html>
       .contact-grid {
         grid-template-columns: 1fr;
       }
-
-      .card-grid-3 {
+      .card-grid-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .card-grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .video-grid { grid-template-columns: 1fr; }
+      .steps, .cases-grid, .testimonials, .blog-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
-
-      .card-grid-4 {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .video-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .steps,
-      .cases-grid,
-      .testimonials {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      nav ul {
-        display: none;
-      }
-
-      .mobile-toggle {
-        display: block;
-      }
-
-      .nav-container {
-        position: relative;
-      }
-
+      nav ul { display: none; }
+      .mobile-toggle { display: block; }
+      .nav-container { position: relative; }
       .nav-open nav ul {
         display: flex;
         position: absolute;
@@ -853,22 +656,11 @@ html_content = """<!DOCTYPE html>
         border: 1px solid rgba(148, 163, 184, 0.7);
         box-shadow: 0 18px 35px rgba(15, 23, 42, 0.18);
       }
-
-      .nav-cta {
-        display: none;
-      }
+      .nav-cta { display: none; }
     }
-
     @media (max-width: 640px) {
-      .hero-title {
-        font-size: 2.1rem;
-      }
-
-      .card-grid-3,
-      .card-grid-4,
-      .steps,
-      .cases-grid,
-      .testimonials {
+      .hero-title { font-size: 2.1rem; }
+      .card-grid-3, .card-grid-4, .steps, .cases-grid, .testimonials, .blog-grid {
         grid-template-columns: 1fr;
       }
     }
@@ -888,10 +680,12 @@ html_content = """<!DOCTYPE html>
         <ul>
           <li><a href="#home">Home</a></li>
           <li><a href="#solucoes">Soluções</a></li>
+          <li><a href="#produtos">Produtos</a></li>
           <li><a href="#videos">Vídeos</a></li>
           <li><a href="#agencias">Para agências</a></li>
           <li><a href="#metodologia">Metodologia</a></li>
           <li><a href="#cases">Cases</a></li>
+          <li><a href="#blog">Blog</a></li>
           <li><a href="#sobre">Sobre</a></li>
           <li><a href="#contato">Contato</a></li>
         </ul>
@@ -986,7 +780,7 @@ html_content = """<!DOCTYPE html>
       </div>
     </section>
 
-    <!-- SOLUÇÕES -->
+    <!-- SOLUÇÕES GERAIS -->
     <section class="solutions-section" id="solucoes">
       <div class="section-inner">
         <div class="solutions-header">
@@ -1017,7 +811,7 @@ html_content = """<!DOCTYPE html>
             </p>
             <div class="card-actions">
               <small>Foco em geração de reuniões qualificadas</small>
-              <a href="#contato" class="card-link">Quero entender melhor →</a>
+              <a href="#produto-sdr" class="card-link">Ver página do SDR →</a>
             </div>
           </div>
 
@@ -1031,7 +825,7 @@ html_content = """<!DOCTYPE html>
             </p>
             <div class="card-actions">
               <small>Automação + personalização</small>
-              <a href="#videos" class="card-link">Ver vídeo →</a>
+              <a href="#produto-dinbot" class="card-link">Ver página do Dinbot →</a>
             </div>
           </div>
 
@@ -1044,7 +838,7 @@ html_content = """<!DOCTYPE html>
             </p>
             <div class="card-actions">
               <small>WhatsApp como canal de vendas</small>
-              <a href="#videos" class="card-link">Ver vídeo →</a>
+              <a href="#produto-atendi" class="card-link">Ver página do Atendi →</a>
             </div>
           </div>
 
@@ -1057,7 +851,161 @@ html_content = """<!DOCTYPE html>
             </p>
             <div class="card-actions">
               <small>Base viva, leads acionáveis</small>
-              <a href="#videos" class="card-link">Ver vídeo →</a>
+              <a href="#produto-dadus" class="card-link">Ver página da Dadus →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MINI LANDINGS – PRODUTOS -->
+    <section class="products-landing" id="produtos">
+      <div class="section-inner">
+        <div class="product-hero">
+          <h2 class="section-title">Páginas dos produtos Inbotix</h2>
+          <p class="section-subtitle">
+            Cada produto da Inbotix tem um papel na sua máquina de vendas. Abaixo
+            você encontra uma “mini landing page” de cada solução, com foco na
+            proposta de valor, para usar em apresentações, reuniões e envio direto.
+          </p>
+          <div class="product-hero-tags">
+            <span class="product-tag">SDR Digital</span>
+            <span class="product-tag">Dinbot</span>
+            <span class="product-tag">Dadus Cadastrais</span>
+            <span class="product-tag">Atendi</span>
+            <span class="product-tag">Atendi Disparos</span>
+          </div>
+        </div>
+
+        <div id="produto-sdr" style="margin-bottom: 2.5rem;">
+          <h3 class="section-title" style="font-size:1.4rem;">SDR Digital Inbotix</h3>
+          <p class="section-subtitle">
+            Um time de SDR Digital operado pela Inbotix, com tecnologia, dados e
+            rotina diária focada em gerar reuniões qualificadas para o seu time de
+            vendas, sem contratar internamente.
+          </p>
+          <div class="product-grid">
+            <div class="product-card">
+              <h4>Para quem é</h4>
+              <p>
+                Empresas B2B, agências de marketing, SaaS, consultorias e negócios
+                que precisam de previsibilidade de pipeline e não têm um processo
+                de prospecção ativa rodando todo dia.
+              </p>
+            </div>
+            <div class="product-card">
+              <h4>Principais entregas</h4>
+              <p>
+                ICP definido, cadências de outbound, operação diária de SDR,
+                agendamento de reuniões e relatórios de desempenho com foco em
+                oportunidades geradas.
+              </p>
+            </div>
+            <div class="product-card">
+              <h4>Call to action</h4>
+              <p>
+                <b>Próximo passo:</b> agende um diagnóstico de Outbound para entender
+                em que estágio você está e qual formato de SDR Digital faz mais
+                sentido para o seu momento.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div id="produto-dinbot" style="margin-bottom: 2.5rem;">
+          <h3 class="section-title" style="font-size:1.4rem;">Dinbot / New Dinbot</h3>
+          <p class="section-subtitle">
+            Automação inteligente no LinkedIn para escalar a prospecção sem perder
+            personalização, conectada com dados e outros canais de contato.
+          </p>
+          <div class="product-grid">
+            <div class="product-card">
+              <h4>O que faz</h4>
+              <p>
+                Gera listas de decisores no LinkedIn, cria cadências de conexão e
+                abordagem, e integra com dados da Dadus e fluxos de atendimento no
+                Atendi.
+              </p>
+            </div>
+            <div class="product-card">
+              <h4>Diferenciais</h4>
+              <p>
+                Foco em ICP, combinações de filtros, multi-contas, personalização
+                por segmento e integração com enriquecimento de dados para aumentar
+                o aproveitamento dos leads.
+              </p>
+            </div>
+            <div class="product-card">
+              <h4>Call to action</h4>
+              <p>
+                <b>Próximo passo:</b> veja o vídeo do Dinbot e agende uma conversa
+                para entender como encaixar a automação de LinkedIn na sua
+                realidade.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div id="produto-dadus" style="margin-bottom: 2.5rem;">
+          <h3 class="section-title" style="font-size:1.4rem;">Dadus Cadastrais</h3>
+          <p class="section-subtitle">
+            Enriquecimento de dados para transformar listas frias em leads
+            acionáveis, com telefone, e-mail e informações empresariais.
+          </p>
+          <div class="product-grid">
+            <div class="product-card">
+              <h4>O problema que resolve</h4>
+              <p>
+                Bases velhas, listas incompletas, leads sem telefone e e-mail.
+                Dadus ajuda a “dar vida” aos seus contatos e à sua base de ICP.
+              </p>
+            </div>
+            <div class="product-card">
+              <h4>Aplicações</h4>
+              <p>
+                Outbound, campanhas de reengajamento, campanhas de upsell para
+                clientes, campanhas de geração de demanda em eventos e webinars.
+              </p>
+            </div>
+            <div class="product-card">
+              <h4>Call to action</h4>
+              <p>
+                <b>Próximo passo:</b> converse com a Inbotix sobre como enriquecer
+                sua base atual e como usar a Dadus integrada ao SDR Digital.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div id="produto-atendi">
+          <h3 class="section-title" style="font-size:1.4rem;">Atendi & Atendi Disparos</h3>
+          <p class="section-subtitle">
+            Omnichannel conectado ao WhatsApp API oficial, e disparos inteligentes
+            para apoiar tanto o atendimento quanto as campanhas de outbound.
+          </p>
+          <div class="product-grid">
+            <div class="product-card">
+              <h4>Atendi – Omnichannel</h4>
+              <p>
+                Centraliza conversas em diferentes canais, integra com CRM e
+                conecta atendimento com as campanhas de SDR Digital.
+              </p>
+            </div>
+            <div class="product-card">
+              <h4>Atendi Disparos</h4>
+              <p>
+                Disparos de WhatsApp (dentro das regras da API oficial), com
+                segmentação, templates aprovados e foco em conversão e
+                relacionamento.
+              </p>
+            </div>
+            <div class="product-card">
+              <h4>Call to action</h4>
+              <p>
+                <b>Próximo passo:</b> assista aos vídeos do Atendi e Atendi Disparos
+                e agende um diagnóstico para desenhar fluxos e jornadas de
+                atendimento e vendas.
+              </p>
             </div>
           </div>
         </div>
@@ -1067,7 +1015,7 @@ html_content = """<!DOCTYPE html>
     <!-- VÍDEOS DOS PRODUTOS -->
     <section class="videos-section" id="videos">
       <div class="section-inner">
-        <h2 class="section-title">Veja os produtos Inbotix na prática</h2>
+        <h2 class="section-title">Vídeos dos produtos Inbotix</h2>
         <p class="section-subtitle">
           Assista às demonstrações rápidas dos principais produtos da Inbotix e
           entenda como cada um deles entra na sua máquina de vendas.
@@ -1081,7 +1029,6 @@ html_content = """<!DOCTYPE html>
               <iframe
                 src="https://www.youtube.com/embed/cWPfZcu7Pio"
                 title="SDR Digital Inbotix"
-                frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowfullscreen
               ></iframe>
@@ -1095,7 +1042,6 @@ html_content = """<!DOCTYPE html>
               <iframe
                 src="https://www.youtube.com/embed/LPiaaVSwhug"
                 title="Dadus Cadastrais"
-                frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowfullscreen
               ></iframe>
@@ -1109,7 +1055,6 @@ html_content = """<!DOCTYPE html>
               <iframe
                 src="https://www.youtube.com/embed/9mkPYEb03iQ"
                 title="Dinbot"
-                frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowfullscreen
               ></iframe>
@@ -1123,7 +1068,6 @@ html_content = """<!DOCTYPE html>
               <iframe
                 src="https://www.youtube.com/embed/yk13tTLBxRE"
                 title="Atendi"
-                frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowfullscreen
               ></iframe>
@@ -1132,7 +1076,6 @@ html_content = """<!DOCTYPE html>
               <iframe
                 src="https://www.youtube.com/embed/ZICMUVA1yIQ"
                 title="Atendi Disparos"
-                frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowfullscreen
               ></iframe>
@@ -1278,14 +1221,14 @@ html_content = """<!DOCTYPE html>
       </div>
     </section>
 
-    <!-- CASES & DEPOIMENTOS -->
+    <!-- CASES & DEPOIMENTOS COM ESTRELAS -->
     <section id="cases">
       <div class="section-inner">
-        <h2 class="section-title">Cases e resultados</h2>
+        <h2 class="section-title">Cases e depoimentos</h2>
         <p class="section-subtitle">
           Cada operação é única, mas o objetivo é sempre o mesmo: transformar
           prospecção em reuniões que viram receita. Abaixo alguns exemplos de
-          resultados que buscamos gerar com nossos clientes.
+          resultados e feedbacks que você pode usar como prova social.
         </p>
 
         <div class="cases-grid">
@@ -1329,20 +1272,257 @@ html_content = """<!DOCTYPE html>
 
         <div class="testimonials">
           <div class="testimonial">
+            <div class="stars">★★★★★</div>
             “A Inbotix nos ajudou a sair da dependência total de indicação. Hoje
             sabemos quantas reuniões vamos gerar por mês e conseguimos planejar
             o crescimento.”
             <strong>Nome · Cargo – Empresa</strong>
           </div>
           <div class="testimonial">
+            <div class="stars">★★★★★</div>
             “A combinação de SDR Digital com automação de LinkedIn e WhatsApp
             trouxe escala sem perder personalização. Nosso time de vendas só
             fala com quem realmente faz sentido.”
             <strong>Nome · Cargo – Empresa</strong>
           </div>
           <div class="testimonial">
+            <div class="stars">★★★★☆</div>
             “Tínhamos ferramentas soltas. A Inbotix conectou tudo e montou um
             processo de fato, do ICP à reunião agendada.”
+            <strong>Nome · Cargo – Empresa</strong>
+          </div>
+        </div>
+      </div>
+    </section>
 
+    <!-- BLOG / CONTEÚDOS -->
+    <section class="blog-section" id="blog">
+      <div class="section-inner">
+        <h2 class="section-title">Blog e conteúdos Inbotix</h2>
+        <p class="section-subtitle">
+          Use esses temas para alimentar o blog, newsletter e postagens da sua
+          comunicação. Depois podemos trocar os links para os artigos reais.
+        </p>
+
+        <div class="blog-grid">
+          <div class="blog-card">
+            <div class="blog-meta">Guia de Outbound · 8 min de leitura</div>
+            <h3>Como montar sua primeira máquina de SDR Digital</h3>
+            <p>
+              Um passo a passo prático para sair do zero na prospecção ativa,
+              mesmo que sua empresa nunca tenha tido SDR ou outbound estruturado.
+            </p>
+            <a href="#" class="card-link">Ler artigo →</a>
+          </div>
+          <div class="blog-card">
+            <div class="blog-meta">Dados & IA · 6 min de leitura</div>
+            <h3>O papel do enriquecimento de dados na prospecção B2B</h3>
+            <p>
+              Por que dados são o combustível da sua operação de vendas, e como
+              conectar ferramentas como Dadus, Dinbot e Atendi.
+            </p>
+            <a href="#" class="card-link">Ler artigo →</a>
+          </div>
+          <div class="blog-card">
+            <div class="blog-meta">Agências · 7 min de leitura</div>
+            <h3>Como agências podem vender SDR Digital como serviço</h3>
+            <p>
+              Ideias de oferta, posicionamento e precificação para agências que
+              querem oferecer prospecção ativa para sua carteira de clientes.
+            </p>
+            <a href="#" class="card-link">Ler artigo →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOBRE -->
+    <section class="about-section" id="sobre">
+      <div class="section-inner">
+        <h2 class="section-title">Sobre a Inbotix</h2>
+        <p class="section-subtitle">
+          A Inbotix nasceu com um objetivo claro: ajudar empresas e agências a
+          terem previsibilidade de vendas por meio de outbound estruturado,
+          SDRs digitais e tecnologia própria.
+        </p>
+
+        <div class="about-grid">
+          <div>
+            <h3 style="font-size: 1rem; margin-bottom: 0.4rem;">
+              O que nos move
+            </h3>
+            <ul class="about-list">
+              <li>
+                <b>Missão:</b> tirar empresas da dependência de sorte nas
+                vendas, construindo máquinas de prospecção ativa que funcionam
+                todos os meses.
+              </li>
+              <li>
+                <b>Visão:</b> ser referência em outbound, SDR Digital e
+                automação comercial no Brasil e em novos mercados.
+              </li>
+              <li>
+                <b>Valores:</b> ética no uso de dados, transparência, foco em
+                resultado, parceria de longo prazo e respeito à cultura de cada
+                cliente.
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 style="font-size: 1rem; margin-bottom: 0.4rem;">
+              Como trabalhamos
+            </h3>
+            <span class="about-pill">Metodologia própria</span>
+            <span class="about-pill">Tecnologia & pessoas</span>
+            <span class="about-pill">Foco em resultado</span>
+            <span class="about-pill">Parcerias estratégicas</span>
+            <p style="font-size: 0.85rem; color: var(--text-light); margin-top: 0.8rem;">
+              Em cada projeto, atuamos como extensão do seu time. Planejamos,
+              implementamos, operamos e ajustamos a máquina junto com você — da
+              estratégia ao relatório de performance.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTATO -->
+    <section class="contact-section" id="contato">
+      <div class="section-inner">
+        <div class="contact-grid">
+          <div>
+            <h2 class="section-title">
+              Pronto para tirar o outbound do papel?
+            </h2>
+            <p class="section-subtitle">
+              Preencha os dados abaixo e agende um diagnóstico gratuito de
+              Outbound e SDR Digital com a Inbotix. Vamos entender sua realidade
+              e sugerir um plano prático para gerar mais reuniões e oportunidades.
+            </p>
+            <p class="contact-note">
+              Em até 1 dia útil alguém do time entra em contato para confirmar o
+              melhor horário. Se preferir, você também pode falar direto pelo
+              WhatsApp da Inbotix.
+            </p>
+          </div>
+
+          <form action="https://formsubmit.co/guilherme@inbotix.com" method="POST">
+            <input type="hidden" name="_subject" value="Novo lead do site da Inbotix" />
+            <input type="hidden" name="_captcha" value="false" />
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="nome">Nome</label>
+                <input type="text" id="nome" name="nome" placeholder="Seu nome completo" />
+              </div>
+              <div class="form-group">
+                <label for="empresa">Empresa</label>
+                <input type="text" id="empresa" name="empresa" placeholder="Nome da empresa" />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="cargo">Cargo</label>
+                <input type="text" id="cargo" name="cargo" placeholder="Seu cargo" />
+              </div>
+              <div class="form-group">
+                <label for="email">E-mail</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="seuemail@empresa.com"
+                />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="telefone">Telefone / WhatsApp</label>
+                <input
+                  type="tel"
+                  id="telefone"
+                  name="telefone"
+                  placeholder="(11) 99999-9999"
+                />
+              </div>
+              <div class="form-group">
+                <label for="vendedores">Quantos vendedores você tem hoje?</label>
+                <select id="vendedores" name="vendedores">
+                  <option value="">Selecione</option>
+                  <option value="0-1">0–1</option>
+                  <option value="2-5">2–5</option>
+                  <option value="6-10">6–10</option>
+                  <option value="11+">11 ou mais</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="objetivo">Qual o principal objetivo com a Inbotix?</label>
+              <select id="objetivo" name="objetivo">
+                <option value="">Selecione</option>
+                <option value="reunioes">Gerar mais reuniões de vendas</option>
+                <option value="outbound">Estruturar ou reorganizar o outbound</option>
+                <option value="agencia">SDR Digital para minha agência e clientes</option>
+                <option value="tecnologia">Entender melhor as plataformas Inbotix</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="mensagem">Fale um pouco sobre o momento da empresa</label>
+              <textarea
+                id="mensagem"
+                name="mensagem"
+                placeholder="Ex.: Temos X vendedores, já fazemos ou não fazemos outbound, ticket médio aproximado, etc."
+              ></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%;">
+              Enviar e agendar diagnóstico
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <img src="logo-inbotix.png" alt="Inbotix" />
+        <span>© Inbotix – Outbound, SDR Digital & Automação de Vendas.</span>
+      </div>
+      <div class="footer-links">
+        <a href="#home">Home</a>
+        <a href="#solucoes">Soluções</a>
+        <a href="#produtos">Produtos</a>
+        <a href="#blog">Blog</a>
+        <a href="#contato">Contato</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- BOTÃO FLUTUANTE WHATSAPP -->
+  <div class="whatsapp-float">
+    <a
+      href="https://wa.me/5511972769986?text=Ol%C3%A1%20Guilherme,%20vi%20o%20site%20da%20Inbotix%20e%20quero%20falar%20sobre%20SDR%20Digital."
+      target="_blank"
+      rel="noopener"
+    >
+      <span class="icon">W</span>
+      <span class="text">Falar no WhatsApp</span>
+    </a>
+  </div>
+
+  <script>
+    function toggleNav() {
+      const nav = document.getElementById("nav");
+      nav.classList.toggle("nav-open");
+    }
+  </script>
+</body>
+</html>
 
 
