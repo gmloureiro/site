@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>SDR Digital – Máquina de Geração de Reuniões | Inbotix</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="SDR Digital da Inbotix – metodologia Receita Previsível combinada com tecnologia (New Dinbot, Dadus, Atendi) para gerar reuniões todos os meses com os decisores certos."
+  />
+  <link rel="icon" type="image/png" href="icon-inbotix.png" />
+
+  <style>
+    :root {
+      --primary: #0f6fff;
+      --primary-strong: #0050c8;
+      --bg: #f5f7fb;
+      --dark: #0f172a;
+      --text: #1f2933;
+      --muted: #6b7280;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      font-family: system-ui, -apple-system, sans-serif;
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 0 20px;
+    }
+
+    /* HEADER */
+    header {
+      background: #fff;
+      padding: 16px 0;
+      border-bottom: 1px solid #e5e7eb;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo-text {
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      font-size: 14px;
+      color: var(--dark);
+    }
+    nav a {
+      margin-left: 18px;
+      font-weight: 700;
+      color: #374151;
+      font-size: 14px;
+    }
+    nav a:hover { color: var(--primary); }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 22px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 14px;
+      transition: .18s;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-strong));
+      color: #fff;
+      box-shadow: 0 10px 25px rgba(15,111,255,0.25);
+    }
+    .btn-primary:hover {
+      background: var(--primary-strong);
+      transform: translateY(-1px);
+      box-shadow: 0 15px 32px rgba(15,111,255,0.35);
+    }
+    .btn-outline {
+      border: 2px solid var(--primary);
+      color: var(--primary);
+      background: #fff;
+    }
+    .btn-outline:hover {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    /* HERO */
+    .hero {
+      padding: 56px 0 46px;
+      background: linear-gradient(to bottom, #e6f0ff, #f9fafb);
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0,1.2fr) minmax(0,1fr);
+      gap: 30px;
+      align-items: center;
+    }
+    .hero-tag {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #9ca3af;
+      margin-bottom: 6px;
+    }
+    .hero-title {
+      font-size: 36px;
+      color: var(--dark);
+      letter-spacing: -0.03em;
+      margin-bottom: 10px;
+    }
+    .hero-title span {
+      color: var(--primary);
+    }
+    .hero-sub {
+      font-size: 16px;
+      color: var(--muted);
+      max-width: 580px;
+      line-height: 1.5;
+      margin-bottom: 18px;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .hero-note {
+      font-size: 13px;
+      color: #4b5563;
+    }
+
+    .hero-card {
+      background: #fff;
+      border-radius: 18px;
+      padding: 18px 18px 14px;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 12px 32px rgba(15,23,42,0.12);
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .hero-card h3 {
+      font-size: 16px;
+      color: var(--dark);
+      margin-bottom: 6px;
+    }
+    .hero-card ul {
+      margin-top: 6px;
+      padding-left: 18px;
+    }
+    .hero-card li {
+      margin-bottom: 4px;
+    }
+
+    /* SECTIONS BASE */
+    .section {
+      padding: 42px 0;
+    }
+    .section-head {
+      margin-bottom: 16px;
+    }
+    .eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #9ca3af;
+      margin-bottom: 4px;
+    }
+    h2 {
+      font-size: 26px;
+      color: var(--dark);
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+    }
+    .sub {
+      color: var(--muted);
+      font-size: 14px;
+      max-width: 650px;
+    }
+
+    /* GRID CARDS */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3,minmax(0,1fr));
+      gap: 18px;
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2,minmax(0,1fr));
+      gap: 18px;
+    }
+    .card {
+      background: #fff;
+      border-radius: 16px;
+      border: 1px solid #e5e7eb;
+      padding: 14px 16px 12px;
+      box-shadow: 0 8px 22px rgba(15,23,42,0.06);
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .card h3 {
+      font-size: 15px;
+      color: var(--dark);
+      margin-bottom: 6px;
+    }
+    .card-step {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 2px;
+      text-transform: uppercase;
+    }
+
+    /* VÍDEO */
+    .video-box {
+      margin-top: 18px;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 14px 32px rgba(15,23,42,0.2);
+    }
+    .video-box iframe {
+      width: 100%;
+      height: 380px;
+      border: none;
+      display: block;
+    }
+
+    /* DEPOIMENTOS */
+    .testimonials {
+      display: grid;
+      grid-template-columns: repeat(3,minmax(0,1fr));
+      gap: 18px;
+    }
+    .test {
+      background: #fff;
+      border-radius: 16px;
+      border: 1px solid #e5e7eb;
+      padding: 14px 16px 12px;
+      box-shadow: 0 8px 22px rgba(15,23,42,0.06);
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .stars {
+      color: #f59e0b;
+      font-size: 15px;
+      margin-bottom: 4px;
+    }
+    .tname {
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 2px;
+    }
+    .trole {
+      font-size: 11px;
+      color: #9ca3af;
+      margin-bottom: 4px;
+    }
+
+    /* CASES */
+    .case-highlight {
+      background: #0f172a;
+      color: #e5e7eb;
+      border-radius: 18px;
+      padding: 20px 18px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      box-shadow: 0 18px 40px rgba(15,23,42,0.45);
+    }
+    .case-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #f9fafb;
+    }
+    .case-number {
+      font-size: 22px;
+      font-weight: 800;
+      color: #4ade80;
+    }
+    .case-caption {
+      font-size: 12px;
+      opacity: .9;
+    }
+
+    /* FORM */
+    .form-wrap {
+      margin-top: 18px;
+      background: #fff;
+      border-radius: 18px;
+      border: 1px solid #e5e7eb;
+      padding: 18px 18px 14px;
+      box-shadow: 0 10px 28px rgba(15,23,42,0.08);
+      max-width: 620px;
+    }
+    .form-grid {
+      display: grid;
+      gap: 10px;
+    }
+    .form-row {
+      display: flex;
+      gap: 10px;
+    }
+    .form-row > div { flex: 1; }
+
+    label {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #4b5563;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 8px 10px;
+      font-size: 13px;
+      border-radius: 10px;
+      border: 1px solid #d1d5db;
+      background: #f9fafb;
+      outline: none;
+      transition: .16s;
+    }
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 1px rgba(15,111,255,0.22);
+      background: #fff;
+    }
+    textarea {
+      resize: vertical;
+      min-height: 70px;
+      max-height: 140px;
+    }
+    .form-note {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    /* CTA FINAL */
+    .cta-bar {
+      margin-top: 22px;
+      border-radius: 20px;
+      padding: 22px 20px;
+      background: linear-gradient(120deg,#0f6fff,#22c1c3);
+      color: #fff;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: center;
+      box-shadow: 0 20px 45px rgba(15,111,255,0.45);
+    }
+    .cta-main {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .cta-sub {
+      font-size: 13px;
+      opacity: .95;
+    }
+
+    /* FOOTER */
+    footer {
+      margin-top: 30px;
+      padding: 18px 0 22px;
+      text-align: center;
+      font-size: 12px;
+      color: #9ca3af;
+      background: #fff;
+      border-top: 1px solid #e5e7eb;
+    }
+
+    /* RESPONSIVO */
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: minmax(0,1fr); }
+      .grid-3, .grid-2, .testimonials { grid-template-columns: minmax(0,1fr); }
+      .video-box iframe { height: 240px; }
+      .header-inner { flex-direction: column; align-items: flex-start; gap: 8px; }
+      nav a { margin-left: 0; margin-right: 14px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="header-inner">
+      <div class="logo-text">INBOTIX</div>
+      <nav>
+        <a href="index.html"><strong>Home</strong></a>
+        <a href="new-dinbot.html"><strong>New Dinbot</strong></a>
+        <a href="new-atendi.html"><strong>New Atendi</strong></a>
+        <a href="atendi-light.html"><strong>Atendi Light</strong></a>
+        <a href="dadus.html"><strong>Dadus</strong></a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-tag">Produto Inbotix</div>
+        <h1 class="hero-title">
+          SDR Digital – <span>Máquina de geração de reuniões</span> baseada em Receita Previsível.
+        </h1>
+        <p class="hero-sub">
+          Nós combinamos metodologia Receita Previsível, tecnologia própria
+          (New Dinbot, Dadus, Atendi) e operação para gerar reuniões todos
+          os meses com os decisores certos, sem depender de indicação.
+        </p>
+
+        <div class="hero-actions">
+          <a
+            href="https://wa.me/5511972769986?text=Quero%20montar%20um%20SDR%20Digital%20com%20a%20Inbotix"
+            class="btn btn-primary"
+          >
+            Quero montar meu SDR Digital
+          </a>
+          <a href="#video-sdr" class="btn btn-outline">
+            Ver vídeo do SDR Digital
+          </a>
+        </div>
+
+        <div class="hero-note">
+          Ideal para empresas B2B e agências que querem previsibilidade de novas
+          oportunidades, com processo estruturado e dados confiáveis.
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <h3>O que é o SDR Digital da Inbotix?</h3>
+        <p>
+          Não é só ferramenta. É uma combinação completa de:
+        </p>
+        <ul>
+          <li><strong>Metodologia:</strong> Receita Previsível e boas práticas de outbound.</li>
+          <li><strong>Ferramentas:</strong> New Dinbot, Dadus Cadastrais, Atendi / Atendi Light.</li>
+          <li><strong>Operação:</strong> estrutura para SDR interno ou em parceria com a Inbotix.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Como funciona</div>
+      <h2>Os 5 pilares do SDR Digital Inbotix.</h2>
+      <p class="sub">
+        Montamos a máquina em cima de um processo claro, seguindo a lógica da Receita Previsível adaptada para a realidade das empresas brasileiras.
+      </p>
+    </div>
+
+    <div class="grid-3">
+      <div class="card">
+        <div class="card-step">Pilar 1</div>
+        <h3>Definição de ICP e mensagem</h3>
+        <p>
+          Diagnóstico do negócio, definição de perfil de cliente ideal, cargos-alvo,
+          nichos prioritários e construção da narrativa de abordagem.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-step">Pilar 2</div>
+        <h3>Dados qualificados com Dadus</h3>
+        <p>
+          Enriquecimento de bases com CNPJ, setor, faturamento, contatos, e-mails,
+          telefones e redes sociais para aumentar taxa de contato real.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-step">Pilar 3</div>
+        <h3>Prospecção com New Dinbot</h3>
+        <p>
+          Cadências de LinkedIn e e-mail configuradas para abrir conversas
+          com o decisor certo e gerar interesse de forma consistente.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-step">Pilar 4</div>
+        <h3>Atendimento e qualificação</h3>
+        <p>
+          New Atendi / Atendi Light organizando WhatsApp e outros canais
+          para qualificar leads, tirar dúvidas e levar até a reunião.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-step">Pilar 5</div>
+        <h3>Agendamento e gestão das reuniões</h3>
+        <p>
+          Regras claras de qualificação, preenchimento de briefing e
+          entrega das reuniões para o time comercial com qualidade.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-step">Extra</div>
+        <h3>Indicadores e melhoria contínua</h3>
+        <p>
+          Acompanhamento de métricas de leads, respostas, oportunidades
+          e reuniões para otimizar copy, listas e canais.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="video-sdr">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Na prática</div>
+      <h2>Veja o SDR Digital em funcionamento.</h2>
+      <p class="sub">
+        Entenda em poucos minutos como a lógica do SDR Digital funciona e
+        como ele se conecta às suas metas de vendas.
+      </p>
+    </div>
+
+    <div class="video-box">
+      <iframe
+        src="https://www.youtube.com/embed/cWPfZcu7Pio"
+        title="SDR Digital – Inbotix"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+      ></iframe>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Para quem é</div>
+      <h2>Quem mais se beneficia do SDR Digital?</h2>
+      <p class="sub">
+        Empresas que dependem de reuniões consultivas para vender e agências
+        que querem oferecer uma máquina de vendas completa para seus clientes.
+      </p>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <h3>Empresas B2B</h3>
+        <p>
+          Negócios que vendem para outras empresas e precisam de previsibilidade
+          de pipeline: tecnologia, serviços, consultorias, educação, saúde,
+          financeiro e outros segmentos B2B.
+        </p>
+      </div>
+      <div class="card">
+        <h3>Agências de marketing e growth</h3>
+        <p>
+          Agências que querem ir além da mídia e entregar também geração de
+          reuniões, aumentando o valor percebido e a retenção dos clientes.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Resultados</div>
+      <h2>Cases e números relevantes.</h2>
+      <p class="sub">
+        A metodologia combinada com nossas ferramentas já ajudou empresas a
+        gerar negócios reais, não apenas cliques e leads frios.
+      </p>
+    </div>
+
+    <div class="grid-2">
+      <div class="case-highlight">
+        <div class="case-title">Case Rocha & Queiroz Advogados</div>
+        <div class="case-number">+ R$ 6.000.000,00</div>
+        <div class="case-caption">
+          em negócios fechados a partir da máquina de prospecção estruturada junto com a Inbotix,
+          com foco em geração recorrente de novas oportunidades.
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Outros resultados que vemos com frequência</h3>
+        <ul>
+          <li>Aumento relevante de reuniões com o perfil certo de cliente.</li>
+          <li>Time de vendas usando a agenda de forma mais estratégica.</li>
+          <li>Mais previsibilidade de pipeline mês a mês.</li>
+          <li>Menos dependência de indicação e “sazonalidade”.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Depoimentos</div>
+      <h2>O que clientes falam da máquina de SDR Digital.</h2>
+      <p class="sub">
+        Alguns relatos de empresas que estruturaram o outbound e começaram a
+        tratar a geração de novas oportunidades como um processo, não como sorte.
+      </p>
+    </div>
+
+    <div class="testimonials">
+      <div class="test">
+        <div class="stars">★★★★★</div>
+        <div class="tname">Rodrigo</div>
+        <div class="trole">Diretor Comercial · SaaS B2B</div>
+        <p>
+          “Hoje eu sei quantas reuniões por mês o SDR Digital tem que gerar.
+          Isso mudou a forma como encaramos crescimento.”
+        </p>
+      </div>
+
+      <div class="test">
+        <div class="stars">★★★★★</div>
+        <div class="tname">Marina</div>
+        <div class="trole">Sócia · Agência de Marketing</div>
+        <p>
+          “Entregamos SDR Digital como serviço e isso aumentou muito
+          nossa retenção de clientes.”
+        </p>
+      </div>
+
+      <div class="test">
+        <div class="stars">★★★★★</div>
+        <div class="tname">Felipe</div>
+        <div class="trole">Head de Vendas · Serviços</div>
+        <p>
+          “Antes era só tentativa e erro. Agora temos processo, dados e um
+          funil de reuniões bem claro.”
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Próximo passo</div>
+      <h2>Quer falar sobre montar o seu SDR Digital?</h2>
+      <p class="sub">
+        Preencha o formulário abaixo ou chame direto no WhatsApp. Vamos entender
+        sua operação atual e desenhar o modelo ideal para a sua realidade.
+      </p>
+    </div>
+
+    <div class="form-wrap">
+      <form class="form-grid" action="#" method="POST">
+        <div class="form-row">
+          <div>
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" name="nome" required />
+          </div>
+          <div>
+            <label for="empresa">Empresa</label>
+            <input type="text" id="empresa" name="empresa" required />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div>
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+          <div>
+            <label for="whats">WhatsApp</label>
+            <input type="tel" id="whats" name="whats" placeholder="(11) 97276-9986" required />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div>
+            <label for="time">Quantos vendedores/closers você tem hoje?</label>
+            <select id="time" name="time">
+              <option value="">Selecione</option>
+              <option value="1-2">1–2</option>
+              <option value="3-5">3–5</option>
+              <option value="6-10">6–10</option>
+              <option value="11+">11 ou mais</option>
+            </select>
+          </div>
+          <div>
+            <label for="sdr">Você já tem SDR hoje?</label>
+            <select id="sdr" name="sdr">
+              <option value="">Selecione</option>
+              <option value="nao">Não, quero montar do zero</option>
+              <option value="sim-ajustar">Sim, mas quero ajustar o modelo</option>
+              <option value="sim-terceirizar">Quero avaliar terceirizar com a Inbotix</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label for="objetivo">Objetivo principal com o SDR Digital</label>
+          <textarea
+            id="objetivo"
+            name="objetivo"
+            placeholder="Ex.: Quero ter X reuniões por mês, melhorar qualidade dos leads, tirar o time de vendas da prospecção fria..."
+          ></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="margin-top:4px;">
+          Enviar e falar com a Inbotix
+        </button>
+
+        <div class="form-note">
+          Ao enviar, você autoriza a Inbotix a entrar em contato por WhatsApp e e-mail
+          com informações sobre o SDR Digital e outras soluções relacionadas.
+        </div>
+      </form>
+    </div>
+
+    <div class="cta-bar">
+      <div>
+        <div class="cta-main">Prefere falar direto pelo WhatsApp?</div>
+        <div class="cta-sub">
+          Clique no botão ao lado para conversar com a equipe da Inbotix e entender
+          qual modelo de SDR Digital faz mais sentido para você.
+        </div>
+      </div>
+      <div>
+        <a
+          href="https://wa.me/5511972769986?text=Quero%20entender%20como%20funciona%20o%20SDR%20Digital%20da%20Inbotix"
+          class="btn btn-outline"
+          style="background:#fff; color:#0f6fff;"
+        >
+          Falar no WhatsApp agora
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © <span id="year"></span> Inbotix – SDR Digital.
+</footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
