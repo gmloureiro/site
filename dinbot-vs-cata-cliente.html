@@ -1,0 +1,1408 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <!-- 🔹 BLOCO 0 – META, TÍTULO, FONTE, FAVICON -->
+  <meta charset="UTF-8" />
+  <title>New Dinbot vs Cata Cliente – Alternativa Mais Segura e Completa para LinkedIn</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Compare New Dinbot vs Cata Cliente. Prospecção no LinkedIn sem deslogar da sua conta, mais segurança, chat em tempo real e teste grátis. A evolução da automação para outbound B2B." />
+  <link rel="icon" type="image/x-icon" href="logo-inbotix.ico" />
+
+  <!-- 🔹 BLOCO 0.1 – RESERVADO PARA TAG DO GOOGLE (Ads / Conversão)
+       QUANDO O GOOGLE GERAR A TAG, COLE AQUI DENTRO:
+       ----------------------------------------------------------------
+       <!-- Google tag (gtag.js) -->
+       <script async src="https://www.googletagmanager.com/gtag/js?id=SEU_ID_AQUI"></script>
+       <script>
+         window.dataLayer = window.dataLayer || [];
+         function gtag(){dataLayer.push(arguments);}
+         gtag('js', new Date());
+         gtag('config', 'SEU_ID_AQUI');
+       </script>
+       ----------------------------------------------------------------
+  -->
+
+  <!-- 🔹 BLOCO 0.2 – FONTES GOOGLE -->
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Bicubik:wght@400;700&display=swap" rel="stylesheet" />
+
+  <!-- 🔹 BLOCO 1 – ESTILOS GERAIS DA LANDING -->
+  <style>
+    :root {
+      --primary-dark: #041056;
+      --primary-deep: #07197E;
+      --primary-blue: #17ABE3;
+      --accent-green: #10B981;
+      --accent-orange: #F97316;
+      --white: #FFFFFF;
+      --bg-light: #F8F9FB;
+      --text-dark: #0f172a;
+      --text-muted: #6b7280;
+      --gray-100: #f3f4f6;
+      --gray-200: #e5e7eb;
+      --gray-300: #d1d5db;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg-light);
+      font-family: 'Barlow', sans-serif;
+      color: var(--text-dark);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 0 20px;
+    }
+
+    /* 🔹 BLOCO 2 – HEADER */
+    header {
+      background: var(--white);
+      border-bottom: 1px solid var(--gray-200);
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      box-shadow: 0 2px 8px rgba(4, 16, 86, 0.05);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 0;
+      gap: 12px;
+    }
+
+    .logo-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    .logo-link:hover {
+      opacity: 0.8;
+    }
+
+    .logo-img {
+      height: 36px;
+      width: auto;
+      max-width: 130px;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .logo-text span:first-child {
+      font-family: 'Bicubik', sans-serif;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      font-size: 12px;
+      color: var(--primary-dark);
+    }
+
+    .logo-text span:last-child {
+      font-size: 10px;
+      color: var(--text-muted);
+      font-family: 'Barlow', sans-serif;
+      font-weight: 500;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    nav a {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-dark);
+      font-family: 'Barlow', sans-serif;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: var(--primary-blue);
+    }
+
+    .nav-btn {
+      padding: 10px 18px;
+      border-radius: 6px;
+      border: none;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--white);
+      background: linear-gradient(135deg, var(--primary-deep), var(--primary-dark));
+      box-shadow: 0 10px 24px rgba(4, 16, 86, 0.25);
+      transition: all 0.2s;
+      cursor: pointer;
+      font-family: 'Barlow', sans-serif;
+    }
+
+    .nav-btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 14px 32px rgba(4, 16, 86, 0.35);
+    }
+
+    /* 🔹 BLOCO 3 – HERO / COMPARAÇÃO PRINCIPAL */
+    .hero {
+      padding: 60px 0;
+      background: linear-gradient(to bottom, #f0f4ff 0%, var(--bg-light) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -10%;
+      width: 450px;
+      height: 450px;
+      background: radial-gradient(circle, rgba(23, 171, 227, 0.1) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 32px;
+      align-items: center;
+    }
+
+    .hero-kicker {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent-orange);
+      margin-bottom: 8px;
+      font-family: 'Barlow', sans-serif;
+      font-weight: 700;
+    }
+
+    .hero-title {
+      font-family: 'Bicubik', sans-serif;
+      font-size: 36px;
+      color: var(--primary-dark);
+      margin-bottom: 12px;
+      font-weight: 700;
+      line-height: 1.25;
+    }
+
+    .hero-title span {
+      color: var(--primary-blue);
+      background: linear-gradient(135deg, var(--primary-blue), #00B4DB);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: 15px;
+      color: var(--text-muted);
+      max-width: 520px;
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+
+    .hero-highlights {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .hero-pill {
+      font-size: 11px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(15, 23, 42, 0.08);
+      background: #ffffff;
+      color: var(--text-dark);
+      font-weight: 600;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 14px 26px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: all 0.18s;
+      font-family: 'Barlow', sans-serif;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary-deep), var(--primary-dark));
+      color: var(--white);
+      box-shadow: 0 10px 25px rgba(4, 16, 86, 0.25);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 16px 36px rgba(4, 16, 86, 0.35);
+    }
+
+    .btn-outline {
+      border: 2px solid var(--primary-blue);
+      color: var(--primary-blue);
+      background: var(--white);
+    }
+
+    .btn-outline:hover {
+      background: var(--primary-blue);
+      color: var(--white);
+      transform: translateY(-1px);
+    }
+
+    .hero-footnote {
+      font-size: 11px;
+      color: var(--text-muted);
+      max-width: 460px;
+      line-height: 1.5;
+      font-style: italic;
+    }
+
+    .hero-card {
+      background: #ffffff;
+      border-radius: 14px;
+      border: 1px solid var(--gray-200);
+      padding: 22px;
+      box-shadow: 0 18px 40px rgba(4, 16, 86, 0.08);
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .hero-card h3 {
+      font-family: 'Bicubik', sans-serif;
+      font-size: 18px;
+      color: var(--primary-dark);
+      margin-bottom: 6px;
+    }
+
+    .hero-card p {
+      font-size: 13px;
+      margin-bottom: 12px;
+    }
+
+    .hero-comparison-mini {
+      margin-top: 10px;
+      border-radius: 10px;
+      border: 1px dashed var(--gray-300);
+      padding: 10px 12px;
+      font-size: 12px;
+    }
+
+    .hero-comparison-mini strong {
+      color: var(--primary-dark);
+    }
+
+    /* 🔹 BLOCO 4 – SEÇÃO TABELA COMPARATIVA */
+    .section {
+      padding: 56px 0;
+    }
+
+    .section-header {
+      margin-bottom: 28px;
+      text-align: center;
+    }
+
+    .section-eyebrow {
+      font-size: 12px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent-orange);
+      margin-bottom: 8px;
+      font-family: 'Barlow', sans-serif;
+      font-weight: 700;
+    }
+
+    .section-title {
+      font-family: 'Bicubik', sans-serif;
+      font-size: 30px;
+      color: var(--primary-dark);
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .section-sub {
+      font-size: 14px;
+      color: var(--text-muted);
+      max-width: 640px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .comparison-table-wrap {
+      background: #ffffff;
+      border-radius: 14px;
+      border: 1px solid var(--gray-200);
+      box-shadow: 0 16px 40px rgba(4, 16, 86, 0.05);
+      overflow: hidden;
+    }
+
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    .comparison-table thead {
+      background: linear-gradient(135deg, var(--primary-deep), var(--primary-blue));
+      color: #ffffff;
+    }
+
+    .comparison-table th,
+    .comparison-table td {
+      padding: 12px 14px;
+      text-align: left;
+      border-bottom: 1px solid var(--gray-200);
+    }
+
+    .comparison-table th {
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    .comparison-table th:nth-child(2),
+    .comparison-table th:nth-child(3) {
+      text-align: center;
+    }
+
+    .comparison-table td:nth-child(2),
+    .comparison-table td:nth-child(3) {
+      text-align: center;
+    }
+
+    .comparison-feature {
+      font-weight: 600;
+      color: var(--text-dark);
+    }
+
+    .pill-ok {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 60px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+      background: rgba(16, 185, 129, 0.12);
+      color: #047857;
+    }
+
+    .pill-alert {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 60px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+      background: rgba(248, 113, 113, 0.12);
+      color: #b91c1c;
+    }
+
+    .pill-neutral {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 60px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+      background: rgba(148, 163, 184, 0.14);
+      color: #0f172a;
+    }
+
+    .comparison-note {
+      font-size: 11px;
+      color: var(--text-muted);
+      padding: 12px 14px;
+      line-height: 1.4;
+      background: var(--gray-100);
+    }
+
+    /* 🔹 BLOCO 5 – BENEFÍCIOS EXCLUSIVOS DINBOT */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 12px;
+      border: 1px solid var(--gray-200);
+      padding: 18px;
+      box-shadow: 0 10px 26px rgba(4, 16, 86, 0.05);
+      font-size: 13px;
+      color: var(--text-muted);
+      transition: all 0.2s;
+      position: relative;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(4, 16, 86, 0.12);
+    }
+
+    .card-icon {
+      font-size: 24px;
+      margin-bottom: 6px;
+    }
+
+    .card h3 {
+      font-family: 'Bicubik', sans-serif;
+      font-size: 16px;
+      color: var(--primary-dark);
+      margin-bottom: 6px;
+      font-weight: 700;
+    }
+
+    .card p {
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    /* 🔹 BLOCO 6 – BLOCO “POR QUE VOCÊ NÃO TEM RESULTADO?” */
+    .warning-section {
+      padding: 48px 0;
+    }
+
+    .warning-wrap {
+      background: #111827;
+      border-radius: 16px;
+      color: #e5e7eb;
+      padding: 28px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 22px;
+      box-shadow: 0 24px 56px rgba(15, 23, 42, 0.6);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .warning-wrap::before {
+      content: '';
+      position: absolute;
+      top: -40%;
+      right: -15%;
+      width: 320px;
+      height: 320px;
+      background: radial-gradient(circle, rgba(23, 171, 227, 0.22) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .warning-content,
+    .warning-box {
+      position: relative;
+      z-index: 2;
+    }
+
+    .warning-badge {
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #FBBF24;
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+
+    .warning-title {
+      font-family: 'Bicubik', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .warning-text {
+      font-size: 14px;
+      opacity: 0.92;
+      line-height: 1.7;
+    }
+
+    .warning-list {
+      margin-top: 12px;
+      font-size: 13px;
+      list-style: none;
+      padding: 0;
+    }
+
+    .warning-list li {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .warning-list li::before {
+      content: "•";
+      color: #FCA5A5;
+      margin-top: 2px;
+    }
+
+    .warning-box {
+      background: rgba(17, 24, 39, 0.85);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      border-radius: 12px;
+      padding: 18px;
+      font-size: 13px;
+    }
+
+    .warning-box-title {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .warning-box p {
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    /* 🔹 BLOCO 7 – PROVA SOCIAL / MINI DEPOIMENTO */
+    .testimonial-band {
+      padding: 40px 0 10px;
+    }
+
+    .testimonial-card {
+      max-width: 780px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: 12px;
+      border: 1px solid var(--gray-200);
+      padding: 20px;
+      box-shadow: 0 10px 26px rgba(4, 16, 86, 0.08);
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      font-size: 13px;
+    }
+
+    .testimonial-quote {
+      font-size: 26px;
+      color: var(--primary-blue);
+      line-height: 1;
+      margin-top: -4px;
+    }
+
+    .testimonial-text {
+      flex: 1;
+    }
+
+    .testimonial-text p {
+      margin-bottom: 6px;
+      line-height: 1.7;
+      color: var(--text-dark);
+    }
+
+    .testimonial-author {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    /* 🔹 BLOCO 8 – CTA FINAL + FORMULÁRIO */
+    .cta-section {
+      padding: 56px 0 48px;
+      background: linear-gradient(135deg, #041056, #07197E);
+    }
+
+    .cta-header {
+      text-align: center;
+      margin-bottom: 28px;
+      color: #ffffff;
+    }
+
+    .cta-header .section-eyebrow {
+      color: #FBBF24;
+    }
+
+    .cta-header .section-title {
+      color: #ffffff;
+    }
+
+    .cta-header p {
+      color: rgba(255,255,255,0.9);
+      font-size: 14px;
+      max-width: 620px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .cta-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 22px;
+      align-items: stretch;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .cta-form {
+      background: #ffffff;
+      border-radius: 12px;
+      border: 1px solid var(--gray-200);
+      padding: 22px;
+      box-shadow: 0 20px 48px rgba(4, 16, 86, 0.12);
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .cta-form h3 {
+      font-family: 'Bicubik', sans-serif;
+      font-size: 17px;
+      color: var(--primary-dark);
+      margin-bottom: 6px;
+      font-weight: 700;
+    }
+
+    .cta-form p {
+      font-size: 13px;
+      margin-bottom: 12px;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .form-row > div {
+      flex: 1;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-dark);
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 10px 12px;
+      font-size: 13px;
+      border-radius: 6px;
+      border: 1px solid var(--gray-200);
+      background: var(--gray-100);
+      outline: none;
+      transition: all 0.16s;
+      font-family: 'Barlow', sans-serif;
+      resize: vertical;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--primary-blue);
+      box-shadow: 0 0 0 2px rgba(23, 171, 227, 0.1);
+      background: #ffffff;
+    }
+
+    .form-submit {
+      width: 100%;
+      padding: 14px 26px;
+      border-radius: 6px;
+      border: none;
+      font-size: 14px;
+      font-weight: 600;
+      color: #ffffff;
+      background: linear-gradient(135deg, var(--primary-deep), var(--primary-dark));
+      box-shadow: 0 10px 25px rgba(4, 16, 86, 0.25);
+      transition: all 0.2s;
+      cursor: pointer;
+      margin-top: 8px;
+    }
+
+    .form-submit:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 14px 32px rgba(4, 16, 86, 0.35);
+    }
+
+    .form-note {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 6px;
+    }
+
+    .cta-side {
+      background: rgba(15,23,42,0.3);
+      border-radius: 12px;
+      border: 1px solid rgba(148,163,184,0.4);
+      padding: 20px;
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      font-size: 13px;
+    }
+
+    .cta-side-item strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 14px;
+    }
+
+    .cta-side-item p {
+      font-size: 13px;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .cta-side small {
+      font-size: 11px;
+      opacity: 0.85;
+    }
+
+    /* 🔹 BLOCO 9 – FAQ SIMPLES */
+    .faq-section {
+      padding: 40px 0 24px;
+    }
+
+    .faq-grid {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .faq-item {
+      background: #ffffff;
+      border-radius: 12px;
+      border: 1px solid var(--gray-200);
+      padding: 16px;
+      font-size: 13px;
+      box-shadow: 0 10px 26px rgba(4, 16, 86, 0.04);
+    }
+
+    .faq-item h3 {
+      font-family: 'Bicubik', sans-serif;
+      font-size: 14px;
+      color: var(--primary-dark);
+      margin-bottom: 6px;
+    }
+
+    .faq-item p {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* 🔹 BLOCO 10 – FOOTER + WHATS */
+    footer {
+      margin-top: 30px;
+      padding: 20px 0 26px;
+      background: #ffffff;
+      border-top: 1px solid var(--gray-200);
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--primary-blue);
+    }
+
+    .whats-float {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 60;
+      text-decoration: none;
+    }
+
+    .whats-button {
+      width: 60px;
+      height: 60px;
+      border-radius: 16px;
+      background: #25D366;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 20px 48px rgba(37, 211, 102, 0.3);
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 28px;
+      color: #ffffff;
+    }
+
+    .whats-button:hover {
+      transform: scale(1.12);
+      box-shadow: 0 24px 56px rgba(37, 211, 102, 0.4);
+    }
+
+    .whats-label {
+      position: absolute;
+      right: 70px;
+      bottom: 16px;
+      background: var(--primary-dark);
+      color: var(--white);
+      padding: 9px 12px;
+      border-radius: 6px;
+      font-size: 11px;
+      white-space: nowrap;
+      box-shadow: 0 12px 32px rgba(4, 16, 86, 0.4);
+      font-weight: 600;
+      pointer-events: none;
+    }
+
+    /* 🔹 BLOCO 11 – RESPONSIVO */
+    @media (max-width: 900px) {
+      .hero-grid,
+      .warning-wrap,
+      .cta-grid,
+      .faq-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 40px 0 32px;
+      }
+
+      .hero-title {
+        font-size: 30px;
+      }
+
+      .section-title {
+        font-size: 26px;
+      }
+
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+
+      nav {
+        gap: 12px;
+      }
+
+      .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .warning-wrap {
+        padding: 22px;
+      }
+
+      .cta-section {
+        padding: 44px 0 36px;
+      }
+
+      .cta-grid {
+        max-width: 100%;
+      }
+
+      .comparison-table-wrap {
+        overflow-x: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 🔹 BLOCO 2 – HEADER -->
+  <header>
+    <div class="container">
+      <div class="header-inner">
+        <a href="index.html" class="logo-link">
+          <img src="logo-inbotix.png" alt="Logo Inbotix" class="logo-img" />
+          <div class="logo-text">
+            <span>INBOTIX</span>
+            <span>Máquina de Vendas</span>
+          </div>
+        </a>
+        <nav>
+          <a href="index.html"><strong>Home</strong></a>
+          <a href="blog.html"><strong>Blog</strong></a>
+          <a href="index.html#solucoes"><strong>Soluções</strong></a>
+          <a href="index.html#contato" class="nav-btn">Falar com especialista</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- 🔹 BLOCO 3 – HERO / INTRO COMPARAÇÃO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <div class="hero-kicker">Comparativo Real · LinkedIn Automation</div>
+          <h1 class="hero-title">
+            New Dinbot vs <span>Cata Cliente</span>:  
+            mais segurança, mais inteligência e teste grátis.
+          </h1>
+          <p class="hero-sub">
+            Prospecção no LinkedIn sem precisar deslogar da sua conta, com chat em tempo real,
+            cadências inteligentes e foco total em outbound B2B. Uma evolução em relação ao Cata Cliente.
+          </p>
+
+          <div class="hero-highlights">
+            <div class="hero-pill">✅ Não precisa deslogar do LinkedIn</div>
+            <div class="hero-pill">✅ Menos risco de bloqueio</div>
+            <div class="hero-pill">✅ Chat em tempo real</div>
+            <div class="hero-pill">✅ Integração com dados B2B</div>
+          </div>
+
+          <div class="hero-actions">
+            <a href="https://newdinbot.app/" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+              🚀 Testar New Dinbot Grátis por 7 dias
+            </a>
+            <a href="#comparacao" class="btn btn-outline">
+              Ver comparação completa →
+            </a>
+          </div>
+
+          <div class="hero-footnote">
+            Sem cartão de crédito. Sem compromisso. Ideal para quem quer sair do “joguinho de extrair contato”
+            e montar uma máquina de outbound de verdade.
+          </div>
+        </div>
+
+        <div>
+          <div class="hero-card">
+            <h3>Por que tanta diferença?</h3>
+            <p>
+              O Cata Cliente nasceu focado em automação mais simples. O New Dinbot foi criado para
+              <strong>estruturar uma operação de SDR Digital completa</strong>, com dados, cadências e segurança.
+            </p>
+            <div class="hero-comparison-mini">
+              <strong>Resumo rápido:</strong><br/>
+              • Cata Cliente: foco em volume e extração.<br/>
+              • New Dinbot: foco em reuniões de vendas consistentes e previsíveis.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 🔹 BLOCO 4 – TABELA COMPARATIVA -->
+  <section class="section" id="comparacao">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-eyebrow">Comparativo direto</div>
+        <h2 class="section-title">New Dinbot vs Cata Cliente, lado a lado.</h2>
+        <p class="section-sub">
+          Olhe com calma os pontos abaixo. Se sua prioridade é segurança, previsibilidade e estratégia de outbound,
+          o New Dinbot foi feito para você.
+        </p>
+      </div>
+
+      <div class="comparison-table-wrap">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Recurso</th>
+              <th>Cata Cliente</th>
+              <th>New Dinbot</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="comparison-feature">Precisa deslogar da conta principal do LinkedIn?</td>
+              <td><span class="pill-alert">Muitas vezes sim</span></td>
+              <td><span class="pill-ok">Não precisa</span></td>
+            </tr>
+            <tr>
+              <td class="comparison-feature">Risco de bloqueio por uso indevido</td>
+              <td><span class="pill-alert">Maior</span></td>
+              <td><span class="pill-ok">Fluxos mais seguros</span></td>
+            </tr>
+            <tr>
+              <td class="comparison-feature">Chat do LinkedIn em tempo real</td>
+              <td><span class="pill-neutral">Limitado</span></td>
+              <td><span class="pill-ok">Sim, foco em conversas</span></td>
+            </tr>
+            <tr>
+              <td class="comparison-feature">Prospecção orientada a outbound B2B</td>
+              <td><span class="pill-neutral">Parcial</span></td>
+              <td><span class="pill-ok">Pensado para SDR Digital</span></td>
+            </tr>
+            <tr>
+              <td class="comparison-feature">Uso combinado com base de dados B2B (CNPJ, contatos etc.)</td>
+              <td><span class="pill-neutral">Não é o foco</span></td>
+              <td><span class="pill-ok">Integrado ao ecossistema Inbotix</span></td>
+            </tr>
+            <tr>
+              <td class="comparison-feature">Cadências com múltiplos toques (visita, conexão, mensagem, e-mail)</td>
+              <td><span class="pill-neutral">Mais básico</span></td>
+              <td><span class="pill-ok">Cadências completas</span></td>
+            </tr>
+            <tr>
+              <td class="comparison-feature">Suporte especializado em Receita Previsível</td>
+              <td><span class="pill-neutral">Não</span></td>
+              <td><span class="pill-ok">Sim</span></td>
+            </tr>
+            <tr>
+              <td class="comparison-feature">Teste grátis para validar na sua operação</td>
+              <td><span class="pill-neutral">Depende da oferta</span></td>
+              <td><span class="pill-ok">7 dias de teste grátis</span></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="comparison-note">
+          Informações com base em posicionamento público e uso típico dos clientes. O objetivo aqui não é desmerecer
+          nenhuma ferramenta, mas mostrar por que o New Dinbot é uma opção mais estratégica para operações de outbound
+          B2B que querem crescer com segurança.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 🔹 BLOCO 5 – BENEFÍCIOS EXCLUSIVOS NEW DINBOT -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-eyebrow">Diferenciais práticos</div>
+        <h2 class="section-title">O que o New Dinbot faz melhor na prática.</h2>
+        <p class="section-sub">
+          Não é só “mandar mensagem automática”. É construir fluxo inteligente de relacionamento que termina
+          em reuniões agendadas com o perfil certo de cliente.
+        </p>
+      </div>
+
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-icon">🔒</div>
+          <h3>Uso mais seguro do LinkedIn</h3>
+          <p>
+            Você não precisa deslogar da sua conta principal nem ficar trocando de sessão.
+            Sua operação roda com fluxos pensados para reduzir risco de bloqueio.
+          </p>
+        </div>
+        <div class="card">
+          <div class="card-icon">💬</div>
+          <h3>Chat em tempo real</h3>
+          <p>
+            Acompanhe e responda mensagens em tempo real, dentro da lógica de outbound.
+            Mais conversas reais, menos “disparo cego”.
+          </p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🎯</div>
+          <h3>Foco em reuniões, não em cliques</h3>
+          <p>
+            O New Dinbot foi desenhado para marcar reuniões qualificadas.
+            ICP definido, cadências estruturadas e acompanhamento de resultados.
+          </p>
+        </div>
+        <div class="card">
+          <div class="card-icon">📊</div>
+          <h3>Integração com dados B2B</h3>
+          <p>
+            Combine LinkedIn com dados de empresas (CNPJ, setor, porte, contatos).
+            Vai muito além de “puxar contato” – vira máquina de inteligência comercial.
+          </p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🤝</div>
+          <h3>Suporte especializado</h3>
+          <p>
+            Time focado em Receita Previsível e outbound te ajuda a configurar a operação
+            para o seu modelo de negócio, não só “subir uma ferramenta”.
+          </p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🚀</div>
+          <h3>Escalável para o time inteiro</h3>
+          <p>
+            Seja você um vendedor solo ou uma equipe de SDRs, o New Dinbot escala
+            com seu time e suas metas, sem virar caos operacional.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 🔹 BLOCO 6 – SEÇÃO “POR QUE VOCÊ NÃO TEM RESULTADO?” -->
+  <section class="warning-section">
+    <div class="container">
+      <div class="warning-wrap">
+        <div class="warning-content">
+          <div class="warning-badge">Por que talvez você não esteja tendo resultado?</div>
+          <h2 class="warning-title">O problema não é só a ferramenta. É a estratégia por trás.</h2>
+          <p class="warning-text">
+            Muitos negócios investem em ferramentas que prometem “encher o funil”, mas não estão
+            estruturadas para um outbound consistente. Resultado: esforço alto, pouco resultado e
+            risco constante de bloqueio.
+          </p>
+          <ul class="warning-list">
+            <li>Mensagens genéricas que ninguém responde.</li>
+            <li>Ferramentas que forçam você a usar contas paralelas.</li>
+            <li>Zero integração com dados de verdade sobre as empresas.</li>
+            <li>Time de vendas apagando incêndio, sem processo claro.</li>
+          </ul>
+        </div>
+
+        <div class="warning-box">
+          <div class="warning-box-title">Como o New Dinbot muda esse cenário:</div>
+          <p>
+            • Você opera a partir da conta principal, com fluxos mais seguros.<br/>
+            • As cadências são pensadas para gerar conversa real e reunião.<br/>
+            • Integra com dados B2B e com o restante do ecossistema Inbotix.<br/>
+            • Você conta com suporte estratégico, não só com um painel de automação.
+          </p>
+          <p style="margin-top: 10px;">
+            Em outras palavras: não é só uma ferramenta para “catar clientes”. É uma plataforma
+            para <strong>construir uma máquina de vendas</strong>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 🔹 BLOCO 7 – MINI DEPOIMENTO -->
+  <section class="testimonial-band">
+    <div class="container">
+      <div class="testimonial-card">
+        <div class="testimonial-quote">“</div>
+        <div class="testimonial-text">
+          <p>
+            “Quando migramos para o New Dinbot, paramos de brincar de automação
+            e começamos a rodar um outbound de verdade. Passamos a medir reuniões, pipeline e receita,
+            não só quantidade de mensagens enviadas.”
+          </p>
+          <div class="testimonial-author">
+            Diretor Comercial de software B2B · Operação de SDR Digital com Inbotix
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 🔹 BLOCO 8 – CTA FINAL COM FORMULÁRIO -->
+  <section class="cta-section" id="teste-gratis">
+    <div class="container">
+      <div class="cta-header">
+        <div class="section-eyebrow">Próximo passo</div>
+        <h2 class="section-title">Teste o New Dinbot na sua realidade.</h2>
+        <p>
+          Preencha os dados abaixo para ativar seu teste grátis de 7 dias e entender, na prática,
+          como uma operação de outbound segura e previsível funciona.
+        </p>
+      </div>
+
+      <div class="cta-grid">
+        <div class="cta-form">
+          <h3>Ativar teste grátis do New Dinbot</h3>
+          <p>Sem cartão de crédito. Nosso time entra em contato em até 2 horas úteis.</p>
+
+          <form action="https://formspree.io/f/managrzo" method="POST">
+            <div class="form-row">
+              <div>
+                <label for="nome">Nome Completo</label>
+                <input type="text" id="nome" name="nome" placeholder="Seu nome" required />
+              </div>
+              <div>
+                <label for="empresa">Empresa</label>
+                <input type="text" id="empresa" name="empresa" placeholder="Sua empresa" required />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div>
+                <label for="email">E-mail profissional</label>
+                <input type="email" id="email" name="email" placeholder="seu@empresa.com" required />
+              </div>
+              <div>
+                <label for="whats">WhatsApp</label>
+                <input type="tel" id="whats" name="whats" placeholder="(11) 97276-9986" required />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div>
+                <label for="segmento">Segmento da empresa</label>
+                <select id="segmento" name="segmento" required>
+                  <option value="">Selecione</option>
+                  <option value="Software / Tecnologia">Software / Tecnologia</option>
+                  <option value="Serviços B2B">Serviços B2B</option>
+                  <option value="Indústria">Indústria</option>
+                  <option value="Educação">Educação</option>
+                  <option value="Saúde">Saúde</option>
+                  <option value="Outros">Outros</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div>
+                <label for="desafio">Qual seu maior desafio hoje no LinkedIn?</label>
+                <textarea id="desafio" name="desafio" rows="3" placeholder="Ex: Muitas visualizações, poucas reuniões marcadas..." ></textarea>
+              </div>
+            </div>
+
+            <button type="submit" class="form-submit">
+              ✅ Quero ativar meu teste grátis
+            </button>
+
+            <div class="form-note">
+              ✓ Sem compromisso • ✓ Resposta em até 2h úteis • ✓ Suporte para configurar o primeiro fluxo
+            </div>
+          </form>
+        </div>
+
+        <div class="cta-side">
+          <div class="cta-side-item">
+            <strong>O que acontece depois que você envia?</strong>
+            <p>
+              1. Nosso time recebe seus dados e analisa rapidamente o seu cenário.<br/>
+              2. Entramos em contato por WhatsApp ou e-mail para validar o ICP e o objetivo.<br/>
+              3. Ajudamos a ativar o New Dinbot com um primeiro fluxo de teste.
+            </p>
+          </div>
+          <div class="cta-side-item">
+            <strong>Para quem faz mais sentido?</strong>
+            <p>
+              • Empresas B2B que já vendem, mas querem previsibilidade.<br/>
+              • Times comerciais que querem tirar mais do LinkedIn com segurança.<br/>
+              • Negócios que cansaram de só “catar contato” e querem receita recorrente.
+            </p>
+          </div>
+          <div class="cta-side-item">
+            <strong>Prefere falar direto no WhatsApp?</strong>
+            <p>
+              <a href="https://wa.me/5511972769986?text=Quero%20testar%20o%20New%20Dinbot%20como%20alternativa%20ao%20Cata%20Cliente" style="color:#FBBF24; font-weight:700;">
+                → Clique aqui para abrir o WhatsApp agora
+              </a>
+            </p>
+            <small>Atendimento em horário comercial, com especialistas em outbound.</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 🔹 BLOCO 9 – FAQ -->
+  <section class="faq-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-eyebrow">Dúvidas rápidas</div>
+        <h2 class="section-title">Perguntas frequentes sobre o New Dinbot.</h2>
+      </div>
+
+      <div class="faq-grid">
+        <div class="faq-item">
+          <h3>Vou precisar deslogar da minha conta do LinkedIn?</h3>
+          <p>
+            Não. Um dos grandes diferenciais do New Dinbot é justamente operar de forma mais segura,
+            sem exigir que você abandone sua conta principal ou faça malabarismos com múltiplos logins.
+          </p>
+        </div>
+        <div class="faq-item">
+          <h3>O teste grátis é realmente sem compromisso?</h3>
+          <p>
+            Sim. O objetivo do teste é mostrar, na prática, como uma operação de outbound estruturada
+            funciona para o seu negócio. Se não fizer sentido, você simplesmente não continua.
+          </p>
+        </div>
+        <div class="faq-item">
+          <h3>Consigo usar só o New Dinbot ou preciso de outras ferramentas?</h3>
+          <p>
+            Você pode começar apenas com o New Dinbot. Com o tempo, se fizer sentido,
+            dá para integrar com outros componentes do ecossistema Inbotix (dados, atendimento, CRM etc.).
+          </p>
+        </div>
+        <div class="faq-item">
+          <h3>E se eu já uso o Cata Cliente hoje?</h3>
+          <p>
+            Sem problema. Podemos analisar sua operação atual e te ajudar a migrar de forma segura,
+            sem perder os aprendizados e contatos que você já construiu.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 🔹 BLOCO 10 – FOOTER E WHATS -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div>
+          © <span id="year"></span> INBOTIX — New Dinbot, automação de LinkedIn com foco em outbound.
+        </div>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="blog.html">Blog</a>
+          <a href="index.html#solucoes">Soluções</a>
+          <a href="#teste-gratis">Teste grátis</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/5511972769986?text=Quero%20saber%20mais%20sobre%20o%20New%20Dinbot%20vs%20Cata%20Cliente" class="whats-float" target="_blank" rel="noopener noreferrer">
+    <div class="whats-button">
+      🟢
+    </div>
+    <div class="whats-label">
+      Falar no WhatsApp
+    </div>
+  </a>
+
+  <!-- 🔹 BLOCO 11 – SCRIPT ANO -->
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
