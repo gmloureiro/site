@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <!-- 🔹 BLOCO 0 – META, TÍTULO, FONTES -->
+  <meta charset="UTF-8" />
+  <title>New Dinbot vs Linked Helper – Alternativa Melhor com IA e Teste Grátis</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Compare New Dinbot vs Linked Helper. Automação de LinkedIn com IA, anti-bloqueio, cadências inteligentes e teste grátis por 7 dias. A evolução do Linked Helper para outbound B2B." />
+  <link rel="icon" type="image/x-icon" href="logo-inbotix.ico" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Bicubik:wght@400;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* 🔹 BLOCO 0.1 – VARIÁVEIS DE TEMA E REGRAS GERAIS */
+    :root {
+      --primary-dark: #041056;
+      --primary-deep: #07197E;
+      --primary-blue: #17ABE3;
+      --accent-green: #10B981;
+      --accent-orange: #F97316;
+      --white: #FFFFFF;
+      --bg-light: #F8F9FB;
+      --text-dark: #0f172a;
+      --text-muted: #6b7280;
+      --gray-100: #f3f4f6;
+      --gray-200: #e5e7eb;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg-light);
+      font-family: 'Barlow', sans-serif;
+      color: var(--text-dark);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 0 20px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, #E0F2FE, #BAE6FD);
+      border: 1px solid #7DD3FC;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--primary-deep);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .badge-orange {
+      background: linear-gradient(135deg, #FEF3C7, #FDE68A);
+      border-color: #FCD34D;
+      color: #92400E;
+    }
+
+    .badge-green {
+      background: linear-gradient(135deg, #D1FAE5, #A7F3D0);
+      border-color: #6EE7B7;
+      color: #065F46;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 14px 28px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: all 0.18s;
+      font-family: 'Barlow', sans-serif;
+      text-align: center;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary-deep), var(--primary-dark));
+      color: var(--white);
+      box-shadow: 0 10px 25px rgba(4, 16, 86, 0.25);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 16px 36px rgba(4, 16, 86, 0.35);
+    }
+
+    .btn-outline {
+      border: 2px solid var(--primary-blue);
+      color: var(--primary-blue);
+      background: var(--white);
+    }
+
+    .btn-outline:hover {
+      background: var(--primary-blue);
+      color: var(--white);
+      transform: translateY(-1px);
+    }
+
+    .tag-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(23, 171, 227, 0.06);
+      border: 1px solid rgba(23, 171, 227, 0.3);
+      color: var(--primary-deep);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .section {
+      padding: 64px 0;
+    }
+
+    .section-header {
+      margin-bottom: 32px;
+      text-align: center;
+    }
+
+    .section-eyebrow {
+      font-size: 12px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent-orange);
+      margin-bottom: 8px;
+      font-family: 'Barlow', sans-serif;
+      font-weight: 700;
+    }
+
+    .section-title {
+      font-family: 'Bicubik', sans-serif;
+      font-size: 32px;
+      color: var(--primary-dark);
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+      font-weight: 700;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .section-sub {
+      font-size: 15px;
+      color: var(--text-muted);
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      font-family: 'Barlow', sans-serif;
+      line-height: 1.6;
+    }
+
+    /* 🔹 BLOCO 1 – HEADER */
+    header {
+      background: var(--white);
+      border-bottom: 1px solid var(--gray-200);
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      box-shadow: 0 2px 8px rgba(4, 16, 86, 0.05);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 0;
+      gap: 12px;
+    }
+
+    .logo-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    .logo-link:hover {
+      opacity: 0.8;
+    }
+
+    .logo-img {
+      height: 36px;
+      width: auto;
+      max-width: 130px;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .logo-text span:first-child {
+      font-family: 'Bicubik', sans-serif;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      font-size: 12px;
+      color: var(--primary-dark);
+    }
+
+    .logo-text span:last-child {
+      font-size: 10px;
+      color: var(--text-muted);
+      font-family: 'Barlow', sans-serif;
+      font-weight: 500;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    nav a {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-dark);
+      font-family: 'Barlow', sans-serif;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: var(--primary-blue);
+    }
+
+    .nav-btn {
+      padding: 10px 18px;
+      border-radius: 6px;
+      border: none;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--white);
+      background: linear-gradient(135deg, var(--primary-deep), var(--primary-dark));
+      box-shadow: 0 10px 24px rgba(4, 16, 86, 0.25);
+      transition: all 0.2s;
+      cursor: pointer;
+      font-family: 'Barlow', sans-serif;
+    }
+
+    .nav-btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 14px 32px rgba(4, 16, 86, 0.35);
+    }
+
+    /* 🔹 BLOCO 2 – HERO / PROMESSA */
+    .hero {
+      padding: 64px 0 56px;
+      background: linear-gradient(to bottom, #f0f4ff 0%, var(--bg-light) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -10%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(23, 171, 227, 0.1) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 32px;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-kicker {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent-orange);
+      margin-bottom: 8px;
+      font-family: 'Barlow', sans-serif;
+      font-weight: 700;
+    }
+
+    .hero-title {
+      font-family: 'Bicubik', sans-serif;
+      font-size: 38px;
+      color: var(--primary-dark);
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .hero-title span {
+      color: var(--primary-blue);
+      background: linear-gradient(135deg, var(--primary-blue), #00B4DB);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: 15px;
+      color: var(--text-muted);
+      max-width: 540px;
+      line-height: 1.7;
+      margin-bottom: 18px;
+      font-family: 'Barlow', sans-serif;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .hero-footnote {
+      font-size: 12px;
+      color: var(--text-muted);
+      max-width: 520px;
+      font-family: 'Barlow', sans-serif;
+      font-style: italic;
+    }
+
+    .hero-compare {
+      background: var(--white);
+      border-radius: 12px;
+      border: 1px solid var(--gray-200);
+      padding: 20px;
+      box-shadow: 0 18px 40px rgba(4, 16, 86, 0.12);
+      font-size: 13px;
+      color: var(--text-muted);
+      font-family: 'Barlow', sans-serif;
+    }
+
+    .hero-compare-title {
+      font-family: 'Bicubik', sans-serif;
+      font-size: 18px;
+      color: var(--primary-dark);
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+
+    .hero-compare-sub {
+      font-size: 13px;
+      margin-bottom: 12px;
+    }
+
+    .hero-compare-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 12px;
+    }
+
+    .hero-compare-list li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+      font-size: 13px;
+    }
+
+    .hero-compare-list li span {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 8px;
+      border-radius: 999px;
+    }
+
+    .pill-win {
+      background: rgba(16, 185, 129, 0.12);
+      color: #065F46;
+    }
+
+    .pill-lose {
+      background: rgba(248, 113, 113, 0.12);
+      color: #991b1b;
+    }
+
+    /* 🔹 BLOCO 3 – PROVA SOCIAL / SELos */
+    .logos-strip {
+      margin-top: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      align-items: center;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .logos-strip span {
+      font-weight: 600;
+    }
+
+    .logos-strip-logos {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .logo-badge {
+      background: var(--white);
+      border-radius: 999px;
+      border: 1px solid var(--gray-200);
+      padding: 6px 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .logo-badge img {
+      height: 18px;
+      width: auto;
+      display: block;
+    }
+
+    /* 🔹 BLOCO 4 – TABELA COMPARATIVA */
+    .compare-section {
+      padding: 56px 0;
+    }
+
+    .compare-table-wrap {
+      background: var(--white);
+      border-radius: 16px;
+      border: 1px solid var(--gray-200);
+      box-shadow: 0 18px 40px rgba(4, 16, 86, 0.06);
+      overflow: hidden;
+    }
+
+    .compare-table-header {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      background: linear-gradient(135deg, var(--primary-deep), var(--primary-blue));
+      color: var(--white);
+      padding: 16px 20px;
+      font-size: 13px;
+      font-weight: 600;
+      align-items: center;
+    }
+
+    .compare-table-header div:nth-child(2),
+    .compare-table-header div:nth-child(3) {
+      text-align: center;
+    }
+
+    .compare-table-body {
+      padding: 12px 20px 20px;
+    }
+
+    .compare-row {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--gray-200);
+      font-size: 13px;
+      align-items: center;
+    }
+
+    .compare-row:last-child {
+      border-bottom: none;
+    }
+
+    .compare-row div:nth-child(2),
+    .compare-row div:nth-child(3) {
+      text-align: center;
+      font-weight: 600;
+    }
+
+    .compare-badge-win {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(16, 185, 129, 0.12);
+      color: #065F46;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .compare-badge-mid {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(250, 204, 21, 0.12);
+      color: #854d0e;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .compare-badge-lose {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(248, 113, 113, 0.12);
+      color: #991b1b;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    /* 🔹 BLOCO 5 – BENEFÍCIOS (POR QUE O DINBOT GANHA) */
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+      margin-top: 32px;
+    }
+
+    .benefit-card {
+      background: var(--white);
+      border-radius: 12px;
+      border: 1px solid var(--gray-200);
+      padding: 20px;
+      box-shadow: 0 10px 26px rgba(4, 16, 86, 0.05);
+      font-size: 13px;
+      color: var(--text-muted);
+      font-family: 'Barlow', sans-serif;
+    }
+
+    .benefit-card h3 {
+      font-family: 'Bicubik', sans-serif;
+      font-size: 16px;
+      color: var(--primary-dark);
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+
+    .benefit-icon {
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+
+    .benefit-card ul {
+      margin-top: 10px;
+      padding-left: 18px;
+    }
+
+    .benefit-card li {
+      margin-bottom: 6px;
+    }
+
+    /* 🔹 BLOCO 6 – DEPOIMENTOS */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+      margin-top: 28px;
+    }
+
+    .testimonial-card {
+      background: var(--white);
+      border-radius: 12px;
+      border: 1px solid var(--gray-200);
+      padding: 20px;
+      box-shadow: 0 10px 26px rgba(4, 16, 86, 0.05);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .testimonial-card::before {
+      content: '"';
+      position: absolute;
+      top: 6px;
+      left: 12px;
+      font-size: 48px;
+      color: var(--primary-blue);
+      opacity: 0.16;
+      font-family: 'Bicubik', sans-serif;
+    }
+
+    .testimonial-name {
+      font-family: 'Bicubik', sans-serif;
+      font-size: 14px;
+      color: var(--primary-dark);
+      font-weight: 700;
+      margin-bottom: 4px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .testimonial-role {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .testimonial-text {
+      font-size: 14px;
+      color: var(--text-dark);
+      line-height: 1.7;
+      position: relative;
+      z-index: 2;
+    }
+
+    .testimonial-stars {
+      margin-top: 10px;
+      font-size: 13px;
+      color: #FDB022;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* 🔹 BLOCO 7 – BLOCO DE OFERTA / TESTE GRÁTIS */
+    .highlight {
+      margin-top: 12px;
+      padding: 32px;
+      border-radius: 16px;
+      background: linear-gradient(120deg, var(--primary-deep), var(--primary-blue));
+      color: var(--white);
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 28px;
+      align-items: center;
+      box-shadow: 0 30px 60px rgba(4, 16, 86, 0.35);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .highlight::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -10%;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .highlight > * {
+      position: relative;
+      z-index: 2;
+    }
+
+    .highlight h3 {
+      font-family: 'Bicubik', sans-serif;
+      font-size: 24px;
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+
+    .highlight p {
+      font-size: 14px;
+      opacity: 0.95;
+      margin-bottom: 4px;
+      font-family: 'Barlow', sans-serif;
+    }
+
+    .highlight-list {
+      font-size: 13px;
+      margin-top: 12px;
+      font-family: 'Barlow', sans-serif;
+    }
+
+    .highlight-list span {
+      display: inline-block;
+      padding: 6px 12px;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.15);
+      margin: 4px 4px 4px 0;
+      font-weight: 600;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    /* 🔹 BLOCO 8 – FAQ */
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+      margin-top: 28px;
+    }
+
+    .faq-item {
+      background: var(--white);
+      border-radius: 12px;
+      border: 1px solid var(--gray-200);
+      padding: 18px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .faq-item h3 {
+      font-family: 'Bicubik', sans-serif;
+      font-size: 15px;
+      color: var(--primary-dark);
+      margin-bottom: 6px;
+      font-weight: 700;
+    }
+
+    /* 🔹 BLOCO 9 – FOOTER SIMPLES */
+    footer {
+      margin-top: 40px;
+      padding: 24px 0;
+      background: var(--white);
+      border-top: 1px solid var(--gray-200);
+      font-size: 12px;
+      color: var(--text-muted);
+      font-family: 'Barlow', sans-serif;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      font-family: 'Barlow', sans-serif;
+      transition: color 0.2s;
+      font-weight: 500;
+    }
+
+    .footer-links a:hover {
+      color: var(--primary-blue);
+    }
+
+    /* 🔹 BLOCO 10 – WHATSAPP FLOAT */
+    .whats-float {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 60;
+      text-decoration: none;
+    }
+
+    .whats-button {
+      width: 60px;
+      height: 60px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #25D366, #20BA5A);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 20px 48px rgba(37, 211, 102, 0.3);
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 28px;
+    }
+
+    .whats-button:hover {
+      transform: scale(1.12);
+      box-shadow: 0 24px 56px rgba(37, 211, 102, 0.4);
+    }
+
+    .whats-label {
+      position: absolute;
+      right: 70px;
+      bottom: 16px;
+      background: var(--primary-dark);
+      color: var(--white);
+      padding: 10px 14px;
+      border-radius: 6px;
+      font-size: 11px;
+      white-space: nowrap;
+      box-shadow: 0 12px 32px rgba(4, 16, 86, 0.4);
+      font-family: 'Barlow', sans-serif;
+      font-weight: 600;
+      pointer-events: none;
+    }
+
+    /* 🔹 BLOCO 11 – RESPONSIVO */
+    @media (max-width: 900px) {
+      .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav {
+        justify-content: flex-start;
+      }
+
+      .hero-grid,
+      .highlight,
+      .benefits-grid,
+      .testimonials-grid,
+      .faq-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .compare-table-header,
+      .compare-row {
+        grid-template-columns: 1.6fr 1.1fr 1.1fr;
+      }
+
+      .hero-title {
+        font-size: 30px;
+      }
+
+      .section-title {
+        font-size: 26px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- 🔹 BLOCO 1 – HEADER -->
+<header>
+  <div class="container">
+    <div class="header-inner">
+      <a href="index.html" class="logo-link">
+        <img src="logo-inbotix.png" alt="Logo Inbotix" class="logo-img" />
+        <div class="logo-text">
+          <span>INBOTIX</span>
+          <span>New Dinbot – Outbound Sales</span>
+        </div>
+      </a>
+      <nav>
+        <a href="index.html"><strong>Home</strong></a>
+        <a href="blog.html"><strong>Blog</strong></a>
+        <a href="index.html#solucoes"><strong>Soluções</strong></a>
+        <a href="index.html#contato" class="nav-btn">Falar com Especialista</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<!-- 🔹 BLOCO 2 – HERO / PROMESSA -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-kicker">Comparativo Oficial</div>
+        <h1 class="hero-title">
+          New Dinbot vs <span>Linked Helper</span>
+        </h1>
+        <p class="hero-sub">
+          A evolução da automação de LinkedIn: IA real, anti-bloqueio inteligente, cadências completas e suporte humano. Veja por que centenas de empresas estão migrando do Linked Helper para o New Dinbot.
+        </p>
+
+        <div class="hero-badges">
+          <span class="badge badge-green">✅ Automação com IA</span>
+          <span class="badge badge-orange">🔥 Melhor que Linked Helper</span>
+          <span class="badge">7 dias grátis · Sem cartão</span>
+        </div>
+
+        <div class="hero-actions">
+          <a href="https://newdinbot.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+            🚀 Testar New Dinbot por 7 dias
+          </a>
+          <a href="#comparativo" class="btn btn-outline">
+            Ver comparação completa ↓
+          </a>
+        </div>
+
+        <div class="hero-footnote">
+          Empresas que trocaram Linked Helper por New Dinbot aumentaram em até 3x o número de reuniões qualificadas.
+        </div>
+
+        <div class="logos-strip">
+          <span>Baseado em:</span>
+          <div class="logos-strip-logos">
+            <div class="logo-badge">
+              <img src="logo receita previsivel.svg" alt="Receita Previsível" />
+              <span>Receita Previsível</span>
+            </div>
+            <div class="logo-badge">
+              <img src="logo_zoho.png" alt="Zoho Partner" />
+              <span>Zoho Partner</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-compare">
+        <div class="hero-compare-title">Resumo rápido da comparação</div>
+        <p class="hero-compare-sub">
+          O Linked Helper é uma boa automação. O New Dinbot é uma nova geração, focada em empresas que querem <strong>resultados reais</strong> em outbound B2B.
+        </p>
+        <ul class="hero-compare-list">
+          <li>
+            <span class="pill-win">New Dinbot</span>
+            IA que personaliza mensagens e protege contra bloqueios.
+          </li>
+          <li>
+            <span class="pill-win">New Dinbot</span>
+            Cadências completas de 5 a 10 passos, do convite até a reunião.
+          </li>
+          <li>
+            <span class="pill-win">New Dinbot</span>
+            Integração com CRM, dados, WhatsApp e operação de SDR Digital.
+          </li>
+          <li>
+            <span class="pill-lose">Linked Helper</span>
+            Focado só na automação básica de ações, sem estratégia completa.
+          </li>
+        </ul>
+        <a href="https://wa.me/5511972769986?text=Quero%20entender%20a%20diferen%C3%A7a%20entre%20New%20Dinbot%20e%20Linked%20Helper" class="btn btn-primary" style="width: 100%; justify-content:center;">
+          💬 Falar com um especialista sobre a migração
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 🔹 BLOCO 3 – TABELA COMPARATIVA -->
+<section class="compare-section" id="comparativo">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">Comparativo Detalhado</div>
+      <h2 class="section-title">New Dinbot x Linked Helper: quem entrega mais resultado?</h2>
+      <p class="section-sub">
+        Não é só sobre enviar mensagens no LinkedIn. É sobre ter uma máquina de geração de reuniões previsível, segura e integrada com o seu time de vendas.
+      </p>
+    </div>
+
+    <div class="compare-table-wrap">
+      <div class="compare-table-header">
+        <div>Recurso</div>
+        <div>New Dinbot</div>
+        <div>Linked Helper</div>
+      </div>
+      <div class="compare-table-body">
+        <div class="compare-row">
+          <div>IA para sugerir e personalizar mensagens</div>
+          <div><span class="compare-badge-win">Sim · IA nativa</span></div>
+          <div><span class="compare-badge-lose">Não</span></div>
+        </div>
+
+        <div class="compare-row">
+          <div>Cadências completas (5–10 passos)</div>
+          <div><span class="compare-badge-win">Completo</span></div>
+          <div><span class="compare-badge-lose">Limitado</span></div>
+        </div>
+
+        <div class="compare-row">
+          <div>Sistema anti-bloqueio inteligente</div>
+          <div><span class="compare-badge-win">Nível 3 · Dinâmico</span></div>
+          <div><span class="compare-badge-mid">Básico</span></div>
+        </div>
+
+        <div class="compare-row">
+          <div>Integração direta com CRM (Zoho, Bigin, HubSpot, etc.)</div>
+          <div><span class="compare-badge-win">Nativo</span></div>
+          <div><span class="compare-badge-mid">Parcial / manual</span></div>
+        </div>
+
+        <div class="compare-row">
+          <div>Geração de listas inteligentes e segmentação B2B</div>
+          <div><span class="compare-badge-win">Sim</span></div>
+          <div><span class="compare-badge-lose">Não</span></div>
+        </div>
+
+        <div class="compare-row">
+          <div>Foco em outbound B2B com metodologia Receita Previsível</div>
+          <div><span class="compare-badge-win">Sim · Core</span></div>
+          <div><span class="compare-badge-mid">Não é o foco</span></div>
+        </div>
+
+        <div class="compare-row">
+          <div>Suporte humano em português (WhatsApp, vídeo, treinamento)</div>
+          <div><span class="compare-badge-win">Especializado</span></div>
+          <div><span class="compare-badge-lose">Limitado</span></div>
+        </div>
+
+        <div class="compare-row">
+          <div>Teste grátis sem cartão</div>
+          <div><span class="compare-badge-win">7 dias</span></div>
+          <div><span class="compare-badge-lose">Não disponível</span></div>
+        </div>
+
+        <div class="compare-row">
+          <div>Operação completa de SDR Digital por trás</div>
+          <div><span class="compare-badge-win">Sim · Inbotix</span></div>
+          <div><span class="compare-badge-lose">Não</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 🔹 BLOCO 4 – BENEFÍCIOS PRINCIPAIS DO NEW DINBOT -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">Por Dentro do New Dinbot</div>
+      <h2 class="section-title">Não é só uma ferramenta, é uma máquina de prospecção ativa.</h2>
+      <p class="section-sub">
+        O New Dinbot foi criado para construir um fluxo completo de geração de reuniões, e não apenas automatizar cliques no LinkedIn.
+      </p>
+    </div>
+
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <div class="benefit-icon">🤖</div>
+        <h3>IA que trabalha por você</h3>
+        <p>
+          O Dinbot usa inteligência artificial para sugerir, adaptar e melhorar mensagens com base no contexto do lead e da cadência.
+        </p>
+        <ul>
+          <li>Personalização automática</li>
+          <li>Tom de voz ajustado por persona</li>
+          <li>Evita mensagens robóticas</li>
+        </ul>
+      </div>
+
+      <div class="benefit-card">
+        <div class="benefit-icon">🛡</div>
+        <h3>Anti-bloqueio avançado</h3>
+        <p>
+          A automação respeita limites, ritmos e padrões de uso para minimizar risco de bloqueio e manter a conta viva por anos.
+        </p>
+        <ul>
+          <li>Controle dinâmico de volumes</li>
+          <li>Envios distribuídos ao longo do dia</li>
+          <li>Alertas de risco e ajuste automático</li>
+        </ul>
+      </div>
+
+      <div class="benefit-card">
+        <div class="benefit-icon">🎯</div>
+        <h3>Foco em reuniões, não em cliques</h3>
+        <p>
+          Tudo é construído para gerar agendas cheias para o time de vendas, seguindo o método Receita Previsível.
+        </p>
+        <ul>
+          <li>Cadências multi-toque</li>
+          <li>Follow-up automático</li>
+          <li>Visão clara de oportunidades</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 🔹 BLOCO 5 – DEPOIMENTOS -->
+<section class="section" id="depoimentos">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">Na prática</div>
+      <h2 class="section-title">O que dizem empresas que migraram do Linked Helper.</h2>
+      <p class="section-sub">
+        O ponto em comum? Mais reuniões qualificadas, menos esforço operacional e muito mais previsibilidade.
+      </p>
+    </div>
+
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-name">Diretor Comercial · Escritório Jurídico</div>
+        <div class="testimonial-role">Cliente Inbotix · Migrou de Linked Helper para New Dinbot</div>
+        <div class="testimonial-text">
+          “Usávamos o Linked Helper apenas para mandar convite. Com o New Dinbot, passamos a ter cadências completas, métricas e acompanhamento. Nossas reuniões triplicaram em 90 dias.”
+        </div>
+        <div class="testimonial-stars">★★★★★</div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-name">Head de Vendas · SaaS B2B</div>
+        <div class="testimonial-role">Operação de SDR Digital com New Dinbot</div>
+        <div class="testimonial-text">
+          “O Dinbot trouxe o que faltava: inteligência. Não é só automação. É estratégia, dados e integração com nosso CRM. Hoje outbound é nosso principal canal de aquisição.”
+        </div>
+        <div class="testimonial-stars">★★★★★</div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-name">CEO · Agência de Marketing</div>
+        <div class="testimonial-role">White Label Inbotix</div>
+        <div class="testimonial-text">
+          “A diferença é gritante. O Linked Helper era uma ferramenta solta. Com o New Dinbot, viramos fornecedor de máquina de vendas para nossos clientes.”
+        </div>
+        <div class="testimonial-stars">★★★★★</div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-name">Fundador · Consultoria B2B</div>
+        <div class="testimonial-role">Cliente Inbotix</div>
+        <div class="testimonial-text">
+          “A sensação é sair de um carro popular e entrar em um carro de luxo. Tudo mais fluido, inteligente e com suporte de gente que vive outbound todos os dias.”
+        </div>
+        <div class="testimonial-stars">★★★★★</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 🔹 BLOCO 6 – OFERTA / TESTE GRÁTIS -->
+<section class="section">
+  <div class="container">
+    <div class="highlight">
+      <div>
+        <h3>Teste o New Dinbot e sinta a diferença na prática.</h3>
+        <p>
+          Em vez de só comparar na teoria, conecte sua conta de LinkedIn, rode uma cadência e veja quantas conversas reais você gera em poucos dias.
+        </p>
+        <div class="highlight-list">
+          <span>✓ 7 dias grátis · Sem cartão</span>
+          <span>✓ Suporte para configurar a primeira campanha</span>
+          <span>✓ Recomendações personalizadas de cadência</span>
+          <span>✓ Insights baseados em Receita Previsível</span>
+        </div>
+        <p style="font-size: 12px; margin-top: 12px;">
+          Se depois do teste você sentir que o New Dinbot não é melhor que o Linked Helper, basta não continuar. Sem pegadinha.
+        </p>
+      </div>
+      <div>
+        <a href="https://newdinbot.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="width:100%; justify-content:center; padding: 16px 28px; font-size: 15px;">
+          🚀 Criar conta e testar New Dinbot
+        </a>
+        <a href="https://wa.me/5511972769986?text=Quero%20ajuda%20para%20migrar%20do%20Linked%20Helper%20para%20o%20New%20Dinbot" class="btn btn-outline" style="width:100%; justify-content:center; margin-top:10px;">
+          💬 Falar com um especialista antes
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 🔹 BLOCO 7 – FAQ -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">FAQ</div>
+      <h2 class="section-title">Perguntas frequentes de quem usa hoje o Linked Helper.</h2>
+      <p class="section-sub">
+        Migrar de ferramenta pode parecer complexo, mas no New Dinbot você não fica sozinho em nenhuma etapa.
+      </p>
+    </div>
+
+    <div class="faq-grid">
+      <div class="faq-item">
+        <h3>Consigo migrar facilmente do Linked Helper para o New Dinbot?</h3>
+        <p>
+          Sim. Em poucos passos você replica suas listas e fluxos. Nosso time te ajuda a ajustar cadências, volumes e mensagens com base em boas práticas de outbound.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h3>O New Dinbot é mais seguro que o Linked Helper?</h3>
+        <p>
+          O New Dinbot foi desenhado com foco em segurança: controle de volumes, janelas de envio distribuídas e alertas de risco reduzem drasticamente a chance de bloqueio.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Preciso de um SDR dedicado para usar o New Dinbot?</h3>
+        <p>
+          Não necessariamente, mas recomendamos. O New Dinbot foi feito para potencializar o trabalho de SDRs, times comerciais e founders que ainda fazem a própria prospecção.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h3>O teste grátis é realmente sem compromisso?</h3>
+        <p>
+          Sim. São 7 dias completos de uso, sem necessidade de cartão de crédito. Se não fizer sentido, você simplesmente não continua.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 🔹 BLOCO 8 – FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        © <span id="year"></span> INBOTIX — New Dinbot · Automação de LinkedIn com IA
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="index.html#solucoes">Soluções</a>
+        <a href="blog.html">Blog</a>
+        <a href="index.html#contato">Contato</a>
+      </div>
+      <div>
+        <span class="badge badge-green">✓ Receita Previsível</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- 🔹 BLOCO 9 – WHATSAPP FLOAT -->
+<a href="https://wa.me/5511972769986?text=Quero%20saber%20mais%20sobre%20o%20New%20Dinbot%20e%20Linked%20Helper" class="whats-float" target="_blank" rel="noopener noreferrer">
+  <div class="whats-button">
+    💬
+  </div>
+  <div class="whats-label">
+    Falar com especialista
+  </div>
+</a>
+
+<!-- 🔹 BLOCO 10 – SCRIPT ANO -->
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
