@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://inbotix.com.br/sitemap.xml
