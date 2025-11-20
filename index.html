@@ -1,55 +1,46 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
+  <!-- =========================================================
+       BLOCO 1 - HEAD, SEO, META TAGS, ESTILOS E TRACKING
+  ========================================================== -->
 
-  <!-- SEO BÁSICO -->
-  <title>Inbotix – Máquina de Vendas, SDR Digital e Automação</title>
+  <meta charset="UTF-8" />
+  <title>Inbotix | SDR Digital, Outbound e Zoho Partner</title>
+
+  <!-- Meta básicos -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Inbotix ajuda sua empresa a gerar reuniões qualificadas todos os meses com SDR Digital, automação de vendas, dados B2B e atendimento omnichannel integrado." />
+  <meta name="description" content="A Inbotix estrutura sua máquina de vendas com SDR Digital, automação, dados B2B e atendimento omnichannel, como Zoho Partner e metodologia Receita Previsível." />
+
+  <!-- Canonical -->
   <link rel="canonical" href="https://inbotix.com.br/" />
 
-  <!-- FAVICON -->
+  <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="logo-inbotix.ico" />
 
-  <!-- OPEN GRAPH -->
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Inbotix" />
-  <meta property="og:title" content="Inbotix – Máquina de Vendas, SDR Digital e Automação" />
-  <meta property="og:description" content="Inbotix ajuda sua empresa a gerar reuniões qualificadas todos os meses com SDR Digital, automação de vendas, dados B2B e atendimento omnichannel integrado." />
-  <meta property="og:url" content="https://inbotix.com.br/" />
-  <!-- Coloque a imagem og-image.jpg na raiz do site -->
-  <meta property="og:image" content="https://inbotix.com.br/og-image.jpg" />
-  <meta property="og:image:alt" content="Inbotix - Máquina de Vendas, SDR Digital e Automação" />
-
-  <!-- TWITTER CARD -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Inbotix – Máquina de Vendas, SDR Digital e Automação" />
-  <meta name="twitter:description" content="Inbotix ajuda sua empresa a gerar reuniões qualificadas todos os meses com SDR Digital, automação de vendas, dados B2B e atendimento omnichannel integrado." />
-  <meta name="twitter:image" content="https://inbotix.com.br/og-image.jpg" />
-
-  <!-- GOOGLE FONTS – PRECONNECT + PRELOAD -->
+  <!-- Preconnect para fontes (melhora carregamento) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    rel="preload"
-    as="style"
-    href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Bicubik:wght@400;700&family=Opinion+Pro:wght@400;700&display=swap"
-  />
-  <link
-    rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Bicubik:wght@400;700&family=Opinion+Pro:wght@400;700&display=swap"
-    media="print"
-    onload="this.media='all'"
-  />
-  <noscript>
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Bicubik:wght@400;700&family=Opinion+Pro:wght@400;700&display=swap"
-    />
-  </noscript>
 
-  <!-- JSON-LD: ORGANIZATION -->
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Bicubik:wght@400;700&display=swap" rel="stylesheet" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:title" content="Inbotix | SDR Digital, Outbound e Zoho Partner" />
+  <meta property="og:description" content="Construa uma máquina de vendas previsível com SDR Digital, automação, dados B2B e atendimento omnichannel." />
+  <meta property="og:url" content="https://inbotix.com.br/" />
+  <meta property="og:site_name" content="Inbotix" />
+  <meta property="og:image" content="https://inbotix.com.br/logo-inbotix.png" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Inbotix | SDR Digital, Outbound e Zoho Partner" />
+  <meta name="twitter:description" content="SDR Digital, automação de vendas, dados B2B e atendimento omnichannel com Zoho Partner." />
+  <meta name="twitter:image" content="https://inbotix.com.br/logo-inbotix.png" />
+
+  <!-- JSON-LD: Organização + Site -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -58,28 +49,12 @@
     "url": "https://inbotix.com.br/",
     "logo": "https://inbotix.com.br/logo-inbotix.png",
     "sameAs": [
-      "https://www.linkedin.com/company/inbotix",
-      "https://www.facebook.com/inbotix"
+      "https://www.linkedin.com/company/inbotix/"
     ]
   }
   </script>
 
-  <!-- JSON-LD: WEBSITE -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Inbotix – Máquina de Vendas, SDR Digital e Automação",
-    "url": "https://inbotix.com.br/",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://inbotix.com.br/?s={search_term_string}",
-      "query-input": "required name=search_term_string"
-    }
-  }
-  </script>
-
-  <!-- TAG DO MICROSOFT CLARITY -->
+  <!-- Microsoft Clarity -->
   <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
         c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -87,6 +62,10 @@
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "u833ulprni");
   </script>
+
+  <!-- =========================================================
+       ESTILOS GERAIS
+  ========================================================== -->
   <style>
     :root {
       --primary-dark: #041056;
@@ -184,7 +163,7 @@
     }
 
     .logo-link:hover {
-      opacity: 0.8;
+      opacity: 0.9;
     }
 
     .logo-img {
@@ -215,7 +194,16 @@
     }
 
     .header-badge {
-      margin-left: 8px;
+      margin-left: 10px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .zoho-logo {
+      height: 22px;
+      width: auto;
+      display: block;
     }
 
     nav {
@@ -411,6 +399,12 @@
       color: var(--white);
       font-size: 12px;
       font-weight: bold;
+    }
+
+    .rp-logo {
+      height: 18px;
+      width: auto;
+      display: block;
     }
 
     .hero-actions {
@@ -1232,6 +1226,12 @@
     .footer-badge {
       display: inline-flex;
       gap: 12px;
+      align-items: center;
+    }
+
+    .footer-rp-logo {
+      height: 20px;
+      width: auto;
     }
 
     /* WHATSAPP FLOAT */
@@ -1247,19 +1247,26 @@
       width: 60px;
       height: 60px;
       border-radius: 14px;
-      background: linear-gradient(135deg, #25D366, #20BA5A);
+      background: #25D366;
       display: flex;
       align-items: center;
       justify-content: center;
       box-shadow: 0 20px 48px rgba(37, 211, 102, 0.3);
       cursor: pointer;
       transition: all 0.2s;
-      font-size: 28px;
     }
 
     .whats-button:hover {
-      transform: scale(1.12);
+      transform: scale(1.08);
       box-shadow: 0 24px 56px rgba(37, 211, 102, 0.4);
+    }
+
+    .whats-icon {
+      width: 34px;
+      height: 34px;
+      object-fit: contain;
+      border-radius: 50%;
+      display: block;
     }
 
     .whats-label {
@@ -1348,646 +1355,663 @@
     }
   </style>
 </head>
+<body>
 
-  <body>
-
-<header>
-  <div class="container">
-    <div class="header-inner">
-      <a href="#topo" class="logo-link">
-        <picture>
+  <!-- =========================================================
+       BLOCO 2 - HEADER E MENU
+  ========================================================== -->
+  <header>
+    <div class="container">
+      <div class="header-inner">
+        <a href="#topo" class="logo-link">
           <img src="logo-inbotix.png" alt="Logo Inbotix" class="logo-img" />
-        </picture>
-        <div class="logo-text">
-          <span>INBOTIX</span>
-          <span>Máquina de Vendas</span>
-        </div>
-        <div class="header-badge">
-          <span class="badge badge-orange">🔹 Zoho Partner</span>
-        </div>
-      </a>
-      <nav>
-        <a href="#solucoes"><strong>Soluções</strong></a>
-        <a href="#resultados"><strong>Resultados</strong></a>
-        <a href="#depoimentos"><strong>Depoimentos</strong></a>
-        <a href="blog.html"><strong>Blog</strong></a>
-        <a href="#sobre"><strong>Sobre</strong></a>
-
-        <div class="nav-item dropdown">
-          <span>Acessar 🔗</span>
-          <div class="dropdown-menu">
-            <a href="https://www.dinbot.app/" target="_blank" rel="noopener noreferrer">
-              DINBOT
-              <span>Chatbots e automação</span>
-            </a>
-            <a href="https://app.atendi.io/#/login" target="_blank" rel="noopener noreferrer">
-              ATENDI
-              <span>Atendimento omnichannel</span>
-            </a>
-            <a href="https://newatendi.app/" target="_blank" rel="noopener noreferrer">
-              NEW ATENDI
-              <span>Nova experiência de atendimento</span>
-            </a>
-            <a href="https://daduscadastrais.com/" target="_blank" rel="noopener noreferrer">
-              DADUS CADASTRAIS
-              <span>Dados e enriquecimento</span>
-            </a>
-            <a href="https://newdinbot.app/" target="_blank" rel="noopener noreferrer">
-              NEW DINBOT
-              <span>Prospecção e cadências</span>
-            </a>
-            <a href="https://atendilight.com.br/" target="_blank" rel="noopener noreferrer">
-              ATENDI LIGHT
-              <span>Atendimento simples e acessível</span>
-            </a>
+          <div class="logo-text">
+            <span>INBOTIX</span>
+            <span>Máquina de Vendas</span>
           </div>
-        </div>
-
-        <a href="#contato" class="nav-btn">Começar Agora</a>
-      </nav>
-    </div>
-  </div>
-</header>
-
-<section class="hero" id="topo">
-  <div class="container">
-    <div class="hero-grid">
-      <div>
-        <div class="hero-kicker">🚀 Máquina de Vendas Inteligente</div>
-        <h1 class="hero-title">
-          Gere reuniões <span>qualificadas com consistência</span>
-          usando dados e automação.
-        </h1>
-        <p class="hero-sub">
-          Estruture sua operação de SDR Digital com Receita Previsível. Metodologia + Tecnologia + Dados + Atendimento omnichannel em uma única plataforma.
-        </p>
-
-        <div class="hero-trust">
-          <div class="hero-trust-item">
-            <div class="hero-trust-icon">✓</div>
-            <span>Metodologia Receita Previsível</span>
+          <div class="header-badge">
+            <img src="logo_zoho.png" alt="Zoho Partner" class="zoho-logo" />
+            <span class="badge badge-orange">Zoho Partner</span>
           </div>
-          <div class="hero-trust-item">
-            <div class="hero-trust-icon">✓</div>
-            <span>Zoho Partner Certificado</span>
-          </div>
-          <div class="hero-trust-item">
-            <div class="hero-trust-icon">✓</div>
-            <span>Suporte Expert 24/7</span>
-          </div>
-        </div>
-
-        <div class="hero-actions">
-          <a href="#testes-gratis" class="btn btn-primary">
-            ✨ Teste Grátis por 7 Dias
-          </a>
-          <a href="sdr-digital.html" class="btn btn-outline">
-            Saiba Como Funciona →
-          </a>
-        </div>
-
-        <div class="hero-footnote">
-          Mais de 150 empresas em crescimento já confiam na INBOTIX para suas operações de vendas.
-        </div>
-      </div>
-
-      <div class="hero-form">
-        <h3>Quero estruturar minha máquina de vendas.</h3>
-        <p>Preencha e nosso time especializado entra em contato.</p>
-        <form action="https://formspree.io/f/managrzo" method="POST">
-          <div class="form-row">
-            <div>
-              <label for="nome-topo">Nome</label>
-              <input type="text" id="nome-topo" name="nome" placeholder="Seu nome" required />
-            </div>
-            <div>
-              <label for="empresa-topo">Empresa</label>
-              <input type="text" id="empresa-topo" name="empresa" placeholder="Sua empresa" required />
-            </div>
-          </div>
-          <div class="form-row">
-            <div>
-              <label for="email-topo">E-mail</label>
-              <input type="email" id="email-topo" name="email" placeholder="seu@email.com" required />
-            </div>
-            <div>
-              <label for="whats-topo">WhatsApp</label>
-              <input type="tel" id="whats-topo" name="whats" placeholder="(11) 97276-9986" required />
-            </div>
-          </div>
-          <div class="form-row">
-            <div>
-              <label for="interesse-topo">O que você busca?</label>
-              <select id="interesse-topo" name="interesse" required>
-                <option value="">Selecione uma opção</option>
-                <option value="Montar SDR Digital">Montar SDR Digital</option>
-                <option value="Conhecer as plataformas">Conhecer as plataformas</option>
-                <option value="Parceria / White Label">Parceria / White Label</option>
-                <option value="Sou agência">Sou agência</option>
-                <option value="Outro assunto">Outro assunto</option>
-              </select>
-            </div>
-          </div>
-          <button type="submit" class="btn btn-primary" style="width:100%;">
-            ✅ Enviar e Falar com Especialista
-          </button>
-          <div class="form-note">
-            ✓ Sem spam | Resposta em até 2h | Avaliação gratuita
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="solucoes">
-  <div class="container">
-    <div class="section-header">
-      <div class="section-eyebrow">Nossas Soluções</div>
-      <h2 class="section-title">Tudo que você precisa para uma máquina de vendas completa.</h2>
-      <p class="section-sub">
-        De prospecção automatizada até atendimento omnichannel. Todas as ferramentas integradas e conectadas.
-      </p>
-    </div>
-
-    <div class="grid-3">
-      <div class="card">
-        <div class="card-tag">🎯 Prospecção</div>
-        <h3>SDR Digital</h3>
-        <p>
-          Estrutura completa de geração de reuniões com base em Receita Previsível. ICP definido, cadências automáticas, dados enriquecidos e ROI mensurável.
-        </p>
-        <a href="sdr-digital.html" class="card-link">Ver detalhes <span>→</span></a>
-      </div>
-
-      <div class="card">
-        <div class="card-tag">⚡ Automação</div>
-        <h3>New Dinbot</h3>
-        <p>
-          Prospecção via LinkedIn e e-mail com cadências inteligentes. Segmentação automática, A/B testing e integrações diretas com seu CRM.
-        </p>
-        <a href="new-dinbot.html" class="card-link">Ver integração <span>→</span></a>
-      </div>
-
-      <div class="card">
-        <div class="card-tag">📊 Dados</div>
-        <h3>Dadus Cadastrais</h3>
-        <p>
-          Base de dados B2B com mais de 5M de empresas. CNPJ, CNAE, faturamento, telefones, e-mails, contatos e redes sociais.
-        </p>
-        <a href="dadus.html" class="card-link">Explorar dados <span>→</span></a>
-      </div>
-
-      <div class="card">
-        <div class="card-tag">💬 Atendimento</div>
-        <h3>New Atendi</h3>
-        <p>
-          Unificação de atendimento: WhatsApp, e-mail, chat. Histórico completo, distribuição automática e relatórios em tempo real.
-        </p>
-        <a href="new-atendi.html" class="card-link">Conhecer <span>→</span></a>
-      </div>
-
-      <div class="card">
-        <div class="card-tag">🤖 IA</div>
-        <h3>Dinbot</h3>
-        <p>
-          Chatbots inteligentes para WhatsApp, site e redes. Qualificação automática, agendamento e suporte 24/7 sem depender de humanos.
-        </p>
-        <a href="dinbot.html" class="card-link">Testar <span>→</span></a>
-      </div>
-
-      <div class="card">
-        <div class="card-tag">📈 CRM</div>
-        <h3>Bigin by Zoho</h3>
-        <p>
-          CRM simples, acessível e poderoso. Pipeline management, forecasting e integração nativa com todas as nossas ferramentas.
-        </p>
-        <a href="https://store.zoho.com/" target="_blank" rel="noopener noreferrer" class="card-link">
-          Acessar Bigin <span>→</span>
         </a>
+
+        <nav>
+          <a href="#solucoes"><strong>Soluções</strong></a>
+          <a href="#resultados"><strong>Resultados</strong></a>
+          <a href="#depoimentos"><strong>Depoimentos</strong></a>
+          <a href="blog.html"><strong>Blog</strong></a>
+          <a href="#parceiros"><strong>Parceiros</strong></a>
+          <a href="#sobre"><strong>Sobre</strong></a>
+
+          <div class="nav-item dropdown">
+            <span>Acessar 🔗</span>
+            <div class="dropdown-menu">
+              <a href="https://www.dinbot.app/" target="_blank" rel="noopener noreferrer">
+                DINBOT
+                <span>Chatbots e automação</span>
+              </a>
+              <a href="https://app.atendi.io/#/login" target="_blank" rel="noopener noreferrer">
+                ATENDI
+                <span>Atendimento omnichannel</span>
+              </a>
+              <a href="https://newatendi.app/" target="_blank" rel="noopener noreferrer">
+                NEW ATENDI
+                <span>Nova experiência de atendimento</span>
+              </a>
+              <a href="https://daduscadastrais.com/" target="_blank" rel="noopener noreferrer">
+                DADUS CADASTRAIS
+                <span>Dados e enriquecimento</span>
+              </a>
+              <a href="https://newdinbot.app/" target="_blank" rel="noopener noreferrer">
+                NEW DINBOT
+                <span>Prospecção e cadências</span>
+              </a>
+              <a href="https://atendilight.com.br/" target="_blank" rel="noopener noreferrer">
+                ATENDI LIGHT
+                <span>Atendimento simples e acessível</span>
+              </a>
+            </div>
+          </div>
+
+          <a href="#contato" class="nav-btn">Começar Agora</a>
+        </nav>
       </div>
     </div>
+  </header>
 
-    <div class="metrics-grid">
-      <div class="metric-card">
-        <div class="metric-number">150+</div>
-        <div class="metric-label">Empresas em Crescimento</div>
-      </div>
-      <div class="metric-card">
-        <div class="metric-number">5M+</div>
-        <div class="metric-label">Contatos B2B</div>
-      </div>
-      <div class="metric-card">
-        <div class="metric-number">10K+</div>
-        <div class="metric-label">Reuniões Geradas/Mês</div>
-      </div>
-      <div class="metric-card">
-        <div class="metric-number">98%</div>
-        <div class="metric-label">Satisfação Clientes</div>
-      </div>
-    </div>
-  </div>
-</section>
+  <!-- =========================================================
+       BLOCO 3 - HERO PRINCIPAL
+  ========================================================== -->
+  <section class="hero" id="topo">
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <div class="hero-kicker">🚀 Máquina de Vendas Inteligente</div>
+          <h1 class="hero-title">
+            Gere reuniões <span>qualificadas com consistência</span>
+            usando dados e automação.
+          </h1>
+          <p class="hero-sub">
+            Estruture sua operação de SDR Digital com Receita Previsível. Metodologia + Tecnologia + Dados + Atendimento omnichannel em uma única plataforma.
+          </p>
 
-<section class="section" id="videos">
-  <div class="container">
-    <div class="section-header">
-      <div class="section-eyebrow">Na Prática</div>
-      <h2 class="section-title">Veja a máquina de vendas em ação.</h2>
-      <p class="section-sub">
-        Entenda como cada ferramenta funciona no seu day-to-day de vendas.
-      </p>
-    </div>
+          <div class="hero-trust">
+            <div class="hero-trust-item">
+              <div class="hero-trust-icon">✓</div>
+              <span>Zoho Partner Oficial</span>
+            </div>
+            <div class="hero-trust-item">
+              <img src="logo receita previsivel.svg" alt="Metodologia Receita Previsível" class="rp-logo" />
+              <span>Metodologia Receita Previsível</span>
+            </div>
+            <div class="hero-trust-item">
+              <div class="hero-trust-icon">✓</div>
+              <span>Suporte Expert 24/7</span>
+            </div>
+          </div>
 
-    <div class="video-grid">
-      <div class="video-card">
-        <h3>SDR Digital</h3>
-        <p>Como estruturar sua operação.</p>
-        <div class="video-box">
-          <iframe src="https://www.youtube.com/embed/cWPfZcu7Pio" title="SDR Digital" allowfullscreen></iframe>
-        </div>
-      </div>
+          <div class="hero-actions">
+            <a href="#testes-gratis" class="btn btn-primary">
+              ✨ Teste Grátis por 7 Dias
+            </a>
+            <a href="sdr-digital.html" class="btn btn-outline">
+              Saiba Como Funciona →
+            </a>
+          </div>
 
-      <div class="video-card">
-        <h3>Dadus Cadastrais</h3>
-        <p>Encontrando os melhores leads.</p>
-        <div class="video-box">
-          <iframe src="https://www.youtube.com/embed/LPiaaVSwhug" title="Dadus Cadastrais" allowfullscreen></iframe>
-        </div>
-      </div>
-
-      <div class="video-card">
-        <h3>Dinbot</h3>
-        <p>Automação de atendimento 24/7.</p>
-        <div class="video-box">
-          <iframe src="https://www.youtube.com/embed/9mkPYEb03iQ" title="Dinbot" allowfullscreen></iframe>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="testes-gratis">
-  <div class="container">
-    <div class="highlight">
-      <div>
-        <h3>Comece seu teste grátis agora.</h3>
-        <p>
-          7 dias de acesso completo a todas as nossas plataformas. Sem cartão de crédito, sem compromisso.
-        </p>
-        <div class="highlight-list">
-          <span>✓ New Atendi</span>
-          <span>✓ New Dinbot</span>
-          <span>✓ Dinbot</span>
-          <span>✓ Dadus Cadastrais</span>
-          <span>✓ Suporte Dedicado</span>
-        </div>
-      </div>
-      <div>
-        <a href="https://wa.me/5511972769986?text=Quero%20testar%20as%20solu%C3%A7%C3%B5es%20da%20Inbotix%20por%207%20dias" class="btn btn-white" style="width:100%; justify-content:center; padding: 16px 28px; font-size: 15px;">
-          💬 Solicitar Teste via WhatsApp
-        </a>
-        <p style="font-size:12px; margin-top:12px; opacity:.9; font-family: 'Barlow', sans-serif; line-height: 1.6; color: var(--white);">
-          Resposta em até 2 horas. Em muitos casos, ativamos no mesmo dia útil.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="resultados">
-  <div class="container">
-    <div class="section-header">
-      <div class="section-eyebrow">Resultados Reais</div>
-      <h2 class="section-title">Cases de sucesso de nossas operações.</h2>
-    </div>
-
-    <div class="case-wrap">
-      <div class="case-main">
-        <div class="case-content">
-          <div class="case-label">📋 Case · Rocha & Queiroz</div>
-          <div class="case-title">Máquina de prospecção jurídica.</div>
-          <div class="case-number">R$ 6M+</div>
-          <div class="case-text">
-            em negócios fechados. Estrutura recorrente com ICP claro, cadências automáticas e dados enriquecidos. Resultado: prospecção consistente todos os meses.
+          <div class="hero-footnote">
+            Mais de 150 empresas em crescimento já confiam na INBOTIX para suas operações de vendas.
           </div>
         </div>
+
+        <div class="hero-form">
+          <h3>Quero estruturar minha máquina de vendas.</h3>
+          <p>Preencha e nosso time especializado entra em contato.</p>
+          <form action="https://formspree.io/f/managrzo" method="POST">
+            <div class="form-row">
+              <div>
+                <label for="nome-topo">Nome</label>
+                <input type="text" id="nome-topo" name="nome" placeholder="Seu nome" required />
+              </div>
+              <div>
+                <label for="empresa-topo">Empresa</label>
+                <input type="text" id="empresa-topo" name="empresa" placeholder="Sua empresa" required />
+              </div>
+            </div>
+            <div class="form-row">
+              <div>
+                <label for="email-topo">E-mail</label>
+                <input type="email" id="email-topo" name="email" placeholder="seu@email.com" required />
+              </div>
+              <div>
+                <label for="whats-topo">WhatsApp</label>
+                <input type="tel" id="whats-topo" name="whats" placeholder="(11) 97276-9986" required />
+              </div>
+            </div>
+            <div class="form-row">
+              <div>
+                <label for="interesse-topo">O que você busca?</label>
+                <select id="interesse-topo" name="interesse" required>
+                  <option value="">Selecione uma opção</option>
+                  <option value="Montar SDR Digital">Montar SDR Digital</option>
+                  <option value="Conhecer as plataformas">Conhecer as plataformas</option>
+                  <option value="Parceria / White Label">Parceria / White Label</option>
+                  <option value="Sou agência">Sou agência</option>
+                  <option value="Outro assunto">Outro assunto</option>
+                </select>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%;">
+              ✅ Enviar e Falar com Especialista
+            </button>
+            <div class="form-note">
+              ✓ Sem spam | Resposta em até 2h | Avaliação gratuita
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       BLOCO 4 - SOLUÇÕES + MÉTRICAS
+  ========================================================== -->
+  <section class="section" id="solucoes">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-eyebrow">Nossas Soluções</div>
+        <h2 class="section-title">Tudo que você precisa para uma máquina de vendas completa.</h2>
+        <p class="section-sub">
+          De prospecção automatizada até atendimento omnichannel. Todas as ferramentas integradas e conectadas.
+        </p>
       </div>
 
-      <div class="case-side">
+      <div class="grid-3">
         <div class="card">
-          <h3>✓ O que funcionou</h3>
+          <div class="card-tag">🎯 Prospecção</div>
+          <h3>SDR Digital</h3>
+          <p>
+            Estrutura completa de geração de reuniões com base em Receita Previsível. ICP definido, cadências automáticas, dados enriquecidos e ROI mensurável.
+          </p>
+          <a href="sdr-digital.html" class="card-link">Ver detalhes <span>→</span></a>
+        </div>
+
+        <div class="card">
+          <div class="card-tag">⚡ Automação</div>
+          <h3>New Dinbot</h3>
+          <p>
+            Prospecção via LinkedIn e e-mail com cadências inteligentes. Segmentação automática, A/B testing e integrações diretas com seu CRM.
+          </p>
+          <a href="new-dinbot.html" class="card-link">Ver integração <span>→</span></a>
+        </div>
+
+        <div class="card">
+          <div class="card-tag">📊 Dados</div>
+          <h3>Dadus Cadastrais</h3>
+          <p>
+            Base de dados B2B com mais de 5M de empresas. CNPJ, CNAE, faturamento, telefones, e-mails, contatos e redes sociais.
+          </p>
+          <a href="dadus.html" class="card-link">Explorar dados <span>→</span></a>
+        </div>
+
+        <div class="card">
+          <div class="card-tag">💬 Atendimento</div>
+          <h3>New Atendi</h3>
+          <p>
+            Unificação de atendimento: WhatsApp, e-mail, chat. Histórico completo, distribuição automática e relatórios em tempo real.
+          </p>
+          <a href="new-atendi.html" class="card-link">Conhecer <span>→</span></a>
+        </div>
+
+        <div class="card">
+          <div class="card-tag">🤖 IA</div>
+          <h3>Dinbot</h3>
+          <p>
+            Chatbots inteligentes para WhatsApp, site e redes. Qualificação automática, agendamento e suporte 24/7 sem depender de humanos.
+          </p>
+          <a href="dinbot.html" class="card-link">Testar <span>→</span></a>
+        </div>
+
+        <div class="card">
+          <div class="card-tag">📈 CRM</div>
+          <h3>Bigin by Zoho</h3>
+          <p>
+            CRM simples, acessível e poderoso. Pipeline management, forecasting e integração nativa com todas as nossas ferramentas.
+          </p>
+          <a href="https://store.zoho.com/" target="_blank" rel="noopener noreferrer" class="card-link">
+            Acessar Bigin <span>→</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <div class="metric-number">150+</div>
+          <div class="metric-label">Empresas em Crescimento</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-number">5M+</div>
+          <div class="metric-label">Contatos B2B</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-number">10K+</div>
+          <div class="metric-label">Reuniões Geradas/Mês</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-number">98%</div>
+          <div class="metric-label">Satisfação Clientes</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       BLOCO 5 - VÍDEOS
+  ========================================================== -->
+  <section class="section" id="videos">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-eyebrow">Na Prática</div>
+        <h2 class="section-title">Veja a máquina de vendas em ação.</h2>
+        <p class="section-sub">
+          Entenda como cada ferramenta funciona no seu dia a dia de vendas.
+        </p>
+      </div>
+
+      <div class="video-grid">
+        <div class="video-card">
+          <h3>SDR Digital</h3>
+          <p>Como estruturar sua operação.</p>
+          <div class="video-box">
+            <iframe src="https://www.youtube.com/embed/cWPfZcu7Pio" title="SDR Digital" allowfullscreen></iframe>
+          </div>
+        </div>
+
+        <div class="video-card">
+          <h3>Dadus Cadastrais</h3>
+          <p>Encontrando os melhores leads.</p>
+          <div class="video-box">
+            <iframe src="https://www.youtube.com/embed/LPiaaVSwhug" title="Dadus Cadastrais" allowfullscreen></iframe>
+          </div>
+        </div>
+
+        <div class="video-card">
+          <h3>Dinbot</h3>
+          <p>Automação de atendimento 24/7.</p>
+          <div class="video-box">
+            <iframe src="https://www.youtube.com/embed/9mkPYEb03iQ" title="Dinbot" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       BLOCO 6 - TESTE GRÁTIS / CTA
+  ========================================================== -->
+  <section class="section" id="testes-gratis">
+    <div class="container">
+      <div class="highlight">
+        <div>
+          <h3>Comece seu teste grátis agora.</h3>
+          <p>
+            7 dias de acesso completo a todas as nossas plataformas. Sem cartão de crédito, sem compromisso.
+          </p>
+          <div class="highlight-list">
+            <span>✓ New Atendi</span>
+            <span>✓ New Dinbot</span>
+            <span>✓ Dinbot</span>
+            <span>✓ Dadus Cadastrais</span>
+            <span>✓ Suporte Dedicado</span>
+          </div>
+        </div>
+        <div>
+          <a href="https://wa.me/5511972769986?text=Quero%20testar%20as%20solu%C3%A7%C3%B5es%20da%20Inbotix%20por%207%20dias" class="btn btn-white" style="width:100%; justify-content:center; padding: 16px 28px; font-size: 15px;">
+            💬 Solicitar Teste via WhatsApp
+          </a>
+          <p style="font-size:12px; margin-top:12px; opacity:.9; font-family: 'Barlow', sans-serif; line-height: 1.6; color: var(--white);">
+            Resposta em até 2 horas. Em muitos casos, ativamos no mesmo dia útil.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       BLOCO 7 - RESULTADOS / CASE
+  ========================================================== -->
+  <section class="section" id="resultados">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-eyebrow">Resultados Reais</div>
+        <h2 class="section-title">Cases de sucesso de nossas operações.</h2>
+      </div>
+
+      <div class="case-wrap">
+        <div class="case-main">
+          <div class="case-content">
+            <div class="case-label">📋 Case · Rocha &amp; Queiroz</div>
+            <div class="case-title">Máquina de prospecção jurídica.</div>
+            <div class="case-number">R$ 6M+</div>
+            <div class="case-text">
+              em negócios fechados. Estrutura recorrente com ICP claro, cadências automáticas e dados enriquecidos. Resultado: prospecção consistente todos os meses.
+            </div>
+          </div>
+        </div>
+
+        <div class="case-side">
+          <div class="card">
+            <h3>✓ O que funcionou</h3>
+            <div class="about-highlights">
+              <ul>
+                <li>ICP bem definido e mantido</li>
+                <li>Cadências automáticas com 5+ toques</li>
+                <li>Dados enriquecidos de qualidade</li>
+                <li>Atendimento omnichannel</li>
+                <li>Análise e otimização mensal</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       BLOCO 8 - DEPOIMENTOS
+  ========================================================== -->
+  <section class="section" id="depoimentos">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-eyebrow">O Que Dizem</div>
+        <h2 class="section-title">Depoimentos de clientes que crescem com a gente.</h2>
+      </div>
+
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-header">
+            <div class="testimonial-author">
+              <div class="testimonial-name">Michele Naglieri</div>
+              <div class="testimonial-time">Há 1 mês</div>
+            </div>
+            <div class="testimonial-stars">
+              <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+            </div>
+          </div>
+          <div class="testimonial-text">
+            "A Inbotix transformou nossa prospecção. Hoje vendemos com inteligência."
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-header">
+            <div class="testimonial-author">
+              <div class="testimonial-name">Roodney Fernandes</div>
+              <div class="testimonial-time">Há 2 semanas</div>
+            </div>
+            <div class="testimonial-stars">
+              <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+            </div>
+          </div>
+          <div class="testimonial-text">
+            "O que antes levava meses, agora acontece em semanas. A velocidade é impressionante."
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-header">
+            <div class="testimonial-author">
+              <div class="testimonial-name">Rafael Souto</div>
+              <div class="testimonial-time">Há 1 semana</div>
+            </div>
+            <div class="testimonial-stars">
+              <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+            </div>
+          </div>
+          <div class="testimonial-text">
+            "A combinação de tecnologia e estratégia da Inbotix é fora da curva. Indico fortemente."
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-header">
+            <div class="testimonial-author">
+              <div class="testimonial-name">Marcos Rodriguez</div>
+              <div class="testimonial-time">Há 1 mês</div>
+            </div>
+            <div class="testimonial-stars">
+              <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+            </div>
+          </div>
+          <div class="testimonial-text">
+            "Mais do que um fornecedor, encontramos um verdadeiro parceiro de crescimento."
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       BLOCO 9 - PARCEIROS / WHITE LABEL
+  ========================================================== -->
+  <section class="parceiros-section" id="parceiros">
+    <div class="container">
+      <div class="parceiros-content">
+        <div class="parceiros-text">
+          <div class="parceiros-kicker">🤝 Oportunidade de Crescimento</div>
+          <h2>Seja um Parceiro Inbotix</h2>
+          <p>Programa White Label completo para agências, consultorias e software houses. Revenda nossas soluções com sua marca, sua operação e aumente seu ticket médio em até 5x.</p>
+
+          <div class="parceiros-features">
+            <div class="feature-item">
+              <span class="feature-icon">✓</span>
+              <div>
+                <strong>White Label Completo</strong>
+                <p>Sua marca, seu relacionamento, nossa tecnologia e operação por trás.</p>
+              </div>
+            </div>
+
+            <div class="feature-item">
+              <span class="feature-icon">✓</span>
+              <div>
+                <strong>Receita Recorrente</strong>
+                <p>Cobrança mensal por assinatura. Clientes que ficam porque têm resultado.</p>
+              </div>
+            </div>
+
+            <div class="feature-item">
+              <span class="feature-icon">✓</span>
+              <div>
+                <strong>Suporte Estratégico</strong>
+                <p>Acompanhamento mensal para estruturar ofertas, onboardings e entregas.</p>
+              </div>
+            </div>
+
+            <div class="feature-item">
+              <span class="feature-icon">✓</span>
+              <div>
+                <strong>150+ Parceiros Ativos</strong>
+                <p>Agências, consultores e software houses que já crescem com a Inbotix.</p>
+              </div>
+            </div>
+          </div>
+
+          <a href="parceiros.html" class="btn-parceiros">Conhecer Programa de Parceiros →</a>
+        </div>
+
+        <div class="parceiros-visual">
+          <div class="visual-badge">
+            <div class="badge-icon">📈</div>
+            <div class="badge-text">
+              <strong>Crescer Juntos</strong>
+              <p>Mais você vende,<br>mais você ganha</p>
+            </div>
+          </div>
+
+          <div class="visual-stats">
+            <div class="stat-item">
+              <div class="stat-number">150+</div>
+              <div class="stat-label">Parceiros</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">∞</div>
+              <div class="stat-label">Escalabilidade</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">5x</div>
+              <div class="stat-label">Ticket</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       BLOCO 10 - SOBRE A INBOTIX
+  ========================================================== -->
+  <section class="section" id="sobre">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-eyebrow">Sobre a Inbotix</div>
+        <h2 class="section-title">Quem somos e por que fazemos o que fazemos.</h2>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-block">
+          <h3>🎯 Nossa Missão</h3>
+          <p>
+            Ajudar empresas a estruturarem máquinas de vendas sustentáveis, unindo tecnologia, dados e metodologia de classe mundial (Receita Previsível) com suporte de especialistas.
+          </p>
           <div class="about-highlights">
             <ul>
-              <li>ICP bem definido e mantido</li>
-              <li>Cadências automáticas com 5+ toques</li>
-              <li>Dados enriquecidos de qualidade</li>
-              <li>Atendimento omnichannel</li>
-              <li>Análise e otimização mensal</li>
+              <li>Resultados comprovados</li>
+              <li>Metodologia RP Certified</li>
+              <li>Zoho Partner Oficial</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="about-block">
+          <h3>👨‍💼 Fundador: Guilherme Loureiro</h3>
+          <p>
+            Especialista em outbound, automação e crescimento. Mais de 10 anos construindo máquinas de vendas para empresas de todos os tamanhos. Expert em Receita Previsível.
+          </p>
+          <div class="about-highlights">
+            <ul>
+              <li>Expert Receita Previsível</li>
+              <li>Zoho Partner Certificado</li>
+              <li>Mentor de 100+ empresas</li>
             </ul>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="section" id="depoimentos">
-  <div class="container">
-    <div class="section-header">
-      <div class="section-eyebrow">O Que Dizem</div>
-      <h2 class="section-title">Depoimentos de clientes que crescem com a gente.</h2>
-    </div>
-
-    <div class="testimonials-grid">
-      <div class="testimonial-card">
-        <div class="testimonial-header">
-          <div class="testimonial-author">
-            <div class="testimonial-name">Michele Naglieri</div>
-            <div class="testimonial-time">Há 1 mês</div>
-          </div>
-          <div class="testimonial-stars">
-            <span class="star">★</span>
-            <span class="star">★</span>
-            <span class="star">★</span>
-            <span class="star">★</span>
-            <span class="star">★</span>
-          </div>
-        </div>
-        <div class="testimonial-text">
-          "A Inbotix transformou nossa prospecção. Hoje vendemos com inteligência."
-        </div>
-      </div>
-
-      <div class="testimonial-card">
-        <div class="testimonial-header">
-          <div class="testimonial-author">
-            <div class="testimonial-name">Roodney Fernandes</div>
-            <div class="testimonial-time">Há 2 semanas</div>
-          </div>
-          <div class="testimonial-stars">
-            <span class="star">★</span>
-            <span class="star">★</span>
-            <span class="star">★</span>
-            <span class="star">★</span>
-            <span class="star">★</span>
-          </div>
-        </div>
-        <div class="testimonial-text">
-          "O que antes levava meses, agora acontece em semanas. A velocidade é impressionante."
-        </div>
-      </div>
-
-      <div class="testimonial-card">
-        <div class="testimonial-header">
-          <div class="testimonial-author">
-            <div class="testimonial-name">Rafael Souto</div>
-            <div class="testimonial-time">Há 1 semana</div>
-          </div>
-          <div class="testimonial-stars">
-            <span class="star">★</span>
-            <span class="star">★</span>
-            <span class="star">★</span>
-            <span class="star">★</span>
-            <span class="star">★</span>
-          </div>
-        </div>
-        <div class="testimonial-text">
-          "A combinação de tecnologia e estratégia da Inbotix é fora da curva. Indico fortemente."
-        </div>
-      </div>
-
-      <div class="testimonial-card">
-        <div class="testimonial-header">
-          <div class="testimonial-author">
-            <div class="testimonial-name">Marcos Rodriguez</div>
-            <div class="testimonial-time">Há 1 mês</div>
-          </div>
-          <div class="testimonial-stars">
-            <span class="star">★</span>
-            <span class="star">★</span>
-            <span class="star">★</span>
-            <span class="star">★</span>
-            <span class="star">★</span>
-          </div>
-        </div>
-        <div class="testimonial-text">
-          "Mais do que um fornecedor, encontramos um verdadeiro parceiro de crescimento."
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="parceiros-section" id="parceiros">
-  <div class="container">
-    <div class="parceiros-content">
-      <div class="parceiros-text">
-        <div class="parceiros-kicker">🤝 Oportunidade de Crescimento</div>
-        <h2>Seja um Parceiro Inbotix</h2>
-        <p>Programa White Label completo para agências, consultorias e software houses. Revenda nossas soluções com sua marca, sua operação e aumente seu ticket médio em até 5x.</p>
-        
-        <div class="parceiros-features">
-          <div class="feature-item">
-            <span class="feature-icon">✓</span>
-            <div>
-              <strong>White Label Completo</strong>
-              <p>Sua marca, seu relacionamento, nossa tecnologia e operação por trás.</p>
-            </div>
-          </div>
-          
-          <div class="feature-item">
-            <span class="feature-icon">✓</span>
-            <div>
-              <strong>Receita Recorrente</strong>
-              <p>Cobrança mensal por assinatura. Clientes que ficam porque têm resultado.</p>
-            </div>
-          </div>
-          
-          <div class="feature-item">
-            <span class="feature-icon">✓</span>
-            <div>
-              <strong>Suporte Estratégico</strong>
-              <p>Acompanhamento mensal para estruturar ofertas, onboardings e entregas.</p>
-            </div>
-          </div>
-          
-          <div class="feature-item">
-            <span class="feature-icon">✓</span>
-            <div>
-              <strong>150+ Parceiros Ativos</strong>
-              <p>Agências, consultores e software houses que já crescem com a Inbotix.</p>
-            </div>
-          </div>
-        </div>
-        
-        <a href="parceiros.html" class="btn-parceiros">Conhecer Programa de Parceiros →</a>
-      </div>
-      
-      <div class="parceiros-visual">
-        <div class="visual-badge">
-          <div class="badge-icon">📈</div>
-          <div class="badge-text">
-            <strong>Crescer Juntos</strong>
-            <p>Mais você vende,<br>mais você ganha</p>
-          </div>
-        </div>
-        
-        <div class="visual-stats">
-          <div class="stat-item">
-            <div class="stat-number">150+</div>
-            <div class="stat-label">Parceiros</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-number">∞</div>
-            <div class="stat-label">Escalabilidade</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-number">5x</div>
-            <div class="stat-label">Ticket</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-    <section class="section" id="sobre">
-  <div class="container">
-    <div class="section-header">
-      <div class="section-eyebrow">Sobre a Inbotix</div>
-      <h2 class="section-title">Quem somos e por que fazemos o que fazemos.</h2>
-    </div>
-
-    <div class="about-grid">
-      <div class="about-block">
-        <h3>🎯 Nossa Missão</h3>
-        <p>
-          Ajudar empresas a estruturarem máquinas de vendas sustentáveis, unindo tecnologia, dados e metodologia de classe mundial (Receita Previsível) com suporte de especialistas.
-        </p>
-        <div class="about-highlights">
-          <ul>
-            <li>Resultados comprovados</li>
-            <li>Metodologia RP Certified</li>
-            <li>Zoho Partner Oficial</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="about-block">
-        <h3>👨‍💼 Fundador: Guilherme Loureiro</h3>
-        <p>
-          Especialista em outbound, automação e crescimento. Mais de 10 anos construindo máquinas de vendas para empresas de todos os tamanhos. Expert em Receita Previsível.
-        </p>
-        <div class="about-highlights">
-          <ul>
-            <li>Expert Receita Previsível</li>
-            <li>Zoho Partner Certificado</li>
-            <li>Mentor de 100+ empresas</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="contato">
-  <div class="container">
-    <div class="section-header">
-      <div class="section-eyebrow">Próximo Passo</div>
-      <h2 class="section-title">Vamos estruturar sua máquina de vendas?</h2>
-      <p class="section-sub">
-        Preencha o formulário ou fale conosco no WhatsApp. Resposta em até 2 horas.
-      </p>
-    </div>
-
-    <div class="contact-grid">
-      <div class="form-wrap">
-        <h3 style="font-family: 'Bicubik', sans-serif; color: var(--primary-dark); margin-bottom: 12px; font-size: 16px;">📋 Informações</h3>
-        <form action="https://formspree.io/f/managrzo" method="POST">
-          <div class="form-row">
-            <div>
-              <label for="nome">Nome Completo</label>
-              <input type="text" id="nome" name="nome" placeholder="Seu nome" required />
-            </div>
-            <div>
-              <label for="empresa">Empresa</label>
-              <input type="text" id="empresa" name="empresa" placeholder="Sua empresa" required />
-            </div>
-          </div>
-
-          <div class="form-row">
-            <div>
-              <label for="email">E-mail Profissional</label>
-              <input type="email" id="email" name="email" placeholder="seu@empresa.com" required />
-            </div>
-            <div>
-              <label for="whats">WhatsApp</label>
-              <input type="tel" id="whats" name="whats" placeholder="(11) 97276-9986" required />
-            </div>
-          </div>
-
-          <button type="submit" class="btn btn-primary" style="width:100%; margin-top:8px;">
-            ✅ Enviar Informações
-          </button>
-
-          <div class="form-note">
-            ✓ Avaliação gratuita | Sem compromisso | Resposta em até 2h
-          </div>
-        </form>
-      </div>
-
-      <div class="card">
-        <h3>💬 Prefere WhatsApp?</h3>
-        <p>
-          Fale direto com nossos especialistas. Disponíveis para tirar dúvidas e mostrar como funciona.
-        </p>
-        <p style="margin-top:14px; margin-bottom: 0;">
-          <a href="https://wa.me/5511972769986?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20sobre%20a%20Inbotix%20e%20estruturar%20uma%20m%C3%A1quina%20de%20vendas" class="btn btn-outline" style="width: 100%; justify-content: center;">
-            → Abrir WhatsApp Agora
-          </a>
+  <!-- =========================================================
+       BLOCO 11 - CONTATO
+  ========================================================== -->
+  <section class="section" id="contato">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-eyebrow">Próximo Passo</div>
+        <h2 class="section-title">Vamos estruturar sua máquina de vendas?</h2>
+        <p class="section-sub">
+          Preencha o formulário ou fale conosco no WhatsApp. Resposta em até 2 horas.
         </p>
       </div>
+
+      <div class="contact-grid">
+        <div class="form-wrap">
+          <h3 style="font-family: 'Bicubik', sans-serif; color: var(--primary-dark); margin-bottom: 12px; font-size: 16px;">📋 Informações</h3>
+          <form action="https://formspree.io/f/managrzo" method="POST">
+            <div class="form-row">
+              <div>
+                <label for="nome">Nome Completo</label>
+                <input type="text" id="nome" name="nome" placeholder="Seu nome" required />
+              </div>
+              <div>
+                <label for="empresa">Empresa</label>
+                <input type="text" id="empresa" name="empresa" placeholder="Sua empresa" required />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div>
+                <label for="email">E-mail Profissional</label>
+                <input type="email" id="email" name="email" placeholder="seu@empresa.com" required />
+              </div>
+              <div>
+                <label for="whats">WhatsApp</label>
+                <input type="tel" id="whats" name="whats" placeholder="(11) 97276-9986" required />
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width:100%; margin-top:8px;">
+              ✅ Enviar Informações
+            </button>
+
+            <div class="form-note">
+              ✓ Avaliação gratuita | Sem compromisso | Resposta em até 2h
+            </div>
+          </form>
+        </div>
+
+        <div class="card">
+          <h3>💬 Prefere WhatsApp?</h3>
+          <p>
+            Fale direto com nossos especialistas. Disponíveis para tirar dúvidas e mostrar como funciona.
+          </p>
+          <p style="margin-top:14px; margin-bottom: 0;">
+            <a href="https://wa.me/5511972769986?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20sobre%20a%20Inbotix%20e%20estruturar%20uma%20m%C3%A1quina%20de%20vendas" class="btn btn-outline" style="width: 100%; justify-content: center;">
+              → Abrir WhatsApp Agora
+            </a>
+          </p>
+        </div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<footer>
-  <div class="container">
-    <div class="footer-inner">
-      <div>
-        © <span id="year"></span> INBOTIX — Máquina de Vendas com RP + Zoho Partner
-      </div>
-      <div class="footer-links">
-        <a href="#solucoes">Soluções</a>
-        <a href="#resultados">Resultados</a>
-        <a href="#depoimentos">Depoimentos</a>
-        <a href="#parceiros">Parceiros</a>
-        <a href="#sobre">Sobre</a>
-        <a href="#contato">Contato</a>
-      </div>
-      <div class="footer-badge">
-        <span class="badge badge-green">✓ Receita Previsível</span>
-        <span class="badge badge-orange">🔹 Zoho Partner</span>
+  <!-- =========================================================
+       BLOCO 12 - FOOTER, BOTÃO WHATSAPP E SCRIPTS FINAIS
+  ========================================================== -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div>
+          © <span id="year"></span> INBOTIX — Máquina de Vendas com RP + Zoho Partner
+        </div>
+        <div class="footer-links">
+          <a href="#solucoes">Soluções</a>
+          <a href="#resultados">Resultados</a>
+          <a href="#depoimentos">Depoimentos</a>
+          <a href="#parceiros">Parceiros</a>
+          <a href="#sobre">Sobre</a>
+          <a href="#contato">Contato</a>
+        </div>
+        <div class="footer-badge">
+          <img src="logo receita previsivel.svg" alt="Metodologia Receita Previsível" class="footer-rp-logo" />
+          <span class="badge badge-green">✓ Receita Previsível</span>
+        </div>
       </div>
     </div>
-  </div>
-</footer>
+  </footer>
 
-<a href="https://wa.me/5511972769986" class="whats-float" target="_blank" rel="noopener noreferrer">
-  <div class="whats-button">
-    💬
-  </div>
-  <div class="whats-label">
-    Falar com especialista
-  </div>
-</a>
+  <!-- Botão flutuante WhatsApp -->
+  <a href="https://wa.me/5511972769986" class="whats-float" target="_blank" rel="noopener noreferrer">
+    <div class="whats-button">
+      <img src="logo_whatsapp.jpg" alt="WhatsApp" class="whats-icon" />
+    </div>
+    <div class="whats-label">
+      Falar com especialista
+    </div>
+  </a>
 
-<script>
-  document.getElementById("year").textContent = new Date().getFullYear();
-</script>
+  <!-- Ano automático -->
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 
 </body>
 </html>
-
-
