@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <!-- BLOCO 1: METADADOS / SEO / ESTILOS BÁSICOS -->
+  <meta charset="UTF-8" />
+  <title>Diagnóstico Outbound Sales – Descubra por que suas campanhas não geram vendas | INBOTIX</title>
+
+  <link rel="canonical" href="https://inbotix.com.br/diagnostico-outbound.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Faça um diagnóstico gratuito da sua operação comercial e descubra se faz mais sentido investir em outbound sales, tráfego pago ou uma estratégia híbrida. Receba um relatório com recomendações práticas." />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://inbotix.com.br/diagnostico-outbound.html" />
+  <meta property="og:title" content="Diagnóstico Outbound Sales – INBOTIX" />
+  <meta property="og:description" content="Entenda por que suas campanhas não geram vendas e descubra se o seu negócio é muito mais compatível com outbound sales e prospecção ativa." />
+  <meta property="og:image" content="https://inbotix.com.br/og-inbotix.svg" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Diagnóstico Outbound Sales – INBOTIX" />
+  <meta name="twitter:description" content="Entenda se você deveria focar em outbound sales, tráfego pago ou uma estratégia híbrida." />
+  <meta name="twitter:image" content="https://inbotix.com.br/og-inbotix.svg" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="logo-inbotix.ico" />
+
+  <!-- Preconnect Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- Fonts (Barlow + Bicubik) -->
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Bicubik:wght@400;700&display=swap" rel="stylesheet" />
+
+  <!-- JSON-LD (Landing de Diagnóstico) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Diagnóstico Outbound Sales – INBOTIX",
+    "url": "https://inbotix.com.br/diagnostico-outbound.html",
+    "description": "Landing page de diagnóstico para avaliar se o negócio tem melhor aderência a outbound sales, tráfego pago ou estratégia híbrida.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "INBOTIX",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://inbotix.com.br/logo-inbotix.png"
+      }
+    },
+    "inLanguage": "pt-BR"
+  }
+  </script>
+
+  <style>
+    /* BLOCO 1.1: VARIÁVEIS DE COR E RESET */
+    :root {
+      --primary-dark: #041056;
+      --primary-deep: #07197E;
+      --primary-blue: #17ABE3;
+      --accent-green: #10B981;
+      --accent-orange: #F97316;
+      --white: #FFFFFF;
+      --bg-light: #F8F9FB;
+      --bg-soft: #EFF3FF;
+      --text-dark: #0f172a;
+      --text-muted: #6b7280;
+      --gray-100: #f3f4f6;
+      --gray-200: #e5e7eb;
+      --gray-300: #d1d5db;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg-light);
+      font-family: 'Barlow', sans-serif;
+      color: var(--text-dark);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* BLOCO 2: HEADER SIMPLES (LOGO + VOLTAR PARA O SITE) */
+    header {
+      background: var(--white);
+      border-bottom: 1px solid var(--gray-200);
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      box-shadow: 0 2px 8px rgba(4, 16, 86, 0.05);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 0;
+      gap: 12px;
+    }
+
+    .logo-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    .logo-link:hover {
+      opacity: 0.85;
+    }
+
+    .logo-img {
+      height: 36px;
+      width: auto;
+      max-width: 130px;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .logo-text span:first-child {
+      font-family: 'Bicubik', sans-serif;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      font-size: 12px;
+      color: var(--primary-dark);
+    }
+
+    .logo-text span:last-child {
+      font-size: 10px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .header-cta-link {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--primary-blue);
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(23, 171, 227, 0.4);
+      background: #f0f9ff;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.18s;
+    }
+
+    .header-cta-link:hover {
+      background: var(--primary-blue);
+      color: var(--white);
+    }
+
+    /* BLOCO 3: HERO / TÍTULO PRINCIPAL */
+    .hero {
+      padding: 60px 0 40px 0;
+      background: radial-gradient(circle at top left, rgba(23,171,227,0.12) 0, transparent 55%), var(--bg-light);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 32px;
+      align-items: center;
+    }
+
+    .hero-kicker {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--accent-orange);
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+
+    .hero-title {
+      font-family: 'Bicubik', sans-serif;
+      font-size: 32px;
+      line-height: 1.25;
+      color: var(--primary-dark);
+      margin-bottom: 12px;
+    }
+
+    .hero-title span {
+      background: linear-gradient(135deg, var(--primary-blue), #00B4DB);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-subtitle {
+      font-size: 15px;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      line-height: 1.6;
+    }
+
+    .hero-bullets {
+      list-style: none;
+      margin: 12px 0 0 0;
+      padding: 0;
+    }
+
+    .hero-bullets li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--text-dark);
+      margin-bottom: 6px;
+    }
+
+    .hero-bullets span {
+      font-size: 16px;
+      line-height: 1;
+      margin-top: 2px;
+    }
+
+    .hero-highlight-box {
+      background: var(--white);
+      border-radius: 12px;
+      border: 1px solid var(--gray-200);
+      padding: 20px;
+      box-shadow: 0 12px 30px rgba(4, 16, 86, 0.06);
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .hero-highlight-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-bottom: 6px;
+    }
+
+    .hero-highlight-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: #ecfdf5;
+      color: var(--accent-green);
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    /* BLOCO 4: ETAPAS DO DIAGNÓSTICO */
+    .steps-section {
+      padding: 0 0 32px 0;
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 16px;
+    }
+
+    .step-card {
+      background: var(--white);
+      border-radius: 10px;
+      border: 1px solid var(--gray-200);
+      padding: 16px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .step-tag {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--primary-blue);
+      margin-bottom: 4px;
+    }
+
+    .step-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-bottom: 6px;
+    }
+
+    /* BLOCO 5: FORMULÁRIO DE DIAGNÓSTICO */
+    .form-section {
+      padding: 32px 0 60px 0;
+    }
+
+    .form-wrapper {
+      background: var(--white);
+      border-radius: 16px;
+      border: 1px solid var(--gray-200);
+      box-shadow: 0 18px 40px rgba(4,16,86,0.08);
+      padding: 28px 24px;
+    }
+
+    .form-header {
+      margin-bottom: 20px;
+    }
+
+    .form-header-title {
+      font-family: 'Bicubik', sans-serif;
+      font-size: 20px;
+      color: var(--primary-dark);
+      margin-bottom: 6px;
+    }
+
+    .form-header-sub {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .form-block-title {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+      font-weight: 700;
+      margin: 22px 0 10px 0;
+    }
+
+    .form-grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 12px 16px;
+    }
+
+    .form-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 12px 16px;
+    }
+
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    label {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-dark);
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 9px 11px;
+      font-size: 13px;
+      border-radius: 6px;
+      border: 1px solid var(--gray-200);
+      background: var(--gray-100);
+      outline: none;
+      transition: all 0.16s;
+      font-family: 'Barlow', sans-serif;
+      resize: vertical;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--primary-blue);
+      box-shadow: 0 0 0 2px rgba(23, 171, 227, 0.12);
+      background: var(--white);
+    }
+
+    .hint {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .checkbox-group, .radio-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+      font-size: 12px;
+    }
+
+    .checkbox-item, .radio-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .checkbox-item input, .radio-item input {
+      width: auto;
+      margin: 0;
+    }
+
+    .submit-row {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 13px 24px;
+      border-radius: 8px;
+      border: none;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--white);
+      background: linear-gradient(135deg, var(--primary-deep), var(--primary-dark));
+      box-shadow: 0 14px 32px rgba(4, 16, 86, 0.35);
+      cursor: pointer;
+      transition: all 0.18s;
+    }
+
+    .submit-btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 18px 40px rgba(4, 16, 86, 0.45);
+    }
+
+    .lgpd-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .lgpd-row input {
+      margin-top: 2px;
+    }
+
+    .note-row {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    /* BLOCO 6: FOOTER SIMPLES */
+    footer {
+      text-align: center;
+      padding: 28px 0;
+      font-size: 11px;
+      color: var(--text-muted);
+      background: var(--white);
+      border-top: 1px solid var(--gray-200);
+    }
+
+    footer a {
+      color: var(--primary-blue);
+      font-weight: 600;
+    }
+
+    footer a:hover {
+      color: var(--primary-dark);
+    }
+
+    /* BLOCO 7: RESPONSIVO */
+    @media (max-width: 900px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .steps-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .form-grid-2,
+      .form-grid-3 {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-title {
+        font-size: 26px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- BLOCO 2 (HTML): HEADER -->
+  <header>
+    <div class="container">
+      <div class="header-inner">
+        <a href="index.html" class="logo-link">
+          <img src="logo-inbotix.png" alt="Logo INBOTIX" class="logo-img" />
+          <div class="logo-text">
+            <span>INBOTIX</span>
+            <span>Diagnóstico Outbound Sales</span>
+          </div>
+        </a>
+        <a href="index.html#contato" class="header-cta-link">
+          ← Voltar para o site
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- BLOCO 3 (HTML): HERO / INTRO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <div class="hero-kicker">Diagnóstico gratuito</div>
+          <h1 class="hero-title">
+            Descubra por que <span>suas campanhas não geram vendas</span>  
+            e se deveria focar em Outbound Sales
+          </h1>
+          <p class="hero-subtitle">
+            Em poucos minutos, você responde a um questionário estratégico e recebe um diagnóstico
+            apontando se o seu modelo de negócio tem mais aderência a tráfego pago, outbound sales
+            ou uma estratégia híbrida.
+          </p>
+          <ul class="hero-bullets">
+            <li><span>✅</span> Entenda se o problema está no canal, na oferta ou na estrutura de vendas.</li>
+            <li><span>📊</span> Veja se o seu negócio é muito mais “pro outbound” (prospecção ativa) do que para tráfego pago.</li>
+            <li><span>🧠</span> Receba recomendações práticas para ajustar a sua máquina de geração de demanda.</li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="hero-highlight-box">
+            <div class="hero-highlight-badge">
+              🔒 Diagnóstico 100% gratuito
+            </div>
+            <div class="hero-highlight-title">
+              Como funciona na prática?
+            </div>
+            <p style="margin-bottom: 6px;">
+              1. Você preenche o formulário com informações reais sobre seu marketing e vendas.
+            </p>
+            <p style="margin-bottom: 6px;">
+              2. Nosso time analisa se seu modelo é mais aderente a Inbound/Tráfego Pago, Outbound Sales ou uma combinação dos dois.
+            </p>
+            <p style="margin-bottom: 4px;">
+              3. Você recebe um resumo com o diagnóstico e os principais motivos pelos quais pode não estar tendo resultado hoje.
+            </p>
+            <p style="font-size: 11px; color: var(--text-muted); margin-top: 8px;">
+              Tempo médio de análise: até 1 dia útil.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOCO 4 (HTML): ETAPAS VISUAIS -->
+  <section class="steps-section">
+    <div class="container">
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-tag">Etapa 1</div>
+          <div class="step-title">Você preenche o diagnóstico</div>
+          <p>Em menos de 7 minutos, você responde perguntas sobre público, ticket médio, canais atuais, time de vendas e resultados das últimas campanhas.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-tag">Etapa 2</div>
+          <div class="step-title">Nosso time analisa os dados</div>
+          <p>Cruzamos seu cenário com operações reais de outbound e tráfego pago que já rodamos em diferentes mercados B2B e B2C.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-tag">Etapa 3</div>
+          <div class="step-title">Você recebe um relatório</div>
+          <p>Enviamos um resumo por e-mail e WhatsApp explicando onde está o gargalo e qual canal tende a gerar mais resultado no seu caso.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOCO 5 (HTML): FORMULÁRIO DE DIAGNÓSTICO -->
+  <section class="form-section">
+    <div class="container">
+      <div class="form-wrapper">
+        <div class="form-header">
+          <h2 class="form-header-title">Preencha o diagnóstico de Outbound Sales x Tráfego Pago</h2>
+          <p class="form-header-sub">
+            Quanto mais sincero você for nas respostas, mais preciso será o diagnóstico.
+            Campos marcados com * são obrigatórios.
+          </p>
+        </div>
+
+        <form action="https://formspree.io/f/managrzo" method="POST">
+          <!-- Campo interno para identificar o formulário no Formspree -->
+          <input type="hidden" name="form_origem" value="Diagnóstico Outbound vs Tráfego Pago - INBOTIX" />
+
+          <!-- BLOCO 5.1: DADOS BÁSICOS -->
+          <div class="form-block-title">Bloco 1 — Dados básicos da empresa</div>
+          <div class="form-grid-2">
+            <div class="form-field">
+              <label for="nome">Nome completo *</label>
+              <input type="text" id="nome" name="nome" placeholder="Seu nome" required />
+            </div>
+            <div class="form-field">
+              <label for="empresa">Empresa *</label>
+              <input type="text" id="empresa" name="empresa" placeholder="Nome da empresa" required />
+            </div>
+            <div class="form-field">
+              <label for="email">E-mail para receber o diagnóstico *</label>
+              <input type="email" id="email" name="email" placeholder="seu@email.com" required />
+            </div>
+            <div class="form-field">
+              <label for="whats">WhatsApp (com DDD) *</label>
+              <input type="tel" id="whats" name="whats" placeholder="(11) 97276-9986" required />
+            </div>
+            <div class="form-field">
+              <label for="site">Site da empresa</label>
+              <input type="url" id="site" name="site" placeholder="https://suaempresa.com.br" />
+            </div>
+            <div class="form-field">
+              <label for="segmento">Segmento principal *</label>
+              <select id="segmento" name="segmento" required>
+                <option value="">Selecione</option>
+                <option>Serviços B2B</option>
+                <option>Indústria</option>
+                <option>Tecnologia / Software</option>
+                <option>Educação</option>
+                <option>Saúde</option>
+                <option>Varejo / Comércio</option>
+                <option>Imobiliário</option>
+                <option>Financeiro / Seguros</option>
+                <option>Outro</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-grid-3" style="margin-top: 12px;">
+            <div class="form-field">
+              <label for="porte">Porte da empresa (funcionários) *</label>
+              <select id="porte" name="porte" required>
+                <option value="">Selecione</option>
+                <option>1–5</option>
+                <option>6–20</option>
+                <option>21–50</option>
+                <option>51–100</option>
+                <option>101–300</option>
+                <option>301+</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label for="ticket_medio">Ticket médio aproximado (R$) *</label>
+              <select id="ticket_medio" name="ticket_medio" required>
+                <option value="">Selecione</option>
+                <option>Abaixo de R$ 500</option>
+                <option>R$ 500 a R$ 2.000</option>
+                <option>R$ 2.001 a R$ 10.000</option>
+                <option>R$ 10.001 a R$ 50.000</option>
+                <option>Acima de R$ 50.000</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label for="ciclo_vendas">Ciclo médio de vendas *</label>
+              <select id="ciclo_vendas" name="ciclo_vendas" required>
+                <option value="">Selecione</option>
+                <option>Até 7 dias</option>
+                <option>De 8 a 30 dias</option>
+                <option>De 31 a 90 dias</option>
+                <option>Mais de 90 dias</option>
+                <option>Não sei responder</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- BLOCO 5.2: MARKETING E TRÁFEGO PAGO -->
+          <div class="form-block-title">Bloco 2 — Marketing e tráfego pago hoje</div>
+          <div class="form-field">
+            <label>Quais canais de aquisição você usa hoje? (marque todos que se aplicam) *</label>
+            <div class="checkbox-group">
+              <label class="checkbox-item">
+                <input type="checkbox" name="canais_atuais[]" value="Google Ads" /> Google Ads
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" name="canais_atuais[]" value="Meta (Facebook/Instagram Ads)" /> Meta (Facebook/Instagram Ads)
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" name="canais_atuais[]" value="LinkedIn Ads" /> LinkedIn Ads
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" name="canais_atuais[]" value="SEO / Orgânico" /> SEO / Orgânico
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" name="canais_atuais[]" value="Indicação / Networking" /> Indicação / Networking
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" name="canais_atuais[]" value="Nenhum estruturado" /> Nenhum estruturado
+              </label>
+            </div>
+            <div class="hint">Isso nos ajuda a entender se o problema está no canal ou na estrutura de vendas.</div>
+          </div>
+
+          <div class="form-grid-3" style="margin-top: 14px;">
+            <div class="form-field">
+              <label for="leads_mes">Média de leads por mês (de todos os canais)</label>
+              <select id="leads_mes" name="leads_mes">
+                <option value="">Selecione</option>
+                <option>Menos de 50</option>
+                <option>50 a 200</option>
+                <option>201 a 500</option>
+                <option>501 a 1.000</option>
+                <option>Mais de 1.000</option>
+                <option>Não sei</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label for="qualidade_leads">Como você avalia a qualidade dos leads?</label>
+              <select id="qualidade_leads" name="qualidade_leads">
+                <option value="">Selecione</option>
+                <option>Muito baixa (quase ninguém vira proposta)</option>
+                <option>Baixa (poucos chegam a reunião)</option>
+                <option>Mediana</option>
+                <option>Boa</option>
+                <option>Muito boa</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label for="resultado_trafego">Qual o resultado do tráfego pago hoje?</label>
+              <select id="resultado_trafego" name="resultado_trafego">
+                <option value="">Selecione</option>
+                <option>Invisto e quase não gero leads</option>
+                <option>Gero leads, mas não viro vendas</option>
+                <option>Tráfego pago traz vendas, mas não é previsível</option>
+                <option>Funciona bem, mas quero escalar</option>
+                <option>Não invisto em tráfego pago</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- BLOCO 5.3: TIME E PROCESSO DE VENDAS -->
+          <div class="form-block-title">Bloco 3 — Estrutura de vendas</div>
+          <div class="form-grid-2">
+            <div class="form-field">
+              <label>Você vende majoritariamente para:</label>
+              <div class="radio-group">
+                <label class="radio-item">
+                  <input type="radio" name="modelo_negocio" value="B2B" /> B2B (para empresas)
+                </label>
+                <label class="radio-item">
+                  <input type="radio" name="modelo_negocio" value="B2C" /> B2C (para consumidores finais)
+                </label>
+                <label class="radio-item">
+                  <input type="radio" name="modelo_negocio" value="Ambos" /> Ambos
+                </label>
+              </div>
+            </div>
+            <div class="form-field">
+              <label>Você possui SDR ou pré-vendas dedicado?</label>
+              <div class="radio-group">
+                <label class="radio-item">
+                  <input type="radio" name="tem_sdr" value="Sim, 1 pessoa" /> Sim, 1 pessoa
+                </label>
+                <label class="radio-item">
+                  <input type="radio" name="tem_sdr" value="Sim, mais de 1" /> Sim, mais de 1
+                </label>
+                <label class="radio-item">
+                  <input type="radio" name="tem_sdr" value="Não, vendedor faz tudo" /> Não, o vendedor faz tudo
+                </label>
+                <label class="radio-item">
+                  <input type="radio" name="tem_sdr" value="Não tenho time dedicado" /> Não tenho time dedicado
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-grid-2" style="margin-top: 14px;">
+            <div class="form-field">
+              <label>Como hoje chegam as reuniões para o time comercial?</label>
+              <div class="checkbox-group">
+                <label class="checkbox-item">
+                  <input type="checkbox" name="geracao_reunioes[]" value="Leads de tráfego pago" /> Leads de tráfego pago
+                </label>
+                <label class="checkbox-item">
+                  <input type="checkbox" name="geracao_reunioes[]" value="Indicações" /> Indicações
+                </label>
+                <label class="checkbox-item">
+                  <input type="checkbox" name="geracao_reunioes[]" value="Prospecção ativa (outbound)" /> Prospecção ativa (outbound)
+                </label>
+                <label class="checkbox-item">
+                  <input type="checkbox" name="geracao_reunioes[]" value="Eventos / Feiras" /> Eventos / Feiras
+                </label>
+                <label class="checkbox-item">
+                  <input type="checkbox" name="geracao_reunioes[]" value="Agenda quase vazia" /> Agenda quase vazia
+                </label>
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label for="agenda_atual">Como você descreveria a agenda de reuniões nos últimos 30 dias?</label>
+              <select id="agenda_atual" name="agenda_atual">
+                <option value="">Selecione</option>
+                <option>Quase sem reuniões</option>
+                <option>Algumas reuniões, mas abaixo do que gostaria</option>
+                <option>Agenda razoavelmente cheia</option>
+                <option>Agenda sempre lotada</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- BLOCO 5.4: FIT COM OUTBOUND SALES -->
+          <div class="form-block-title">Bloco 4 — Possível fit com Outbound Sales</div>
+          <div class="form-grid-2">
+            <div class="form-field">
+              <label>O decisor da compra costuma ser:</label>
+              <div class="radio-group">
+                <label class="radio-item">
+                  <input type="radio" name="tipo_decisor" value="Facilmente identificável (diretor, sócio, CEO, gestor)" /> Facilmente identificável (diretor, sócio, CEO, gestor)
+                </label>
+                <label class="radio-item">
+                  <input type="radio" name="tipo_decisor" value="Difuso (muitas pessoas opinam)" /> Difuso (muitas pessoas opinam)
+                </label>
+                <label class="radio-item">
+                  <input type="radio" name="tipo_decisor" value="Consumidor final" /> Consumidor final
+                </label>
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label>Seu produto/serviço exige conversa consultiva antes de fechar?</label>
+              <div class="radio-group">
+                <label class="radio-item">
+                  <input type="radio" name="consultivo" value="Sim, sempre" /> Sim, sempre
+                </label>
+                <label class="radio-item">
+                  <input type="radio" name="consultivo" value="Às vezes" /> Às vezes
+                </label>
+                <label class="radio-item">
+                  <input type="radio" name="consultivo" value="Quase nunca / venda direta" /> Quase nunca / venda direta
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-field" style="margin-top: 14px;">
+            <label for="maior_desafio">Qual é hoje o seu maior desafio para gerar novas vendas? *</label>
+            <textarea id="maior_desafio" name="maior_desafio" rows="3" placeholder="Ex: Tenho leads, mas não consigo transformar em reunião / Não consigo gerar demanda / Time não consegue fazer follow-up..." required></textarea>
+          </div>
+
+          <!-- BLOCO 5.5: ENVIO / LGPD -->
+          <div class="submit-row">
+            <div class="lgpd-row">
+              <input type="checkbox" id="lgpd" name="lgpd" value="Aceito" required />
+              <label for="lgpd">
+                Autorizo a INBOTIX a utilizar os dados informados para entrar em contato comigo sobre o diagnóstico e possíveis soluções comerciais, em conformidade com a LGPD.
+              </label>
+            </div>
+
+            <button type="submit" class="submit-btn">
+              🚀 Enviar respostas e receber diagnóstico
+            </button>
+
+            <div class="note-row">
+              ✅ Diagnóstico gratuito • ⏱ Tempo de resposta médio: até 1 dia útil • 📬 Você receberá o relatório por e-mail e/ou WhatsApp.
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOCO 6 (HTML): FOOTER -->
+  <footer>
+    <div class="container">
+      <p>© <span id="year"></span> INBOTIX — Diagnóstico Outbound Sales & Prospecção Ativa.</p>
+      <p style="margin-top: 8px;">
+        <a href="index.html">Voltar para o site principal</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- BLOCO 7 (HTML): SCRIPTS -->
+  <script>
+    // Ano no footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+
+  <!-- Microsoft Clarity (mesmo ID do site principal) -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "u833ulprni");
+  </script>
+
+</body>
+</html>
