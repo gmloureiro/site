@@ -1252,6 +1252,93 @@
       font-weight: 600;
       pointer-events: none;
     }
+    /* COOKIE / LGPD BANNER */
+    .cookie-banner {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 80;
+      background: rgba(15, 23, 42, 0.96);
+      color: #F9FAFB;
+      padding: 14px 20px;
+      box-shadow: 0 -10px 30px rgba(15, 23, 42, 0.4);
+      display: none; /* aparece via JS se ainda não tiver consentimento */
+    }
+
+    .cookie-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      font-size: 12px;
+    }
+
+    .cookie-text {
+      max-width: 720px;
+      line-height: 1.6;
+    }
+
+    .cookie-text strong {
+      font-weight: 700;
+    }
+
+    .cookie-actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .cookie-btn-primary,
+    .cookie-btn-secondary {
+      border-radius: 999px;
+      border: none;
+      padding: 8px 16px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s;
+      white-space: nowrap;
+    }
+
+    .cookie-btn-primary {
+      background: linear-gradient(135deg, var(--primary-blue), var(--accent-green));
+      color: #0f172a;
+      box-shadow: 0 6px 18px rgba(16, 185, 129, 0.4);
+    }
+
+    .cookie-btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 22px rgba(16, 185, 129, 0.5);
+    }
+
+    .cookie-btn-secondary {
+      background: transparent;
+      color: #E5E7EB;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+    }
+
+    .cookie-btn-secondary:hover {
+      background: rgba(15, 23, 42, 0.6);
+    }
+
+    .cookie-link {
+      color: #93C5FD;
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      .cookie-inner {
+        align-items: flex-start;
+      }
+      .cookie-actions {
+        width: 100%;
+        justify-content: flex-start;
+      }
+    }
 
     /* RESPONSIVO */
     @media (max-width: 900px) {
@@ -1929,6 +2016,28 @@
   </div>
 </section>
 <!-- 🔵🔵🔵 FIM DO BLOCO 11 — CONTATO 🔵🔵🔵 -->
+<!-- 🔵🔵🔵 BANNER LGPD / COOKIES 🔵🔵🔵 -->
+<div class="cookie-banner" id="cookie-banner">
+  <div class="cookie-inner">
+    <div class="cookie-text">
+      <strong>Usamos cookies para melhorar sua experiência.</strong><br />
+      Usamos cookies em nosso site para fornecer a experiência mais relevante, lembrando suas preferências e visitas recebidas. 
+      Também cruzamos com bases externas (como a PH3A) para identificar o navegante de forma segura e ajustar nossas ofertas e canais de comunicação mais adequados às suas necessidades.
+      Ao clicar em <strong>“Aceitar cookies”</strong>, você concorda com o uso de cookies de desempenho e marketing.
+      <br />
+      <a href="politica-de-privacidade.html" class="cookie-link">Saiba mais na nossa Política de Privacidade</a>
+    </div>
+    <div class="cookie-actions">
+      <button class="cookie-btn-secondary" id="cookie-decline">
+        Continuar sem marketing
+      </button>
+      <button class="cookie-btn-primary" id="cookie-accept">
+        Aceitar cookies
+      </button>
+    </div>
+  </div>
+</div>
+<!-- 🔵🔵🔵 FIM BANNER LGPD / COOKIES 🔵🔵🔵 -->
 
 <!-- 🔵🔵🔵 BLOCO 12 — FOOTER + WHATS + SCRIPTS 🔵🔵🔵 -->
 <footer>
@@ -1985,3 +2094,4 @@
 
 </body>
 </html>
+
