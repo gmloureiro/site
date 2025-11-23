@@ -708,6 +708,86 @@
       pointer-events: none;
     }
 
+    /* 🔹 POPUP EXIT-INTENT – AUTOMATIZAR LINKEDIN */
+    .exit-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.7);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 80;
+    }
+
+    .exit-modal-backdrop.show {
+      display: flex;
+    }
+
+    .exit-modal {
+      background: var(--white);
+      border-radius: 18px;
+      max-width: 420px;
+      width: 100%;
+      padding: 24px 24px 20px;
+      box-shadow: 0 30px 80px rgba(15, 23, 42, 0.5);
+      position: relative;
+      text-align: left;
+    }
+
+    .exit-modal-close {
+      position: absolute;
+      top: 10px;
+      right: 14px;
+      border: none;
+      background: transparent;
+      font-size: 18px;
+      cursor: pointer;
+      color: var(--text-muted);
+    }
+
+    .exit-modal-title {
+      font-family: 'Bicubik', sans-serif;
+      font-size: 20px;
+      color: var(--primary-dark);
+      margin-bottom: 6px;
+    }
+
+    .exit-modal-sub {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .exit-modal-highlight {
+      background: #eff6ff;
+      border-radius: 10px;
+      border: 1px dashed var(--primary-blue);
+      padding: 10px 12px;
+      font-size: 12px;
+      color: var(--primary-deep);
+      margin-bottom: 10px;
+    }
+
+    .exit-modal-cta-row {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 6px;
+    }
+
+    .exit-modal-cta-row .btn {
+      width: 100%;
+      justify-content: center;
+      padding: 12px 18px;
+      font-size: 13px;
+    }
+
+    .exit-modal-small {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 8px;
+    }
+
     /* 🔹 RESPONSIVO */
     @media (max-width: 900px) {
       .header-inner {
@@ -737,6 +817,10 @@
 
       .checklist-grid {
         grid-template-columns: minmax(0, 1fr);
+      }
+
+      .exit-modal {
+        margin: 0 16px;
       }
     }
   </style>
@@ -1135,11 +1219,80 @@
   </div>
 </a>
 
+<!-- 🔹 POPUP EXIT-INTENT – AUTOMATIZAR LINKEDIN -->
+<div class="exit-modal-backdrop" id="exitModalProfile">
+  <div class="exit-modal">
+    <button class="exit-modal-close" id="exitModalProfileClose" aria-label="Fechar popup">×</button>
+    <div class="exit-modal-title">Antes de sair: automatize o seu LinkedIn 🚀</div>
+    <p class="exit-modal-sub">
+      Você já sabe como montar um perfil campeão. Próximo passo é colocar esse perfil para <strong>trabalhar por você todos os dias</strong>,
+      com uma automação segura focada em gerar reuniões e vendas.
+    </p>
+    <div class="exit-modal-highlight">
+      Imagine o seu perfil campeão abordando pessoas certas todos os dias, com cadências inteligentes e follow-up automático –
+      enquanto você foca em atender e fechar negócios.
+    </div>
+    <div class="exit-modal-cta-row">
+      <a href="https://newdinbot.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+        🚀 Conhecer o New Dinbot para automatizar meu LinkedIn
+      </a>
+      <a href="https://wa.me/5511972769986?text=Vi%20o%20guia%20de%20perfil%20campe%C3%A3o%20e%20quero%20automatizar%20meu%20LinkedIn%20para%20vender%20mais" class="btn btn-outline">
+        💬 Falar com um especialista sobre automação
+      </a>
+    </div>
+    <div class="exit-modal-small">
+      Perfil campeão + automação inteligente no LinkedIn = mais conversas certas, mais propostas enviadas e muito mais vendas no B2B.
+    </div>
+  </div>
+</div>
+
 <!-- 🔹 SCRIPTS -->
 <script>
   // Ano no footer
   document.getElementById("year").textContent = new Date().getFullYear();
+
+  // Exit-intent específico desta landing page (perfil campeão)
+  (function () {
+    var exitModal = document.getElementById('exitModalProfile');
+    if (!exitModal) return;
+
+    var closeBtn = document.getElementById('exitModalProfileClose');
+    var alreadyShown = sessionStorage.getItem('exitModalProfileShown') === 'true';
+
+    function showExitModal() {
+      if (alreadyShown) return;
+      exitModal.classList.add('show');
+      alreadyShown = true;
+      sessionStorage.setItem('exitModalProfileShown', 'true');
+    }
+
+    function hideExitModal() {
+      exitModal.classList.remove('show');
+    }
+
+    // Exit-intent no desktop (mouse saindo pela parte superior da tela)
+    document.addEventListener('mouseout', function (e) {
+      if (!e.toElement && !e.relatedTarget && e.clientY <= 0) {
+        showExitModal();
+      }
+    });
+
+    // Fechar ao clicar no X
+    if (closeBtn) {
+      closeBtn.addEventListener('click', function () {
+        hideExitModal();
+      });
+    }
+
+    // Fechar ao clicar fora do modal
+    exitModal.addEventListener('click', function (e) {
+      if (e.target === exitModal) {
+        hideExitModal();
+      }
+    });
+  })();
 </script>
 
 </body>
 </html>
+
