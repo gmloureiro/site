@@ -8,14 +8,13 @@
   <meta name="description" content="Compare New Dinbot vs Linked Helper. Automação de LinkedIn com IA, anti-bloqueio, cadências inteligentes e teste grátis por 7 dias. A evolução do Linked Helper para outbound B2B." />
   <link rel="icon" type="image/x-icon" href="logo-inbotix.ico" />
 
-    <!-- 🔹 BLOCO 0.0 – Google Ads / gtag -->
+  <!-- 🔹 BLOCO 0.0 – Google Ads / gtag -->
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17728268035"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'AW-17728268035');
   </script>
   
@@ -651,6 +650,42 @@
       z-index: 2;
     }
 
+    /* 🔹 BLOCO 6.1 – VÍDEO NEW DINBOT */
+    .video-section-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 16px;
+      box-shadow: 0 20px 40px rgba(4, 16, 86, 0.18);
+      background: #000;
+      margin-top: 24px;
+      margin-bottom: 16px;
+    }
+
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      border-radius: 16px;
+    }
+
+    .video-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 8px;
+    }
+
     /* 🔹 BLOCO 7 – BLOCO DE OFERTA / TESTE GRÁTIS */
     .highlight {
       margin-top: 12px;
@@ -818,7 +853,123 @@
       pointer-events: none;
     }
 
-    /* 🔹 BLOCO 11 – RESPONSIVO */
+    /* 🔹 BLOCO 11 – POPUP EXIT-INTENT CUPOM HELPER50 */
+    .exit-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.7);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 80;
+    }
+
+    .exit-modal-backdrop.show {
+      display: flex;
+    }
+
+    .exit-modal {
+      background: var(--white);
+      border-radius: 18px;
+      max-width: 420px;
+      width: 100%;
+      padding: 24px 24px 20px;
+      box-shadow: 0 30px 80px rgba(15, 23, 42, 0.5);
+      position: relative;
+      text-align: left;
+    }
+
+    .exit-modal-close {
+      position: absolute;
+      top: 10px;
+      right: 14px;
+      border: none;
+      background: transparent;
+      font-size: 18px;
+      cursor: pointer;
+      color: var(--text-muted);
+    }
+
+    .exit-modal-title {
+      font-family: 'Bicubik', sans-serif;
+      font-size: 20px;
+      color: var(--primary-dark);
+      margin-bottom: 6px;
+    }
+
+    .exit-modal-sub {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .exit-modal-coupon-box {
+      border-radius: 10px;
+      border: 1px dashed var(--primary-blue);
+      background: #eff6ff;
+      padding: 10px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .exit-modal-coupon-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--primary-deep);
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .exit-modal-coupon-code {
+      font-family: 'Bicubik', sans-serif;
+      font-size: 18px;
+      color: var(--primary-deep);
+    }
+
+    .exit-modal-copy-btn {
+      border-radius: 6px;
+      border: none;
+      padding: 8px 10px;
+      background: linear-gradient(135deg, var(--primary-deep), var(--primary-blue));
+      color: var(--white);
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .exit-modal-copy-feedback {
+      font-size: 11px;
+      color: var(--accent-green);
+      min-height: 14px;
+      margin-bottom: 8px;
+    }
+
+    .exit-modal-cta-row {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 6px;
+    }
+
+    .exit-modal-cta-row .btn {
+      width: 100%;
+      justify-content: center;
+      padding: 12px 18px;
+      font-size: 13px;
+    }
+
+    .exit-modal-small {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 8px;
+    }
+
+    /* 🔹 BLOCO 12 – RESPONSIVO */
     @media (max-width: 900px) {
       .header-inner {
         flex-direction: column;
@@ -848,6 +999,10 @@
 
       .section-title {
         font-size: 26px;
+      }
+
+      .exit-modal {
+        margin: 0 16px;
       }
     }
   </style>
@@ -1083,6 +1238,42 @@
   </div>
 </section>
 
+<!-- 🔹 BLOCO 4.1 – VÍDEO DO NEW DINBOT -->
+<section class="section" id="video">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">Veja na prática</div>
+      <h2 class="section-title">Assista ao New Dinbot em ação no LinkedIn.</h2>
+      <p class="section-sub">
+        Antes de decidir entre New Dinbot e Linked Helper, veja em vídeo como funciona uma cadência completa, com IA, anti-bloqueio e foco em reuniões.
+      </p>
+    </div>
+
+    <div class="video-section-inner">
+      <div class="video-wrapper">
+        <!-- SUBSTITUA O ID DO VÍDEO ABAIXO PELO ID DO SEU VÍDEO OFICIAL DO NEW DINBOT -->
+        <iframe
+          src="https://www.youtube.com/embed/VIDEO_ID_AQUI"
+          title="New Dinbot em ação no LinkedIn"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+        ></iframe>
+      </div>
+      <p class="section-sub" style="text-align:left; margin-top: 0; margin-bottom: 12px;">
+        No vídeo acima mostramos exemplos reais de cadências, mensagens e resultados de operações que migraram do Linked Helper para o New Dinbot.
+      </p>
+      <div class="video-cta-row">
+        <a href="https://newdinbot.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+          🚀 Quero testar exatamente esse fluxo
+        </a>
+        <a href="https://wa.me/5511972769986?text=Acabei%20de%20ver%20o%20v%C3%ADdeo%20do%20New%20Dinbot%20e%20quero%20entender%20se%20serve%20para%20minha%20empresa" class="btn btn-outline">
+          💬 Quero entender se serve para mim
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- 🔹 BLOCO 5 – DEPOIMENTOS -->
 <section class="section" id="depoimentos">
   <div class="container">
@@ -1238,9 +1429,101 @@
   </div>
 </a>
 
-<!-- 🔹 BLOCO 10 – SCRIPT ANO -->
+<!-- 🔹 BLOCO 10 – POPUP EXIT-INTENT CUPOM HELPER50 -->
+<div class="exit-modal-backdrop" id="exitModal">
+  <div class="exit-modal">
+    <button class="exit-modal-close" id="exitModalClose" aria-label="Fechar popup">×</button>
+    <div class="exit-modal-title">Antes de sair, pegue 50% OFF 🎁</div>
+    <p class="exit-modal-sub">
+      Já que você chegou até aqui comparando New Dinbot com Linked Helper, aqui vai um presente para seu primeiro mês no New Dinbot.
+    </p>
+    <div class="exit-modal-coupon-label">Cupom exclusivo</div>
+    <div class="exit-modal-coupon-box">
+      <div class="exit-modal-coupon-code">HELPER50</div>
+      <button class="exit-modal-copy-btn" id="copyCouponButton">Copiar cupom</button>
+    </div>
+    <div class="exit-modal-copy-feedback" id="copyCouponFeedback"></div>
+    <div class="exit-modal-cta-row">
+      <a href="https://newdinbot.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+        🚀 Aplicar HELPER50 e testar agora
+      </a>
+      <a href="https://wa.me/5511972769986?text=Quero%20usar%20o%20cupom%20HELPER50%20no%20New%20Dinbot" class="btn btn-outline">
+        💬 Tirar dúvidas com um especialista
+      </a>
+    </div>
+    <div class="exit-modal-small">
+      Use o cupom <strong>HELPER50</strong> na ativação do seu plano. Válido por tempo limitado para quem chega por esta página comparativa.
+    </div>
+  </div>
+</div>
+
+<!-- 🔹 BLOCO 11 – SCRIPTS -->
 <script>
+  // Ano no footer
   document.getElementById("year").textContent = new Date().getFullYear();
+
+  // Exit-intent + cupom HELPER50
+  (function () {
+    var exitModal = document.getElementById('exitModal');
+    var closeBtn = document.getElementById('exitModalClose');
+    var copyBtn = document.getElementById('copyCouponButton');
+    var copyFeedback = document.getElementById('copyCouponFeedback');
+
+    if (!exitModal) return;
+
+    // Evita mostrar mais de uma vez por sessão
+    var alreadyShown = sessionStorage.getItem('exitModalShown') === 'true';
+
+    function showExitModal() {
+      if (alreadyShown) return;
+      exitModal.classList.add('show');
+      alreadyShown = true;
+      sessionStorage.setItem('exitModalShown', 'true');
+    }
+
+    function hideExitModal() {
+      exitModal.classList.remove('show');
+    }
+
+    // Exit-intent no desktop (mouse saindo pela parte superior da tela)
+    document.addEventListener('mouseout', function (e) {
+      // Se o mouse saiu pela parte de cima da janela
+      if (!e.toElement && !e.relatedTarget && e.clientY <= 0) {
+        showExitModal();
+      }
+    });
+
+    // Fechar ao clicar no X
+    if (closeBtn) {
+      closeBtn.addEventListener('click', function () {
+        hideExitModal();
+      });
+    }
+
+    // Fechar ao clicar fora do modal
+    exitModal.addEventListener('click', function (e) {
+      if (e.target === exitModal) {
+        hideExitModal();
+      }
+    });
+
+    // Copiar cupom HELPER50
+    if (copyBtn) {
+      copyBtn.addEventListener('click', function () {
+        var coupon = 'HELPER50';
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(coupon).then(function () {
+            copyFeedback.textContent = 'Cupom copiado! Agora é só colar no New Dinbot.';
+          }).catch(function () {
+            copyFeedback.textContent = 'Copie manualmente: HELPER50';
+          });
+        } else {
+          // Fallback simples
+          copyFeedback.textContent = 'Copie manualmente: HELPER50';
+        }
+      });
+    }
+  })();
 </script>
 
 </body>
