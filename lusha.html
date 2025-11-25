@@ -1,305 +1,1508 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
+  <!-- 🔹 BLOCO 0 – META, TÍTULO, FONTES -->
   <meta charset="UTF-8" />
+  <title>New Dinbot vs Lusha – Automação de LinkedIn que Gera Mais Leads</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>INBOTIX vs Lusha — A Melhor Automação de LinkedIn</title>
-  <meta name="description" content="Compare INBOTIX e Lusha. Veja por que nossa automação LinkedIn gera mais leads reais, com segurança total e performance superior." />
+  <meta name="description" content="Compare New Dinbot vs Lusha. Enquanto o Lusha entrega contatos, o New Dinbot automatiza o LinkedIn e gera leads reais, com IA, anti-bloqueio e teste grátis por 7 dias." />
+  <link rel="icon" type="image/x-icon" href="logo-inbotix.ico" />
 
-  <!-- TAGS FUTURAS – INSERIR AQUI -->
-  <!-- Exemplo:
-  <script> SUA TAG DO GOOGLE </script>
-  -->
-
-  <!-- PH3A / DATAUNION -->
+  <!-- 🔶 TAG PH3A / DATAUNION (ASYNC, ENTRE AS PRIMEIRAS NO HEAD) -->
   <script async type="text/javascript" src="https://www.dataunion.com.br/bcf4a443-2a61-43a0-a3b7-b8ed1384c1a2"></script>
 
   <!-- Microsoft Clarity -->
   <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)}
-        c[a].l=1*new Date();
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
         t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "ov8qzv5f5i");
+    })(window, document, "clarity", "script", "u833ulprni");
   </script>
 
+  <!-- 🔹 BLOCO 0.0 – Google Ads / gtag -->
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17728268035"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'AW-17728268035');
+  </script>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Bicubik:wght@400;700&display=swap" rel="stylesheet" />
+
   <style>
+    /* 🔹 BLOCO 0.1 – VARIÁVEIS DE TEMA E REGRAS GERAIS */
     :root {
-      --primary: #0f6fff;
-      --primary-dark: #0050c8;
-      --bg: #f5f7fb;
-      --dark: #0c1b33;
-      --text: #1a1f36;
+      --primary-dark: #041056;
+      --primary-deep: #07197E;
+      --primary-blue: #17ABE3;
+      --accent-green: #10B981;
+      --accent-orange: #F97316;
+      --white: #FFFFFF;
+      --bg-light: #F8F9FB;
+      --text-dark: #0f172a;
+      --text-muted: #6b7280;
+      --gray-100: #f3f4f6;
+      --gray-200: #e5e7eb;
     }
 
     * {
-      margin: 0; padding: 0; box-sizing: border-box;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
-    body { background: var(--bg); color: var(--text); }
-
-    header {
-      background: white;
-      padding: 24px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid #e5e7eb;
+    body {
+      margin: 0;
+      background: var(--bg-light);
+      font-family: 'Barlow', sans-serif;
+      color: var(--text-dark);
+      -webkit-font-smoothing: antialiased;
     }
 
-    header img.logo {
-      height: 42px;
-      cursor: pointer;
+    a {
+      text-decoration: none;
+      color: inherit;
     }
 
-    .hero {
-      padding: 80px 20px;
-      text-align: center;
-      max-width: 1000px;
+    .container {
+      max-width: 1100px;
       margin: auto;
+      padding: 0 20px;
     }
 
-    .hero h1 {
-      font-size: 42px;
-      color: var(--dark);
-      line-height: 1.2;
-      font-weight: 800;
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, #E0F2FE, #BAE6FD);
+      border: 1px solid #7DD3FC;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--primary-deep);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
 
-    .hero p {
-      margin-top: 20px;
-      font-size: 20px;
-      color: #555;
+    .badge-orange {
+      background: linear-gradient(135deg, #FEF3C7, #FDE68A);
+      border-color: #FCD34D;
+      color: #92400E;
+    }
+
+    .badge-green {
+      background: linear-gradient(135deg, #D1FAE5, #A7F3D0);
+      border-color: #6EE7B7;
+      color: #065F46;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 14px 28px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: all 0.18s;
+      font-family: 'Barlow', sans-serif;
+      text-align: center;
     }
 
     .btn-primary {
-      display: inline-block;
-      margin-top: 30px;
-      padding: 16px 32px;
-      background: var(--primary);
-      color: white;
-      border-radius: 12px;
-      font-size: 20px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: 0.3s;
+      background: linear-gradient(135deg, var(--primary-deep), var(--primary-dark));
+      color: var(--white);
+      box-shadow: 0 10px 25px rgba(4, 16, 86, 0.25);
     }
 
     .btn-primary:hover {
       background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 16px 36px rgba(4, 16, 86, 0.35);
     }
 
-    .comparison {
-      padding: 80px 20px;
-      max-width: 1100px;
-      margin: auto;
+    .btn-outline {
+      border: 2px solid var(--primary-blue);
+      color: var(--primary-blue);
+      background: var(--white);
     }
 
-    .comparison h2 {
-      font-size: 34px;
-      text-align: center;
-      margin-bottom: 50px;
-      color: var(--dark);
+    .btn-outline:hover {
+      background: var(--primary-blue);
+      color: var(--white);
+      transform: translateY(-1px);
     }
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      background: white;
-      border-radius: 14px;
-      overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.07);
-    }
-
-    th, td {
-      padding: 18px;
-      font-size: 18px;
-      border-bottom: 1px solid #eee;
-    }
-
-    th {
-      background: var(--primary);
-      color: white;
-      text-align: left;
-      font-size: 20px;
-    }
-
-    tr:last-child td {
-      border: none;
-    }
-
-    .highlight {
-      font-weight: 700;
-      color: var(--primary-dark);
+    .tag-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(23, 171, 227, 0.06);
+      border: 1px solid rgba(23, 171, 227, 0.3);
+      color: var(--primary-deep);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
     }
 
     .section {
-      padding: 80px 20px;
-      max-width: 1100px;
-      margin: auto;
+      padding: 64px 0;
     }
 
-    .section h2 {
-      font-size: 34px;
-      color: var(--dark);
-      margin-bottom: 20px;
-    }
-
-    .testimonials {
-      background: white;
-      padding: 60px 20px;
-      border-radius: 20px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.07);
-    }
-
-    footer {
+    .section-header {
+      margin-bottom: 32px;
       text-align: center;
-      padding: 40px 20px;
-      margin-top: 50px;
-      color: #777;
     }
 
-    /* POPUP COOKIES */
-    #cookies {
-      position: fixed;
-      bottom: 20px;
-      left: 20px;
-      right: 20px;
-      background: white;
-      padding: 20px;
-      border-radius: 14px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-      display: none;
+    .section-eyebrow {
+      font-size: 12px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent-orange);
+      margin-bottom: 8px;
+      font-family: 'Barlow', sans-serif;
+      font-weight: 700;
     }
 
-    #cookies button {
-      margin-top: 10px;
-      background: var(--primary);
-      border: none;
-      padding: 12px 20px;
-      color: white;
-      border-radius: 8px;
+    .section-title {
+      font-family: 'Bicubik', sans-serif;
+      font-size: 32px;
+      color: var(--primary-dark);
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+      font-weight: 700;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .section-sub {
+      font-size: 15px;
+      color: var(--text-muted);
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      font-family: 'Barlow', sans-serif;
+      line-height: 1.6;
+    }
+
+    /* 🔹 BLOCO 1 – HEADER */
+    header {
+      background: var(--white);
+      border-bottom: 1px solid var(--gray-200);
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      box-shadow: 0 2px 8px rgba(4, 16, 86, 0.05);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 0;
+      gap: 12px;
+    }
+
+    .logo-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
       cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    .logo-link:hover {
+      opacity: 0.8;
+    }
+
+    .logo-img {
+      height: 36px;
+      width: auto;
+      max-width: 130px;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .logo-text span:first-child {
+      font-family: 'Bicubik', sans-serif;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      font-size: 12px;
+      color: var(--primary-dark);
+    }
+
+    .logo-text span:last-child {
+      font-size: 10px;
+      color: var(--text-muted);
+      font-family: 'Barlow', sans-serif;
+      font-weight: 500;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    nav a {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-dark);
+      font-family: 'Barlow', sans-serif;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: var(--primary-blue);
+    }
+
+    .nav-btn {
+      padding: 10px 18px;
+      border-radius: 6px;
+      border: none;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--white);
+      background: linear-gradient(135deg, var(--primary-deep), var(--primary-dark));
+      box-shadow: 0 10px 24px rgba(4, 16, 86, 0.25);
+      transition: all 0.2s;
+      cursor: pointer;
+      font-family: 'Barlow', sans-serif;
+    }
+
+    .nav-btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 14px 32px rgba(4, 16, 86, 0.35);
+    }
+
+    /* 🔹 BLOCO 2 – HERO / PROMESSA */
+    .hero {
+      padding: 64px 0 56px;
+      background: linear-gradient(to bottom, #f0f4ff 0%, var(--bg-light) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -10%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(23, 171, 227, 0.1) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 32px;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-kicker {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent-orange);
+      margin-bottom: 8px;
+      font-family: 'Barlow', sans-serif;
+      font-weight: 700;
+    }
+
+    .hero-title {
+      font-family: 'Bicubik', sans-serif;
+      font-size: 38px;
+      color: var(--primary-dark);
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .hero-title span {
+      color: var(--primary-blue);
+      background: linear-gradient(135deg, var(--primary-blue), #00B4DB);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: 15px;
+      color: var(--text-muted);
+      max-width: 540px;
+      line-height: 1.7;
+      margin-bottom: 18px;
+      font-family: 'Barlow', sans-serif;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .hero-footnote {
+      font-size: 12px;
+      color: var(--text-muted);
+      max-width: 520px;
+      font-family: 'Barlow', sans-serif;
+      font-style: italic;
+    }
+
+    .hero-compare {
+      background: var(--white);
+      border-radius: 12px;
+      border: 1px solid var(--gray-200);
+      padding: 20px;
+      box-shadow: 0 18px 40px rgba(4, 16, 86, 0.12);
+      font-size: 13px;
+      color: var(--text-muted);
+      font-family: 'Barlow', sans-serif;
+    }
+
+    .hero-compare-title {
+      font-family: 'Bicubik', sans-serif;
+      font-size: 18px;
+      color: var(--primary-dark);
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+
+    .hero-compare-sub {
+      font-size: 13px;
+      margin-bottom: 12px;
+    }
+
+    .hero-compare-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 12px;
+    }
+
+    .hero-compare-list li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+      font-size: 13px;
+    }
+
+    .hero-compare-list li span {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 8px;
+      border-radius: 999px;
+    }
+
+    .pill-win {
+      background: rgba(16, 185, 129, 0.12);
+      color: #065F46;
+    }
+
+    .pill-lose {
+      background: rgba(248, 113, 113, 0.12);
+      color: #991b1b;
+    }
+
+    /* 🔹 BLOCO 3 – PROVA SOCIAL / SELOS */
+    .logos-strip {
+      margin-top: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      align-items: center;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .logos-strip span {
+      font-weight: 600;
+    }
+
+    .logos-strip-logos {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .logo-badge {
+      background: var(--white);
+      border-radius: 999px;
+      border: 1px solid var(--gray-200);
+      padding: 6px 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .logo-badge img {
+      height: 18px;
+      width: auto;
+      display: block;
+    }
+
+    /* 🔹 BLOCO EXTRA – VÍDEO DEMONSTRAÇÃO */
+    .video-section {
+      padding: 40px 0 0;
+    }
+
+    .video-section-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 16px;
+      box-shadow: 0 20px 40px rgba(4, 16, 86, 0.18);
+      background: #000;
+      margin-top: 16px;
+      margin-bottom: 16px;
+    }
+
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      border-radius: 16px;
+    }
+
+    .video-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    /* 🔹 BLOCO 4 – TABELA COMPARATIVA */
+    .compare-section {
+      padding: 56px 0;
+    }
+
+    .compare-table-wrap {
+      background: var(--white);
+      border-radius: 16px;
+      border: 1px solid var(--gray-200);
+      box-shadow: 0 18px 40px rgba(4, 16, 86, 0.06);
+      overflow: hidden;
+    }
+
+    .compare-table-header {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      background: linear-gradient(135deg, var(--primary-deep), var(--primary-blue));
+      color: var(--white);
+      padding: 16px 20px;
+      font-size: 13px;
+      font-weight: 600;
+      align-items: center;
+    }
+
+    .compare-table-header div:nth-child(2),
+    .compare-table-header div:nth-child(3) {
+      text-align: center;
+    }
+
+    .compare-table-body {
+      padding: 12px 20px 20px;
+    }
+
+    .compare-row {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--gray-200);
+      font-size: 13px;
+      align-items: center;
+    }
+
+    .compare-row:last-child {
+      border-bottom: none;
+    }
+
+    .compare-row div:nth-child(2),
+    .compare-row div:nth-child(3) {
+      text-align: center;
+      font-weight: 600;
+    }
+
+    .compare-badge-win {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(16, 185, 129, 0.12);
+      color: #065F46;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .compare-badge-mid {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(250, 204, 21, 0.12);
+      color: #854d0e;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .compare-badge-lose {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(248, 113, 113, 0.12);
+      color: #991b1b;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    /* 🔹 BLOCO 5 – BENEFÍCIOS (POR QUE O DINBOT GANHA) */
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+      margin-top: 32px;
+    }
+
+    .benefit-card {
+      background: var(--white);
+      border-radius: 12px;
+      border: 1px solid var(--gray-200);
+      padding: 20px;
+      box-shadow: 0 10px 26px rgba(4, 16, 86, 0.05);
+      font-size: 13px;
+      color: var(--text-muted);
+      font-family: 'Barlow', sans-serif;
+    }
+
+    .benefit-card h3 {
+      font-family: 'Bicubik', sans-serif;
+      font-size: 16px;
+      color: var(--primary-dark);
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+
+    .benefit-icon {
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+
+    .benefit-card ul {
+      margin-top: 10px;
+      padding-left: 18px;
+    }
+
+    .benefit-card li {
+      margin-bottom: 6px;
+    }
+
+    /* 🔹 BLOCO 6 – DEPOIMENTOS */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+      margin-top: 28px;
+    }
+
+    .testimonial-card {
+      background: var(--white);
+      border-radius: 12px;
+      border: 1px solid var(--gray-200);
+      padding: 20px;
+      box-shadow: 0 10px 26px rgba(4, 16, 86, 0.05);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .testimonial-card::before {
+      content: '"';
+      position: absolute;
+      top: 6px;
+      left: 12px;
+      font-size: 48px;
+      color: var(--primary-blue);
+      opacity: 0.16;
+      font-family: 'Bicubik', sans-serif;
+    }
+
+    .testimonial-name {
+      font-family: 'Bicubik', sans-serif;
+      font-size: 14px;
+      color: var(--primary-dark);
+      font-weight: 700;
+      margin-bottom: 4px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .testimonial-role {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .testimonial-text {
+      font-size: 14px;
+      color: var(--text-dark);
+      line-height: 1.7;
+      position: relative;
+      z-index: 2;
+    }
+
+    .testimonial-stars {
+      margin-top: 10px;
+      font-size: 13px;
+      color: #FDB022;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* 🔹 BLOCO 7 – BLOCO DE OFERTA / TESTE GRÁTIS */
+    .highlight {
+      margin-top: 12px;
+      padding: 32px;
+      border-radius: 16px;
+      background: linear-gradient(120deg, var(--primary-deep), var(--primary-blue));
+      color: var(--white);
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 28px;
+      align-items: center;
+      box-shadow: 0 30px 60px rgba(4, 16, 86, 0.35);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .highlight::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -10%;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .highlight > * {
+      position: relative;
+      z-index: 2;
+    }
+
+    .highlight h3 {
+      font-family: 'Bicubik', sans-serif;
+      font-size: 24px;
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+
+    .highlight p {
+      font-size: 14px;
+      opacity: 0.95;
+      margin-bottom: 4px;
+      font-family: 'Barlow', sans-serif;
+    }
+
+    .highlight-list {
+      font-size: 13px;
+      margin-top: 12px;
+      font-family: 'Barlow', sans-serif;
+    }
+
+    .highlight-list span {
+      display: inline-block;
+      padding: 6px 12px;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.15);
+      margin: 4px 4px 4px 0;
+      font-weight: 600;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    /* 🔹 BLOCO 8 – FAQ */
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+      margin-top: 28px;
+    }
+
+    .faq-item {
+      background: var(--white);
+      border-radius: 12px;
+      border: 1px solid var(--gray-200);
+      padding: 18px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .faq-item h3 {
+      font-family: 'Bicubik', sans-serif;
+      font-size: 15px;
+      color: var(--primary-dark);
+      margin-bottom: 6px;
+      font-weight: 700;
+    }
+
+    /* 🔹 BLOCO 9 – FOOTER SIMPLES */
+    footer {
+      margin-top: 40px;
+      padding: 24px 0;
+      background: var(--white);
+      border-top: 1px solid var(--gray-200);
+      font-size: 12px;
+      color: var(--text-muted);
+      font-family: 'Barlow', sans-serif;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      font-family: 'Barlow', sans-serif;
+      transition: color 0.2s;
+      font-weight: 500;
+    }
+
+    .footer-links a:hover {
+      color: var(--primary-blue);
+    }
+
+    /* 🔹 BLOCO 10 – WHATSAPP FLOAT */
+    .whats-float {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 60;
+      text-decoration: none;
+    }
+
+    .whats-button {
+      width: 60px;
+      height: 60px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #25D366, #20BA5A);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 20px 48px rgba(37, 211, 102, 0.3);
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 28px;
+    }
+
+    .whats-button:hover {
+      transform: scale(1.12);
+      box-shadow: 0 24px 56px rgba(37, 211, 102, 0.4);
+    }
+
+    .whats-label {
+      position: absolute;
+      right: 70px;
+      bottom: 16px;
+      background: var(--primary-dark);
+      color: var(--white);
+      padding: 10px 14px;
+      border-radius: 6px;
+      font-size: 11px;
+      white-space: nowrap;
+      box-shadow: 0 12px 32px rgba(4, 16, 86, 0.4);
+      font-family: 'Barlow', sans-serif;
+      font-weight: 600;
+      pointer-events: none;
+    }
+
+    /* 🔹 BLOCO 11 – POPUP EXIT-INTENT CUPOM LUSHA50 */
+    .exit-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.7);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 80;
+    }
+
+    .exit-modal-backdrop.show {
+      display: flex;
+    }
+
+    .exit-modal {
+      background: var(--white);
+      border-radius: 18px;
+      max-width: 440px;
+      width: 100%;
+      padding: 24px 24px 20px;
+      box-shadow: 0 30px 80px rgba(15, 23, 42, 0.5);
+      position: relative;
+      text-align: left;
+    }
+
+    .exit-modal-close {
+      position: absolute;
+      top: 10px;
+      right: 14px;
+      border: none;
+      background: transparent;
+      font-size: 18px;
+      cursor: pointer;
+      color: var(--text-muted);
+    }
+
+    .exit-modal-title {
+      font-family: 'Bicubik', sans-serif;
+      font-size: 20px;
+      color: var(--primary-dark);
+      margin-bottom: 6px;
+    }
+
+    .exit-modal-sub {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .exit-modal-highlight {
+      background: #eff6ff;
+      border-radius: 10px;
+      border: 1px dashed var(--primary-blue);
+      padding: 10px 12px;
+      font-size: 12px;
+      color: var(--primary-deep);
+      margin-bottom: 10px;
+    }
+
+    .exit-modal-coupon {
+      background: #0f172a;
+      color: #facc15;
+      border-radius: 8px;
+      padding: 10px 12px;
+      font-family: 'Bicubik', sans-serif;
+      font-size: 15px;
+      letter-spacing: 0.16em;
+      text-align: center;
+      margin-bottom: 8px;
+    }
+
+    .exit-modal-small {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 6px;
+    }
+
+    .exit-modal-cta-row {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .exit-modal-cta-row .btn {
+      width: 100%;
+      justify-content: center;
+      padding: 12px 18px;
+      font-size: 13px;
+    }
+
+    /* 🔹 BLOCO 12 – RESPONSIVO */
+    @media (max-width: 900px) {
+      .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav {
+        justify-content: flex-start;
+      }
+
+      .hero-grid,
+      .highlight,
+      .benefits-grid,
+      .testimonials-grid,
+      .faq-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .compare-table-header,
+      .compare-row {
+        grid-template-columns: 1.6fr 1.1fr 1.1fr;
+      }
+
+      .hero-title {
+        font-size: 30px;
+      }
+
+      .section-title {
+        font-size: 26px;
+      }
+
+      .exit-modal {
+        margin: 0 16px;
+      }
     }
   </style>
 </head>
-
 <body>
 
+<!-- 🔹 BLOCO 1 – HEADER -->
 <header>
-  <a href="https://inbotix.com.br"><img class="logo" src="logo-inbotix.png" alt="INBOTIX"></a>
+  <div class="container">
+    <div class="header-inner">
+      <a href="index.html" class="logo-link">
+        <img src="logo-inbotix.png" alt="Logo Inbotix" class="logo-img" />
+        <div class="logo-text">
+          <span>INBOTIX</span>
+          <span>New Dinbot – Outbound Sales</span>
+        </div>
+      </a>
+      <nav>
+        <a href="index.html"><strong>Home</strong></a>
+        <a href="blog.html"><strong>Blog</strong></a>
+        <a href="index.html#solucoes"><strong>Soluções</strong></a>
+        <a href="index.html#contato" class="nav-btn">Falar com Especialista</a>
+      </nav>
+    </div>
+  </div>
 </header>
 
+<!-- 🔹 BLOCO 2 – HERO / PROMESSA -->
 <section class="hero">
-  <h1>A INBOTIX entrega mais leads reais do que o próprio Lusha</h1>
-  <p>Enquanto o Lusha depende de base estática, a INBOTIX faz prospecção ativa no LinkedIn — encontrando decisores que realmente respondem.</p>
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-kicker">Comparativo Oficial</div>
+        <h1 class="hero-title">
+          New Dinbot vs <span>Lusha</span>
+        </h1>
+        <p class="hero-sub">
+          Enquanto o Lusha entrega contatos, o New Dinbot automatiza o LinkedIn de ponta a ponta e gera <strong>mais leads reais</strong> em conversa com o seu time comercial. Veja por que tantas empresas estão saindo do Lusha e vindo para o New Dinbot.
+        </p>
 
-  <a href="https://newdinbot.app" class="btn-primary">Teste grátis por 7 dias</a>
-</section>
+        <div class="hero-badges">
+          <span class="badge badge-green">✅ Automação de LinkedIn</span>
+          <span class="badge badge-orange">🔥 Gera mais leads que o Lusha</span>
+          <span class="badge">7 dias grátis · Sem cartão</span>
+        </div>
 
-<section class="comparison">
-  <h2>INBOTIX vs Lusha — Comparação Direta</h2>
+        <div class="hero-actions">
+          <a href="https://newdinbot.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+            🚀 Testar New Dinbot por 7 dias
+          </a>
+          <a href="#comparativo" class="btn btn-outline">
+            Ver comparação completa ↓
+          </a>
+        </div>
 
-  <table>
-    <tr>
-      <th>Recursos</th>
-      <th>INBOTIX</th>
-      <th>Lusha</th>
-    </tr>
+        <div class="hero-footnote">
+          Empresas que usavam Lusha e migraram para o New Dinbot passaram a ter <strong>pipeline ativo no LinkedIn</strong>, não só uma planilha cheia de contatos.
+        </div>
 
-    <tr>
-      <td>Não precisa deslogar do LinkedIn</td>
-      <td class="highlight">✔ Sim</td>
-      <td>✖ Não</td>
-    </tr>
+        <div class="logos-strip">
+          <span>Baseado em:</span>
+          <div class="logos-strip-logos">
+            <div class="logo-badge">
+              <img src="logo receita previsivel.svg" alt="Receita Previsível" />
+              <span>Receita Previsível</span>
+            </div>
+            <div class="logo-badge">
+              <img src="logo_zoho.png" alt="Zoho Partner" />
+              <span>Zoho Partner</span>
+            </div>
+          </div>
+        </div>
+      </div>
 
-    <tr>
-      <td>Geração ativa de leads (não baseado em base antiga)</td>
-      <td class="highlight">✔ Sim</td>
-      <td>✖ Não (base estática)</td>
-    </tr>
-
-    <tr>
-      <td>Chat do LinkedIn em tempo real</td>
-      <td class="highlight">✔ Sim</td>
-      <td>✖ Não</td>
-    </tr>
-
-    <tr>
-      <td>Follow-ups inteligentes</td>
-      <td class="highlight">✔ Sim</td>
-      <td>✖ Limitado</td>
-    </tr>
-
-    <tr>
-      <td>Teste grátis</td>
-      <td class="highlight">✔ 7 dias</td>
-      <td>✖ Não possui</td>
-    </tr>
-
-    <tr>
-      <td>Leads que respondem (não só contatos)</td>
-      <td class="highlight">✔ Muito alto</td>
-      <td>✖ Baixo</td>
-    </tr>
-
-    <tr>
-      <td>Ideal para geração constante de reuniões</td>
-      <td class="highlight">✔ Sim</td>
-      <td>✖ Não</td>
-    </tr>
-  </table>
-</section>
-
-<section class="section">
-  <h2>Por que o Lusha não entrega leads?</h2>
-  <p>O Lusha é ótimo para pegar contatos… mas **não entrega leads**, porque:</p>
-  <ul style="margin-top:20px; font-size:20px; line-height:1.7;">
-    <li>❌ Base de dados antiga</li>
-    <li>❌ Muitos contatos desatualizados</li>
-    <li>❌ Não faz follow-up</li>
-    <li>❌ Não gera conversa, apenas dá dados</li>
-  </ul>
-
-  <p style="margin-top:20px; font-size:22px; font-weight:700;">
-    A INBOTIX faz o que o Lusha não faz: **gera oportunidade real de venda**.
-  </p>
-</section>
-
-<section class="section">
-  <h2>Prova real: INBOTIX gera mais leads</h2>
-
-  <div class="testimonials">
-    <p style="font-size:20px; line-height:1.6;">
-      “Usávamos Lusha, Apollo e Hunter. Nenhum entregou o volume e a qualidade da INBOTIX.  
-      Em duas semanas vieram mais leads qualificados do que em 2 meses de Lusha.”
-    </p>
-    <p style="margin-top:10px; font-weight:700;">— Cliente do segmento de Tecnologia</p>
+      <div class="hero-compare">
+        <div class="hero-compare-title">Resumo rápido da comparação</div>
+        <p class="hero-compare-sub">
+          O Lusha é excelente para enriquecer dados. O New Dinbot é para quem quer <strong>conversas, respostas e reuniões</strong> via automação de LinkedIn.
+        </p>
+        <ul class="hero-compare-list">
+          <li>
+            <span class="pill-win">New Dinbot</span>
+            Foca em gerar leads em conversa ativa, não só contatos em planilha.
+          </li>
+          <li>
+            <span class="pill-win">New Dinbot</span>
+            Cadências completas no LinkedIn, com follow-ups e mensagem certa na hora certa.
+          </li>
+          <li>
+            <span class="pill-win">New Dinbot</span>
+            IA para personalizar abordagem e reduzir risco de bloqueio.
+          </li>
+          <li>
+            <span class="pill-lose">Lusha</span>
+            Entrega e-mail/telefone, mas não faz a prospecção acontecer por você.
+          </li>
+        </ul>
+        <a href="https://wa.me/5511972769986?text=Quero%20entender%20a%20diferen%C3%A7a%20entre%20New%20Dinbot%20e%20Lusha" class="btn btn-primary" style="width: 100%; justify-content:center;">
+          💬 Falar com um especialista sobre migrar do Lusha
+        </a>
+      </div>
+    </div>
   </div>
-
-  <a href="https://newdinbot.app" class="btn-primary" style="margin-top:40px; display:block; text-align:center;">
-    Começar agora grátis
-  </a>
 </section>
 
+<!-- 🔹 BLOCO EXTRA – VÍDEO DEMONSTRAÇÃO DO NEW DINBOT -->
+<section class="video-section">
+  <div class="container">
+    <div class="video-section-inner">
+      <div class="section-header" style="text-align:left; margin-bottom:16px;">
+        <div class="section-eyebrow">Veja o New Dinbot em ação</div>
+        <h2 class="section-title" style="margin-left:0; margin-right:0; font-size:24px;">
+          Entenda por que ele gera mais leads que o Lusha.
+        </h2>
+        <p class="section-sub" style="margin-left:0; margin-right:0;">
+          Assista à demonstração e veja como o New Dinbot transforma o LinkedIn em uma máquina de prospecção ativa, saindo da lógica de “listas frias” do Lusha para um fluxo constante de leads em conversa.
+        </p>
+      </div>
+
+      <div class="video-wrapper">
+        <iframe
+          src="https://www.youtube.com/embed/9mkPYEb03iQ?rel=0"
+          title="New Dinbot - Demonstração"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+        ></iframe>
+      </div>
+
+      <p class="section-sub" style="margin-left:0; margin-right:0; margin-top:0;">
+        Em poucos minutos você entende exatamente o que muda quando, além de dados, você passa a ter uma <strong>automação inteligente de LinkedIn</strong> trabalhando todos os dias.
+      </p>
+
+      <div class="video-cta-row">
+        <a href="https://newdinbot.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+          🚀 Criar conta e testar o New Dinbot por 7 dias
+        </a>
+        <a href="https://wa.me/5511972769986?text=Assisti%20ao%20v%C3%ADdeo%20do%20New%20Dinbot%20e%20quero%20ajuda%20para%20migrar%20do%20Lusha" class="btn btn-outline">
+          💬 Falar com especialista sobre sair do Lusha
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 🔹 BLOCO 3 – TABELA COMPARATIVA -->
+<section class="compare-section" id="comparativo">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">Comparativo Detalhado</div>
+      <h2 class="section-title">New Dinbot x Lusha: contatos ou leads de verdade?</h2>
+      <p class="section-sub">
+        O Lusha cumpre bem o papel de enriquecer dados. O New Dinbot entra um passo adiante: ele se conecta ao seu LinkedIn, roda cadências e entrega <strong>leads engajados</strong> para o seu time de vendas.
+      </p>
+    </div>
+
+    <div class="compare-table-wrap">
+      <div class="compare-table-header">
+        <div>Recurso</div>
+        <div>New Dinbot</div>
+        <div>Lusha</div>
+      </div>
+      <div class="compare-table-body">
+        <div class="compare-row">
+          <div>Automação de LinkedIn (convite, mensagem, follow-up)</div>
+          <div><span class="compare-badge-win">Completo</span></div>
+          <div><span class="compare-badge-lose">Não</span></div>
+        </div>
+
+        <div class="compare-row">
+          <div>Foco principal</div>
+          <div><span class="compare-badge-win">Geração de leads no LinkedIn</span></div>
+          <div><span class="compare-badge-mid">Enriquecimento de dados (e-mail/telefone)</span></div>
+        </div>
+
+        <div class="compare-row">
+          <div>Leads que respondem e entram em conversa</div>
+          <div><span class="compare-badge-win">Muito alto</span></div>
+          <div><span class="compare-badge-mid">Depende da sua operação de outbound</span></div>
+        </div>
+
+        <div class="compare-row">
+          <div>IA para sugerir e personalizar mensagens</div>
+          <div><span class="compare-badge-win">Sim · IA nativa</span></div>
+          <div><span class="compare-badge-lose">Não</span></div>
+        </div>
+
+        <div class="compare-row">
+          <div>Uso diário direto na sua conta de LinkedIn</div>
+          <div><span class="compare-badge-win">Sim</span></div>
+          <div><span class="compare-badge-lose">Não · Ferramenta externa de dados</span></div>
+        </div>
+
+        <div class="compare-row">
+          <div>Integração com CRM e operação de SDR Digital</div>
+          <div><span class="compare-badge-win">Nativo (Inbotix)</span></div>
+          <div><span class="compare-badge-mid">Depende de integrações e time interno</span></div>
+        </div>
+
+        <div class="compare-row">
+          <div>Visão de cadências e funil de conversas no LinkedIn</div>
+          <div><span class="compare-badge-win">Completa</span></div>
+          <div><span class="compare-badge-lose">Não</span></div>
+        </div>
+
+        <div class="compare-row">
+          <div>Teste grátis sem cartão</div>
+          <div><span class="compare-badge-win">7 dias</span></div>
+          <div><span class="compare-badge-lose">Não disponível</span></div>
+        </div>
+
+        <div class="compare-row">
+          <div>Papel ideal no seu stack de vendas</div>
+          <div><span class="compare-badge-win">Motor de geração de leads no LinkedIn</span></div>
+          <div><span class="compare-badge-mid">Fonte de dados para e-mail / cold call</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 🔹 BLOCO 4 – BENEFÍCIOS PRINCIPAIS DO NEW DINBOT -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">Por Dentro do New Dinbot</div>
+      <h2 class="section-title">Do “tenho dados” para “tenho leads chegando todo dia”.</h2>
+      <p class="section-sub">
+        O Lusha te entrega a matéria-prima. O New Dinbot faz o trabalho pesado de usar seu LinkedIn para transformar esses dados (ou novas listas) em conversas reais com decisores B2B.
+      </p>
+    </div>
+
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <div class="benefit-icon">🤖</div>
+        <h3>Automação inteligente de LinkedIn</h3>
+        <p>
+          Cadências completas que vão do convite à proposta, sempre pelo seu próprio perfil de LinkedIn.
+        </p>
+        <ul>
+          <li>Convites automáticos e segmentados</li>
+          <li>Mensagens 1:1 com IA</li>
+          <li>Follow-ups configurados por etapa</li>
+        </ul>
+      </div>
+
+      <div class="benefit-card">
+        <div class="benefit-icon">🧲</div>
+        <h3>Mais leads que só “dados frios”</h3>
+        <p>
+          Em vez de só enriquecer, o New Dinbot gera interesse, perguntas e pedidos de reunião dentro do LinkedIn.
+        </p>
+        <ul>
+          <li>Leads já aquecidos pela conversa</li>
+          <li>Menos tempo caçando respostas</li>
+          <li>Mais tempo vendendo</li>
+        </ul>
+      </div>
+
+      <div class="benefit-card">
+        <div class="benefit-icon">🛡</div>
+        <h3>Segurança e previsibilidade</h3>
+        <p>
+          Pensado para funcionar por anos na sua conta, respeitando limites e ritmos da plataforma.
+        </p>
+        <ul>
+          <li>Controle dinâmico de volume</li>
+          <li>Envios distribuídos ao longo do dia</li>
+          <li>Alertas para evitar bloqueio</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 🔹 BLOCO 5 – DEPOIMENTOS -->
+<section class="section" id="depoimentos">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">Na prática</div>
+      <h2 class="section-title">O que dizem empresas que saíram do Lusha?</h2>
+      <p class="section-sub">
+        O padrão é sempre o mesmo: a empresa continua gostando do Lusha como base de dados, mas descobre que é o New Dinbot que faz a máquina de leads realmente girar.
+      </p>
+    </div>
+
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-name">Diretor Comercial · SaaS B2B</div>
+        <div class="testimonial-role">Usava Lusha + New Dinbot</div>
+        <div class="testimonial-text">
+          “O Lusha continuou sendo uma boa fonte de contatos, mas foi só quando colocamos o New Dinbot em cima que começamos a ter reuniões diárias pelo LinkedIn.”
+        </div>
+        <div class="testimonial-stars">★★★★★</div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-name">Head de Vendas · Consultoria</div>
+        <div class="testimonial-role">Cliente Inbotix</div>
+        <div class="testimonial-text">
+          “Antes: planilha enorme de contatos do Lusha. Depois: agenda cheia de calls vindos das cadências do New Dinbot. A mudança foi brutal.”
+        </div>
+        <div class="testimonial-stars">★★★★★</div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-name">CEO · Agência de Marketing</div>
+        <div class="testimonial-role">White Label Inbotix</div>
+        <div class="testimonial-text">
+          “Hoje usamos o Lusha apenas como apoio, mas o produto que vendemos para os clientes é a automação do LinkedIn com New Dinbot. É ali que o lead nasce de verdade.”
+        </div>
+        <div class="testimonial-stars">★★★★★</div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-name">Fundador · Empresa de Serviços</div>
+        <div class="testimonial-role">Operação de SDR Digital</div>
+        <div class="testimonial-text">
+          “A diferença prática é simples: antes eu comprava dados. Agora eu compro agenda cheia. O New Dinbot entrega isso.”
+        </div>
+        <div class="testimonial-stars">★★★★★</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 🔹 BLOCO 6 – OFERTA / TESTE GRÁTIS -->
+<section class="section">
+  <div class="container">
+    <div class="highlight">
+      <div>
+        <h3>Teste o New Dinbot em paralelo ao Lusha.</h3>
+        <p>
+          Continue usando o Lusha se fizer sentido, mas rode cadências com o New Dinbot em cima da mesma base e compare qual canal coloca mais oportunidades na sua agenda.
+        </p>
+        <div class="highlight-list">
+          <span>✓ 7 dias grátis · Sem cartão</span>
+          <span>✓ Suporte para criar a primeira cadência</span>
+          <span>✓ Setup focado em gerar reuniões, não só contatos</span>
+          <span>✓ Insights baseados em outbound B2B</span>
+        </div>
+        <p style="font-size: 12px; margin-top: 12px;">
+          Se depois do teste você sentir que o New Dinbot não gerou mais negócio do que o Lusha, é só não continuar. Simples assim.
+        </p>
+      </div>
+      <div>
+        <a href="https://newdinbot.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="width:100%; justify-content:center; padding: 16px 28px; font-size: 15px;">
+          🚀 Criar conta e testar New Dinbot agora
+        </a>
+        <a href="https://wa.me/5511972769986?text=Quero%20ajuda%20para%20comparar%20o%20New%20Dinbot%20com%20o%20Lusha" class="btn btn-outline" style="width:100%; justify-content:center; margin-top:10px;">
+          💬 Falar com um especialista antes
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 🔹 BLOCO 7 – FAQ -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">FAQ</div>
+      <h2 class="section-title">Perguntas frequentes de quem usa hoje o Lusha.</h2>
+      <p class="section-sub">
+        O objetivo não é substituir obrigatoriamente o Lusha, e sim <strong>fazer o que ele não faz</strong>: automação de LinkedIn que gera leads em conversa.
+      </p>
+    </div>
+
+    <div class="faq-grid">
+      <div class="faq-item">
+        <h3>Eu preciso parar de usar o Lusha para usar o New Dinbot?</h3>
+        <p>
+          Não. Muitos clientes usam os dois: Lusha como fonte de dados e New Dinbot como motor de geração de leads via LinkedIn. A diferença é que o Dinbot transforma dados em reuniões.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h3>O New Dinbot substitui as campanhas de e-mail que faço com o Lusha?</h3>
+        <p>
+          Ele não substitui, ele soma. Você pode continuar rodando e-mail, mas agora terá também um canal forte de prospecção no LinkedIn, que costuma ter taxas de resposta muito maiores.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Quão rápido começo a ver leads vindo do LinkedIn?</h3>
+        <p>
+          Em geral, nas primeiras semanas de cadência já começam a aparecer respostas e pedidos de reunião, principalmente se você já tiver claro seu ICP e oferta.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h3>O teste grátis é realmente sem compromisso?</h3>
+        <p>
+          Sim. São 7 dias completos de uso, sem necessidade de cartão de crédito. Se não fizer sentido, você simplesmente não continua.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 🔹 BLOCO 8 – FOOTER -->
 <footer>
-  © 2025 INBOTIX — A Melhor Automação de LinkedIn do Mundo
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        © <span id="year"></span> INBOTIX — New Dinbot · Automação de LinkedIn com IA
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="index.html#solucoes">Soluções</a>
+        <a href="blog.html">Blog</a>
+        <a href="index.html#contato">Contato</a>
+      </div>
+      <div>
+        <span class="badge badge-green">✓ Receita Previsível</span>
+      </div>
+    </div>
+  </div>
 </footer>
 
-<!-- POPUP COOKIES -->
-<div id="cookies">
-  <p>Usamos cookies para melhorar a experiência no site conforme a LGPD.</p>
-  <button onclick="document.getElementById('cookies').style.display='none'">Aceitar</button>
+<!-- 🔹 BLOCO 9 – WHATSAPP FLOAT -->
+<a href="https://wa.me/5511972769986?text=Quero%20saber%20mais%20sobre%20o%20New%20Dinbot%20e%20Lusha" class="whats-float" target="_blank" rel="noopener noreferrer">
+  <div class="whats-button">
+    💬
+  </div>
+  <div class="whats-label">
+    Falar com especialista
+  </div>
+</a>
+
+<!-- 🔹 BLOCO 10 – POPUP EXIT-INTENT CUPOM LUSHA50 -->
+<div class="exit-modal-backdrop" id="exitModalLusha">
+  <div class="exit-modal">
+    <button class="exit-modal-close" id="exitModalLushaClose" aria-label="Fechar popup">×</button>
+    <div class="exit-modal-title">Antes de sair: 50% OFF para usuários do Lusha 🧠</div>
+    <p class="exit-modal-sub">
+      Se você já está decidido a testar uma automação de LinkedIn que gera mais leads que o Lusha, aqui vai um presente:
+      um cupom de <strong>50% de desconto vitalício</strong> para usar no New Dinbot.
+    </p>
+    <div class="exit-modal-highlight">
+      Use o cupom abaixo no momento da contratação e trave o desconto para sempre,
+      enquanto sua conta estiver ativa. Não é desconto temporário, é <strong>vitalício</strong>.
+    </div>
+    <div class="exit-modal-coupon">
+      LUSHA50
+    </div>
+    <div class="exit-modal-small">
+      💡 <strong>IMPORTANTE:</strong> O cupom <strong>LUSHA50</strong> garante <strong>50% de desconto vitalício</strong> na mensalidade do New Dinbot
+      (enquanto seu plano estiver ativo). Guarde esse código ou já fale com o time para aplicar.
+    </div>
+    <div class="exit-modal-cta-row">
+      <a href="https://newdinbot.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+        🚀 Ir para o New Dinbot e usar o cupom LUSHA50
+      </a>
+      <a href="https://wa.me/5511972769986?text=Quero%20usar%20o%20cupom%20LUSHA50%20vital%C3%ADcio%20para%20migrar%20do%20Lusha%20para%20o%20New%20Dinbot" class="btn btn-outline">
+        💬 Falar com um especialista e aplicar o cupom LUSHA50
+      </a>
+    </div>
+  </div>
 </div>
 
+<!-- 🔹 BLOCO 11 – SCRIPTS -->
 <script>
-  setTimeout(() => {
-    document.getElementById('cookies').style.display = 'block';
-  }, 1200);
+  // Ano no footer
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // Exit-intent: popup LUSHA50 (vitalício)
+  (function () {
+    var exitModal = document.getElementById('exitModalLusha');
+    if (!exitModal) return;
+
+    var closeBtn = document.getElementById('exitModalLushaClose');
+    var alreadyShown = sessionStorage.getItem('exitModalLushaShown') === 'true';
+
+    function showExitModal() {
+      if (alreadyShown) return;
+      exitModal.classList.add('show');
+      alreadyShown = true;
+      sessionStorage.setItem('exitModalLushaShown', 'true');
+    }
+
+    function hideExitModal() {
+      exitModal.classList.remove('show');
+    }
+
+    // Exit-intent no desktop (mouse saindo pela parte superior da tela)
+    document.addEventListener('mouseout', function (e) {
+      if (!e.toElement && !e.relatedTarget && e.clientY <= 0) {
+        showExitModal();
+      }
+    });
+
+    // Fechar ao clicar no X
+    if (closeBtn) {
+      closeBtn.addEventListener('click', function () {
+        hideExitModal();
+      });
+    }
+
+    // Fechar ao clicar fora do modal
+    exitModal.addEventListener('click', function (e) {
+      if (e.target === exitModal) {
+        hideExitModal();
+      }
+    });
+  })();
 </script>
 
 </body>
 </html>
+
