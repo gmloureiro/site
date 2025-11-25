@@ -1,0 +1,1507 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <!-- 🔹 BLOCO 0 – META, TÍTULO, FONTES -->
+  <meta charset="UTF-8" />
+  <title>New Dinbot vs Apollo – Automação de LinkedIn focada em Leads</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Compare New Dinbot vs Apollo. Enquanto o Apollo é focado em cadências e CRM, o New Dinbot é a automação de LinkedIn que gera mais leads reais, com IA, anti-bloqueio e teste grátis por 7 dias." />
+  <link rel="icon" type="image/x-icon" href="logo-inbotix.ico" />
+
+  <!-- 🔶 TAG PH3A / DATAUNION (ASYNC, ENTRE AS PRIMEIRAS NO HEAD) -->
+  <script async type="text/javascript" src="https://www.dataunion.com.br/bcf4a443-2a61-43a0-a3b7-b8ed1384c1a2"></script>
+
+  <!-- Microsoft Clarity -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "u833ulprni");
+  </script>
+
+  <!-- 🔹 BLOCO 0.0 – Google Ads / gtag -->
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17728268035"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'AW-17728268035');
+  </script>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Bicubik:wght@400;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* 🔹 BLOCO 0.1 – VARIÁVEIS DE TEMA E REGRAS GERAIS */
+    :root {
+      --primary-dark: #041056;
+      --primary-deep: #07197E;
+      --primary-blue: #17ABE3;
+      --accent-green: #10B981;
+      --accent-orange: #F97316;
+      --white: #FFFFFF;
+      --bg-light: #F8F9FB;
+      --text-dark: #0f172a;
+      --text-muted: #6b7280;
+      --gray-100: #f3f4f6;
+      --gray-200: #e5e7eb;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg-light);
+      font-family: 'Barlow', sans-serif;
+      color: var(--text-dark);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 0 20px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, #E0F2FE, #BAE6FD);
+      border: 1px solid #7DD3FC;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--primary-deep);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .badge-orange {
+      background: linear-gradient(135deg, #FEF3C7, #FDE68A);
+      border-color: #FCD34D;
+      color: #92400E;
+    }
+
+    .badge-green {
+      background: linear-gradient(135deg, #D1FAE5, #A7F3D0);
+      border-color: #6EE7B7;
+      color: #065F46;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 14px 28px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: all 0.18s;
+      font-family: 'Barlow', sans-serif;
+      text-align: center;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary-deep), var(--primary-dark));
+      color: var(--white);
+      box-shadow: 0 10px 25px rgba(4, 16, 86, 0.25);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 16px 36px rgba(4, 16, 86, 0.35);
+    }
+
+    .btn-outline {
+      border: 2px solid var(--primary-blue);
+      color: var(--primary-blue);
+      background: var(--white);
+    }
+
+    .btn-outline:hover {
+      background: var(--primary-blue);
+      color: var(--white);
+      transform: translateY(-1px);
+    }
+
+    .tag-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(23, 171, 227, 0.06);
+      border: 1px solid rgba(23, 171, 227, 0.3);
+      color: var(--primary-deep);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .section {
+      padding: 64px 0;
+    }
+
+    .section-header {
+      margin-bottom: 32px;
+      text-align: center;
+    }
+
+    .section-eyebrow {
+      font-size: 12px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent-orange);
+      margin-bottom: 8px;
+      font-family: 'Barlow', sans-serif;
+      font-weight: 700;
+    }
+
+    .section-title {
+      font-family: 'Bicubik', sans-serif;
+      font-size: 32px;
+      color: var(--primary-dark);
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+      font-weight: 700;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .section-sub {
+      font-size: 15px;
+      color: var(--text-muted);
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      font-family: 'Barlow', sans-serif;
+      line-height: 1.6;
+    }
+
+    /* 🔹 BLOCO 1 – HEADER */
+    header {
+      background: var(--white);
+      border-bottom: 1px solid var(--gray-200);
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      box-shadow: 0 2px 8px rgba(4, 16, 86, 0.05);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 0;
+      gap: 12px;
+    }
+
+    .logo-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    .logo-link:hover {
+      opacity: 0.8;
+    }
+
+    .logo-img {
+      height: 36px;
+      width: auto;
+      max-width: 130px;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .logo-text span:first-child {
+      font-family: 'Bicubik', sans-serif;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      font-size: 12px;
+      color: var(--primary-dark);
+    }
+
+    .logo-text span:last-child {
+      font-size: 10px;
+      color: var(--text-muted);
+      font-family: 'Barlow', sans-serif;
+      font-weight: 500;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    nav a {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-dark);
+      font-family: 'Barlow', sans-serif;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: var(--primary-blue);
+    }
+
+    .nav-btn {
+      padding: 10px 18px;
+      border-radius: 6px;
+      border: none;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--white);
+      background: linear-gradient(135deg, var(--primary-deep), var(--primary-dark));
+      box-shadow: 0 10px 24px rgba(4, 16, 86, 0.25);
+      transition: all 0.2s;
+      cursor: pointer;
+      font-family: 'Barlow', sans-serif;
+    }
+
+    .nav-btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 14px 32px rgba(4, 16, 86, 0.35);
+    }
+
+    /* 🔹 BLOCO 2 – HERO / PROMESSA */
+    .hero {
+      padding: 64px 0 56px;
+      background: linear-gradient(to bottom, #f0f4ff 0%, var(--bg-light) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -10%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(23, 171, 227, 0.1) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 32px;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-kicker {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent-orange);
+      margin-bottom: 8px;
+      font-family: 'Barlow', sans-serif;
+      font-weight: 700;
+    }
+
+    .hero-title {
+      font-family: 'Bicubik', sans-serif;
+      font-size: 38px;
+      color: var(--primary-dark);
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .hero-title span {
+      color: var(--primary-blue);
+      background: linear-gradient(135deg, var(--primary-blue), #00B4DB);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: 15px;
+      color: var(--text-muted);
+      max-width: 540px;
+      line-height: 1.7;
+      margin-bottom: 18px;
+      font-family: 'Barlow', sans-serif;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .hero-footnote {
+      font-size: 12px;
+      color: var(--text-muted);
+      max-width: 520px;
+      font-family: 'Barlow', sans-serif;
+      font-style: italic;
+    }
+
+    .hero-compare {
+      background: var(--white);
+      border-radius: 12px;
+      border: 1px solid var(--gray-200);
+      padding: 20px;
+      box-shadow: 0 18px 40px rgba(4, 16, 86, 0.12);
+      font-size: 13px;
+      color: var(--text-muted);
+      font-family: 'Barlow', sans-serif;
+    }
+
+    .hero-compare-title {
+      font-family: 'Bicubik', sans-serif;
+      font-size: 18px;
+      color: var(--primary-dark);
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+
+    .hero-compare-sub {
+      font-size: 13px;
+      margin-bottom: 12px;
+    }
+
+    .hero-compare-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 12px;
+    }
+
+    .hero-compare-list li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+      font-size: 13px;
+    }
+
+    .hero-compare-list li span {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 8px;
+      border-radius: 999px;
+    }
+
+    .pill-win {
+      background: rgba(16, 185, 129, 0.12);
+      color: #065F46;
+    }
+
+    .pill-lose {
+      background: rgba(248, 113, 113, 0.12);
+      color: #991b1b;
+    }
+
+    /* 🔹 BLOCO 3 – PROVA SOCIAL / SELOS */
+    .logos-strip {
+      margin-top: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      align-items: center;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .logos-strip span {
+      font-weight: 600;
+    }
+
+    .logos-strip-logos {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .logo-badge {
+      background: var(--white);
+      border-radius: 999px;
+      border: 1px solid var(--gray-200);
+      padding: 6px 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .logo-badge img {
+      height: 18px;
+      width: auto;
+      display: block;
+    }
+
+    /* 🔹 BLOCO EXTRA – VÍDEO DEMONSTRAÇÃO */
+    .video-section {
+      padding: 40px 0 0;
+    }
+
+    .video-section-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 16px;
+      box-shadow: 0 20px 40px rgba(4, 16, 86, 0.18);
+      background: #000;
+      margin-top: 16px;
+      margin-bottom: 16px;
+    }
+
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      border-radius: 16px;
+    }
+
+    .video-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    /* 🔹 BLOCO 4 – TABELA COMPARATIVA */
+    .compare-section {
+      padding: 56px 0;
+    }
+
+    .compare-table-wrap {
+      background: var(--white);
+      border-radius: 16px;
+      border: 1px solid var(--gray-200);
+      box-shadow: 0 18px 40px rgba(4, 16, 86, 0.06);
+      overflow: hidden;
+    }
+
+    .compare-table-header {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      background: linear-gradient(135deg, var(--primary-deep), var(--primary-blue));
+      color: var(--white);
+      padding: 16px 20px;
+      font-size: 13px;
+      font-weight: 600;
+      align-items: center;
+    }
+
+    .compare-table-header div:nth-child(2),
+    .compare-table-header div:nth-child(3) {
+      text-align: center;
+    }
+
+    .compare-table-body {
+      padding: 12px 20px 20px;
+    }
+
+    .compare-row {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--gray-200);
+      font-size: 13px;
+      align-items: center;
+    }
+
+    .compare-row:last-child {
+      border-bottom: none;
+    }
+
+    .compare-row div:nth-child(2),
+    .compare-row div:nth-child(3) {
+      text-align: center;
+      font-weight: 600;
+    }
+
+    .compare-badge-win {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(16, 185, 129, 0.12);
+      color: #065F46;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .compare-badge-mid {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(250, 204, 21, 0.12);
+      color: #854d0e;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .compare-badge-lose {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(248, 113, 113, 0.12);
+      color: #991b1b;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    /* 🔹 BLOCO 5 – BENEFÍCIOS (POR QUE O DINBOT GANHA) */
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+      margin-top: 32px;
+    }
+
+    .benefit-card {
+      background: var(--white);
+      border-radius: 12px;
+      border: 1px solid var(--gray-200);
+      padding: 20px;
+      box-shadow: 0 10px 26px rgba(4, 16, 86, 0.05);
+      font-size: 13px;
+      color: var(--text-muted);
+      font-family: 'Barlow', sans-serif;
+    }
+
+    .benefit-card h3 {
+      font-family: 'Bicubik', sans-serif;
+      font-size: 16px;
+      color: var(--primary-dark);
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+
+    .benefit-icon {
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+
+    .benefit-card ul {
+      margin-top: 10px;
+      padding-left: 18px;
+    }
+
+    .benefit-card li {
+      margin-bottom: 6px;
+    }
+
+    /* 🔹 BLOCO 6 – DEPOIMENTOS */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+      margin-top: 28px;
+    }
+
+    .testimonial-card {
+      background: var(--white);
+      border-radius: 12px;
+      border: 1px solid var(--gray-200);
+      padding: 20px;
+      box-shadow: 0 10px 26px rgba(4, 16, 86, 0.05);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .testimonial-card::before {
+      content: '"';
+      position: absolute;
+      top: 6px;
+      left: 12px;
+      font-size: 48px;
+      color: var(--primary-blue);
+      opacity: 0.16;
+      font-family: 'Bicubik', sans-serif;
+    }
+
+    .testimonial-name {
+      font-family: 'Bicubik', sans-serif;
+      font-size: 14px;
+      color: var(--primary-dark);
+      font-weight: 700;
+      margin-bottom: 4px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .testimonial-role {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .testimonial-text {
+      font-size: 14px;
+      color: var(--text-dark);
+      line-height: 1.7;
+      position: relative;
+      z-index: 2;
+    }
+
+    .testimonial-stars {
+      margin-top: 10px;
+      font-size: 13px;
+      color: #FDB022;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* 🔹 BLOCO 7 – BLOCO DE OFERTA / TESTE GRÁTIS */
+    .highlight {
+      margin-top: 12px;
+      padding: 32px;
+      border-radius: 16px;
+      background: linear-gradient(120deg, var(--primary-deep), var(--primary-blue));
+      color: var(--white);
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 28px;
+      align-items: center;
+      box-shadow: 0 30px 60px rgba(4, 16, 86, 0.35);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .highlight::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -10%;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .highlight > * {
+      position: relative;
+      z-index: 2;
+    }
+
+    .highlight h3 {
+      font-family: 'Bicubik', sans-serif;
+      font-size: 24px;
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+
+    .highlight p {
+      font-size: 14px;
+      opacity: 0.95;
+      margin-bottom: 4px;
+      font-family: 'Barlow', sans-serif;
+    }
+
+    .highlight-list {
+      font-size: 13px;
+      margin-top: 12px;
+      font-family: 'Barlow', sans-serif;
+    }
+
+    .highlight-list span {
+      display: inline-block;
+      padding: 6px 12px;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.15);
+      margin: 4px 4px 4px 0;
+      font-weight: 600;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    /* 🔹 BLOCO 8 – FAQ */
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+      margin-top: 28px;
+    }
+
+    .faq-item {
+      background: var(--white);
+      border-radius: 12px;
+      border: 1px solid var(--gray-200);
+      padding: 18px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .faq-item h3 {
+      font-family: 'Bicubik', sans-serif;
+      font-size: 15px;
+      color: var(--primary-dark);
+      margin-bottom: 6px;
+      font-weight: 700;
+    }
+
+    /* 🔹 BLOCO 9 – FOOTER SIMPLES */
+    footer {
+      margin-top: 40px;
+      padding: 24px 0;
+      background: var(--white);
+      border-top: 1px solid var(--gray-200);
+      font-size: 12px;
+      color: var(--text-muted);
+      font-family: 'Barlow', sans-serif;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      font-family: 'Barlow', sans-serif;
+      transition: color 0.2s;
+      font-weight: 500;
+    }
+
+    .footer-links a:hover {
+      color: var(--primary-blue);
+    }
+
+    /* 🔹 BLOCO 10 – WHATSAPP FLOAT */
+    .whats-float {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 60;
+      text-decoration: none;
+    }
+
+    .whats-button {
+      width: 60px;
+      height: 60px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #25D366, #20BA5A);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 20px 48px rgba(37, 211, 102, 0.3);
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 28px;
+    }
+
+    .whats-button:hover {
+      transform: scale(1.12);
+      box-shadow: 0 24px 56px rgba(37, 211, 102, 0.4);
+    }
+
+    .whats-label {
+      position: absolute;
+      right: 70px;
+      bottom: 16px;
+      background: var(--primary-dark);
+      color: var(--white);
+      padding: 10px 14px;
+      border-radius: 6px;
+      font-size: 11px;
+      white-space: nowrap;
+      box-shadow: 0 12px 32px rgba(4, 16, 86, 0.4);
+      font-family: 'Barlow', sans-serif;
+      font-weight: 600;
+      pointer-events: none;
+    }
+
+    /* 🔹 BLOCO 11 – POPUP EXIT-INTENT CUPOM APOLLO50 */
+    .exit-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.7);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 80;
+    }
+
+    .exit-modal-backdrop.show {
+      display: flex;
+    }
+
+    .exit-modal {
+      background: var(--white);
+      border-radius: 18px;
+      max-width: 440px;
+      width: 100%;
+      padding: 24px 24px 20px;
+      box-shadow: 0 30px 80px rgba(15, 23, 42, 0.5);
+      position: relative;
+      text-align: left;
+    }
+
+    .exit-modal-close {
+      position: absolute;
+      top: 10px;
+      right: 14px;
+      border: none;
+      background: transparent;
+      font-size: 18px;
+      cursor: pointer;
+      color: var(--text-muted);
+    }
+
+    .exit-modal-title {
+      font-family: 'Bicubik', sans-serif;
+      font-size: 20px;
+      color: var(--primary-dark);
+      margin-bottom: 6px;
+    }
+
+    .exit-modal-sub {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .exit-modal-highlight {
+      background: #eff6ff;
+      border-radius: 10px;
+      border: 1px dashed var(--primary-blue);
+      padding: 10px 12px;
+      font-size: 12px;
+      color: var(--primary-deep);
+      margin-bottom: 10px;
+    }
+
+    .exit-modal-coupon {
+      background: #0f172a;
+      color: #facc15;
+      border-radius: 8px;
+      padding: 10px 12px;
+      font-family: 'Bicubik', sans-serif;
+      font-size: 15px;
+      letter-spacing: 0.16em;
+      text-align: center;
+      margin-bottom: 8px;
+    }
+
+    .exit-modal-small {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 6px;
+    }
+
+    .exit-modal-cta-row {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .exit-modal-cta-row .btn {
+      width: 100%;
+      justify-content: center;
+      padding: 12px 18px;
+      font-size: 13px;
+    }
+
+    /* 🔹 BLOCO 12 – RESPONSIVO */
+    @media (max-width: 900px) {
+      .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav {
+        justify-content: flex-start;
+      }
+
+      .hero-grid,
+      .highlight,
+      .benefits-grid,
+      .testimonials-grid,
+      .faq-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .compare-table-header,
+      .compare-row {
+        grid-template-columns: 1.6fr 1.1fr 1.1fr;
+      }
+
+      .hero-title {
+        font-size: 30px;
+      }
+
+      .section-title {
+        font-size: 26px;
+      }
+
+      .exit-modal {
+        margin: 0 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- 🔹 BLOCO 1 – HEADER -->
+<header>
+  <div class="container">
+    <div class="header-inner">
+      <a href="index.html" class="logo-link">
+        <img src="logo-inbotix.png" alt="Logo Inbotix" class="logo-img" />
+        <div class="logo-text">
+          <span>INBOTIX</span>
+          <span>New Dinbot – Outbound Sales</span>
+        </div>
+      </a>
+      <nav>
+        <a href="index.html"><strong>Home</strong></a>
+        <a href="blog.html"><strong>Blog</strong></a>
+        <a href="index.html#solucoes"><strong>Soluções</strong></a>
+        <a href="index.html#contato" class="nav-btn">Falar com Especialista</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<!-- 🔹 BLOCO 2 – HERO / PROMESSA -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-kicker">Comparativo Oficial</div>
+        <h1 class="hero-title">
+          New Dinbot vs <span>Apollo</span>
+        </h1>
+        <p class="hero-sub">
+          O Apollo é ótimo para organizar cadências e dados. O New Dinbot foi feito para uma coisa muito específica: <strong>automatizar o LinkedIn</strong> e gerar leads reais em conversa com o seu time de vendas.
+        </p>
+
+        <div class="hero-badges">
+          <span class="badge badge-green">✅ Automação de LinkedIn</span>
+          <span class="badge badge-orange">🔥 Mais leads orgânicos que Apollo</span>
+          <span class="badge">7 dias grátis · Sem cartão</span>
+        </div>
+
+        <div class="hero-actions">
+          <a href="https://newdinbot.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+            🚀 Testar New Dinbot por 7 dias
+          </a>
+          <a href="#comparativo" class="btn btn-outline">
+            Ver comparação completa ↓
+          </a>
+        </div>
+
+        <div class="hero-footnote">
+          Muitos clientes mantiveram o Apollo como CRM/cadências, mas descobriram que é o New Dinbot que faz o LinkedIn virar <strong>canal de geração de leads diário</strong>.
+        </div>
+
+        <div class="logos-strip">
+          <span>Baseado em:</span>
+          <div class="logos-strip-logos">
+            <div class="logo-badge">
+              <img src="logo receita previsivel.svg" alt="Receita Previsível" />
+              <span>Receita Previsível</span>
+            </div>
+            <div class="logo-badge">
+              <img src="logo_zoho.png" alt="Zoho Partner" />
+              <span>Zoho Partner</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-compare">
+        <div class="hero-compare-title">Resumo rápido da comparação</div>
+        <p class="hero-compare-sub">
+          O Apollo é uma plataforma ampla de outbound. O New Dinbot é a peça que faltava quando o assunto é <strong>extrair o máximo do LinkedIn</strong>.
+        </p>
+        <ul class="hero-compare-list">
+          <li>
+            <span class="pill-win">New Dinbot</span>
+            Especialista em LinkedIn: convite, mensagem, follow-up e funil dentro da rede.
+          </li>
+          <li>
+            <span class="pill-win">New Dinbot</span>
+            IA nas mensagens e cadências pensadas para gerar reuniões, não só envios.
+          </li>
+          <li>
+            <span class="pill-win">New Dinbot</span>
+            Operação e suporte em português, com foco em outbound B2B.
+          </li>
+          <li>
+            <span class="pill-lose">Apollo</span>
+            Ótimo como plataforma geral, mas não foi desenhado para ser a melhor automação de LinkedIn.
+          </li>
+        </ul>
+        <a href="https://wa.me/5511972769986?text=Quero%20entender%20a%20diferen%C3%A7a%20entre%20New%20Dinbot%20e%20Apollo" class="btn btn-primary" style="width: 100%; justify-content:center;">
+          💬 Falar com um especialista sobre Apollo x Dinbot
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 🔹 BLOCO EXTRA – VÍDEO DEMONSTRAÇÃO DO NEW DINBOT -->
+<section class="video-section">
+  <div class="container">
+    <div class="video-section-inner">
+      <div class="section-header" style="text-align:left; margin-bottom:16px;">
+        <div class="section-eyebrow">Veja o New Dinbot em ação</div>
+        <h2 class="section-title" style="margin-left:0; margin-right:0; font-size:24px;">
+          Entenda por que ele complementa (e muitas vezes supera) o Apollo no LinkedIn.
+        </h2>
+        <p class="section-sub" style="margin-left:0; margin-right:0;">
+          Assista à demonstração e veja como o New Dinbot transforma o LinkedIn em uma máquina de prospecção ativa, plugando ou não no seu stack atual com Apollo.
+        </p>
+      </div>
+
+      <div class="video-wrapper">
+        <iframe
+          src="https://www.youtube.com/embed/9mkPYEb03iQ?rel=0"
+          title="New Dinbot - Demonstração"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+        ></iframe>
+      </div>
+
+      <p class="section-sub" style="margin-left:0; margin-right:0; margin-top:0;">
+        Em poucos minutos você vai entender exatamente o que o New Dinbot faz que o Apollo não entrega sozinho quando o assunto é <strong>LinkedIn 1:1</strong>.
+      </p>
+
+      <div class="video-cta-row">
+        <a href="https://newdinbot.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+          🚀 Criar conta e testar o New Dinbot por 7 dias
+        </a>
+        <a href="https://wa.me/5511972769986?text=Assisti%20ao%20v%C3%ADdeo%20do%20New%20Dinbot%20e%20quero%20ajuda%20para%20usar%20junto%20com%20o%20Apollo" class="btn btn-outline">
+          💬 Falar com especialista sobre integração com Apollo
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 🔹 BLOCO 3 – TABELA COMPARATIVA -->
+<section class="compare-section" id="comparativo">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">Comparativo Detalhado</div>
+      <h2 class="section-title">New Dinbot x Apollo: plataforma geral ou especialista em LinkedIn?</h2>
+      <p class="section-sub">
+        Não é sobre substituir o Apollo. É sobre entender o papel de cada um: o Apollo como orquestrador geral e o New Dinbot como <strong>motor de LinkedIn</strong> focado em geração de leads.
+      </p>
+    </div>
+
+    <div class="compare-table-wrap">
+      <div class="compare-table-header">
+        <div>Recurso</div>
+        <div>New Dinbot</div>
+        <div>Apollo</div>
+      </div>
+      <div class="compare-table-body">
+        <div class="compare-row">
+          <div>Automação de LinkedIn (foco principal)</div>
+          <div><span class="compare-badge-win">Core · Especialista</span></div>
+          <div><span class="compare-badge-mid">Um dos canais</span></div>
+        </div>
+
+        <div class="compare-row">
+          <div>Convite, mensagem e follow-up 1:1 no LinkedIn</div>
+          <div><span class="compare-badge-win">Completo</span></div>
+          <div><span class="compare-badge-mid">Limitado / indireto</span></div>
+        </div>
+
+        <div class="compare-row">
+          <div>Complexidade para o usuário final</div>
+          <div><span class="compare-badge-win">Baixa · focado em LinkedIn</span></div>
+          <div><span class="compare-badge-mid">Alta · plataforma robusta</span></div>
+        </div>
+
+        <div class="compare-row">
+          <div>IA para mensagens no contexto de LinkedIn</div>
+          <div><span class="compare-badge-win">Sim · IA nativa</span></div>
+          <div><span class="compare-badge-mid">Parcial / contexto geral</span></div>
+        </div>
+
+        <div class="compare-row">
+          <div>Visão de funil específica de LinkedIn</div>
+          <div><span class="compare-badge-win">Detalhada</span></div>
+          <div><span class="compare-badge-mid">Misturada com outros canais</span></div>
+        </div>
+
+        <div class="compare-row">
+          <div>Suporte humano em português para outbound B2B</div>
+          <div><span class="compare-badge-win">Especializado · Inbotix</span></div>
+          <div><span class="compare-badge-mid">Mais generalista</span></div>
+        </div>
+
+        <div class="compare-row">
+          <div>Integração com CRM e stack existente</div>
+          <div><span class="compare-badge-win">Pensado para plugar fácil</span></div>
+          <div><span class="compare-badge-win">Sim, forte como CRM</span></div>
+        </div>
+
+        <div class="compare-row">
+          <div>Teste grátis sem cartão</div>
+          <div><span class="compare-badge-win">7 dias</span></div>
+          <div><span class="compare-badge-mid">Depende do plano</span></div>
+        </div>
+
+        <div class="compare-row">
+          <div>Papel ideal no seu stack</div>
+          <div><span class="compare-badge-win">Motor de LinkedIn</span></div>
+          <div><span class="compare-badge-win">Plataforma de cadências e CRM</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 🔹 BLOCO 4 – BENEFÍCIOS PRINCIPAIS DO NEW DINBOT -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">Por Dentro do New Dinbot</div>
+      <h2 class="section-title">O especialista que faz o LinkedIn trabalhar todo dia por você.</h2>
+      <p class="section-sub">
+        Enquanto o Apollo organiza e dispara cadências multi-canal, o New Dinbot vai fundo no LinkedIn, com fluxo próprio, IA e segurança pensados para esse canal específico.
+      </p>
+    </div>
+
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <div class="benefit-icon">🎯</div>
+        <h3>Foco total em LinkedIn</h3>
+        <p>
+          Toda a lógica foi criada para extrair reuniões via LinkedIn, sem dispersar em dezenas de funcionalidades.
+        </p>
+        <ul>
+          <li>Fluxos 100% no LinkedIn</li>
+          <li>Métricas próprias por etapa</li>
+          <li>Otimizado para outbound B2B</li>
+        </ul>
+      </div>
+
+      <div class="benefit-card">
+        <div class="benefit-icon">🤖</div>
+        <h3>IA que entende a conversa</h3>
+        <p>
+          Sugestões de mensagens, variações, tom de voz e cadência ajustados para parecer humano, não robô.
+        </p>
+        <ul>
+          <li>Personalização por persona</li>
+          <li>Mensagens mais naturais</li>
+          <li>Menos rejeição, mais resposta</li>
+        </ul>
+      </div>
+
+      <div class="benefit-card">
+        <div class="benefit-icon">🧩</div>
+        <h3>Complemento perfeito ao Apollo</h3>
+        <p>
+          Você pode continuar usando o Apollo como plataforma principal e deixar o New Dinbot focado só no que ele faz de melhor.
+        </p>
+        <ul>
+          <li>Integra com seu CRM</li>
+          <li>Não exige migração de tudo</li>
+          <li>Especialização de canal</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 🔹 BLOCO 5 – DEPOIMENTOS -->
+<section class="section" id="depoimentos">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">Na prática</div>
+      <h2 class="section-title">Clientes que usam Apollo e New Dinbot juntos.</h2>
+      <p class="section-sub">
+        O padrão é quase sempre o mesmo: o Apollo segue como plataforma de gestão, e o New Dinbot vira o <strong>braço de LinkedIn</strong> que faltava.
+      </p>
+    </div>
+
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-name">Head de Vendas · SaaS B2B</div>
+        <div class="testimonial-role">Stack com Apollo + New Dinbot</div>
+        <div class="testimonial-text">
+          “Mantivemos o Apollo para cadências gerais, mas passamos todo o LinkedIn para o New Dinbot. Resultado: muito mais leads vindos especificamente do LinkedIn.”
+        </div>
+        <div class="testimonial-stars">★★★★★</div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-name">Diretor Comercial · Indústria</div>
+        <div class="testimonial-role">Cliente Inbotix</div>
+        <div class="testimonial-text">
+          “O Apollo continuou ótimo como sistema, mas a operação de LinkedIn só destravou quando colocamos o New Dinbot para rodar cadências focadas.”
+        </div>
+        <div class="testimonial-stars">★★★★★</div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-name">CEO · Agência Digital</div>
+        <div class="testimonial-role">White Label Inbotix</div>
+        <div class="testimonial-text">
+          “Hoje vendemos para nossos clientes justamente essa complementaridade: Apollo para gestão, New Dinbot para LinkedIn. Fica redondo.”
+        </div>
+        <div class="testimonial-stars">★★★★★</div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-name">Founder · Consultoria</div>
+        <div class="testimonial-role">Operação de SDR Digital</div>
+        <div class="testimonial-text">
+          “Com o New Dinbot, o LinkedIn virou um canal previsível dentro da nossa estratégia que já usava Apollo. Não é ou, é e.”
+        </div>
+        <div class="testimonial-stars">★★★★★</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 🔹 BLOCO 6 – OFERTA / TESTE GRÁTIS -->
+<section class="section">
+  <div class="container">
+    <div class="highlight">
+      <div>
+        <h3>Teste o New Dinbot em paralelo ao Apollo.</h3>
+        <p>
+          Continue com o Apollo como está e ative o New Dinbot só para LinkedIn. Em poucas semanas você consegue comparar com clareza qual canal está gerando mais leads reais.
+        </p>
+        <div class="highlight-list">
+          <span>✓ 7 dias grátis · Sem cartão</span>
+          <span>✓ Suporte para configurar a primeira cadência</span>
+          <span>✓ Foco em reuniões e não só em cadências</span>
+          <span>✓ Funciona plugado ou independente do Apollo</span>
+        </div>
+        <p style="font-size: 12px; margin-top: 12px;">
+          Se depois do teste você entender que o Apollo sozinho já resolve, é só não continuar com o Dinbot. Se ver mais leads, você já achou o parceiro ideal de LinkedIn.
+        </p>
+      </div>
+      <div>
+        <a href="https://newdinbot.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="width:100%; justify-content:center; padding: 16px 28px; font-size: 15px;">
+          🚀 Criar conta e testar New Dinbot agora
+        </a>
+        <a href="https://wa.me/5511972769986?text=Quero%20ajuda%20para%20usar%20o%20New%20Dinbot%20junto%20com%20o%20Apollo" class="btn btn-outline" style="width:100%; justify-content:center; margin-top:10px;">
+          💬 Falar com um especialista antes
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 🔹 BLOCO 7 – FAQ -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">FAQ</div>
+      <h2 class="section-title">Perguntas frequentes de quem usa hoje o Apollo.</h2>
+      <p class="section-sub">
+        A ideia aqui não é substituir o Apollo, e sim <strong>especializar o LinkedIn</strong> com uma automação feita sob medida.
+      </p>
+    </div>
+
+    <div class="faq-grid">
+      <div class="faq-item">
+        <h3>Preciso sair do Apollo para usar o New Dinbot?</h3>
+        <p>
+          Não. A maioria dos clientes continua usando o Apollo normalmente e adiciona o New Dinbot como “motor de LinkedIn”, focado em gerar leads nesse canal específico.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h3>O New Dinbot substitui as cadências do Apollo?</h3>
+        <p>
+          Ele substitui apenas a parte que você quiser trazer para o LinkedIn. Você pode manter o Apollo para e-mail/telefone e usar o Dinbot só para LinkedIn, por exemplo.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Consigo integrar o New Dinbot com meu CRM atual?</h3>
+        <p>
+          Sim. O New Dinbot foi desenhado para plugar em estruturas existentes, enviando leads e informações para o seu CRM, seja ele o próprio Apollo ou outro sistema.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h3>O teste grátis é realmente sem compromisso?</h3>
+        <p>
+          Sim. São 7 dias completos de uso, sem necessidade de cartão de crédito. Se não fizer sentido, você simplesmente não continua.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 🔹 BLOCO 8 – FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        © <span id="year"></span> INBOTIX — New Dinbot · Automação de LinkedIn com IA
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="index.html#solucoes">Soluções</a>
+        <a href="blog.html">Blog</a>
+        <a href="index.html#contato">Contato</a>
+      </div>
+      <div>
+        <span class="badge badge-green">✓ Receita Previsível</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- 🔹 BLOCO 9 – WHATSAPP FLOAT -->
+<a href="https://wa.me/5511972769986?text=Quero%20saber%20mais%20sobre%20o%20New%20Dinbot%20e%20Apollo" class="whats-float" target="_blank" rel="noopener noreferrer">
+  <div class="whats-button">
+    💬
+  </div>
+  <div class="whats-label">
+    Falar com especialista
+  </div>
+</a>
+
+<!-- 🔹 BLOCO 10 – POPUP EXIT-INTENT CUPOM APOLLO50 -->
+<div class="exit-modal-backdrop" id="exitModalApollo">
+  <div class="exit-modal">
+    <button class="exit-modal-close" id="exitModalApolloClose" aria-label="Fechar popup">×</button>
+    <div class="exit-modal-title">Antes de sair: 50% OFF para quem usa Apollo 🧠</div>
+    <p class="exit-modal-sub">
+      Se você já está pensando em testar um especialista em LinkedIn para complementar o Apollo, aqui vai um presente:
+      um cupom de <strong>50% de desconto vitalício</strong> para usar no New Dinbot.
+    </p>
+    <div class="exit-modal-highlight">
+      Use o cupom abaixo no momento da contratação e trave o desconto para sempre,
+      enquanto sua conta estiver ativa. Não é desconto temporário, é <strong>vitalício</strong>.
+    </div>
+    <div class="exit-modal-coupon">
+      APOLLO50
+    </div>
+    <div class="exit-modal-small">
+      💡 <strong>IMPORTANTE:</strong> O cupom <strong>APOLLO50</strong> garante <strong>50% de desconto vitalício</strong> na mensalidade do New Dinbot
+      (enquanto seu plano estiver ativo). Guarde esse código ou já fale com o time para aplicar.
+    </div>
+    <div class="exit-modal-cta-row">
+      <a href="https://newdinbot.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+        🚀 Ir para o New Dinbot e usar o cupom APOLLO50
+      </a>
+      <a href="https://wa.me/5511972769986?text=Quero%20usar%20o%20cupom%20APOLLO50%20vital%C3%ADcio%20para%20usar%20o%20New%20Dinbot%20junto%20com%20o%20Apollo" class="btn btn-outline">
+        💬 Falar com um especialista e aplicar o cupom APOLLO50
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- 🔹 BLOCO 11 – SCRIPTS -->
+<script>
+  // Ano no footer
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // Exit-intent: popup APOLLO50 (vitalício)
+  (function () {
+    var exitModal = document.getElementById('exitModalApollo');
+    if (!exitModal) return;
+
+    var closeBtn = document.getElementById('exitModalApolloClose');
+    var alreadyShown = sessionStorage.getItem('exitModalApolloShown') === 'true';
+
+    function showExitModal() {
+      if (alreadyShown) return;
+      exitModal.classList.add('show');
+      alreadyShown = true;
+      sessionStorage.setItem('exitModalApolloShown', 'true');
+    }
+
+    function hideExitModal() {
+      exitModal.classList.remove('show');
+    }
+
+    // Exit-intent no desktop (mouse saindo pela parte superior da tela)
+    document.addEventListener('mouseout', function (e) {
+      if (!e.toElement && !e.relatedTarget && e.clientY <= 0) {
+        showExitModal();
+      }
+    });
+
+    // Fechar ao clicar no X
+    if (closeBtn) {
+      closeBtn.addEventListener('click', function () {
+        hideExitModal();
+      });
+    }
+
+    // Fechar ao clicar fora do modal
+    exitModal.addEventListener('click', function (e) {
+      if (e.target === exitModal) {
+        hideExitModal();
+      }
+    });
+  })();
+</script>
+
+</body>
+</html>
