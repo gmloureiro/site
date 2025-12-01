@@ -2,27 +2,30 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <title>INBOTIX – Painel do SDR</title>
+  <title>INBOTIX – Painel do SDR On-Demand</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Painel do SDR INBOTIX para gestão de clientes e leads gerados por performance.">
+  <link rel="icon" type="image/png" href="icon-inbotix.png" />
 
   <style>
     :root {
       --primary: #0f6fff;
       --primary-dark: #0050c8;
+      --accent: #22c55e;
       --bg: #f5f7fb;
       --bg-soft: #ffffff;
-      --dark: #0f172a;
-      --text: #1f2933;
+      --dark: #0b1220;
+      --text: #0f172a;
       --muted: #6b7280;
       --border: #e5e7eb;
-      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.15);
+      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.18);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top left, #e0ecff 0, #f5f7fb 45%, #ffffff 100%);
+      background: radial-gradient(circle at top left, #0b1120 0, #020617 40%, #020617 100%);
       color: var(--text);
     }
 
@@ -30,37 +33,32 @@
 
     .layout {
       display: grid;
-      grid-template-columns: 240px minmax(0, 1fr);
+      grid-template-columns: 260px minmax(0, 1fr);
       min-height: 100vh;
     }
 
-    /* SIDEBAR */
+    /* SIDEBAR – IDENTIDADE INBOTIX */
     .sidebar {
-      background: #020617;
+      background: radial-gradient(circle at top left, #020617 0, #020617 40%, #020617 100%);
+      border-right: 1px solid rgba(15, 23, 42, 0.8);
       color: #e5e7eb;
-      padding: 16px 14px;
+      padding: 18px 16px;
       display: flex;
       flex-direction: column;
       gap: 18px;
     }
 
-    .sidebar-logo {
+    .sidebar-logo-block {
       display: flex;
       align-items: center;
       gap: 10px;
+      margin-bottom: 6px;
     }
 
-    .sidebar-logo-icon {
-      width: 32px;
-      height: 32px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 16px;
-      font-weight: 800;
-      box-shadow: 0 12px 28px rgba(59, 130, 246, 0.6);
+    .sidebar-logo-img {
+      width: 120px;
+      height: auto;
+      display: block;
     }
 
     .sidebar-logo-text {
@@ -72,6 +70,8 @@
 
     .sidebar-logo-text span:first-child {
       font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
     }
 
     .sidebar-logo-text span:last-child {
@@ -79,8 +79,29 @@
       color: #9ca3af;
     }
 
+    .sidebar-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(34, 197, 94, 0.12);
+      border: 1px solid rgba(34, 197, 94, 0.35);
+      font-size: 10px;
+      color: #bbf7d0;
+      margin-bottom: 10px;
+    }
+
+    .sidebar-badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 12px rgba(34, 197, 94, 0.9);
+    }
+
     .sidebar-nav {
-      margin-top: 14px;
+      margin-top: 8px;
       display: flex;
       flex-direction: column;
       gap: 4px;
@@ -91,31 +112,51 @@
       background: transparent;
       border: none;
       color: #9ca3af;
-      padding: 8px 8px;
+      padding: 8px 9px;
       text-align: left;
       border-radius: 10px;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: space-between;
-    }
-
-    .sidebar-nav button.active {
-      background: linear-gradient(135deg, rgba(15, 111, 255, 0.12), rgba(34, 197, 94, 0.14));
-      color: #e5e7eb;
+      transition: background 0.15s ease, color 0.15s ease, transform 0.1s ease;
     }
 
     .sidebar-nav button span.label {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
+    }
+
+    .sidebar-nav button span.icon-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: rgba(148, 163, 184, 0.7);
+    }
+
+    .sidebar-nav button.active span.icon-dot,
+    .sidebar-nav button:hover span.icon-dot {
+      background: #22c55e;
+      box-shadow: 0 0 10px rgba(34, 197, 94, 0.9);
+    }
+
+    .sidebar-nav button.active {
+      background: linear-gradient(135deg, rgba(15, 111, 255, 0.22), rgba(34, 197, 94, 0.28));
+      color: #f9fafb;
+      transform: translateY(-1px);
+    }
+
+    .sidebar-nav button:hover:not(.active) {
+      background: rgba(15, 23, 42, 0.6);
+      color: #e5e7eb;
     }
 
     .sidebar-nav .badge {
       font-size: 10px;
       padding: 2px 6px;
       border-radius: 999px;
-      background: rgba(15, 23, 42, 0.6);
+      background: rgba(15, 23, 42, 0.7);
       color: #cbd5f5;
     }
 
@@ -123,6 +164,12 @@
       margin-top: auto;
       font-size: 11px;
       color: #6b7280;
+      border-top: 1px solid rgba(31, 41, 55, 0.9);
+      padding-top: 10px;
+    }
+
+    .sidebar-footer p {
+      margin-bottom: 4px;
     }
 
     .sidebar-footer a {
@@ -131,7 +178,13 @@
 
     /* MAIN */
     .main {
-      padding: 18px 20px 24px;
+      background: radial-gradient(circle at top left, #0f172a 0, #020617 40%, #020617 100%);
+      padding: 18px 22px 24px;
+    }
+
+    .main-inner {
+      max-width: 1120px;
+      margin: 0 auto;
     }
 
     .topbar {
@@ -143,13 +196,13 @@
 
     .topbar h1 {
       font-size: 20px;
-      color: var(--dark);
+      color: #f9fafb;
     }
 
     .topbar small {
       display: block;
       font-size: 11px;
-      color: var(--muted);
+      color: #9ca3af;
     }
 
     .topbar-right {
@@ -169,16 +222,21 @@
       justify-content: center;
       font-size: 14px;
       font-weight: 700;
-      box-shadow: 0 0 0 2px #eff6ff;
+      box-shadow: 0 0 0 2px #020617;
     }
 
     .btn-outline {
       border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.8);
+      border: 1px solid rgba(148, 163, 184, 0.9);
       padding: 7px 14px;
-      background: rgba(249, 250, 251, 0.9);
+      background: rgba(15, 23, 42, 0.92);
       font-size: 12px;
       cursor: pointer;
+      color: #e5e7eb;
+    }
+
+    .btn-outline:hover {
+      background: rgba(31, 41, 55, 0.95);
     }
 
     .btn-primary {
@@ -190,7 +248,14 @@
       font-size: 12px;
       font-weight: 600;
       cursor: pointer;
-      box-shadow: 0 10px 24px rgba(15, 111, 255, 0.5);
+      box-shadow: 0 14px 32px rgba(37, 99, 235, 0.7);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
     }
 
     .content {
@@ -206,19 +271,19 @@
     }
 
     .card-kpi {
-      background: var(--bg-soft);
+      background: radial-gradient(circle at top left, rgba(37, 99, 235, 0.16), rgba(15, 23, 42, 1));
       border-radius: 14px;
       padding: 12px 12px 14px;
-      border: 1px solid rgba(226, 232, 240, 0.9);
-      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.85);
       font-size: 11px;
-      color: var(--muted);
+      color: #9ca3af;
     }
 
     .card-kpi strong {
       display: block;
       font-size: 16px;
-      color: var(--dark);
+      color: #f9fafb;
       margin-top: 2px;
     }
 
@@ -227,17 +292,23 @@
       margin-top: 6px;
       padding: 2px 6px;
       border-radius: 999px;
-      background: rgba(22, 163, 74, 0.08);
-      color: #15803d;
+      background: rgba(34, 197, 94, 0.18);
+      color: #bbf7d0;
       font-size: 10px;
     }
 
+    .card-kpi span.badge.muted {
+      background: rgba(148, 163, 184, 0.2);
+      color: #e5e7eb;
+    }
+
     .panel {
-      background: var(--bg-soft);
+      background: radial-gradient(circle at top left, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 1));
       border-radius: 18px;
       padding: 14px 14px 16px;
-      border: 1px solid rgba(226, 232, 240, 0.95);
+      border: 1px solid rgba(148, 163, 184, 0.5);
       box-shadow: var(--shadow-soft);
+      color: #e5e7eb;
     }
 
     .panel-header {
@@ -249,17 +320,17 @@
 
     .panel-header h2 {
       font-size: 15px;
-      color: var(--dark);
+      color: #f9fafb;
     }
 
     .panel-header small {
       font-size: 11px;
-      color: var(--muted);
+      color: #9ca3af;
     }
 
     .panel-body {
       font-size: 12px;
-      color: var(--muted);
+      color: #cbd5f5;
     }
 
     table {
@@ -270,14 +341,14 @@
     }
 
     th, td {
-      border-bottom: 1px solid #e5e7eb;
+      border-bottom: 1px solid rgba(51, 65, 85, 0.9);
       padding: 6px 4px;
       text-align: left;
     }
 
     th {
       font-size: 11px;
-      color: var(--muted);
+      color: #9ca3af;
       font-weight: 500;
     }
 
@@ -294,27 +365,36 @@
     }
 
     .status-ativo {
-      background: rgba(22, 163, 74, 0.08);
-      color: #15803d;
+      background: rgba(22, 163, 74, 0.16);
+      color: #bbf7d0;
     }
 
     .status-pendente {
-      background: rgba(234, 179, 8, 0.08);
-      color: #854d0e;
+      background: rgba(234, 179, 8, 0.14);
+      color: #facc15;
     }
 
     .status-novo {
-      background: rgba(59, 130, 246, 0.08);
-      color: #1d4ed8;
+      background: rgba(59, 130, 246, 0.18);
+      color: #bfdbfe;
     }
 
     .tag {
       font-size: 10px;
       padding: 2px 6px;
       border-radius: 999px;
-      background: rgba(15, 23, 42, 0.02);
-      border: 1px solid rgba(209, 213, 219, 0.9);
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid rgba(148, 163, 184, 0.8);
+      color: #e5e7eb;
     }
+
+    .helper-text {
+      font-size: 11px;
+      color: #94a3b8;
+      margin-top: 6px;
+    }
+
+    .mt-8 { margin-top: 8px; }
 
     @media (max-width: 900px) {
       .layout {
@@ -322,6 +402,9 @@
       }
       .sidebar {
         display: none;
+      }
+      .main {
+        padding-inline: 16px;
       }
       .cards-row {
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -342,175 +425,210 @@
 </head>
 <body>
   <div class="layout">
-    <!-- SIDEBAR -->
+    <!-- SIDEBAR INBOTIX -->
     <aside class="sidebar">
-      <div class="sidebar-logo">
-        <div class="sidebar-logo-icon">IN</div>
+      <div>
+        <a href="https://inbotix.com.br" class="sidebar-logo-block" title="Voltar para o site da INBOTIX">
+          <img src="logo-inbotix.png" alt="INBOTIX" class="sidebar-logo-img">
+        </a>
         <div class="sidebar-logo-text">
-          <span>INBOTIX</span>
-          <span>Painel do SDR</span>
+          <span>SDR DIGITAL</span>
+          <span>Marketplace de SDR por performance</span>
+        </div>
+
+        <div class="sidebar-badge">
+          <span class="sidebar-badge-dot"></span>
+          <span>Conectado à máquina INBOTIX</span>
         </div>
       </div>
 
       <nav class="sidebar-nav">
         <button class="active" data-view="dashboard">
-          <span class="label">Dashboard</span>
+          <span class="label">
+            <span class="icon-dot"></span>
+            Dashboard
+          </span>
         </button>
         <button data-view="clientes">
-          <span class="label">Clientes interessados</span>
+          <span class="label">
+            <span class="icon-dot"></span>
+            Clientes interessados
+          </span>
           <span class="badge">3</span>
         </button>
         <button data-view="leads">
-          <span class="label">Leads enviados</span>
+          <span class="label">
+            <span class="icon-dot"></span>
+            Leads enviados
+          </span>
         </button>
         <button data-view="avaliacoes">
-          <span class="label">Avaliações</span>
+          <span class="label">
+            <span class="icon-dot"></span>
+            Avaliações
+          </span>
           <span class="badge">4,8★</span>
         </button>
         <button data-view="perfil">
-          <span class="label">Meu perfil</span>
+          <span class="label">
+            <span class="icon-dot"></span>
+            Meu perfil
+          </span>
         </button>
       </nav>
 
       <div class="sidebar-footer">
-        <p>Conectado via INBOTIX SDR Digital.</p>
-        <p><a href="https://inbotix.com.br">Voltar ao site</a></p>
+        <p>Você faz a prospecção; a INBOTIX audita, classifica e cobra os leads pelo cardápio.</p>
+        <p><a href="https://inbotix.com.br/sdr-marketplace.html">Ver marketplace de SDRs</a></p>
       </div>
     </aside>
 
     <!-- MAIN -->
     <main class="main">
-      <header class="topbar">
-        <div>
-          <h1>Olá, SDR!</h1>
-          <small>Veja seus clientes, leads enviados e avaliações em tempo real.</small>
-        </div>
-        <div class="topbar-right">
-          <button class="btn-outline">Sair</button>
-          <div class="avatar-small">SD</div>
-        </div>
-      </header>
+      <div class="main-inner">
+        <header class="topbar">
+          <div>
+            <h1>Olá, SDR! 👋</h1>
+            <small>Este é o seu painel dentro da INBOTIX para gerenciar clientes e leads por performance.</small>
+          </div>
+          <div class="topbar-right">
+            <button class="btn-outline">Sair</button>
+            <div class="avatar-small">SD</div>
+          </div>
+        </header>
 
-      <section class="content">
-        <div class="cards-row">
-          <div class="card-kpi">
-            Clientes ativos
-            <strong>3</strong>
-            <span class="badge">2 novos hoje</span>
-          </div>
-          <div class="card-kpi">
-            Leads enviados (mês)
-            <strong>42</strong>
-            <span class="badge">Meta: 80</span>
-          </div>
-          <div class="card-kpi">
-            Conversão em interesse
-            <strong>27%</strong>
-            <span class="badge">Acima da média</span>
-          </div>
-          <div class="card-kpi">
-            Nota média
-            <strong>4,8★</strong>
-            <span class="badge">Com 19 avaliações</span>
-          </div>
-        </div>
-
-        <!-- Painel: Clientes interessados -->
-        <div class="panel">
-          <div class="panel-header">
-            <div>
-              <h2>Clientes interessados</h2>
-              <small>Empresas que pediram para você prospectar por performance.</small>
+        <section class="content">
+          <!-- KPIs principais -->
+          <div class="cards-row">
+            <div class="card-kpi">
+              Clientes ativos
+              <strong>3</strong>
+              <span class="badge">2 novos hoje</span>
             </div>
-            <button class="btn-primary">Registrar novo lead</button>
-          </div>
-          <div class="panel-body">
-            <table>
-              <thead>
-                <tr>
-                  <th>Cliente</th>
-                  <th>Segmento</th>
-                  <th>Ticket médio</th>
-                  <th>Status</th>
-                  <th>Leads enviados</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Grupo Alpha Logística</td>
-                  <td><span class="tag">Logística</span></td>
-                  <td>R$ 8.000</td>
-                  <td><span class="status-pill status-ativo">Ativo</span></td>
-                  <td>12</td>
-                </tr>
-                <tr>
-                  <td>TechNova SaaS</td>
-                  <td><span class="tag">Tecnologia</span></td>
-                  <td>R$ 4.500</td>
-                  <td><span class="status-pill status-novo">Novo briefing</span></td>
-                  <td>3</td>
-                </tr>
-                <tr>
-                  <td>ConsultPrime B2B</td>
-                  <td><span class="tag">Serviços B2B</span></td>
-                  <td>R$ 6.000</td>
-                  <td><span class="status-pill status-pendente">Aguardando feedback</span></td>
-                  <td>7</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <!-- Painel: Leads enviados (mock) -->
-        <div class="panel">
-          <div class="panel-header">
-            <div>
-              <h2>Últimos leads enviados</h2>
-              <small>Resumo dos leads registrados para cobrança por performance.</small>
+            <div class="card-kpi">
+              Leads enviados (mês)
+              <strong>42</strong>
+              <span class="badge">Meta: 80</span>
+            </div>
+            <div class="card-kpi">
+              Conversão em interesse
+              <strong>27%</strong>
+              <span class="badge muted">Média INBOTIX: 22%</span>
+            </div>
+            <div class="card-kpi">
+              Nota média
+              <strong>4,8★</strong>
+              <span class="badge">Com 19 avaliações</span>
             </div>
           </div>
-          <div class="panel-body">
-            <table>
-              <thead>
-                <tr>
-                  <th>Lead</th>
-                  <th>Empresa</th>
-                  <th>Cargo</th>
-                  <th>Cliente</th>
-                  <th>Status</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Marcos Pereira</td>
-                  <td>TransLog Brasil</td>
-                  <td>Dir. Operações</td>
-                  <td>Grupo Alpha</td>
-                  <td><span class="status-pill status-ativo">Em análise INBOTIX</span></td>
-                </tr>
-                <tr>
-                  <td>Ana Paula</td>
-                  <td>SoftCloud</td>
-                  <td>Head de Vendas</td>
-                  <td>TechNova</td>
-                  <td><span class="status-pill status-ativo">Aprovado para cobrança</span></td>
-                </tr>
-                <tr>
-                  <td>Ricardo Silva</td>
-                  <td>Prime Consult</td>
-                  <td>Diretor</td>
-                  <td>ConsultPrime</td>
-                  <td><span class="status-pill status-pendente">Aguardando retorno do cliente</span></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
 
-      </section>
+          <!-- Clientes interessados -->
+          <div class="panel">
+            <div class="panel-header">
+              <div>
+                <h2>Clientes interessados</h2>
+                <small>Empresas que pediram para você prospectar por performance.</small>
+              </div>
+              <button class="btn-primary">
+                + Registrar novo lead
+              </button>
+            </div>
+            <div class="panel-body">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Cliente</th>
+                    <th>Segmento</th>
+                    <th>Ticket médio</th>
+                    <th>Status</th>
+                    <th>Leads enviados</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Grupo Alpha Logística</td>
+                    <td><span class="tag">Logística</span></td>
+                    <td>R$ 8.000</td>
+                    <td><span class="status-pill status-ativo">Ativo</span></td>
+                    <td>12</td>
+                  </tr>
+                  <tr>
+                    <td>TechNova SaaS</td>
+                    <td><span class="tag">Tecnologia</span></td>
+                    <td>R$ 4.500</td>
+                    <td><span class="status-pill status-novo">Novo briefing</span></td>
+                    <td>3</td>
+                  </tr>
+                  <tr>
+                    <td>ConsultPrime B2B</td>
+                    <td><span class="tag">Serviços B2B</span></td>
+                    <td>R$ 6.000</td>
+                    <td><span class="status-pill status-pendente">Aguardando feedback</span></td>
+                    <td>7</td>
+                  </tr>
+                </tbody>
+              </table>
+              <p class="helper-text mt-8">
+                Lembre-se: o cliente só consegue enxergar os leads porque eles passam pela classificação
+                da INBOTIX de acordo com o cardápio de leads. Quanto mais qualificado for o lead, maior
+                sua chance de manter o cliente e aumentar seu ganho.
+              </p>
+            </div>
+          </div>
+
+          <!-- Últimos leads -->
+          <div class="panel">
+            <div class="panel-header">
+              <div>
+                <h2>Últimos leads enviados</h2>
+                <small>Resumo dos leads registrados para cobrança por performance.</small>
+              </div>
+            </div>
+            <div class="panel-body">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Lead</th>
+                    <th>Empresa</th>
+                    <th>Cargo</th>
+                    <th>Cliente</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Marcos Pereira</td>
+                    <td>TransLog Brasil</td>
+                    <td>Dir. Operações</td>
+                    <td>Grupo Alpha</td>
+                    <td><span class="status-pill status-ativo">Em análise INBOTIX</span></td>
+                  </tr>
+                  <tr>
+                    <td>Ana Paula</td>
+                    <td>SoftCloud</td>
+                    <td>Head de Vendas</td>
+                    <td>TechNova</td>
+                    <td><span class="status-pill status-ativo">Aprovado para cobrança</span></td>
+                  </tr>
+                  <tr>
+                    <td>Ricardo Silva</td>
+                    <td>Prime Consult</td>
+                    <td>Diretor</td>
+                    <td>ConsultPrime</td>
+                    <td><span class="status-pill status-pendente">Aguardando retorno do cliente</span></td>
+                  </tr>
+                </tbody>
+              </table>
+              <p class="helper-text mt-8">
+                Aqui depois entra o detalhe de cada tipo de lead do cardápio (aceitou conexão,
+                pediu reunião, pediu apresentação, etc.), atrelado ao valor de cobrança.
+              </p>
+            </div>
+          </div>
+
+        </section>
+      </div>
     </main>
   </div>
 </body>
 </html>
-
