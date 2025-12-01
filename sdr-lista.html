@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>SDR Partners – INBOTIX</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Lista de SDRs parceiros da INBOTIX para prospecção por performance.">
+  <link rel="icon" type="image/png" href="icon-inbotix.png" />
+
+  <style>
+    :root {
+      --primary: #0f6fff;
+      --primary-dark: #0050c8;
+      --accent: #22c55e;
+      --bg: #f5f7fb;
+      --dark: #0b1220;
+      --text: #111827;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #e0ecff 0, #f5f7fb 40%, #ffffff 100%);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    header {
+      padding: 14px 18px;
+      border-bottom: 1px solid #e5e7eb;
+      background: #ffffffaa;
+      backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo-block {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-block img {
+      height: 30px;
+      width: auto;
+    }
+
+    .logo-text {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .badge {
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(34, 197, 94, 0.08);
+      color: #166534;
+      border: 1px solid rgba(34, 197, 94, 0.25);
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 24px auto 32px;
+      padding: 0 16px 32px;
+    }
+
+    h1 {
+      font-size: 24px;
+      color: var(--dark);
+      margin-bottom: 4px;
+    }
+
+    .subtitle {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+
+    .toolbar-left {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .btn-outline {
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      padding: 7px 14px;
+      background: #ffffff;
+      font-size: 12px;
+      cursor: pointer;
+      color: var(--text);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    .card-sdr {
+      background: #ffffff;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
+      padding: 14px 14px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .card-header {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .avatar {
+      width: 54px;
+      height: 54px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #e5e7eb, #cbd5f5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: 700;
+      color: #4b5563;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .nome {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 2px;
+    }
+
+    .cidade {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .nichos {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .exp {
+      font-size: 12px;
+      color: var(--text);
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-top: 4px;
+    }
+
+    .tag {
+      font-size: 11px;
+      padding: 2px 7px;
+      border-radius: 999px;
+      background: #f3f4f6;
+      border: 1px solid #e5e7eb;
+      color: var(--muted);
+    }
+
+    .contact {
+      margin-top: 8px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .btn-contact {
+      flex: 1;
+      min-width: 120px;
+      border-radius: 999px;
+      border: none;
+      padding: 7px 10px;
+      font-size: 12px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      text-decoration: none;
+    }
+
+    .btn-contact.tel {
+      background: #ffffff;
+      color: var(--primary-dark);
+      border: 1px solid rgba(15, 111, 255, 0.35);
+    }
+
+    .btn-contact.whats {
+      background: #22c55e;
+      color: #ffffff;
+      box-shadow: 0 10px 22px rgba(34, 197, 94, 0.45);
+    }
+
+    .empty {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo-block">
+      <a href="https://inbotix.com.br">
+        <img src="logo-inbotix.png" alt="INBOTIX" />
+      </a>
+      <div class="logo-text">
+        <strong>Marketplace de SDR</strong><br>
+        Escolha um SDR para gerar leads para você.
+      </div>
+    </div>
+    <span class="badge">Prospecção por performance</span>
+  </header>
+
+  <main>
+    <h1>SDRs parceiros da INBOTIX</h1>
+    <p class="subtitle">
+      Aqui você encontra SDRs que trabalham com o método INBOTIX: eles fazem a prospecção,
+      e você só paga pelos leads gerados, conforme o cardápio de leads.
+    </p>
+
+    <div class="toolbar">
+      <div class="toolbar-left">
+        Os perfis abaixo foram cadastrados diretamente pelos SDRs e validados pela INBOTIX.
+      </div>
+      <a href="sdr-cadastro.html" class="btn-outline">
+        Sou SDR e quero me cadastrar
+      </a>
+    </div>
+
+    <section id="lista-sdrs" class="grid">
+      <!-- Cards gerados via JS -->
+    </section>
+
+    <p id="empty-message" class="empty" style="display:none;">
+      Ainda não há SDRs cadastrados neste navegador. Peça para o SDR acessar a página
+      <strong>sdr-cadastro.html</strong> para se registrar.
+    </p>
+  </main>
+
+  <script>
+    function criarCardSdr(sdr) {
+      const card = document.createElement('article');
+      card.className = 'card-sdr';
+
+      const header = document.createElement('div');
+      header.className = 'card-header';
+
+      const avatar = document.createElement('div');
+      avatar.className = 'avatar';
+
+      if (sdr.fotoBase64) {
+        const img = document.createElement('img');
+        img.src = sdr.fotoBase64;
+        img.alt = sdr.nome;
+        avatar.appendChild(img);
+      } else {
+        const iniciais = sdr.nome.trim().split(" ").map(p => p[0]).join("").slice(0, 2).toUpperCase();
+        avatar.textContent = iniciais;
+      }
+
+      const info = document.createElement('div');
+      const nomeEl = document.createElement('div');
+      nomeEl.className = 'nome';
+      nomeEl.textContent = sdr.nome;
+
+      const cidadeEl = document.createElement('div');
+      cidadeEl.className = 'cidade';
+      cidadeEl.textContent = sdr.cidade;
+
+      info.appendChild(nomeEl);
+      info.appendChild(cidadeEl);
+
+      header.appendChild(avatar);
+      header.appendChild(info);
+
+      const nichosEl = document.createElement('div');
+      nichosEl.className = 'nichos';
+      nichosEl.textContent = "Nichos: " + sdr.nicho;
+
+      const expEl = document.createElement('div');
+      expEl.className = 'exp';
+      expEl.textContent = sdr.experiencia;
+
+      const tagsEl = document.createElement('div');
+      tagsEl.className = 'tags';
+
+      // quebrar canais em tags
+      (sdr.canais || '').split(',').map(t => t.trim()).filter(Boolean).forEach(c => {
+        const tag = document.createElement('span');
+        tag.className = 'tag';
+        tag.textContent = c;
+        tagsEl.appendChild(tag);
+      });
+
+      const contact = document.createElement('div');
+      contact.className = 'contact';
+
+      const btnTel = document.createElement('a');
+      btnTel.className = 'btn-contact tel';
+      btnTel.href = 'tel:' + sdr.telefone.replace(/\D/g, '');
+      btnTel.textContent = 'Ligar: ' + sdr.telefone;
+
+      const btnWhats = document.createElement('a');
+      btnWhats.className = 'btn-contact whats';
+      btnWhats.href = 'https://wa.me/' + sdr.whats.replace(/\D/g, '');
+      btnWhats.target = '_blank';
+      btnWhats.rel = 'noopener noreferrer';
+      btnWhats.textContent = 'Chamar no WhatsApp';
+
+      contact.appendChild(btnTel);
+      contact.appendChild(btnWhats);
+
+      card.appendChild(header);
+      card.appendChild(nichosEl);
+      card.appendChild(expEl);
+      card.appendChild(tagsEl);
+      card.appendChild(contact);
+
+      return card;
+    }
+
+    function carregarSdrs() {
+      const listaContainer = document.getElementById('lista-sdrs');
+      const emptyMessage = document.getElementById('empty-message');
+
+      const sdrs = JSON.parse(localStorage.getItem('inbotix_sdrs') || "[]");
+
+      if (!sdrs.length) {
+        emptyMessage.style.display = 'block';
+        return;
+      }
+
+      emptyMessage.style.display = 'none';
+
+      sdrs.sort((a, b) => b.id - a.id); // mais recentes primeiro
+
+      sdrs.forEach(sdr => {
+        const card = criarCardSdr(sdr);
+        listaContainer.appendChild(card);
+      });
+    }
+
+    carregarSdrs();
+  </script>
+</body>
+</html>
