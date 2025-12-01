@@ -268,19 +268,6 @@
       color: var(--dark);
     }
 
-    .tag-premium {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      padding: 2px 7px;
-      border-radius: 999px;
-      background: rgba(234, 179, 8, 0.12);
-      border: 1px solid rgba(234, 179, 8, 0.6);
-      color: #92400e;
-      font-size: 10px;
-      font-weight: 600;
-    }
-
     .stars {
       display: inline-flex;
       gap: 1px;
@@ -370,8 +357,8 @@
   <main>
     <h1>Painel Admin – SDR Marketplace</h1>
     <p class="subtitle">
-      Aqui você ajusta os campos padrão de cadastro (regiões, canais, idiomas, tempo de experiência)
-      e gerencia os SDRs cadastrados (Premium, exclusão, visão de nota).
+      Ajuste os campos padrão de cadastro (regiões, nichos, canais, idiomas, tempo de experiência)
+      e gerencie os SDRs cadastrados (Premium, exclusão, visão de nota).
     </p>
 
     <div class="grid">
@@ -387,6 +374,12 @@
           <label for="cfg-regioes">Regiões de atuação</label>
           <textarea id="cfg-regioes"></textarea>
           <div class="helper">Ex.: Brasil todo, Sudeste, Sul, Centro-Oeste, Nordeste, Norte, LATAM, Europa...</div>
+        </div>
+
+        <div class="form-group">
+          <label for="cfg-nichos">Nichos de atuação (segmentos)</label>
+          <textarea id="cfg-nichos"></textarea>
+          <div class="helper">Ex.: Tecnologia/SaaS, Marketing/Agências, Indústria, Logística/Transporte, Agronegócio, Serviços financeiros...</div>
         </div>
 
         <div class="form-group">
@@ -449,6 +442,17 @@
         "Europa",
         "Estados Unidos"
       ],
+      nichos: [
+        "Tecnologia / SaaS",
+        "Marketing / Agências",
+        "Indústria",
+        "Logística / Transporte",
+        "Agronegócio",
+        "Serviços financeiros",
+        "Educação",
+        "Saúde",
+        "Varejo"
+      ],
       canais: [
         "LinkedIn",
         "E-mail",
@@ -497,6 +501,7 @@
           canais: "",
           reviews: [],
           premium: false,
+          nicho: s.nicho || "",
           ...s,
           reviews: Array.isArray(s.reviews) ? s.reviews : [],
           premium: !!s.premium
@@ -521,9 +526,10 @@
 
     // ELEMENTOS
     const txtRegioes = document.getElementById("cfg-regioes");
-    const txtCanais = document.getElementById("cfg-canais");
+    const txtNichos  = document.getElementById("cfg-nichos");
+    const txtCanais  = document.getElementById("cfg-canais");
     const txtIdiomas = document.getElementById("cfg-idiomas");
-    const txtTempo = document.getElementById("cfg-tempo");
+    const txtTempo   = document.getElementById("cfg-tempo");
     const btnSalvarConfig = document.getElementById("btn-salvar-config");
     const wrapperTabela = document.getElementById("wrapper-tabela");
     const resumoSdrs = document.getElementById("resumo-sdrs");
@@ -533,9 +539,10 @@
 
     function preencherFormConfig() {
       txtRegioes.value = (config.regioes || []).join("\n");
-      txtCanais.value = (config.canais || []).join("\n");
+      txtNichos.value  = (config.nichos || []).join("\n");
+      txtCanais.value  = (config.canais || []).join("\n");
       txtIdiomas.value = (config.idiomas || []).join("\n");
-      txtTempo.value = (config.tempoExperiencia || []).join("\n");
+      txtTempo.value   = (config.tempoExperiencia || []).join("\n");
     }
 
     function montarTabelaSdrs() {
@@ -570,7 +577,7 @@
           <th>SDR</th>
           <th>Cidade</th>
           <th>Região</th>
-          <th>Idioma</th>
+          <th>Nicho</th>
           <th>Premium</th>
           <th>Nota</th>
           <th>Ações</th>
@@ -597,8 +604,8 @@
         const tdReg = document.createElement("td");
         tdReg.textContent = sdr.regioes || "-";
 
-        const tdIdioma = document.createElement("td");
-        tdIdioma.textContent = sdr.idiomas || "-";
+        const tdNicho = document.createElement("td");
+        tdNicho.textContent = sdr.nicho || "-";
 
         const tdPrem = document.createElement("td");
         tdPrem.className = "center";
@@ -660,7 +667,7 @@
         tr.appendChild(tdNome);
         tr.appendChild(tdCidade);
         tr.appendChild(tdReg);
-        tr.appendChild(tdIdioma);
+        tr.appendChild(tdNicho);
         tr.appendChild(tdPrem);
         tr.appendChild(tdNota);
         tr.appendChild(tdAcoes);
@@ -675,6 +682,10 @@
 
     btnSalvarConfig.addEventListener("click", () => {
       const regioes = txtRegioes.value
+        .split("\n")
+        .map(s => s.trim())
+        .filter(Boolean);
+      const nichos = txtNichos.value
         .split("\n")
         .map(s => s.trim())
         .filter(Boolean);
@@ -693,6 +704,7 @@
 
       config = {
         regioes: regioes.length ? regioes : DEFAULT_CONFIG.regioes,
+        nichos: nichos.length ? nichos : DEFAULT_CONFIG.nichos,
         canais: canais.length ? canais : DEFAULT_CONFIG.canais,
         idiomas: idiomas.length ? idiomas : DEFAULT_CONFIG.idiomas,
         tempoExperiencia: tempo.length ? tempo : DEFAULT_CONFIG.tempoExperiencia
