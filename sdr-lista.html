@@ -640,6 +640,53 @@
       font-weight: 600;
     }
 
+    .comments-toggle {
+      margin-top: 4px;
+      font-size: 11px;
+      color: var(--primary-dark);
+      text-decoration: underline;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
+      font-weight: 600;
+    }
+
+    .comments-list {
+      margin-top: 4px;
+      padding: 6px 8px;
+      border-radius: 10px;
+      background: #f9fafb;
+      border: 1px dashed #e2e8f0;
+      display: none;
+    }
+
+    .comment-item {
+      font-size: 11px;
+      color: #4b5563;
+      padding: 4px 0;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .comment-item:last-child {
+      border-bottom: none;
+    }
+
+    .comment-header {
+      font-weight: 600;
+      margin-bottom: 1px;
+    }
+
+    .comment-header span {
+      color: var(--muted);
+      font-weight: 500;
+      margin-left: 4px;
+    }
+
+    .comment-body {
+      font-size: 11px;
+    }
+
     .tags {
       display: flex;
       flex-wrap: wrap;
@@ -661,6 +708,12 @@
       background: #ecfdf3;
       border-color: #bbf7d0;
       color: #15803d;
+    }
+
+    .tag-nicho {
+      background: #fef9c3;
+      border-color: #facc15;
+      color: #92400e;
     }
 
     .card-right {
@@ -964,16 +1017,12 @@
           </div>
         </div>
 
-        <div class="counter" id="contador-sdrs">
-          <!-- preenchido via JS -->
-        </div>
+        <div class="counter" id="contador-sdrs"></div>
       </div>
     </section>
 
     <!-- LISTA DE SDRS -->
-    <section id="lista-sdrs" class="grid">
-      <!-- Cards via JS -->
-    </section>
+    <section id="lista-sdrs" class="grid"></section>
 
     <p id="empty-message" class="empty" style="display:none;">
       Nenhum SDR encontrado com os filtros atuais. Tente limpar os filtros ou ampliar sua busca.
@@ -1019,6 +1068,7 @@
         canais: "",
         reviews: [],
         premium: false,
+        nicho: s.nicho || "",
         ...s,
         reviews: Array.isArray(s.reviews) ? s.reviews : [],
         premium: !!s.premium
@@ -1042,11 +1092,12 @@
     /* ---------- RATING / AVALIAÇÕES ---------- */
     function getRatingInfo(sdr) {
       const reviews = sdr.reviews || [];
-      if (!reviews.length) return { avg: 0, count: 0, last: null };
+      if (!reviews.length) return { avg: 0, count: 0, last: null, all: [] };
       const sum = reviews.reduce((acc, r) => acc + (r.stars || 0), 0);
       const avg = sum / reviews.length;
-      const last = reviews.slice().sort((a, b) => (b.date || 0) - (a.date || 0))[0];
-      return { avg, count: reviews.length, last };
+      const sorted = reviews.slice().sort((a, b) => (b.date || 0) - (a.date || 0));
+      const last = sorted[0];
+      return { avg, count: reviews.length, last, all: sorted };
     }
 
     function recomputarRatings() {
@@ -1259,7 +1310,7 @@
       card.className = "card-sdr";
       card.dataset.id = sdr.id;
 
-      const infoRating = ratingMap.get(sdr.id) || { avg: 0, count: 0, last: null };
+      const infoRating = ratingMap.get(sdr.id) || { avg: 0, count: 0, last: null, all: [] };
       const isPremium = !!sdr.premium;
       const isTopPerf = sdr.id === topPerformerId;
 
@@ -1389,6 +1440,9 @@
       ratingLine.appendChild(ratingText);
 
       // Último comentário
+      let commentsToggleBtn = null;
+      let commentsListEl = null;
+
       if (infoRating.last && infoRating.last.comment) {
         const lastComment = document.createElement("div");
         lastComment.className = "last-comment";
@@ -1400,11 +1454,62 @@
           "★</strong> · " +
           infoRating.last.comment;
         middle.appendChild(lastComment);
+
+        if (infoRating.count > 1) {
+          commentsToggleBtn = document.createElement("button");
+          commentsToggleBtn.className = "comments-toggle";
+          commentsToggleBtn.type = "button";
+          commentsToggleBtn.textContent =
+            "Ver todos os comentários (" + infoRating.count + ")";
+          middle.appendChild(commentsToggleBtn);
+
+          commentsListEl = document.createElement("div");
+          commentsListEl.className = "comments-list";
+
+          infoRating.all.forEach(r => {
+            const item = document.createElement("div");
+            item.className = "comment-item";
+
+            const header = document.createElement("div");
+            header.className = "comment-header";
+            const nomeC = r.clientName && r.clientName.trim() ? r.clientName.trim() : "Cliente";
+            header.textContent = nomeC + " • " + r.stars + "★";
+            item.appendChild(header);
+
+            const body = document.createElement("div");
+            body.className = "comment-body";
+            body.textContent = r.comment || "";
+            item.appendChild(body);
+
+            commentsListEl.appendChild(item);
+          });
+
+          middle.appendChild(commentsListEl);
+
+          commentsToggleBtn.addEventListener("click", () => {
+            const visible = commentsListEl.style.display === "block";
+            commentsListEl.style.display = visible ? "none" : "block";
+            commentsToggleBtn.textContent = visible
+              ? "Ver todos os comentários (" + infoRating.count + ")"
+              : "Esconder comentários (" + infoRating.count + ")";
+          });
+        }
       }
 
-      // Tags (canais + idioma)
+      // Tags (nichos + canais + idioma)
       const tagsEl = document.createElement("div");
       tagsEl.className = "tags";
+
+      (sdr.nicho || "")
+        .split(",")
+        .map(t => t.trim())
+        .filter(Boolean)
+        .forEach(n => {
+          const tag = document.createElement("span");
+          tag.className = "tag tag-nicho";
+          tag.textContent = n;
+          tagsEl.appendChild(tag);
+        });
 
       (sdr.canais || "")
         .split(",")
