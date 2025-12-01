@@ -12,12 +12,20 @@
       --primary: #0f6fff;
       --primary-dark: #0050c8;
       --accent: #22c55e;
-      --bg: #f5f7fb;
-      --bg-soft: #ffffff;
-      --dark: #0b1220;
-      --text: #0f172a;
-      --muted: #6b7280;
-      --border: #e5e7eb;
+      --bg-body-dark: radial-gradient(circle at top left, #0b1120 0, #020617 40%, #020617 100%);
+      --bg-body-light: #f5f7fb;
+      --bg-sidebar-dark: #020617;
+      --bg-sidebar-light: #ffffff;
+      --bg-main-dark: radial-gradient(circle at top left, #0f172a 0, #020617 40%, #020617 100%);
+      --bg-main-light: #f5f7fb;
+      --panel-dark: radial-gradient(circle at top left, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 1));
+      --panel-light: #ffffff;
+      --text-dark: #f9fafb;
+      --text-light-main: #0f172a;
+      --text-muted-dark: #9ca3af;
+      --text-muted-light: #6b7280;
+      --border-dark: rgba(148, 163, 184, 0.5);
+      --border-light: #e5e7eb;
       --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.18);
     }
 
@@ -25,8 +33,13 @@
 
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top left, #0b1120 0, #020617 40%, #020617 100%);
-      color: var(--text);
+      background: var(--bg-body-dark);
+      color: var(--text-dark);
+    }
+
+    body.theme-light {
+      background: var(--bg-body-light);
+      color: var(--text-light-main);
     }
 
     a { text-decoration: none; color: inherit; }
@@ -37,15 +50,22 @@
       min-height: 100vh;
     }
 
-    /* SIDEBAR – IDENTIDADE INBOTIX */
+    /* SIDEBAR – DARK (default) */
     .sidebar {
-      background: radial-gradient(circle at top left, #020617 0, #020617 40%, #020617 100%);
+      background: var(--bg-sidebar-dark);
       border-right: 1px solid rgba(15, 23, 42, 0.8);
       color: #e5e7eb;
       padding: 18px 16px;
       display: flex;
       flex-direction: column;
       gap: 18px;
+    }
+
+    /* SIDEBAR – LIGHT */
+    body.theme-light .sidebar {
+      background: var(--bg-sidebar-light);
+      border-right: 1px solid var(--border-light);
+      color: var(--text-light-main);
     }
 
     .sidebar-logo-block {
@@ -79,6 +99,10 @@
       color: #9ca3af;
     }
 
+    body.theme-light .sidebar-logo-text span:last-child {
+      color: var(--text-muted-light);
+    }
+
     .sidebar-badge {
       display: inline-flex;
       align-items: center;
@@ -90,6 +114,11 @@
       font-size: 10px;
       color: #bbf7d0;
       margin-bottom: 10px;
+    }
+
+    body.theme-light .sidebar-badge {
+      color: #166534;
+      background: rgba(34, 197, 94, 0.12);
     }
 
     .sidebar-badge-dot {
@@ -122,6 +151,10 @@
       transition: background 0.15s ease, color 0.15s ease, transform 0.1s ease;
     }
 
+    body.theme-light .sidebar-nav button {
+      color: var(--text-muted-light);
+    }
+
     .sidebar-nav button span.label {
       display: inline-flex;
       align-items: center;
@@ -147,9 +180,18 @@
       transform: translateY(-1px);
     }
 
+    body.theme-light .sidebar-nav button.active {
+      color: #f9fafb;
+    }
+
     .sidebar-nav button:hover:not(.active) {
       background: rgba(15, 23, 42, 0.6);
       color: #e5e7eb;
+    }
+
+    body.theme-light .sidebar-nav button:hover:not(.active) {
+      background: rgba(15, 23, 42, 0.04);
+      color: var(--text-light-main);
     }
 
     .sidebar-nav .badge {
@@ -160,6 +202,11 @@
       color: #cbd5f5;
     }
 
+    body.theme-light .sidebar-nav .badge {
+      background: rgba(15, 23, 42, 0.08);
+      color: var(--text-muted-light);
+    }
+
     .sidebar-footer {
       margin-top: auto;
       font-size: 11px;
@@ -168,18 +215,27 @@
       padding-top: 10px;
     }
 
-    .sidebar-footer p {
-      margin-bottom: 4px;
+    body.theme-light .sidebar-footer {
+      border-top: 1px solid var(--border-light);
+      color: var(--text-muted-light);
     }
 
     .sidebar-footer a {
       color: #93c5fd;
     }
 
+    body.theme-light .sidebar-footer a {
+      color: var(--primary-dark);
+    }
+
     /* MAIN */
     .main {
-      background: radial-gradient(circle at top left, #0f172a 0, #020617 40%, #020617 100%);
+      background: var(--bg-main-dark);
       padding: 18px 22px 24px;
+    }
+
+    body.theme-light .main {
+      background: var(--bg-main-light);
     }
 
     .main-inner {
@@ -199,16 +255,25 @@
       color: #f9fafb;
     }
 
+    body.theme-light .topbar h1 {
+      color: var(--text-light-main);
+    }
+
     .topbar small {
       display: block;
       font-size: 11px;
-      color: #9ca3af;
+      color: var(--text-muted-dark);
+    }
+
+    body.theme-light .topbar small {
+      color: var(--text-muted-light);
     }
 
     .topbar-right {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
+      flex-wrap: wrap;
     }
 
     .avatar-small {
@@ -225,6 +290,10 @@
       box-shadow: 0 0 0 2px #020617;
     }
 
+    body.theme-light .avatar-small {
+      box-shadow: 0 0 0 2px #e5e7eb;
+    }
+
     .btn-outline {
       border-radius: 999px;
       border: 1px solid rgba(148, 163, 184, 0.9);
@@ -237,6 +306,16 @@
 
     .btn-outline:hover {
       background: rgba(31, 41, 55, 0.95);
+    }
+
+    body.theme-light .btn-outline {
+      background: #ffffff;
+      color: var(--text-light-main);
+      border-color: var(--border-light);
+    }
+
+    body.theme-light .btn-outline:hover {
+      background: #f3f4f6;
     }
 
     .btn-primary {
@@ -256,6 +335,29 @@
 
     .btn-primary:hover {
       transform: translateY(-1px);
+    }
+
+    .btn-toggle {
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      padding: 6px 12px;
+      background: rgba(15, 23, 42, 0.9);
+      font-size: 11px;
+      cursor: pointer;
+      color: #e5e7eb;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-toggle span.icon {
+      font-size: 13px;
+    }
+
+    body.theme-light .btn-toggle {
+      background: #ffffff;
+      color: var(--text-light-main);
+      border-color: var(--border-light);
     }
 
     .content {
@@ -302,13 +404,41 @@
       color: #e5e7eb;
     }
 
+    body.theme-light .card-kpi {
+      background: #ffffff;
+      border-color: var(--border-light);
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+      color: var(--text-muted-light);
+    }
+
+    body.theme-light .card-kpi strong {
+      color: var(--text-light-main);
+    }
+
+    body.theme-light .card-kpi span.badge {
+      background: rgba(34, 197, 94, 0.12);
+      color: #166534;
+    }
+
+    body.theme-light .card-kpi span.badge.muted {
+      background: rgba(148, 163, 184, 0.18);
+      color: var(--text-muted-light);
+    }
+
     .panel {
-      background: radial-gradient(circle at top left, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 1));
+      background: var(--panel-dark);
       border-radius: 18px;
       padding: 14px 14px 16px;
-      border: 1px solid rgba(148, 163, 184, 0.5);
+      border: 1px solid var(--border-dark);
       box-shadow: var(--shadow-soft);
       color: #e5e7eb;
+    }
+
+    body.theme-light .panel {
+      background: var(--panel-light);
+      border-color: var(--border-light);
+      color: var(--text-light-main);
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
     }
 
     .panel-header {
@@ -323,14 +453,26 @@
       color: #f9fafb;
     }
 
+    body.theme-light .panel-header h2 {
+      color: var(--text-light-main);
+    }
+
     .panel-header small {
       font-size: 11px;
       color: #9ca3af;
     }
 
+    body.theme-light .panel-header small {
+      color: var(--text-muted-light);
+    }
+
     .panel-body {
       font-size: 12px;
       color: #cbd5f5;
+    }
+
+    body.theme-light .panel-body {
+      color: var(--text-muted-light);
     }
 
     table {
@@ -356,6 +498,15 @@
       border-bottom: none;
     }
 
+    body.theme-light th, 
+    body.theme-light td {
+      border-bottom-color: var(--border-light);
+    }
+
+    body.theme-light th {
+      color: var(--text-muted-light);
+    }
+
     .status-pill {
       display: inline-flex;
       align-items: center;
@@ -379,6 +530,21 @@
       color: #bfdbfe;
     }
 
+    body.theme-light .status-ativo {
+      background: rgba(22, 163, 74, 0.12);
+      color: #166534;
+    }
+
+    body.theme-light .status-pendente {
+      background: rgba(234, 179, 8, 0.12);
+      color: #854d0e;
+    }
+
+    body.theme-light .status-novo {
+      background: rgba(59, 130, 246, 0.12);
+      color: #1d4ed8;
+    }
+
     .tag {
       font-size: 10px;
       padding: 2px 6px;
@@ -388,10 +554,20 @@
       color: #e5e7eb;
     }
 
+    body.theme-light .tag {
+      background: rgba(15, 23, 42, 0.04);
+      border-color: var(--border-light);
+      color: var(--text-muted-light);
+    }
+
     .helper-text {
       font-size: 11px;
       color: #94a3b8;
       margin-top: 6px;
+    }
+
+    body.theme-light .helper-text {
+      color: var(--text-muted-light);
     }
 
     .mt-8 { margin-top: 8px; }
@@ -492,6 +668,10 @@
             <small>Este é o seu painel dentro da INBOTIX para gerenciar clientes e leads por performance.</small>
           </div>
           <div class="topbar-right">
+            <button id="toggle-theme" class="btn-toggle">
+              <span class="icon">🌙</span>
+              <span class="label">Modo claro</span>
+            </button>
             <button class="btn-outline">Sair</button>
             <div class="avatar-small">SD</div>
           </div>
@@ -630,5 +810,33 @@
       </div>
     </main>
   </div>
+
+  <script>
+    const btnToggle = document.getElementById("toggle-theme");
+    const body = document.body;
+
+    function updateToggleLabel() {
+      const isLight = body.classList.contains("theme-light");
+      const icon = btnToggle.querySelector(".icon");
+      const label = btnToggle.querySelector(".label");
+
+      if (isLight) {
+        icon.textContent = "☀️";
+        label.textContent = "Modo escuro";
+      } else {
+        icon.textContent = "🌙";
+        label.textContent = "Modo claro";
+      }
+    }
+
+    btnToggle.addEventListener("click", () => {
+      body.classList.toggle("theme-light");
+      updateToggleLabel();
+    });
+
+    // Estado inicial (escuro)
+    updateToggleLabel();
+  </script>
 </body>
 </html>
+
