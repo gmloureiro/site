@@ -5,7 +5,6 @@
   <title>Marketplace de SDR – INBOTIX</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Encontre SDRs parceiros da INBOTIX para prospecção por performance. Escolha o SDR ideal para gerar leads para o seu negócio.">
-  <!-- Ícone da aba com o logo da INBOTIX -->
   <link rel="icon" type="image/png" href="logo-inbotix.png" />
 
   <style>
@@ -14,7 +13,6 @@
       --primary-dark: #0050c8;
       --primary-soft: #e4eeff;
       --accent: #22c55e;
-      --accent-soft: rgba(34, 197, 94, 0.08);
       --bg: #f5f7fb;
       --bg-card: #ffffff;
       --dark: #0f172a;
@@ -22,7 +20,6 @@
       --muted: #6b7280;
       --border: #dbe2f0;
       --border-strong: #b8c6f5;
-      --danger: #b91c1c;
       --star-on: #facc15;
       --star-off: #e2e8f0;
     }
@@ -408,41 +405,41 @@
       background: linear-gradient(180deg, rgba(15, 111, 255, 0.7), rgba(0, 80, 200, 0.6));
     }
 
-    .card-sdr.top-sdr {
+    .card-sdr.premium {
       border-color: rgba(15, 111, 255, 0.7);
-      box-shadow: 0 18px 46px rgba(15, 111, 255, 0.36);
+      box-shadow: 0 18px 46px rgba(15, 111, 255, 0.26);
     }
 
-    .top-ribbon {
+    .top-performer-badge {
       position: absolute;
       top: 8px;
       right: 12px;
       font-size: 10px;
       padding: 3px 8px;
       border-radius: 999px;
-      background: #16a34a;
+      background: linear-gradient(135deg, #f97316, #ea580c);
       color: #ffffff;
-      font-weight: 600;
+      font-weight: 700;
       display: inline-flex;
       align-items: center;
       gap: 4px;
-      box-shadow: 0 10px 22px rgba(22, 163, 74, 0.5);
+      box-shadow: 0 10px 22px rgba(234, 88, 12, 0.6);
     }
 
-    .new-ribbon {
+    .premium-ribbon {
       position: absolute;
       top: 32px;
       right: 12px;
       font-size: 10px;
       padding: 3px 8px;
       border-radius: 999px;
-      background: #0f6fff;
-      color: #ffffff;
-      font-weight: 500;
+      background: linear-gradient(135deg, #eab308, #ca8a04);
+      color: #1f2933;
+      font-weight: 700;
       display: inline-flex;
       align-items: center;
       gap: 4px;
-      box-shadow: 0 8px 18px rgba(15, 111, 255, 0.4);
+      box-shadow: 0 8px 18px rgba(234, 179, 8, 0.5);
     }
 
     @media (max-width: 880px) {
@@ -456,8 +453,8 @@
       .card-sdr {
         grid-template-columns: minmax(0, 1fr);
       }
-      .top-ribbon,
-      .new-ribbon {
+      .top-performer-badge,
+      .premium-ribbon {
         position: static;
         margin-bottom: 4px;
       }
@@ -468,6 +465,7 @@
       flex-direction: column;
       align-items: center;
       gap: 6px;
+      position: relative;
     }
 
     .avatar {
@@ -483,12 +481,29 @@
       color: #4b5563;
       overflow: hidden;
       box-shadow: 0 10px 26px rgba(15, 23, 42, 0.22);
+      position: relative;
     }
 
     .avatar img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+    }
+
+    .avatar-top-performer {
+      position: absolute;
+      bottom: -4px;
+      right: -4px;
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #f97316, #ea580c);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      color: #ffffff;
+      box-shadow: 0 8px 18px rgba(234, 88, 12, 0.7);
     }
 
     .cidade-pill {
@@ -553,10 +568,16 @@
       font-weight: 600;
     }
 
-    .badge-inline-blue {
-      background: rgba(15, 111, 255, 0.08);
-      border-color: rgba(15, 111, 255, 0.4);
-      color: var(--primary-dark);
+    .badge-inline-orange {
+      background: rgba(249, 115, 22, 0.12);
+      border-color: rgba(249, 115, 22, 0.7);
+      color: #9a3412;
+    }
+
+    .badge-inline-gold {
+      background: rgba(234, 179, 8, 0.12);
+      border-color: rgba(234, 179, 8, 0.7);
+      color: #92400e;
     }
 
     .meta-line {
@@ -851,8 +872,8 @@
             </div>
             <div class="hero-metric">
               <span>Curadoria</span>
-              <strong>SDRs validados</strong>
-              <span>Perfil revisado e avaliado pelos próprios clientes.</span>
+              <strong>SDRs Premium & Top Performer</strong>
+              <span>Destaque para quem entrega e é bem avaliado.</span>
             </div>
           </div>
         </div>
@@ -866,8 +887,8 @@
           </p>
           <ul class="hero-side-list">
             <li>A INBOTIX apoia na metodologia e no modelo de cobrança.</li>
-            <li>Você não precisa montar estrutura de SDR interna.</li>
-            <li>Foco total em geração de oportunidades para o seu comercial.</li>
+            <li>SDRs Premium aparecem em destaque na lista.</li>
+            <li>O selo “Top Performer” destaca quem mais gera valor e é bem avaliado.</li>
           </ul>
           <div class="hero-cta-row">
             <a href="https://inbotix.com.br" class="btn-primary-hero" target="_blank" rel="noopener">
@@ -885,8 +906,9 @@
     <section class="toolbar">
       <div class="toolbar-row">
         <p class="toolbar-text">
-          <strong>Como usar:</strong> filtre por nome, nicho, região, idioma, canal de prospecção ou tempo de experiência
-          para encontrar o SDR ideal. Para avaliar um SDR, clique em <strong>“Avaliar este SDR”</strong> dentro do cartão.
+          <strong>Como usar:</strong> filtre por nome, nicho, região, idioma, canal de prospecção, tempo de experiência
+          ou <strong>nota mínima</strong> para encontrar o SDR ideal. O selo
+          <strong>Premium</strong> vem da sua configuração interna, e o <strong>Top Performer</strong> é calculado automaticamente.
         </p>
         <div class="toolbar-actions">
           <a href="sdr-cadastro.html" class="btn-outline">
@@ -930,6 +952,16 @@
               <option value="">Todos os tempos</option>
             </select>
           </div>
+          <div class="filter-group" style="min-width:150px;">
+            <span class="filter-label">Nota mínima (estrelas)</span>
+            <select id="filtro-nota" class="filter-select">
+              <option value="">Todas as notas</option>
+              <option value="3">3.0+</option>
+              <option value="4">4.0+</option>
+              <option value="4.5">4.5+</option>
+              <option value="5">5.0</option>
+            </select>
+          </div>
         </div>
 
         <div class="counter" id="contador-sdrs">
@@ -957,6 +989,9 @@
     const SDR_KEY = "inbotix_sdrs";
 
     let sdrs = [];
+    let ratingMap = new Map();
+    let topPerformerId = null;
+
     const listaContainer = document.getElementById("lista-sdrs");
     const emptyMessage = document.getElementById("empty-message");
     const filtroTexto = document.getElementById("filtro-texto");
@@ -964,6 +999,7 @@
     const filtroCanal = document.getElementById("filtro-canal");
     const filtroIdioma = document.getElementById("filtro-idioma");
     const filtroTempo = document.getElementById("filtro-tempo");
+    const filtroNota = document.getElementById("filtro-nota");
     const contadorSdrs = document.getElementById("contador-sdrs");
 
     function carregarSdrs() {
@@ -982,11 +1018,13 @@
         tempoExp: "",
         canais: "",
         reviews: [],
+        premium: false,
         ...s,
-        reviews: Array.isArray(s.reviews) ? s.reviews : []
+        reviews: Array.isArray(s.reviews) ? s.reviews : [],
+        premium: !!s.premium
       }));
 
-      // Ordenação base (mais novos primeiro)
+      // Ordenação base: mais novos primeiro
       sdrs.sort((a, b) => (b.id || 0) - (a.id || 0));
 
       if (!sdrs.length) {
@@ -995,6 +1033,8 @@
         return;
       }
 
+      recomputarRatings();
+      recalcularTopPerformer();
       popularFiltros();
       aplicarFiltros();
     }
@@ -1009,15 +1049,33 @@
       return { avg, count: reviews.length, last };
     }
 
-    function isTopSdr(sdr) {
-      const info = getRatingInfo(sdr);
-      return info.count >= 3 && info.avg >= 4.8;
+    function recomputarRatings() {
+      ratingMap.clear();
+      sdrs.forEach(s => {
+        ratingMap.set(s.id, getRatingInfo(s));
+      });
     }
 
-    function isNewSdr(sdr) {
-      const created = sdr.id || 0;
-      const fourteenDays = 1000 * 60 * 60 * 24 * 14;
-      return Date.now() - created < fourteenDays;
+    function recalcularTopPerformer() {
+      let bestId = null;
+      let bestAvg = 0;
+      let bestCount = 0;
+
+      sdrs.forEach(s => {
+        const info = ratingMap.get(s.id) || { avg: 0, count: 0 };
+        // precisa de pelo menos 3 avaliações
+        if (info.count < 3) return;
+        if (info.avg > bestAvg) {
+          bestAvg = info.avg;
+          bestCount = info.count;
+          bestId = s.id;
+        } else if (info.avg === bestAvg && info.count > bestCount) {
+          bestCount = info.count;
+          bestId = s.id;
+        }
+      });
+
+      topPerformerId = bestId;
     }
 
     function criarStars(avg) {
@@ -1043,6 +1101,8 @@
       if (!Array.isArray(sdrs[idx].reviews)) sdrs[idx].reviews = [];
       sdrs[idx].reviews.push(review);
       salvarSdrs();
+      recomputarRatings();
+      recalcularTopPerformer();
       aplicarFiltros(); // re-render
       alert("Avaliação registrada com sucesso. Obrigado por avaliar este SDR!");
     }
@@ -1107,6 +1167,8 @@
       const canal = filtroCanal.value;
       const idioma = filtroIdioma.value;
       const tempo = filtroTempo.value;
+      const notaMinStr = filtroNota.value;
+      const notaMin = notaMinStr ? parseFloat(notaMinStr) : null;
 
       listaContainer.innerHTML = "";
 
@@ -1146,22 +1208,31 @@
         );
       }
 
-      // Ordenar com Top SDR primeiro
+      if (notaMin !== null && !isNaN(notaMin)) {
+        filtrados = filtrados.filter(sdr => {
+          const info = ratingMap.get(sdr.id) || { avg: 0 };
+          return info.avg >= notaMin;
+        });
+      }
+
+      // Ordenar considerando Premium + Top Performer + nota + reviews + id
       filtrados.sort((a, b) => {
-        const topA = isTopSdr(a);
-        const topB = isTopSdr(b);
+        const premA = !!a.premium;
+        const premB = !!b.premium;
+        if (premA && !premB) return -1;
+        if (!premA && premB) return 1;
+
+        const topA = a.id === topPerformerId;
+        const topB = b.id === topPerformerId;
         if (topA && !topB) return -1;
         if (!topA && topB) return 1;
 
-        // se ambos são Top SDR, ordenar por média e número de reviews
-        if (topA && topB) {
-          const ra = getRatingInfo(a);
-          const rb = getRatingInfo(b);
-          if (rb.avg !== ra.avg) return rb.avg - ra.avg;
-          if (rb.count !== ra.count) return rb.count - ra.count;
-        }
+        const infoA = ratingMap.get(a.id) || { avg: 0, count: 0 };
+        const infoB = ratingMap.get(b.id) || { avg: 0, count: 0 };
 
-        // fallback: mais novo primeiro
+        if (infoB.avg !== infoA.avg) return infoB.avg - infoA.avg;
+        if (infoB.count !== infoA.count) return infoB.count - infoA.count;
+
         return (b.id || 0) - (a.id || 0);
       });
 
@@ -1188,22 +1259,23 @@
       card.className = "card-sdr";
       card.dataset.id = sdr.id;
 
-      const top = isTopSdr(sdr);
-      const novo = isNewSdr(sdr);
+      const infoRating = ratingMap.get(sdr.id) || { avg: 0, count: 0, last: null };
+      const isPremium = !!sdr.premium;
+      const isTopPerf = sdr.id === topPerformerId;
 
-      if (top) {
-        card.classList.add("top-sdr");
-        const topRibbon = document.createElement("div");
-        topRibbon.className = "top-ribbon";
-        topRibbon.innerHTML = "<span>⭐</span><span>Top SDR</span>";
-        card.appendChild(topRibbon);
+      if (isPremium) {
+        card.classList.add("premium");
+        const pr = document.createElement("div");
+        pr.className = "premium-ribbon";
+        pr.innerHTML = "<span>💎</span><span>Premium</span>";
+        card.appendChild(pr);
       }
 
-      if (novo) {
-        const newRibbon = document.createElement("div");
-        newRibbon.className = "new-ribbon";
-        newRibbon.innerHTML = "<span>🆕</span><span>Novo na vitrine</span>";
-        card.appendChild(newRibbon);
+      if (isTopPerf) {
+        const tp = document.createElement("div");
+        tp.className = "top-performer-badge";
+        tp.innerHTML = "<span>🏆</span><span>Top Performer</span>";
+        card.appendChild(tp);
       }
 
       // LEFT
@@ -1226,6 +1298,13 @@
           .slice(0, 2)
           .toUpperCase();
         avatar.textContent = iniciais || "SDR";
+      }
+
+      if (isTopPerf) {
+        const avatarBadge = document.createElement("div");
+        avatarBadge.className = "avatar-top-performer";
+        avatarBadge.textContent = "🏆";
+        avatar.appendChild(avatarBadge);
       }
 
       const cidadePill = document.createElement("div");
@@ -1258,18 +1337,18 @@
       nomeRow.appendChild(nomeEl);
       nomeRow.appendChild(idChip);
 
-      if (top) {
-        const badgeTop = document.createElement("span");
-        badgeTop.className = "badge-inline";
-        badgeTop.textContent = "Top SDR";
-        nomeRow.appendChild(badgeTop);
+      if (isPremium) {
+        const badgePremium = document.createElement("span");
+        badgePremium.className = "badge-inline badge-inline-gold";
+        badgePremium.textContent = "Premium";
+        nomeRow.appendChild(badgePremium);
       }
 
-      if (novo) {
-        const badgeNovo = document.createElement("span");
-        badgeNovo.className = "badge-inline badge-inline-blue";
-        badgeNovo.textContent = "Novo na vitrine";
-        nomeRow.appendChild(badgeNovo);
+      if (isTopPerf) {
+        const badgeTop = document.createElement("span");
+        badgeTop.className = "badge-inline badge-inline-orange";
+        badgeTop.textContent = "Top Performer";
+        nomeRow.appendChild(badgeTop);
       }
 
       const nichosEl = document.createElement("div");
@@ -1293,34 +1372,33 @@
       expEl.textContent = sdr.experiencia || "";
 
       // Rating
-      const ratingInfo = getRatingInfo(sdr);
       const ratingLine = document.createElement("div");
       ratingLine.className = "rating-line";
 
-      const stars = criarStars(ratingInfo.avg);
+      const stars = criarStars(infoRating.avg);
       ratingLine.appendChild(stars);
 
       const ratingText = document.createElement("span");
       ratingText.className = "rating-count";
-      ratingText.textContent = ratingInfo.count
-        ? ratingInfo.avg.toFixed(1).replace(".", ",") +
+      ratingText.textContent = infoRating.count
+        ? infoRating.avg.toFixed(1).replace(".", ",") +
           " • " +
-          ratingInfo.count +
-          (ratingInfo.count === 1 ? " avaliação" : " avaliações")
+          infoRating.count +
+          (infoRating.count === 1 ? " avaliação" : " avaliações")
         : "Ainda sem avaliações";
       ratingLine.appendChild(ratingText);
 
       // Último comentário
-      if (ratingInfo.last && ratingInfo.last.comment) {
+      if (infoRating.last && infoRating.last.comment) {
         const lastComment = document.createElement("div");
         lastComment.className = "last-comment";
-        const nomeCliente = ratingInfo.last.clientName ? ratingInfo.last.clientName + " — " : "";
+        const nomeCliente = infoRating.last.clientName ? infoRating.last.clientName + " — " : "";
         lastComment.innerHTML =
           "<strong>" +
           nomeCliente +
-          ratingInfo.last.stars +
+          infoRating.last.stars +
           "★</strong> · " +
-          ratingInfo.last.comment;
+          infoRating.last.comment;
         middle.appendChild(lastComment);
       }
 
@@ -1500,6 +1578,7 @@
     filtroCanal.addEventListener("change", aplicarFiltros);
     filtroIdioma.addEventListener("change", aplicarFiltros);
     filtroTempo.addEventListener("change", aplicarFiltros);
+    filtroNota.addEventListener("change", aplicarFiltros);
 
     carregarSdrs();
   </script>
