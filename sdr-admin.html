@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <title>Admin SDR – INBOTIX</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Administração de SDRs cadastrados no marketplace INBOTIX.">
+  <meta name="description" content="Administração de SDRs e configuração de campos do marketplace INBOTIX.">
   <link rel="icon" type="image/png" href="icon-inbotix.png" />
 
   <style>
@@ -67,7 +67,7 @@
     }
 
     main {
-      max-width: 1120px;
+      max-width: 1200px;
       margin: 24px auto 32px;
       padding: 0 16px 32px;
     }
@@ -81,12 +81,12 @@
     .subtitle {
       font-size: 13px;
       color: var(--muted);
-      margin-bottom: 18px;
+      margin-bottom: 16px;
     }
 
     .layout {
       display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.2fr);
       gap: 18px;
       align-items: flex-start;
     }
@@ -110,21 +110,40 @@
       color: var(--muted);
     }
 
-    .toolbar {
+    /* Tabs Admin (SDRs x Configuração) */
+    .tabs {
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      margin-bottom: 8px;
-      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 10px;
+      border-bottom: 1px solid #e5e7eb;
     }
 
-    .toolbar a {
-      font-size: 11px;
+    .tab-btn {
+      border: none;
+      background: transparent;
+      padding: 6px 10px;
+      font-size: 12px;
+      cursor: pointer;
+      border-radius: 999px 999px 0 0;
+      color: var(--muted);
+    }
+
+    .tab-btn.active {
+      background: #ffffff;
       color: var(--primary-dark);
-      text-decoration: none;
+      border: 1px solid #e5e7eb;
+      border-bottom-color: #ffffff;
     }
 
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    /* Tabela SDRs */
     table {
       width: 100%;
       border-collapse: collapse;
@@ -206,22 +225,13 @@
       color: var(--danger);
     }
 
-    .status-pill {
-      font-size: 10px;
-      padding: 2px 6px;
-      border-radius: 999px;
-      background: rgba(22, 163, 74, 0.08);
-      color: var(--success);
-      border: 1px solid rgba(22, 163, 74, 0.25);
-      display: inline-block;
-    }
-
     .empty {
       font-size: 12px;
       color: var(--muted);
       margin-top: 10px;
     }
 
+    /* Form edição SDR */
     form {
       margin-top: 12px;
     }
@@ -239,7 +249,8 @@
 
     input[type="text"],
     input[type="tel"],
-    textarea {
+    textarea,
+    select {
       width: 100%;
       border-radius: 10px;
       border: 1px solid var(--border);
@@ -324,6 +335,7 @@
       margin-top: 4px;
     }
 
+    /* Rating resumo */
     .rating-summary {
       margin-top: 8px;
       font-size: 12px;
@@ -394,10 +406,32 @@
       gap: 4px;
     }
 
-    @media (max-width: 860px) {
-      .layout {
-        grid-template-columns: 1fr;
-      }
+    /* Config de Campos */
+    .config-grid {
+      display: grid;
+      grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .config-group textarea {
+      min-height: 90px;
+      resize: vertical;
+      font-size: 11px;
+    }
+
+    .config-group label {
+      font-weight: 600;
+    }
+
+    .config-helper {
+      font-size: 10px;
+      color: var(--muted);
+      margin-top: 3px;
+    }
+
+    @media (max-width: 980px) {
+      .layout { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 640px) {
@@ -417,51 +451,111 @@
       </a>
       <div class="logo-text">
         <strong>Admin SDR – INBOTIX</strong><br>
-        Gerencie cadastros do marketplace de SDR.
+        Gerencie cadastros e configuração do marketplace de SDR.
       </div>
     </div>
-    <span class="badge">Área interna (protótipo)</span>
+    <span class="badge">Área interna (protótipo local)</span>
   </header>
 
   <main>
     <h1>Painel de Administração de SDRs</h1>
     <p class="subtitle">
-      Aqui você consegue visualizar, editar e remover os SDRs cadastrados e também gerenciar as avaliações deixadas pelos clientes.
+      Aqui você gerencia os SDRs cadastrados, as avaliações dos clientes e a configuração dos campos padrão
+      (região, canais, idiomas e tempo de experiência).
     </p>
 
     <div class="layout">
-      <!-- Lista de SDRs -->
+      <!-- COLUNA ESQUERDA: TABS (SDRs / Configuração) -->
       <section class="card">
-        <div class="toolbar">
-          <small>Cadastros salvos no <code>localStorage["inbotix_sdrs"]</code>.</small>
-          <div>
-            <a href="sdr-lista.html" target="_blank">Ver página pública</a> ·
-            <a href="sdr-cadastro.html" target="_blank">Página de cadastro</a>
-          </div>
+        <div class="tabs">
+          <button class="tab-btn active" data-tab="tab-sdrs">SDRs cadastrados</button>
+          <button class="tab-btn" data-tab="tab-config">Configuração de campos</button>
         </div>
 
-        <table id="tabela-sdrs">
-          <thead>
-            <tr>
-              <th>SDR</th>
-              <th>Cidade</th>
-              <th>Telefone</th>
-              <th>Nichos</th>
-              <th>Canais</th>
-              <th>Ações</th>
-            </tr>
-          </thead>
-          <tbody>
-            <!-- Populado via JS -->
-          </tbody>
-        </table>
+        <!-- TAB SDRS -->
+        <div id="tab-sdrs" class="tab-content active">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;">
+            <small>Cadastros salvos em <code>localStorage["inbotix_sdrs"]</code>.</small>
+            <div>
+              <a href="sdr-lista.html" target="_blank" style="font-size:11px;color:var(--primary-dark);text-decoration:none;">Ver página pública</a> ·
+              <a href="sdr-cadastro.html" target="_blank" style="font-size:11px;color:var(--primary-dark);text-decoration:none;">Página de cadastro</a>
+            </div>
+          </div>
 
-        <p id="empty-message" class="empty" style="display:none;">
-          Nenhum SDR cadastrado ainda neste navegador.
-        </p>
+          <table id="tabela-sdrs">
+            <thead>
+              <tr>
+                <th>SDR</th>
+                <th>Cidade</th>
+                <th>Região</th>
+                <th>Tempo exp.</th>
+                <th>Canais</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- via JS -->
+            </tbody>
+          </table>
+
+          <p id="empty-message" class="empty" style="display:none;">
+            Nenhum SDR cadastrado ainda neste navegador.
+          </p>
+        </div>
+
+        <!-- TAB CONFIG -->
+        <div id="tab-config" class="tab-content">
+          <h2>Configuração de campos padrão</h2>
+          <small>
+            Estas listas alimentam os campos de seleção na tela de cadastro do SDR e na edição aqui no admin.
+            Cada linha abaixo representa uma opção.
+          </small>
+
+          <form id="form-config">
+            <div class="config-grid">
+              <div class="config-group">
+                <label for="cfg-regioes">Regiões de atuação</label>
+                <textarea id="cfg-regioes"></textarea>
+                <p class="config-helper">
+                  Ex.: Brasil todo, Sudeste, Sul, Centro-Oeste, Nordeste, Norte, LATAM, Europa...
+                </p>
+              </div>
+
+              <div class="config-group">
+                <label for="cfg-canais">Canais de prospecção</label>
+                <textarea id="cfg-canais"></textarea>
+                <p class="config-helper">
+                  Ex.: LinkedIn, E-mail, WhatsApp, Cold call, Instagram, Outbound mix...
+                </p>
+              </div>
+
+              <div class="config-group">
+                <label for="cfg-idiomas">Idiomas de atendimento</label>
+                <textarea id="cfg-idiomas"></textarea>
+                <p class="config-helper">
+                  Ex.: Português, Espanhol, Inglês...
+                </p>
+              </div>
+
+              <div class="config-group">
+                <label for="cfg-tempo-exp">Tempo de experiência como SDR</label>
+                <textarea id="cfg-tempo-exp"></textarea>
+                <p class="config-helper">
+                  Ex.: Iniciando (até 1 ano), 1–2 anos, 3–5 anos, 5+ anos...
+                </p>
+              </div>
+            </div>
+
+            <button type="submit" class="btn-primary">Salvar configuração</button>
+            <p class="helper-text" style="margin-top:6px;">
+              Esta configuração é salva em <code>localStorage["inbotix_sdr_config"]</code>.
+              No próximo passo, a tela de cadastro e a lista de SDRs passarão a usar esses padrões.
+            </p>
+          </form>
+        </div>
       </section>
 
-      <!-- Form de edição + avaliações -->
+      <!-- COLUNA DIREITA: EDIÇÃO DE SDR + AVALIAÇÕES -->
       <aside class="card">
         <h2>Editar cadastro do SDR</h2>
         <small>Selecione um SDR na tabela para editar, ver avaliações ou excluir.</small>
@@ -483,42 +577,49 @@
 
           <div class="form-group">
             <label for="edit-nome">Nome</label>
-            <input type="text" id="edit-nome">
+            <input type="text" id="edit-nome" />
           </div>
 
           <div class="form-group">
             <label for="edit-cidade">Cidade / Estado</label>
-            <input type="text" id="edit-cidade">
+            <input type="text" id="edit-cidade" />
           </div>
 
           <div class="form-group">
             <label for="edit-telefone">Telefone</label>
-            <input type="tel" id="edit-telefone">
+            <input type="tel" id="edit-telefone" />
           </div>
 
           <div class="form-group">
             <label for="edit-whats">Whats (DDI+DDD+Número)</label>
-            <input type="tel" id="edit-whats">
+            <input type="tel" id="edit-whats" />
           </div>
 
           <div class="form-group">
-            <label for="edit-nicho">Nichos</label>
-            <input type="text" id="edit-nicho">
+            <label for="edit-nicho">Nichos (texto livre)</label>
+            <input type="text" id="edit-nicho" />
           </div>
 
           <div class="form-group">
-            <label for="edit-tipos">Tipos de empresa</label>
-            <input type="text" id="edit-tipos">
+            <label for="edit-tipos">Tipos de empresa (texto livre)</label>
+            <input type="text" id="edit-tipos" />
           </div>
 
           <div class="form-group">
-            <label for="edit-regioes">Regiões</label>
-            <input type="text" id="edit-regioes">
+            <label for="edit-regioes">Região de atuação (opção padrão)</label>
+            <select id="edit-regioes"></select>
+            <p class="helper-text">Opções definidas na aba "Configuração de campos".</p>
           </div>
 
           <div class="form-group">
-            <label for="edit-idiomas">Idiomas</label>
-            <input type="text" id="edit-idiomas">
+            <label for="edit-idiomas">Idioma principal (opção padrão)</label>
+            <select id="edit-idiomas"></select>
+            <p class="helper-text">Se o SDR atender em mais idiomas, você pode complementar no campo de experiência.</p>
+          </div>
+
+          <div class="form-group">
+            <label for="edit-tempo-exp">Tempo de experiência como SDR</label>
+            <select id="edit-tempo-exp"></select>
           </div>
 
           <div class="form-group">
@@ -527,17 +628,17 @@
           </div>
 
           <div class="form-group">
-            <label for="edit-canais">Canais</label>
-            <input type="text" id="edit-canais">
-            <p class="helper-text">Separe por vírgula, ex: LinkedIn, E-mail, WhatsApp</p>
+            <label for="edit-canais">Canais (lista padrão, múltiplos separados por vírgula)</label>
+            <input type="text" id="edit-canais" />
+            <p class="helper-text">
+              Dica: use apenas canais cadastrados na aba de configuração, separados por vírgula. Ex.: LinkedIn, WhatsApp.
+            </p>
           </div>
 
           <div class="form-group">
             <label for="edit-foto">Atualizar foto (opcional)</label>
-            <input type="file" id="edit-foto" accept="image/*">
-            <p class="helper-text">
-              Se não escolher nenhuma imagem, a foto atual será mantida.
-            </p>
+            <input type="file" id="edit-foto" accept="image/*" />
+            <p class="helper-text">Se não escolher nenhuma imagem, a foto atual será mantida.</p>
           </div>
 
           <div>
@@ -556,7 +657,7 @@
           <small>Notas e comentários deixados por clientes (sem login).</small>
 
           <div class="reviews-list" id="reviews-list">
-            <!-- items -->
+            <!-- via JS -->
           </div>
         </div>
       </aside>
@@ -564,6 +665,104 @@
   </main>
 
   <script>
+    /* ---------- CONFIGURAÇÃO DE CAMPOS ---------- */
+    const CFG_KEY = "inbotix_sdr_config";
+    const DEFAULT_CONFIG = {
+      regioes: [
+        "Brasil todo",
+        "Sudeste",
+        "Sul",
+        "Centro-Oeste",
+        "Nordeste",
+        "Norte",
+        "LATAM",
+        "Europa",
+        "Estados Unidos"
+      ],
+      canais: [
+        "LinkedIn",
+        "E-mail",
+        "WhatsApp",
+        "Cold call",
+        "Instagram",
+        "Outbound mix"
+      ],
+      idiomas: [
+        "Português",
+        "Espanhol",
+        "Inglês"
+      ],
+      tempoExperiencia: [
+        "Iniciando (até 1 ano)",
+        "1–2 anos",
+        "3–5 anos",
+        "5+ anos"
+      ]
+    };
+
+    let config = carregarConfig();
+
+    function carregarConfig() {
+      try {
+        const raw = localStorage.getItem(CFG_KEY);
+        if (!raw) return { ...DEFAULT_CONFIG };
+        const parsed = JSON.parse(raw);
+        return {
+          ...DEFAULT_CONFIG,
+          ...parsed
+        };
+      } catch (e) {
+        console.warn("Erro ao carregar config, usando padrão", e);
+        return { ...DEFAULT_CONFIG };
+      }
+    }
+
+    function salvarConfig() {
+      localStorage.setItem(CFG_KEY, JSON.stringify(config));
+    }
+
+    // Preenche form de config
+    const cfgRegioes = document.getElementById("cfg-regioes");
+    const cfgCanais = document.getElementById("cfg-canais");
+    const cfgIdiomas = document.getElementById("cfg-idiomas");
+    const cfgTempoExp = document.getElementById("cfg-tempo-exp");
+
+    function preencherFormConfig() {
+      cfgRegioes.value = (config.regioes || []).join("\n");
+      cfgCanais.value = (config.canais || []).join("\n");
+      cfgIdiomas.value = (config.idiomas || []).join("\n");
+      cfgTempoExp.value = (config.tempoExperiencia || []).join("\n");
+    }
+
+    preencherFormConfig();
+
+    document.getElementById("form-config").addEventListener("submit", function (e) {
+      e.preventDefault();
+      config.regioes = cfgRegioes.value.split("\n").map(x => x.trim()).filter(Boolean);
+      config.canais = cfgCanais.value.split("\n").map(x => x.trim()).filter(Boolean);
+      config.idiomas = cfgIdiomas.value.split("\n").map(x => x.trim()).filter(Boolean);
+      config.tempoExperiencia = cfgTempoExp.value.split("\n").map(x => x.trim()).filter(Boolean);
+      salvarConfig();
+      popularSelectsEdit(); // atualiza selects do form de edição
+      alert("Configuração salva com sucesso.");
+    });
+
+    /* ---------- TABS ---------- */
+    const tabButtons = document.querySelectorAll(".tab-btn");
+    const tabContents = document.querySelectorAll(".tab-content");
+
+    tabButtons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const target = btn.dataset.tab;
+        tabButtons.forEach(b => b.classList.remove("active"));
+        tabContents.forEach(c => c.classList.remove("active"));
+
+        btn.classList.add("active");
+        document.getElementById(target).classList.add("active");
+      });
+    });
+
+    /* ---------- SDRS & AVALIAÇÕES ---------- */
     let sdrs = [];
     let fotoAtualBase64 = "";
     const tabelaBody = document.querySelector("#tabela-sdrs tbody");
@@ -608,6 +807,7 @@
         tiposEmpresa: "",
         regioes: "",
         idiomas: "",
+        tempoExp: "",
         reviews: [],
         ...s,
         reviews: Array.isArray(s.reviews) ? s.reviews : []
@@ -658,11 +858,11 @@
         const tdCidade = document.createElement("td");
         tdCidade.textContent = sdr.cidade || "-";
 
-        const tdTel = document.createElement("td");
-        tdTel.textContent = sdr.telefone || "-";
+        const tdRegiao = document.createElement("td");
+        tdRegiao.textContent = sdr.regioes || "-";
 
-        const tdNichos = document.createElement("td");
-        tdNichos.textContent = sdr.nicho || "-";
+        const tdTempo = document.createElement("td");
+        tdTempo.textContent = sdr.tempoExp || "-";
 
         const tdCanais = document.createElement("td");
         const canaisWrap = document.createElement("div");
@@ -694,14 +894,48 @@
 
         tr.appendChild(tdSdr);
         tr.appendChild(tdCidade);
-        tr.appendChild(tdTel);
-        tr.appendChild(tdNichos);
+        tr.appendChild(tdRegiao);
+        tr.appendChild(tdTempo);
         tr.appendChild(tdCanais);
         tr.appendChild(tdAcoes);
 
         tabelaBody.appendChild(tr);
       });
     }
+
+    // Preenche selects do form de edição com base na config
+    const selectRegioes = document.getElementById("edit-regioes");
+    const selectIdiomas = document.getElementById("edit-idiomas");
+    const selectTempoExp = document.getElementById("edit-tempo-exp");
+
+    function popularSelect(selectEl, options, allowBlank) {
+      const current = selectEl.value;
+      selectEl.innerHTML = "";
+      if (allowBlank) {
+        const optBlank = document.createElement("option");
+        optBlank.value = "";
+        optBlank.textContent = "Selecione...";
+        selectEl.appendChild(optBlank);
+      }
+      options.forEach(o => {
+        const opt = document.createElement("option");
+        opt.value = o;
+        opt.textContent = o;
+        selectEl.appendChild(opt);
+      });
+      // tenta manter valor anterior se existir
+      if (current && options.includes(current)) {
+        selectEl.value = current;
+      }
+    }
+
+    function popularSelectsEdit() {
+      popularSelect(selectRegioes, config.regioes || [], true);
+      popularSelect(selectIdiomas, config.idiomas || [], true);
+      popularSelect(selectTempoExp, config.tempoExperiencia || [], true);
+    }
+
+    popularSelectsEdit();
 
     function selecionarSdrParaEdicao(id) {
       const sdr = sdrs.find(s => s.id === id);
@@ -719,12 +953,16 @@
       document.getElementById("edit-whats").value = sdr.whats || "";
       document.getElementById("edit-nicho").value = sdr.nicho || "";
       document.getElementById("edit-tipos").value = sdr.tiposEmpresa || "";
-      document.getElementById("edit-regioes").value = sdr.regioes || "";
-      document.getElementById("edit-idiomas").value = sdr.idiomas || "";
       document.getElementById("edit-exp").value = sdr.experiencia || "";
       document.getElementById("edit-canais").value = sdr.canais || "";
 
       fotoAtualBase64 = sdr.fotoBase64 || "";
+
+      // Selects com valor desse SDR
+      popularSelectsEdit();
+      selectRegioes.value = sdr.regioes || "";
+      selectIdiomas.value = sdr.idiomas || "";
+      selectTempoExp.value = sdr.tempoExp || "";
 
       if (fotoAtualBase64) {
         avatarPreview.innerHTML = '<img src="' + fotoAtualBase64 + '" alt="Foto SDR">';
@@ -735,13 +973,15 @@
 
       labelId.textContent = "ID interno: " + sdr.id;
 
-      // rating
       const ratingInfo = getRatingInfo(sdr);
       if (ratingInfo.count) {
         ratingSummary.style.display = "flex";
         renderStars(ratingStarsEl, ratingInfo.avg);
-        ratingTextEl.textContent = ratingInfo.avg.toFixed(1).replace('.', ',') + " • " +
-          ratingInfo.count + (ratingInfo.count === 1 ? " avaliação" : " avaliações");
+        ratingTextEl.textContent =
+          ratingInfo.avg.toFixed(1).replace(".", ",") +
+          " • " +
+          ratingInfo.count +
+          (ratingInfo.count === 1 ? " avaliação" : " avaliações");
       } else {
         ratingSummary.style.display = "none";
       }
@@ -898,10 +1138,13 @@
       sdrs[idx].whats = document.getElementById("edit-whats").value.trim();
       sdrs[idx].nicho = document.getElementById("edit-nicho").value.trim();
       sdrs[idx].tiposEmpresa = document.getElementById("edit-tipos").value.trim();
-      sdrs[idx].regioes = document.getElementById("edit-regioes").value.trim();
-      sdrs[idx].idiomas = document.getElementById("edit-idiomas").value.trim();
       sdrs[idx].experiencia = document.getElementById("edit-exp").value.trim();
       sdrs[idx].canais = document.getElementById("edit-canais").value.trim();
+
+      sdrs[idx].regioes = selectRegioes.value;
+      sdrs[idx].idiomas = selectIdiomas.value;
+      sdrs[idx].tempoExp = selectTempoExp.value;
+
       sdrs[idx].fotoBase64 = fotoAtualBase64;
 
       salvarSdrs();
@@ -917,3 +1160,4 @@
   </script>
 </body>
 </html>
+
