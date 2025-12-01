@@ -18,6 +18,8 @@
       --border: #e5e7eb;
       --danger: #b91c1c;
       --success: #15803d;
+      --star-on: #facc15;
+      --star-off: #e5e7eb;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -220,7 +222,6 @@
       margin-top: 10px;
     }
 
-    /* Form de edição */
     form {
       margin-top: 12px;
     }
@@ -238,8 +239,6 @@
 
     input[type="text"],
     input[type="tel"],
-    input[type="email"],
-    input[type="file"],
     textarea {
       width: 100%;
       border-radius: 10px;
@@ -256,8 +255,12 @@
     }
 
     input[type="file"] {
+      width: 100%;
+      border-radius: 10px;
+      border: 1px solid var(--border);
       padding: 5px 5px;
       font-size: 11px;
+      background: #ffffff;
     }
 
     .helper-text {
@@ -321,6 +324,76 @@
       margin-top: 4px;
     }
 
+    .rating-summary {
+      margin-top: 8px;
+      font-size: 12px;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .stars {
+      display: inline-flex;
+      gap: 1px;
+      font-size: 14px;
+    }
+
+    .stars span {
+      color: var(--star-off);
+    }
+
+    .stars span.filled {
+      color: var(--star-on);
+    }
+
+    .reviews-list {
+      margin-top: 10px;
+      max-height: 200px;
+      overflow-y: auto;
+      border-top: 1px solid #e5e7eb;
+      padding-top: 8px;
+    }
+
+    .review-item {
+      font-size: 11px;
+      border-bottom: 1px solid #f3f4f6;
+      padding: 6px 0;
+    }
+
+    .review-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2px;
+    }
+
+    .review-name {
+      font-weight: 600;
+      color: #111827;
+    }
+
+    .review-stars {
+      font-size: 12px;
+      color: var(--star-on);
+    }
+
+    .review-comment {
+      color: #4b5563;
+      margin-bottom: 3px;
+    }
+
+    .review-meta {
+      font-size: 10px;
+      color: var(--muted);
+    }
+
+    .review-actions {
+      margin-top: 4px;
+      display: flex;
+      gap: 4px;
+    }
+
     @media (max-width: 860px) {
       .layout {
         grid-template-columns: 1fr;
@@ -353,8 +426,7 @@
   <main>
     <h1>Painel de Administração de SDRs</h1>
     <p class="subtitle">
-      Aqui você consegue visualizar, editar e remover os SDRs cadastrados nas páginas
-      <strong>sdr-cadastro.html</strong> e <strong>sdr-lista.html</strong>, usando o mesmo armazenamento local.
+      Aqui você consegue visualizar, editar e remover os SDRs cadastrados e também gerenciar as avaliações deixadas pelos clientes.
     </p>
 
     <div class="layout">
@@ -389,16 +461,21 @@
         </p>
       </section>
 
-      <!-- Form de edição -->
+      <!-- Form de edição + avaliações -->
       <aside class="card">
         <h2>Editar cadastro do SDR</h2>
-        <small>Selecione um SDR na tabela para editar ou excluir.</small>
+        <small>Selecione um SDR na tabela para editar, ver avaliações ou excluir.</small>
 
         <div id="info-sdr-selecionado" style="margin-top:10px;display:none;">
           <div class="avatar-preview" id="avatar-preview">
             <span>SDR</span>
           </div>
           <span class="pill-id" id="label-id"></span>
+
+          <div class="rating-summary" id="rating-summary" style="display:none;">
+            <div class="stars" id="rating-stars"></div>
+            <span id="rating-text"></span>
+          </div>
         </div>
 
         <form id="form-edit" style="display:none;">
@@ -430,6 +507,21 @@
           </div>
 
           <div class="form-group">
+            <label for="edit-tipos">Tipos de empresa</label>
+            <input type="text" id="edit-tipos">
+          </div>
+
+          <div class="form-group">
+            <label for="edit-regioes">Regiões</label>
+            <input type="text" id="edit-regioes">
+          </div>
+
+          <div class="form-group">
+            <label for="edit-idiomas">Idiomas</label>
+            <input type="text" id="edit-idiomas">
+          </div>
+
+          <div class="form-group">
             <label for="edit-exp">Resumo de experiência</label>
             <textarea id="edit-exp"></textarea>
           </div>
@@ -457,6 +549,16 @@
         <p id="sem-sdr" class="empty">
           Nenhum SDR selecionado. Clique em “Editar” em algum cadastro na tabela.
         </p>
+
+        <!-- Avaliações -->
+        <div id="reviews-block" style="display:none;margin-top:14px;">
+          <h2 style="font-size:14px;margin-bottom:4px;">Avaliações do SDR</h2>
+          <small>Notas e comentários deixados por clientes (sem login).</small>
+
+          <div class="reviews-list" id="reviews-list">
+            <!-- items -->
+          </div>
+        </div>
       </aside>
     </div>
   </main>
@@ -472,9 +574,44 @@
     const infoSdrSelecionado = document.getElementById("info-sdr-selecionado");
     const avatarPreview = document.getElementById("avatar-preview");
     const labelId = document.getElementById("label-id");
+    const ratingSummary = document.getElementById("rating-summary");
+    const ratingStarsEl = document.getElementById("rating-stars");
+    const ratingTextEl = document.getElementById("rating-text");
+    const reviewsBlock = document.getElementById("reviews-block");
+    const reviewsList = document.getElementById("reviews-list");
+
+    function salvarSdrs() {
+      localStorage.setItem("inbotix_sdrs", JSON.stringify(sdrs));
+    }
+
+    function getRatingInfo(sdr) {
+      const reviews = sdr.reviews || [];
+      if (!reviews.length) return { avg: 0, count: 0 };
+      const sum = reviews.reduce((acc, r) => acc + (r.stars || 0), 0);
+      return { avg: sum / reviews.length, count: reviews.length };
+    }
+
+    function renderStars(container, avg) {
+      container.innerHTML = "";
+      const full = Math.round(avg * 2) / 2;
+      for (let i = 1; i <= 5; i++) {
+        const span = document.createElement("span");
+        span.textContent = "★";
+        if (i <= Math.round(full)) span.classList.add("filled");
+        container.appendChild(span);
+      }
+    }
 
     function carregarSdrs() {
       sdrs = JSON.parse(localStorage.getItem("inbotix_sdrs") || "[]");
+      sdrs = sdrs.map(s => ({
+        tiposEmpresa: "",
+        regioes: "",
+        idiomas: "",
+        reviews: [],
+        ...s,
+        reviews: Array.isArray(s.reviews) ? s.reviews : []
+      }));
       renderTabela();
       limparEdicao();
     }
@@ -488,12 +625,11 @@
       }
       emptyMessage.style.display = "none";
 
-      sdrs.sort((a, b) => b.id - a.id); // mais recente primeiro
+      sdrs.sort((a, b) => b.id - a.id);
 
       sdrs.forEach((sdr) => {
         const tr = document.createElement("tr");
 
-        // SDR + mini avatar
         const tdSdr = document.createElement("td");
         const row = document.createElement("div");
         row.style.display = "flex";
@@ -508,7 +644,7 @@
           img.alt = sdr.nome;
           avatar.appendChild(img);
         } else {
-          const iniciais = sdr.nome.trim().split(" ").map(p => p[0]).join("").slice(0, 2).toUpperCase();
+          const iniciais = (sdr.nome || "").trim().split(" ").map(p => p[0]).join("").slice(0, 2).toUpperCase() || "SDR";
           avatar.textContent = iniciais;
         }
 
@@ -574,6 +710,7 @@
       formEdit.style.display = "block";
       semSdr.style.display = "none";
       infoSdrSelecionado.style.display = "block";
+      reviewsBlock.style.display = "block";
 
       document.getElementById("edit-id").value = sdr.id;
       document.getElementById("edit-nome").value = sdr.nome || "";
@@ -581,12 +718,14 @@
       document.getElementById("edit-telefone").value = sdr.telefone || "";
       document.getElementById("edit-whats").value = sdr.whats || "";
       document.getElementById("edit-nicho").value = sdr.nicho || "";
+      document.getElementById("edit-tipos").value = sdr.tiposEmpresa || "";
+      document.getElementById("edit-regioes").value = sdr.regioes || "";
+      document.getElementById("edit-idiomas").value = sdr.idiomas || "";
       document.getElementById("edit-exp").value = sdr.experiencia || "";
       document.getElementById("edit-canais").value = sdr.canais || "";
 
       fotoAtualBase64 = sdr.fotoBase64 || "";
 
-      // avatar
       if (fotoAtualBase64) {
         avatarPreview.innerHTML = '<img src="' + fotoAtualBase64 + '" alt="Foto SDR">';
       } else {
@@ -595,12 +734,126 @@
       }
 
       labelId.textContent = "ID interno: " + sdr.id;
+
+      // rating
+      const ratingInfo = getRatingInfo(sdr);
+      if (ratingInfo.count) {
+        ratingSummary.style.display = "flex";
+        renderStars(ratingStarsEl, ratingInfo.avg);
+        ratingTextEl.textContent = ratingInfo.avg.toFixed(1).replace('.', ',') + " • " +
+          ratingInfo.count + (ratingInfo.count === 1 ? " avaliação" : " avaliações");
+      } else {
+        ratingSummary.style.display = "none";
+      }
+
+      renderReviews(sdr);
+    }
+
+    function renderReviews(sdr) {
+      reviewsList.innerHTML = "";
+      const reviews = sdr.reviews || [];
+      if (!reviews.length) {
+        reviewsList.innerHTML = '<p class="empty">Ainda não há avaliações para este SDR.</p>';
+        return;
+      }
+
+      reviews.forEach((rev, index) => {
+        const item = document.createElement("div");
+        item.className = "review-item";
+
+        const header = document.createElement("div");
+        header.className = "review-header";
+
+        const name = document.createElement("div");
+        name.className = "review-name";
+        name.textContent = rev.clientName || "Cliente (não identificado)";
+
+        const stars = document.createElement("div");
+        stars.className = "review-stars";
+        stars.textContent = "★".repeat(rev.stars || 0);
+
+        header.appendChild(name);
+        header.appendChild(stars);
+
+        const comment = document.createElement("div");
+        comment.className = "review-comment";
+        comment.textContent = rev.comment || "";
+
+        const meta = document.createElement("div");
+        meta.className = "review-meta";
+        const d = rev.date ? new Date(rev.date) : null;
+        meta.textContent = d ? d.toLocaleDateString("pt-BR") : "";
+
+        const actions = document.createElement("div");
+        actions.className = "review-actions";
+
+        const btnEdit = document.createElement("button");
+        btnEdit.className = "btn btn-edit";
+        btnEdit.style.fontSize = "10px";
+        btnEdit.textContent = "Editar";
+        btnEdit.addEventListener("click", () => editarReview(sdr.id, index));
+
+        const btnDel = document.createElement("button");
+        btnDel.className = "btn btn-delete";
+        btnDel.style.fontSize = "10px";
+        btnDel.textContent = "Excluir";
+        btnDel.addEventListener("click", () => excluirReview(sdr.id, index));
+
+        actions.appendChild(btnEdit);
+        actions.appendChild(btnDel);
+
+        item.appendChild(header);
+        item.appendChild(comment);
+        item.appendChild(meta);
+        item.appendChild(actions);
+
+        reviewsList.appendChild(item);
+      });
+    }
+
+    function editarReview(idSdr, idxReview) {
+      const sdr = sdrs.find(s => s.id === idSdr);
+      if (!sdr || !sdr.reviews || !sdr.reviews[idxReview]) return;
+      const rev = sdr.reviews[idxReview];
+
+      const newStars = prompt("Nova quantidade de estrelas (1 a 5):", rev.stars || 5);
+      if (!newStars) return;
+      const starsNum = parseInt(newStars, 10);
+      if (isNaN(starsNum) || starsNum < 1 || starsNum > 5) {
+        alert("Valor inválido de estrelas.");
+        return;
+      }
+
+      const newComment = prompt("Novo comentário:", rev.comment || "");
+      if (newComment === null) return;
+
+      rev.stars = starsNum;
+      rev.comment = newComment.trim();
+      salvarSdrs();
+      selecionarSdrParaEdicao(idSdr);
+      renderTabela();
+    }
+
+    function excluirReview(idSdr, idxReview) {
+      const sdrIndex = sdrs.findIndex(s => s.id === idSdr);
+      if (sdrIndex === -1) return;
+      const sdr = sdrs[sdrIndex];
+      if (!sdr.reviews || !sdr.reviews[idxReview]) return;
+
+      const ok = confirm("Tem certeza que deseja excluir esta avaliação?");
+      if (!ok) return;
+
+      sdr.reviews.splice(idxReview, 1);
+      salvarSdrs();
+      selecionarSdrParaEdicao(idSdr);
+      renderTabela();
     }
 
     function limparEdicao() {
       formEdit.style.display = "none";
       semSdr.style.display = "block";
       infoSdrSelecionado.style.display = "none";
+      reviewsBlock.style.display = "none";
       formEdit.reset();
       fotoAtualBase64 = "";
     }
@@ -609,16 +862,15 @@
       const sdr = sdrs.find(s => s.id === id);
       if (!sdr) return;
 
-      const ok = confirm(`Tem certeza que deseja excluir o SDR "${sdr.nome}"?`);
+      const ok = confirm(`Tem certeza que deseja excluir o SDR "${sdr.nome}" e todas as avaliações associadas?`);
       if (!ok) return;
 
       sdrs = sdrs.filter(s => s.id !== id);
-      localStorage.setItem("inbotix_sdrs", JSON.stringify(sdrs));
+      salvarSdrs();
       carregarSdrs();
       alert("Cadastro removido.");
     }
 
-    // Atualizar foto na edição (se o admin subir nova)
     document.getElementById("edit-foto").addEventListener("change", function () {
       const file = this.files[0];
       if (!file) return;
@@ -645,11 +897,14 @@
       sdrs[idx].telefone = document.getElementById("edit-telefone").value.trim();
       sdrs[idx].whats = document.getElementById("edit-whats").value.trim();
       sdrs[idx].nicho = document.getElementById("edit-nicho").value.trim();
+      sdrs[idx].tiposEmpresa = document.getElementById("edit-tipos").value.trim();
+      sdrs[idx].regioes = document.getElementById("edit-regioes").value.trim();
+      sdrs[idx].idiomas = document.getElementById("edit-idiomas").value.trim();
       sdrs[idx].experiencia = document.getElementById("edit-exp").value.trim();
       sdrs[idx].canais = document.getElementById("edit-canais").value.trim();
       sdrs[idx].fotoBase64 = fotoAtualBase64;
 
-      localStorage.setItem("inbotix_sdrs", JSON.stringify(sdrs));
+      salvarSdrs();
       carregarSdrs();
       alert("Cadastro atualizado com sucesso.");
     });
@@ -658,7 +913,6 @@
       limparEdicao();
     });
 
-    // Inicializa
     carregarSdrs();
   </script>
 </body>
