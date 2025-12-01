@@ -5,20 +5,23 @@
   <title>Marketplace de SDR – INBOTIX</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Encontre SDRs parceiros da INBOTIX para prospecção por performance. Escolha o SDR ideal para gerar leads para o seu negócio.">
-  <link rel="icon" type="image/png" href="icon-inbotix.png" />
+  <!-- Ícone da aba com o logo da INBOTIX -->
+  <link rel="icon" type="image/png" href="logo-inbotix.png" />
 
   <style>
     :root {
       --primary: #0f6fff;
       --primary-dark: #0050c8;
+      --primary-soft: #e4eeff;
       --accent: #22c55e;
       --accent-soft: rgba(34, 197, 94, 0.08);
-      --bg: #f3f6ff;
+      --bg: #f5f7fb;
       --bg-card: #ffffff;
-      --dark: #020617;
-      --text: #0f172a;
-      --muted: #64748b;
-      --border: #e2e8f0;
+      --dark: #0f172a;
+      --text: #1f2933;
+      --muted: #6b7280;
+      --border: #dbe2f0;
+      --border-strong: #b8c6f5;
       --danger: #b91c1c;
       --star-on: #facc15;
       --star-off: #e2e8f0;
@@ -28,23 +31,23 @@
 
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top left, #dbeafe 0, #f1f5f9 45%, #ffffff 100%);
+      background: radial-gradient(circle at top left, #e0ecff 0, #f5f7fb 40%, #ffffff 100%);
       color: var(--text);
       min-height: 100vh;
     }
 
     a { color: inherit; }
 
-    /* HEADER + HERO */
+    /* HEADER */
     header {
       padding: 14px 18px;
-      border-bottom: 1px solid rgba(148, 163, 184, 0.25);
-      background: linear-gradient(120deg, #020617 0, #020617 40%, #0f172a 100%);
-      color: #e5e7eb;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.35);
+      background: #ffffff;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 12px;
+      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
     }
 
     .header-left {
@@ -56,17 +59,16 @@
     .logo-block img {
       height: 32px;
       width: auto;
-      filter: drop-shadow(0 0 12px rgba(15, 111, 255, 0.6));
     }
 
     .logo-text {
       font-size: 12px;
-      color: #cbd5f5;
+      color: var(--muted);
     }
 
     .logo-text strong {
-      font-weight: 600;
-      color: #e5edff;
+      font-weight: 700;
+      color: var(--dark);
     }
 
     .header-right {
@@ -81,25 +83,27 @@
       font-size: 11px;
       padding: 4px 10px;
       border-radius: 999px;
-      background: rgba(148, 163, 253, 0.18);
-      color: #e0e7ff;
-      border: 1px solid rgba(129, 140, 248, 0.7);
+      background: rgba(15, 111, 255, 0.06);
+      color: var(--primary-dark);
+      border: 1px solid rgba(15, 111, 255, 0.3);
       white-space: nowrap;
+      font-weight: 500;
     }
 
     .btn-outline-header {
       border-radius: 999px;
-      border: 1px solid rgba(148, 163, 253, 0.8);
+      border: 1px solid rgba(15, 111, 255, 0.4);
       padding: 6px 12px;
       font-size: 11px;
-      color: #e5edff;
-      background: transparent;
+      color: var(--primary-dark);
+      background: #f0f5ff;
       cursor: pointer;
       text-decoration: none;
       display: inline-flex;
       align-items: center;
       gap: 6px;
       white-space: nowrap;
+      font-weight: 600;
     }
 
     .btn-outline-header span.icon {
@@ -112,14 +116,16 @@
       padding: 0 16px 32px;
     }
 
+    /* HERO */
     .hero {
-      background: linear-gradient(135deg, #0f172a 0, #0b1120 45%, #020617 100%);
+      background: linear-gradient(135deg, #ffffff 0, #eef3ff 40%, #e0ecff 100%);
       border-radius: 22px;
       padding: 18px 18px 20px;
-      color: #e5e7eb;
+      color: var(--dark);
       position: relative;
       overflow: hidden;
-      box-shadow: 0 18px 50px rgba(15, 23, 42, 0.55);
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
+      border: 1px solid rgba(15, 111, 255, 0.16);
       margin-bottom: 18px;
     }
 
@@ -128,9 +134,9 @@
       position: absolute;
       inset: -80px;
       background:
-        radial-gradient(circle at 0 0, rgba(59, 130, 246, 0.22) 0, transparent 55%),
-        radial-gradient(circle at 100% 0, rgba(56, 189, 248, 0.25) 0, transparent 60%),
-        radial-gradient(circle at 40% 100%, rgba(34, 197, 94, 0.26) 0, transparent 60%);
+        radial-gradient(circle at 0 0, rgba(15, 111, 255, 0.18) 0, transparent 55%),
+        radial-gradient(circle at 100% 0, rgba(56, 189, 248, 0.16) 0, transparent 60%),
+        radial-gradient(circle at 40% 100%, rgba(34, 197, 94, 0.16) 0, transparent 60%);
       opacity: 0.9;
       pointer-events: none;
     }
@@ -150,13 +156,6 @@
       }
     }
 
-    .hero-title {
-      font-size: 24px;
-      font-weight: 700;
-      letter-spacing: 0.01em;
-      margin-bottom: 6px;
-    }
-
     .hero-highlight {
       display: inline-flex;
       align-items: center;
@@ -164,16 +163,26 @@
       font-size: 11px;
       padding: 4px 8px;
       border-radius: 999px;
-      background: rgba(15, 23, 42, 0.7);
-      border: 1px solid rgba(148, 163, 253, 0.6);
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(15, 111, 255, 0.26);
       margin-bottom: 8px;
+      font-weight: 600;
+      color: var(--primary-dark);
+    }
+
+    .hero-title {
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: 0.01em;
+      margin-bottom: 6px;
+      color: var(--dark);
     }
 
     .hero-text {
       font-size: 13px;
-      color: #cbd5f5;
+      color: var(--muted);
       margin-bottom: 10px;
-      max-width: 420px;
+      max-width: 440px;
     }
 
     .hero-metrics {
@@ -186,8 +195,8 @@
     .hero-metric {
       padding: 6px 9px;
       border-radius: 12px;
-      background: rgba(15, 23, 42, 0.72);
-      border: 1px solid rgba(148, 163, 253, 0.4);
+      background: #ffffff;
+      border: 1px solid rgba(148, 163, 253, 0.6);
       display: flex;
       flex-direction: column;
       gap: 2px;
@@ -196,32 +205,33 @@
 
     .hero-metric strong {
       font-size: 14px;
+      color: var(--primary-dark);
     }
 
     .hero-side-card {
-      background: rgba(15, 23, 42, 0.92);
+      background: #ffffff;
       border-radius: 18px;
       padding: 12px 12px 14px;
-      border: 1px solid rgba(148, 163, 253, 0.4);
-      box-shadow: 0 12px 32px rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 253, 0.8);
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.14);
     }
 
     .hero-side-title {
       font-size: 12px;
-      font-weight: 600;
+      font-weight: 700;
       margin-bottom: 4px;
-      color: #e5edff;
+      color: var(--dark);
     }
 
     .hero-side-text {
       font-size: 11px;
-      color: #cbd5f5;
+      color: var(--muted);
       margin-bottom: 8px;
     }
 
     .hero-side-list {
       font-size: 11px;
-      color: #cbd5f5;
+      color: var(--text);
       list-style: none;
       display: flex;
       flex-direction: column;
@@ -231,7 +241,7 @@
 
     .hero-side-list li::before {
       content: "• ";
-      color: #60a5fa;
+      color: var(--primary-dark);
     }
 
     .hero-cta-row {
@@ -247,11 +257,11 @@
       border: none;
       padding: 8px 14px;
       font-size: 12px;
-      font-weight: 600;
+      font-weight: 700;
       cursor: pointer;
-      background: linear-gradient(135deg, #22c55e, #16a34a);
-      color: #ecfdf3;
-      box-shadow: 0 14px 32px rgba(22, 163, 74, 0.7);
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: #ffffff;
+      box-shadow: 0 14px 32px rgba(15, 111, 255, 0.6);
       text-decoration: none;
       display: inline-flex;
       align-items: center;
@@ -260,7 +270,7 @@
 
     .hero-cta-helper {
       font-size: 10px;
-      color: #a5b4fc;
+      color: var(--muted);
     }
 
     /* TOOLBAR + FILTROS */
@@ -286,6 +296,11 @@
       max-width: 60ch;
     }
 
+    .toolbar-text strong {
+      font-weight: 700;
+      color: var(--dark);
+    }
+
     .toolbar-actions {
       display: flex;
       gap: 8px;
@@ -295,16 +310,17 @@
 
     .btn-outline {
       border-radius: 999px;
-      border: 1px solid var(--border);
+      border: 1px solid rgba(148, 163, 253, 0.7);
       padding: 7px 14px;
       background: #ffffff;
       font-size: 12px;
       cursor: pointer;
-      color: var(--text);
+      color: var(--primary-dark);
       text-decoration: none;
       display: inline-flex;
       align-items: center;
       gap: 6px;
+      font-weight: 600;
     }
 
     .btn-outline span.icon {
@@ -329,17 +345,27 @@
     .filter-label {
       font-size: 11px;
       color: var(--muted);
+      font-weight: 600;
     }
 
     .filter-input,
     .filter-select {
       border-radius: 999px;
-      border: 1px solid var(--border);
+      border: 1px solid var(--border-strong);
       padding: 7px 11px;
       font-size: 12px;
       font-family: inherit;
-      background: #ffffff;
+      background: #f5f7ff;
       width: 100%;
+      outline: none;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+    }
+
+    .filter-input:focus,
+    .filter-select:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 2px rgba(15, 111, 255, 0.18);
+      background: #ffffff;
     }
 
     .counter {
@@ -347,6 +373,7 @@
       color: var(--muted);
       text-align: right;
       margin-top: 2px;
+      font-weight: 600;
     }
 
     /* LISTA DE SDRS */
@@ -367,6 +394,55 @@
       grid-template-columns: auto minmax(0, 2.4fr) minmax(0, 1.4fr);
       gap: 14px;
       align-items: stretch;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-sdr::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 5px;
+      height: 100%;
+      background: linear-gradient(180deg, rgba(15, 111, 255, 0.7), rgba(0, 80, 200, 0.6));
+    }
+
+    .card-sdr.top-sdr {
+      border-color: rgba(15, 111, 255, 0.7);
+      box-shadow: 0 18px 46px rgba(15, 111, 255, 0.36);
+    }
+
+    .top-ribbon {
+      position: absolute;
+      top: 8px;
+      right: 12px;
+      font-size: 10px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: #16a34a;
+      color: #ffffff;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      box-shadow: 0 10px 22px rgba(22, 163, 74, 0.5);
+    }
+
+    .new-ribbon {
+      position: absolute;
+      top: 32px;
+      right: 12px;
+      font-size: 10px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: #0f6fff;
+      color: #ffffff;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      box-shadow: 0 8px 18px rgba(15, 111, 255, 0.4);
     }
 
     @media (max-width: 880px) {
@@ -379,6 +455,11 @@
     @media (max-width: 640px) {
       .card-sdr {
         grid-template-columns: minmax(0, 1fr);
+      }
+      .top-ribbon,
+      .new-ribbon {
+        position: static;
+        margin-bottom: 4px;
       }
     }
 
@@ -430,6 +511,7 @@
       color: #1d4ed8;
       text-align: center;
       max-width: 140px;
+      font-weight: 600;
     }
 
     .card-middle {
@@ -447,7 +529,7 @@
 
     .nome {
       font-size: 17px;
-      font-weight: 600;
+      font-weight: 700;
       color: var(--dark);
     }
 
@@ -458,11 +540,33 @@
       background: #f9fafb;
       border: 1px solid #e5e7eb;
       color: var(--muted);
+      font-weight: 500;
+    }
+
+    .badge-inline {
+      font-size: 10px;
+      padding: 2px 7px;
+      border-radius: 999px;
+      background: rgba(34, 197, 94, 0.08);
+      border: 1px solid rgba(34, 197, 94, 0.4);
+      color: #15803d;
+      font-weight: 600;
+    }
+
+    .badge-inline-blue {
+      background: rgba(15, 111, 255, 0.08);
+      border-color: rgba(15, 111, 255, 0.4);
+      color: var(--primary-dark);
     }
 
     .meta-line {
       font-size: 12px;
       color: var(--muted);
+    }
+
+    .meta-line strong {
+      font-weight: 600;
+      color: var(--dark);
     }
 
     .exp {
@@ -498,6 +602,7 @@
     .rating-count {
       font-size: 11px;
       color: var(--muted);
+      font-weight: 500;
     }
 
     .last-comment {
@@ -528,6 +633,7 @@
       background: #eff6ff;
       border: 1px solid #dbeafe;
       color: #1d4ed8;
+      font-weight: 500;
     }
 
     .tag-alt {
@@ -562,6 +668,7 @@
       gap: 5px;
       text-decoration: none;
       min-width: 160px;
+      font-weight: 600;
     }
 
     .btn-contact.tel {
@@ -579,6 +686,7 @@
     .btn-contact small {
       font-size: 11px;
       opacity: 0.9;
+      font-weight: 500;
     }
 
     .btn-linkedin {
@@ -593,6 +701,7 @@
       text-decoration: none;
       color: #0a66c2;
       background: #f0f9ff;
+      font-weight: 600;
     }
 
     .btn-rate-toggle {
@@ -605,6 +714,7 @@
       text-decoration: underline;
       padding: 0;
       text-align: left;
+      font-weight: 600;
     }
 
     /* FORM AVALIAÇÃO */
@@ -620,6 +730,7 @@
       font-size: 11px;
       color: var(--muted);
       margin-bottom: 2px;
+      font-weight: 600;
     }
 
     .rate-form input[type="text"],
@@ -663,6 +774,7 @@
       cursor: pointer;
       background: linear-gradient(135deg, var(--primary), var(--primary-dark));
       color: #fff;
+      font-weight: 600;
     }
 
     .rate-helper {
@@ -676,6 +788,7 @@
       color: var(--muted);
       margin-top: 14px;
       text-align: center;
+      font-weight: 500;
     }
 
     .footnote-bottom {
@@ -700,11 +813,11 @@
       </div>
       <div class="logo-text">
         <strong>INBOTIX – SDR Marketplace</strong><br>
-        Prospecção B2B por performance, com SDRs validados.
+        Prospecção B2B por performance com SDRs validados.
       </div>
     </div>
     <div class="header-right">
-      <span class="badge">Metodologia Receita Previsível</span>
+      <span class="badge">Máquina de Vendas + SDR Digital</span>
       <a href="sdr-cadastro.html" class="btn-outline-header">
         <span class="icon">⚡</span>
         Sou SDR e quero me cadastrar
@@ -747,12 +860,12 @@
         <aside class="hero-side-card">
           <div class="hero-side-title">Como funciona na prática?</div>
           <p class="hero-side-text">
-            1. Encontre um SDR com experiência no seu segmento.<br>
-            2. Fale direto com ele por telefone ou WhatsApp.<br>
-            3. Combine o cardápio de leads e comece a operação.
+            <strong>1.</strong> Encontre um SDR com experiência no seu segmento.<br>
+            <strong>2.</strong> Fale direto com ele por telefone ou WhatsApp.<br>
+            <strong>3.</strong> Combine o cardápio de leads e comece a operação.
           </p>
           <ul class="hero-side-list">
-            <li>INBOTIX apoia na metodologia e no modelo de cobrança.</li>
+            <li>A INBOTIX apoia na metodologia e no modelo de cobrança.</li>
             <li>Você não precisa montar estrutura de SDR interna.</li>
             <li>Foco total em geração de oportunidades para o seu comercial.</li>
           </ul>
@@ -761,7 +874,7 @@
               <span>Quero falar com a INBOTIX</span>
             </a>
             <span class="hero-cta-helper">
-              Preferiu se conectar direto com um SDR? Use a lista abaixo e chame por WhatsApp.
+              Prefere se conectar direto com um SDR? Use a lista abaixo e chame por WhatsApp.
             </span>
           </div>
         </aside>
@@ -772,8 +885,8 @@
     <section class="toolbar">
       <div class="toolbar-row">
         <p class="toolbar-text">
-          Use os filtros abaixo para encontrar o SDR ideal por nome, nicho, região, idioma, canal de prospecção
-          ou tempo de experiência. Para avaliar um SDR, clique em “Avaliar este SDR” dentro do cartão.
+          <strong>Como usar:</strong> filtre por nome, nicho, região, idioma, canal de prospecção ou tempo de experiência
+          para encontrar o SDR ideal. Para avaliar um SDR, clique em <strong>“Avaliar este SDR”</strong> dentro do cartão.
         </p>
         <div class="toolbar-actions">
           <a href="sdr-cadastro.html" class="btn-outline">
@@ -790,7 +903,7 @@
       <div class="toolbar-row">
         <div class="filters">
           <div class="filter-group" style="min-width:230px;">
-            <span class="filter-label">Buscar por nome, nicho, tipo de empresa ou palavra-chave</span>
+            <span class="filter-label">Buscar por nome, nicho ou palavra-chave</span>
             <input id="filtro-texto" class="filter-input" type="text" placeholder="Ex.: marketing, logística, SaaS, João..." />
           </div>
           <div class="filter-group">
@@ -873,7 +986,7 @@
         reviews: Array.isArray(s.reviews) ? s.reviews : []
       }));
 
-      // Ordenar cadastros (mais novos primeiro)
+      // Ordenação base (mais novos primeiro)
       sdrs.sort((a, b) => (b.id || 0) - (a.id || 0));
 
       if (!sdrs.length) {
@@ -894,6 +1007,17 @@
       const avg = sum / reviews.length;
       const last = reviews.slice().sort((a, b) => (b.date || 0) - (a.date || 0))[0];
       return { avg, count: reviews.length, last };
+    }
+
+    function isTopSdr(sdr) {
+      const info = getRatingInfo(sdr);
+      return info.count >= 3 && info.avg >= 4.8;
+    }
+
+    function isNewSdr(sdr) {
+      const created = sdr.id || 0;
+      const fourteenDays = 1000 * 60 * 60 * 24 * 14;
+      return Date.now() - created < fourteenDays;
     }
 
     function criarStars(avg) {
@@ -1022,6 +1146,25 @@
         );
       }
 
+      // Ordenar com Top SDR primeiro
+      filtrados.sort((a, b) => {
+        const topA = isTopSdr(a);
+        const topB = isTopSdr(b);
+        if (topA && !topB) return -1;
+        if (!topA && topB) return 1;
+
+        // se ambos são Top SDR, ordenar por média e número de reviews
+        if (topA && topB) {
+          const ra = getRatingInfo(a);
+          const rb = getRatingInfo(b);
+          if (rb.avg !== ra.avg) return rb.avg - ra.avg;
+          if (rb.count !== ra.count) return rb.count - ra.count;
+        }
+
+        // fallback: mais novo primeiro
+        return (b.id || 0) - (a.id || 0);
+      });
+
       if (!filtrados.length) {
         emptyMessage.style.display = "block";
         contadorSdrs.textContent = "0 SDR encontrado";
@@ -1044,6 +1187,24 @@
       const card = document.createElement("article");
       card.className = "card-sdr";
       card.dataset.id = sdr.id;
+
+      const top = isTopSdr(sdr);
+      const novo = isNewSdr(sdr);
+
+      if (top) {
+        card.classList.add("top-sdr");
+        const topRibbon = document.createElement("div");
+        topRibbon.className = "top-ribbon";
+        topRibbon.innerHTML = "<span>⭐</span><span>Top SDR</span>";
+        card.appendChild(topRibbon);
+      }
+
+      if (novo) {
+        const newRibbon = document.createElement("div");
+        newRibbon.className = "new-ribbon";
+        newRibbon.innerHTML = "<span>🆕</span><span>Novo na vitrine</span>";
+        card.appendChild(newRibbon);
+      }
 
       // LEFT
       const left = document.createElement("div");
@@ -1097,21 +1258,35 @@
       nomeRow.appendChild(nomeEl);
       nomeRow.appendChild(idChip);
 
+      if (top) {
+        const badgeTop = document.createElement("span");
+        badgeTop.className = "badge-inline";
+        badgeTop.textContent = "Top SDR";
+        nomeRow.appendChild(badgeTop);
+      }
+
+      if (novo) {
+        const badgeNovo = document.createElement("span");
+        badgeNovo.className = "badge-inline badge-inline-blue";
+        badgeNovo.textContent = "Novo na vitrine";
+        nomeRow.appendChild(badgeNovo);
+      }
+
       const nichosEl = document.createElement("div");
       nichosEl.className = "meta-line";
-      nichosEl.textContent = "Nichos: " + (sdr.nicho || "-");
+      nichosEl.innerHTML = "<strong>Nichos:</strong> " + (sdr.nicho || "-");
 
       const tiposEl = document.createElement("div");
       tiposEl.className = "meta-line";
-      tiposEl.textContent = "Tipos de empresa: " + (sdr.tiposEmpresa || "-");
+      tiposEl.innerHTML = "<strong>Tipos de empresa:</strong> " + (sdr.tiposEmpresa || "-");
 
       const regioesEl = document.createElement("div");
       regioesEl.className = "meta-line";
-      regioesEl.textContent = "Região: " + (sdr.regioes || "-");
+      regioesEl.innerHTML = "<strong>Região:</strong> " + (sdr.regioes || "-");
 
       const idiomasEl = document.createElement("div");
       idiomasEl.className = "meta-line";
-      idiomasEl.textContent = "Idioma: " + (sdr.idiomas || "-");
+      idiomasEl.innerHTML = "<strong>Idioma:</strong> " + (sdr.idiomas || "-");
 
       const expEl = document.createElement("div");
       expEl.className = "exp";
