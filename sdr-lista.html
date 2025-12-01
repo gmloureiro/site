@@ -220,13 +220,13 @@
       border: 1px solid #e5e7eb;
       color: var(--muted);
       text-align: center;
-      max-width: 120px;
+      max-width: 140px;
     }
 
     .card-middle {
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      gap: 3px;
     }
 
     .nome {
@@ -236,7 +236,7 @@
       margin-bottom: 2px;
     }
 
-    .nichos {
+    .meta-line {
       font-size: 12px;
       color: var(--muted);
     }
@@ -244,7 +244,7 @@
     .exp {
       font-size: 12px;
       color: var(--text);
-      margin-top: 2px;
+      margin-top: 3px;
     }
 
     .tags {
@@ -261,6 +261,12 @@
       background: #eff6ff;
       border: 1px solid #dbeafe;
       color: #1d4ed8;
+    }
+
+    .tag-secondary {
+      background: #f3f4f6;
+      border-color: #e5e7eb;
+      color: var(--muted);
     }
 
     .card-right {
@@ -340,7 +346,7 @@
     <section class="toolbar">
       <div class="toolbar-row">
         <div class="toolbar-info">
-          Filtre por nome, região ou canal de prospecção para encontrar o SDR ideal para o seu negócio.
+          Filtre por nome, nicho, tipo de empresa, região, canal ou idioma para encontrar o SDR ideal.
         </div>
         <a href="sdr-cadastro.html" class="btn-outline">
           Sou SDR e quero me cadastrar
@@ -349,20 +355,26 @@
 
       <div class="toolbar-row">
         <div class="filters">
-          <div class="filter-group" style="min-width:200px;">
-            <span class="filter-label">Buscar por nome, nicho ou palavra-chave</span>
-            <input id="filtro-texto" class="filter-input" type="text" placeholder="Ex: tecnologia, logística, Gabriel...">
+          <div class="filter-group" style="min-width:220px;">
+            <span class="filter-label">Buscar por nome, nicho, tipo de empresa ou palavra-chave</span>
+            <input id="filtro-texto" class="filter-input" type="text" placeholder="Ex: tecnologia, SaaS, logística, Maria...">
           </div>
           <div class="filter-group">
-            <span class="filter-label">Filtrar por região (cidade/estado)</span>
+            <span class="filter-label">Região de atuação</span>
             <select id="filtro-regiao" class="filter-select">
               <option value="">Todas as regiões</option>
             </select>
           </div>
           <div class="filter-group">
-            <span class="filter-label">Filtrar por canal de prospecção</span>
+            <span class="filter-label">Canal de prospecção</span>
             <select id="filtro-canal" class="filter-select">
               <option value="">Todos os canais</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <span class="filter-label">Idioma de atendimento</span>
+            <select id="filtro-idioma" class="filter-select">
+              <option value="">Todos os idiomas</option>
             </select>
           </div>
         </div>
@@ -390,6 +402,7 @@
     const filtroTexto = document.getElementById('filtro-texto');
     const filtroRegiao = document.getElementById('filtro-regiao');
     const filtroCanal = document.getElementById('filtro-canal');
+    const filtroIdioma = document.getElementById('filtro-idioma');
     const contadorSdrs = document.getElementById('contador-sdrs');
 
     function criarCardSdr(sdr) {
@@ -408,8 +421,8 @@
         img.alt = sdr.nome;
         avatar.appendChild(img);
       } else {
-        const iniciais = sdr.nome.trim().split(" ").map(p => p[0]).join("").slice(0, 2).toUpperCase();
-        avatar.textContent = iniciais || "SDR";
+        const iniciais = (sdr.nome || '').trim().split(" ").map(p => p[0]).join("").slice(0, 2).toUpperCase();
+        avatar.textContent = iniciais || 'SDR';
       }
 
       const cidadePill = document.createElement('div');
@@ -428,8 +441,20 @@
       nomeEl.textContent = sdr.nome;
 
       const nichosEl = document.createElement('div');
-      nichosEl.className = 'nichos';
+      nichosEl.className = 'meta-line';
       nichosEl.textContent = "Nichos: " + (sdr.nicho || "-");
+
+      const tiposEl = document.createElement('div');
+      tiposEl.className = 'meta-line';
+      tiposEl.textContent = "Tipos de empresa: " + (sdr.tiposEmpresa || "-");
+
+      const regioesEl = document.createElement('div');
+      regioesEl.className = 'meta-line';
+      regioesEl.textContent = "Regiões: " + (sdr.regioes || "-");
+
+      const idiomasEl = document.createElement('div');
+      idiomasEl.className = 'meta-line';
+      idiomasEl.textContent = "Idiomas: " + (sdr.idiomas || "-");
 
       const expEl = document.createElement('div');
       expEl.className = 'exp';
@@ -449,6 +474,9 @@
 
       middle.appendChild(nomeEl);
       middle.appendChild(nichosEl);
+      middle.appendChild(tiposEl);
+      middle.appendChild(regioesEl);
+      middle.appendChild(idiomasEl);
       if (sdr.experiencia) middle.appendChild(expEl);
       middle.appendChild(tagsEl);
 
@@ -458,14 +486,22 @@
 
       const btnTel = document.createElement('a');
       btnTel.className = 'btn-contact tel';
-      btnTel.href = 'tel:' + (sdr.telefone || '').replace(/\D/g, '');
-      btnTel.innerHTML = '<span>📞 Ligar</span><small>' + (sdr.telefone || '') + '</small>';
+      if (sdr.telefone) {
+        btnTel.href = 'tel:' + (sdr.telefone || '').replace(/\D/g, '');
+      } else {
+        btnTel.href = 'javascript:void(0)';
+      }
+      btnTel.innerHTML = '<span>📞 Ligar</span><small>' + (sdr.telefone || 'Sem telefone') + '</small>';
 
       const btnWhats = document.createElement('a');
       btnWhats.className = 'btn-contact whats';
-      btnWhats.href = 'https://wa.me/' + (sdr.whats || '').replace(/\D/g, '');
-      btnWhats.target = '_blank';
-      btnWhats.rel = 'noopener noreferrer';
+      if (sdr.whats) {
+        btnWhats.href = 'https://wa.me/' + (sdr.whats || '').replace(/\D/g, '');
+        btnWhats.target = '_blank';
+        btnWhats.rel = 'noopener noreferrer';
+      } else {
+        btnWhats.href = 'javascript:void(0)';
+      }
       btnWhats.innerHTML = '<span>💬 WhatsApp</span><small>Chamar agora</small>';
 
       right.appendChild(btnTel);
@@ -479,25 +515,36 @@
     }
 
     function popularFiltros() {
-      // regiões
-      const regioes = new Set();
+      const regioesSet = new Set();
       const canaisSet = new Set();
+      const idiomasSet = new Set();
 
       sdrs.forEach(sdr => {
-        if (sdr.cidade && sdr.cidade.trim()) {
-          regioes.add(sdr.cidade.trim());
-        }
+        // regiões: quebrar campo regioes por vírgula
+        (sdr.regioes || '').split(',')
+          .map(r => r.trim())
+          .filter(Boolean)
+          .forEach(r => regioesSet.add(r));
+
+        // canais
         (sdr.canais || '').split(',')
           .map(c => c.trim())
           .filter(Boolean)
           .forEach(c => canaisSet.add(c));
+
+        // idiomas
+        (sdr.idiomas || '').split(',')
+          .map(i => i.trim())
+          .filter(Boolean)
+          .forEach(i => idiomasSet.add(i));
       });
 
-      // limpa
+      // limpa selects
       filtroRegiao.innerHTML = '<option value="">Todas as regiões</option>';
       filtroCanal.innerHTML = '<option value="">Todos os canais</option>';
+      filtroIdioma.innerHTML = '<option value="">Todos os idiomas</option>';
 
-      Array.from(regioes).sort().forEach(r => {
+      Array.from(regioesSet).sort().forEach(r => {
         const opt = document.createElement('option');
         opt.value = r;
         opt.textContent = r;
@@ -510,34 +557,65 @@
         opt.textContent = c;
         filtroCanal.appendChild(opt);
       });
+
+      Array.from(idiomasSet).sort().forEach(i => {
+        const opt = document.createElement('option');
+        opt.value = i;
+        opt.textContent = i;
+        filtroIdioma.appendChild(opt);
+      });
     }
 
     function aplicarFiltros() {
       const texto = (filtroTexto.value || '').toLowerCase();
       const regiao = filtroRegiao.value;
       const canal = filtroCanal.value;
+      const idioma = filtroIdioma.value;
 
       listaContainer.innerHTML = '';
 
       let filtrados = sdrs;
 
+      // filtro texto: nome + nicho + tiposEmpresa + experiencia
       if (texto) {
         filtrados = filtrados.filter(sdr => {
-          const blob = (sdr.nome + ' ' + (sdr.nicho || '') + ' ' + (sdr.experiencia || '')).toLowerCase();
+          const blob = (
+            (sdr.nome || '') + ' ' +
+            (sdr.nicho || '') + ' ' +
+            (sdr.tiposEmpresa || '') + ' ' +
+            (sdr.experiencia || '')
+          ).toLowerCase();
           return blob.includes(texto);
         });
       }
 
+      // filtro região
       if (regiao) {
-        filtrados = filtrados.filter(sdr => (sdr.cidade || '').trim() === regiao);
+        filtrados = filtrados.filter(sdr =>
+          (sdr.regioes || '').toLowerCase().split(',')
+            .map(r => r.trim())
+            .filter(Boolean)
+            .includes(regiao.toLowerCase())
+        );
       }
 
+      // filtro canal
       if (canal) {
         filtrados = filtrados.filter(sdr =>
           (sdr.canais || '').toLowerCase().split(',')
             .map(c => c.trim())
             .filter(Boolean)
             .includes(canal.toLowerCase())
+        );
+      }
+
+      // filtro idioma
+      if (idioma) {
+        filtrados = filtrados.filter(sdr =>
+          (sdr.idiomas || '').toLowerCase().split(',')
+            .map(i => i.trim())
+            .filter(Boolean)
+            .includes(idioma.toLowerCase())
         );
       }
 
@@ -554,11 +632,21 @@
         listaContainer.appendChild(card);
       });
 
-      contadorSdrs.textContent = filtrados.length + (filtrados.length === 1 ? ' SDR encontrado' : ' SDRs encontrados');
+      contadorSdrs.textContent =
+        filtrados.length + (filtrados.length === 1 ? ' SDR encontrado' : ' SDRs encontrados');
     }
 
     function carregarSdrs() {
       sdrs = JSON.parse(localStorage.getItem('inbotix_sdrs') || '[]');
+
+      // garantir campos novos para cadastros antigos
+      sdrs = sdrs.map(s => ({
+        tiposEmpresa: '',
+        regioes: '',
+        idiomas: '',
+        ...s
+      }));
+
       sdrs.sort((a, b) => b.id - a.id); // mais recentes primeiro
 
       if (!sdrs.length) {
@@ -575,6 +663,7 @@
     filtroTexto.addEventListener('input', aplicarFiltros);
     filtroRegiao.addEventListener('change', aplicarFiltros);
     filtroCanal.addEventListener('change', aplicarFiltros);
+    filtroIdioma.addEventListener('change', aplicarFiltros);
 
     // Inicializa
     carregarSdrs();
