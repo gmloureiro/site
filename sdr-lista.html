@@ -64,7 +64,7 @@
     }
 
     main {
-      max-width: 1100px;
+      max-width: 1120px;
       margin: 24px auto 32px;
       padding: 0 16px 32px;
     }
@@ -81,16 +81,23 @@
       margin-bottom: 18px;
     }
 
+    /* TOOLBAR / FILTROS */
     .toolbar {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
+      flex-direction: column;
+      gap: 10px;
       margin-bottom: 16px;
     }
 
-    .toolbar-left {
+    .toolbar-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .toolbar-info {
       font-size: 12px;
       color: var(--muted);
     }
@@ -103,40 +110,96 @@
       font-size: 12px;
       cursor: pointer;
       color: var(--text);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
     }
 
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .filter-group {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      min-width: 150px;
+      flex: 1;
+    }
+
+    .filter-label {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .filter-input,
+    .filter-select {
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      padding: 7px 12px;
+      font-size: 12px;
+      font-family: inherit;
+      background: #ffffff;
+      width: 100%;
+    }
+
+    .counter {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* CARDS */
     .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 6px;
     }
 
     .card-sdr {
       background: #ffffff;
-      border-radius: 16px;
+      border-radius: 18px;
       border: 1px solid var(--border);
-      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
-      padding: 14px 14px 16px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .card-header {
-      display: flex;
-      gap: 10px;
+      box-shadow: 0 14px 38px rgba(15, 23, 42, 0.09);
+      padding: 16px 16px 14px;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      gap: 14px;
       align-items: center;
     }
 
+    @media (max-width: 780px) {
+      .card-sdr {
+        grid-template-columns: auto minmax(0, 1fr);
+        grid-template-rows: auto auto;
+      }
+    }
+
+    @media (max-width: 580px) {
+      .card-sdr {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .card-left {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+
     .avatar {
-      width: 54px;
-      height: 54px;
+      width: 70px;
+      height: 70px;
       border-radius: 999px;
       background: linear-gradient(135deg, #e5e7eb, #cbd5f5);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 18px;
+      font-size: 20px;
       font-weight: 700;
       color: #4b5563;
       overflow: hidden;
@@ -149,16 +212,28 @@
       object-fit: cover;
     }
 
+    .cidade-pill {
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: #f3f4f6;
+      border: 1px solid #e5e7eb;
+      color: var(--muted);
+      text-align: center;
+      max-width: 120px;
+    }
+
+    .card-middle {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
     .nome {
-      font-size: 15px;
+      font-size: 17px;
       font-weight: 600;
       color: var(--dark);
       margin-bottom: 2px;
-    }
-
-    .cidade {
-      font-size: 12px;
-      color: var(--muted);
     }
 
     .nichos {
@@ -169,37 +244,43 @@
     .exp {
       font-size: 12px;
       color: var(--text);
+      margin-top: 2px;
     }
 
     .tags {
       display: flex;
       flex-wrap: wrap;
       gap: 4px;
-      margin-top: 4px;
+      margin-top: 6px;
     }
 
     .tag {
       font-size: 11px;
       padding: 2px 7px;
       border-radius: 999px;
-      background: #f3f4f6;
-      border: 1px solid #e5e7eb;
-      color: var(--muted);
+      background: #eff6ff;
+      border: 1px solid #dbeafe;
+      color: #1d4ed8;
     }
 
-    .contact {
-      margin-top: 8px;
+    .card-right {
       display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
+      flex-direction: column;
+      gap: 6px;
+      align-items: flex-end;
+      justify-content: center;
+    }
+
+    @media (max-width: 580px) {
+      .card-right {
+        align-items: stretch;
+      }
     }
 
     .btn-contact {
-      flex: 1;
-      min-width: 120px;
       border-radius: 999px;
       border: none;
-      padding: 7px 10px;
+      padding: 7px 12px;
       font-size: 12px;
       cursor: pointer;
       display: inline-flex;
@@ -207,6 +288,7 @@
       justify-content: center;
       gap: 5px;
       text-decoration: none;
+      min-width: 150px;
     }
 
     .btn-contact.tel {
@@ -221,10 +303,15 @@
       box-shadow: 0 10px 22px rgba(34, 197, 94, 0.45);
     }
 
+    .btn-contact small {
+      font-size: 11px;
+      opacity: 0.8;
+    }
+
     .empty {
       font-size: 13px;
       color: var(--muted);
-      margin-top: 10px;
+      margin-top: 14px;
     }
   </style>
 </head>
@@ -245,40 +332,76 @@
   <main>
     <h1>SDRs parceiros da INBOTIX</h1>
     <p class="subtitle">
-      Aqui você encontra SDRs que trabalham com o método INBOTIX: eles fazem a prospecção,
+      Esses SDRs trabalham seguindo a metodologia INBOTIX: eles fazem a prospecção
       e você só paga pelos leads gerados, conforme o cardápio de leads.
     </p>
 
-    <div class="toolbar">
-      <div class="toolbar-left">
-        Os perfis abaixo foram cadastrados diretamente pelos SDRs e validados pela INBOTIX.
+    <!-- TOOLBAR + FILTROS -->
+    <section class="toolbar">
+      <div class="toolbar-row">
+        <div class="toolbar-info">
+          Filtre por nome, região ou canal de prospecção para encontrar o SDR ideal para o seu negócio.
+        </div>
+        <a href="sdr-cadastro.html" class="btn-outline">
+          Sou SDR e quero me cadastrar
+        </a>
       </div>
-      <a href="sdr-cadastro.html" class="btn-outline">
-        Sou SDR e quero me cadastrar
-      </a>
-    </div>
 
+      <div class="toolbar-row">
+        <div class="filters">
+          <div class="filter-group" style="min-width:200px;">
+            <span class="filter-label">Buscar por nome, nicho ou palavra-chave</span>
+            <input id="filtro-texto" class="filter-input" type="text" placeholder="Ex: tecnologia, logística, Gabriel...">
+          </div>
+          <div class="filter-group">
+            <span class="filter-label">Filtrar por região (cidade/estado)</span>
+            <select id="filtro-regiao" class="filter-select">
+              <option value="">Todas as regiões</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <span class="filter-label">Filtrar por canal de prospecção</span>
+            <select id="filtro-canal" class="filter-select">
+              <option value="">Todos os canais</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="counter" id="contador-sdrs">
+          <!-- preenchido via JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- LISTA DE SDRS -->
     <section id="lista-sdrs" class="grid">
       <!-- Cards gerados via JS -->
     </section>
 
     <p id="empty-message" class="empty" style="display:none;">
-      Ainda não há SDRs cadastrados neste navegador. Peça para o SDR acessar a página
-      <strong>sdr-cadastro.html</strong> para se registrar.
+      Nenhum SDR encontrado com os filtros atuais. Tente limpar os filtros ou ampliar sua busca.
     </p>
   </main>
 
   <script>
+    let sdrs = [];
+    const listaContainer = document.getElementById('lista-sdrs');
+    const emptyMessage = document.getElementById('empty-message');
+    const filtroTexto = document.getElementById('filtro-texto');
+    const filtroRegiao = document.getElementById('filtro-regiao');
+    const filtroCanal = document.getElementById('filtro-canal');
+    const contadorSdrs = document.getElementById('contador-sdrs');
+
     function criarCardSdr(sdr) {
       const card = document.createElement('article');
       card.className = 'card-sdr';
 
-      const header = document.createElement('div');
-      header.className = 'card-header';
+      // LEFT
+      const left = document.createElement('div');
+      left.className = 'card-left';
 
       const avatar = document.createElement('div');
       avatar.className = 'avatar';
-
       if (sdr.fotoBase64) {
         const img = document.createElement('img');
         img.src = sdr.fotoBase64;
@@ -286,91 +409,174 @@
         avatar.appendChild(img);
       } else {
         const iniciais = sdr.nome.trim().split(" ").map(p => p[0]).join("").slice(0, 2).toUpperCase();
-        avatar.textContent = iniciais;
+        avatar.textContent = iniciais || "SDR";
       }
 
-      const info = document.createElement('div');
+      const cidadePill = document.createElement('div');
+      cidadePill.className = 'cidade-pill';
+      cidadePill.textContent = sdr.cidade || 'Cidade / Estado';
+
+      left.appendChild(avatar);
+      left.appendChild(cidadePill);
+
+      // MIDDLE
+      const middle = document.createElement('div');
+      middle.className = 'card-middle';
+
       const nomeEl = document.createElement('div');
       nomeEl.className = 'nome';
       nomeEl.textContent = sdr.nome;
 
-      const cidadeEl = document.createElement('div');
-      cidadeEl.className = 'cidade';
-      cidadeEl.textContent = sdr.cidade;
-
-      info.appendChild(nomeEl);
-      info.appendChild(cidadeEl);
-
-      header.appendChild(avatar);
-      header.appendChild(info);
-
       const nichosEl = document.createElement('div');
       nichosEl.className = 'nichos';
-      nichosEl.textContent = "Nichos: " + sdr.nicho;
+      nichosEl.textContent = "Nichos: " + (sdr.nicho || "-");
 
       const expEl = document.createElement('div');
       expEl.className = 'exp';
-      expEl.textContent = sdr.experiencia;
+      expEl.textContent = sdr.experiencia || "";
 
       const tagsEl = document.createElement('div');
       tagsEl.className = 'tags';
+      (sdr.canais || '').split(',')
+        .map(t => t.trim())
+        .filter(Boolean)
+        .forEach(c => {
+          const tag = document.createElement('span');
+          tag.className = 'tag';
+          tag.textContent = c;
+          tagsEl.appendChild(tag);
+        });
 
-      // quebrar canais em tags
-      (sdr.canais || '').split(',').map(t => t.trim()).filter(Boolean).forEach(c => {
-        const tag = document.createElement('span');
-        tag.className = 'tag';
-        tag.textContent = c;
-        tagsEl.appendChild(tag);
-      });
+      middle.appendChild(nomeEl);
+      middle.appendChild(nichosEl);
+      if (sdr.experiencia) middle.appendChild(expEl);
+      middle.appendChild(tagsEl);
 
-      const contact = document.createElement('div');
-      contact.className = 'contact';
+      // RIGHT
+      const right = document.createElement('div');
+      right.className = 'card-right';
 
       const btnTel = document.createElement('a');
       btnTel.className = 'btn-contact tel';
-      btnTel.href = 'tel:' + sdr.telefone.replace(/\D/g, '');
-      btnTel.textContent = 'Ligar: ' + sdr.telefone;
+      btnTel.href = 'tel:' + (sdr.telefone || '').replace(/\D/g, '');
+      btnTel.innerHTML = '<span>📞 Ligar</span><small>' + (sdr.telefone || '') + '</small>';
 
       const btnWhats = document.createElement('a');
       btnWhats.className = 'btn-contact whats';
-      btnWhats.href = 'https://wa.me/' + sdr.whats.replace(/\D/g, '');
+      btnWhats.href = 'https://wa.me/' + (sdr.whats || '').replace(/\D/g, '');
       btnWhats.target = '_blank';
       btnWhats.rel = 'noopener noreferrer';
-      btnWhats.textContent = 'Chamar no WhatsApp';
+      btnWhats.innerHTML = '<span>💬 WhatsApp</span><small>Chamar agora</small>';
 
-      contact.appendChild(btnTel);
-      contact.appendChild(btnWhats);
+      right.appendChild(btnTel);
+      right.appendChild(btnWhats);
 
-      card.appendChild(header);
-      card.appendChild(nichosEl);
-      card.appendChild(expEl);
-      card.appendChild(tagsEl);
-      card.appendChild(contact);
+      card.appendChild(left);
+      card.appendChild(middle);
+      card.appendChild(right);
 
       return card;
     }
 
-    function carregarSdrs() {
-      const listaContainer = document.getElementById('lista-sdrs');
-      const emptyMessage = document.getElementById('empty-message');
+    function popularFiltros() {
+      // regiões
+      const regioes = new Set();
+      const canaisSet = new Set();
 
-      const sdrs = JSON.parse(localStorage.getItem('inbotix_sdrs') || "[]");
+      sdrs.forEach(sdr => {
+        if (sdr.cidade && sdr.cidade.trim()) {
+          regioes.add(sdr.cidade.trim());
+        }
+        (sdr.canais || '').split(',')
+          .map(c => c.trim())
+          .filter(Boolean)
+          .forEach(c => canaisSet.add(c));
+      });
 
-      if (!sdrs.length) {
+      // limpa
+      filtroRegiao.innerHTML = '<option value="">Todas as regiões</option>';
+      filtroCanal.innerHTML = '<option value="">Todos os canais</option>';
+
+      Array.from(regioes).sort().forEach(r => {
+        const opt = document.createElement('option');
+        opt.value = r;
+        opt.textContent = r;
+        filtroRegiao.appendChild(opt);
+      });
+
+      Array.from(canaisSet).sort().forEach(c => {
+        const opt = document.createElement('option');
+        opt.value = c;
+        opt.textContent = c;
+        filtroCanal.appendChild(opt);
+      });
+    }
+
+    function aplicarFiltros() {
+      const texto = (filtroTexto.value || '').toLowerCase();
+      const regiao = filtroRegiao.value;
+      const canal = filtroCanal.value;
+
+      listaContainer.innerHTML = '';
+
+      let filtrados = sdrs;
+
+      if (texto) {
+        filtrados = filtrados.filter(sdr => {
+          const blob = (sdr.nome + ' ' + (sdr.nicho || '') + ' ' + (sdr.experiencia || '')).toLowerCase();
+          return blob.includes(texto);
+        });
+      }
+
+      if (regiao) {
+        filtrados = filtrados.filter(sdr => (sdr.cidade || '').trim() === regiao);
+      }
+
+      if (canal) {
+        filtrados = filtrados.filter(sdr =>
+          (sdr.canais || '').toLowerCase().split(',')
+            .map(c => c.trim())
+            .filter(Boolean)
+            .includes(canal.toLowerCase())
+        );
+      }
+
+      if (!filtrados.length) {
         emptyMessage.style.display = 'block';
+        contadorSdrs.textContent = '0 SDR encontrado';
         return;
       }
 
       emptyMessage.style.display = 'none';
 
-      sdrs.sort((a, b) => b.id - a.id); // mais recentes primeiro
-
-      sdrs.forEach(sdr => {
+      filtrados.forEach(sdr => {
         const card = criarCardSdr(sdr);
         listaContainer.appendChild(card);
       });
+
+      contadorSdrs.textContent = filtrados.length + (filtrados.length === 1 ? ' SDR encontrado' : ' SDRs encontrados');
     }
 
+    function carregarSdrs() {
+      sdrs = JSON.parse(localStorage.getItem('inbotix_sdrs') || '[]');
+      sdrs.sort((a, b) => b.id - a.id); // mais recentes primeiro
+
+      if (!sdrs.length) {
+        emptyMessage.style.display = 'block';
+        contadorSdrs.textContent = '0 SDR cadastrado neste navegador';
+        return;
+      }
+
+      popularFiltros();
+      aplicarFiltros();
+    }
+
+    // Eventos dos filtros
+    filtroTexto.addEventListener('input', aplicarFiltros);
+    filtroRegiao.addEventListener('change', aplicarFiltros);
+    filtroCanal.addEventListener('change', aplicarFiltros);
+
+    // Inicializa
     carregarSdrs();
   </script>
 </body>
