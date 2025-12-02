@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <title>Admin SDR – INBOTIX</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Painel interno para gerenciar SDRs e catálogos do marketplace INBOTIX.">
+  <meta name="description" content="Painel interno para gerenciar SDRs, catálogos e cadastros de avaliadores do marketplace INBOTIX.">
   <link rel="icon" type="image/png" href="logo-inbotix.png" />
 
   <style>
@@ -25,11 +25,7 @@
       --star-off: #e2e8f0;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -51,22 +47,13 @@
       box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
     }
 
-    .header-left {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .header-left img {
-      height: 32px;
-      width: auto;
-    }
+    .header-left { display: flex; align-items: center; gap: 10px; }
+    .header-left img { height: 32px; width: auto; }
 
     .header-title {
       font-size: 13px;
       color: var(--muted);
     }
-
     .header-title strong {
       display: block;
       font-size: 15px;
@@ -103,10 +90,6 @@
       align-items: center;
       gap: 6px;
       font-weight: 600;
-    }
-
-    .btn-outline-header span.icon {
-      font-size: 13px;
     }
 
     main {
@@ -166,15 +149,10 @@
     }
 
     @media (max-width: 960px) {
-      .config-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
+      .config-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
-
     @media (max-width: 720px) {
-      .config-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
+      .config-grid { grid-template-columns: minmax(0, 1fr); }
     }
 
     .config-card {
@@ -261,22 +239,22 @@
       color: var(--muted);
     }
 
-    /* SDR TABLE */
-    .sdr-toolbar {
+    /* TOOLBARS & TABLES */
+    .toolbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
       gap: 8px;
+      flex-wrap: wrap;
       margin-bottom: 8px;
     }
 
-    .sdr-toolbar-info {
+    .toolbar-info {
       font-size: 11px;
       color: var(--muted);
     }
 
-    .sdr-toolbar-actions {
+    .toolbar-actions {
       display: flex;
       gap: 6px;
       flex-wrap: wrap;
@@ -302,7 +280,7 @@
       background: #fef2f2;
     }
 
-    .sdr-table-wrapper {
+    .table-wrapper {
       border-radius: 12px;
       border: 1px solid var(--border);
       overflow: auto;
@@ -332,8 +310,12 @@
       z-index: 1;
     }
 
-    tr:nth-child(even) td {
-      background: #f9fafb;
+    tr:nth-child(even) td { background: #f9fafb; }
+
+    .empty {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 8px;
     }
 
     .sdr-name {
@@ -346,6 +328,18 @@
       font-size: 10px;
       color: var(--muted);
     }
+
+    .stars {
+      display: inline-flex;
+      gap: 1px;
+    }
+
+    .star {
+      color: var(--star-off);
+      font-size: 13px;
+    }
+
+    .star.filled { color: var(--star-on); }
 
     .chip {
       display: inline-flex;
@@ -410,27 +404,7 @@
       background: #fef2f2;
     }
 
-    .stars {
-      display: inline-flex;
-      gap: 1px;
-    }
-
-    .star {
-      color: var(--star-off);
-      font-size: 13px;
-    }
-
-    .star.filled {
-      color: var(--star-on);
-    }
-
-    .empty {
-      font-size: 12px;
-      color: var(--muted);
-      margin-top: 8px;
-    }
-
-    /* MODALS */
+    /* MODAIS (edição + reviews) - iguais ao anterior */
     .modal-backdrop {
       position: fixed;
       inset: 0;
@@ -481,10 +455,7 @@
       cursor: pointer;
     }
 
-    .modal-body {
-      font-size: 12px;
-      color: var(--text);
-    }
+    .modal-body { font-size: 12px; color: var(--text); }
 
     .form-grid {
       display: grid;
@@ -494,9 +465,7 @@
     }
 
     @media (max-width: 640px) {
-      .form-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
+      .form-grid { grid-template-columns: minmax(0, 1fr); }
     }
 
     .form-group {
@@ -572,18 +541,13 @@
       gap: 8px;
     }
 
-    .review-item:last-child {
-      border-bottom: none;
-    }
+    .review-item:last-child { border-bottom: none; }
 
     .review-main {
       max-width: calc(100% - 70px);
     }
 
-    .review-name {
-      font-weight: 600;
-      margin-bottom: 1px;
-    }
+    .review-name { font-weight: 600; margin-bottom: 1px; }
 
     .review-meta {
       font-size: 10px;
@@ -617,14 +581,13 @@
       </a>
       <div class="header-title">
         <strong>Admin SDR – INBOTIX</strong>
-        Configuração do marketplace de SDRs e curadoria dos perfis.
+        Configuração do marketplace e cadastros da plataforma.
       </div>
     </div>
     <div class="header-right">
       <span class="badge">Uso local em navegador – ambiente de testes</span>
       <a href="sdr-lista.html" class="btn-outline-header">
-        <span class="icon">👁</span>
-        Ver vitrine de SDRs
+        👁 Ver vitrine de SDRs
       </a>
     </div>
   </header>
@@ -637,7 +600,7 @@
           <div class="section-title">Catálogos para cadastro de SDR</div>
           <div class="section-subtitle">
             Aqui você define as opções padrão de <strong>região, nicho, tipo de empresa, canais, idioma e experiência</strong>.
-            O formulário de cadastro e a vitrine usam essas listas para padronizar tudo.
+            O formulário de cadastro e a vitrine usam estas listas para manter tudo padronizado.
           </div>
         </div>
         <span class="section-badge">Configuração salva no navegador (localStorage)</span>
@@ -646,7 +609,7 @@
       <div class="config-grid">
         <div class="config-card" data-key="regioes">
           <div class="config-title">Regiões de atuação</div>
-          <div class="config-help">Ex.: Brasil inteiro, Sudeste, Sul, LATAM, Europa...</div>
+          <div class="config-help">Ex.: Brasil inteiro, Sudeste, Sul, LATAM...</div>
           <div class="config-input-row">
             <input type="text" placeholder="Adicionar região..." />
             <button type="button">+ Adicionar</button>
@@ -706,8 +669,8 @@
       </div>
 
       <div class="config-footer">
-        As alterações são salvas automaticamente. Se você mudar estes catálogos, os formulários dos SDRs passam a
-        usar as novas opções em <strong>sdr-cadastro.html</strong> e a vitrine fica ainda mais organizada.
+        As alterações são salvas automaticamente. Em produção, esses catálogos podem ser carregados do banco/CRM,
+        mas aqui já te dão uma visão clara de como tudo pode ficar padronizado.
       </div>
     </section>
 
@@ -715,20 +678,19 @@
     <section class="section">
       <div class="section-header">
         <div>
-          <div class="section-title">SDRs cadastrados neste navegador</div>
+          <div class="section-title">SDRs cadastrados</div>
           <div class="section-subtitle">
-            Aqui você vê, edita, marca <strong>Premium</strong>, <strong>Verificado pela INBOTIX</strong>, 
-            indica se <strong>usa stack INBOTIX</strong> e pode excluir perfis de teste.
+            Visualize, edite e marque selos como <strong>Premium</strong>, <strong>Top Performer</strong>,
+            <strong>Verificado INBOTIX</strong> e <strong>Usa stack INBOTIX</strong>.
           </div>
         </div>
         <span class="section-badge">Fonte: localStorage – chave <code>inbotix_sdrs</code></span>
       </div>
 
-      <div class="sdr-toolbar">
-        <div class="sdr-toolbar-info" id="sdr-info">
-          Carregando SDRs...
-        </div>
-        <div class="sdr-toolbar-actions">
+      <div class="toolbar">
+        <div class="toolbar-info" id="sdr-info">Carregando SDRs...</div>
+        <div class="toolbar-actions">
+          <button type="button" class="btn-small" id="btn-export-sdrs">⬇ Exportar SDRs (CSV)</button>
           <button type="button" class="btn-small" id="btn-reload">Recarregar lista</button>
           <button type="button" class="btn-small danger" id="btn-clear-all">
             Limpar todos os SDRs (apenas teste)
@@ -736,11 +698,12 @@
         </div>
       </div>
 
-      <div class="sdr-table-wrapper">
+      <div class="table-wrapper">
         <table id="sdr-table">
           <thead>
             <tr>
               <th>SDR</th>
+              <th>Data cadastro</th>
               <th>Nichos & Regiões</th>
               <th>Idioma & Experiência</th>
               <th>Notas / Avaliações</th>
@@ -759,9 +722,60 @@
         <strong>sdr-cadastro.html</strong> e depois volte aqui.
       </div>
     </section>
+
+    <!-- CADASTROS DE EMPRESAS / AVALIADORES -->
+    <section class="section">
+      <div class="section-header">
+        <div>
+          <div class="section-title">Cadastros de empresas / avaliadores</div>
+          <div class="section-subtitle">
+            Toda pessoa que avalia um SDR vira um cadastro aqui: <strong>nome, empresa, e-mail, telefone, LinkedIn</strong>,
+            mais a nota e o comentário. Isso é a sua futura base de leads para prospecção.
+          </div>
+        </div>
+        <span class="section-badge">Dados extraídos das avaliações dos SDRs</span>
+      </div>
+
+      <div class="toolbar">
+        <div class="toolbar-info" id="reviews-info">
+          Carregando cadastros de avaliadores...
+        </div>
+        <div class="toolbar-actions">
+          <button type="button" class="btn-small" id="btn-export-reviews">
+            ⬇ Exportar avaliadores (CSV)
+          </button>
+        </div>
+      </div>
+
+      <div class="table-wrapper">
+        <table id="reviews-table">
+          <thead>
+            <tr>
+              <th>Data</th>
+              <th>Nome do contato</th>
+              <th>Empresa</th>
+              <th>E-mail</th>
+              <th>Telefone</th>
+              <th>LinkedIn</th>
+              <th>SDR avaliado</th>
+              <th>Estrelas</th>
+              <th>Comentário</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- preenchido via JS -->
+          </tbody>
+        </table>
+      </div>
+
+      <div id="reviews-empty" class="empty" style="display:none;">
+        Ainda não há avaliações cadastradas neste ambiente. Assim que clientes avaliarem os SDRs na vitrine,
+        os cadastros aparecerão aqui.
+      </div>
+    </section>
   </main>
 
-  <!-- MODAL EDIÇÃO -->
+  <!-- MODAL EDIÇÃO DE SDR -->
   <div id="modal-edit" class="modal-backdrop">
     <div class="modal">
       <div class="modal-header">
@@ -827,8 +841,7 @@
           <div class="form-footer">
             <button type="submit" class="btn-primary">Salvar alterações</button>
             <div class="form-hint">
-              Para alterações mais estruturais (ex.: adicionar novos nichos, regiões ou canais), 
-              ajuste os catálogos acima. Isso garante que o marketplace fique sempre padronizado.
+              Para alterações mais estruturais (novos nichos, regiões etc.), ajuste os catálogos acima.
             </div>
           </div>
         </form>
@@ -836,13 +849,13 @@
     </div>
   </div>
 
-  <!-- MODAL AVALIAÇÕES -->
+  <!-- MODAL AVALIAÇÕES (visualizar/remover) -->
   <div id="modal-reviews" class="modal-backdrop">
     <div class="modal">
       <div class="modal-header">
         <div>
-          <div class="modal-title" id="reviews-title">Avaliações deste SDR</div>
-          <div class="modal-subtitle" id="reviews-subtitle"></div>
+          <div class="modal-title" id="reviews-modal-title">Avaliações deste SDR</div>
+          <div class="modal-subtitle" id="reviews-modal-subtitle"></div>
         </div>
         <button type="button" class="modal-close" id="close-reviews">Fechar</button>
       </div>
@@ -862,11 +875,19 @@
     let config = null;
     let topPerformerId = null;
     let ratingMap = new Map();
+    let allReviews = [];
 
+    // DOM SDR
     const sdrTableBody = document.querySelector("#sdr-table tbody");
     const sdrInfo = document.getElementById("sdr-info");
     const sdrEmpty = document.getElementById("sdr-empty");
 
+    // DOM Reviews (cadastros)
+    const reviewsTableBody = document.querySelector("#reviews-table tbody");
+    const reviewsInfo = document.getElementById("reviews-info");
+    const reviewsEmpty = document.getElementById("reviews-empty");
+
+    // Modal Edit
     const modalEdit = document.getElementById("modal-edit");
     const closeEdit = document.getElementById("close-edit");
     const editForm = document.getElementById("edit-form");
@@ -884,10 +905,11 @@
     const editLinkedin = document.getElementById("edit-linkedin");
     const editExp = document.getElementById("edit-exp");
 
+    // Modal Reviews
     const modalReviews = document.getElementById("modal-reviews");
     const closeReviews = document.getElementById("close-reviews");
-    const reviewsTitle = document.getElementById("reviews-title");
-    const reviewsSubtitle = document.getElementById("reviews-subtitle");
+    const reviewsModalTitle = document.getElementById("reviews-modal-title");
+    const reviewsModalSubtitle = document.getElementById("reviews-modal-subtitle");
     const reviewsList = document.getElementById("reviews-list");
 
     function defaultConfig() {
@@ -958,35 +980,38 @@
       });
     }
 
-    /* ---------- SDRS ---------- */
+    /* ---------- SDRS E REVIEWS ---------- */
     function loadSdrs() {
       try {
         sdrs = JSON.parse(localStorage.getItem(SDR_KEY) || "[]");
       } catch (e) {
-        console.warn("Erro ao carregar SDRs", e);
         sdrs = [];
       }
 
-      // normalizar
       sdrs = sdrs.map(s => ({
         reviews: [],
         premium: !!s.premium,
         verified: !!s.verified,
         usaInbotix: !!s.usaInbotix,
+        createdAt: s.createdAt || new Date().toISOString(),
         ...s,
         reviews: Array.isArray(s.reviews) ? s.reviews : []
       }));
 
       recomputeRatings();
       computeTopPerformer();
+      buildAllReviews();
       renderSdrTable();
+      renderReviewsTable();
     }
 
     function saveSdrs() {
       localStorage.setItem(SDR_KEY, JSON.stringify(sdrs));
       recomputeRatings();
       computeTopPerformer();
+      buildAllReviews();
       renderSdrTable();
+      renderReviewsTable();
     }
 
     function getRatingInfo(sdr) {
@@ -1021,6 +1046,19 @@
       topPerformerId = bestId;
     }
 
+    function buildAllReviews() {
+      allReviews = [];
+      sdrs.forEach(sdr => {
+        (sdr.reviews || []).forEach(r => {
+          allReviews.push({
+            ...r,
+            sdrId: sdr.id,
+            sdrNome: sdr.nome || "SDR"
+          });
+        });
+      });
+    }
+
     function createStars(avg) {
       const div = document.createElement("div");
       div.className = "stars";
@@ -1034,6 +1072,14 @@
       return div;
     }
 
+    function formatDate(d) {
+      if (!d) return "-";
+      const dt = new Date(d);
+      if (isNaN(dt.getTime())) return "-";
+      return dt.toLocaleDateString("pt-BR");
+    }
+
+    /* ---------- TABELA DE SDRS ---------- */
     function renderSdrTable() {
       sdrTableBody.innerHTML = "";
 
@@ -1042,15 +1088,13 @@
         sdrEmpty.style.display = "block";
         return;
       }
-
       sdrEmpty.style.display = "none";
 
       sdrs.forEach(sdr => {
         const tr = document.createElement("tr");
-
         const info = ratingMap.get(sdr.id) || { avg: 0, count: 0 };
 
-        // col SDR
+        // SDR
         const tdSdr = document.createElement("td");
         const nameEl = document.createElement("div");
         nameEl.className = "sdr-name";
@@ -1062,14 +1106,19 @@
         tdSdr.appendChild(metaEl);
         tr.appendChild(tdSdr);
 
-        // col nichos & regiões
+        // Data cadastro
+        const tdData = document.createElement("td");
+        tdData.textContent = formatDate(sdr.createdAt);
+        tr.appendChild(tdData);
+
+        // Nichos & regiões
         const tdNr = document.createElement("td");
         tdNr.innerHTML =
           "<div><strong>Nichos:</strong> " + (sdr.nicho || "-") + "</div>" +
           "<div><strong>Tipos de empresa:</strong> " + (sdr.tiposEmpresa || "-") + "</div>";
         tr.appendChild(tdNr);
 
-        // col idioma & exp
+        // Idioma & experiência
         const tdIe = document.createElement("td");
         tdIe.innerHTML =
           "<div><strong>Idioma:</strong> " + (sdr.idiomas || "-") + "</div>" +
@@ -1077,7 +1126,7 @@
           "<div><strong>Canais:</strong> " + (sdr.canais || "-") + "</div>";
         tr.appendChild(tdIe);
 
-        // col notas
+        // Notas
         const tdNotas = document.createElement("td");
         if (info.count) {
           const stars = createStars(info.avg);
@@ -1095,7 +1144,7 @@
         }
         tr.appendChild(tdNotas);
 
-        // col selos
+        // Selos
         const tdSelos = document.createElement("td");
         if (sdr.premium) {
           const chipP = document.createElement("span");
@@ -1121,10 +1170,10 @@
           chipI.textContent = "Usa stack INBOTIX";
           tdSelos.appendChild(chipI);
         }
-
         if (!tdSelos.innerHTML) tdSelos.textContent = "—";
+        tr.appendChild(tdSelos);
 
-        // col ações
+        // Ações
         const tdActions = document.createElement("td");
         tdActions.className = "td-actions";
 
@@ -1169,17 +1218,13 @@
       const sdr = sdrs[idx];
 
       const premium = confirm("Marcar / desmarcar este SDR como PREMIUM?\nOK = alternar status.");
-      if (premium) {
-        sdr.premium = !sdr.premium;
-      }
+      if (premium) sdr.premium = !sdr.premium;
+
       const verified = confirm("Marcar / desmarcar este SDR como VERIFICADO INBOTIX?\nOK = alternar status.");
-      if (verified) {
-        sdr.verified = !sdr.verified;
-      }
-      const inb = confirm("Marcar / desmarcar que este SDR usa stack INBOTIX (New Dinbot, etc.)?\nOK = alternar status.");
-      if (inb) {
-        sdr.usaInbotix = !sdr.usaInbotix;
-      }
+      if (verified) sdr.verified = !sdr.verified;
+
+      const inb = confirm("Marcar / desmarcar que este SDR usa stack INBOTIX?\nOK = alternar status.");
+      if (inb) sdr.usaInbotix = !sdr.usaInbotix;
 
       saveSdrs();
     }
@@ -1188,6 +1233,67 @@
       if (!confirm("Tem certeza que deseja excluir este SDR? Esta ação remove o cadastro deste navegador.")) return;
       sdrs = sdrs.filter(s => s.id !== id);
       saveSdrs();
+    }
+
+    /* ---------- TABELA DE AVALIADORES ---------- */
+    function renderReviewsTable() {
+      reviewsTableBody.innerHTML = "";
+
+      if (!allReviews.length) {
+        reviewsEmpty.style.display = "block";
+        reviewsInfo.textContent = "0 avaliação encontrada neste ambiente.";
+        return;
+      }
+
+      reviewsEmpty.style.display = "none";
+      reviewsInfo.textContent =
+        allReviews.length +
+        (allReviews.length === 1 ? " avaliação cadastrada." : " avaliações cadastradas.");
+
+      allReviews
+        .slice()
+        .sort((a, b) => (a.date || "").localeCompare(b.date || ""))
+        .forEach(r => {
+          const tr = document.createElement("tr");
+
+          const tdData = document.createElement("td");
+          tdData.textContent = formatDate(r.date);
+          tr.appendChild(tdData);
+
+          const tdNome = document.createElement("td");
+          tdNome.textContent = r.clientName || "";
+          tr.appendChild(tdNome);
+
+          const tdEmpresa = document.createElement("td");
+          tdEmpresa.textContent = r.clientCompany || "";
+          tr.appendChild(tdEmpresa);
+
+          const tdEmail = document.createElement("td");
+          tdEmail.textContent = r.clientEmail || "";
+          tr.appendChild(tdEmail);
+
+          const tdTel = document.createElement("td");
+          tdTel.textContent = r.clientPhone || "";
+          tr.appendChild(tdTel);
+
+          const tdLinkedin = document.createElement("td");
+          tdLinkedin.textContent = r.clientLinkedin || "";
+          tr.appendChild(tdLinkedin);
+
+          const tdSdr = document.createElement("td");
+          tdSdr.textContent = r.sdrNome || "";
+          tr.appendChild(tdSdr);
+
+          const tdStars = document.createElement("td");
+          tdStars.textContent = (r.stars || 0) + "★";
+          tr.appendChild(tdStars);
+
+          const tdComment = document.createElement("td");
+          tdComment.textContent = r.comment || "";
+          tr.appendChild(tdComment);
+
+          reviewsTableBody.appendChild(tr);
+        });
     }
 
     /* ---------- MODAL EDIT ---------- */
@@ -1260,14 +1366,14 @@
       if (e.target === modalEdit) closeEditModal();
     });
 
-    /* ---------- MODAL REVIEWS ---------- */
+    /* ---------- MODAL REVIEWS POR SDR ---------- */
     function openReviewsModal(id) {
       const sdr = sdrs.find(s => s.id === id);
       if (!sdr) return;
 
       const info = ratingMap.get(sdr.id) || { avg: 0, count: 0 };
-      reviewsTitle.textContent = "Avaliações de " + (sdr.nome || "SDR");
-      reviewsSubtitle.textContent = info.count
+      reviewsModalTitle.textContent = "Avaliações de " + (sdr.nome || "SDR");
+      reviewsModalSubtitle.textContent = info.count
         ? info.avg.toFixed(1).replace(".", ",") +
           " de média em " +
           info.count +
@@ -1286,20 +1392,25 @@
 
           const main = document.createElement("div");
           main.className = "review-main";
-          const nomeC = (r.clientName || "").trim() || "Cliente";
+
           const name = document.createElement("div");
           name.className = "review-name";
-          name.textContent = nomeC + " • " + (r.stars || 0) + "★";
+          name.textContent =
+            (r.clientName || "Cliente") + " • " + (r.clientCompany || "");
           const comment = document.createElement("div");
           comment.textContent = r.comment || "";
           const meta = document.createElement("div");
           meta.className = "review-meta";
           const dt = r.date ? new Date(r.date) : null;
-          meta.textContent = dt ? "Data: " + dt.toLocaleDateString("pt-BR") : "";
+          meta.textContent =
+            (r.stars || 0) +
+            "★ • " +
+            (dt ? dt.toLocaleDateString("pt-BR") : "") +
+            (r.clientEmail ? " • " + r.clientEmail : "");
 
           main.appendChild(name);
           main.appendChild(comment);
-          if (meta.textContent) main.appendChild(meta);
+          main.appendChild(meta);
 
           const actions = document.createElement("div");
           actions.className = "review-actions";
@@ -1310,7 +1421,7 @@
             if (!confirm("Remover esta avaliação?")) return;
             sdr.reviews.splice(index, 1);
             saveSdrs();
-            openReviewsModal(id); // reabrir atualizado
+            openReviewsModal(id);
           });
           actions.appendChild(btnDel);
 
@@ -1330,6 +1441,110 @@
     closeReviews.addEventListener("click", closeReviewsModal);
     modalReviews.addEventListener("click", (e) => {
       if (e.target === modalReviews) closeReviewsModal();
+    });
+
+    /* ---------- EXPORT CSV ---------- */
+    function downloadCsv(filename, headers, rows) {
+      const escape = (val) => {
+        if (val == null) return "";
+        const str = String(val).replace(/"/g, '""');
+        return `"${str}"`;
+      };
+      const lines = [];
+      lines.push(headers.map(escape).join(";"));
+      rows.forEach(row => {
+        lines.push(row.map(escape).join(";"));
+      });
+      const blob = new Blob([lines.join("\n")], { type: "text/csv;charset=utf-8;" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    document.getElementById("btn-export-sdrs").addEventListener("click", () => {
+      if (!sdrs.length) {
+        alert("Não há SDRs para exportar.");
+        return;
+      }
+      const headers = [
+        "ID",
+        "Data cadastro",
+        "Nome",
+        "Cidade",
+        "Região",
+        "Idioma",
+        "Tempo experiência",
+        "Nichos",
+        "Tipos de empresa",
+        "Canais",
+        "Telefone",
+        "WhatsApp",
+        "LinkedIn",
+        "Premium",
+        "Verificado INBOTIX",
+        "Usa stack INBOTIX",
+        "Qtd avaliações",
+        "Média estrelas"
+      ];
+      const rows = sdrs.map(s => {
+        const info = ratingMap.get(s.id) || { avg: 0, count: 0 };
+        return [
+          s.id || "",
+          formatDate(s.createdAt),
+          s.nome || "",
+          s.cidade || "",
+          s.regioes || "",
+          s.idiomas || "",
+          s.tempoExp || "",
+          s.nicho || "",
+          s.tiposEmpresa || "",
+          s.canais || "",
+          s.telefone || "",
+          s.whats || "",
+          s.linkedin || "",
+          s.premium ? "Sim" : "Não",
+          s.verified ? "Sim" : "Não",
+          s.usaInbotix ? "Sim" : "Não",
+          info.count || 0,
+          info.count ? info.avg.toFixed(2).replace(".", ",") : ""
+        ];
+      });
+      downloadCsv("sdrs_inbotix.csv", headers, rows);
+    });
+
+    document.getElementById("btn-export-reviews").addEventListener("click", () => {
+      if (!allReviews.length) {
+        alert("Não há avaliações para exportar.");
+        return;
+      }
+      const headers = [
+        "Data avaliação",
+        "Nome contato",
+        "Empresa",
+        "E-mail",
+        "Telefone",
+        "LinkedIn",
+        "SDR avaliado",
+        "Estrelas",
+        "Comentário"
+      ];
+      const rows = allReviews.map(r => [
+        formatDate(r.date),
+        r.clientName || "",
+        r.clientCompany || "",
+        r.clientEmail || "",
+        r.clientPhone || "",
+        r.clientLinkedin || "",
+        r.sdrNome || "",
+        r.stars || 0,
+        r.comment || ""
+      ]);
+      downloadCsv("avaliadores_inbotix.csv", headers, rows);
     });
 
     /* ---------- BOTÕES GERAIS ---------- */
