@@ -325,6 +325,112 @@
       color: var(--muted);
       text-align: center;
     }
+
+    /* MODAL CONTATO (para liberar telefone) */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.55);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 50;
+    }
+
+    .modal {
+      background: #ffffff;
+      max-width: 520px;
+      width: 95%;
+      border-radius: 20px;
+      box-shadow: 0 26px 70px rgba(15, 23, 42, 0.8);
+      padding: 14px 16px 18px;
+      max-height: 86vh;
+      overflow: auto;
+      font-size: 12px;
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .modal-title { font-size: 15px; font-weight: 800; color: var(--dark); }
+    .modal-subtitle { font-size: 11px; color: var(--muted); }
+
+    .modal-close {
+      border-radius: 999px;
+      border: none;
+      background: #f1f5f9;
+      color: #64748b;
+      font-size: 12px;
+      padding: 4px 10px;
+      cursor: pointer;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px 10px;
+      margin-top: 6px;
+    }
+
+    @media (max-width: 640px) {
+      .form-grid { grid-template-columns: minmax(0, 1fr); }
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .form-group label {
+      font-size: 11px;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .form-group input {
+      border-radius: 10px;
+      border: 1px solid var(--border-strong);
+      padding: 6px 8px;
+      font-size: 11px;
+      font-family: inherit;
+      background: #ffffff;
+    }
+
+    .form-footer {
+      margin-top: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      border-radius: 999px;
+      border: none;
+      padding: 7px 14px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: #ffffff;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 14px 32px rgba(15, 111, 255, 0.7);
+    }
+
+    .form-hint {
+      font-size: 10px;
+      color: var(--muted);
+      max-width: 36ch;
+    }
   </style>
 </head>
 <body>
@@ -339,7 +445,7 @@
       </div>
     </div>
     <div class="header-right">
-      <span class="badge-header">Teste local – ranking gerado pelo navegador</span>
+      <span class="badge-header">Só SDRs com stack INBOTIX e 3+ avaliações entram no ranking</span>
       <a href="sdr-lista.html" class="btn-header">⬅ Voltar para a vitrine</a>
       <a href="sdr-cadastro.html" class="btn-header">Sou SDR e quero entrar no ranking</a>
     </div>
@@ -353,7 +459,8 @@
           <h1 class="hero-title">Veja quem são os SDRs mais bem avaliados da plataforma.</h1>
           <p class="hero-subtitle">
             A posição no ranking é calculada a partir da <strong>média de estrelas</strong> e do
-            <strong>volume de avaliações</strong>. Quanto melhor o resultado com os clientes, maior a posição.
+            <strong>volume de avaliações</strong>. Só aparecem aqui SDRs que usam a <strong>stack INBOTIX</strong> e
+            possuem pelo menos <strong>3 avaliações válidas</strong>.
           </p>
           <div class="hero-highlight">
             Para subir no ranking: entregue bons leads, mantenha o cliente informado e peça para ele voltar nesta página
@@ -363,7 +470,7 @@
         <aside class="hero-right-card">
           <div class="hero-right-title">Regras do ranking</div>
           <div class="hero-right-text">
-            • Só entram no ranking SDRs com pelo menos <strong>uma avaliação</strong>.<br/>
+            • Só entram no ranking SDRs com <strong>stack INBOTIX ativa</strong> e no mínimo <strong>3 avaliações</strong>.<br/>
             • A ordem é definida por: média de estrelas, depois número de avaliações, depois nome.<br/>
             • O ranking é atualizado automaticamente conforme novas avaliações são feitas.<br/>
           </div>
@@ -400,19 +507,74 @@
         </table>
       </div>
       <div class="empty" id="ranking-empty" style="display:none;">
-        Ainda não há SDRs com avaliações suficientes para montar o ranking neste ambiente de testes.
+        Ainda não há SDRs usando a stack INBOTIX com pelo menos 3 avaliações neste ambiente de testes.
       </div>
     </section>
   </main>
 
+  <!-- MODAL PARA LIBERAR TELEFONE DO SDR -->
+  <div id="modal-contato-backdrop" class="modal-backdrop">
+    <div class="modal">
+      <div class="modal-header">
+        <div>
+          <div class="modal-title">Liberar telefone do SDR</div>
+          <div class="modal-subtitle">
+            Preencha seus dados para que a INBOTIX saiba quem está solicitando o contato. Em seguida o WhatsApp do SDR será liberado.
+          </div>
+        </div>
+        <button type="button" class="modal-close" id="close-contato">Fechar</button>
+      </div>
+      <form id="form-contato">
+        <input type="hidden" id="contato-sdr-id" />
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="contato-nome">Seu nome completo *</label>
+            <input id="contato-nome" type="text" required />
+          </div>
+          <div class="form-group">
+            <label for="contato-empresa">Empresa *</label>
+            <input id="contato-empresa" type="text" required />
+          </div>
+          <div class="form-group">
+            <label for="contato-email">E-mail corporativo *</label>
+            <input id="contato-email" type="email" placeholder="voce@empresa.com" required />
+          </div>
+          <div class="form-group">
+            <label for="contato-telefone">Telefone / WhatsApp *</label>
+            <input id="contato-telefone" type="text" placeholder="(DDD) 99999-9999" required />
+          </div>
+        </div>
+        <div class="form-footer">
+          <button type="submit" class="btn-primary">Liberar telefone do SDR</button>
+          <div class="form-hint">
+            Esses dados ficam registrados na base da INBOTIX para controle de quem solicitou o telefone de cada SDR.
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
   <script>
     const SDR_KEY = "inbotix_sdrs";
+    const SDR_LEADS_KEY = "inbotix_sdr_leads";
+
     let sdrs = [];
     let ratingMap = new Map();
+    let sdrLeads = [];
 
     const rankingBody = document.getElementById("ranking-body");
     const rankingEmpty = document.getElementById("ranking-empty");
     const rankingInfo = document.getElementById("ranking-info");
+
+    // Modal contato
+    const modalContatoBackdrop = document.getElementById("modal-contato-backdrop");
+    const formContato = document.getElementById("form-contato");
+    const contatoSdrId = document.getElementById("contato-sdr-id");
+    const contatoNome = document.getElementById("contato-nome");
+    const contatoEmpresa = document.getElementById("contato-empresa");
+    const contatoEmail = document.getElementById("contato-email");
+    const contatoTelefone = document.getElementById("contato-telefone");
+    const closeContato = document.getElementById("close-contato");
 
     function loadSdrs() {
       try {
@@ -423,10 +585,24 @@
 
       sdrs = sdrs.map(s => ({
         reviews: Array.isArray(s.reviews) ? s.reviews : [],
+        usaInbotix: !!s.usaInbotix,
         ...s
       }));
 
       recomputeRatings();
+    }
+
+    function loadLeads() {
+      try {
+        sdrLeads = JSON.parse(localStorage.getItem(SDR_LEADS_KEY) || "[]");
+      } catch (e) {
+        sdrLeads = [];
+      }
+      if (!Array.isArray(sdrLeads)) sdrLeads = [];
+    }
+
+    function saveLeads() {
+      localStorage.setItem(SDR_LEADS_KEY, JSON.stringify(sdrLeads));
     }
 
     function getRatingInfo(sdr) {
@@ -458,11 +634,46 @@
       return div;
     }
 
+    function hasLeadForSdr(sdrId) {
+      return sdrLeads.some(l => l.sdrId === sdrId);
+    }
+
+    function openWhats(numRaw) {
+      const num = (numRaw || "").toString().replace(/\D/g, "");
+      if (!num) {
+        alert("WhatsApp deste SDR não está configurado corretamente.");
+        return;
+      }
+      window.open("https://wa.me/" + num, "_blank");
+    }
+
+    function abrirModalContato(sdrId) {
+      contatoSdrId.value = sdrId;
+      formContato.reset();
+      modalContatoBackdrop.style.display = "flex";
+    }
+
+    function fecharModalContato() {
+      modalContatoBackdrop.style.display = "none";
+    }
+
+    function handleWhatsClick(sdr) {
+      if (!sdr.whats) {
+        alert("Este SDR ainda não possui WhatsApp cadastrado.");
+        return;
+      }
+      if (hasLeadForSdr(sdr.id)) {
+        openWhats(sdr.whats);
+      } else {
+        abrirModalContato(sdr.id);
+      }
+    }
+
     function renderRanking() {
       rankingBody.innerHTML = "";
 
       const ranked = sdrs
-        .filter(s => (s.reviews || []).length > 0)
+        .filter(s => s.usaInbotix && (s.reviews || []).length >= 3)
         .sort((a, b) => {
           const ra = ratingMap.get(a.id) || { avg: 0, count: 0 };
           const rb = ratingMap.get(b.id) || { avg: 0, count: 0 };
@@ -473,7 +684,7 @@
 
       if (!ranked.length) {
         rankingEmpty.style.display = "block";
-        rankingInfo.textContent = "0 SDRs com avaliações neste ambiente.";
+        rankingInfo.textContent = "0 SDRs com stack INBOTIX e 3+ avaliações neste ambiente.";
         return;
       }
 
@@ -577,10 +788,7 @@
           btnWhats.type = "button";
           btnWhats.className = "btn-small whats";
           btnWhats.textContent = "WhatsApp";
-          btnWhats.addEventListener("click", () => {
-            const num = sdr.whats.replace(/\D/g, "");
-            window.open("https://wa.me/" + num, "_blank");
-          });
+          btnWhats.addEventListener("click", () => handleWhatsClick(sdr));
           tdContato.appendChild(btnWhats);
         }
         if (sdr.linkedin) {
@@ -599,8 +807,50 @@
       });
     }
 
+    // Eventos modal contato
+    closeContato.addEventListener("click", fecharModalContato);
+    modalContatoBackdrop.addEventListener("click", (e) => {
+      if (e.target === modalContatoBackdrop) fecharModalContato();
+    });
+
+    formContato.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const sdrId = Number(contatoSdrId.value);
+      const nome = contatoNome.value.trim();
+      const empresa = contatoEmpresa.value.trim();
+      const email = contatoEmail.value.trim();
+      const telefone = contatoTelefone.value.trim();
+
+      if (!sdrId || !nome || !empresa || !email || !telefone) {
+        alert("Preencha todos os campos para liberar o telefone do SDR.");
+        return;
+      }
+
+      const lead = {
+        id: Date.now(),
+        sdrId,
+        nome,
+        empresa,
+        email,
+        telefone,
+        createdAt: new Date().toISOString()
+      };
+
+      sdrLeads.push(lead);
+      saveLeads();
+      fecharModalContato();
+
+      const sdr = sdrs.find(s => s.id === sdrId);
+      if (sdr && sdr.whats) {
+        openWhats(sdr.whats);
+      } else {
+        alert("Dados salvos, mas não encontramos o WhatsApp deste SDR.");
+      }
+    });
+
     function init() {
       loadSdrs();
+      loadLeads();
       renderRanking();
     }
 
