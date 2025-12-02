@@ -340,7 +340,7 @@
       border-radius: 18px;
       border: 1px solid var(--border);
       box-shadow: 0 14px 32px rgba(15, 23, 42, 0.10);
-      padding: 10px 11px;
+      padding: 18px 11px 10px;              /* 🔹 mais espaço no topo */
       display: flex;
       flex-direction: column;
       gap: 6px;
@@ -350,13 +350,13 @@
 
     .sdr-badge-strip {
       position: absolute;
-      top: 7px;
-      right: 7px;
+      top: 6px;                             /* 🔹 mais próximo do topo, fora do nome */
+      left: 76px;                           /* 🔹 começa depois do avatar */
       display: flex;
       flex-wrap: wrap;
       gap: 4px;
-      justify-content: flex-end;
-      max-width: 80%;
+      justify-content: flex-start;
+      max-width: calc(100% - 90px);
     }
 
     .badge {
@@ -367,6 +367,7 @@
       display: inline-flex;
       align-items: center;
       gap: 3px;
+      white-space: nowrap;
     }
 
     .badge-premium {
@@ -397,7 +398,7 @@
       display: flex;
       align-items: flex-start;
       gap: 9px;
-      margin-top: 4px;
+      margin-top: 10px;                     /* 🔹 empurra nome pra baixo dos selos */
     }
 
     .sdr-avatar {
@@ -543,7 +544,7 @@
       text-align: center;
     }
 
-    /* MODALS */
+    /* MODAIS (mesmo código anterior) */
     .modal-backdrop {
       position: fixed;
       inset: 0;
@@ -1092,7 +1093,6 @@
     }
 
     function renderFiltersOptions() {
-      // regiões
       config.regioes.forEach(r => {
         const opt = document.createElement("option");
         opt.value = r;
@@ -1100,7 +1100,6 @@
         filterRegiao.appendChild(opt);
       });
 
-      // canais
       config.canais.forEach(c => {
         const opt = document.createElement("option");
         opt.value = c;
@@ -1108,7 +1107,6 @@
         filterCanal.appendChild(opt);
       });
 
-      // nichos
       config.nichos.forEach(n => {
         const opt = document.createElement("option");
         opt.value = n;
@@ -1141,22 +1139,18 @@
 
     function sortSdrs(list) {
       return list.slice().sort((a, b) => {
-        // Premium primeiro
         if (a.premium && !b.premium) return -1;
         if (!a.premium && b.premium) return 1;
 
-        // Top performer antes dos outros
         if (a.id === topPerformerId && b.id !== topPerformerId) return -1;
         if (b.id === topPerformerId && a.id !== topPerformerId) return 1;
 
         const ra = ratingMap.get(a.id) || { avg: 0, count: 0 };
         const rb = ratingMap.get(b.id) || { avg: 0, count: 0 };
 
-        // maior média primeiro
         if (rb.avg !== ra.avg) return rb.avg - ra.avg;
-        // mais avaliações primeiro
         if (rb.count !== ra.count) return rb.count - ra.count;
-        // ordena por nome
+
         return normalizeText(a.nome).localeCompare(normalizeText(b.nome));
       });
     }
@@ -1219,7 +1213,6 @@
 
         card.appendChild(badgeStrip);
 
-        // Header
         const header = document.createElement("div");
         header.className = "sdr-header";
 
@@ -1253,7 +1246,6 @@
         header.appendChild(hInfo);
         card.appendChild(header);
 
-        // tags
         const tags = document.createElement("div");
         tags.className = "sdr-tags";
 
@@ -1282,7 +1274,6 @@
 
         card.appendChild(tags);
 
-        // rating row
         const ratingRow = document.createElement("div");
         ratingRow.className = "sdr-rating-row";
 
@@ -1304,7 +1295,6 @@
 
         card.appendChild(ratingRow);
 
-        // ações
         const actions = document.createElement("div");
         actions.className = "sdr-actions";
 
@@ -1347,7 +1337,6 @@
 
         card.appendChild(actions);
 
-        // preview de avaliações
         const preview = document.createElement("div");
         preview.className = "sdr-review-preview";
 
@@ -1475,7 +1464,6 @@
       if (e.target === modalAvaliarBackdrop) fecharModalAvaliar();
     });
 
-    // selecionar estrelas
     ratingSelector.querySelectorAll("button").forEach(btn => {
       btn.addEventListener("click", () => {
         const val = btn.dataset.stars;
@@ -1485,7 +1473,6 @@
       });
     });
 
-    // submit avaliação
     formAvaliar.addEventListener("submit", (e) => {
       e.preventDefault();
 
@@ -1543,7 +1530,6 @@
       fecharModalAvaliar();
     });
 
-    /* ---------- FILTROS ---------- */
     [filterNome, filterRegiao, filterCanal, filterStars, filterNicho].forEach(el => {
       el.addEventListener("input", () => renderSdrs());
       el.addEventListener("change", () => renderSdrs());
@@ -1561,7 +1547,6 @@
       renderSdrs();
     });
 
-    /* ---------- INIT ---------- */
     function init() {
       loadConfig();
       loadSdrs();
