@@ -472,7 +472,7 @@
       text-align: center;
     }
 
-    /* MODAIS – avaliações & avaliar */
+    /* MODAIS – reutilizados */
     .modal-backdrop {
       position: fixed;
       inset: 0;
@@ -542,6 +542,7 @@
     .review-meta { font-size: 10px; color: var(--muted); }
     .review-comment { font-size: 11px; }
 
+    /* FORM GRID (reaproveitado) */
     .form-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -657,8 +658,8 @@
           <div class="hero-right-title">Como funciona na prática?</div>
           <ul class="hero-right-list">
             <li><span class="bullet">1.</span> Filtre os SDRs por nicho, canal de prospecção, região e nota.</li>
-            <li><span class="bullet">2.</span> Clique em <strong>“Chamar no WhatsApp”</strong> ou acesse o LinkedIn do SDR.</li>
-            <li><span class="bullet">3.</span> Combine volume de leads, ticket e cardápio.</li>
+            <li><span class="bullet">2.</span> Clique em <strong>“Chamar no WhatsApp”</strong> para solicitar o contato.</li>
+            <li><span class="bullet">3.</span> Preencha seus dados para liberar o número e combine volume de leads, ticket e cardápio.</li>
             <li><span class="bullet">4.</span> Depois que trabalharem juntos, volte e avalie o SDR – isso impacta o ranking.</li>
           </ul>
         </aside>
@@ -816,15 +817,62 @@
     </div>
   </div>
 
+  <!-- MODAL CADASTRO PARA LIBERAR TELEFONE DO SDR -->
+  <div id="modal-contato-backdrop" class="modal-backdrop">
+    <div class="modal">
+      <div class="modal-header">
+        <div>
+          <div class="modal-title">Antes de falar com o SDR…</div>
+          <div class="modal-subtitle" id="modal-contato-subtitle">
+            Preencha seus dados para liberar o número de WhatsApp do SDR selecionado.
+          </div>
+        </div>
+        <button type="button" class="modal-close" id="close-contato">Fechar</button>
+      </div>
+      <div class="modal-body">
+        <form id="form-contato">
+          <input type="hidden" id="contato-sdr-id" />
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="contato-nome">Seu nome completo *</label>
+              <input id="contato-nome" type="text" required />
+            </div>
+            <div class="form-group">
+              <label for="contato-empresa">Empresa *</label>
+              <input id="contato-empresa" type="text" required />
+            </div>
+            <div class="form-group">
+              <label for="contato-email">E-mail corporativo *</label>
+              <input id="contato-email" type="email" required placeholder="voce@empresa.com" />
+            </div>
+            <div class="form-group">
+              <label for="contato-telefone">Telefone / WhatsApp *</label>
+              <input id="contato-telefone" type="text" required placeholder="(DDD) 99999-9999" />
+            </div>
+          </div>
+          <div class="form-footer">
+            <button type="submit" class="btn-primary">
+              Liberar número do SDR
+            </button>
+            <div class="form-hint">
+              Esses dados entram na base da INBOTIX como empresas interessadas em prospecção via SDR Digital.
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
   <script>
     const SDR_KEY = "inbotix_sdrs";
     const CONFIG_KEY = "inbotix_sdr_config";
+    const SDR_LEADS_KEY = "inbotix_sdr_leads"; // 🔹 cadastros de quem pediu telefone
 
     let sdrs = [];
     let config = null;
     let ratingMap = new Map();
     let topPerformerId = null;
-    let rankingPositions = new Map(); // 🔹 id -> posição no ranking
+    let rankingPositions = new Map(); // id -> posição no ranking
 
     const sdrGrid = document.getElementById("sdr-grid");
     const sdrEmpty = document.getElementById("sdr-empty");
@@ -863,6 +911,20 @@
 
     let filtroPremiumAtivo = false;
     let filtroTopAtivo = false;
+
+    // Modal contato (liberar WhatsApp)
+    const modalContatoBackdrop = document.getElementById("modal-contato-backdrop");
+    const closeContato = document.getElementById("close-contato");
+    const formContato = document.getElementById("form-contato");
+    const inputContatoSdrId = document.getElementById("contato-sdr-id");
+    const inputContatoNome = document.getElementById("contato-nome");
+    const inputContatoEmpresa = document.getElementById("contato-empresa");
+    const inputContatoEmail = document.getElementById("contato-email");
+    const inputContatoTelefone = document.getElementById("contato-telefone");
+    const modalContatoSubtitle = document.getElementById("modal-contato-subtitle");
+
+    let contatoSdrAtual = null;    // SDR selecionado
+    let contatoWhatsLimpo = null;  // número para abrir wa.me depois
 
     function defaultConfig() {
       return {
@@ -948,7 +1010,7 @@
       topPerformerId = bestId;
     }
 
-    // 🔹 Calcula ranking global (só SDRs com ao menos 1 avaliação)
+    // Ranking global para exibir #posição no card
     function computeRankingPositions() {
       rankingPositions.clear();
       const withReviews = sdrs.filter(s => (s.reviews || []).length > 0);
@@ -1064,7 +1126,7 @@
 
       filtrados.forEach(sdr => {
         const info = ratingMap.get(sdr.id) || { avg: 0, count: 0 };
-        const rank = rankingPositions.get(sdr.id); // 🔹 posição no ranking (se houver)
+        const rank = rankingPositions.get(sdr.id);
 
         const card = document.createElement("div");
         card.className = "sdr-card";
@@ -1198,7 +1260,7 @@
           btnWhats.textContent = "Chamar no WhatsApp";
           btnWhats.addEventListener("click", () => {
             const num = sdr.whats.replace(/\D/g, "");
-            window.open("https://wa.me/" + num, "_blank");
+            abrirModalContato(sdr, num);
           });
           actions.appendChild(btnWhats);
         }
@@ -1440,6 +1502,73 @@
       renderSdrs();
     });
 
+    /* ---------- MODAL CONTATO / LIBERAR TELEFONE ---------- */
+    function limparFormContato() {
+      formContato.reset();
+    }
+
+    function abrirModalContato(sdr, numeroLimpo) {
+      contatoSdrAtual = sdr;
+      contatoWhatsLimpo = numeroLimpo;
+      inputContatoSdrId.value = sdr.id;
+      modalContatoSubtitle.textContent =
+        "Preencha seus dados para liberar o número de WhatsApp de " + (sdr.nome || "este SDR") + ".";
+      limparFormContato();
+      modalContatoBackdrop.style.display = "flex";
+    }
+
+    function fecharModalContato() {
+      modalContatoBackdrop.style.display = "none";
+      contatoSdrAtual = null;
+      contatoWhatsLimpo = null;
+    }
+
+    closeContato.addEventListener("click", fecharModalContato);
+    modalContatoBackdrop.addEventListener("click", (e) => {
+      if (e.target === modalContatoBackdrop) fecharModalContato();
+    });
+
+    formContato.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const sdrId = Number(inputContatoSdrId.value);
+      const nome = inputContatoNome.value.trim();
+      const empresa = inputContatoEmpresa.value.trim();
+      const email = inputContatoEmail.value.trim();
+      const telefone = inputContatoTelefone.value.trim();
+
+      if (!sdrId || !nome || !empresa || !email || !telefone) {
+        alert("Por favor, preencha todos os campos obrigatórios.");
+        return;
+      }
+
+      let leads = [];
+      try {
+        leads = JSON.parse(localStorage.getItem(SDR_LEADS_KEY) || "[]");
+      } catch (e) {
+        leads = [];
+      }
+
+      leads.push({
+        id: Date.now(),
+        sdrId,
+        sdrNome: contatoSdrAtual ? contatoSdrAtual.nome : "",
+        nome,
+        empresa,
+        email,
+        telefone,
+        createdAt: new Date().toISOString()
+      });
+
+      localStorage.setItem(SDR_LEADS_KEY, JSON.stringify(leads));
+
+      fecharModalContato();
+
+      if (contatoWhatsLimpo) {
+        window.open("https://wa.me/" + contatoWhatsLimpo, "_blank");
+      }
+    });
+
     function init() {
       loadConfig();
       loadSdrs();
@@ -1451,4 +1580,3 @@
   </script>
 </body>
 </html>
-
