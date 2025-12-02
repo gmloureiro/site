@@ -2,70 +2,52 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <title>Cadastro de SDR – Marketplace INBOTIX</title>
+  <title>Cadastro de SDR – INBOTIX</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Formulário de cadastro para SDRs interessados em entrar no marketplace INBOTIX." />
-  <link rel="canonical" href="https://inbotix.com.br/sdr-cadastro.html" />
-  <link rel="icon" type="image/x-icon" href="logo-inbotix.ico" />
-
-  <!-- 🔶 TAG PH3A / DATAUNION -->
-  <script async type="text/javascript" src="https://www.dataunion.com.br/bcf4a443-2a61-43a0-a3b7-b8ed1384c1a2"></script>
-
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17728268035"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'AW-17728268035');
-  </script>
+  <meta name="description" content="Cadastro de SDRs parceiros da INBOTIX para o marketplace de geração de leads por performance.">
+  <link rel="icon" type="image/png" href="logo-inbotix.png" />
 
   <style>
     :root {
-      --bg: #f3f4f6;
-      --white: #ffffff;
-      --text: #0f172a;
+      --primary: #0f6fff;
+      --primary-dark: #0050c8;
+      --primary-soft: #e4eeff;
+      --accent: #22c55e;
+      --bg: #f5f7fb;
+      --bg-card: #ffffff;
+      --dark: #0f172a;
+      --text: #1f2933;
       --muted: #6b7280;
-      --primary: #07197e;
-      --border: #e5e7eb;
-      --accent: #10b981;
+      --border: #dbe2f0;
+      --border-strong: #b8c6f5;
+      --danger: #b91c1c;
     }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: var(--bg);
+      background: radial-gradient(circle at top left, #e0ecff 0, #f5f7fb 40%, #ffffff 100%);
       color: var(--text);
-      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
     }
+
     a { color: inherit; text-decoration: none; }
 
     header {
-      background: var(--white);
-      border-bottom: 1px solid var(--border);
-      box-shadow: 0 4px 14px rgba(15,23,42,0.06);
-      position: sticky;
-      top: 0;
-      z-index: 20;
-    }
-    .container {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 16px;
-    }
-    .header-inner {
+      padding: 12px 16px;
+      background: #ffffff;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.35);
       display: flex;
+      align-items: center;
       justify-content: space-between;
-      align-items: center;
       gap: 12px;
+      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
     }
-    .header-left {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .header-left img {
-      height: 32px;
-    }
+
+    .header-left { display: flex; align-items: center; gap: 10px; }
+    .header-left img { height: 32px; width: auto; }
+
     .header-title {
       font-size: 13px;
       color: var(--muted);
@@ -73,334 +55,697 @@
     .header-title strong {
       display: block;
       font-size: 15px;
-      color: var(--text);
+      color: var(--dark);
     }
+
     .header-right {
-      font-size: 11px;
-      color: var(--muted);
-      text-align: right;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: flex-end;
     }
-    .header-right a {
-      text-decoration: underline;
-      text-underline-offset: 2px;
+
+    .badge {
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(15, 111, 255, 0.06);
+      border: 1px solid rgba(15, 111, 255, 0.30);
+      color: var(--primary-dark);
+      font-weight: 500;
+    }
+
+    .btn-outline-header {
+      border-radius: 999px;
+      border: 1px solid rgba(15, 111, 255, 0.50);
+      padding: 6px 12px;
+      font-size: 11px;
+      color: var(--primary-dark);
+      background: #f0f5ff;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 600;
     }
 
     main {
       max-width: 960px;
-      margin: 20px auto 32px;
-      padding: 0 16px;
-    }
-    .page-title {
-      font-size: 22px;
-      font-weight: 700;
-      margin-bottom: 4px;
-    }
-    .page-sub {
-      font-size: 13px;
-      color: var(--muted);
-      max-width: 640px;
-      margin-bottom: 16px;
+      margin: 22px auto 32px;
+      padding: 0 16px 32px;
     }
 
-    form {
-      background: var(--white);
-      border-radius: 12px;
+    .card {
+      background: #ffffff;
+      border-radius: 22px;
+      padding: 16px 18px 18px;
       border: 1px solid var(--border);
-      padding: 18px;
-      box-shadow: 0 18px 40px rgba(15,23,42,0.06);
-      font-size: 13px;
+      box-shadow: 0 14px 38px rgba(15, 23, 42, 0.1);
+      position: relative;
+      overflow: hidden;
     }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: -140px;
+      background:
+        radial-gradient(circle at 0 0, rgba(15, 111, 255, 0.2) 0, transparent 55%),
+        radial-gradient(circle at 100% 0, rgba(34, 197, 94, 0.2) 0, transparent 60%);
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    .card-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .pill {
+      font-size: 11px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(15, 111, 255, 0.08);
+      border: 1px solid rgba(15, 111, 255, 0.45);
+      color: var(--primary-dark);
+      font-weight: 500;
+      margin-bottom: 6px;
+    }
+
+    h1 {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--dark);
+      margin-bottom: 4px;
+    }
+
+    .subtitle {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 10px;
+      max-width: 70ch;
+    }
+
+    .highlight {
+      font-size: 11px;
+      padding: 7px 9px;
+      border-radius: 12px;
+      background: rgba(34, 197, 94, 0.06);
+      border: 1px solid rgba(34, 197, 94, 0.4);
+      color: #166534;
+      margin-bottom: 12px;
+    }
+
     .form-grid {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px 16px;
+      grid-template-columns: 1.4fr 1.6fr;
+      gap: 14px 24px;
     }
+
+    @media (max-width: 800px) {
+      .form-grid { grid-template-columns: minmax(0, 1fr); }
+    }
+
     .form-group {
       display: flex;
       flex-direction: column;
       gap: 4px;
-    }
-    label {
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--text);
-    }
-    input, textarea {
-      border-radius: 6px;
-      border: 1px solid var(--border);
-      padding: 8px 10px;
-      font-size: 13px;
-      background: #f9fafb;
-      outline: none;
-      transition: all .15s;
-    }
-    input:focus, textarea:focus {
-      border-color: var(--primary);
-      background: #fff;
-      box-shadow: 0 0 0 1px rgba(7,25,126,0.10);
-    }
-    textarea {
-      resize: vertical;
-      min-height: 70px;
-    }
-    .hint {
-      font-size: 11px;
-      color: var(--muted);
-      margin-top: 2px;
-    }
-    .full {
-      grid-column: 1 / -1;
-    }
-    .radio-group {
-      display: flex;
-      gap: 12px;
-      font-size: 12px;
-      align-items: center;
-    }
-    .radio-group label {
-      font-weight: 400;
-    }
-    .btn {
-      margin-top: 12px;
-      width: 100%;
-      border-radius: 8px;
-      border: none;
-      padding: 10px 14px;
-      font-size: 14px;
-      font-weight: 600;
-      cursor: pointer;
-      background: var(--primary);
-      color: #fff;
-      box-shadow: 0 12px 30px rgba(7,25,126,0.30);
-      transition: all .15s;
-    }
-    .btn:hover {
-      background: #020617;
-      transform: translateY(-1px);
-    }
-    .msg {
-      margin-top: 8px;
-      font-size: 12px;
-      display: none;
-    }
-    .msg.ok {
-      color: var(--accent);
-    }
-    .msg.err {
-      color: #ef4444;
+      margin-bottom: 6px;
     }
 
-    @media (max-width: 720px) {
-      .header-inner {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .header-right {
-        text-align: left;
-      }
-      .form-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
+    .form-group label {
+      font-size: 11px;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      border-radius: 10px;
+      border: 1px solid var(--border-strong);
+      padding: 7px 9px;
+      font-size: 12px;
+      font-family: inherit;
+      background: #ffffff;
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    .hint {
+      font-size: 10px;
+      color: var(--muted);
+    }
+
+    .badge-small {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 10px;
+      padding: 3px 7px;
+      border-radius: 999px;
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      color: #1d4ed8;
+      margin-bottom: 4px;
+    }
+
+    .checkbox-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 10px;
+      margin-top: 4px;
+    }
+
+    .checkbox-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 11px;
+      padding: 4px 7px;
+      border-radius: 999px;
+      border: 1px solid #e5e7eb;
+      background: #f9fafb;
+      cursor: pointer;
+    }
+
+    .checkbox-pill input {
+      margin: 0;
+    }
+
+    .avatar-block {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .avatar-preview {
+      width: 64px;
+      height: 64px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #e5e7eb, #cbd5f5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      font-weight: 700;
+      color: #4b5563;
+      overflow: hidden;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.25);
+      flex-shrink: 0;
+    }
+
+    .avatar-preview img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .avatar-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .btn-upload {
+      border-radius: 999px;
+      border: 1px dashed var(--border-strong);
+      padding: 5px 9px;
+      font-size: 11px;
+      cursor: pointer;
+      background: #f9fafb;
+      color: var(--primary-dark);
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      width: fit-content;
+    }
+
+    .form-footer {
+      margin-top: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      border-radius: 999px;
+      border: none;
+      padding: 8px 16px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: #ffffff;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 14px 32px rgba(15, 111, 255, 0.7);
+    }
+
+    .footer-hint {
+      font-size: 10px;
+      color: var(--muted);
+      max-width: 45ch;
+    }
+
+    /* SUCESSO */
+    .success-card {
+      text-align: center;
+      padding: 32px 16px 22px;
+    }
+
+    .success-icon {
+      width: 70px;
+      height: 70px;
+      border-radius: 999px;
+      border: 4px solid rgba(34, 197, 94, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 10px;
+      background: radial-gradient(circle at 30% 0, #bbf7d0, #22c55e);
+      color: #f9fafb;
+      font-size: 28px;
+      box-shadow: 0 20px 40px rgba(22, 163, 74, 0.5);
+    }
+
+    .success-title {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--dark);
+      margin-bottom: 6px;
+    }
+
+    .success-text {
+      font-size: 12px;
+      color: var(--muted);
+      max-width: 52ch;
+      margin: 0 auto 16px;
+    }
+
+    .success-actions {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 4px;
+    }
+
+    .btn-ghost {
+      border-radius: 999px;
+      border: 1px solid #e5e7eb;
+      padding: 7px 12px;
+      font-size: 12px;
+      cursor: pointer;
+      background: #ffffff;
+      color: #374151;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .success-badge {
+      font-size: 11px;
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      color: #1d4ed8;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      margin-bottom: 6px;
+    }
+
+    .warning {
+      margin-top: 10px;
+      padding: 8px 9px;
+      border-radius: 10px;
+      background: #fffbeb;
+      border: 1px solid #fed7aa;
+      font-size: 11px;
+      color: #92400e;
     }
   </style>
 </head>
 <body>
-<header>
-  <div class="container">
-    <div class="header-inner">
-      <div class="header-left">
-        <a href="index.html">
-          <img src="logo-inbotix.png" alt="INBOTIX" />
-        </a>
-        <div class="header-title">
-          <strong>Cadastro de SDR – Marketplace INBOTIX</strong>
-          Preencha seus dados para entrar no funil de curadoria.
+  <header>
+    <div class="header-left">
+      <a href="https://inbotix.com.br">
+        <img src="logo-inbotix.png" alt="INBOTIX" />
+      </a>
+      <div class="header-title">
+        <strong>Cadastro de SDR – INBOTIX</strong>
+        Entre para o marketplace de SDRs que geram leads por performance.
+      </div>
+    </div>
+    <div class="header-right">
+      <span class="badge">Ambiente de testes local (dados no navegador)</span>
+      <a href="sdr-lista.html" class="btn-outline-header">👁 Ver vitrine de SDRs</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- FORM CADASTRO -->
+    <section class="card" id="cadastro-card">
+      <div class="card-inner">
+        <div class="pill">⚡ Você gera leads, a INBOTIX leva clientes até você</div>
+        <h1>Cadastre-se como SDR parceiro da INBOTIX.</h1>
+        <p class="subtitle">
+          Preencha suas informações abaixo. Seu perfil poderá aparecer na vitrine de SDRs para empresas que querem
+          <strong>prospecção com cobrança apenas por lead gerado</strong>.
+        </p>
+        <div class="highlight">
+          Use um e-mail e WhatsApp que você realmente atende. Os clientes vão falar diretamente com você para combinar
+          cardápio de leads, ticket e forma de trabalho.
         </div>
+
+        <form id="sdr-form">
+          <div class="form-grid">
+            <!-- COLUNA ESQUERDA -->
+            <div>
+              <div class="form-group">
+                <label for="nome">Nome completo *</label>
+                <input id="nome" type="text" required placeholder="Como você quer aparecer para os clientes" />
+              </div>
+
+              <div class="form-group">
+                <label for="cidade">Cidade / Estado *</label>
+                <input id="cidade" type="text" required placeholder="Ex.: São Paulo - SP" />
+              </div>
+
+              <div class="form-group">
+                <label for="telefone">Telefone (opcional)</label>
+                <input id="telefone" type="text" placeholder="(DDD) 99999-9999" />
+              </div>
+
+              <div class="form-group">
+                <label for="whats">WhatsApp para contato com clientes *</label>
+                <input id="whats" type="text" required placeholder="(DDD) 99999-9999" />
+                <div class="hint">Os clientes poderão clicar em “Chamar no WhatsApp” direto na vitrine.</div>
+              </div>
+
+              <div class="form-group">
+                <label for="linkedin">Perfil do LinkedIn *</label>
+                <input id="linkedin" type="url" required placeholder="Cole aqui a URL do seu perfil" />
+                <div class="hint">
+                  No futuro, vamos puxar automaticamente informações do seu LinkedIn para enriquecer seu perfil.
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="exp">Resumo da sua experiência como SDR *</label>
+                <textarea id="exp" required placeholder="Conte rapidamente como você trabalha, tipos de clientes, resultados, etc."></textarea>
+              </div>
+
+              <div class="form-group">
+                <span class="badge-small">Foto de perfil</span>
+                <div class="avatar-block">
+                  <div class="avatar-preview" id="avatar-preview">SDR</div>
+                  <div class="avatar-actions">
+                    <label class="btn-upload">
+                      📎 Enviar foto
+                      <input type="file" id="foto" accept="image/*" style="display:none;" />
+                    </label>
+                    <div class="hint">
+                      Use uma foto profissional. Se não enviar agora, vamos usar suas iniciais até você atualizar.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- COLUNA DIREITA -->
+            <div>
+              <div class="form-group">
+                <label for="regiao">Região principal de atuação *</label>
+                <select id="regiao" required></select>
+              </div>
+
+              <div class="form-group">
+                <label for="idioma">Idioma principal de atendimento *</label>
+                <select id="idioma" required></select>
+              </div>
+
+              <div class="form-group">
+                <label for="tempo">Tempo de experiência como SDR *</label>
+                <select id="tempo" required></select>
+              </div>
+
+              <div class="form-group">
+                <span class="badge-small">Nichos / segmentos que você atende *</span>
+                <div class="checkbox-grid" id="nichos-container">
+                  <!-- via JS -->
+                </div>
+                <div class="hint">Selecione os segmentos em que você realmente tem experiência.</div>
+              </div>
+
+              <div class="form-group">
+                <span class="badge-small">Tipos de empresa que você prefere atender *</span>
+                <div class="checkbox-grid" id="tipos-container">
+                  <!-- via JS -->
+                </div>
+              </div>
+
+              <div class="form-group">
+                <span class="badge-small">Canais de prospecção que você opera *</span>
+                <div class="checkbox-grid" id="canais-container">
+                  <!-- via JS -->
+                </div>
+                <div class="hint">Você pode selecionar vários: LinkedIn, e-mail, WhatsApp etc.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="warning">
+            <strong>Atenção:</strong> este ambiente é apenas um teste local. Em produção, seus dados serão
+            enviados para os servidores da INBOTIX. Aqui, tudo fica salvo só no seu navegador (localStorage).
+          </div>
+
+          <div class="form-footer">
+            <button type="submit" class="btn-primary">
+              🚀 Finalizar meu cadastro como SDR
+            </button>
+            <div class="footer-hint">
+              Ao concluir, seu perfil entra na base da INBOTIX para ser exibido na vitrine de SDRs.
+              Você poderá ser encontrado por empresas que querem pagar apenas pelos leads gerados.
+            </div>
+          </div>
+        </form>
       </div>
-      <div class="header-right">
-        <div>
-          <a href="sdr-lista.html">Ver vitrine</a> ·
-          <a href="sdr-admin.html">Admin (local)</a>
+    </section>
+
+    <!-- TELA DE SUCESSO -->
+    <section class="card" id="success-card" style="display:none;">
+      <div class="card-inner success-card">
+        <div class="success-icon">✓</div>
+        <div class="success-badge">
+          🎯 Cadastro recebido pela INBOTIX
         </div>
-      </div>
-    </div>
-  </div>
-</header>
-
-<main>
-  <h1 class="page-title">Quero ser SDR do marketplace INBOTIX</h1>
-  <p class="page-sub">
-    Este formulário grava seu cadastro apenas neste navegador (localStorage) para simulação.  
-    Em produção, enviaremos para o backend/CRM da INBOTIX para curadoria e homologação.
-  </p>
-
-  <form id="form">
-    <div class="form-grid">
-      <div class="form-group">
-        <label for="nome">Nome completo</label>
-        <input id="nome" type="text" placeholder="Seu nome" required />
-      </div>
-      <div class="form-group">
-        <label for="cidade">Cidade / Estado</label>
-        <input id="cidade" type="text" placeholder="São Paulo - SP" />
-      </div>
-
-      <div class="form-group">
-        <label for="regioes">Regiões que você atende</label>
-        <input id="regioes" type="text" placeholder="Brasil inteiro, Sudeste, LATAM..." />
-        <div class="hint">Use vírgulas para separar.</div>
-      </div>
-      <div class="form-group">
-        <label for="idiomas">Idiomas</label>
-        <input id="idiomas" type="text" placeholder="Português, Inglês, Espanhol..." />
-      </div>
-
-      <div class="form-group">
-        <label for="tempoExp">Tempo de experiência em SDR / vendas</label>
-        <input id="tempoExp" type="text" placeholder="Ex.: 2 anos, 6 meses..." />
-      </div>
-      <div class="form-group">
-        <label for="nicho">Nichos que você domina</label>
-        <input id="nicho" type="text" placeholder="Ex.: Tecnologia, Indústria, Educação..." />
-      </div>
-
-      <div class="form-group">
-        <label for="tiposEmpresa">Tipos de empresa</label>
-        <input id="tiposEmpresa" type="text" placeholder="PMEs, Enterprise, Startups, Indústrias..." />
-      </div>
-      <div class="form-group">
-        <label for="canais">Canais que você opera</label>
-        <input id="canais" type="text" placeholder="LinkedIn, E-mail, WhatsApp, Telefone..." />
-      </div>
-
-      <div class="form-group">
-        <label for="telefone">Telefone</label>
-        <input id="telefone" type="tel" placeholder="(11) 99999-9999" />
-      </div>
-      <div class="form-group">
-        <label for="whats">WhatsApp</label>
-        <input id="whats" type="tel" placeholder="(11) 99999-9999" />
-      </div>
-
-      <div class="form-group full">
-        <label for="linkedin">Perfil do LinkedIn</label>
-        <input id="linkedin" type="url" placeholder="https://www.linkedin.com/in/seu-perfil" />
-      </div>
-
-      <div class="form-group full">
-        <label>Você já usa stack INBOTIX hoje? (New Dinbot, Dadus, Atendi, etc.)</label>
-        <div class="radio-group">
-          <label><input type="radio" name="usaInbotix" value="sim" /> Sim</label>
-          <label><input type="radio" name="usaInbotix" value="nao" /> Ainda não</label>
+        <div class="success-title">Obrigado por se cadastrar como SDR parceiro!</div>
+        <p class="success-text">
+          Seu cadastro foi salvo com sucesso neste ambiente. Em produção, vamos avaliar seu perfil e, se estiver tudo ok,
+          você poderá aparecer na vitrine de SDRs para empresas que querem prospecção com cobrança por lead gerado.
+        </p>
+        <div class="success-actions">
+          <a href="sdr-lista.html" class="btn-primary">
+            👁 Ver vitrine de SDRs
+          </a>
+          <a href="sdr-admin.html" class="btn-ghost">
+            🛠 Abrir painel admin (teste)
+          </a>
         </div>
-        <div class="hint">Mesmo que você ainda não use, a equipe pode te ajudar a estruturar a operação.</div>
+        <p class="success-text" style="margin-top: 14px;">
+          Dica: você pode exportar seus dados e os dados de avaliações no admin para depois importar no CRM/Sheets.
+        </p>
       </div>
+    </section>
+  </main>
 
-      <div class="form-group full">
-        <label for="sobre">Fale um pouco da sua experiência (opcional)</label>
-        <textarea id="sobre" placeholder="Conte rapidamente sua experiência em SDR, inside sales, contas que já atendeu, etc."></textarea>
-      </div>
-    </div>
+  <script>
+    const SDR_KEY = "inbotix_sdrs";
+    const CONFIG_KEY = "inbotix_sdr_config";
 
-    <button type="submit" class="btn">Enviar cadastro (simulação local)</button>
+    let config = null;
+    let currentFotoBase64 = null;
 
-    <div id="msg-ok" class="msg ok">
-      Cadastro salvo neste navegador. A equipe da INBOTIX poderá avaliar seus dados pelo painel admin (local).
-    </div>
-    <div id="msg-err" class="msg err">
-      Ocorreu um erro ao salvar seu cadastro neste navegador.
-    </div>
-  </form>
-</main>
+    const form = document.getElementById("sdr-form");
+    const cadastroCard = document.getElementById("cadastro-card");
+    const successCard = document.getElementById("success-card");
 
-<script>
-  const SDR_KEY = "inbotix_sdrs";
+    const inputNome = document.getElementById("nome");
+    const inputCidade = document.getElementById("cidade");
+    const inputTelefone = document.getElementById("telefone");
+    const inputWhats = document.getElementById("whats");
+    const inputLinkedin = document.getElementById("linkedin");
+    const inputExp = document.getElementById("exp");
 
-  function loadSdrs() {
-    try {
-      return JSON.parse(localStorage.getItem(SDR_KEY) || "[]");
-    } catch (e) {
-      console.warn("Erro ao ler SDRs", e);
-      return [];
+    const selectRegiao = document.getElementById("regiao");
+    const selectIdioma = document.getElementById("idioma");
+    const selectTempo = document.getElementById("tempo");
+
+    const nichosContainer = document.getElementById("nichos-container");
+    const tiposContainer = document.getElementById("tipos-container");
+    const canaisContainer = document.getElementById("canais-container");
+
+    const inputFoto = document.getElementById("foto");
+    const avatarPreview = document.getElementById("avatar-preview");
+
+    function defaultConfig() {
+      return {
+        regioes: ["Brasil inteiro", "Sudeste", "Sul", "Centro-Oeste", "Nordeste", "Norte", "LATAM", "Europa"],
+        idiomas: ["Português", "Espanhol", "Inglês"],
+        tempoExp: ["0–6 meses", "1–2 anos", "3–5 anos", "5+ anos"],
+        nichos: ["Agências de marketing", "SaaS B2B", "Indústria", "Transportes e logística", "Serviços B2B"],
+        tiposEmpresa: ["PMEs", "Grandes empresas", "Startups", "Agências", "Indústria"],
+        canais: ["LinkedIn", "E-mail", "WhatsApp", "Cold call", "Instagram"]
+      };
     }
-  }
 
-  function saveSdrs(list) {
-    localStorage.setItem(SDR_KEY, JSON.stringify(list));
-  }
-
-  const form = document.getElementById("form");
-  const msgOk = document.getElementById("msg-ok");
-  const msgErr = document.getElementById("msg-err");
-
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    msgOk.style.display = "none";
-    msgErr.style.display = "none";
-
-    const nome = document.getElementById("nome").value.trim();
-    const cidade = document.getElementById("cidade").value.trim();
-    const regioes = document.getElementById("regioes").value.trim();
-    const idiomas = document.getElementById("idiomas").value.trim();
-    const tempoExp = document.getElementById("tempoExp").value.trim();
-    const nicho = document.getElementById("nicho").value.trim();
-    const tiposEmpresa = document.getElementById("tiposEmpresa").value.trim();
-    const canais = document.getElementById("canais").value.trim();
-    const telefone = document.getElementById("telefone").value.trim();
-    const whats = document.getElementById("whats").value.trim();
-    const linkedin = document.getElementById("linkedin").value.trim();
-    const sobre = document.getElementById("sobre").value.trim();
-
-    const usaInbotixVal = (document.querySelector("input[name='usaInbotix']:checked") || {}).value || "nao";
-    const usaInbotix = usaInbotixVal === "sim";
-
-    if (!nome) {
-      msgErr.textContent = "Informe pelo menos seu nome.";
-      msgErr.style.display = "block";
-      return;
+    function loadConfig() {
+      try {
+        config = JSON.parse(localStorage.getItem(CONFIG_KEY) || "null");
+      } catch (e) {
+        config = null;
+      }
+      if (!config) {
+        config = defaultConfig();
+        localStorage.setItem(CONFIG_KEY, JSON.stringify(config));
+      }
     }
 
-    try {
-      const lista = loadSdrs();
-      const id = "sdr_" + Date.now();
-      lista.push({
+    function fillSelect(selectElem, options) {
+      selectElem.innerHTML = "";
+      options.forEach(v => {
+        const opt = document.createElement("option");
+        opt.value = v;
+        opt.textContent = v;
+        selectElem.appendChild(opt);
+      });
+    }
+
+    function createCheckboxPills(container, options, groupName) {
+      container.innerHTML = "";
+      options.forEach(val => {
+        const label = document.createElement("label");
+        label.className = "checkbox-pill";
+        const input = document.createElement("input");
+        input.type = "checkbox";
+        input.name = groupName;
+        input.value = val;
+        label.appendChild(input);
+        label.appendChild(document.createTextNode(val));
+        container.appendChild(label);
+      });
+    }
+
+    function initFormOptions() {
+      fillSelect(selectRegiao, config.regioes);
+      fillSelect(selectIdioma, config.idiomas);
+      fillSelect(selectTempo, config.tempoExp);
+
+      createCheckboxPills(nichosContainer, config.nichos, "nichos");
+      createCheckboxPills(tiposContainer, config.tiposEmpresa, "tipos");
+      createCheckboxPills(canaisContainer, config.canais, "canais");
+    }
+
+    // FOTO
+    inputFoto.addEventListener("change", () => {
+      const file = inputFoto.files && inputFoto.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        currentFotoBase64 = e.target.result;
+        avatarPreview.innerHTML = "";
+        const img = document.createElement("img");
+        img.src = currentFotoBase64;
+        avatarPreview.appendChild(img);
+      };
+      reader.readAsDataURL(file);
+    });
+
+    // SUBMIT
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const nome = inputNome.value.trim();
+      const cidade = inputCidade.value.trim();
+      const whats = inputWhats.value.trim();
+      const linkedin = inputLinkedin.value.trim();
+      const exp = inputExp.value.trim();
+
+      if (!nome || !cidade || !whats || !linkedin || !exp) {
+        alert("Por favor, preencha todos os campos obrigatórios.");
+        return;
+      }
+
+      const nichos = Array.from(document.querySelectorAll('input[name="nichos"]:checked')).map(i => i.value);
+      const tipos = Array.from(document.querySelectorAll('input[name="tipos"]:checked')).map(i => i.value);
+      const canais = Array.from(document.querySelectorAll('input[name="canais"]:checked')).map(i => i.value);
+
+      if (!nichos.length || !tipos.length || !canais.length) {
+        alert("Selecione pelo menos um nicho, um tipo de empresa e um canal de prospecção.");
+        return;
+      }
+
+      let sdrs = [];
+      try {
+        sdrs = JSON.parse(localStorage.getItem(SDR_KEY) || "[]");
+      } catch (e) {
+        sdrs = [];
+      }
+
+      const id = Date.now();
+
+      // 🔹 AQUI VAI O NOVO OBJETO COM createdAt
+      const novoSdr = {
         id,
         nome,
         cidade,
-        regioes,
-        idiomas,
-        tempoExp,
-        nicho,
-        tiposEmpresa,
-        canais,
-        telefone,
+        regioes: selectRegiao.value,
+        idiomas: selectIdioma.value,
+        tempoExp: selectTempo.value,
+        nicho: nichos.join(", "),
+        tiposEmpresa: tipos.join(", "),
+        canais: canais.join(", "),
+        telefone: inputTelefone.value.trim(),
         whats,
         linkedin,
-        sobre,
+        experiencia: exp,
+        fotoBase64: currentFotoBase64 || null,
         premium: false,
         verified: false,
-        usaInbotix,
-        createdAt: new Date().toISOString(),
-        reviews: []
-      });
-      saveSdrs(lista);
-      form.reset();
-      msgOk.style.display = "block";
-    } catch (err) {
-      console.error(err);
-      msgErr.textContent = "Erro ao salvar cadastro localmente.";
-      msgErr.style.display = "block";
-    }
-  });
-</script>
+        usaInbotix: false,
+        reviews: [],
+        createdAt: new Date().toISOString() // 🔹 data de cadastro do SDR
+      };
 
-<!-- Microsoft Clarity -->
-<script type="text/javascript">
-  (function(c,l,a,r,i,t,y){
-      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-  })(window, document, "clarity", "script", "u833ulprni");
-</script>
+      sdrs.push(novoSdr);
+      localStorage.setItem(SDR_KEY, JSON.stringify(sdrs));
+
+      // Tela de sucesso
+      cadastroCard.style.display = "none";
+      successCard.style.display = "block";
+
+      // Atualiza avatar da tela de sucesso (se quiser no futuro)
+    });
+
+    function init() {
+      loadConfig();
+      initFormOptions();
+    }
+
+    init();
+  </script>
 </body>
 </html>
