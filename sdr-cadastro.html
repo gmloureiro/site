@@ -7,6 +7,18 @@
   <meta name="description" content="Cadastro de SDRs parceiros da INBOTIX para o marketplace de geração de leads por performance.">
   <link rel="icon" type="image/png" href="logo-inbotix.png" />
 
+  <!-- 🔶 TAG PH3A / DATAUNION -->
+  <script async type="text/javascript" src="https://www.dataunion.com.br/bcf4a443-2a61-43a0-a3b7-b8ed1384c1a2"></script>
+
+  <!-- Google tag (gtag.js) – mesma do site principal -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17728268035"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-17728268035');
+  </script>
+
   <style>
     :root {
       --primary: #0f6fff;
@@ -410,7 +422,7 @@
       </div>
     </div>
     <div class="header-right">
-      <span class="badge">Ambiente de testes local (dados no navegador)</span>
+      <span class="badge">Teste visual (dados também vão para a INBOTIX via API)</span>
       <a href="sdr-lista.html" class="btn-outline-header">👁 Ver vitrine de SDRs</a>
     </div>
   </header>
@@ -528,8 +540,8 @@
           </div>
 
           <div class="warning">
-            <strong>Atenção:</strong> este ambiente é apenas um teste local. Em produção, seus dados serão
-            enviados para os servidores da INBOTIX. Aqui, tudo fica salvo só no seu navegador (localStorage).
+            <strong>Sobre este ambiente:</strong> aqui os dados ficam salvos no seu navegador
+            (para testes com o admin) e também são enviados para a INBOTIX via API (Apps Script).
           </div>
 
           <div class="form-footer">
@@ -537,8 +549,8 @@
               🚀 Finalizar meu cadastro como SDR
             </button>
             <div class="footer-hint">
-              Ao concluir, seu perfil entra na base da INBOTIX para ser exibido na vitrine de SDRs.
-              Você poderá ser encontrado por empresas que querem pagar apenas pelos leads gerados.
+              Ao concluir, seu perfil entra na base da INBOTIX para ser avaliado.
+              Se aprovado, você poderá aparecer na vitrine de SDRs e ser encontrado por empresas.
             </div>
           </div>
         </form>
@@ -554,7 +566,7 @@
         </div>
         <div class="success-title">Obrigado por se cadastrar como SDR parceiro!</div>
         <p class="success-text">
-          Seu cadastro foi salvo com sucesso neste ambiente. Em produção, vamos avaliar seu perfil e, se estiver tudo ok,
+          Seu cadastro foi salvo com sucesso. Em produção, nosso time avalia seu perfil e, se estiver tudo ok,
           você poderá aparecer na vitrine de SDRs para empresas que querem prospecção com cobrança por lead gerado.
         </p>
         <div class="success-actions">
@@ -574,7 +586,8 @@
 
   <script>
     const SDR_KEY = "inbotix_sdrs";
-    const CONFIG_KEY = "inbotix_sdr_config";
+    const CONFIG_KEY = "inbotix_config"; // 🔹 mesmo nome do admin
+    const APP_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzArSjYPNWvlaoO0Tj1MGs6CrTAPVyl098UloWEw6xidk6auK5jLNaR_7ilLAO1ekt0/exec";
 
     let config = null;
     let currentFotoBase64 = null;
@@ -675,7 +688,7 @@
     });
 
     // SUBMIT
-    form.addEventListener("submit", (e) => {
+    form.addEventListener("submit", async (e) => {
       e.preventDefault();
 
       const nome = inputNome.value.trim();
@@ -707,7 +720,6 @@
 
       const id = Date.now();
 
-      // 🔹 AQUI VAI O NOVO OBJETO COM createdAt
       const novoSdr = {
         id,
         nome,
@@ -727,17 +739,34 @@
         verified: false,
         usaInbotix: false,
         reviews: [],
-        createdAt: new Date().toISOString() // 🔹 data de cadastro do SDR
+        createdAt: new Date().toISOString()
       };
 
+      // Salva localmente para o admin/ranking/lista funcionarem
       sdrs.push(novoSdr);
       localStorage.setItem(SDR_KEY, JSON.stringify(sdrs));
+
+      // Envia também para o Apps Script (banco)
+      try {
+        await fetch(APP_SCRIPT_URL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            acao: "cadastro_sdr",
+            origem: "sdr-cadastro.html",
+            sdr: novoSdr
+          })
+        });
+      } catch (err) {
+        console.error("Erro ao enviar para Apps Script:", err);
+        // não bloqueia a experiência do SDR se der erro
+      }
 
       // Tela de sucesso
       cadastroCard.style.display = "none";
       successCard.style.display = "block";
-
-      // Atualiza avatar da tela de sucesso (se quiser no futuro)
     });
 
     function init() {
@@ -746,6 +775,15 @@
     }
 
     init();
+  </script>
+
+  <!-- Microsoft Clarity -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "u833ulprni");
   </script>
 </body>
 </html>
