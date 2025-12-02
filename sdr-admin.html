@@ -2,23 +2,25 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <title>Admin – Marketplace de SDRs INBOTIX</title>
+  <title>Admin SDR – INBOTIX</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Painel administrativo do marketplace de SDRs INBOTIX. Visualize SDRs, avaliações e empresas que solicitaram contato.">
+  <meta name="description" content="Painel interno para gerenciar SDRs, catálogos e cadastros do marketplace INBOTIX.">
   <link rel="icon" type="image/png" href="logo-inbotix.png" />
 
   <style>
     :root {
-      --primary: #0f6fff;
-      --primary-dark: #0050c8;
       --bg: #f3f4f6;
       --bg-card: #ffffff;
       --border: #d1d5db;
       --border-soft: #e5e7eb;
       --text: #111827;
       --muted: #6b7280;
+      --primary: #0f6fff;
+      --primary-dark: #0050c8;
       --danger: #b91c1c;
       --success: #15803d;
+      --star-on: #fbbf24;
+      --star-off: #e2e8f0;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -40,22 +42,14 @@
       align-items: center;
       justify-content: space-between;
       gap: 12px;
-      box-shadow: 0 8px 22px rgba(15, 23, 42, 0.08);
+      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
       position: sticky;
       top: 0;
       z-index: 20;
     }
 
-    .header-left {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .header-left img {
-      height: 32px;
-      width: auto;
-    }
+    .header-left { display: flex; align-items: center; gap: 10px; }
+    .header-left img { height: 32px; width: auto; }
 
     .header-title {
       font-size: 13px;
@@ -75,7 +69,16 @@
       justify-content: flex-end;
     }
 
-    .btn-header {
+    .badge {
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: #f9fafb;
+      color: var(--muted);
+    }
+
+    .btn-outline-header {
       border-radius: 999px;
       border: 1px solid rgba(15, 111, 255, 0.5);
       padding: 6px 12px;
@@ -89,57 +92,320 @@
       font-weight: 600;
     }
 
+    .btn-outline-header span.icon {
+      font-size: 13px;
+    }
+
     main {
-      max-width: 1120px;
-      margin: 18px auto 32px;
+      max-width: 1140px;
+      margin: 22px auto 32px;
       padding: 0 16px 40px;
     }
 
-    .page-grid {
-      display: grid;
-      grid-template-columns: 2.1fr 1.4fr;
-      gap: 16px;
-    }
-
-    @media (max-width: 900px) {
-      .page-grid { grid-template-columns: minmax(0, 1fr); }
-    }
-
-    .card {
+    .section {
+      margin-bottom: 26px;
       background: var(--bg-card);
       border-radius: 18px;
       border: 1px solid var(--border-soft);
-      box-shadow: 0 14px 32px rgba(15, 23, 42, 0.08);
-      padding: 14px 16px 16px;
+      box-shadow: 0 14px 32px rgba(15, 23, 42, 0.06);
+      padding: 16px 18px 18px;
     }
 
-    .card-header {
+    .section-header {
       display: flex;
       justify-content: space-between;
-      gap: 8px;
+      gap: 10px;
       align-items: baseline;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
 
-    .card-title {
+    .section-title {
       font-size: 14px;
       font-weight: 700;
+      margin-bottom: 4px;
       color: var(--text);
     }
 
-    .card-sub {
+    .section-subtitle {
       font-size: 11px;
       color: var(--muted);
-      max-width: 42ch;
+      max-width: 60ch;
     }
 
-    .badge {
+    .section-badge {
       font-size: 11px;
-      padding: 3px 8px;
+      padding: 4px 9px;
       border-radius: 999px;
       border: 1px solid var(--border);
       background: #f9fafb;
       color: var(--muted);
+      white-space: nowrap;
+    }
+
+    /* GRID CONFIG */
+    .config-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 960px) {
+      .config-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 720px) {
+      .config-grid { grid-template-columns: minmax(0, 1fr); }
+    }
+
+    .config-card {
+      border-radius: 14px;
+      border: 1px solid var(--border-soft);
+      background: #f9fafb;
+      padding: 10px 10px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      min-height: 120px;
+    }
+
+    .config-title {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .config-help {
+      font-size: 10px;
+      color: var(--muted);
+    }
+
+    .config-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-top: 4px;
+      min-height: 22px;
+    }
+
+    .config-tag {
+      font-size: 10px;
+      padding: 2px 7px;
+      border-radius: 999px;
+      background: #eef2ff;
+      border: 1px solid #c7d2fe;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .config-tag button {
+      border: none;
+      background: transparent;
+      font-size: 10px;
+      cursor: pointer;
+      color: #4b5563;
+    }
+
+    .config-input-row {
+      display: flex;
+      gap: 4px;
+      margin-top: 6px;
+    }
+
+    .config-input-row input {
+      flex: 1;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      padding: 4px 8px;
+      font-size: 11px;
+      outline: none;
+    }
+
+    .config-input-row button {
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: #ffffff;
+      padding: 4px 8px;
+      font-size: 11px;
+      cursor: pointer;
+    }
+
+    .config-footer {
+      margin-top: 10px;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    /* TOOLBARS & TABLES */
+    .toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .toolbar-info {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .toolbar-actions {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .btn-small {
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: #ffffff;
+      padding: 4px 9px;
+      font-size: 11px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .btn-small.primary {
+      border-color: transparent;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: #ffffff;
+      font-weight: 600;
+      box-shadow: 0 8px 20px rgba(15, 111, 255, 0.5);
+    }
+
+    .btn-small.danger {
+      border-color: rgba(185, 28, 28, 0.7);
+      color: var(--danger);
+      background: #fef2f2;
+    }
+
+    .table-wrapper {
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      overflow: auto;
+      max-height: 360px;
+      background: #f9fafb;
+      margin-top: 6px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 11px;
+      min-width: 720px;
+    }
+
+    thead {
+      position: sticky;
+      top: 0;
+      background: #e5e7eb;
+      z-index: 1;
+    }
+
+    th, td {
+      padding: 6px 8px;
+      border-bottom: 1px solid var(--border-soft);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      font-weight: 600;
+      color: #374151;
+      border-bottom: 1px solid #d1d5db;
+    }
+
+    tr:nth-child(even) td { background: #f9fafb; }
+
+    .empty {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 8px;
+      text-align: center;
+      padding: 8px;
+    }
+
+    .sdr-name {
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .sdr-meta {
+      font-size: 10px;
+      color: var(--muted);
+    }
+
+    .stars {
+      display: inline-flex;
+      gap: 1px;
+    }
+
+    .star {
+      color: var(--star-off);
+      font-size: 13px;
+    }
+
+    .star.filled { color: var(--star-on); }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      padding: 2px 7px;
+      border-radius: 999px;
+      font-size: 10px;
+      border: 1px solid var(--border);
+      background: #f9fafb;
+      margin: 1px;
+      gap: 4px;
+    }
+
+    .chip-premium {
+      border-color: #fbbf24;
+      background: #fffbeb;
+      color: #92400e;
+    }
+
+    .chip-verified {
+      border-color: #22c55e;
+      background: #ecfdf3;
+      color: #166534;
+    }
+
+    .chip-stack {
+      border-color: #60a5fa;
+      background: #eff6ff;
+      color: #1d4ed8;
+    }
+
+    .td-actions {
+      white-space: nowrap;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+
+    .link-small {
+      font-size: 10px;
+      color: var(--primary-dark);
+      text-decoration: underline;
+      cursor: pointer;
+      background: transparent;
+      border: none;
+      padding: 0;
+    }
+
+    .badge-pill {
+      border-radius: 999px;
+      font-size: 10px;
+      padding: 3px 7px;
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      color: #1d4ed8;
     }
 
     .badge-success {
@@ -154,377 +420,1285 @@
       background: #fef2f2;
     }
 
-    .badge-pill {
-      border-radius: 999px;
-      font-size: 10px;
-      padding: 3px 7px;
-      background: #eff6ff;
-      border: 1px solid #bfdbfe;
-      color: #1d4ed8;
+    /* MODAIS (edição + reviews) */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.45);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 40;
+      padding: 16px;
     }
 
-    .section {
-      margin-bottom: 18px;
-    }
-
-    .section-title {
-      font-size: 13px;
-      font-weight: 700;
-      margin-bottom: 6px;
-      color: var(--text);
-    }
-
-    .section-sub {
-      font-size: 11px;
-      color: var(--muted);
-      margin-bottom: 8px;
-    }
-
-    .stat-row {
+    .modal-backdrop.open {
       display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 10px;
     }
 
-    .stat {
-      font-size: 11px;
-      padding: 5px 9px;
-      border-radius: 999px;
-      background: #f9fafb;
-      border: 1px solid var(--border-soft);
-    }
-
-    .table-wrapper {
-      border-radius: 12px;
-      border: 1px solid var(--border-soft);
-      overflow: auto;
-      max-height: 360px;
-      background: #f9fafb;
-    }
-
-    table {
+    .modal {
+      background: #ffffff;
+      border-radius: 16px;
+      max-width: 640px;
       width: 100%;
-      border-collapse: collapse;
-      font-size: 11px;
-      min-width: 600px;
+      max-height: 90vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 24px 60px rgba(15, 23, 42, 0.6);
     }
 
-    thead {
-      position: sticky;
-      top: 0;
-      background: #e5e7eb;
-      z-index: 1;
-    }
-
-    th, td {
-      padding: 6px 8px;
+    .modal-header {
+      padding: 10px 14px;
       border-bottom: 1px solid var(--border-soft);
-      text-align: left;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
     }
 
-    th {
+    .modal-title {
+      font-size: 14px;
       font-weight: 600;
-      color: #374151;
-      border-bottom: 1px solid #d1d5db;
     }
 
-    tbody tr:nth-child(even) {
-      background: #f3f4f6;
-    }
-
-    tbody tr:hover {
-      background: #e5f0ff;
-    }
-
-    .text-right { text-align: right; }
-    .text-center { text-align: center; }
-
-    .pill {
-      border-radius: 999px;
-      padding: 2px 6px;
-      font-size: 10px;
-      border: 1px solid var(--border-soft);
-      background: #f9fafb;
-      white-space: nowrap;
-    }
-
-    .pill-green {
-      border-color: rgba(34, 197, 94, 0.6);
-      background: #ecfdf3;
-      color: #166534;
-    }
-
-    .pill-yellow {
-      border-color: #facc15;
-      background: #fefce8;
-      color: #92400e;
-    }
-
-    .pill-blue {
-      border-color: #60a5fa;
-      background: #eff6ff;
-      color: #1d4ed8;
-    }
-
-    .stars {
-      display: inline-flex;
-      gap: 1px;
-    }
-
-    .star {
-      font-size: 12px;
-      color: #e5e7eb;
-    }
-
-    .star.filled {
-      color: #facc15;
-    }
-
-    .empty {
+    .modal-subtitle {
       font-size: 11px;
       color: var(--muted);
-      text-align: center;
-      padding: 10px;
     }
 
-    .btn {
+    .modal-close {
       border-radius: 999px;
       border: 1px solid var(--border);
       background: #f9fafb;
-      padding: 6px 11px;
+      padding: 4px 9px;
       font-size: 11px;
       cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
     }
 
-    .btn-primary {
-      border-color: transparent;
-      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-      color: #ffffff;
-      box-shadow: 0 10px 24px rgba(15, 111, 255, 0.6);
-      font-weight: 600;
+    .modal-body {
+      font-size: 12px;
+      color: var(--text);
+      padding: 12px 14px 14px;
+      overflow-y: auto;
     }
 
-    .btn-sm {
-      padding: 4px 8px;
-      font-size: 10px;
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px 10px;
     }
 
-    .btn-group {
+    @media (max-width: 640px) {
+      .form-grid { grid-template-columns: minmax(0, 1fr); }
+    }
+
+    .form-group {
       display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-bottom: 8px;
+      flex-direction: column;
+      gap: 3px;
     }
 
-    .badge-key {
-      font-family: monospace;
-      font-size: 10px;
-      padding: 2px 5px;
-      border-radius: 6px;
-      border: 1px dashed #cbd5f5;
-      background: #eff6ff;
-      color: #1e3a8a;
-    }
-
-    .small-text {
-      font-size: 10px;
+    .form-label {
+      font-size: 11px;
       color: var(--muted);
     }
 
-    .mt-4 { margin-top: 4px; }
-    .mt-8 { margin-top: 8px; }
+    .form-control,
+    .form-select {
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      padding: 5px 7px;
+      font-size: 11px;
+      outline: none;
+    }
+
+    .form-control:focus,
+    .form-select:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.4);
+    }
+
+    .form-row-inline {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 8px;
+    }
+
+    .form-footer {
+      margin-top: 10px;
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .btn-primary {
+      border-radius: 999px;
+      border: none;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: #ffffff;
+      padding: 6px 14px;
+      font-size: 12px;
+      cursor: pointer;
+      font-weight: 600;
+      box-shadow: 0 10px 24px rgba(15, 111, 255, 0.6);
+    }
+
+    .form-hint {
+      font-size: 10px;
+      color: var(--muted);
+      max-width: 40ch;
+    }
+
+    .review-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .review-item {
+      border-bottom: 1px solid var(--border-soft);
+      padding-bottom: 6px;
+      display: flex;
+      justify-content: space-between;
+      gap: 6px;
+    }
+
+    .review-item:last-child { border-bottom: none; }
+
+    .review-main {
+      max-width: calc(100% - 70px);
+    }
+
+    .review-name { font-weight: 600; margin-bottom: 1px; }
+
+    .review-meta {
+      font-size: 10px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .review-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      align-items: flex-end;
+    }
+
+    .review-empty {
+      font-size: 11px;
+      color: var(--muted);
+    }
   </style>
 </head>
 <body>
   <header>
     <div class="header-left">
-      <a href="https://inbotix.com.br">
-        <img src="logo-inbotix.png" alt="INBOTIX">
+      <a href="https://inbotix.com.br" target="_blank" rel="noopener">
+        <img src="logo-inbotix.png" alt="INBOTIX" />
       </a>
       <div class="header-title">
-        <strong>Admin – Marketplace de SDRs</strong>
-        Visualização local dos dados salvos no navegador.
+        <strong>Admin SDR – INBOTIX</strong>
+        Configuração do marketplace e cadastros da plataforma.
       </div>
     </div>
     <div class="header-right">
-      <span class="badge-pill">🔒 Ambiente de testes / localStorage</span>
-      <a href="sdr-lista.html" class="btn-header">Ver vitrine de SDRs</a>
-      <a href="sdr-ranking.html" class="btn-header">Ranking de SDRs</a>
-      <a href="sdr-cadastro.html" class="btn-header">Cadastro de SDR</a>
+      <span class="badge">Uso local em navegador – ambiente de testes</span>
+      <a href="sdr-lista.html" class="btn-outline-header">
+        <span class="icon">👁</span>
+        Ver vitrine de SDRs
+      </a>
+      <a href="sdr-ranking.html" class="btn-outline-header">
+        🏆 Ranking de SDRs
+      </a>
+      <a href="sdr-cadastro.html" class="btn-outline-header">
+        ➕ Cadastro de SDR
+      </a>
     </div>
   </header>
 
   <main>
-    <div class="page-grid">
-      <!-- COLUNA ESQUERDA: SDRs, notas e métricas -->
-      <section class="card">
-        <div class="card-header">
-          <div>
-            <div class="card-title">Visão geral dos SDRs</div>
-            <div class="card-sub">
-              Lista de SDRs cadastrados em <span class="badge-key">inbotix_sdrs</span>, com média de avaliações,
-              número de comentários e posição no ranking.
-            </div>
-          </div>
-          <span class="badge" id="sdr-count-badge">Carregando…</span>
-        </div>
-
-        <div class="section">
-          <div class="section-title">Estatísticas rápidas</div>
-          <div class="stat-row">
-            <div class="stat" id="stat-total-sdrs">Total de SDRs: 0</div>
-            <div class="stat" id="stat-avaliados">SDRs com avaliações: 0</div>
-            <div class="stat" id="stat-media-geral">Média geral das notas: –</div>
+    <!-- CATÁLOGOS -->
+    <section class="section">
+      <div class="section-header">
+        <div>
+          <div class="section-title">Catálogos para cadastro de SDR</div>
+          <div class="section-subtitle">
+            Aqui você define as opções padrão de <strong>região, nicho, tipo de empresa, canais, idioma e experiência</strong>.
+            O formulário de cadastro e a vitrine usam estas listas para manter tudo padronizado.
           </div>
         </div>
+        <span class="section-badge">Configuração salva no navegador (localStorage)</span>
+      </div>
 
-        <div class="section">
+      <div class="config-grid">
+        <div class="config-card" data-key="regioes">
+          <div class="config-title">Regiões de atuação</div>
+          <div class="config-help">Ex.: Brasil inteiro, Sudeste, Sul, LATAM...</div>
+          <div class="config-tags" data-tags="regioes"></div>
+          <div class="config-input-row">
+            <input type="text" placeholder="Adicionar região..." />
+            <button type="button">+ Adicionar</button>
+          </div>
+        </div>
+
+        <div class="config-card" data-key="nichos">
+          <div class="config-title">Nichos de atuação</div>
+          <div class="config-help">Ex.: SaaS, Indústria, Educação, Saúde, Agro...</div>
+          <div class="config-tags" data-tags="nichos"></div>
+          <div class="config-input-row">
+            <input type="text" placeholder="Adicionar nicho..." />
+            <button type="button">+ Adicionar</button>
+          </div>
+        </div>
+
+        <div class="config-card" data-key="tiposEmpresa">
+          <div class="config-title">Tipos de empresa</div>
+          <div class="config-help">Ex.: PME, Enterprise, Startup, Franquia...</div>
+          <div class="config-tags" data-tags="tiposEmpresa"></div>
+          <div class="config-input-row">
+            <input type="text" placeholder="Adicionar tipo..." />
+            <button type="button">+ Adicionar</button>
+          </div>
+        </div>
+
+        <div class="config-card" data-key="canais">
+          <div class="config-title">Canais de prospecção</div>
+          <div class="config-help">Ex.: LinkedIn, E-mail, WhatsApp, URA...</div>
+          <div class="config-tags" data-tags="canais"></div>
+          <div class="config-input-row">
+            <input type="text" placeholder="Adicionar canal..." />
+            <button type="button">+ Adicionar</button>
+          </div>
+        </div>
+
+        <div class="config-card" data-key="idiomas">
+          <div class="config-title">Idiomas</div>
+          <div class="config-help">Ex.: Português, Espanhol, Inglês...</div>
+          <div class="config-tags" data-tags="idiomas"></div>
+          <div class="config-input-row">
+            <input type="text" placeholder="Adicionar idioma..." />
+            <button type="button">+ Adicionar</button>
+          </div>
+        </div>
+
+        <div class="config-card" data-key="experiencia">
+          <div class="config-title">Tempo de experiência</div>
+          <div class="config-help">Ex.: Júnior, Pleno, Sênior, +5 anos...</div>
+          <div class="config-tags" data-tags="experiencia"></div>
+          <div class="config-input-row">
+            <input type="text" placeholder="Adicionar experiência..." />
+            <button type="button">+ Adicionar</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="config-footer">
+        As alterações são salvas automaticamente. Em produção, esses catálogos podem ser carregados do banco/CRM,
+        mas aqui já te dão uma visão clara de como tudo pode ficar padronizado.
+      </div>
+    </section>
+
+    <!-- CONTROLE DE SDRS -->
+    <section class="section">
+      <div class="section-header">
+        <div>
           <div class="section-title">SDRs cadastrados</div>
-          <div class="section-sub">
-            Em produção, esses dados viriam do backend. Aqui é apenas uma visualização do que está salvo no navegador.
-          </div>
-
-          <div class="table-wrapper" id="sdr-table-wrapper">
-            <table>
-              <thead>
-                <tr>
-                  <th>SDR</th>
-                  <th>Cidade / Região</th>
-                  <th class="text-center">Média</th>
-                  <th class="text-center">Avaliações</th>
-                  <th>Flags</th>
-                </tr>
-              </thead>
-              <tbody id="sdr-tbody">
-                <tr><td colspan="5" class="empty">Nenhum SDR cadastrado ainda.</td></tr>
-              </tbody>
-            </table>
+          <div class="section-subtitle">
+            Visualize, edite e marque selos como <strong>Premium</strong>, <strong>Top Performer</strong>,
+            <strong>Verificado INBOTIX</strong> e <strong>Usa stack INBOTIX</strong>.
           </div>
         </div>
+        <span class="section-badge">Fonte: localStorage – chave <code>inbotix_sdrs</code></span>
+      </div>
 
-        <div class="section mt-8">
-          <div class="section-title">Chaves usadas no localStorage</div>
-          <div class="section-sub">
-            Útil para debug ou para mapear o que você vai persistir depois no banco de dados real.
-          </div>
-          <div class="stat-row">
-            <span class="badge-key">inbotix_sdrs</span>
-            <span class="badge-key">inbotix_sdr_config</span>
-            <span class="badge-key">inbotix_sdr_leads</span>
-          </div>
-          <p class="small-text mt-4">
-            Em produção, esses dados devem ser buscados via API (ex: <em>/api/sdrs</em>, <em>/api/leads</em>) e
-            não diretamente do navegador.
-          </p>
+      <div class="toolbar">
+        <div class="toolbar-info" id="sdr-info">Carregando SDRs...</div>
+        <div class="toolbar-actions">
+          <button type="button" class="btn-small" id="btn-export-sdrs">⬇ Exportar SDRs (CSV)</button>
+          <button type="button" class="btn-small" id="btn-reload">Recarregar lista</button>
+          <button type="button" class="btn-small danger" id="btn-clear-all">
+            Limpar todos os SDRs (apenas teste)
+          </button>
         </div>
-      </section>
+      </div>
 
-      <!-- COLUNA DIREITA: LEADS QUE PEDIRAM TELEFONE -->
-      <section class="card">
-        <div class="card-header">
-          <div>
-            <div class="card-title">Empresas que solicitaram o telefone do SDR</div>
-            <div class="card-sub">
-              Toda vez que alguém clicou em <strong>“Chamar no WhatsApp”</strong> na vitrine e preencheu os dados,
-              o registro foi salvo em <span class="badge-key">inbotix_sdr_leads</span>.
-            </div>
-          </div>
-          <span class="badge badge-success" id="lead-count-badge">0 leads</span>
-        </div>
+      <div class="table-wrapper">
+        <table id="sdr-table">
+          <thead>
+            <tr>
+              <th>SDR</th>
+              <th>Data cadastro</th>
+              <th>Nichos &amp; Tipos de empresa</th>
+              <th>Idioma &amp; Experiência</th>
+              <th>Notas / Avaliações</th>
+              <th>Selos</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- preenchido via JS -->
+          </tbody>
+        </table>
+      </div>
+      <div id="sdr-empty" class="empty" style="display:none;">
+        Nenhum SDR cadastrado neste ambiente. Faça um teste em <strong>sdr-cadastro.html</strong> e depois volte aqui.
+      </div>
+    </section>
 
-        <div class="section">
-          <div class="section-title">Exportar cadastros</div>
-          <div class="btn-group">
-            <button type="button" class="btn btn-primary btn-sm" id="btn-export-csv">
-              ⬇ Exportar CSV
-            </button>
-            <button type="button" class="btn btn-sm" id="btn-export-json">
-              ⬇ Exportar JSON
-            </button>
-            <button type="button" class="btn btn-sm" id="btn-clear-leads">
-              🗑 Limpar leads (apenas localStorage)
-            </button>
-          </div>
-          <p class="small-text">
-            Os arquivos gerados podem ser importados depois em um CRM, planilha ou enviados para o time operacional.
-          </p>
-        </div>
-
-        <div class="section">
-          <div class="section-title">Lista de empresas interessadas</div>
-          <div class="section-sub">
-            Cada linha representa um formulário preenchido antes de liberar o número de WhatsApp de um SDR.
-          </div>
-
-          <div class="table-wrapper" id="leads-table-wrapper">
-            <table>
-              <thead>
-                <tr>
-                  <th>Data</th>
-                  <th>Contato / Empresa</th>
-                  <th>SDR</th>
-                  <th>E-mail</th>
-                  <th>Telefone</th>
-                </tr>
-              </thead>
-              <tbody id="leads-tbody">
-                <tr><td colspan="5" class="empty">Nenhum lead registrado ainda.</td></tr>
-              </tbody>
-            </table>
+    <!-- CADASTROS DE EMPRESAS / AVALIADORES -->
+    <section class="section">
+      <div class="section-header">
+        <div>
+          <div class="section-title">Cadastros de empresas / avaliadores</div>
+          <div class="section-subtitle">
+            Toda pessoa que avalia um SDR vira um cadastro aqui: <strong>nome, empresa, e-mail, telefone, LinkedIn</strong>,
+            mais a nota e o comentário. Isso é a sua futura base de leads para prospecção.
           </div>
         </div>
+        <span class="section-badge">Dados extraídos das avaliações dos SDRs</span>
+      </div>
 
-        <div class="section mt-8">
-          <div class="section-title">Observações para produção</div>
-          <ul class="small-text" style="padding-left: 16px; list-style: disc;">
-            <li>Em produção, cada registro deve ser persistido no banco (ex: <em>lead_sdr_requests</em>).</li>
-            <li>Você pode vincular esse cadastro a pipelines de CRM (ex: “Interesse em SDR / Prospecção”).</li>
-            <li>Interessante ter um campo de <em>origem</em> (ex: “Marketplace SDR INBOTIX”).</li>
-          </ul>
+      <div class="toolbar">
+        <div class="toolbar-info" id="reviews-info">
+          Carregando cadastros de avaliadores...
         </div>
-      </section>
-    </div>
+        <div class="toolbar-actions">
+          <button type="button" class="btn-small" id="btn-export-reviews">
+            ⬇ Exportar avaliadores (CSV)
+          </button>
+        </div>
+      </div>
+
+      <div class="table-wrapper">
+        <table id="reviews-table">
+          <thead>
+            <tr>
+              <th>Data</th>
+              <th>Nome do contato</th>
+              <th>Empresa</th>
+              <th>E-mail</th>
+              <th>Telefone</th>
+              <th>LinkedIn</th>
+              <th>SDR avaliado</th>
+              <th>Estrelas</th>
+              <th>Comentário</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- preenchido via JS -->
+          </tbody>
+        </table>
+      </div>
+      <div id="reviews-empty" class="empty" style="display:none;">
+        Ainda não há avaliações cadastradas neste ambiente. Assim que clientes avaliarem os SDRs na vitrine,
+        os cadastros aparecerão aqui.
+      </div>
+    </section>
+
+    <!-- NOVA SEÇÃO: LEADS QUE PEDIRAM O TELEFONE DO SDR -->
+    <section class="section">
+      <div class="section-header">
+        <div>
+          <div class="section-title">Leads que solicitaram o telefone do SDR</div>
+          <div class="section-subtitle">
+            Toda pessoa que preencheu o formulário para liberar o número de WhatsApp de um SDR aparece aqui.
+            Esses dados vêm da chave <code>inbotix_sdr_leads</code> no <strong>localStorage</strong>.
+          </div>
+        </div>
+        <span class="section-badge badge-success" id="leads-badge">0 leads</span>
+      </div>
+
+      <div class="toolbar">
+        <div class="toolbar-info" id="leads-info">
+          Carregando leads...
+        </div>
+        <div class="toolbar-actions">
+          <button type="button" class="btn-small primary" id="btn-export-leads-csv">⬇ Exportar leads (CSV)</button>
+          <button type="button" class="btn-small" id="btn-export-leads-json">⬇ Exportar leads (JSON)</button>
+          <button type="button" class="btn-small danger" id="btn-clear-leads">🗑 Limpar leads (apenas teste)</button>
+        </div>
+      </div>
+
+      <div class="table-wrapper">
+        <table id="leads-table">
+          <thead>
+            <tr>
+              <th>Data</th>
+              <th>Contato / Empresa</th>
+              <th>SDR</th>
+              <th>E-mail</th>
+              <th>Telefone</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- preenchido via JS -->
+          </tbody>
+        </table>
+      </div>
+      <div id="leads-empty" class="empty" style="display:none;">
+        Nenhum lead registrado ainda. Assim que alguém pedir o telefone de um SDR na vitrine, o cadastro aparece aqui.
+      </div>
+    </section>
   </main>
 
+  <!-- MODAL EDIÇÃO DE SDR -->
+  <div id="modal-edit" class="modal-backdrop">
+    <div class="modal">
+      <div class="modal-header">
+        <div>
+          <div class="modal-title">Editar SDR</div>
+          <div class="modal-subtitle">Ajuste os dados principais deste SDR.</div>
+        </div>
+        <button type="button" class="modal-close" id="close-edit">Fechar</button>
+      </div>
+      <div class="modal-body">
+        <form id="edit-form">
+          <input type="hidden" id="edit-id" />
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label" for="edit-nome">Nome do SDR</label>
+              <input type="text" id="edit-nome" class="form-control" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="edit-cidade">Cidade</label>
+              <input type="text" id="edit-cidade" class="form-control" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="edit-regiao">Região</label>
+              <select id="edit-regiao" class="form-select"></select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="edit-idiomas">Idiomas</label>
+              <select id="edit-idiomas" class="form-select" multiple></select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="edit-exp">Experiência</label>
+              <select id="edit-exp" class="form-select"></select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="edit-nicho">Nichos</label>
+              <select id="edit-nicho" class="form-select" multiple></select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="edit-tipos">Tipos de empresa</label>
+              <select id="edit-tipos" class="form-select" multiple></select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="edit-canais">Canais</label>
+              <select id="edit-canais" class="form-select" multiple></select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="edit-telefone">Telefone</label>
+              <input type="text" id="edit-telefone" class="form-control" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="edit-whats">WhatsApp</label>
+              <input type="text" id="edit-whats" class="form-control" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="edit-linkedin">LinkedIn</label>
+              <input type="text" id="edit-linkedin" class="form-control" />
+            </div>
+          </div>
+
+          <div class="form-row-inline">
+            <div class="form-group">
+              <label class="form-label">Selos</label>
+              <div>
+                <label style="font-size:11px; margin-right:8px;">
+                  <input type="checkbox" id="edit-premium" /> Premium
+                </label>
+                <label style="font-size:11px; margin-right:8px;">
+                  <input type="checkbox" id="edit-verified" /> Verificado INBOTIX
+                </label>
+                <label style="font-size:11px;">
+                  <input type="checkbox" id="edit-usa-inbotix" /> Usa stack INBOTIX
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-footer">
+            <button type="submit" class="btn-primary">Salvar alterações</button>
+            <div class="form-hint">
+              Para alterações mais estruturais (novos nichos, regiões etc.), ajuste os catálogos acima.
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL AVALIAÇÕES POR SDR -->
+  <div id="modal-reviews" class="modal-backdrop">
+    <div class="modal">
+      <div class="modal-header">
+        <div>
+          <div class="modal-title" id="reviews-modal-title">Avaliações deste SDR</div>
+          <div class="modal-subtitle" id="reviews-modal-subtitle"></div>
+        </div>
+        <button type="button" class="modal-close" id="close-reviews">Fechar</button>
+      </div>
+      <div class="modal-body">
+        <div id="reviews-list" class="review-list"></div>
+        <div id="reviews-list-empty" class="review-empty" style="display:none;">
+          Este SDR ainda não possui avaliações.
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script>
+    const CONFIG_KEY = "inbotix_sdr_config";
     const SDR_KEY = "inbotix_sdrs";
     const SDR_LEADS_KEY = "inbotix_sdr_leads";
 
+    let config = null;
     let sdrs = [];
+    let ratingMap = new Map();
+    let topPerformerId = null;
+    let allReviews = [];
     let leads = [];
 
-    const sdrCountBadge = document.getElementById("sdr-count-badge");
-    const statTotalSdrs = document.getElementById("stat-total-sdrs");
-    const statAvaliados = document.getElementById("stat-avaliados");
-    const statMediaGeral = document.getElementById("stat-media-geral");
-    const sdrTbody = document.getElementById("sdr-tbody");
+    // DOM - SDRs
+    const sdrTableBody = document.querySelector("#sdr-table tbody");
+    const sdrInfo = document.getElementById("sdr-info");
+    const sdrEmpty = document.getElementById("sdr-empty");
 
-    const leadCountBadge = document.getElementById("lead-count-badge");
-    const leadsTbody = document.getElementById("leads-tbody");
+    // DOM - Reviews
+    const reviewsTableBody = document.querySelector("#reviews-table tbody");
+    const reviewsInfo = document.getElementById("reviews-info");
+    const reviewsEmpty = document.getElementById("reviews-empty");
 
-    const btnExportCsv = document.getElementById("btn-export-csv");
-    const btnExportJson = document.getElementById("btn-export-json");
+    // DOM - Leads
+    const leadsTableBody = document.querySelector("#leads-table tbody");
+    const leadsInfo = document.getElementById("leads-info");
+    const leadsEmpty = document.getElementById("leads-empty");
+    const leadsBadge = document.getElementById("leads-badge");
+
+    // MODAL EDIT
+    const modalEdit = document.getElementById("modal-edit");
+    const closeEdit = document.getElementById("close-edit");
+    const editForm = document.getElementById("edit-form");
+    const editId = document.getElementById("edit-id");
+    const editNome = document.getElementById("edit-nome");
+    const editCidade = document.getElementById("edit-cidade");
+    const editRegiao = document.getElementById("edit-regiao");
+    const editIdiomas = document.getElementById("edit-idiomas");
+    const editExp = document.getElementById("edit-exp");
+    const editNicho = document.getElementById("edit-nicho");
+    const editTipos = document.getElementById("edit-tipos");
+    const editCanais = document.getElementById("edit-canais");
+    const editTelefone = document.getElementById("edit-telefone");
+    const editWhats = document.getElementById("edit-whats");
+    const editLinkedin = document.getElementById("edit-linkedin");
+    const editPremium = document.getElementById("edit-premium");
+    const editVerified = document.getElementById("edit-verified");
+    const editUsaInbotix = document.getElementById("edit-usa-inbotix");
+
+    // MODAL REVIEWS
+    const modalReviews = document.getElementById("modal-reviews");
+    const closeReviews = document.getElementById("close-reviews");
+    const reviewsModalTitle = document.getElementById("reviews-modal-title");
+    const reviewsModalSubtitle = document.getElementById("reviews-modal-subtitle");
+    const reviewsList = document.getElementById("reviews-list");
+    const reviewsListEmpty = document.getElementById("reviews-list-empty");
+
+    // BOTÕES
+    const btnExportSdrs = document.getElementById("btn-export-sdrs");
+    const btnReload = document.getElementById("btn-reload");
+    const btnClearAll = document.getElementById("btn-clear-all");
+    const btnExportReviews = document.getElementById("btn-export-reviews");
+
+    const btnExportLeadsCsv = document.getElementById("btn-export-leads-csv");
+    const btnExportLeadsJson = document.getElementById("btn-export-leads-json");
     const btnClearLeads = document.getElementById("btn-clear-leads");
+
+    /* ---------- CONFIG ---------- */
+
+    function defaultConfig() {
+      return {
+        regioes: ["Brasil inteiro", "Sudeste", "Sul", "Nordeste", "Centro-Oeste", "LATAM", "Europa"],
+        nichos: ["SaaS", "Indústria", "Educação", "Saúde", "Tecnologia", "Agências de marketing"],
+        tiposEmpresa: ["PME", "Enterprise", "Startup", "Franquia"],
+        canais: ["LinkedIn", "E-mail", "WhatsApp", "Telefone", "URA"],
+        idiomas: ["Português", "Espanhol", "Inglês"],
+        experiencia: ["Júnior", "Pleno", "Sênior", "+5 anos"]
+      };
+    }
+
+    function loadConfig() {
+      try {
+        const raw = localStorage.getItem(CONFIG_KEY);
+        if (!raw) throw new Error("Sem config");
+        config = JSON.parse(raw);
+      } catch (e) {
+        config = defaultConfig();
+        saveConfig();
+      }
+      renderConfig();
+    }
+
+    function saveConfig() {
+      localStorage.setItem(CONFIG_KEY, JSON.stringify(config));
+      renderConfig();
+    }
+
+    function renderConfig() {
+      const cards = document.querySelectorAll(".config-card");
+      cards.forEach(card => {
+        const key = card.dataset.key;
+        const listElem = card.querySelector(".config-tags");
+        const input = card.querySelector(".config-input-row input");
+        const btn = card.querySelector(".config-input-row button");
+
+        const values = Array.isArray(config[key]) ? config[key] : [];
+
+        listElem.innerHTML = "";
+        if (!values.length) {
+          const span = document.createElement("span");
+          span.className = "config-help";
+          span.textContent = "Nenhum item cadastrado ainda.";
+          listElem.appendChild(span);
+        } else {
+          values.forEach((val, index) => {
+            const tag = document.createElement("span");
+            tag.className = "config-tag";
+            tag.innerHTML = `<span>${val}</span>`;
+            const removeBtn = document.createElement("button");
+            removeBtn.type = "button";
+            removeBtn.textContent = "×";
+            removeBtn.title = "Remover";
+            removeBtn.addEventListener("click", () => {
+              config[key].splice(index, 1);
+              saveConfig();
+            });
+            tag.appendChild(removeBtn);
+            listElem.appendChild(tag);
+          });
+        }
+
+        btn.onclick = () => {
+          const v = (input.value || "").trim();
+          if (!v) return;
+          if (!config[key]) config[key] = [];
+          if (!config[key].includes(v)) {
+            config[key].push(v);
+            saveConfig();
+          }
+          input.value = "";
+        };
+      });
+
+      // Atualiza selects do modal com base no config
+      fillSelectFromConfig(editRegiao, config.regioes || [], false);
+      fillSelectFromConfig(editIdiomas, config.idiomas || [], true);
+      fillSelectFromConfig(editExp, config.experiencia || [], false);
+      fillSelectFromConfig(editNicho, config.nichos || [], true);
+      fillSelectFromConfig(editTipos, config.tiposEmpresa || [], true);
+      fillSelectFromConfig(editCanais, config.canais || [], true);
+    }
+
+    /* ---------- SDRS E REVIEWS ---------- */
 
     function loadSdrs() {
       try {
         sdrs = JSON.parse(localStorage.getItem(SDR_KEY) || "[]");
       } catch (e) {
+        console.warn("Erro ao carregar SDRs", e);
         sdrs = [];
       }
-
       sdrs = sdrs.map(s => ({
+        reviews: Array.isArray(s.reviews) ? s.reviews : [],
         premium: !!s.premium,
         verified: !!s.verified,
         usaInbotix: !!s.usaInbotix,
-        reviews: Array.isArray(s.reviews) ? s.reviews : [],
+        createdAt: s.createdAt || new Date().toISOString(),
         ...s
       }));
+
+      recomputeRatings();
+      computeTopPerformer();
+      buildAllReviews();
+      renderSdrTable();
+      renderReviewsTable();
     }
+
+    function saveSdrs() {
+      localStorage.setItem(SDR_KEY, JSON.stringify(sdrs));
+      recomputeRatings();
+      computeTopPerformer();
+      buildAllReviews();
+      renderSdrTable();
+      renderReviewsTable();
+    }
+
+    function recomputeRatings() {
+      ratingMap = new Map();
+      sdrs.forEach(sdr => {
+        const revs = sdr.reviews || [];
+        if (!revs.length) {
+          ratingMap.set(sdr.id, { avg: 0, count: 0 });
+          return;
+        }
+        const sum = revs.reduce((acc, r) => acc + (r.stars || 0), 0);
+        ratingMap.set(sdr.id, { avg: sum / revs.length, count: revs.length });
+      });
+    }
+
+    function computeTopPerformer() {
+      let bestId = null;
+      let bestScore = -1;
+      sdrs.forEach(sdr => {
+        const info = ratingMap.get(sdr.id) || { avg: 0, count: 0 };
+        const score = info.avg * (1 + info.count / 10);
+        if (info.count > 0 && score > bestScore) {
+          bestScore = score;
+          bestId = sdr.id;
+        }
+      });
+      topPerformerId = bestId;
+    }
+
+    function buildAllReviews() {
+      allReviews = [];
+      sdrs.forEach(sdr => {
+        (sdr.reviews || []).forEach(r => {
+          allReviews.push({
+            ...r,
+            sdrId: sdr.id,
+            sdrNome: sdr.nome || "SDR"
+          });
+        });
+      });
+    }
+
+    function createStars(avg) {
+      const div = document.createElement("div");
+      div.className = "stars";
+      const rounded = Math.round(avg * 2) / 2;
+      for (let i = 1; i <= 5; i++) {
+        const span = document.createElement("span");
+        span.className = "star" + (i <= Math.round(rounded) ? " filled" : "");
+        span.textContent = "★";
+        div.appendChild(span);
+      }
+      return div;
+    }
+
+    function formatDate(d) {
+      if (!d) return "-";
+      const dt = new Date(d);
+      if (isNaN(dt.getTime())) return "-";
+      return dt.toLocaleDateString("pt-BR");
+    }
+
+    /* ---------- TABELA DE SDRS ---------- */
+
+    function renderSdrTable() {
+      sdrTableBody.innerHTML = "";
+      if (!sdrs.length) {
+        sdrEmpty.style.display = "block";
+        sdrInfo.textContent = "0 SDRs cadastrados neste ambiente.";
+        return;
+      }
+      sdrEmpty.style.display = "none";
+      sdrInfo.textContent = sdrs.length + (sdrs.length === 1 ? " SDR cadastrado." : " SDRs cadastrados.");
+
+      sdrs.forEach(sdr => {
+        const tr = document.createElement("tr");
+        const info = ratingMap.get(sdr.id) || { avg: 0, count: 0 };
+
+        // SDR
+        const tdSdr = document.createElement("td");
+        const nameEl = document.createElement("div");
+        nameEl.className = "sdr-name";
+        nameEl.textContent = sdr.nome || "SDR";
+        const metaEl = document.createElement("div");
+        metaEl.className = "sdr-meta";
+        metaEl.textContent = (sdr.cidade || "") + (sdr.regioes ? " • " + sdr.regioes : "");
+        tdSdr.appendChild(nameEl);
+        tdSdr.appendChild(metaEl);
+        tr.appendChild(tdSdr);
+
+        // Data
+        const tdData = document.createElement("td");
+        tdData.textContent = formatDate(sdr.createdAt);
+        tr.appendChild(tdData);
+
+        // Nichos & tipos
+        const tdNr = document.createElement("td");
+        tdNr.innerHTML =
+          "<div><strong>Nichos:</strong> " + (sdr.nicho || "-") + "</div>" +
+          "<div><strong>Tipos de empresa:</strong> " + (sdr.tiposEmpresa || "-") + "</div>";
+        tr.appendChild(tdNr);
+
+        // Idioma & experiência
+        const tdIe = document.createElement("td");
+        tdIe.innerHTML =
+          "<div><strong>Idioma:</strong> " + (sdr.idiomas || "-") + "</div>" +
+          "<div><strong>Experiência:</strong> " + (sdr.tempoExp || "-") + "</div>" +
+          "<div><strong>Canais:</strong> " + (sdr.canais || "-") + "</div>";
+        tr.appendChild(tdIe);
+
+        // Notas
+        const tdNotas = document.createElement("td");
+        if (info.count) {
+          const stars = createStars(info.avg);
+          const detail = document.createElement("div");
+          detail.style.fontSize = "10px";
+          detail.style.color = "#4b5563";
+          detail.textContent =
+            info.avg.toFixed(1).replace(".", ",") +
+            " de média em " +
+            info.count +
+            (info.count === 1 ? " avaliação" : " avaliações");
+          tdNotas.appendChild(stars);
+          tdNotas.appendChild(detail);
+        } else {
+          tdNotas.innerHTML = '<span class="sdr-meta">Sem avaliações ainda</span>';
+        }
+        tr.appendChild(tdNotas);
+
+        // Selos
+        const tdSelos = document.createElement("td");
+        if (sdr.premium) {
+          const chipP = document.createElement("span");
+          chipP.className = "chip chip-premium";
+          chipP.textContent = "Premium";
+          tdSelos.appendChild(chipP);
+        }
+        if (sdr.id === topPerformerId) {
+          const chipT = document.createElement("span");
+          chipT.className = "chip";
+          chipT.textContent = "Top Performer";
+          tdSelos.appendChild(chipT);
+        }
+        if (sdr.verified) {
+          const chipV = document.createElement("span");
+          chipV.className = "chip chip-verified";
+          chipV.textContent = "Verificado INBOTIX";
+          tdSelos.appendChild(chipV);
+        }
+        if (sdr.usaInbotix) {
+          const chipI = document.createElement("span");
+          chipI.className = "chip chip-stack";
+          chipI.textContent = "Usa stack INBOTIX";
+          tdSelos.appendChild(chipI);
+        }
+        if (!tdSelos.innerHTML) tdSelos.textContent = "—";
+        tr.appendChild(tdSelos);
+
+        // Ações
+        const tdActions = document.createElement("td");
+        tdActions.className = "td-actions";
+
+        const btnEdit = document.createElement("button");
+        btnEdit.type = "button";
+        btnEdit.className = "link-small";
+        btnEdit.textContent = "✏ Editar";
+        btnEdit.addEventListener("click", () => openEditModal(sdr.id));
+        tdActions.appendChild(btnEdit);
+
+        const btnSelos = document.createElement("button");
+        btnSelos.type = "button";
+        btnSelos.className = "link-small";
+        btnSelos.textContent = "🏅 Selos";
+        btnSelos.addEventListener("click", () => toggleSelos(sdr.id));
+        tdActions.appendChild(btnSelos);
+
+        const btnRev = document.createElement("button");
+        btnRev.type = "button";
+        btnRev.className = "link-small";
+        btnRev.textContent = "⭐ Avaliações";
+        btnRev.addEventListener("click", () => openReviewsModal(sdr.id));
+        tdActions.appendChild(btnRev);
+
+        const btnDel = document.createElement("button");
+        btnDel.type = "button";
+        btnDel.className = "link-small";
+        btnDel.style.color = "#b91c1c";
+        btnDel.textContent = "🗑 Apagar";
+        btnDel.addEventListener("click", () => deleteSdr(sdr.id));
+        tdActions.appendChild(btnDel);
+
+        tr.appendChild(tdActions);
+
+        sdrTableBody.appendChild(tr);
+      });
+    }
+
+    function toggleSelos(id) {
+      const idx = sdrs.findIndex(s => s.id === id);
+      if (idx === -1) return;
+      const sdr = sdrs[idx];
+
+      const premium = confirm("Marcar / desmarcar este SDR como PREMIUM?\nOK = alternar status.");
+      if (premium) sdr.premium = !sdr.premium;
+
+      const verified = confirm("Marcar / desmarcar este SDR como VERIFICADO INBOTIX?\nOK = alternar status.");
+      if (verified) sdr.verified = !sdr.verified;
+
+      const inb = confirm("Marcar / desmarcar que este SDR usa stack INBOTIX?\nOK = alternar status.");
+      if (inb) sdr.usaInbotix = !sdr.usaInbotix;
+
+      saveSdrs();
+    }
+
+    function deleteSdr(id) {
+      if (!confirm("Tem certeza que deseja remover este SDR? Esta ação não pode ser desfeita neste ambiente.")) return;
+      sdrs = sdrs.filter(s => s.id !== id);
+      saveSdrs();
+    }
+
+    /* ---------- TABELA DE AVALIADORES ---------- */
+
+    function renderReviewsTable() {
+      reviewsTableBody.innerHTML = "";
+      if (!allReviews.length) {
+        reviewsEmpty.style.display = "block";
+        reviewsInfo.textContent = "0 avaliação encontrada neste ambiente.";
+        return;
+      }
+      reviewsEmpty.style.display = "none";
+      reviewsInfo.textContent =
+        allReviews.length +
+        (allReviews.length === 1 ? " avaliação cadastrada." : " avaliações cadastradas.");
+
+      allReviews
+        .slice()
+        .sort((a, b) => (a.date || "").localeCompare(b.date || ""))
+        .forEach(r => {
+          const tr = document.createElement("tr");
+
+          const tdData = document.createElement("td");
+          tdData.textContent = formatDate(r.date);
+          tr.appendChild(tdData);
+
+          const tdNome = document.createElement("td");
+          tdNome.textContent = r.clientName || "";
+          tr.appendChild(tdNome);
+
+          const tdEmpresa = document.createElement("td");
+          tdEmpresa.textContent = r.clientCompany || "";
+          tr.appendChild(tdEmpresa);
+
+          const tdEmail = document.createElement("td");
+          tdEmail.textContent = r.clientEmail || "";
+          tr.appendChild(tdEmail);
+
+          const tdTel = document.createElement("td");
+          tdTel.textContent = r.clientPhone || "";
+          tr.appendChild(tdTel);
+
+          const tdLinkedin = document.createElement("td");
+          tdLinkedin.textContent = r.clientLinkedin || "";
+          tr.appendChild(tdLinkedin);
+
+          const tdSdr = document.createElement("td");
+          tdSdr.textContent = r.sdrNome || "";
+          tr.appendChild(tdSdr);
+
+          const tdStars = document.createElement("td");
+          tdStars.textContent = (r.stars || 0) + "★";
+          tr.appendChild(tdStars);
+
+          const tdComment = document.createElement("td");
+          tdComment.textContent = r.comment || "";
+          tr.appendChild(tdComment);
+
+          reviewsTableBody.appendChild(tr);
+        });
+    }
+
+    /* ---------- MODAL EDIT ---------- */
+
+    function fillSelectFromConfig(selectElem, arr, multiple) {
+      selectElem.innerHTML = "";
+      const values = Array.isArray(arr) ? arr : [];
+      if (!multiple) {
+        const optEmpty = document.createElement("option");
+        optEmpty.value = "";
+        optEmpty.textContent = "Selecione...";
+        selectElem.appendChild(optEmpty);
+      }
+      values.forEach(v => {
+        const opt = document.createElement("option");
+        opt.value = v;
+        opt.textContent = v;
+        selectElem.appendChild(opt);
+      });
+    }
+
+    function openEditModal(id) {
+      const sdr = sdrs.find(s => s.id === id);
+      if (!sdr) return;
+
+      editId.value = sdr.id || "";
+      editNome.value = sdr.nome || "";
+      editCidade.value = sdr.cidade || "";
+      editRegiao.value = sdr.regioes || "";
+
+      setMultiSelect(editIdiomas, sdr.idiomas);
+      setMultiSelect(editNicho, sdr.nicho);
+      setMultiSelect(editTipos, sdr.tiposEmpresa);
+      setMultiSelect(editCanais, sdr.canais);
+
+      editExp.value = sdr.tempoExp || "";
+      editTelefone.value = sdr.telefone || "";
+      editWhats.value = sdr.whats || "";
+      editLinkedin.value = sdr.linkedin || "";
+
+      editPremium.checked = !!sdr.premium;
+      editVerified.checked = !!sdr.verified;
+      editUsaInbotix.checked = !!sdr.usaInbotix;
+
+      modalEdit.classList.add("open");
+    }
+
+    function closeEditModal() {
+      modalEdit.classList.remove("open");
+    }
+
+    function setMultiSelect(select, valueStr) {
+      const values = (valueStr || "")
+        .split(",")
+        .map(v => v.trim())
+        .filter(Boolean);
+      Array.from(select.options).forEach(opt => {
+        opt.selected = values.includes(opt.value);
+      });
+    }
+
+    function getMultiSelectValue(select) {
+      const selected = Array.from(select.selectedOptions).map(o => o.value.trim()).filter(Boolean);
+      return selected.join(", ");
+    }
+
+    closeEdit.addEventListener("click", closeEditModal);
+    modalEdit.addEventListener("click", (e) => {
+      if (e.target === modalEdit) closeEditModal();
+    });
+
+    editForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const id = editId.value;
+      const idx = sdrs.findIndex(s => s.id === id);
+      if (idx === -1) return;
+      const sdr = sdrs[idx];
+
+      sdr.nome = editNome.value.trim();
+      sdr.cidade = editCidade.value.trim();
+      sdr.regioes = editRegiao.value;
+      sdr.idiomas = getMultiSelectValue(editIdiomas);
+      sdr.tempoExp = editExp.value;
+      sdr.nicho = getMultiSelectValue(editNicho);
+      sdr.tiposEmpresa = getMultiSelectValue(editTipos);
+      sdr.canais = getMultiSelectValue(editCanais);
+      sdr.telefone = editTelefone.value.trim();
+      sdr.whats = editWhats.value.trim();
+      sdr.linkedin = editLinkedin.value.trim();
+      sdr.premium = editPremium.checked;
+      sdr.verified = editVerified.checked;
+      sdr.usaInbotix = editUsaInbotix.checked;
+
+      saveSdrs();
+      closeEditModal();
+    });
+
+    /* ---------- MODAL REVIEWS POR SDR ---------- */
+
+    function openReviewsModal(id) {
+      const sdr = sdrs.find(s => s.id === id);
+      if (!sdr) return;
+      const info = ratingMap.get(sdr.id) || { avg: 0, count: 0 };
+      reviewsModalTitle.textContent = "Avaliações de " + (sdr.nome || "SDR");
+      reviewsModalSubtitle.textContent = info.count
+        ? info.avg.toFixed(1).replace(".", ",") + " de média em " + info.count +
+          (info.count === 1 ? " avaliação" : " avaliações")
+        : "Sem avaliações cadastradas ainda.";
+
+      reviewsList.innerHTML = "";
+      const revs = sdr.reviews || [];
+      if (!revs.length) {
+        reviewsListEmpty.style.display = "block";
+      } else {
+        reviewsListEmpty.style.display = "none";
+        revs
+          .slice()
+          .sort((a, b) => (a.date || "").localeCompare(b.date || ""))
+          .forEach((r, index) => {
+            const item = document.createElement("div");
+            item.className = "review-item";
+
+            const main = document.createElement("div");
+            main.className = "review-main";
+
+            const name = document.createElement("div");
+            name.className = "review-name";
+            name.textContent = (r.clientName || "Cliente") + " • " + (r.clientCompany || "");
+            main.appendChild(name);
+
+            const comment = document.createElement("div");
+            comment.textContent = r.comment || "";
+            main.appendChild(comment);
+
+            const meta = document.createElement("div");
+            meta.className = "review-meta";
+            const dt = r.date ? new Date(r.date) : null;
+            meta.textContent =
+              (r.stars || 0) +
+              "★ • " +
+              (dt ? dt.toLocaleDateString("pt-BR") : "") +
+              (r.clientEmail ? " • " + r.clientEmail : "");
+            main.appendChild(meta);
+
+            const actions = document.createElement("div");
+            actions.className = "review-actions";
+            const btnDel = document.createElement("button");
+            btnDel.type = "button";
+            btnDel.className = "link-small";
+            btnDel.style.color = "#b91c1c";
+            btnDel.textContent = "Remover";
+            btnDel.addEventListener("click", () => {
+              if (!confirm("Remover esta avaliação?")) return;
+              sdr.reviews.splice(index, 1);
+              saveSdrs();
+              openReviewsModal(id);
+            });
+            actions.appendChild(btnDel);
+
+            item.appendChild(main);
+            item.appendChild(actions);
+            reviewsList.appendChild(item);
+          });
+      }
+
+      modalReviews.classList.add("open");
+    }
+
+    function closeReviewsModal() {
+      modalReviews.classList.remove("open");
+    }
+
+    closeReviews.addEventListener("click", closeReviewsModal);
+    modalReviews.addEventListener("click", (e) => {
+      if (e.target === modalReviews) closeReviewsModal();
+    });
+
+    /* ---------- EXPORT CSV GENÉRICO ---------- */
+
+    function downloadCsv(filename, headers, rows) {
+      const escape = (val) => {
+        if (val == null) return "";
+        const str = String(val).replace(/"/g, '""');
+        return `"${str}"`;
+      };
+      const lines = [];
+      lines.push(headers.map(escape).join(";"));
+      rows.forEach(row => {
+        lines.push(row.map(escape).join(";"));
+      });
+      const blob = new Blob([lines.join("\n")], { type: "text/csv;charset=utf-8;" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    // Export SDRs
+    btnExportSdrs.addEventListener("click", () => {
+      if (!sdrs.length) {
+        alert("Não há SDRs para exportar.");
+        return;
+      }
+      const headers = [
+        "ID",
+        "Data cadastro",
+        "Nome",
+        "Cidade",
+        "Região",
+        "Idioma",
+        "Tempo experiência",
+        "Nichos",
+        "Tipos de empresa",
+        "Canais",
+        "Telefone",
+        "WhatsApp",
+        "LinkedIn",
+        "Premium",
+        "Verificado INBOTIX",
+        "Usa stack INBOTIX",
+        "Qtd avaliações",
+        "Média estrelas"
+      ];
+      const rows = sdrs.map(s => {
+        const info = ratingMap.get(s.id) || { avg: 0, count: 0 };
+        return [
+          s.id || "",
+          formatDate(s.createdAt),
+          s.nome || "",
+          s.cidade || "",
+          s.regioes || "",
+          s.idiomas || "",
+          s.tempoExp || "",
+          s.nicho || "",
+          s.tiposEmpresa || "",
+          s.canais || "",
+          s.telefone || "",
+          s.whats || "",
+          s.linkedin || "",
+          s.premium ? "Sim" : "Não",
+          s.verified ? "Sim" : "Não",
+          s.usaInbotix ? "Sim" : "Não",
+          info.count || 0,
+          info.count ? info.avg.toFixed(2).replace(".", ",") : ""
+        ];
+      });
+      downloadCsv("sdrs_inbotix.csv", headers, rows);
+    });
+
+    // Export Avaliadores
+    btnExportReviews.addEventListener("click", () => {
+      if (!allReviews.length) {
+        alert("Não há avaliações para exportar.");
+        return;
+      }
+      const headers = [
+        "Data avaliação",
+        "Nome contato",
+        "Empresa",
+        "E-mail",
+        "Telefone",
+        "LinkedIn",
+        "SDR avaliado",
+        "Estrelas",
+        "Comentário"
+      ];
+      const rows = allReviews.map(r => [
+        formatDate(r.date),
+        r.clientName || "",
+        r.clientCompany || "",
+        r.clientEmail || "",
+        r.clientPhone || "",
+        r.clientLinkedin || "",
+        r.sdrNome || "",
+        r.stars || 0,
+        r.comment || ""
+      ]);
+      downloadCsv("avaliadores_inbotix.csv", headers, rows);
+    });
+
+    /* ---------- LEADS QUE PEDIRAM TELEFONE ---------- */
 
     function loadLeads() {
       try {
@@ -532,149 +1706,82 @@
       } catch (e) {
         leads = [];
       }
-      // Ordena por data desc
       leads.sort((a, b) => {
         const da = a.createdAt ? new Date(a.createdAt).getTime() : 0;
         const db = b.createdAt ? new Date(b.createdAt).getTime() : 0;
         return db - da;
       });
+      renderLeadsTable();
     }
 
-    function getRatingInfo(sdr) {
-      const reviews = sdr.reviews || [];
-      if (!reviews.length) return { avg: 0, count: 0 };
-      const sum = reviews.reduce((acc, r) => acc + (r.stars || 0), 0);
-      return { avg: sum / reviews.length, count: reviews.length };
-    }
-
-    function createStars(avg) {
-      const rounded = Math.round(avg * 2) / 2;
-      let html = '<span class="stars">';
-      for (let i = 1; i <= 5; i++) {
-        const filled = i <= Math.round(rounded) ? " filled" : "";
-        html += '<span class="star' + filled + '">★</span>';
-      }
-      html += "</span>";
-      return html;
-    }
-
-    function renderSdrs() {
-      if (!sdrs.length) {
-        sdrTbody.innerHTML = '<tr><td colspan="5" class="empty">Nenhum SDR cadastrado ainda.</td></tr>';
-        sdrCountBadge.textContent = "0 SDRs";
-        statTotalSdrs.textContent = "Total de SDRs: 0";
-        statAvaliados.textContent = "SDRs com avaliações: 0";
-        statMediaGeral.textContent = "Média geral das notas: –";
-        return;
-      }
-
-      sdrCountBadge.textContent = sdrs.length + (sdrs.length === 1 ? " SDR" : " SDRs");
-      statTotalSdrs.textContent = "Total de SDRs: " + sdrs.length;
-
-      let totalNotas = 0;
-      let totalAvaliados = 0;
-
-      const rows = sdrs.slice().map(sdr => {
-        const info = getRatingInfo(sdr);
-        if (info.count) {
-          totalNotas += info.avg;
-          totalAvaliados++;
-        }
-
-        const flags = [];
-        if (sdr.premium) flags.push('<span class="pill pill-yellow">Premium</span>');
-        if (sdr.verified) flags.push('<span class="pill pill-green">Verificado</span>');
-        if (sdr.usaInbotix) flags.push('<span class="pill pill-blue">Usa stack INBOTIX</span>');
-
-        const cidadeRegiao = [
-          (sdr.cidade || "").trim(),
-          (sdr.regioes || "").trim()
-        ].filter(Boolean).join(" • ");
-
-        const ratingHtml = info.count
-          ? createStars(info.avg) +
-            '<div class="small-text">' +
-            info.avg.toFixed(1).replace(".", ",") +
-            " em " +
-            info.count +
-            (info.count === 1 ? " avaliação" : " avaliações") +
-            "</div>"
-          : '<span class="small-text">Sem avaliações ainda</span>';
-
-        return `
-          <tr>
-            <td>
-              <strong>${sdr.nome || "SDR"}</strong><br>
-              <span class="small-text">${(sdr.nicho || "").substring(0, 70)}</span>
-            </td>
-            <td>${cidadeRegiao || "-"}</td>
-            <td class="text-center">${ratingHtml}</td>
-            <td class="text-center">${info.count || 0}</td>
-            <td>${flags.join(" ") || "-"}</td>
-          </tr>
-        `;
-      });
-
-      sdrTbody.innerHTML = rows.join("");
-
-      statAvaliados.textContent = "SDRs com avaliações: " + totalAvaliados;
-      if (totalAvaliados) {
-        const mediaGeral = totalNotas / totalAvaliados;
-        statMediaGeral.textContent = "Média geral das notas: " + mediaGeral.toFixed(2).replace(".", ",");
-      } else {
-        statMediaGeral.textContent = "Média geral das notas: –";
-      }
-    }
-
-    function renderLeads() {
+    function renderLeadsTable() {
+      leadsTableBody.innerHTML = "";
       const total = leads.length;
-      leadCountBadge.textContent = total + (total === 1 ? " lead" : " leads");
+      leadsInfo.textContent =
+        total + (total === 1 ? " lead registrado." : " leads registrados.");
+
+      leadsBadge.textContent = total + (total === 1 ? " lead" : " leads");
+      leadsBadge.classList.remove("badge-success", "badge-danger");
+      leadsBadge.classList.add(total ? "badge-danger" : "badge-success");
 
       if (!total) {
-        leadsTbody.innerHTML = '<tr><td colspan="5" class="empty">Nenhum lead registrado ainda.</td></tr>';
-        leadCountBadge.classList.remove("badge-danger");
-        leadCountBadge.classList.add("badge-success");
+        leadsEmpty.style.display = "block";
         return;
       }
+      leadsEmpty.style.display = "none";
 
-      leadCountBadge.classList.remove("badge-success");
-      leadCountBadge.classList.add("badge-danger");
+      leads.forEach(l => {
+        const tr = document.createElement("tr");
 
-      const rows = leads.map(l => {
         const dt = l.createdAt ? new Date(l.createdAt) : null;
-        const dataStr = dt ? dt.toLocaleDateString("pt-BR") + " " + dt.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" }) : "-";
+        const dataStr = dt
+          ? dt.toLocaleDateString("pt-BR") +
+            " " +
+            dt.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" })
+          : "-";
 
         const sdrNome = l.sdrNome || (() => {
           const s = sdrs.find(s => s.id === l.sdrId);
           return s ? s.nome : "";
         })();
 
-        return `
-          <tr>
-            <td>${dataStr}</td>
-            <td>
-              <strong>${l.nome || "-"}</strong><br>
-              <span class="small-text">${l.empresa || "-"}</span>
-            </td>
-            <td>
-              <span class="small-text">#${l.sdrId || "-"} • ${sdrNome || ""}</span>
-            </td>
-            <td>${l.email || "-"}</td>
-            <td>${l.telefone || "-"}</td>
-          </tr>
-        `;
-      });
+        const tdData = document.createElement("td");
+        tdData.textContent = dataStr;
+        tr.appendChild(tdData);
 
-      leadsTbody.innerHTML = rows.join("");
+        const tdContato = document.createElement("td");
+        tdContato.innerHTML =
+          "<strong>" + (l.nome || "-") + "</strong><br>" +
+          '<span class="sdr-meta">' + (l.empresa || "-") + "</span>";
+        tr.appendChild(tdContato);
+
+        const tdSdr = document.createElement("td");
+        tdSdr.innerHTML =
+          "<span class='sdr-meta'>#" +
+          (l.sdrId || "-") +
+          " • " +
+          (sdrNome || "") +
+          "</span>";
+        tr.appendChild(tdSdr);
+
+        const tdEmail = document.createElement("td");
+        tdEmail.textContent = l.email || "-";
+        tr.appendChild(tdEmail);
+
+        const tdTel = document.createElement("td");
+        tdTel.textContent = l.telefone || "-";
+        tr.appendChild(tdTel);
+
+        leadsTableBody.appendChild(tr);
+      });
     }
 
-    function exportCsv() {
+    function exportLeadsCsv() {
       if (!leads.length) {
         alert("Não há leads para exportar.");
         return;
       }
-
-      const header = [
+      const headers = [
         "id",
         "sdrId",
         "sdrNome",
@@ -684,36 +1791,27 @@
         "telefone",
         "createdAt"
       ];
-
-      const csvRows = [];
-      csvRows.push(header.join(";"));
-
-      leads.forEach(l => {
-        const row = header.map(key => {
-          const val = (l[key] !== undefined && l[key] !== null) ? String(l[key]) : "";
-          const cleaned = val.replace(/"/g, '""');
-          return `"${cleaned}"`;
-        });
-        csvRows.push(row.join(";"));
-      });
-
-      const blob = new Blob([csvRows.join("\n")], { type: "text/csv;charset=utf-8;" });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = "inbotix_sdr_leads.csv";
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
+      const rows = leads.map(l => [
+        l.id || "",
+        l.sdrId || "",
+        l.sdrNome || "",
+        l.nome || "",
+        l.empresa || "",
+        l.email || "",
+        l.telefone || "",
+        l.createdAt || ""
+      ]);
+      downloadCsv("inbotix_sdr_leads.csv", headers, rows);
     }
 
-    function exportJson() {
+    function exportLeadsJson() {
       if (!leads.length) {
         alert("Não há leads para exportar.");
         return;
       }
-      const blob = new Blob([JSON.stringify(leads, null, 2)], { type: "application/json;charset=utf-8;" });
+      const blob = new Blob([JSON.stringify(leads, null, 2)], {
+        type: "application/json;charset=utf-8;"
+      });
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
@@ -730,18 +1828,33 @@
       }
       localStorage.removeItem(SDR_LEADS_KEY);
       leads = [];
-      renderLeads();
+      renderLeadsTable();
     }
 
-    btnExportCsv.addEventListener("click", exportCsv);
-    btnExportJson.addEventListener("click", exportJson);
+    btnExportLeadsCsv.addEventListener("click", exportLeadsCsv);
+    btnExportLeadsJson.addEventListener("click", exportLeadsJson);
     btnClearLeads.addEventListener("click", clearLeads);
 
-    function init() {
+    /* ---------- BOTÕES GERAIS ---------- */
+
+    btnReload.addEventListener("click", () => {
       loadSdrs();
       loadLeads();
-      renderSdrs();
-      renderLeads();
+    });
+
+    btnClearAll.addEventListener("click", () => {
+      if (!confirm("Tem certeza que deseja limpar TODOS os SDRs deste navegador?")) return;
+      localStorage.removeItem(SDR_KEY);
+      sdrs = [];
+      saveSdrs();
+    });
+
+    /* ---------- INIT ---------- */
+
+    function init() {
+      loadConfig();
+      loadSdrs();
+      loadLeads();
     }
 
     init();
