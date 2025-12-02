@@ -2,9 +2,9 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <title>Marketplace de SDR – INBOTIX</title>
+  <title>Marketplace de SDRs – INBOTIX</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Encontre SDRs parceiros da INBOTIX para prospecção por performance. Escolha o SDR ideal para gerar leads para o seu negócio.">
+  <meta name="description" content="Escolha um SDR parceiro da INBOTIX para gerar leads por performance.">
   <link rel="icon" type="image/png" href="logo-inbotix.png" />
 
   <style>
@@ -20,12 +20,17 @@
       --muted: #6b7280;
       --border: #dbe2f0;
       --border-strong: #b8c6f5;
+      --danger: #b91c1c;
       --star-on: #facc15;
       --star-off: #e2e8f0;
-      --danger: #b91c1c;
+      --chip: #e5edff;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -34,856 +39,402 @@
       min-height: 100vh;
     }
 
-    a { color: inherit; }
+    a { color: inherit; text-decoration: none; }
 
     /* HEADER */
     header {
-      padding: 14px 18px;
-      border-bottom: 1px solid rgba(148, 163, 184, 0.35);
+      padding: 12px 16px;
       background: #ffffff;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.35);
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 12px;
       box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+      position: sticky;
+      top: 0;
+      z-index: 20;
     }
 
     .header-left {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
     }
 
-    .logo-block img {
+    .header-left img {
       height: 32px;
       width: auto;
     }
 
-    .logo-text {
-      font-size: 12px;
+    .header-title {
+      font-size: 13px;
       color: var(--muted);
     }
 
-    .logo-text strong {
-      font-weight: 700;
+    .header-title strong {
+      display: block;
+      font-size: 15px;
       color: var(--dark);
     }
 
     .header-right {
       display: flex;
       gap: 8px;
-      align-items: center;
       flex-wrap: wrap;
+      align-items: center;
       justify-content: flex-end;
     }
 
-    .badge {
-      font-size: 11px;
-      padding: 4px 10px;
+    .btn-header {
       border-radius: 999px;
-      background: rgba(15, 111, 255, 0.06);
-      color: var(--primary-dark);
-      border: 1px solid rgba(15, 111, 255, 0.3);
-      white-space: nowrap;
-      font-weight: 500;
-    }
-
-    .btn-outline-header {
-      border-radius: 999px;
-      border: 1px solid rgba(15, 111, 255, 0.4);
+      border: 1px solid rgba(15, 111, 255, 0.50);
       padding: 6px 12px;
       font-size: 11px;
       color: var(--primary-dark);
       background: #f0f5ff;
       cursor: pointer;
-      text-decoration: none;
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      white-space: nowrap;
       font-weight: 600;
     }
 
-    .btn-outline-header span.icon {
-      font-size: 13px;
+    .badge-header {
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(15, 111, 255, 0.06);
+      border: 1px solid rgba(15, 111, 255, 0.30);
+      color: var(--primary-dark);
+      font-weight: 500;
     }
 
     main {
       max-width: 1120px;
-      margin: 24px auto 32px;
+      margin: 20px auto 32px;
       padding: 0 16px 32px;
     }
 
-    /* HERO */
+    /* HERO / INTRO */
     .hero {
-      background: linear-gradient(135deg, #ffffff 0, #eef3ff 40%, #e0ecff 100%);
+      background: linear-gradient(135deg, #ffffff, #e4eeff);
       border-radius: 22px;
-      padding: 18px 18px 20px;
-      color: var(--dark);
+      border: 1px solid var(--border);
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.10);
+      padding: 14px 16px 16px;
+      margin-bottom: 16px;
       position: relative;
       overflow: hidden;
-      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
-      border: 1px solid rgba(15, 111, 255, 0.16);
-      margin-bottom: 18px;
     }
 
     .hero::before {
       content: "";
       position: absolute;
-      inset: -80px;
+      inset: -120px;
       background:
-        radial-gradient(circle at 0 0, rgba(15, 111, 255, 0.18) 0, transparent 55%),
-        radial-gradient(circle at 100% 0, rgba(56, 189, 248, 0.16) 0, transparent 60%),
-        radial-gradient(circle at 40% 100%, rgba(34, 197, 94, 0.16) 0, transparent 60%);
-      opacity: 0.9;
+        radial-gradient(circle at 0 0, rgba(15, 111, 255, 0.25) 0, transparent 55%),
+        radial-gradient(circle at 100% 0, rgba(34, 197, 94, 0.25) 0, transparent 60%);
+      opacity: 0.75;
       pointer-events: none;
     }
 
     .hero-inner {
       position: relative;
-      display: grid;
-      grid-template-columns: minmax(0, 2.4fr) minmax(0, 2fr);
-      gap: 18px;
-      align-items: center;
       z-index: 1;
+      display: grid;
+      grid-template-columns: 2.2fr 1.4fr;
+      gap: 12px;
     }
 
-    @media (max-width: 860px) {
+    @media (max-width: 840px) {
       .hero-inner {
-        grid-template-columns: minmax(0,1fr);
+        grid-template-columns: minmax(0, 1fr);
       }
     }
 
-    .hero-highlight {
+    .hero-pill {
+      font-size: 11px;
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      font-size: 11px;
-      padding: 4px 8px;
+      padding: 4px 9px;
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.9);
-      border: 1px solid rgba(15, 111, 255, 0.26);
-      margin-bottom: 8px;
-      font-weight: 600;
+      background: rgba(15, 111, 255, 0.10);
+      border: 1px solid rgba(15, 111, 255, 0.45);
       color: var(--primary-dark);
+      font-weight: 500;
+      margin-bottom: 6px;
     }
 
     .hero-title {
-      font-size: 24px;
+      font-size: 22px;
       font-weight: 800;
-      letter-spacing: 0.01em;
-      margin-bottom: 6px;
-      color: var(--dark);
-    }
-
-    .hero-text {
-      font-size: 13px;
-      color: var(--muted);
-      margin-bottom: 10px;
-      max-width: 440px;
-    }
-
-    .hero-metrics {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      font-size: 11px;
-    }
-
-    .hero-metric {
-      padding: 6px 9px;
-      border-radius: 12px;
-      background: #ffffff;
-      border: 1px solid rgba(148, 163, 253, 0.6);
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-      min-width: 120px;
-    }
-
-    .hero-metric strong {
-      font-size: 14px;
-      color: var(--primary-dark);
-    }
-
-    .hero-side-card {
-      background: #ffffff;
-      border-radius: 18px;
-      padding: 12px 12px 14px;
-      border: 1px solid rgba(148, 163, 253, 0.8);
-      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.14);
-    }
-
-    .hero-side-title {
-      font-size: 12px;
-      font-weight: 700;
-      margin-bottom: 4px;
-      color: var(--dark);
-    }
-
-    .hero-side-text {
-      font-size: 11px;
-      color: var(--muted);
-      margin-bottom: 8px;
-    }
-
-    .hero-side-list {
-      font-size: 11px;
-      color: var(--text);
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      margin-bottom: 10px;
-    }
-
-    .hero-side-list li::before {
-      content: "• ";
-      color: var(--primary-dark);
-    }
-
-    .hero-cta-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
-    .btn-primary-hero {
-      border-radius: 999px;
-      border: none;
-      padding: 8px 14px;
-      font-size: 12px;
-      font-weight: 700;
-      cursor: pointer;
-      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-      color: #ffffff;
-      box-shadow: 0 14px 32px rgba(15, 111, 255, 0.6);
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .hero-cta-helper {
-      font-size: 10px;
-      color: var(--muted);
-    }
-
-    /* ASSISTENTE DE ESCOLHA (QUIZ) */
-    .assistant {
-      margin-top: 14px;
-      margin-bottom: 14px;
-      display: grid;
-      grid-template-columns: minmax(0, 2.2fr) minmax(0, 1.6fr);
-      gap: 14px;
-    }
-
-    @media (max-width: 860px) {
-      .assistant {
-        grid-template-columns: minmax(0,1fr);
-      }
-    }
-
-    .assistant-card {
-      background: #ffffff;
-      border-radius: 18px;
-      border: 1px solid var(--border);
-      box-shadow: 0 10px 26px rgba(15, 23, 42, 0.08);
-      padding: 12px 14px;
-    }
-
-    .assistant-title {
-      font-size: 13px;
-      font-weight: 700;
       color: var(--dark);
       margin-bottom: 4px;
     }
 
-    .assistant-subtitle {
-      font-size: 11px;
-      color: var(--muted);
-      margin-bottom: 8px;
-    }
-
-    .assistant-form {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0,1fr));
-      gap: 8px 10px;
-    }
-
-    @media (max-width: 640px) {
-      .assistant-form {
-        grid-template-columns: minmax(0,1fr);
-      }
-    }
-
-    .assistant-group {
-      display: flex;
-      flex-direction: column;
-      gap: 3px;
-    }
-
-    .assistant-label {
-      font-size: 11px;
-      font-weight: 600;
-      color: var(--muted);
-    }
-
-    .assistant-select {
-      border-radius: 999px;
-      border: 1px solid var(--border-strong);
-      padding: 7px 11px;
-      font-size: 12px;
-      font-family: inherit;
-      background: #f5f7ff;
-      outline: none;
-      width: 100%;
-    }
-
-    .assistant-select:focus {
-      border-color: var(--primary);
-      box-shadow: 0 0 0 2px rgba(15, 111, 255, 0.18);
-      background: #ffffff;
-    }
-
-    .assistant-actions {
-      grid-column: 1 / -1;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 8px;
-      margin-top: 4px;
-      flex-wrap: wrap;
-    }
-
-    .assistant-btn {
-      border-radius: 999px;
-      border: none;
-      padding: 7px 12px;
-      font-size: 12px;
-      font-weight: 700;
-      cursor: pointer;
-      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-      color: #ffffff;
-      box-shadow: 0 10px 22px rgba(15, 111, 255, 0.5);
-    }
-
-    .assistant-note {
-      font-size: 10px;
-      color: var(--muted);
-    }
-
-    .assistant-reco-title {
-      font-size: 12px;
-      font-weight: 700;
-      margin-bottom: 4px;
-      color: var(--dark);
-    }
-
-    .assistant-reco-list {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .assistant-reco-item {
-      font-size: 11px;
-      padding: 6px 8px;
-      border-radius: 10px;
-      background: #f9fafb;
-      border: 1px solid #e5e7eb;
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-
-    .assistant-reco-item strong {
-      font-size: 12px;
-      color: var(--dark);
-    }
-
-    .assistant-reco-empty {
-      font-size: 11px;
-      color: var(--muted);
-    }
-
-    .assistant-tag {
-      font-size: 10px;
-      padding: 2px 7px;
-      border-radius: 999px;
-      background: #eff6ff;
-      border: 1px solid #bfdbfe;
-      color: #1d4ed8;
-      margin-right: 4px;
-    }
-
-    /* TOOLBAR + FILTROS */
-    .toolbar {
-      margin-top: 4px;
-      margin-bottom: 12px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .toolbar-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .toolbar-text {
+    .hero-subtitle {
       font-size: 12px;
       color: var(--muted);
       max-width: 60ch;
     }
 
-    .toolbar-text strong {
+    .hero-highlight {
+      margin-top: 8px;
+      font-size: 11px;
+      padding: 6px 8px;
+      border-radius: 12px;
+      background: rgba(34, 197, 94, 0.08);
+      border: 1px solid rgba(34, 197, 94, 0.45);
+      color: #166534;
+    }
+
+    .hero-right-card {
+      background: rgba(15, 23, 42, 0.85);
+      border-radius: 18px;
+      padding: 10px 12px;
+      color: #e5e7eb;
+      box-shadow: 0 14px 32px rgba(15, 23, 42, 0.75);
+    }
+
+    .hero-right-title {
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .hero-right-list {
+      font-size: 11px;
+      list-style: none;
+    }
+
+    .hero-right-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+      margin-bottom: 4px;
+    }
+
+    .hero-right-list span.bullet {
+      font-size: 13px;
+      margin-top: -1px;
+    }
+
+    /* FILTERS */
+    .filters-card {
+      background: #ffffff;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
+      margin-bottom: 14px;
+    }
+
+    .filters-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .filters-title {
+      font-size: 13px;
       font-weight: 700;
       color: var(--dark);
     }
 
-    .toolbar-actions {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-    }
-
-    .btn-outline {
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 253, 0.7);
-      padding: 7px 14px;
-      background: #ffffff;
-      font-size: 12px;
-      cursor: pointer;
-      color: var(--primary-dark);
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-weight: 600;
-    }
-
-    .btn-outline span.icon {
-      font-size: 13px;
-    }
-
-    .btn-outline:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
-
-    .filters {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      width: 100%;
-    }
-
-    .filter-group {
-      display: flex;
-      flex-direction: column;
-      gap: 3px;
-      min-width: 160px;
-      flex: 1;
-    }
-
-    .filter-label {
+    .filters-sub {
       font-size: 11px;
       color: var(--muted);
-      font-weight: 600;
     }
 
-    .filter-input,
-    .filter-select {
-      border-radius: 999px;
-      border: 1px solid var(--border-strong);
-      padding: 7px 11px;
-      font-size: 12px;
-      font-family: inherit;
-      background: #f5f7ff;
-      width: 100%;
-      outline: none;
-      transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
-    }
-
-    .filter-input:focus,
-    .filter-select:focus {
-      border-color: var(--primary);
-      box-shadow: 0 0 0 2px rgba(15, 111, 255, 0.18);
-      background: #ffffff;
-    }
-
-    .counter {
-      font-size: 12px;
-      color: var(--muted);
-      text-align: right;
-      margin-top: 2px;
-      font-weight: 600;
-    }
-
-    /* LISTA SDRS */
-    .grid {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      margin-top: 6px;
-    }
-
-    .card-sdr {
-      background: var(--bg-card);
-      border-radius: 20px;
-      border: 1px solid var(--border);
-      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.10);
-      padding: 14px 16px 12px;
+    .filters-grid {
       display: grid;
-      grid-template-columns: auto minmax(0, 2.4fr) minmax(0, 1.6fr);
-      gap: 14px;
-      align-items: stretch;
-      position: relative;
-      overflow: hidden;
+      grid-template-columns: 2fr 1.5fr 1.5fr 1.1fr 1.1fr;
+      gap: 8px;
     }
 
-    .card-sdr::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 5px;
-      height: 100%;
-      background: linear-gradient(180deg, rgba(15, 111, 255, 0.7), rgba(0, 80, 200, 0.6));
-    }
-
-    .card-sdr.premium {
-      border-color: rgba(15, 111, 255, 0.7);
-      box-shadow: 0 18px 46px rgba(15, 111, 255, 0.26);
-    }
-
-    .card-sdr.recommended {
-      box-shadow: 0 20px 50px rgba(34, 197, 94, 0.35);
-      border-color: rgba(34, 197, 94, 0.6);
-    }
-
-    .top-performer-badge {
-      position: absolute;
-      top: 8px;
-      right: 12px;
-      font-size: 10px;
-      padding: 3px 8px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, #f97316, #ea580c);
-      color: #ffffff;
-      font-weight: 700;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      box-shadow: 0 10px 22px rgba(234, 88, 12, 0.6);
-    }
-
-    .premium-ribbon {
-      position: absolute;
-      top: 32px;
-      right: 12px;
-      font-size: 10px;
-      padding: 3px 8px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, #eab308, #ca8a04);
-      color: #1f2933;
-      font-weight: 700;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      box-shadow: 0 8px 18px rgba(234, 179, 8, 0.5);
-    }
-
-    .reco-ribbon {
-      position: absolute;
-      top: 56px;
-      right: 12px;
-      font-size: 10px;
-      padding: 3px 8px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, #22c55e, #16a34a);
-      color: #f9fafb;
-      font-weight: 700;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      box-shadow: 0 8px 18px rgba(34, 197, 94, 0.5);
-    }
-
-    @media (max-width: 880px) {
-      .card-sdr {
-        grid-template-columns: auto minmax(0, 1fr);
-        grid-template-rows: auto auto;
+    @media (max-width: 960px) {
+      .filters-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
 
     @media (max-width: 640px) {
-      .card-sdr {
+      .filters-grid {
         grid-template-columns: minmax(0, 1fr);
       }
-      .top-performer-badge,
-      .premium-ribbon,
-      .reco-ribbon {
-        position: static;
-        margin-bottom: 4px;
+    }
+
+    .filters-group {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .filters-group label {
+      font-size: 10px;
+      color: var(--muted);
+    }
+
+    .filters-group input,
+    .filters-group select {
+      border-radius: 999px;
+      border: 1px solid var(--border-strong);
+      padding: 6px 10px;
+      font-size: 11px;
+      font-family: inherit;
+      background: #f9fafb;
+    }
+
+    .filters-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 6px;
+    }
+
+    .chip-filter {
+      font-size: 10px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(15, 111, 255, 0.05);
+      border: 1px solid rgba(148, 163, 253, 0.7);
+      color: var(--primary-dark);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .chip-filter.active {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: #ffffff;
+      border-color: transparent;
+    }
+
+    /* SDR CARDS */
+    .sdr-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    @media (max-width: 1040px) {
+      .sdr-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
 
-    .card-left {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 6px;
-      position: relative;
+    @media (max-width: 720px) {
+      .sdr-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
     }
 
-    .avatar {
-      width: 74px;
-      height: 74px;
+    .sdr-card {
+      background: #ffffff;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      box-shadow: 0 14px 32px rgba(15, 23, 42, 0.10);
+      padding: 10px 11px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .sdr-badge-strip {
+      position: absolute;
+      top: 7px;
+      right: 7px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      justify-content: flex-end;
+      max-width: 80%;
+    }
+
+    .badge {
+      font-size: 9px;
+      padding: 3px 6px;
+      border-radius: 999px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+    }
+
+    .badge-premium {
+      background: linear-gradient(135deg, #facc15, #f97316);
+      color: #111827;
+      box-shadow: 0 8px 18px rgba(250, 204, 21, 0.5);
+    }
+
+    .badge-top {
+      background: rgba(249, 115, 22, 0.12);
+      border: 1px solid #fb923c;
+      color: #9a3412;
+    }
+
+    .badge-verified {
+      background: rgba(34, 197, 94, 0.12);
+      border: 1px solid #22c55e;
+      color: #166534;
+    }
+
+    .badge-inbotix {
+      background: rgba(59, 130, 246, 0.12);
+      border: 1px solid #3b82f6;
+      color: #1d4ed8;
+    }
+
+    .sdr-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+      margin-top: 4px;
+    }
+
+    .sdr-avatar {
+      width: 44px;
+      height: 44px;
       border-radius: 999px;
       background: linear-gradient(135deg, #e5e7eb, #cbd5f5);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 20px;
+      font-size: 16px;
       font-weight: 700;
       color: #4b5563;
       overflow: hidden;
-      box-shadow: 0 10px 26px rgba(15, 23, 42, 0.22);
-      position: relative;
+      flex-shrink: 0;
+      box-shadow: 0 10px 22px rgba(15, 23, 42, 0.18);
     }
 
-    .avatar img {
+    .sdr-avatar img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
 
-    .avatar-top-performer {
-      position: absolute;
-      bottom: -4px;
-      right: -4px;
-      width: 22px;
-      height: 22px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, #f97316, #ea580c);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 13px;
-      color: #ffffff;
-      box-shadow: 0 8px 18px rgba(234, 88, 12, 0.7);
-    }
-
-    .cidade-pill {
-      font-size: 11px;
-      padding: 2px 8px;
-      border-radius: 999px;
-      background: #f3f4f6;
-      border: 1px solid #e5e7eb;
-      color: var(--muted);
-      text-align: center;
-      max-width: 140px;
-    }
-
-    .tempo-pill {
-      font-size: 10px;
-      padding: 2px 8px;
-      border-radius: 999px;
-      background: rgba(15, 111, 255, 0.06);
-      border: 1px solid rgba(37, 99, 235, 0.4);
-      color: #1d4ed8;
-      text-align: center;
-      max-width: 140px;
-      font-weight: 600;
-    }
-
-    /* checkbox comparar */
-    .compare-wrapper {
-      margin-top: 6px;
-      font-size: 11px;
-      color: var(--muted);
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .compare-wrapper input {
-      cursor: pointer;
-    }
-
-    .card-middle {
-      display: flex;
-      flex-direction: column;
-      gap: 3px;
-    }
-
-    .nome-row {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      flex-wrap: wrap;
-    }
-
-    .nome {
-      font-size: 17px;
-      font-weight: 700;
-      color: var(--dark);
-    }
-
-    .chip-id {
-      font-size: 10px;
-      padding: 2px 6px;
-      border-radius: 999px;
-      background: #f9fafb;
-      border: 1px solid #e5e7eb;
-      color: var(--muted);
-      font-weight: 500;
-    }
-
-    .badge-inline {
-      font-size: 10px;
-      padding: 2px 7px;
-      border-radius: 999px;
-      background: rgba(34, 197, 94, 0.08);
-      border: 1px solid rgba(34, 197, 94, 0.4);
-      color: #15803d;
-      font-weight: 600;
-    }
-
-    .badge-inline-orange {
-      background: rgba(249, 115, 22, 0.12);
-      border-color: rgba(249, 115, 22, 0.7);
-      color: #9a3412;
-    }
-
-    .badge-inline-gold {
-      background: rgba(234, 179, 8, 0.12);
-      border-color: rgba(234, 179, 8, 0.7);
-      color: #92400e;
-    }
-
-    .badge-inline-blue {
-      background: rgba(37, 99, 235, 0.10);
-      border-color: rgba(37, 99, 235, 0.7);
-      color: #1d4ed8;
-    }
-
-    .badge-inline-achievement {
-      background: rgba(15, 23, 42, 0.04);
-      border-color: rgba(148, 163, 184, 0.7);
-      color: #0f172a;
-    }
-
-    .meta-line {
-      font-size: 12px;
-      color: var(--muted);
-    }
-
-    .meta-line strong {
-      font-weight: 600;
-      color: var(--dark);
-    }
-
-    .exp {
-      font-size: 12px;
-      color: var(--text);
-      margin-top: 3px;
-    }
-
-    .rating-line {
-      margin-top: 4px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 12px;
-      color: var(--muted);
-      flex-wrap: wrap;
-    }
-
-    .stars {
-      display: inline-flex;
-      gap: 1px;
+    .sdr-name {
       font-size: 14px;
-    }
-
-    .star {
-      color: var(--star-off);
-    }
-
-    .star.filled {
-      color: var(--star-on);
-    }
-
-    .rating-count {
-      font-size: 11px;
-      color: var(--muted);
-      font-weight: 500;
-    }
-
-    .last-comment {
-      font-size: 11px;
-      color: #4b5563;
-      margin-top: 4px;
-      padding: 6px 8px;
-      border-radius: 10px;
-      background: #f8fafc;
-      border: 1px solid #e2e8f0;
-    }
-
-    .last-comment strong {
-      font-weight: 600;
-    }
-
-    .comments-toggle {
-      margin-top: 4px;
-      font-size: 11px;
-      color: var(--primary-dark);
-      text-decoration: underline;
-      cursor: pointer;
-      background: none;
-      border: none;
-      padding: 0;
-      font-weight: 600;
-    }
-
-    .comments-list {
-      margin-top: 4px;
-      padding: 6px 8px;
-      border-radius: 10px;
-      background: #f9fafb;
-      border: 1px dashed #e2e8f0;
-      display: none;
-    }
-
-    .comment-item {
-      font-size: 11px;
-      color: #4b5563;
-      padding: 4px 0;
-      border-bottom: 1px solid #e5e7eb;
-    }
-
-    .comment-item:last-child {
-      border-bottom: none;
-    }
-
-    .comment-header {
-      font-weight: 600;
+      font-weight: 800;
+      color: var(--dark);
       margin-bottom: 1px;
     }
 
-    .comment-body {
+    .sdr-meta {
       font-size: 11px;
+      color: var(--muted);
     }
 
-    .tags {
+    .sdr-tags {
       display: flex;
       flex-wrap: wrap;
       gap: 4px;
@@ -891,206 +442,112 @@
     }
 
     .tag {
-      font-size: 10px;
-      padding: 3px 7px;
+      font-size: 9px;
+      padding: 3px 6px;
       border-radius: 999px;
-      background: #eff6ff;
-      border: 1px solid #dbeafe;
+      background: #eef2ff;
+      border: 1px solid #c7d2fe;
       color: #1d4ed8;
-      font-weight: 500;
+      max-width: 100%;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
     }
 
-    .tag-alt {
-      background: #ecfdf3;
-      border-color: #bbf7d0;
-      color: #15803d;
-    }
-
-    .tag-nicho {
-      background: #fef9c3;
-      border-color: #facc15;
-      color: #92400e;
-    }
-
-    .card-right {
+    .sdr-rating-row {
       display: flex;
-      flex-direction: column;
-      gap: 8px;
-      align-items: stretch;
       justify-content: space-between;
-    }
-
-    .contact-block {
-      display: flex;
-      flex-direction: column;
+      align-items: center;
       gap: 6px;
+      margin-top: 6px;
     }
 
-    .btn-contact {
-      border-radius: 999px;
-      border: none;
-      padding: 7px 12px;
-      font-size: 12px;
-      cursor: pointer;
+    .stars {
       display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 5px;
-      text-decoration: none;
-      min-width: 160px;
-      font-weight: 600;
+      gap: 1px;
     }
 
-    .btn-contact.tel {
-      background: #ffffff;
-      color: var(--primary-dark);
-      border: 1px solid rgba(37, 99, 235, 0.35);
+    .star {
+      color: var(--star-off);
+      font-size: 14px;
     }
 
-    .btn-contact.whats {
-      background: #22c55e;
-      color: #ffffff;
-      box-shadow: 0 10px 22px rgba(22, 163, 74, 0.5);
+    .star.filled {
+      color: var(--star-on);
     }
 
-    .btn-contact small {
+    .rating-text {
       font-size: 11px;
-      opacity: 0.9;
-      font-weight: 500;
+      color: var(--muted);
     }
 
-    .btn-linkedin {
-      border-radius: 999px;
-      border: 1px solid #0a66c2;
-      padding: 5px 10px;
+    .sdr-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 6px;
+    }
+
+    .btn-small {
       font-size: 11px;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      text-decoration: none;
-      color: #0a66c2;
-      background: #f0f9ff;
-      font-weight: 600;
-    }
-
-    .btn-rate-toggle {
-      margin-top: 4px;
-      border: none;
-      background: transparent;
-      color: var(--primary-dark);
-      font-size: 11px;
-      cursor: pointer;
-      text-decoration: underline;
-      padding: 0;
-      text-align: left;
-      font-weight: 600;
-    }
-
-    .btn-profile {
       border-radius: 999px;
       border: 1px solid rgba(148, 163, 253, 0.8);
-      padding: 6px 10px;
-      font-size: 11px;
-      cursor: pointer;
+      padding: 5px 10px;
       background: #f9fafb;
+      color: var(--primary-dark);
+      cursor: pointer;
       display: inline-flex;
       align-items: center;
       gap: 4px;
       font-weight: 600;
-      color: var(--primary-dark);
     }
 
-    /* FORM AVALIAÇÃO */
-    .rate-form {
-      margin-top: 8px;
-      padding-top: 8px;
-      border-top: 1px dashed #e2e8f0;
-      display: none;
-    }
-
-    .rate-form label {
-      display: block;
-      font-size: 11px;
-      color: var(--muted);
-      margin-bottom: 2px;
-      font-weight: 600;
-    }
-
-    .rate-form input[type="text"],
-    .rate-form textarea {
-      width: 100%;
-      border-radius: 8px;
-      border: 1px solid var(--border);
-      padding: 6px 8px;
-      font-size: 11px;
-      font-family: inherit;
-      background: #ffffff;
-      margin-bottom: 6px;
-    }
-
-    .rate-form textarea {
-      min-height: 50px;
-      resize: vertical;
-    }
-
-    .rate-stars {
-      display: inline-flex;
-      gap: 3px;
-      margin-bottom: 6px;
-    }
-
-    .rate-stars span {
-      cursor: pointer;
-      font-size: 16px;
-      color: var(--star-off);
-    }
-
-    .rate-stars span.selected {
-      color: var(--star-on);
-    }
-
-    .btn-rate-submit {
-      border-radius: 999px;
-      border: none;
-      padding: 6px 12px;
-      font-size: 11px;
-      cursor: pointer;
+    .btn-small.primary {
       background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-      color: #fff;
-      font-weight: 600;
+      color: #ffffff;
+      border-color: transparent;
+      box-shadow: 0 10px 24px rgba(15, 111, 255, 0.6);
     }
 
-    .rate-helper {
-      font-size: 10px;
+    .btn-small.whats {
+      border-color: #22c55e;
+      color: #166534;
+      background: rgba(34, 197, 94, 0.08);
+    }
+
+    .sdr-review-preview {
+      margin-top: 6px;
+      padding-top: 5px;
+      border-top: 1px dashed #e5e7eb;
+      font-size: 11px;
       color: var(--muted);
-      margin-top: 2px;
+    }
+
+    .sdr-review-preview strong {
+      color: var(--dark);
+    }
+
+    .sdr-review-preview button {
+      border: none;
+      background: none;
+      font-size: 11px;
+      color: var(--primary-dark);
+      cursor: pointer;
+      padding: 0;
     }
 
     .empty {
-      font-size: 13px;
-      color: var(--muted);
-      margin-top: 14px;
-      text-align: center;
-      font-weight: 500;
-    }
-
-    .footnote-bottom {
-      margin-top: 18px;
-      font-size: 11px;
+      margin-top: 12px;
+      font-size: 12px;
       color: var(--muted);
       text-align: center;
     }
 
-    .footnote-bottom strong {
-      color: var(--primary-dark);
-    }
-
-    /* MODAL COMPARAÇÃO */
+    /* MODALS */
     .modal-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(15, 23, 42, 0.45);
+      background: rgba(15, 23, 42, 0.55);
       display: none;
       align-items: center;
       justify-content: center;
@@ -1099,26 +556,26 @@
 
     .modal {
       background: #ffffff;
-      max-width: 900px;
+      max-width: 780px;
       width: 95%;
-      border-radius: 18px;
-      box-shadow: 0 24px 60px rgba(15, 23, 42, 0.6);
-      padding: 14px 16px 16px;
-      max-height: 80vh;
+      border-radius: 20px;
+      box-shadow: 0 26px 70px rgba(15, 23, 42, 0.8);
+      padding: 14px 16px 18px;
+      max-height: 86vh;
       overflow: auto;
     }
 
     .modal-header {
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      gap: 6px;
+      align-items: center;
+      gap: 8px;
       margin-bottom: 8px;
     }
 
     .modal-title {
-      font-size: 14px;
-      font-weight: 700;
+      font-size: 15px;
+      font-weight: 800;
       color: var(--dark);
     }
 
@@ -1133,132 +590,171 @@
       background: #f1f5f9;
       color: #64748b;
       font-size: 12px;
-      padding: 4px 9px;
+      padding: 4px 10px;
       cursor: pointer;
     }
 
-    .compare-table-wrapper {
+    .modal-body {
+      font-size: 12px;
+      color: var(--text);
+    }
+
+    .review-list {
+      margin-top: 6px;
       border-radius: 12px;
-      border: 1px solid var(--border);
-      overflow: auto;
+      border: 1px solid #e5e7eb;
       background: #f9fafb;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 11px;
-    }
-
-    th, td {
       padding: 6px 8px;
+      max-height: 360px;
+      overflow-y: auto;
+    }
+
+    .review-item {
+      padding: 6px 0;
       border-bottom: 1px solid #e5e7eb;
-      text-align: left;
-      vertical-align: top;
     }
 
-    th {
-      background: #eef2ff;
-      color: #4b5563;
-      font-weight: 700;
-      position: sticky;
-      top: 0;
-      z-index: 1;
+    .review-item:last-child {
+      border-bottom: none;
     }
 
-    tr:nth-child(even) td {
-      background: #f9fafb;
-    }
-
-    .compare-name {
-      font-weight: 700;
-      color: var(--dark);
+    .review-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      align-items: baseline;
       margin-bottom: 2px;
     }
 
-    .compare-meta {
+    .review-name {
+      font-weight: 700;
+      font-size: 11px;
+    }
+
+    .review-meta {
       font-size: 10px;
       color: var(--muted);
     }
 
-    /* MODAL PERFIL */
-    .profile-body {
-      font-size: 12px;
-      color: var(--text);
-      display: grid;
-      grid-template-columns: minmax(0,1.6fr) minmax(0,1.4fr);
-      gap: 12px;
+    .review-comment {
+      font-size: 11px;
     }
 
-    @media (max-width: 720px) {
-      .profile-body {
-        grid-template-columns: minmax(0,1fr);
+    /* FORM AVALIAÇÃO */
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px 10px;
+      margin-top: 6px;
+    }
+
+    @media (max-width: 640px) {
+      .form-grid {
+        grid-template-columns: minmax(0, 1fr);
       }
     }
 
-    .profile-section-title {
-      font-size: 12px;
-      font-weight: 700;
-      margin-bottom: 4px;
-      color: var(--dark);
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
     }
 
-    .profile-block {
-      margin-bottom: 8px;
-    }
-
-    .profile-label {
+    .form-group label {
       font-size: 11px;
       color: var(--muted);
       font-weight: 600;
-      margin-bottom: 2px;
     }
 
-    .profile-text {
-      font-size: 12px;
-      color: var(--text);
-    }
-
-    .profile-reviews {
-      margin-top: 4px;
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
       border-radius: 10px;
-      border: 1px solid #e2e8f0;
-      background: #f8fafc;
+      border: 1px solid var(--border-strong);
       padding: 6px 8px;
-      max-height: 230px;
-      overflow: auto;
-    }
-
-    .profile-review-item {
       font-size: 11px;
-      padding: 5px 0;
-      border-bottom: 1px solid #e5e7eb;
+      font-family: inherit;
+      background: #ffffff;
     }
 
-    .profile-review-item:last-child {
-      border-bottom: none;
+    .form-group textarea {
+      resize: vertical;
+      min-height: 70px;
+    }
+
+    .form-group small {
+      font-size: 10px;
+      color: var(--muted);
+    }
+
+    .rating-selector {
+      display: inline-flex;
+      gap: 4px;
+      margin-top: 2px;
+    }
+
+    .rating-selector button {
+      border-radius: 999px;
+      border: 1px solid var(--border-strong);
+      background: #f9fafb;
+      padding: 4px 7px;
+      font-size: 12px;
+      cursor: pointer;
+    }
+
+    .rating-selector button.active {
+      background: #facc15;
+      border-color: #eab308;
+      color: #1f2933;
+      font-weight: 700;
+    }
+
+    .form-footer {
+      margin-top: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      border-radius: 999px;
+      border: none;
+      padding: 7px 14px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: #ffffff;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 14px 32px rgba(15, 111, 255, 0.7);
+    }
+
+    .form-hint {
+      font-size: 10px;
+      color: var(--muted);
+      max-width: 36ch;
     }
   </style>
 </head>
 <body>
   <header>
     <div class="header-left">
-      <div class="logo-block">
-        <a href="https://inbotix.com.br">
-          <img src="logo-inbotix.png" alt="INBOTIX" />
-        </a>
-      </div>
-      <div class="logo-text">
-        <strong>INBOTIX – SDR Marketplace</strong><br>
-        Prospecção B2B por performance com SDRs validados.
+      <a href="https://inbotix.com.br">
+        <img src="logo-inbotix.png" alt="INBOTIX" />
+      </a>
+      <div class="header-title">
+        <strong>Marketplace de SDRs – INBOTIX</strong>
+        Escolha um SDR para gerar leads por performance.
       </div>
     </div>
     <div class="header-right">
-      <span class="badge">Máquina de Vendas + SDR Digital</span>
-      <a href="sdr-cadastro.html" class="btn-outline-header">
-        <span class="icon">⚡</span>
-        Sou SDR e quero me cadastrar
-      </a>
+      <span class="badge-header">Teste local – dados salvos no navegador</span>
+      <a href="sdr-cadastro.html" class="btn-header">Sou SDR e quero me cadastrar</a>
+      <a href="sdr-admin.html" class="btn-header">Área interna (admin)</a>
     </div>
   </header>
 
@@ -1267,328 +763,300 @@
     <section class="hero">
       <div class="hero-inner">
         <div>
-          <div class="hero-highlight">
-            <span>🔎</span> Marketplace de SDRs parceiros INBOTIX
-          </div>
-          <h1 class="hero-title">Escolha o SDR ideal para gerar leads para a sua empresa.</h1>
-          <p class="hero-text">
-            Todos os SDRs desta vitrine seguem a metodologia da INBOTIX: eles fazem a prospecção
-            e você paga apenas pelos leads gerados, conforme o cardápio de leads combinado.
+          <div class="hero-pill">⚡ Prospecção de graça, cobrança só por lead gerado</div>
+          <h1 class="hero-title">Escolha um SDR parceiro da INBOTIX para gerar leads para a sua empresa.</h1>
+          <p class="hero-subtitle">
+            Aqui você encontra profissionais treinados para rodar campanhas de prospecção B2B.
+            Você conversa direto com o SDR, combina o cardápio de leads e paga apenas pelo que foi gerado.
           </p>
-          <div class="hero-metrics" id="hero-metrics">
-            <!-- preenchido via JS com total SDRs, Premium, Top Performer -->
+          <div class="hero-highlight">
+            Ao avaliar um SDR, você gera também uma base de contato para a INBOTIX entender melhor
+            quais empresas já tiveram experiência em prospecção – isso nos ajuda a te atender ainda melhor.
           </div>
         </div>
-
-        <aside class="hero-side-card">
-          <div class="hero-side-title">Como funciona na prática?</div>
-          <p class="hero-side-text">
-            <strong>1.</strong> Encontre um SDR com experiência no seu segmento.<br>
-            <strong>2.</strong> Fale direto com ele por telefone ou WhatsApp.<br>
-            <strong>3.</strong> Combine o cardápio de leads e comece a operação.
-          </p>
-          <ul class="hero-side-list">
-            <li>A INBOTIX apoia na metodologia e no modelo de cobrança.</li>
-            <li>SDRs Premium aparecem em destaque na lista.</li>
-            <li>O selo “Top Performer” destaca quem mais gera valor e é bem avaliado.</li>
+        <aside class="hero-right-card">
+          <div class="hero-right-title">Como funciona na prática?</div>
+          <ul class="hero-right-list">
+            <li><span class="bullet">1.</span> Filtre os SDRs por nicho, canal de prospecção, região e nota.</li>
+            <li><span class="bullet">2.</span> Clique em <strong>“Chamar no WhatsApp”</strong> ou acesse o LinkedIn do SDR.</li>
+            <li><span class="bullet">3.</span> Combina o volume de leads, ticket e cardápio.</li>
+            <li><span class="bullet">4.</span> Depois que trabalharam juntos, volte aqui e deixe sua avaliação.</li>
           </ul>
-          <div class="hero-cta-row">
-            <a href="https://inbotix.com.br" class="btn-primary-hero" target="_blank" rel="noopener">
-              <span>Quero falar com a INBOTIX</span>
-            </a>
-            <span class="hero-cta-helper">
-              Prefere se conectar direto com um SDR? Use a lista abaixo e chame por WhatsApp.
-            </span>
-          </div>
         </aside>
       </div>
     </section>
 
-    <!-- ASSISTENTE DE ESCOLHA -->
-    <section class="assistant">
-      <div class="assistant-card">
-        <div class="assistant-title">Me ajude a escolher o SDR ideal</div>
-        <p class="assistant-subtitle">
-          Responda rapidamente e eu vou destacar SDRs que combinam com o seu cenário (nicho, canal, idioma e ticket médio).
-        </p>
-        <form id="assistant-form" class="assistant-form">
-          <div class="assistant-group">
-            <label class="assistant-label" for="quiz-nicho">Nicho / segmento</label>
-            <select id="quiz-nicho" class="assistant-select">
-              <option value="">Qualquer nicho</option>
-            </select>
-          </div>
-          <div class="assistant-group">
-            <label class="assistant-label" for="quiz-canal">Canal principal</label>
-            <select id="quiz-canal" class="assistant-select">
-              <option value="">Indiferente</option>
-              <option value="LinkedIn">LinkedIn</option>
-              <option value="E-mail">E-mail</option>
-              <option value="WhatsApp">WhatsApp</option>
-              <option value="Cold call">Cold call</option>
-              <option value="Instagram">Instagram</option>
-            </select>
-          </div>
-          <div class="assistant-group">
-            <label class="assistant-label" for="quiz-idioma">Idioma de atendimento</label>
-            <select id="quiz-idioma" class="assistant-select">
-              <option value="">Indiferente</option>
-              <option value="Português">Português</option>
-              <option value="Espanhol">Espanhol</option>
-              <option value="Inglês">Inglês</option>
-            </select>
-          </div>
-          <div class="assistant-group">
-            <label class="assistant-label" for="quiz-ticket">Ticket médio aproximado</label>
-            <select id="quiz-ticket" class="assistant-select">
-              <option value="">Indiferente</option>
-              <option value="baixo">Até R$ 5 mil</option>
-              <option value="medio">R$ 5 mil a R$ 30 mil</option>
-              <option value="alto">Acima de R$ 30 mil</option>
-            </select>
-          </div>
-          <div class="assistant-actions">
-            <button type="submit" class="assistant-btn">Gerar recomendações</button>
-            <span class="assistant-note">
-              O resultado aparece ao lado e os SDRs recomendados ficam marcados na lista abaixo como “Recomendado para você”.
-            </span>
-          </div>
-        </form>
-      </div>
-
-      <div class="assistant-card">
-        <div class="assistant-reco-title">SDRs recomendados para você</div>
-        <div id="assistant-recommendations" class="assistant-reco-list">
-          <div class="assistant-reco-empty">
-            Preencha o assistente ao lado para ver até 3 SDRs mais aderentes ao seu cenário.
+    <!-- FILTROS -->
+    <section class="filters-card">
+      <div class="filters-top">
+        <div>
+          <div class="filters-title">Filtrar SDRs</div>
+          <div class="filters-sub">
+            Use os filtros abaixo para encontrar o SDR ideal por <strong>nome, região, canal e avaliação mínima</strong>.
           </div>
         </div>
+        <div class="filters-sub" id="sdr-count"></div>
+      </div>
+
+      <div class="filters-grid">
+        <div class="filters-group">
+          <label for="filter-nome">Buscar por nome</label>
+          <input id="filter-nome" type="text" placeholder="Digite o nome do SDR" />
+        </div>
+        <div class="filters-group">
+          <label for="filter-regiao">Região</label>
+          <select id="filter-regiao">
+            <option value="">Todas</option>
+          </select>
+        </div>
+        <div class="filters-group">
+          <label for="filter-canal">Canal de prospecção</label>
+          <select id="filter-canal">
+            <option value="">Todos</option>
+          </select>
+        </div>
+        <div class="filters-group">
+          <label for="filter-stars">Nota mínima</label>
+          <select id="filter-stars">
+            <option value="0">Sem filtro</option>
+            <option value="3">3+ estrelas</option>
+            <option value="4">4+ estrelas</option>
+            <option value="4.5">4.5+ estrelas</option>
+          </select>
+        </div>
+        <div class="filters-group">
+          <label for="filter-nicho">Nicho</label>
+          <select id="filter-nicho">
+            <option value="">Todos</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="filters-chips">
+        <button type="button" class="chip-filter" id="filter-premium">
+          ⭐ Mostrar apenas Premium
+        </button>
+        <button type="button" class="chip-filter" id="filter-top">
+          🏆 Mostrar apenas Top Performer
+        </button>
       </div>
     </section>
 
-    <!-- TOOLBAR + FILTROS -->
-    <section class="toolbar">
-      <div class="toolbar-row">
-        <p class="toolbar-text">
-          <strong>Como usar:</strong> filtre por nome, nicho, região, idioma, canal de prospecção, tempo de experiência
-          ou <strong>nota mínima</strong> para encontrar o SDR ideal. Você também pode
-          <strong>comparar SDRs</strong> lado a lado.
-        </p>
-        <div class="toolbar-actions">
-          <button id="btn-comparar" class="btn-outline" disabled>
-            <span class="icon">📊</span>
-            Comparar selecionados
-          </button>
-          <a href="sdr-cadastro.html" class="btn-outline">
-            <span class="icon">⚡</span>
-            Sou SDR e quero entrar na vitrine
-          </a>
-          <a href="sdr-admin.html" class="btn-outline">
-            <span class="icon">🛠</span>
-            Área interna (admin local)
-          </a>
-        </div>
+    <!-- LISTA DE SDRs -->
+    <section id="sdr-list-section">
+      <div class="sdr-grid" id="sdr-grid">
+        <!-- cards via JS -->
       </div>
-
-      <div class="toolbar-row">
-        <div class="filters">
-          <div class="filter-group" style="min-width:230px;">
-            <span class="filter-label">Buscar por nome, nicho ou palavra-chave</span>
-            <input id="filtro-texto" class="filter-input" type="text" placeholder="Ex.: marketing, logística, SaaS, João..." />
-          </div>
-          <div class="filter-group">
-            <span class="filter-label">Região de atuação</span>
-            <select id="filtro-regiao" class="filter-select">
-              <option value="">Todas as regiões</option>
-            </select>
-          </div>
-          <div class="filter-group">
-            <span class="filter-label">Canal principal</span>
-            <select id="filtro-canal" class="filter-select">
-              <option value="">Todos os canais</option>
-            </select>
-          </div>
-          <div class="filter-group">
-            <span class="filter-label">Idioma</span>
-            <select id="filtro-idioma" class="filter-select">
-              <option value="">Todos os idiomas</option>
-            </select>
-          </div>
-          <div class="filter-group">
-            <span class="filter-label">Tempo de experiência</span>
-            <select id="filtro-tempo" class="filter-select">
-              <option value="">Todos os tempos</option>
-            </select>
-          </div>
-          <div class="filter-group" style="min-width:150px;">
-            <span class="filter-label">Nota mínima (estrelas)</span>
-            <select id="filtro-nota" class="filter-select">
-              <option value="">Todas as notas</option>
-              <option value="3">3.0+</option>
-              <option value="4">4.0+</option>
-              <option value="4.5">4.5+</option>
-              <option value="5">5.0</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="counter" id="contador-sdrs"></div>
+      <div class="empty" id="sdr-empty" style="display:none;">
+        Nenhum SDR encontrado com esses filtros neste ambiente de testes.
       </div>
     </section>
-
-    <!-- LISTA DE SDRS -->
-    <section id="lista-sdrs" class="grid"></section>
-
-    <p id="empty-message" class="empty" style="display:none;">
-      Nenhum SDR encontrado com os filtros atuais. Tente limpar os filtros ou ampliar sua busca.
-    </p>
-
-    <p class="footnote-bottom">
-      Os SDRs listados atuam de forma independente, seguindo a metodologia <strong>INBOTIX</strong> de prospecção por performance.
-      A combinação de valores e escopo de operação é feita diretamente entre o cliente e o SDR.
-    </p>
   </main>
 
-  <!-- MODAL COMPARAÇÃO -->
-  <div id="modal-compare" class="modal-backdrop">
+  <!-- MODAL AVALIAÇÕES -->
+  <div id="modal-avaliacoes-backdrop" class="modal-backdrop">
     <div class="modal">
       <div class="modal-header">
         <div>
-          <div class="modal-title">Comparação de SDRs selecionados</div>
-          <div class="modal-subtitle">Veja rapidamente as diferenças de nicho, canais, notas e experiência.</div>
+          <div class="modal-title" id="modal-avaliacoes-title">Avaliações</div>
+          <div class="modal-subtitle" id="modal-avaliacoes-subtitle"></div>
         </div>
-        <button type="button" class="modal-close" id="close-compare">Fechar</button>
+        <button type="button" class="modal-close" id="close-avaliacoes">Fechar</button>
       </div>
-      <div class="compare-table-wrapper">
-        <table id="compare-table">
+      <div class="modal-body">
+        <div id="avaliacoes-list" class="review-list">
           <!-- preenchido via JS -->
-        </table>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- MODAL PERFIL DETALHADO -->
-  <div id="modal-profile" class="modal-backdrop">
+  <!-- MODAL AVALIAR -->
+  <div id="modal-avaliar-backdrop" class="modal-backdrop">
     <div class="modal">
       <div class="modal-header">
         <div>
-          <div class="modal-title" id="profile-title">Perfil do SDR</div>
-          <div class="modal-subtitle" id="profile-subtitle"></div>
+          <div class="modal-title" id="modal-avaliar-title">Avaliar SDR</div>
+          <div class="modal-subtitle">
+            Preencha seus dados para avaliar este SDR. Esses dados também entram na base da INBOTIX para análise de empresas
+            que já trabalharam com prospecção.
+          </div>
         </div>
-        <button type="button" class="modal-close" id="close-profile">Fechar</button>
+        <button type="button" class="modal-close" id="close-avaliar">Fechar</button>
       </div>
-      <div class="profile-body" id="profile-body">
-        <!-- preenchido via JS -->
+      <div class="modal-body">
+        <form id="form-avaliar">
+          <input type="hidden" id="avaliar-sdr-id" />
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="cliente-nome">Seu nome completo *</label>
+              <input id="cliente-nome" type="text" required />
+            </div>
+            <div class="form-group">
+              <label for="cliente-empresa">Empresa onde trabalharam juntos *</label>
+              <input id="cliente-empresa" type="text" required />
+            </div>
+            <div class="form-group">
+              <label for="cliente-email">Seu e-mail corporativo *</label>
+              <input id="cliente-email" type="email" required placeholder="voce@empresa.com" />
+              <small>Usamos para garantir que a mesma pessoa não avalie o mesmo SDR várias vezes.</small>
+            </div>
+            <div class="form-group">
+              <label for="cliente-telefone">Telefone / WhatsApp *</label>
+              <input id="cliente-telefone" type="text" required placeholder="(DDD) 99999-9999" />
+            </div>
+            <div class="form-group">
+              <label for="cliente-linkedin">Perfil do LinkedIn *</label>
+              <input id="cliente-linkedin" type="url" required placeholder="Cole o link do seu perfil" />
+              <small>Também usamos para evitar avaliações duplicadas no mesmo SDR.</small>
+            </div>
+            <div class="form-group">
+              <label>Quantas estrelas você dá para este SDR? *</label>
+              <div class="rating-selector" id="rating-selector">
+                <button type="button" data-stars="1">1★</button>
+                <button type="button" data-stars="2">2★</button>
+                <button type="button" data-stars="3">3★</button>
+                <button type="button" data-stars="4">4★</button>
+                <button type="button" data-stars="5">5★</button>
+              </div>
+              <input type="hidden" id="cliente-stars" />
+            </div>
+            <div class="form-group" style="grid-column: 1 / -1;">
+              <label for="cliente-comentario">Comentário sobre o trabalho deste SDR *</label>
+              <textarea id="cliente-comentario" required placeholder="Conte um pouco sobre como foi trabalhar com este SDR, qualidade dos leads, comunicação, etc."></textarea>
+            </div>
+          </div>
+
+          <div class="form-footer">
+            <button type="submit" class="btn-primary">
+              Enviar avaliação
+            </button>
+            <div class="form-hint">
+              Obs.: Você só pode avaliar um mesmo SDR uma vez com o <strong>mesmo e-mail ou perfil de LinkedIn</strong>.
+              Em produção, isso será validado também do lado do servidor.
+            </div>
+          </div>
+        </form>
       </div>
     </div>
   </div>
 
   <script>
     const SDR_KEY = "inbotix_sdrs";
+    const CONFIG_KEY = "inbotix_sdr_config";
 
     let sdrs = [];
+    let config = null;
     let ratingMap = new Map();
     let topPerformerId = null;
-    let recommendedIds = new Set();
-    let selectedForCompare = new Set();
 
-    const listaContainer = document.getElementById("lista-sdrs");
-    const emptyMessage = document.getElementById("empty-message");
-    const filtroTexto = document.getElementById("filtro-texto");
-    const filtroRegiao = document.getElementById("filtro-regiao");
-    const filtroCanal = document.getElementById("filtro-canal");
-    const filtroIdioma = document.getElementById("filtro-idioma");
-    const filtroTempo = document.getElementById("filtro-tempo");
-    const filtroNota = document.getElementById("filtro-nota");
-    const contadorSdrs = document.getElementById("contador-sdrs");
-    const heroMetrics = document.getElementById("hero-metrics");
+    const sdrGrid = document.getElementById("sdr-grid");
+    const sdrEmpty = document.getElementById("sdr-empty");
+    const sdrCount = document.getElementById("sdr-count");
 
-    const btnComparar = document.getElementById("btn-comparar");
-    const modalCompare = document.getElementById("modal-compare");
-    const compareTable = document.getElementById("compare-table");
-    const closeCompare = document.getElementById("close-compare");
+    const filterNome = document.getElementById("filter-nome");
+    const filterRegiao = document.getElementById("filter-regiao");
+    const filterCanal = document.getElementById("filter-canal");
+    const filterStars = document.getElementById("filter-stars");
+    const filterNicho = document.getElementById("filter-nicho");
+    const filterPremiumBtn = document.getElementById("filter-premium");
+    const filterTopBtn = document.getElementById("filter-top");
 
-    const modalProfile = document.getElementById("modal-profile");
-    const closeProfile = document.getElementById("close-profile");
-    const profileTitle = document.getElementById("profile-title");
-    const profileSubtitle = document.getElementById("profile-subtitle");
-    const profileBody = document.getElementById("profile-body");
+    // Modais
+    const modalAvaliacoesBackdrop = document.getElementById("modal-avaliacoes-backdrop");
+    const modalAvaliacoesTitle = document.getElementById("modal-avaliacoes-title");
+    const modalAvaliacoesSubtitle = document.getElementById("modal-avaliacoes-subtitle");
+    const avaliacoesList = document.getElementById("avaliacoes-list");
+    const closeAvaliacoes = document.getElementById("close-avaliacoes");
 
-    const quizNicho = document.getElementById("quiz-nicho");
-    const quizCanal = document.getElementById("quiz-canal");
-    const quizIdioma = document.getElementById("quiz-idioma");
-    const quizTicket = document.getElementById("quiz-ticket");
-    const assistantForm = document.getElementById("assistant-form");
-    const assistantRecommendations = document.getElementById("assistant-recommendations");
+    const modalAvaliarBackdrop = document.getElementById("modal-avaliar-backdrop");
+    const modalAvaliarTitle = document.getElementById("modal-avaliar-title");
+    const closeAvaliar = document.getElementById("close-avaliar");
+    const formAvaliar = document.getElementById("form-avaliar");
 
-    function carregarSdrs() {
+    const inputSdrId = document.getElementById("avaliar-sdr-id");
+    const inputClienteNome = document.getElementById("cliente-nome");
+    const inputClienteEmpresa = document.getElementById("cliente-empresa");
+    const inputClienteEmail = document.getElementById("cliente-email");
+    const inputClienteTelefone = document.getElementById("cliente-telefone");
+    const inputClienteLinkedin = document.getElementById("cliente-linkedin");
+    const inputClienteStars = document.getElementById("cliente-stars");
+    const inputClienteComentario = document.getElementById("cliente-comentario");
+    const ratingSelector = document.getElementById("rating-selector");
+
+    let filtroPremiumAtivo = false;
+    let filtroTopAtivo = false;
+
+    function defaultConfig() {
+      return {
+        regioes: ["Brasil inteiro", "Sudeste", "Sul", "Centro-Oeste", "Nordeste", "Norte", "LATAM", "Europa"],
+        idiomas: ["Português", "Espanhol", "Inglês"],
+        tempoExp: ["0–6 meses", "1–2 anos", "3–5 anos", "5+ anos"],
+        nichos: ["Agências de marketing", "SaaS B2B", "Indústria", "Transportes e logística", "Serviços B2B"],
+        tiposEmpresa: ["PMEs", "Grandes empresas", "Startups", "Agências", "Indústria"],
+        canais: ["LinkedIn", "E-mail", "WhatsApp", "Cold call", "Instagram"]
+      };
+    }
+
+    function loadConfig() {
+      try {
+        config = JSON.parse(localStorage.getItem(CONFIG_KEY) || "null");
+      } catch (e) {
+        config = null;
+      }
+      if (!config) {
+        config = defaultConfig();
+        localStorage.setItem(CONFIG_KEY, JSON.stringify(config));
+      }
+    }
+
+    function loadSdrs() {
       try {
         sdrs = JSON.parse(localStorage.getItem(SDR_KEY) || "[]");
       } catch (e) {
-        console.warn("Erro ao carregar SDRs", e);
         sdrs = [];
       }
 
-      // Normalizar campos para cadastros antigos
+      // normalizar estrutura
       sdrs = sdrs.map(s => ({
-        tiposEmpresa: "",
-        regioes: "",
-        idiomas: "",
-        tempoExp: "",
-        canais: "",
-        reviews: [],
-        premium: false,
-        nicho: s.nicho || "",
-        ...s,
+        premium: !!s.premium,
+        verified: !!s.verified,
+        usaInbotix: !!s.usaInbotix,
         reviews: Array.isArray(s.reviews) ? s.reviews : [],
-        premium: !!s.premium
+        ...s
       }));
 
-      // Ordenação base: mais novos primeiro
-      sdrs.sort((a, b) => (b.id || 0) - (a.id || 0));
-
-      if (!sdrs.length) {
-        emptyMessage.style.display = "block";
-        contadorSdrs.textContent = "Nenhum SDR cadastrado neste navegador.";
-        heroMetrics.innerHTML = "";
-        return;
-      }
-
-      recomputarRatings();
-      recalcularTopPerformer();
-      popularFiltros();
-      popularQuizNicho();
-      preencherHeroMetrics();
-      aplicarFiltros();
+      recomputeRatings();
+      computeTopPerformer();
     }
 
-    /* ---------- RATING / AVALIAÇÕES ---------- */
+    function saveSdrs() {
+      localStorage.setItem(SDR_KEY, JSON.stringify(sdrs));
+      recomputeRatings();
+      computeTopPerformer();
+      renderSdrs();
+    }
+
     function getRatingInfo(sdr) {
       const reviews = sdr.reviews || [];
-      if (!reviews.length) return { avg: 0, count: 0, last: null, all: [] };
+      if (!reviews.length) return { avg: 0, count: 0 };
       const sum = reviews.reduce((acc, r) => acc + (r.stars || 0), 0);
-      const avg = sum / reviews.length;
-      const sorted = reviews.slice().sort((a, b) => (b.date || 0) - (a.date || 0));
-      const last = sorted[0];
-      return { avg, count: reviews.length, last, all: sorted };
+      return { avg: sum / reviews.length, count: reviews.length };
     }
 
-    function recomputarRatings() {
+    function recomputeRatings() {
       ratingMap.clear();
-      sdrs.forEach(s => {
-        ratingMap.set(s.id, getRatingInfo(s));
-      });
+      sdrs.forEach(s => ratingMap.set(s.id, getRatingInfo(s)));
     }
 
-    function recalcularTopPerformer() {
+    function computeTopPerformer() {
       let bestId = null;
       let bestAvg = 0;
       let bestCount = 0;
 
       sdrs.forEach(s => {
         const info = ratingMap.get(s.id) || { avg: 0, count: 0 };
-        // precisa de pelo menos 3 avaliações
-        if (info.count < 3) return;
+        if (info.count < 3) return; // mínimo de 3 avaliações
         if (info.avg > bestAvg) {
           bestAvg = info.avg;
           bestCount = info.count;
@@ -1602,999 +1070,506 @@
       topPerformerId = bestId;
     }
 
-    function criarStars(avg) {
-      const container = document.createElement("div");
-      container.className = "stars";
-      const full = Math.round(avg * 2) / 2;
+    function createStars(avg) {
+      const div = document.createElement("div");
+      div.className = "stars";
+      const rounded = Math.round(avg * 2) / 2;
       for (let i = 1; i <= 5; i++) {
         const span = document.createElement("span");
-        span.className = "star" + (i <= Math.round(full) ? " filled" : "");
+        span.className = "star" + (i <= Math.round(rounded) ? " filled" : "");
         span.textContent = "★";
-        container.appendChild(span);
+        div.appendChild(span);
       }
-      return container;
+      return div;
     }
 
-    function salvarSdrs() {
-      localStorage.setItem(SDR_KEY, JSON.stringify(sdrs));
+    function normalizeText(text) {
+      return (text || "").toString().toLowerCase();
     }
 
-    function adicionarAvaliacao(idSdr, review) {
-      const idx = sdrs.findIndex(s => s.id === idSdr);
-      if (idx === -1) return;
-      if (!Array.isArray(sdrs[idx].reviews)) sdrs[idx].reviews = [];
-      sdrs[idx].reviews.push(review);
-      salvarSdrs();
-      recomputarRatings();
-      recalcularTopPerformer();
-      aplicarFiltros(); // re-render
-      alert("Avaliação registrada com sucesso. Obrigado por avaliar este SDR!");
+    function normalizeUrl(url) {
+      return (url || "").toString().trim().toLowerCase().replace(/\/$/, "");
     }
 
-    /* ---------- HERO METRICS ---------- */
-    function preencherHeroMetrics() {
-      const total = sdrs.length;
-      const premiumCount = sdrs.filter(s => s.premium).length;
-      const comAvaliacao = sdrs.filter(s => (ratingMap.get(s.id) || { count: 0 }).count > 0);
-      const topPerf = topPerformerId ? 1 : 0;
-
-      heroMetrics.innerHTML = "";
-
-      const metric1 = document.createElement("div");
-      metric1.className = "hero-metric";
-      metric1.innerHTML =
-        "<span>SDRs disponíveis</span><strong>" +
-        total +
-        "</strong><span>Perfis ativos nesta vitrine local.</span>";
-      heroMetrics.appendChild(metric1);
-
-      const metric2 = document.createElement("div");
-      metric2.className = "hero-metric";
-      metric2.innerHTML =
-        "<span>SDRs com avaliação</span><strong>" +
-        comAvaliacao.length +
-        "</strong><span>Já avaliados por clientes.</span>";
-      heroMetrics.appendChild(metric2);
-
-      const metric3 = document.createElement("div");
-      metric3.className = "hero-metric";
-      metric3.innerHTML =
-        "<span>Premium & Top Performer</span><strong>" +
-        premiumCount +
-        " Premium • " +
-        topPerf +
-        " Top</strong><span>Destaques com melhor reputação.</span>";
-      heroMetrics.appendChild(metric3);
-    }
-
-    /* ---------- FILTROS ---------- */
-    function popularFiltros() {
-      const regioesSet = new Set();
-      const canaisSet = new Set();
-      const idiomasSet = new Set();
-      const temposSet = new Set();
-
-      sdrs.forEach(sdr => {
-        if (sdr.regioes) regioesSet.add(sdr.regioes);
-        if (sdr.idiomas) idiomasSet.add(sdr.idiomas);
-        if (sdr.tempoExp) temposSet.add(sdr.tempoExp);
-
-        (sdr.canais || "")
-          .split(",")
-          .map(c => c.trim())
-          .filter(Boolean)
-          .forEach(c => canaisSet.add(c));
-      });
-
-      // Reset selects
-      filtroRegiao.innerHTML = '<option value="">Todas as regiões</option>';
-      filtroCanal.innerHTML = '<option value="">Todos os canais</option>';
-      filtroIdioma.innerHTML = '<option value="">Todos os idiomas</option>';
-      filtroTempo.innerHTML = '<option value="">Todos os tempos</option>';
-
-      Array.from(regioesSet).sort().forEach(r => {
+    function renderFiltersOptions() {
+      // regiões
+      config.regioes.forEach(r => {
         const opt = document.createElement("option");
         opt.value = r;
         opt.textContent = r;
-        filtroRegiao.appendChild(opt);
+        filterRegiao.appendChild(opt);
       });
 
-      Array.from(canaisSet).sort().forEach(c => {
+      // canais
+      config.canais.forEach(c => {
         const opt = document.createElement("option");
         opt.value = c;
         opt.textContent = c;
-        filtroCanal.appendChild(opt);
+        filterCanal.appendChild(opt);
       });
 
-      Array.from(idiomasSet).sort().forEach(i => {
-        const opt = document.createElement("option");
-        opt.value = i;
-        opt.textContent = i;
-        filtroIdioma.appendChild(opt);
-      });
-
-      Array.from(temposSet).sort().forEach(t => {
-        const opt = document.createElement("option");
-        opt.value = t;
-        opt.textContent = t;
-        filtroTempo.appendChild(opt);
-      });
-    }
-
-    /* ---------- QUIZ / ASSISTENTE ---------- */
-    function popularQuizNicho() {
-      const nichosSet = new Set();
-      sdrs.forEach(sdr => {
-        (sdr.nicho || "")
-          .split(",")
-          .map(n => n.trim())
-          .filter(Boolean)
-          .forEach(n => nichosSet.add(n));
-      });
-
-      quizNicho.innerHTML = '<option value="">Qualquer nicho</option>';
-      Array.from(nichosSet).sort().forEach(n => {
+      // nichos
+      config.nichos.forEach(n => {
         const opt = document.createElement("option");
         opt.value = n;
         opt.textContent = n;
-        quizNicho.appendChild(opt);
+        filterNicho.appendChild(opt);
       });
     }
 
-    function calcularScoreFit(sdr, answers) {
-      const info = ratingMap.get(sdr.id) || { avg: 0, count: 0 };
-      let score = 0;
+    function applyFilters(list) {
+      const nomeVal = normalizeText(filterNome.value);
+      const regiaoVal = filterRegiao.value;
+      const canalVal = filterCanal.value;
+      const starsVal = parseFloat(filterStars.value || "0");
+      const nichoVal = filterNicho.value;
 
-      // Nicho
-      if (answers.nicho) {
-        const nichos = (sdr.nicho || "")
-          .split(",")
-          .map(n => n.trim().toLowerCase());
-        if (nichos.includes(answers.nicho.toLowerCase())) {
-          score += 30;
-        }
-      }
+      return list.filter(sdr => {
+        const info = ratingMap.get(sdr.id) || { avg: 0, count: 0 };
 
-      // Canal
-      if (answers.canal) {
-        const canais = (sdr.canais || "")
-          .split(",")
-          .map(c => c.trim().toLowerCase());
-        if (canais.includes(answers.canal.toLowerCase())) {
-          score += 25;
-        }
-      }
+        if (nomeVal && !normalizeText(sdr.nome).includes(nomeVal)) return false;
+        if (regiaoVal && sdr.regioes !== regiaoVal) return false;
+        if (canalVal && !(sdr.canais || "").includes(canalVal)) return false;
+        if (nichoVal && !(sdr.nicho || "").includes(nichoVal)) return false;
+        if (starsVal && (!info.count || info.avg < starsVal)) return false;
+        if (filtroPremiumAtivo && !sdr.premium) return false;
+        if (filtroTopAtivo && sdr.id !== topPerformerId) return false;
 
-      // Idioma
-      if (answers.idioma) {
-        if ((sdr.idiomas || "").toLowerCase().includes(answers.idioma.toLowerCase())) {
-          score += 20;
-        }
-      }
-
-      // Ticket (simplificado: mais experiência favorece ticket mais alto)
-      if (answers.ticket) {
-        const exp = (sdr.tempoExp || "").toLowerCase();
-        if (answers.ticket === "alto" && (exp.includes("5+") || exp.includes("3–5"))) {
-          score += 15;
-        } else if (answers.ticket === "medio" && (exp.includes("1–2") || exp.includes("3–5"))) {
-          score += 10;
-        } else if (answers.ticket === "baixo") {
-          score += 5;
-        }
-      }
-
-      // Reputação
-      score += info.avg * 4; // até 20 pontos
-      if (info.count >= 5) score += 5;
-      if (info.count >= 10) score += 5;
-
-      // Premium / Top performer
-      if (sdr.premium) score += 5;
-      if (sdr.id === topPerformerId) score += 8;
-
-      return score;
-    }
-
-    function processarQuiz(e) {
-      e.preventDefault();
-
-      if (!sdrs.length) return;
-
-      const answers = {
-        nicho: quizNicho.value || "",
-        canal: quizCanal.value || "",
-        idioma: quizIdioma.value || "",
-        ticket: quizTicket.value || ""
-      };
-
-      const scored = sdrs.map(sdr => ({
-        sdr,
-        score: calcularScoreFit(sdr, answers)
-      }));
-
-      scored.sort((a, b) => b.score - a.score);
-      const top3 = scored.slice(0, 3).filter(item => item.score > 0);
-
-      assistantRecommendations.innerHTML = "";
-      recommendedIds.clear();
-
-      if (!top3.length) {
-        const empty = document.createElement("div");
-        empty.className = "assistant-reco-empty";
-        empty.textContent =
-          "Nenhum SDR se destacou fortemente com esses critérios. Tente ajustar o nicho, canal ou idioma para ver mais opções.";
-        assistantRecommendations.appendChild(empty);
-      } else {
-        top3.forEach(item => {
-          const { sdr, score } = item;
-          recommendedIds.add(sdr.id);
-
-          const div = document.createElement("div");
-          div.className = "assistant-reco-item";
-
-          const infoRating = ratingMap.get(sdr.id) || { avg: 0, count: 0 };
-
-          const nome = document.createElement("div");
-          nome.innerHTML =
-            "<strong>" +
-            (sdr.nome || "SDR") +
-            "</strong> • " +
-            (sdr.cidade || "Cidade/Estado");
-          div.appendChild(nome);
-
-          const meta = document.createElement("div");
-          meta.innerHTML =
-            "<span class='assistant-tag'>" +
-            (sdr.nicho || "Nicho não informado") +
-            "</span>" +
-            "<span class='assistant-tag'>" +
-            (sdr.canais || "Canais não informados") +
-            "</span>";
-          div.appendChild(meta);
-
-          const scoreEl = document.createElement("div");
-          scoreEl.style.fontSize = "10px";
-          scoreEl.style.color = "#6b7280";
-          scoreEl.textContent =
-            "Score de aderência: " +
-            Math.round(score) +
-            " • Nota: " +
-            (infoRating.count ? infoRating.avg.toFixed(1).replace(".", ",") : "sem avaliações");
-          div.appendChild(scoreEl);
-
-          assistantRecommendations.appendChild(div);
-        });
-      }
-
-      aplicarFiltros();
-      window.scrollTo({ top: listaContainer.offsetTop - 60, behavior: "smooth" });
-    }
-
-    /* ---------- APLICAÇÃO DE FILTROS ---------- */
-    function aplicarFiltros() {
-      const texto = (filtroTexto.value || "").toLowerCase();
-      const regiao = filtroRegiao.value;
-      const canal = filtroCanal.value;
-      const idioma = filtroIdioma.value;
-      const tempo = filtroTempo.value;
-      const notaMinStr = filtroNota.value;
-      const notaMin = notaMinStr ? parseFloat(notaMinStr) : null;
-
-      listaContainer.innerHTML = "";
-
-      let filtrados = sdrs;
-
-      if (texto) {
-        filtrados = filtrados.filter(sdr => {
-          const blob = (
-            (sdr.nome || "") + " " +
-            (sdr.nicho || "") + " " +
-            (sdr.tiposEmpresa || "") + " " +
-            (sdr.experiencia || "")
-          ).toLowerCase();
-          return blob.includes(texto);
-        });
-      }
-
-      if (regiao) {
-        filtrados = filtrados.filter(sdr => (sdr.regioes || "") === regiao);
-      }
-
-      if (idioma) {
-        filtrados = filtrados.filter(sdr => (sdr.idiomas || "") === idioma);
-      }
-
-      if (tempo) {
-        filtrados = filtrados.filter(sdr => (sdr.tempoExp || "") === tempo);
-      }
-
-      if (canal) {
-        filtrados = filtrados.filter(sdr =>
-          (sdr.canais || "")
-            .split(",")
-            .map(c => c.trim())
-            .filter(Boolean)
-            .includes(canal)
-        );
-      }
-
-      if (notaMin !== null && !isNaN(notaMin)) {
-        filtrados = filtrados.filter(sdr => {
-          const info = ratingMap.get(sdr.id) || { avg: 0 };
-          return info.avg >= notaMin;
-        });
-      }
-
-      // Ordenar considerando Premium + Top Performer + nota + reviews + id
-      filtrados.sort((a, b) => {
-        const premA = !!a.premium;
-        const premB = !!b.premium;
-        if (premA && !premB) return -1;
-        if (!premA && premB) return 1;
-
-        const topA = a.id === topPerformerId;
-        const topB = b.id === topPerformerId;
-        if (topA && !topB) return -1;
-        if (!topA && topB) return 1;
-
-        const infoA = ratingMap.get(a.id) || { avg: 0, count: 0 };
-        const infoB = ratingMap.get(b.id) || { avg: 0, count: 0 };
-
-        if (infoB.avg !== infoA.avg) return infoB.avg - infoA.avg;
-        if (infoB.count !== infoA.count) return infoB.count - infoA.count;
-
-        return (b.id || 0) - (a.id || 0);
+        return true;
       });
+    }
+
+    function sortSdrs(list) {
+      return list.slice().sort((a, b) => {
+        // Premium primeiro
+        if (a.premium && !b.premium) return -1;
+        if (!a.premium && b.premium) return 1;
+
+        // Top performer antes dos outros
+        if (a.id === topPerformerId && b.id !== topPerformerId) return -1;
+        if (b.id === topPerformerId && a.id !== topPerformerId) return 1;
+
+        const ra = ratingMap.get(a.id) || { avg: 0, count: 0 };
+        const rb = ratingMap.get(b.id) || { avg: 0, count: 0 };
+
+        // maior média primeiro
+        if (rb.avg !== ra.avg) return rb.avg - ra.avg;
+        // mais avaliações primeiro
+        if (rb.count !== ra.count) return rb.count - ra.count;
+        // ordena por nome
+        return normalizeText(a.nome).localeCompare(normalizeText(b.nome));
+      });
+    }
+
+    function renderSdrs() {
+      sdrGrid.innerHTML = "";
+
+      if (!sdrs.length) {
+        sdrEmpty.style.display = "block";
+        sdrCount.textContent = "Nenhum SDR cadastrado neste ambiente.";
+        return;
+      }
+
+      const filtrados = sortSdrs(applyFilters(sdrs));
 
       if (!filtrados.length) {
-        emptyMessage.style.display = "block";
-        contadorSdrs.textContent = "0 SDR encontrado";
+        sdrEmpty.style.display = "block";
       } else {
-        emptyMessage.style.display = "none";
-        filtrados.forEach(sdr => {
-          const card = criarCardSdr(sdr);
-          listaContainer.appendChild(card);
-        });
-        contadorSdrs.textContent =
-          filtrados.length + (filtrados.length === 1 ? " SDR encontrado" : " SDRs encontrados");
+        sdrEmpty.style.display = "none";
       }
 
-      atualizarBotaoComparar();
-    }
+      sdrCount.textContent =
+        (filtrados.length || 0) +
+        (filtrados.length === 1 ? " SDR encontrado" : " SDRs encontrados") +
+        " (teste local).";
 
-    /* ---------- CARD SDR ---------- */
-    function criarCardSdr(sdr) {
-      const card = document.createElement("article");
-      card.className = "card-sdr";
-      card.dataset.id = sdr.id;
+      filtrados.forEach(sdr => {
+        const info = ratingMap.get(sdr.id) || { avg: 0, count: 0 };
 
-      const infoRating = ratingMap.get(sdr.id) || { avg: 0, count: 0, last: null, all: [] };
-      const isPremium = !!sdr.premium;
-      const isTopPerf = sdr.id === topPerformerId;
-      const isRecommended = recommendedIds.has(sdr.id);
+        const card = document.createElement("div");
+        card.className = "sdr-card";
 
-      if (isPremium) {
-        card.classList.add("premium");
-        const pr = document.createElement("div");
-        pr.className = "premium-ribbon";
-        pr.innerHTML = "<span>💎</span><span>Premium</span>";
-        card.appendChild(pr);
-      }
+        const badgeStrip = document.createElement("div");
+        badgeStrip.className = "sdr-badge-strip";
 
-      if (isTopPerf) {
-        const tp = document.createElement("div");
-        tp.className = "top-performer-badge";
-        tp.innerHTML = "<span>🏆</span><span>Top Performer</span>";
-        card.appendChild(tp);
-      }
-
-      if (isRecommended) {
-        card.classList.add("recommended");
-        const rr = document.createElement("div");
-        rr.className = "reco-ribbon";
-        rr.innerHTML = "<span>✨</span><span>Recomendado para você</span>";
-        card.appendChild(rr);
-      }
-
-      // LEFT
-      const left = document.createElement("div");
-      left.className = "card-left";
-
-      const avatar = document.createElement("div");
-      avatar.className = "avatar";
-      if (sdr.fotoBase64) {
-        const img = document.createElement("img");
-        img.src = sdr.fotoBase64;
-        img.alt = sdr.nome;
-        avatar.appendChild(img);
-      } else {
-        const iniciais = (sdr.nome || "")
-          .trim()
-          .split(" ")
-          .map(p => p[0])
-          .join("")
-          .slice(0, 2)
-          .toUpperCase();
-        avatar.textContent = iniciais || "SDR";
-      }
-
-      if (isTopPerf) {
-        const avatarBadge = document.createElement("div");
-        avatarBadge.className = "avatar-top-performer";
-        avatarBadge.textContent = "🏆";
-        avatar.appendChild(avatarBadge);
-      }
-
-      const cidadePill = document.createElement("div");
-      cidadePill.className = "cidade-pill";
-      cidadePill.textContent = sdr.cidade || "Cidade / Estado";
-
-      const tempoPill = document.createElement("div");
-      tempoPill.className = "tempo-pill";
-      tempoPill.textContent = sdr.tempoExp || "Tempo de experiência";
-
-      // checkbox comparar
-      const compareWrapper = document.createElement("label");
-      compareWrapper.className = "compare-wrapper";
-      const chk = document.createElement("input");
-      chk.type = "checkbox";
-      chk.checked = selectedForCompare.has(sdr.id);
-      chk.addEventListener("change", () => {
-        if (chk.checked) {
-          selectedForCompare.add(sdr.id);
-        } else {
-          selectedForCompare.delete(sdr.id);
+        if (sdr.premium) {
+          const bp = document.createElement("span");
+          bp.className = "badge badge-premium";
+          bp.textContent = "Premium";
+          badgeStrip.appendChild(bp);
         }
-        atualizarBotaoComparar();
-      });
-      const spanCompare = document.createElement("span");
-      spanCompare.textContent = "Selecionar para comparar";
+        if (sdr.id === topPerformerId && info.count >= 3) {
+          const bt = document.createElement("span");
+          bt.className = "badge badge-top";
+          bt.textContent = "Top Performer";
+          badgeStrip.appendChild(bt);
+        }
+        if (sdr.verified) {
+          const bv = document.createElement("span");
+          bv.className = "badge badge-verified";
+          bv.textContent = "Verificado INBOTIX";
+          badgeStrip.appendChild(bv);
+        }
+        if (sdr.usaInbotix) {
+          const bi = document.createElement("span");
+          bi.className = "badge badge-inbotix";
+          bi.textContent = "Usa stack INBOTIX";
+          badgeStrip.appendChild(bi);
+        }
 
-      compareWrapper.appendChild(chk);
-      compareWrapper.appendChild(spanCompare);
+        card.appendChild(badgeStrip);
 
-      left.appendChild(avatar);
-      left.appendChild(cidadePill);
-      left.appendChild(tempoPill);
-      left.appendChild(compareWrapper);
+        // Header
+        const header = document.createElement("div");
+        header.className = "sdr-header";
 
-      // MIDDLE
-      const middle = document.createElement("div");
-      middle.className = "card-middle";
+        const avatar = document.createElement("div");
+        avatar.className = "sdr-avatar";
+        if (sdr.fotoBase64) {
+          const img = document.createElement("img");
+          img.src = sdr.fotoBase64;
+          avatar.appendChild(img);
+        } else {
+          const initials = (sdr.nome || "S").split(" ").map(p => p[0]).join("").slice(0, 2).toUpperCase();
+          avatar.textContent = initials;
+        }
 
-      const nomeRow = document.createElement("div");
-      nomeRow.className = "nome-row";
+        const hInfo = document.createElement("div");
+        const name = document.createElement("div");
+        name.className = "sdr-name";
+        name.textContent = sdr.nome || "SDR";
 
-      const nomeEl = document.createElement("div");
-      nomeEl.className = "nome";
-      nomeEl.textContent = sdr.nome || "SDR";
+        const meta = document.createElement("div");
+        meta.className = "sdr-meta";
+        meta.textContent =
+          (sdr.cidade || "") +
+          (sdr.cidade && sdr.regioes ? " • " : "") +
+          (sdr.regioes || "");
 
-      const idChip = document.createElement("span");
-      idChip.className = "chip-id";
-      idChip.textContent = "ID: " + (sdr.id || "-");
+        hInfo.appendChild(name);
+        hInfo.appendChild(meta);
 
-      nomeRow.appendChild(nomeEl);
-      nomeRow.appendChild(idChip);
+        header.appendChild(avatar);
+        header.appendChild(hInfo);
+        card.appendChild(header);
 
-      if (isPremium) {
-        const badgePremium = document.createElement("span");
-        badgePremium.className = "badge-inline badge-inline-gold";
-        badgePremium.textContent = "Premium";
-        nomeRow.appendChild(badgePremium);
-      }
+        // tags
+        const tags = document.createElement("div");
+        tags.className = "sdr-tags";
 
-      if (isTopPerf) {
-        const badgeTop = document.createElement("span");
-        badgeTop.className = "badge-inline badge-inline-orange";
-        badgeTop.textContent = "Top Performer";
-        nomeRow.appendChild(badgeTop);
-      }
+        if (sdr.nicho) {
+          sdr.nicho.split(",").map(t => t.trim()).filter(Boolean).slice(0, 3).forEach(n => {
+            const tag = document.createElement("span");
+            tag.className = "tag";
+            tag.textContent = n;
+            tags.appendChild(tag);
+          });
+        }
 
-      if (isRecommended) {
-        const badgeReco = document.createElement("span");
-        badgeReco.className = "badge-inline";
-        badgeReco.textContent = "Recomendado pelo assistente";
-        nomeRow.appendChild(badgeReco);
-      }
-
-      // Achievements automáticos
-      const achievements = [];
-      if (infoRating.count >= 10 && infoRating.avg >= 4.5) {
-        achievements.push("10+ avaliações positivas");
-      }
-      if (infoRating.avg >= 4.8 && infoRating.count >= 5) {
-        achievements.push("Excelência em qualidade 4,8+ ★");
-      } else if (infoRating.avg >= 4.5 && infoRating.count >= 3) {
-        achievements.push("Muito bem avaliado 4,5+ ★");
-      }
-
-      const nichosEl = document.createElement("div");
-      nichosEl.className = "meta-line";
-      nichosEl.innerHTML = "<strong>Nichos:</strong> " + (sdr.nicho || "-");
-
-      const tiposEl = document.createElement("div");
-      tiposEl.className = "meta-line";
-      tiposEl.innerHTML = "<strong>Tipos de empresa:</strong> " + (sdr.tiposEmpresa || "-");
-
-      const regioesEl = document.createElement("div");
-      regioesEl.className = "meta-line";
-      regioesEl.innerHTML = "<strong>Região:</strong> " + (sdr.regioes || "-");
-
-      const idiomasEl = document.createElement("div");
-      idiomasEl.className = "meta-line";
-      idiomasEl.innerHTML = "<strong>Idioma:</strong> " + (sdr.idiomas || "-");
-
-      const expEl = document.createElement("div");
-      expEl.className = "exp";
-      expEl.textContent = sdr.experiencia || "";
-
-      // Rating
-      const ratingLine = document.createElement("div");
-      ratingLine.className = "rating-line";
-
-      const stars = criarStars(infoRating.avg);
-      ratingLine.appendChild(stars);
-
-      const ratingText = document.createElement("span");
-      ratingText.className = "rating-count";
-      ratingText.textContent = infoRating.count
-        ? infoRating.avg.toFixed(1).replace(".", ",") +
-          " • " +
-          infoRating.count +
-          (infoRating.count === 1 ? " avaliação" : " avaliações")
-        : "Ainda sem avaliações";
-      ratingLine.appendChild(ratingText);
-
-      // último comentário
-      if (infoRating.last && infoRating.last.comment) {
-        const lastComment = document.createElement("div");
-        lastComment.className = "last-comment";
-        const nomeCliente = infoRating.last.clientName ? infoRating.last.clientName + " — " : "";
-        lastComment.innerHTML =
-          "<strong>" +
-          nomeCliente +
-          infoRating.last.stars +
-          "★</strong> · " +
-          infoRating.last.comment;
-        middle.appendChild(lastComment);
-      }
-
-      // botão ver todos comentários
-      let commentsToggleBtn = null;
-      let commentsListEl = null;
-      if (infoRating.count > 1) {
-        commentsToggleBtn = document.createElement("button");
-        commentsToggleBtn.className = "comments-toggle";
-        commentsToggleBtn.type = "button";
-        commentsToggleBtn.textContent =
-          "Ver todos os comentários (" + infoRating.count + ")";
-        middle.appendChild(commentsToggleBtn);
-
-        commentsListEl = document.createElement("div");
-        commentsListEl.className = "comments-list";
-
-        infoRating.all.forEach(r => {
-          const item = document.createElement("div");
-          item.className = "comment-item";
-
-          const header = document.createElement("div");
-          header.className = "comment-header";
-          const nomeC = r.clientName && r.clientName.trim() ? r.clientName.trim() : "Cliente";
-          header.textContent = nomeC + " • " + r.stars + "★";
-          item.appendChild(header);
-
-          const body = document.createElement("div");
-          body.className = "comment-body";
-          body.textContent = r.comment || "";
-          item.appendChild(body);
-
-          commentsListEl.appendChild(item);
-        });
-
-        middle.appendChild(commentsListEl);
-
-        commentsToggleBtn.addEventListener("click", () => {
-          const visible = commentsListEl.style.display === "block";
-          commentsListEl.style.display = visible ? "none" : "block";
-          commentsToggleBtn.textContent = visible
-            ? "Ver todos os comentários (" + infoRating.count + ")"
-            : "Esconder comentários (" + infoRating.count + ")";
-        });
-      }
-
-      // Tags (nichos + canais + idioma + achievements)
-      const tagsEl = document.createElement("div");
-      tagsEl.className = "tags";
-
-      (sdr.nicho || "")
-        .split(",")
-        .map(t => t.trim())
-        .filter(Boolean)
-        .forEach(n => {
-          const tag = document.createElement("span");
-          tag.className = "tag tag-nicho";
-          tag.textContent = n;
-          tagsEl.appendChild(tag);
-        });
-
-      (sdr.canais || "")
-        .split(",")
-        .map(t => t.trim())
-        .filter(Boolean)
-        .forEach(c => {
+        if (sdr.canais) {
           const tag = document.createElement("span");
           tag.className = "tag";
-          tag.textContent = c;
-          tagsEl.appendChild(tag);
-        });
-
-      if (sdr.idiomas) {
-        const tagIdioma = document.createElement("span");
-        tagIdioma.className = "tag tag-alt";
-        tagIdioma.textContent = sdr.idiomas;
-        tagsEl.appendChild(tagIdioma);
-      }
-
-      achievements.forEach(a => {
-        const tagAch = document.createElement("span");
-        tagAch.className = "tag tag-alt";
-        tagAch.textContent = a;
-        tagsEl.appendChild(tagAch);
-      });
-
-      // Botão abrir form avaliação
-      const toggleBtn = document.createElement("button");
-      toggleBtn.className = "btn-rate-toggle";
-      toggleBtn.type = "button";
-      toggleBtn.textContent = "Avaliar este SDR";
-
-      // Form avaliação
-      const rateForm = document.createElement("div");
-      rateForm.className = "rate-form";
-
-      const labelNome = document.createElement("label");
-      labelNome.textContent = "Seu nome (opcional)";
-      const inputNome = document.createElement("input");
-      inputNome.type = "text";
-      inputNome.placeholder = "Ex.: Carla (marketing), João (comercial)...";
-
-      const labelEstrelas = document.createElement("label");
-      labelEstrelas.textContent = "Quantas estrelas você dá para este SDR?";
-
-      const starsRate = document.createElement("div");
-      starsRate.className = "rate-stars";
-      let selectedStars = 5;
-      for (let i = 1; i <= 5; i++) {
-        const sEl = document.createElement("span");
-        sEl.textContent = "★";
-        if (i <= selectedStars) sEl.classList.add("selected");
-        sEl.addEventListener("click", () => {
-          selectedStars = i;
-          Array.from(starsRate.children).forEach((c, idx) => {
-            if (idx < i) c.classList.add("selected");
-            else c.classList.remove("selected");
-          });
-        });
-        starsRate.appendChild(sEl);
-      }
-
-      const labelComent = document.createElement("label");
-      labelComent.textContent = "Comentário sobre o trabalho dele";
-      const textareaComent = document.createElement("textarea");
-      textareaComent.placeholder =
-        "Conte rapidamente como foi sua experiência com este SDR (qualidade dos leads, comunicação, prazos, etc.).";
-
-      const btnEnviar = document.createElement("button");
-      btnEnviar.type = "button";
-      btnEnviar.className = "btn-rate-submit";
-      btnEnviar.textContent = "Enviar avaliação";
-
-      const helper = document.createElement("div");
-      helper.className = "rate-helper";
-      helper.textContent =
-        "Sua avaliação será exibida para outros clientes. Utilize comentários objetivos e respeitosos.";
-
-      rateForm.appendChild(labelNome);
-      rateForm.appendChild(inputNome);
-      rateForm.appendChild(labelEstrelas);
-      rateForm.appendChild(starsRate);
-      rateForm.appendChild(labelComent);
-      rateForm.appendChild(textareaComent);
-      rateForm.appendChild(btnEnviar);
-      rateForm.appendChild(helper);
-
-      middle.appendChild(nomeRow);
-      middle.appendChild(nichosEl);
-      middle.appendChild(tiposEl);
-      middle.appendChild(regioesEl);
-      middle.appendChild(idiomasEl);
-      if (sdr.experiencia) middle.appendChild(expEl);
-      middle.appendChild(ratingLine);
-      middle.appendChild(tagsEl);
-      middle.appendChild(toggleBtn);
-      middle.appendChild(rateForm);
-
-      // RIGHT
-      const right = document.createElement("div");
-      right.className = "card-right";
-
-      const contactBlock = document.createElement("div");
-      contactBlock.className = "contact-block";
-
-      const btnTel = document.createElement("a");
-      btnTel.className = "btn-contact tel";
-      if (sdr.telefone) {
-        btnTel.href = "tel:" + (sdr.telefone || "").replace(/\D/g, "");
-      } else {
-        btnTel.href = "javascript:void(0)";
-      }
-      btnTel.innerHTML =
-        "<span>📞 Ligar agora</span><small>" +
-        (sdr.telefone || "Telefone não informado") +
-        "</small>";
-
-      const btnWhats = document.createElement("a");
-      btnWhats.className = "btn-contact whats";
-      if (sdr.whats) {
-        btnWhats.href = "https://wa.me/" + (sdr.whats || "").replace(/\D/g, "");
-        btnWhats.target = "_blank";
-        btnWhats.rel = "noopener noreferrer";
-      } else {
-        btnWhats.href = "javascript:void(0)";
-      }
-      btnWhats.innerHTML =
-        "<span>💬 WhatsApp</span><small>Chamar agora</small>";
-
-      contactBlock.appendChild(btnTel);
-      contactBlock.appendChild(btnWhats);
-
-      if (sdr.linkedin) {
-        const btnLinkedin = document.createElement("a");
-        btnLinkedin.className = "btn-linkedin";
-        btnLinkedin.href = sdr.linkedin;
-        btnLinkedin.target = "_blank";
-        btnLinkedin.rel = "noopener noreferrer";
-        btnLinkedin.innerHTML = '<span>in</span><span>Ver perfil no LinkedIn</span>';
-        contactBlock.appendChild(btnLinkedin);
-      }
-
-      const btnProfile = document.createElement("button");
-      btnProfile.type = "button";
-      btnProfile.className = "btn-profile";
-      btnProfile.innerHTML = "<span>👁</span><span>Ver perfil completo</span>";
-      btnProfile.addEventListener("click", () => abrirPerfilDetalhado(sdr));
-
-      right.appendChild(contactBlock);
-      right.appendChild(btnProfile);
-
-      // Toggle form avaliação
-      toggleBtn.addEventListener("click", () => {
-        const visible = rateForm.style.display === "block";
-        rateForm.style.display = visible ? "none" : "block";
-        toggleBtn.textContent = visible ? "Avaliar este SDR" : "Fechar avaliação";
-      });
-
-      // Envio avaliação
-      btnEnviar.addEventListener("click", () => {
-        const nomeCliente = inputNome.value.trim();
-        const comment = textareaComent.value.trim();
-        if (!comment) {
-          alert("Por favor, escreva um comentário rápido sobre o SDR.");
-          return;
+          tag.textContent = "Canais: " + sdr.canais;
+          tags.appendChild(tag);
         }
-        adicionarAvaliacao(sdr.id, {
-          clientName: nomeCliente || "",
-          stars: selectedStars,
-          comment,
-          date: Date.now()
-        });
-      });
 
-      card.appendChild(left);
-      card.appendChild(middle);
-      card.appendChild(right);
+        if (sdr.tempoExp) {
+          const tag = document.createElement("span");
+          tag.className = "tag";
+          tag.textContent = "Experiência: " + sdr.tempoExp;
+          tags.appendChild(tag);
+        }
 
-      return card;
-    }
+        card.appendChild(tags);
 
-    /* ---------- MODAL COMPARAÇÃO ---------- */
-    function atualizarBotaoComparar() {
-      btnComparar.disabled = selectedForCompare.size < 2;
-    }
+        // rating row
+        const ratingRow = document.createElement("div");
+        ratingRow.className = "sdr-rating-row";
 
-    function abrirModalComparar() {
-      if (selectedForCompare.size < 2) return;
+        const starsDiv = createStars(info.avg || 0);
+        ratingRow.appendChild(starsDiv);
 
-      const selecionados = sdrs.filter(s => selectedForCompare.has(s.id));
-      if (!selecionados.length) return;
+        const ratingText = document.createElement("div");
+        ratingText.className = "rating-text";
+        if (info.count) {
+          ratingText.textContent =
+            info.avg.toFixed(1).replace(".", ",") +
+            " • " +
+            info.count +
+            (info.count === 1 ? " avaliação" : " avaliações");
+        } else {
+          ratingText.textContent = "Ainda sem avaliações";
+        }
+        ratingRow.appendChild(ratingText);
 
-      compareTable.innerHTML = "";
+        card.appendChild(ratingRow);
 
-      const thead = document.createElement("thead");
-      const trHead = document.createElement("tr");
-      const thCampo = document.createElement("th");
-      thCampo.textContent = "Campo";
-      trHead.appendChild(thCampo);
+        // ações
+        const actions = document.createElement("div");
+        actions.className = "sdr-actions";
 
-      selecionados.forEach(sdr => {
-        const th = document.createElement("th");
-        th.innerHTML =
-          "<div class='compare-name'>" + (sdr.nome || "SDR") + "</div>" +
-          "<div class='compare-meta'>" + (sdr.cidade || "") + "</div>";
-        trHead.appendChild(th);
-      });
+        if (sdr.whats) {
+          const btnWhats = document.createElement("button");
+          btnWhats.type = "button";
+          btnWhats.className = "btn-small whats";
+          btnWhats.textContent = "Chamar no WhatsApp";
+          btnWhats.addEventListener("click", () => {
+            const num = sdr.whats.replace(/\D/g, "");
+            window.open("https://wa.me/" + num, "_blank");
+          });
+          actions.appendChild(btnWhats);
+        }
 
-      thead.appendChild(trHead);
-      compareTable.appendChild(thead);
+        if (sdr.linkedin) {
+          const btnLinked = document.createElement("button");
+          btnLinked.type = "button";
+          btnLinked.className = "btn-small";
+          btnLinked.textContent = "Ver perfil no LinkedIn";
+          btnLinked.addEventListener("click", () => {
+            window.open(sdr.linkedin, "_blank");
+          });
+          actions.appendChild(btnLinked);
+        }
 
-      const tbody = document.createElement("tbody");
-      const campos = [
-        { label: "Nichos", key: "nicho" },
-        { label: "Tipos de empresa", key: "tiposEmpresa" },
-        { label: "Região", key: "regioes" },
-        { label: "Idioma", key: "idiomas" },
-        { label: "Tempo de experiência", key: "tempoExp" },
-        { label: "Canais de prospecção", key: "canais" },
-        { label: "Resumo de experiência", key: "experiencia" },
-        { label: "Nota média / avaliações", key: "__rating" }
-      ];
+        const btnAvaliar = document.createElement("button");
+        btnAvaliar.type = "button";
+        btnAvaliar.className = "btn-small primary";
+        btnAvaliar.textContent = "Avaliar este SDR";
+        btnAvaliar.addEventListener("click", () => abrirModalAvaliar(sdr.id));
+        actions.appendChild(btnAvaliar);
 
-      campos.forEach(campo => {
-        const tr = document.createElement("tr");
-        const tdLabel = document.createElement("td");
-        tdLabel.textContent = campo.label;
-        tr.appendChild(tdLabel);
+        const btnVerAval = document.createElement("button");
+        btnVerAval.type = "button";
+        btnVerAval.className = "btn-small";
+        btnVerAval.textContent = "Ver avaliações";
+        btnVerAval.addEventListener("click", () => abrirModalAvaliacoes(sdr.id));
+        actions.appendChild(btnVerAval);
 
-        selecionados.forEach(sdr => {
-          const td = document.createElement("td");
-          if (campo.key === "__rating") {
-            const info = ratingMap.get(sdr.id) || { avg: 0, count: 0 };
-            td.textContent = info.count
-              ? info.avg.toFixed(1).replace(".", ",") +
-                " • " +
-                info.count +
-                (info.count === 1 ? " avaliação" : " avaliações")
-              : "Sem avaliações";
-          } else {
-            td.textContent = sdr[campo.key] || "-";
+        card.appendChild(actions);
+
+        // preview de avaliações
+        const preview = document.createElement("div");
+        preview.className = "sdr-review-preview";
+
+        const reviews = sdr.reviews || [];
+        if (!reviews.length) {
+          preview.textContent = "Assim que você trabalhar com este SDR, volte aqui e deixe sua avaliação. Isso ajuda toda a comunidade.";
+        } else {
+          const first = reviews[0];
+          preview.innerHTML =
+            "<strong>" +
+            (first.clientName || "Cliente") +
+            ":</strong> " +
+            (first.comment || "").slice(0, 100) +
+            (first.comment && first.comment.length > 100 ? "..." : "");
+          if (reviews.length > 1) {
+            const btnMore = document.createElement("button");
+            btnMore.type = "button";
+            btnMore.textContent = "Ver mais comentários";
+            btnMore.addEventListener("click", () => abrirModalAvaliacoes(sdr.id));
+            preview.appendChild(document.createElement("br"));
+            preview.appendChild(btnMore);
           }
-          tr.appendChild(td);
-        });
+        }
 
-        tbody.appendChild(tr);
+        card.appendChild(preview);
+
+        sdrGrid.appendChild(card);
       });
-
-      compareTable.appendChild(tbody);
-
-      modalCompare.style.display = "flex";
     }
 
-    function fecharModalComparar() {
-      modalCompare.style.display = "none";
-    }
+    /* ---------- MODAL AVALIAÇÕES ---------- */
+    function abrirModalAvaliacoes(id) {
+      const sdr = sdrs.find(s => s.id === id);
+      if (!sdr) return;
 
-    /* ---------- MODAL PERFIL DETALHADO ---------- */
-    function abrirPerfilDetalhado(sdr) {
-      const infoRating = ratingMap.get(sdr.id) || { avg: 0, count: 0, all: [] };
+      const info = ratingMap.get(sdr.id) || { avg: 0, count: 0 };
 
-      profileTitle.textContent = sdr.nome || "SDR";
-      profileSubtitle.textContent =
-        (sdr.cidade || "Cidade / Estado") +
-        (sdr.tempoExp ? " • " + sdr.tempoExp : "") +
-        (sdr.regioes ? " • Região: " + sdr.regioes : "");
+      modalAvaliacoesTitle.textContent = "Avaliações de " + (sdr.nome || "SDR");
+      modalAvaliacoesSubtitle.textContent = info.count
+        ? info.avg.toFixed(1).replace(".", ",") +
+          " de média em " +
+          info.count +
+          (info.count === 1 ? " avaliação" : " avaliações")
+        : "Ainda sem avaliações para este SDR.";
 
-      profileBody.innerHTML = "";
+      avaliacoesList.innerHTML = "";
 
-      const col1 = document.createElement("div");
-      const col2 = document.createElement("div");
-
-      // col1: sobre o SDR
-      const sec1Title = document.createElement("div");
-      sec1Title.className = "profile-section-title";
-      sec1Title.textContent = "Sobre este SDR";
-      col1.appendChild(sec1Title);
-
-      const b1 = document.createElement("div");
-      b1.className = "profile-block";
-      b1.innerHTML =
-        "<div class='profile-label'>Nichos / segmentos</div>" +
-        "<div class='profile-text'>" + (sdr.nicho || "-") + "</div>";
-      col1.appendChild(b1);
-
-      const b2 = document.createElement("div");
-      b2.className = "profile-block";
-      b2.innerHTML =
-        "<div class='profile-label'>Tipos de empresa que já atendeu</div>" +
-        "<div class='profile-text'>" + (sdr.tiposEmpresa || "-") + "</div>";
-      col1.appendChild(b2);
-
-      const b3 = document.createElement("div");
-      b3.className = "profile-block";
-      b3.innerHTML =
-        "<div class='profile-label'>Canais de prospecção que utiliza</div>" +
-        "<div class='profile-text'>" + (sdr.canais || "-") + "</div>";
-      col1.appendChild(b3);
-
-      const b4 = document.createElement("div");
-      b4.className = "profile-block";
-      b4.innerHTML =
-        "<div class='profile-label'>Resumo da experiência e forma de trabalho</div>" +
-        "<div class='profile-text'>" + (sdr.experiencia || "-") + "</div>";
-      col1.appendChild(b4);
-
-      // col2: reputação
-      const sec2Title = document.createElement("div");
-      sec2Title.className = "profile-section-title";
-      sec2Title.textContent = "Reputação com clientes";
-      col2.appendChild(sec2Title);
-
-      const b5 = document.createElement("div");
-      b5.className = "profile-block";
-      const ratingText = infoRating.count
-        ? infoRating.avg.toFixed(1).replace(".", ",") +
-          " • " +
-          infoRating.count +
-          (infoRating.count === 1 ? " avaliação" : " avaliações")
-        : "Ainda sem avaliações";
-
-      b5.innerHTML =
-        "<div class='profile-label'>Nota média</div>" +
-        "<div class='profile-text'>" + ratingText + "</div>";
-      col2.appendChild(b5);
-
-      const reviewsWrap = document.createElement("div");
-      reviewsWrap.className = "profile-reviews";
-
-      if (!infoRating.count) {
-        reviewsWrap.textContent = "Ainda não há comentários de clientes para este SDR.";
+      if (!sdr.reviews || !sdr.reviews.length) {
+        avaliacoesList.textContent = "Ainda não há comentários sobre este SDR.";
       } else {
-        infoRating.all.forEach(r => {
+        sdr.reviews.forEach(r => {
           const item = document.createElement("div");
-          item.className = "profile-review-item";
-          const nomeC = r.clientName && r.clientName.trim() ? r.clientName.trim() : "Cliente";
-          item.innerHTML =
-            "<strong>" + nomeC + " • " + r.stars + "★</strong><br>" +
-            "<span>" + (r.comment || "") + "</span>";
-          reviewsWrap.appendChild(item);
+          item.className = "review-item";
+
+          const header = document.createElement("div");
+          header.className = "review-header";
+
+          const left = document.createElement("div");
+          left.className = "review-name";
+          left.textContent = (r.clientName || "Cliente") + " • " + (r.clientCompany || "");
+
+          const right = document.createElement("div");
+          right.className = "review-meta";
+          const dt = r.date ? new Date(r.date) : null;
+          const stars = r.stars || 0;
+          right.textContent =
+            (stars ? stars + "★ • " : "") + (dt ? dt.toLocaleDateString("pt-BR") : "");
+
+          header.appendChild(left);
+          header.appendChild(right);
+
+          const comment = document.createElement("div");
+          comment.className = "review-comment";
+          comment.textContent = r.comment || "";
+
+          const meta2 = document.createElement("div");
+          meta2.className = "review-meta";
+          meta2.textContent =
+            "Contato: " +
+            (r.clientEmail || "-") +
+            (r.clientLinkedin ? " • LinkedIn: " + r.clientLinkedin : "");
+
+          item.appendChild(header);
+          item.appendChild(comment);
+          item.appendChild(meta2);
+          avaliacoesList.appendChild(item);
         });
       }
 
-      col2.appendChild(reviewsWrap);
-
-      profileBody.appendChild(col1);
-      profileBody.appendChild(col2);
-
-      modalProfile.style.display = "flex";
+      modalAvaliacoesBackdrop.style.display = "flex";
     }
 
-    function fecharModalPerfil() {
-      modalProfile.style.display = "none";
+    function fecharModalAvaliacoes() {
+      modalAvaliacoesBackdrop.style.display = "none";
     }
 
-    /* ---------- LISTENERS ---------- */
-    filtroTexto.addEventListener("input", aplicarFiltros);
-    filtroRegiao.addEventListener("change", aplicarFiltros);
-    filtroCanal.addEventListener("change", aplicarFiltros);
-    filtroIdioma.addEventListener("change", aplicarFiltros);
-    filtroTempo.addEventListener("change", aplicarFiltros);
-    filtroNota.addEventListener("change", aplicarFiltros);
-
-    btnComparar.addEventListener("click", abrirModalComparar);
-    closeCompare.addEventListener("click", fecharModalComparar);
-    modalCompare.addEventListener("click", e => {
-      if (e.target === modalCompare) fecharModalComparar();
+    closeAvaliacoes.addEventListener("click", fecharModalAvaliacoes);
+    modalAvaliacoesBackdrop.addEventListener("click", (e) => {
+      if (e.target === modalAvaliacoesBackdrop) fecharModalAvaliacoes();
     });
 
-    closeProfile.addEventListener("click", fecharModalPerfil);
-    modalProfile.addEventListener("click", e => {
-      if (e.target === modalProfile) fecharModalPerfil();
+    /* ---------- MODAL AVALIAR ---------- */
+    function limparFormAvaliar() {
+      formAvaliar.reset();
+      inputClienteStars.value = "";
+      ratingSelector.querySelectorAll("button").forEach(btn => btn.classList.remove("active"));
+    }
+
+    function abrirModalAvaliar(id) {
+      const sdr = sdrs.find(s => s.id === id);
+      if (!sdr) return;
+
+      inputSdrId.value = id;
+      modalAvaliarTitle.textContent = "Avaliar " + (sdr.nome || "SDR");
+      limparFormAvaliar();
+      modalAvaliarBackdrop.style.display = "flex";
+    }
+
+    function fecharModalAvaliar() {
+      modalAvaliarBackdrop.style.display = "none";
+    }
+
+    closeAvaliar.addEventListener("click", fecharModalAvaliar);
+    modalAvaliarBackdrop.addEventListener("click", (e) => {
+      if (e.target === modalAvaliarBackdrop) fecharModalAvaliar();
     });
 
-    assistantForm.addEventListener("submit", processarQuiz);
+    // selecionar estrelas
+    ratingSelector.querySelectorAll("button").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const val = btn.dataset.stars;
+        inputClienteStars.value = val;
+        ratingSelector.querySelectorAll("button").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+      });
+    });
 
-    carregarSdrs();
+    // submit avaliação
+    formAvaliar.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const sdrId = Number(inputSdrId.value);
+      const sdrIndex = sdrs.findIndex(s => s.id === sdrId);
+      if (sdrIndex === -1) {
+        alert("Ocorreu um erro: SDR não encontrado.");
+        return;
+      }
+
+      const clientName = inputClienteNome.value.trim();
+      const clientCompany = inputClienteEmpresa.value.trim();
+      const clientEmail = inputClienteEmail.value.trim();
+      const clientPhone = inputClienteTelefone.value.trim();
+      const clientLinkedin = inputClienteLinkedin.value.trim();
+      const stars = Number(inputClienteStars.value);
+      const comment = inputClienteComentario.value.trim();
+
+      if (!clientName || !clientCompany || !clientEmail || !clientPhone || !clientLinkedin || !stars || !comment) {
+        alert("Por favor, preencha todos os campos obrigatórios e selecione o número de estrelas.");
+        return;
+      }
+
+      const emailNorm = clientEmail.toLowerCase().trim();
+      const linkedinNorm = normalizeUrl(clientLinkedin);
+
+      const existing = (sdrs[sdrIndex].reviews || []).find(r => {
+        const rEmail = (r.clientEmail || "").toLowerCase().trim();
+        const rLinked = normalizeUrl(r.clientLinkedin || "");
+        return (rEmail && rEmail === emailNorm) || (rLinked && rLinked === linkedinNorm);
+      });
+
+      if (existing) {
+        alert("Você já avaliou este SDR com este e-mail ou perfil de LinkedIn. Não é possível enviar duas avaliações para o mesmo SDR.");
+        return;
+      }
+
+      const newReview = {
+        id: Date.now(),
+        clientName,
+        clientCompany,
+        clientEmail,
+        clientPhone,
+        clientLinkedin,
+        stars,
+        comment,
+        date: new Date().toISOString()
+      };
+
+      sdrs[sdrIndex].reviews = sdrs[sdrIndex].reviews || [];
+      sdrs[sdrIndex].reviews.push(newReview);
+
+      saveSdrs();
+      alert("Avaliação enviada com sucesso. Obrigado por colaborar com a comunidade de SDRs da INBOTIX.");
+      fecharModalAvaliar();
+    });
+
+    /* ---------- FILTROS ---------- */
+    [filterNome, filterRegiao, filterCanal, filterStars, filterNicho].forEach(el => {
+      el.addEventListener("input", () => renderSdrs());
+      el.addEventListener("change", () => renderSdrs());
+    });
+
+    filterPremiumBtn.addEventListener("click", () => {
+      filtroPremiumAtivo = !filtroPremiumAtivo;
+      filterPremiumBtn.classList.toggle("active", filtroPremiumAtivo);
+      renderSdrs();
+    });
+
+    filterTopBtn.addEventListener("click", () => {
+      filtroTopAtivo = !filtroTopAtivo;
+      filterTopBtn.classList.toggle("active", filtroTopAtivo);
+      renderSdrs();
+    });
+
+    /* ---------- INIT ---------- */
+    function init() {
+      loadConfig();
+      loadSdrs();
+      renderFiltersOptions();
+      renderSdrs();
+    }
+
+    init();
   </script>
 </body>
 </html>
-
