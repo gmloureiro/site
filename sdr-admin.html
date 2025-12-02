@@ -4,26 +4,32 @@
   <meta charset="UTF-8" />
   <title>Admin SDR – INBOTIX</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Admin local do marketplace de SDRs da INBOTIX. Configuração de campos e gestão dos SDRs.">
+  <meta name="description" content="Painel interno para gerenciar SDRs e catálogos do marketplace INBOTIX.">
   <link rel="icon" type="image/png" href="logo-inbotix.png" />
 
   <style>
     :root {
       --primary: #0f6fff;
       --primary-dark: #0050c8;
+      --primary-soft: #e4eeff;
+      --accent: #22c55e;
       --bg: #f5f7fb;
       --bg-card: #ffffff;
       --dark: #0f172a;
       --text: #1f2933;
       --muted: #6b7280;
-      --border: #d1d9e6;
+      --border: #dbe2f0;
       --border-strong: #b8c6f5;
       --danger: #b91c1c;
       --star-on: #facc15;
       --star-off: #e2e8f0;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -32,12 +38,12 @@
       min-height: 100vh;
     }
 
-    a { color: inherit; }
+    a { color: inherit; text-decoration: none; }
 
     header {
-      padding: 14px 18px;
-      border-bottom: 1px solid rgba(148, 163, 184, 0.35);
+      padding: 12px 16px;
       background: #ffffff;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.35);
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -48,21 +54,22 @@
     .header-left {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
     }
 
-    .logo-block img {
+    .header-left img {
       height: 32px;
       width: auto;
     }
 
-    .logo-text {
-      font-size: 12px;
+    .header-title {
+      font-size: 13px;
       color: var(--muted);
     }
 
-    .logo-text strong {
-      font-weight: 700;
+    .header-title strong {
+      display: block;
+      font-size: 15px;
       color: var(--dark);
     }
 
@@ -79,25 +86,22 @@
       padding: 4px 10px;
       border-radius: 999px;
       background: rgba(15, 111, 255, 0.06);
+      border: 1px solid rgba(15, 111, 255, 0.30);
       color: var(--primary-dark);
-      border: 1px solid rgba(15, 111, 255, 0.3);
-      white-space: nowrap;
       font-weight: 500;
     }
 
     .btn-outline-header {
       border-radius: 999px;
-      border: 1px solid rgba(15, 111, 255, 0.4);
+      border: 1px solid rgba(15, 111, 255, 0.50);
       padding: 6px 12px;
       font-size: 11px;
       color: var(--primary-dark);
       background: #f0f5ff;
       cursor: pointer;
-      text-decoration: none;
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      white-space: nowrap;
       font-weight: 600;
     }
 
@@ -106,131 +110,204 @@
     }
 
     main {
-      max-width: 1040px;
-      margin: 24px auto 32px;
+      max-width: 1140px;
+      margin: 22px auto 32px;
       padding: 0 16px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
     }
 
-    h1 {
-      font-size: 22px;
-      font-weight: 800;
-      color: var(--dark);
-      margin-bottom: 4px;
-    }
-
-    .subtitle {
-      font-size: 13px;
-      color: var(--muted);
-      margin-bottom: 18px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.8fr);
-      gap: 16px;
-      align-items: flex-start;
-    }
-
-    @media (max-width: 900px) {
-      .grid {
-        grid-template-columns: minmax(0,1fr);
-      }
-    }
-
-    .card {
-      background: var(--bg-card);
-      border-radius: 18px;
+    .section {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 14px 16px 16px;
       border: 1px solid var(--border);
-      box-shadow: 0 12px 32px rgba(15, 23, 42, 0.08);
-      padding: 14px 14px 16px;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
     }
 
-    .card-title {
+    .section-header {
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: baseline;
+    }
+
+    .section-title {
       font-size: 14px;
       font-weight: 700;
       color: var(--dark);
-      margin-bottom: 2px;
     }
 
-    .card-subtitle {
+    .section-subtitle {
       font-size: 11px;
       color: var(--muted);
-      margin-bottom: 10px;
+      max-width: 60ch;
     }
 
-    .form-group {
+    .section-badge {
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      color: #1d4ed8;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    /* CONFIG BLOCKS */
+    .config-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    @media (max-width: 960px) {
+      .config-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 720px) {
+      .config-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .config-card {
+      background: #f9fafb;
+      border-radius: 14px;
+      border: 1px solid #e5e7eb;
+      padding: 10px 11px;
       display: flex;
       flex-direction: column;
-      gap: 4px;
-      margin-bottom: 8px;
+      gap: 6px;
     }
 
-    label {
+    .config-title {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--dark);
+    }
+
+    .config-help {
       font-size: 11px;
       color: var(--muted);
-      font-weight: 600;
     }
 
-    textarea {
-      width: 100%;
-      border-radius: 10px;
+    .config-input-row {
+      display: flex;
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    .config-input-row input {
+      flex: 1;
+      border-radius: 999px;
       border: 1px solid var(--border-strong);
-      padding: 7px 9px;
-      font-size: 12px;
+      padding: 6px 9px;
+      font-size: 11px;
       font-family: inherit;
-      background: #f5f7ff;
-      min-height: 60px;
-      resize: vertical;
-    }
-
-    textarea:focus {
-      outline: none;
-      border-color: var(--primary);
-      box-shadow: 0 0 0 2px rgba(15, 111, 255, 0.18);
       background: #ffffff;
     }
 
-    .helper {
+    .config-input-row button {
+      border-radius: 999px;
+      border: none;
+      padding: 6px 9px;
+      font-size: 11px;
+      cursor: pointer;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-top: 4px;
+      max-height: 90px;
+      overflow-y: auto;
+    }
+
+    .tag {
+      font-size: 10px;
+      padding: 3px 7px;
+      border-radius: 999px;
+      background: #eef2ff;
+      border: 1px solid #c7d2fe;
+      color: #1d4ed8;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .tag button {
+      border: none;
+      background: none;
+      padding: 0;
+      cursor: pointer;
+      font-size: 11px;
+      color: #6b7280;
+    }
+
+    .config-footer {
+      margin-top: 8px;
       font-size: 10px;
       color: var(--muted);
     }
 
-    .btn-primary {
-      border-radius: 999px;
-      border: none;
-      padding: 8px 16px;
-      font-size: 12px;
-      font-weight: 700;
-      cursor: pointer;
-      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-      color: #ffffff;
-      box-shadow: 0 12px 28px rgba(15, 111, 255, 0.45);
-    }
-
-    .section-title {
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--dark);
-      margin-bottom: 8px;
+    /* SDR TABLE */
+    .sdr-toolbar {
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      gap: 6px;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
     }
 
-    .section-title span.muted {
+    .sdr-toolbar-info {
       font-size: 11px;
-      font-weight: 400;
       color: var(--muted);
     }
 
-    .table-wrapper {
-      margin-top: 4px;
+    .sdr-toolbar-actions {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .btn-small {
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 253, 0.7);
+      padding: 5px 10px;
+      font-size: 11px;
+      cursor: pointer;
+      background: #f9fafb;
+      color: var(--primary-dark);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-weight: 600;
+    }
+
+    .btn-small.danger {
+      border-color: rgba(239, 68, 68, 0.75);
+      color: #b91c1c;
+      background: #fef2f2;
+    }
+
+    .sdr-table-wrapper {
       border-radius: 12px;
       border: 1px solid var(--border);
       overflow: auto;
-      background: #ffffff;
-      max-height: 420px;
+      background: #f9fafb;
+      max-height: 380px;
     }
 
     table {
@@ -239,281 +316,677 @@
       font-size: 11px;
     }
 
-    thead {
-      background: #f5f7ff;
+    th, td {
+      padding: 6px 8px;
+      border-bottom: 1px solid #e5e7eb;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #eef2ff;
+      color: #4b5563;
+      font-weight: 700;
       position: sticky;
       top: 0;
       z-index: 1;
     }
 
-    th, td {
-      padding: 6px 8px;
-      border-bottom: 1px solid #edf0f7;
-      text-align: left;
-      white-space: nowrap;
+    tr:nth-child(even) td {
+      background: #f9fafb;
     }
 
-    th {
+    .sdr-name {
       font-weight: 700;
-      color: var(--muted);
-      font-size: 11px;
-    }
-
-    tbody tr:nth-child(even) {
-      background: #fafbff;
-    }
-
-    .col-nome {
-      font-weight: 600;
       color: var(--dark);
+      margin-bottom: 2px;
+    }
+
+    .sdr-meta {
+      font-size: 10px;
+      color: var(--muted);
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 10px;
+      padding: 2px 7px;
+      border-radius: 999px;
+      border: 1px solid #cbd5f5;
+      background: #eef2ff;
+      color: #1d4ed8;
+      margin-right: 4px;
+      margin-top: 2px;
+    }
+
+    .chip.premium {
+      background: rgba(234, 179, 8, 0.15);
+      border-color: #fbbf24;
+      color: #92400e;
+    }
+
+    .chip.top {
+      background: rgba(249, 115, 22, 0.15);
+      border-color: #fb923c;
+      color: #9a3412;
+    }
+
+    .chip.verified {
+      background: rgba(34, 197, 94, 0.15);
+      border-color: #22c55e;
+      color: #166534;
+    }
+
+    .chip.inbotix {
+      background: rgba(59, 130, 246, 0.12);
+      border-color: #3b82f6;
+      color: #1d4ed8;
+    }
+
+    .td-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .td-actions button {
+      border-radius: 999px;
+      border: 1px solid #e5e7eb;
+      padding: 3px 9px;
+      font-size: 10px;
+      cursor: pointer;
+      background: #ffffff;
+      color: #374151;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .td-actions button.danger {
+      border-color: rgba(239, 68, 68, 0.75);
+      color: #b91c1c;
+      background: #fef2f2;
     }
 
     .stars {
       display: inline-flex;
       gap: 1px;
-      font-size: 12px;
     }
 
     .star {
       color: var(--star-off);
+      font-size: 13px;
     }
 
     .star.filled {
       color: var(--star-on);
     }
 
-    .nota-text {
-      font-size: 10px;
-      color: var(--muted);
-      margin-left: 4px;
-    }
-
-    .btn-danger {
-      border-radius: 999px;
-      border: none;
-      padding: 4px 8px;
-      font-size: 10px;
-      cursor: pointer;
-      background: #fee2e2;
-      color: #b91c1c;
-      font-weight: 600;
-    }
-
-    .center {
-      text-align: center;
-    }
-
     .empty {
       font-size: 12px;
       color: var(--muted);
-      padding: 10px;
-      text-align: center;
+      margin-top: 8px;
     }
 
-    .checkbox-premium {
-      display: flex;
+    /* MODALS */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.45);
+      display: none;
       align-items: center;
-      gap: 4px;
       justify-content: center;
+      z-index: 50;
     }
 
-    .checkbox-premium input {
-      cursor: pointer;
+    .modal {
+      background: #ffffff;
+      max-width: 720px;
+      width: 95%;
+      border-radius: 18px;
+      box-shadow: 0 24px 60px rgba(15, 23, 42, 0.6);
+      padding: 14px 16px 16px;
+      max-height: 82vh;
+      overflow: auto;
     }
 
-    .legend {
-      margin-top: 10px;
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 8px;
+    }
+
+    .modal-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--dark);
+    }
+
+    .modal-subtitle {
       font-size: 11px;
       color: var(--muted);
     }
 
-    .legend strong {
-      color: var(--dark);
+    .modal-close {
+      border-radius: 999px;
+      border: none;
+      background: #f1f5f9;
+      color: #64748b;
+      font-size: 12px;
+      padding: 4px 9px;
+      cursor: pointer;
+    }
+
+    .modal-body {
+      font-size: 12px;
+      color: var(--text);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px 10px;
+      margin-top: 4px;
+    }
+
+    @media (max-width: 640px) {
+      .form-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .form-group label {
+      font-size: 11px;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      border-radius: 8px;
+      border: 1px solid var(--border-strong);
+      padding: 6px 8px;
+      font-size: 11px;
+      font-family: inherit;
+      background: #ffffff;
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 70px;
+    }
+
+    .form-footer {
+      margin-top: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      border-radius: 999px;
+      border: none;
+      padding: 7px 12px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: #ffffff;
+    }
+
+    .form-hint {
+      font-size: 10px;
+      color: var(--muted);
+      max-width: 40ch;
+    }
+
+    .reviews-list {
+      margin-top: 6px;
+      border-radius: 10px;
+      border: 1px solid #e5e7eb;
+      background: #f9fafb;
+      padding: 6px 8px;
+      max-height: 260px;
+      overflow: auto;
+    }
+
+    .review-item {
+      font-size: 11px;
+      padding: 5px 0;
+      border-bottom: 1px solid #e5e7eb;
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .review-item:last-child {
+      border-bottom: none;
+    }
+
+    .review-main {
+      max-width: calc(100% - 70px);
+    }
+
+    .review-name {
+      font-weight: 600;
+      margin-bottom: 1px;
+    }
+
+    .review-meta {
+      font-size: 10px;
+      color: var(--muted);
+      margin-top: 1px;
+    }
+
+    .review-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      align-items: flex-end;
+    }
+
+    .review-actions button {
+      border-radius: 999px;
+      border: 1px solid #e5e7eb;
+      background: #ffffff;
+      padding: 2px 6px;
+      font-size: 10px;
+      cursor: pointer;
+      color: #b91c1c;
     }
   </style>
 </head>
 <body>
   <header>
     <div class="header-left">
-      <div class="logo-block">
-        <a href="https://inbotix.com.br" target="_blank" rel="noopener">
-          <img src="logo-inbotix.png" alt="INBOTIX" />
-        </a>
-      </div>
-      <div class="logo-text">
-        <strong>INBOTIX – Admin SDR Marketplace</strong><br>
-        Configuração de campos + gestão de SDRs (local, via localStorage).
+      <a href="https://inbotix.com.br">
+        <img src="logo-inbotix.png" alt="INBOTIX" />
+      </a>
+      <div class="header-title">
+        <strong>Admin SDR – INBOTIX</strong>
+        Configuração do marketplace de SDRs e curadoria dos perfis.
       </div>
     </div>
     <div class="header-right">
-      <span class="badge">Uso interno – protótipo local</span>
+      <span class="badge">Uso local em navegador – ambiente de testes</span>
       <a href="sdr-lista.html" class="btn-outline-header">
-        <span class="icon">👀</span>
+        <span class="icon">👁</span>
         Ver vitrine de SDRs
       </a>
     </div>
   </header>
 
   <main>
-    <h1>Painel Admin – SDR Marketplace</h1>
-    <p class="subtitle">
-      Ajuste os campos padrão de cadastro (regiões, nichos, canais, idiomas, tempo de experiência)
-      e gerencie os SDRs cadastrados (Premium, exclusão, visão de nota).
-    </p>
+    <!-- CONFIGURAÇÕES DE CATÁLOGO -->
+    <section class="section">
+      <div class="section-header">
+        <div>
+          <div class="section-title">Catálogos para cadastro de SDR</div>
+          <div class="section-subtitle">
+            Aqui você define as opções padrão de <strong>região, nicho, tipo de empresa, canais, idioma e experiência</strong>.
+            O formulário de cadastro e a vitrine usam essas listas para padronizar tudo.
+          </div>
+        </div>
+        <span class="section-badge">Configuração salva no navegador (localStorage)</span>
+      </div>
 
-    <div class="grid">
-      <!-- CONFIG CAMPOS PADRÃO -->
-      <section class="card">
-        <div class="card-title">Configuração de campos padrão</div>
-        <p class="card-subtitle">
-          Estes campos alimentam os selects do cadastro do SDR e também os filtros na vitrine.
-          Separe cada item por quebra de linha.
-        </p>
-
-        <div class="form-group">
-          <label for="cfg-regioes">Regiões de atuação</label>
-          <textarea id="cfg-regioes"></textarea>
-          <div class="helper">Ex.: Brasil todo, Sudeste, Sul, Centro-Oeste, Nordeste, Norte, LATAM, Europa...</div>
+      <div class="config-grid">
+        <div class="config-card" data-key="regioes">
+          <div class="config-title">Regiões de atuação</div>
+          <div class="config-help">Ex.: Brasil inteiro, Sudeste, Sul, LATAM, Europa...</div>
+          <div class="config-input-row">
+            <input type="text" placeholder="Adicionar região..." />
+            <button type="button">+ Adicionar</button>
+          </div>
+          <div class="tag-list"></div>
         </div>
 
-        <div class="form-group">
-          <label for="cfg-nichos">Nichos de atuação (segmentos)</label>
-          <textarea id="cfg-nichos"></textarea>
-          <div class="helper">Ex.: Tecnologia/SaaS, Marketing/Agências, Indústria, Logística/Transporte, Agronegócio, Serviços financeiros...</div>
+        <div class="config-card" data-key="idiomas">
+          <div class="config-title">Idiomas</div>
+          <div class="config-help">Idiomas que o SDR pode atender.</div>
+          <div class="config-input-row">
+            <input type="text" placeholder="Adicionar idioma..." />
+            <button type="button">+ Adicionar</button>
+          </div>
+          <div class="tag-list"></div>
         </div>
 
-        <div class="form-group">
-          <label for="cfg-canais">Canais de prospecção</label>
-          <textarea id="cfg-canais"></textarea>
-          <div class="helper">Ex.: LinkedIn, E-mail, WhatsApp, Cold call, Instagram, Outbound mix...</div>
+        <div class="config-card" data-key="tempoExp">
+          <div class="config-title">Tempo de experiência</div>
+          <div class="config-help">Faixas padrão de experiência como SDR.</div>
+          <div class="config-input-row">
+            <input type="text" placeholder="Ex.: 0–6 meses, 1–2 anos..." />
+            <button type="button">+ Adicionar</button>
+          </div>
+          <div class="tag-list"></div>
         </div>
 
-        <div class="form-group">
-          <label for="cfg-idiomas">Idiomas de atendimento</label>
-          <textarea id="cfg-idiomas"></textarea>
+        <div class="config-card" data-key="nichos">
+          <div class="config-title">Nichos / Segmentos</div>
+          <div class="config-help">Principais nichos que os SDRs podem atender.</div>
+          <div class="config-input-row">
+            <input type="text" placeholder="Ex.: SaaS B2B, Agências, Indústria..." />
+            <button type="button">+ Adicionar</button>
+          </div>
+          <div class="tag-list"></div>
         </div>
 
-        <div class="form-group">
-          <label for="cfg-tempo">Tempo de experiência (faixas)</label>
-          <textarea id="cfg-tempo"></textarea>
-          <div class="helper">Ex.: Iniciando (até 1 ano), 1–2 anos, 3–5 anos, 5+ anos.</div>
+        <div class="config-card" data-key="tiposEmpresa">
+          <div class="config-title">Tipos de empresa</div>
+          <div class="config-help">Perfil de empresa cliente: PMEs, grandes, startups etc.</div>
+          <div class="config-input-row">
+            <input type="text" placeholder="Ex.: PMEs, Grandes empresas..." />
+            <button type="button">+ Adicionar</button>
+          </div>
+          <div class="tag-list"></div>
         </div>
 
-        <button id="btn-salvar-config" class="btn-primary">Salvar configuração</button>
-      </section>
-
-      <!-- GESTÃO SDRS -->
-      <section class="card">
-        <div class="section-title">
-          <span>Gestão de SDRs cadastrados</span>
-          <span class="muted" id="resumo-sdrs"></span>
+        <div class="config-card" data-key="canais">
+          <div class="config-title">Canais de prospecção</div>
+          <div class="config-help">Canais que o SDR pode operar.</div>
+          <div class="config-input-row">
+            <input type="text" placeholder="Ex.: LinkedIn, WhatsApp..." />
+            <button type="button">+ Adicionar</button>
+          </div>
+          <div class="tag-list"></div>
         </div>
-        <p class="card-subtitle">
-          Marque quais SDRs são <strong>Premium</strong> (aparecem primeiro na vitrine) e veja rapidamente
-          a nota média + número de avaliações. Você também pode excluir cadastros de teste.
-        </p>
+      </div>
 
-        <div class="table-wrapper" id="wrapper-tabela">
-          <!-- Tabela via JS -->
-        </div>
+      <div class="config-footer">
+        As alterações são salvas automaticamente. Se você mudar estes catálogos, os formulários dos SDRs passam a
+        usar as novas opções em <strong>sdr-cadastro.html</strong> e a vitrine fica ainda mais organizada.
+      </div>
+    </section>
 
-        <div class="legend">
-          <strong>Regras da vitrine:</strong><br>
-          • SDR Premium aparece sempre no topo da lista (respeitando filtros).<br>
-          • “Top Performer” é calculado automaticamente: maior nota média + mais avaliações, com no mínimo 3 avaliações.
+    <!-- CONTROLE DE SDRS -->
+    <section class="section">
+      <div class="section-header">
+        <div>
+          <div class="section-title">SDRs cadastrados neste navegador</div>
+          <div class="section-subtitle">
+            Aqui você vê, edita, marca <strong>Premium</strong>, <strong>Verificado pela INBOTIX</strong>, 
+            indica se <strong>usa stack INBOTIX</strong> e pode excluir perfis de teste.
+          </div>
         </div>
-      </section>
-    </div>
+        <span class="section-badge">Fonte: localStorage – chave <code>inbotix_sdrs</code></span>
+      </div>
+
+      <div class="sdr-toolbar">
+        <div class="sdr-toolbar-info" id="sdr-info">
+          Carregando SDRs...
+        </div>
+        <div class="sdr-toolbar-actions">
+          <button type="button" class="btn-small" id="btn-reload">Recarregar lista</button>
+          <button type="button" class="btn-small danger" id="btn-clear-all">
+            Limpar todos os SDRs (apenas teste)
+          </button>
+        </div>
+      </div>
+
+      <div class="sdr-table-wrapper">
+        <table id="sdr-table">
+          <thead>
+            <tr>
+              <th>SDR</th>
+              <th>Nichos & Regiões</th>
+              <th>Idioma & Experiência</th>
+              <th>Notas / Avaliações</th>
+              <th>Selos & Flags</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- preenchido via JS -->
+          </tbody>
+        </table>
+      </div>
+
+      <div id="sdr-empty" class="empty" style="display:none;">
+        Ainda não há SDRs cadastrados neste navegador. Peça para um SDR se cadastrar em
+        <strong>sdr-cadastro.html</strong> e depois volte aqui.
+      </div>
+    </section>
   </main>
 
+  <!-- MODAL EDIÇÃO -->
+  <div id="modal-edit" class="modal-backdrop">
+    <div class="modal">
+      <div class="modal-header">
+        <div>
+          <div class="modal-title">Editar SDR</div>
+          <div class="modal-subtitle">Ajuste os dados principais deste SDR. As alterações serão refletidas na vitrine.</div>
+        </div>
+        <button type="button" class="modal-close" id="close-edit">Fechar</button>
+      </div>
+      <div class="modal-body">
+        <form id="edit-form">
+          <input type="hidden" id="edit-id" />
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="edit-nome">Nome completo</label>
+              <input id="edit-nome" type="text" required />
+            </div>
+            <div class="form-group">
+              <label for="edit-cidade">Cidade / Estado</label>
+              <input id="edit-cidade" type="text" />
+            </div>
+            <div class="form-group">
+              <label for="edit-regiao">Região principal de atuação</label>
+              <select id="edit-regiao"></select>
+            </div>
+            <div class="form-group">
+              <label for="edit-idioma">Idioma principal</label>
+              <select id="edit-idioma"></select>
+            </div>
+            <div class="form-group">
+              <label for="edit-tempo">Tempo de experiência</label>
+              <select id="edit-tempo"></select>
+            </div>
+            <div class="form-group">
+              <label for="edit-nichos">Nichos (separe por vírgula)</label>
+              <input id="edit-nichos" type="text" placeholder="Ex.: Agências, SaaS, Indústria..." />
+            </div>
+            <div class="form-group">
+              <label for="edit-tipos">Tipos de empresa (separe por vírgula)</label>
+              <input id="edit-tipos" type="text" />
+            </div>
+            <div class="form-group">
+              <label for="edit-canais">Canais de prospecção (separe por vírgula)</label>
+              <input id="edit-canais" type="text" placeholder="Ex.: LinkedIn, WhatsApp..." />
+            </div>
+            <div class="form-group">
+              <label for="edit-telefone">Telefone</label>
+              <input id="edit-telefone" type="text" />
+            </div>
+            <div class="form-group">
+              <label for="edit-whats">WhatsApp</label>
+              <input id="edit-whats" type="text" />
+            </div>
+            <div class="form-group">
+              <label for="edit-linkedin">URL do LinkedIn</label>
+              <input id="edit-linkedin" type="url" />
+            </div>
+            <div class="form-group" style="grid-column: 1 / -1;">
+              <label for="edit-exp">Resumo de experiência / Forma de trabalho</label>
+              <textarea id="edit-exp"></textarea>
+            </div>
+          </div>
+          <div class="form-footer">
+            <button type="submit" class="btn-primary">Salvar alterações</button>
+            <div class="form-hint">
+              Para alterações mais estruturais (ex.: adicionar novos nichos, regiões ou canais), 
+              ajuste os catálogos acima. Isso garante que o marketplace fique sempre padronizado.
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL AVALIAÇÕES -->
+  <div id="modal-reviews" class="modal-backdrop">
+    <div class="modal">
+      <div class="modal-header">
+        <div>
+          <div class="modal-title" id="reviews-title">Avaliações deste SDR</div>
+          <div class="modal-subtitle" id="reviews-subtitle"></div>
+        </div>
+        <button type="button" class="modal-close" id="close-reviews">Fechar</button>
+      </div>
+      <div class="modal-body">
+        <div id="reviews-list" class="reviews-list">
+          <!-- avaliações -->
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script>
-    const CFG_KEY = "inbotix_sdr_config";
     const SDR_KEY = "inbotix_sdrs";
+    const CONFIG_KEY = "inbotix_sdr_config";
 
-    const DEFAULT_CONFIG = {
-      regioes: [
-        "Brasil todo",
-        "Sudeste",
-        "Sul",
-        "Centro-Oeste",
-        "Nordeste",
-        "Norte",
-        "LATAM",
-        "Europa",
-        "Estados Unidos"
-      ],
-      nichos: [
-        "Tecnologia / SaaS",
-        "Marketing / Agências",
-        "Indústria",
-        "Logística / Transporte",
-        "Agronegócio",
-        "Serviços financeiros",
-        "Educação",
-        "Saúde",
-        "Varejo"
-      ],
-      canais: [
-        "LinkedIn",
-        "E-mail",
-        "WhatsApp",
-        "Cold call",
-        "Instagram",
-        "Outbound mix"
-      ],
-      idiomas: [
-        "Português",
-        "Espanhol",
-        "Inglês"
-      ],
-      tempoExperiencia: [
-        "Iniciando (até 1 ano)",
-        "1–2 anos",
-        "3–5 anos",
-        "5+ anos"
-      ]
-    };
+    let sdrs = [];
+    let config = null;
+    let topPerformerId = null;
+    let ratingMap = new Map();
 
-    function carregarConfig() {
+    const sdrTableBody = document.querySelector("#sdr-table tbody");
+    const sdrInfo = document.getElementById("sdr-info");
+    const sdrEmpty = document.getElementById("sdr-empty");
+
+    const modalEdit = document.getElementById("modal-edit");
+    const closeEdit = document.getElementById("close-edit");
+    const editForm = document.getElementById("edit-form");
+    const editId = document.getElementById("edit-id");
+    const editNome = document.getElementById("edit-nome");
+    const editCidade = document.getElementById("edit-cidade");
+    const editRegiao = document.getElementById("edit-regiao");
+    const editIdioma = document.getElementById("edit-idioma");
+    const editTempo = document.getElementById("edit-tempo");
+    const editNichos = document.getElementById("edit-nichos");
+    const editTipos = document.getElementById("edit-tipos");
+    const editCanais = document.getElementById("edit-canais");
+    const editTelefone = document.getElementById("edit-telefone");
+    const editWhats = document.getElementById("edit-whats");
+    const editLinkedin = document.getElementById("edit-linkedin");
+    const editExp = document.getElementById("edit-exp");
+
+    const modalReviews = document.getElementById("modal-reviews");
+    const closeReviews = document.getElementById("close-reviews");
+    const reviewsTitle = document.getElementById("reviews-title");
+    const reviewsSubtitle = document.getElementById("reviews-subtitle");
+    const reviewsList = document.getElementById("reviews-list");
+
+    function defaultConfig() {
+      return {
+        regioes: ["Brasil inteiro", "Sudeste", "Sul", "Centro-Oeste", "Nordeste", "Norte", "LATAM", "Europa"],
+        idiomas: ["Português", "Espanhol", "Inglês"],
+        tempoExp: ["0–6 meses", "1–2 anos", "3–5 anos", "5+ anos"],
+        nichos: ["Agências de marketing", "SaaS B2B", "Indústria", "Transportes e logística", "Serviços B2B"],
+        tiposEmpresa: ["PMEs", "Grandes empresas", "Startups", "Agências", "Indústria"],
+        canais: ["LinkedIn", "E-mail", "WhatsApp", "Cold call", "Instagram"]
+      };
+    }
+
+    /* ---------- CONFIG ---------- */
+    function loadConfig() {
       try {
-        const raw = localStorage.getItem(CFG_KEY);
-        if (!raw) return { ...DEFAULT_CONFIG };
-        const parsed = JSON.parse(raw);
-        return { ...DEFAULT_CONFIG, ...parsed };
+        config = JSON.parse(localStorage.getItem(CONFIG_KEY) || "null");
       } catch (e) {
-        console.warn("Erro ao carregar config, usando padrão", e);
-        return { ...DEFAULT_CONFIG };
+        config = null;
+      }
+      if (!config) {
+        config = defaultConfig();
+        saveConfig();
       }
     }
 
-    function salvarConfig(cfg) {
-      localStorage.setItem(CFG_KEY, JSON.stringify(cfg));
+    function saveConfig() {
+      localStorage.setItem(CONFIG_KEY, JSON.stringify(config));
     }
 
-    function carregarSdrs() {
+    function renderConfigCards() {
+      document.querySelectorAll(".config-card").forEach(card => {
+        const key = card.dataset.key;
+        const input = card.querySelector(".config-input-row input");
+        const button = card.querySelector(".config-input-row button");
+        const tagList = card.querySelector(".tag-list");
+
+        const values = Array.isArray(config[key]) ? config[key] : [];
+        tagList.innerHTML = "";
+        values.forEach(value => {
+          const tag = document.createElement("span");
+          tag.className = "tag";
+          tag.textContent = value;
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.textContent = "×";
+          btn.title = "Remover";
+          btn.addEventListener("click", () => {
+            config[key] = config[key].filter(v => v !== value);
+            saveConfig();
+            renderConfigCards();
+          });
+          tag.appendChild(btn);
+          tagList.appendChild(tag);
+        });
+
+        button.onclick = () => {
+          const val = (input.value || "").trim();
+          if (!val) return;
+          config[key] = Array.isArray(config[key]) ? config[key] : [];
+          if (!config[key].includes(val)) {
+            config[key].push(val);
+            saveConfig();
+            renderConfigCards();
+          }
+          input.value = "";
+        };
+      });
+    }
+
+    /* ---------- SDRS ---------- */
+    function loadSdrs() {
       try {
-        const arr = JSON.parse(localStorage.getItem(SDR_KEY) || "[]");
-        return arr.map(s => ({
-          tiposEmpresa: "",
-          regioes: "",
-          idiomas: "",
-          tempoExp: "",
-          canais: "",
-          reviews: [],
-          premium: false,
-          nicho: s.nicho || "",
-          ...s,
-          reviews: Array.isArray(s.reviews) ? s.reviews : [],
-          premium: !!s.premium
-        }));
+        sdrs = JSON.parse(localStorage.getItem(SDR_KEY) || "[]");
       } catch (e) {
         console.warn("Erro ao carregar SDRs", e);
-        return [];
+        sdrs = [];
       }
+
+      // normalizar
+      sdrs = sdrs.map(s => ({
+        reviews: [],
+        premium: !!s.premium,
+        verified: !!s.verified,
+        usaInbotix: !!s.usaInbotix,
+        ...s,
+        reviews: Array.isArray(s.reviews) ? s.reviews : []
+      }));
+
+      recomputeRatings();
+      computeTopPerformer();
+      renderSdrTable();
     }
 
-    function salvarSdrs(lista) {
-      localStorage.setItem(SDR_KEY, JSON.stringify(lista));
+    function saveSdrs() {
+      localStorage.setItem(SDR_KEY, JSON.stringify(sdrs));
+      recomputeRatings();
+      computeTopPerformer();
+      renderSdrTable();
     }
 
     function getRatingInfo(sdr) {
@@ -524,198 +997,361 @@
       return { avg, count: reviews.length };
     }
 
-    // ELEMENTOS
-    const txtRegioes = document.getElementById("cfg-regioes");
-    const txtNichos  = document.getElementById("cfg-nichos");
-    const txtCanais  = document.getElementById("cfg-canais");
-    const txtIdiomas = document.getElementById("cfg-idiomas");
-    const txtTempo   = document.getElementById("cfg-tempo");
-    const btnSalvarConfig = document.getElementById("btn-salvar-config");
-    const wrapperTabela = document.getElementById("wrapper-tabela");
-    const resumoSdrs = document.getElementById("resumo-sdrs");
-
-    let config = carregarConfig();
-    let sdrs = carregarSdrs();
-
-    function preencherFormConfig() {
-      txtRegioes.value = (config.regioes || []).join("\n");
-      txtNichos.value  = (config.nichos || []).join("\n");
-      txtCanais.value  = (config.canais || []).join("\n");
-      txtIdiomas.value = (config.idiomas || []).join("\n");
-      txtTempo.value   = (config.tempoExperiencia || []).join("\n");
+    function recomputeRatings() {
+      ratingMap.clear();
+      sdrs.forEach(s => ratingMap.set(s.id, getRatingInfo(s)));
     }
 
-    function montarTabelaSdrs() {
+    function computeTopPerformer() {
+      let bestId = null;
+      let bestAvg = 0;
+      let bestCount = 0;
+      sdrs.forEach(s => {
+        const info = ratingMap.get(s.id) || { avg: 0, count: 0 };
+        if (info.count < 3) return;
+        if (info.avg > bestAvg) {
+          bestAvg = info.avg;
+          bestCount = info.count;
+          bestId = s.id;
+        } else if (info.avg === bestAvg && info.count > bestCount) {
+          bestCount = info.count;
+          bestId = s.id;
+        }
+      });
+      topPerformerId = bestId;
+    }
+
+    function createStars(avg) {
+      const div = document.createElement("div");
+      div.className = "stars";
+      const rounded = Math.round(avg * 2) / 2;
+      for (let i = 1; i <= 5; i++) {
+        const span = document.createElement("span");
+        span.className = "star" + (i <= Math.round(rounded) ? " filled" : "");
+        span.textContent = "★";
+        div.appendChild(span);
+      }
+      return div;
+    }
+
+    function renderSdrTable() {
+      sdrTableBody.innerHTML = "";
+
       if (!sdrs.length) {
-        wrapperTabela.innerHTML = '<div class="empty">Nenhum SDR cadastrado neste navegador.</div>';
-        resumoSdrs.textContent = "";
+        sdrInfo.textContent = "0 SDR cadastrado neste navegador.";
+        sdrEmpty.style.display = "block";
         return;
       }
 
-      // Ordena por Premium desc, nota desc, qntd reviews desc, id desc
-      sdrs.sort((a, b) => {
-        const premA = !!a.premium;
-        const premB = !!b.premium;
-        if (premA && !premB) return -1;
-        if (!premA && premB) return 1;
-
-        const ra = getRatingInfo(a);
-        const rb = getRatingInfo(b);
-        if (rb.avg !== ra.avg) return rb.avg - ra.avg;
-        if (rb.count !== ra.count) return rb.count - ra.count;
-
-        return (b.id || 0) - (a.id || 0);
-      });
-
-      resumoSdrs.textContent = sdrs.length + (sdrs.length === 1 ? " SDR cadastrado" : " SDRs cadastrados");
-
-      const table = document.createElement("table");
-      const thead = document.createElement("thead");
-      thead.innerHTML = `
-        <tr>
-          <th>ID</th>
-          <th>SDR</th>
-          <th>Cidade</th>
-          <th>Região</th>
-          <th>Nicho</th>
-          <th>Premium</th>
-          <th>Nota</th>
-          <th>Ações</th>
-        </tr>
-      `;
-      table.appendChild(thead);
-
-      const tbody = document.createElement("tbody");
+      sdrEmpty.style.display = "none";
 
       sdrs.forEach(sdr => {
-        const info = getRatingInfo(sdr);
         const tr = document.createElement("tr");
 
-        const tdId = document.createElement("td");
-        tdId.textContent = sdr.id || "-";
+        const info = ratingMap.get(sdr.id) || { avg: 0, count: 0 };
 
-        const tdNome = document.createElement("td");
-        tdNome.className = "col-nome";
-        tdNome.textContent = sdr.nome || "SDR";
+        // col SDR
+        const tdSdr = document.createElement("td");
+        const nameEl = document.createElement("div");
+        nameEl.className = "sdr-name";
+        nameEl.textContent = sdr.nome || "SDR";
+        const metaEl = document.createElement("div");
+        metaEl.className = "sdr-meta";
+        metaEl.textContent = (sdr.cidade || "") + (sdr.cidade && sdr.regioes ? " • " : "") + (sdr.regioes || "");
+        tdSdr.appendChild(nameEl);
+        tdSdr.appendChild(metaEl);
+        tr.appendChild(tdSdr);
 
-        const tdCidade = document.createElement("td");
-        tdCidade.textContent = sdr.cidade || "-";
+        // col nichos & regiões
+        const tdNr = document.createElement("td");
+        tdNr.innerHTML =
+          "<div><strong>Nichos:</strong> " + (sdr.nicho || "-") + "</div>" +
+          "<div><strong>Tipos de empresa:</strong> " + (sdr.tiposEmpresa || "-") + "</div>";
+        tr.appendChild(tdNr);
 
-        const tdReg = document.createElement("td");
-        tdReg.textContent = sdr.regioes || "-";
+        // col idioma & exp
+        const tdIe = document.createElement("td");
+        tdIe.innerHTML =
+          "<div><strong>Idioma:</strong> " + (sdr.idiomas || "-") + "</div>" +
+          "<div><strong>Experiência:</strong> " + (sdr.tempoExp || "-") + "</div>" +
+          "<div><strong>Canais:</strong> " + (sdr.canais || "-") + "</div>";
+        tr.appendChild(tdIe);
 
-        const tdNicho = document.createElement("td");
-        tdNicho.textContent = sdr.nicho || "-";
-
-        const tdPrem = document.createElement("td");
-        tdPrem.className = "center";
-        const wrapPrem = document.createElement("div");
-        wrapPrem.className = "checkbox-premium";
-        const chk = document.createElement("input");
-        chk.type = "checkbox";
-        chk.checked = !!sdr.premium;
-        chk.addEventListener("change", () => {
-          sdr.premium = chk.checked;
-          salvarSdrs(sdrs);
-          montarTabelaSdrs();
-        });
-        const lbl = document.createElement("span");
-        lbl.textContent = "Premium";
-        wrapPrem.appendChild(chk);
-        wrapPrem.appendChild(lbl);
-        tdPrem.appendChild(wrapPrem);
-
-        const tdNota = document.createElement("td");
-        if (info.count === 0) {
-          tdNota.innerHTML = '<span class="nota-text">Sem avaliações</span>';
-        } else {
-          const stars = document.createElement("div");
-          stars.className = "stars";
-          const rounded = Math.round(info.avg * 2) / 2;
-          for (let i = 1; i <= 5; i++) {
-            const sEl = document.createElement("span");
-            sEl.className = "star" + (i <= Math.round(rounded) ? " filled" : "");
-            sEl.textContent = "★";
-            stars.appendChild(sEl);
-          }
-          const spanTxt = document.createElement("span");
-          spanTxt.className = "nota-text";
-          spanTxt.textContent =
+        // col notas
+        const tdNotas = document.createElement("td");
+        if (info.count) {
+          const stars = createStars(info.avg);
+          tdNotas.appendChild(stars);
+          const txt = document.createElement("div");
+          txt.className = "sdr-meta";
+          txt.textContent =
             info.avg.toFixed(1).replace(".", ",") +
-            " (" +
+            " • " +
             info.count +
-            (info.count === 1 ? " avaliação)" : " avaliações)");
-          tdNota.appendChild(stars);
-          tdNota.appendChild(spanTxt);
+            (info.count === 1 ? " avaliação" : " avaliações");
+          tdNotas.appendChild(txt);
+        } else {
+          tdNotas.textContent = "Sem avaliações ainda";
+        }
+        tr.appendChild(tdNotas);
+
+        // col selos
+        const tdSelos = document.createElement("td");
+        if (sdr.premium) {
+          const chipP = document.createElement("span");
+          chipP.className = "chip premium";
+          chipP.textContent = "Premium";
+          tdSelos.appendChild(chipP);
+        }
+        if (sdr.id === topPerformerId) {
+          const chipT = document.createElement("span");
+          chipT.className = "chip top";
+          chipT.textContent = "Top Performer";
+          tdSelos.appendChild(chipT);
+        }
+        if (sdr.verified) {
+          const chipV = document.createElement("span");
+          chipV.className = "chip verified";
+          chipV.textContent = "Verificado INBOTIX";
+          tdSelos.appendChild(chipV);
+        }
+        if (sdr.usaInbotix) {
+          const chipI = document.createElement("span");
+          chipI.className = "chip inbotix";
+          chipI.textContent = "Usa stack INBOTIX";
+          tdSelos.appendChild(chipI);
         }
 
-        const tdAcoes = document.createElement("td");
-        tdAcoes.className = "center";
-        const btnDel = document.createElement("button");
-        btnDel.className = "btn-danger";
-        btnDel.textContent = "Excluir";
-        btnDel.addEventListener("click", () => {
-          if (confirm("Tem certeza que deseja excluir este SDR?")) {
-            sdrs = sdrs.filter(item => item.id !== sdr.id);
-            salvarSdrs(sdrs);
-            montarTabelaSdrs();
-          }
-        });
-        tdAcoes.appendChild(btnDel);
+        if (!tdSelos.innerHTML) tdSelos.textContent = "—";
 
-        tr.appendChild(tdId);
-        tr.appendChild(tdNome);
-        tr.appendChild(tdCidade);
-        tr.appendChild(tdReg);
-        tr.appendChild(tdNicho);
-        tr.appendChild(tdPrem);
-        tr.appendChild(tdNota);
-        tr.appendChild(tdAcoes);
+        // col ações
+        const tdActions = document.createElement("td");
+        tdActions.className = "td-actions";
 
-        tbody.appendChild(tr);
+        const btnEdit = document.createElement("button");
+        btnEdit.type = "button";
+        btnEdit.textContent = "✏️ Editar dados";
+        btnEdit.addEventListener("click", () => openEditModal(sdr.id));
+        tdActions.appendChild(btnEdit);
+
+        const btnFlags = document.createElement("button");
+        btnFlags.type = "button";
+        btnFlags.textContent = "⭐ Selos / flags";
+        btnFlags.addEventListener("click", () => toggleFlagsPrompt(sdr.id));
+        tdActions.appendChild(btnFlags);
+
+        const btnReviews = document.createElement("button");
+        btnReviews.type = "button";
+        btnReviews.textContent = "💬 Ver avaliações";
+        btnReviews.addEventListener("click", () => openReviewsModal(sdr.id));
+        tdActions.appendChild(btnReviews);
+
+        const btnDelete = document.createElement("button");
+        btnDelete.type = "button";
+        btnDelete.className = "danger";
+        btnDelete.textContent = "🗑 Excluir";
+        btnDelete.addEventListener("click", () => deleteSdr(sdr.id));
+        tdActions.appendChild(btnDelete);
+
+        tr.appendChild(tdActions);
+
+        sdrTableBody.appendChild(tr);
       });
 
-      table.appendChild(tbody);
-      wrapperTabela.innerHTML = "";
-      wrapperTabela.appendChild(table);
+      sdrInfo.textContent =
+        sdrs.length +
+        (sdrs.length === 1 ? " SDR cadastrado neste navegador." : " SDRs cadastrados neste navegador.");
     }
 
-    btnSalvarConfig.addEventListener("click", () => {
-      const regioes = txtRegioes.value
-        .split("\n")
-        .map(s => s.trim())
-        .filter(Boolean);
-      const nichos = txtNichos.value
-        .split("\n")
-        .map(s => s.trim())
-        .filter(Boolean);
-      const canais = txtCanais.value
-        .split("\n")
-        .map(s => s.trim())
-        .filter(Boolean);
-      const idiomas = txtIdiomas.value
-        .split("\n")
-        .map(s => s.trim())
-        .filter(Boolean);
-      const tempo = txtTempo.value
-        .split("\n")
-        .map(s => s.trim())
-        .filter(Boolean);
+    function toggleFlagsPrompt(id) {
+      const idx = sdrs.findIndex(s => s.id === id);
+      if (idx === -1) return;
+      const sdr = sdrs[idx];
 
-      config = {
-        regioes: regioes.length ? regioes : DEFAULT_CONFIG.regioes,
-        nichos: nichos.length ? nichos : DEFAULT_CONFIG.nichos,
-        canais: canais.length ? canais : DEFAULT_CONFIG.canais,
-        idiomas: idiomas.length ? idiomas : DEFAULT_CONFIG.idiomas,
-        tempoExperiencia: tempo.length ? tempo : DEFAULT_CONFIG.tempoExperiencia
-      };
-      salvarConfig(config);
-      alert("Configuração salva com sucesso.");
+      const premium = confirm("Marcar / desmarcar este SDR como PREMIUM?\nOK = alternar status.");
+      if (premium) {
+        sdr.premium = !sdr.premium;
+      }
+      const verified = confirm("Marcar / desmarcar este SDR como VERIFICADO INBOTIX?\nOK = alternar status.");
+      if (verified) {
+        sdr.verified = !sdr.verified;
+      }
+      const inb = confirm("Marcar / desmarcar que este SDR usa stack INBOTIX (New Dinbot, etc.)?\nOK = alternar status.");
+      if (inb) {
+        sdr.usaInbotix = !sdr.usaInbotix;
+      }
+
+      saveSdrs();
+    }
+
+    function deleteSdr(id) {
+      if (!confirm("Tem certeza que deseja excluir este SDR? Esta ação remove o cadastro deste navegador.")) return;
+      sdrs = sdrs.filter(s => s.id !== id);
+      saveSdrs();
+    }
+
+    /* ---------- MODAL EDIT ---------- */
+    function fillSelectFromConfig(selectElem, arr) {
+      selectElem.innerHTML = "";
+      arr.forEach(v => {
+        const opt = document.createElement("option");
+        opt.value = v;
+        opt.textContent = v;
+        selectElem.appendChild(opt);
+      });
+    }
+
+    function openEditModal(id) {
+      const sdr = sdrs.find(s => s.id === id);
+      if (!sdr) return;
+
+      editId.value = sdr.id;
+      editNome.value = sdr.nome || "";
+      editCidade.value = sdr.cidade || "";
+      fillSelectFromConfig(editRegiao, config.regioes);
+      fillSelectFromConfig(editIdioma, config.idiomas);
+      fillSelectFromConfig(editTempo, config.tempoExp);
+
+      editRegiao.value = sdr.regioes || config.regioes[0];
+      editIdioma.value = sdr.idiomas || config.idiomas[0];
+      editTempo.value = sdr.tempoExp || config.tempoExp[0];
+
+      editNichos.value = sdr.nicho || "";
+      editTipos.value = sdr.tiposEmpresa || "";
+      editCanais.value = sdr.canais || "";
+      editTelefone.value = sdr.telefone || "";
+      editWhats.value = sdr.whats || "";
+      editLinkedin.value = sdr.linkedin || "";
+      editExp.value = sdr.experiencia || "";
+
+      modalEdit.style.display = "flex";
+    }
+
+    function closeEditModal() {
+      modalEdit.style.display = "none";
+    }
+
+    editForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const id = Number(editId.value);
+      const idx = sdrs.findIndex(s => s.id === id);
+      if (idx === -1) return;
+
+      sdrs[idx].nome = editNome.value.trim();
+      sdrs[idx].cidade = editCidade.value.trim();
+      sdrs[idx].regioes = editRegiao.value;
+      sdrs[idx].idiomas = editIdioma.value;
+      sdrs[idx].tempoExp = editTempo.value;
+      sdrs[idx].nicho = editNichos.value.trim();
+      sdrs[idx].tiposEmpresa = editTipos.value.trim();
+      sdrs[idx].canais = editCanais.value.trim();
+      sdrs[idx].telefone = editTelefone.value.trim();
+      sdrs[idx].whats = editWhats.value.trim();
+      sdrs[idx].linkedin = editLinkedin.value.trim();
+      sdrs[idx].experiencia = editExp.value.trim();
+
+      saveSdrs();
+      closeEditModal();
+      alert("Dados do SDR atualizados com sucesso.");
     });
 
-    // Inicialização
-    preencherFormConfig();
-    montarTabelaSdrs();
+    closeEdit.addEventListener("click", closeEditModal);
+    modalEdit.addEventListener("click", (e) => {
+      if (e.target === modalEdit) closeEditModal();
+    });
+
+    /* ---------- MODAL REVIEWS ---------- */
+    function openReviewsModal(id) {
+      const sdr = sdrs.find(s => s.id === id);
+      if (!sdr) return;
+
+      const info = ratingMap.get(sdr.id) || { avg: 0, count: 0 };
+      reviewsTitle.textContent = "Avaliações de " + (sdr.nome || "SDR");
+      reviewsSubtitle.textContent = info.count
+        ? info.avg.toFixed(1).replace(".", ",") +
+          " de média em " +
+          info.count +
+          (info.count === 1 ? " avaliação" : " avaliações")
+        : "Ainda sem avaliações";
+
+      reviewsList.innerHTML = "";
+
+      if (!sdr.reviews || !sdr.reviews.length) {
+        reviewsList.textContent =
+          "Não há comentários de clientes para este SDR até o momento.";
+      } else {
+        sdr.reviews.forEach((r, index) => {
+          const item = document.createElement("div");
+          item.className = "review-item";
+
+          const main = document.createElement("div");
+          main.className = "review-main";
+          const nomeC = (r.clientName || "").trim() || "Cliente";
+          const name = document.createElement("div");
+          name.className = "review-name";
+          name.textContent = nomeC + " • " + (r.stars || 0) + "★";
+          const comment = document.createElement("div");
+          comment.textContent = r.comment || "";
+          const meta = document.createElement("div");
+          meta.className = "review-meta";
+          const dt = r.date ? new Date(r.date) : null;
+          meta.textContent = dt ? "Data: " + dt.toLocaleDateString("pt-BR") : "";
+
+          main.appendChild(name);
+          main.appendChild(comment);
+          if (meta.textContent) main.appendChild(meta);
+
+          const actions = document.createElement("div");
+          actions.className = "review-actions";
+          const btnDel = document.createElement("button");
+          btnDel.type = "button";
+          btnDel.textContent = "Remover";
+          btnDel.addEventListener("click", () => {
+            if (!confirm("Remover esta avaliação?")) return;
+            sdr.reviews.splice(index, 1);
+            saveSdrs();
+            openReviewsModal(id); // reabrir atualizado
+          });
+          actions.appendChild(btnDel);
+
+          item.appendChild(main);
+          item.appendChild(actions);
+          reviewsList.appendChild(item);
+        });
+      }
+
+      modalReviews.style.display = "flex";
+    }
+
+    function closeReviewsModal() {
+      modalReviews.style.display = "none";
+    }
+
+    closeReviews.addEventListener("click", closeReviewsModal);
+    modalReviews.addEventListener("click", (e) => {
+      if (e.target === modalReviews) closeReviewsModal();
+    });
+
+    /* ---------- BOTÕES GERAIS ---------- */
+    document.getElementById("btn-reload").addEventListener("click", () => {
+      loadSdrs();
+      alert("Lista recarregada a partir do localStorage.");
+    });
+
+    document.getElementById("btn-clear-all").addEventListener("click", () => {
+      if (!confirm("Tem certeza que deseja limpar TODOS os SDRs deste navegador? Essa ação é irreversível.")) return;
+      sdrs = [];
+      saveSdrs();
+    });
+
+    /* ---------- INIT ---------- */
+    function init() {
+      loadConfig();
+      renderConfigCards();
+      loadSdrs();
+    }
+
+    init();
   </script>
 </body>
 </html>
