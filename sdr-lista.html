@@ -26,11 +26,7 @@
       --chip: #e5edff;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -56,27 +52,11 @@
       z-index: 20;
     }
 
-    .header-left {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
+    .header-left { display: flex; align-items: center; gap: 10px; }
+    .header-left img { height: 32px; width: auto; }
 
-    .header-left img {
-      height: 32px;
-      width: auto;
-    }
-
-    .header-title {
-      font-size: 13px;
-      color: var(--muted);
-    }
-
-    .header-title strong {
-      display: block;
-      font-size: 15px;
-      color: var(--dark);
-    }
+    .header-title { font-size: 13px; color: var(--muted); }
+    .header-title strong { display: block; font-size: 15px; color: var(--dark); }
 
     .header-right {
       display: flex;
@@ -116,7 +96,7 @@
       padding: 0 16px 32px;
     }
 
-    /* HERO / INTRO */
+    /* HERO */
     .hero {
       background: linear-gradient(135deg, #ffffff, #e4eeff);
       border-radius: 22px;
@@ -148,9 +128,7 @@
     }
 
     @media (max-width: 840px) {
-      .hero-inner {
-        grid-template-columns: minmax(0, 1fr);
-      }
+      .hero-inner { grid-template-columns: minmax(0, 1fr); }
     }
 
     .hero-pill {
@@ -204,24 +182,16 @@
       margin-bottom: 4px;
     }
 
-    .hero-right-list {
-      font-size: 11px;
-      list-style: none;
-    }
-
+    .hero-right-list { font-size: 11px; list-style: none; }
     .hero-right-list li {
       display: flex;
       align-items: flex-start;
       gap: 6px;
       margin-bottom: 4px;
     }
+    .hero-right-list span.bullet { font-size: 13px; margin-top: -1px; }
 
-    .hero-right-list span.bullet {
-      font-size: 13px;
-      margin-top: -1px;
-    }
-
-    /* FILTERS */
+    /* FILTROS */
     .filters-card {
       background: #ffffff;
       border-radius: 20px;
@@ -246,10 +216,7 @@
       color: var(--dark);
     }
 
-    .filters-sub {
-      font-size: 11px;
-      color: var(--muted);
-    }
+    .filters-sub { font-size: 11px; color: var(--muted); }
 
     .filters-grid {
       display: grid;
@@ -258,27 +225,14 @@
     }
 
     @media (max-width: 960px) {
-      .filters-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
+      .filters-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
-
     @media (max-width: 640px) {
-      .filters-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
+      .filters-grid { grid-template-columns: minmax(0, 1fr); }
     }
 
-    .filters-group {
-      display: flex;
-      flex-direction: column;
-      gap: 3px;
-    }
-
-    .filters-group label {
-      font-size: 10px;
-      color: var(--muted);
-    }
+    .filters-group { display: flex; flex-direction: column; gap: 3px; }
+    .filters-group label { font-size: 10px; color: var(--muted); }
 
     .filters-group input,
     .filters-group select {
@@ -324,15 +278,10 @@
     }
 
     @media (max-width: 1040px) {
-      .sdr-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
+      .sdr-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
-
     @media (max-width: 720px) {
-      .sdr-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
+      .sdr-grid { grid-template-columns: minmax(0, 1fr); }
     }
 
     .sdr-card {
@@ -340,7 +289,7 @@
       border-radius: 18px;
       border: 1px solid var(--border);
       box-shadow: 0 14px 32px rgba(15, 23, 42, 0.10);
-      padding: 18px 11px 10px;              /* 🔹 mais espaço no topo */
+      padding: 18px 11px 10px;
       display: flex;
       flex-direction: column;
       gap: 6px;
@@ -350,8 +299,8 @@
 
     .sdr-badge-strip {
       position: absolute;
-      top: 6px;                             /* 🔹 mais próximo do topo, fora do nome */
-      left: 76px;                           /* 🔹 começa depois do avatar */
+      top: 6px;
+      left: 76px;
       display: flex;
       flex-wrap: wrap;
       gap: 4px;
@@ -398,7 +347,7 @@
       display: flex;
       align-items: flex-start;
       gap: 9px;
-      margin-top: 10px;                     /* 🔹 empurra nome pra baixo dos selos */
+      margin-top: 10px;
     }
 
     .sdr-avatar {
@@ -417,22 +366,16 @@
       box-shadow: 0 10px 22px rgba(15, 23, 42, 0.18);
     }
 
-    .sdr-avatar img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+    .sdr-avatar img { width: 100%; height: 100%; object-fit: cover; }
 
-    .sdr-name {
-      font-size: 14px;
-      font-weight: 800;
-      color: var(--dark);
-      margin-bottom: 1px;
-    }
+    .sdr-name { font-size: 14px; font-weight: 800; color: var(--dark); margin-bottom: 1px; }
+    .sdr-meta { font-size: 11px; color: var(--muted); }
 
-    .sdr-meta {
-      font-size: 11px;
-      color: var(--muted);
+    .sdr-ranking {
+      font-size: 10px;
+      color: #1d4ed8;
+      font-weight: 600;
+      margin-top: 1px;
     }
 
     .sdr-tags {
@@ -463,24 +406,11 @@
       margin-top: 6px;
     }
 
-    .stars {
-      display: inline-flex;
-      gap: 1px;
-    }
+    .stars { display: inline-flex; gap: 1px; }
+    .star { color: var(--star-off); font-size: 14px; }
+    .star.filled { color: var(--star-on); }
 
-    .star {
-      color: var(--star-off);
-      font-size: 14px;
-    }
-
-    .star.filled {
-      color: var(--star-on);
-    }
-
-    .rating-text {
-      font-size: 11px;
-      color: var(--muted);
-    }
+    .rating-text { font-size: 11px; color: var(--muted); }
 
     .sdr-actions {
       display: flex;
@@ -524,9 +454,7 @@
       color: var(--muted);
     }
 
-    .sdr-review-preview strong {
-      color: var(--dark);
-    }
+    .sdr-review-preview strong { color: var(--dark); }
 
     .sdr-review-preview button {
       border: none;
@@ -544,7 +472,7 @@
       text-align: center;
     }
 
-    /* MODAIS (mesmo código anterior) */
+    /* MODAIS – avaliações & avaliar */
     .modal-backdrop {
       position: fixed;
       inset: 0;
@@ -574,16 +502,8 @@
       margin-bottom: 8px;
     }
 
-    .modal-title {
-      font-size: 15px;
-      font-weight: 800;
-      color: var(--dark);
-    }
-
-    .modal-subtitle {
-      font-size: 11px;
-      color: var(--muted);
-    }
+    .modal-title { font-size: 15px; font-weight: 800; color: var(--dark); }
+    .modal-subtitle { font-size: 11px; color: var(--muted); }
 
     .modal-close {
       border-radius: 999px;
@@ -595,10 +515,7 @@
       cursor: pointer;
     }
 
-    .modal-body {
-      font-size: 12px;
-      color: var(--text);
-    }
+    .modal-body { font-size: 12px; color: var(--text); }
 
     .review-list {
       margin-top: 6px;
@@ -610,14 +527,8 @@
       overflow-y: auto;
     }
 
-    .review-item {
-      padding: 6px 0;
-      border-bottom: 1px solid #e5e7eb;
-    }
-
-    .review-item:last-child {
-      border-bottom: none;
-    }
+    .review-item { padding: 6px 0; border-bottom: 1px solid #e5e7eb; }
+    .review-item:last-child { border-bottom: none; }
 
     .review-header {
       display: flex;
@@ -627,45 +538,22 @@
       margin-bottom: 2px;
     }
 
-    .review-name {
-      font-weight: 700;
-      font-size: 11px;
-    }
+    .review-name { font-weight: 700; font-size: 11px; }
+    .review-meta { font-size: 10px; color: var(--muted); }
+    .review-comment { font-size: 11px; }
 
-    .review-meta {
-      font-size: 10px;
-      color: var(--muted);
-    }
-
-    .review-comment {
-      font-size: 11px;
-    }
-
-    /* FORM AVALIAÇÃO */
     .form-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 8px 10px;
       margin-top: 6px;
     }
-
     @media (max-width: 640px) {
-      .form-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
+      .form-grid { grid-template-columns: minmax(0, 1fr); }
     }
 
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 3px;
-    }
-
-    .form-group label {
-      font-size: 11px;
-      color: var(--muted);
-      font-weight: 600;
-    }
+    .form-group { display: flex; flex-direction: column; gap: 3px; }
+    .form-group label { font-size: 11px; color: var(--muted); font-weight: 600; }
 
     .form-group input,
     .form-group textarea,
@@ -678,21 +566,10 @@
       background: #ffffff;
     }
 
-    .form-group textarea {
-      resize: vertical;
-      min-height: 70px;
-    }
+    .form-group textarea { resize: vertical; min-height: 70px; }
+    .form-group small { font-size: 10px; color: var(--muted); }
 
-    .form-group small {
-      font-size: 10px;
-      color: var(--muted);
-    }
-
-    .rating-selector {
-      display: inline-flex;
-      gap: 4px;
-      margin-top: 2px;
-    }
+    .rating-selector { display: inline-flex; gap: 4px; margin-top: 2px; }
 
     .rating-selector button {
       border-radius: 999px;
@@ -754,6 +631,7 @@
     </div>
     <div class="header-right">
       <span class="badge-header">Teste local – dados salvos no navegador</span>
+      <a href="sdr-ranking.html" class="btn-header">🏆 Ver ranking dos SDRs</a>
       <a href="sdr-cadastro.html" class="btn-header">Sou SDR e quero me cadastrar</a>
       <a href="sdr-admin.html" class="btn-header">Área interna (admin)</a>
     </div>
@@ -771,8 +649,8 @@
             Você conversa direto com o SDR, combina o cardápio de leads e paga apenas pelo que foi gerado.
           </p>
           <div class="hero-highlight">
-            Ao avaliar um SDR, você gera também uma base de contato para a INBOTIX entender melhor
-            quais empresas já tiveram experiência em prospecção – isso nos ajuda a te atender ainda melhor.
+            Ao avaliar um SDR, você ajuda a construir o <strong>ranking oficial de SDRs da INBOTIX</strong>.
+            Quanto melhor a avaliação e quanto mais comentários, melhor a posição no ranking.
           </div>
         </div>
         <aside class="hero-right-card">
@@ -780,8 +658,8 @@
           <ul class="hero-right-list">
             <li><span class="bullet">1.</span> Filtre os SDRs por nicho, canal de prospecção, região e nota.</li>
             <li><span class="bullet">2.</span> Clique em <strong>“Chamar no WhatsApp”</strong> ou acesse o LinkedIn do SDR.</li>
-            <li><span class="bullet">3.</span> Combina o volume de leads, ticket e cardápio.</li>
-            <li><span class="bullet">4.</span> Depois que trabalharam juntos, volte aqui e deixe sua avaliação.</li>
+            <li><span class="bullet">3.</span> Combine volume de leads, ticket e cardápio.</li>
+            <li><span class="bullet">4.</span> Depois que trabalharem juntos, volte e avalie o SDR – isso impacta o ranking.</li>
           </ul>
         </aside>
       </div>
@@ -845,9 +723,7 @@
 
     <!-- LISTA DE SDRs -->
     <section id="sdr-list-section">
-      <div class="sdr-grid" id="sdr-grid">
-        <!-- cards via JS -->
-      </div>
+      <div class="sdr-grid" id="sdr-grid"></div>
       <div class="empty" id="sdr-empty" style="display:none;">
         Nenhum SDR encontrado com esses filtros neste ambiente de testes.
       </div>
@@ -865,9 +741,7 @@
         <button type="button" class="modal-close" id="close-avaliacoes">Fechar</button>
       </div>
       <div class="modal-body">
-        <div id="avaliacoes-list" class="review-list">
-          <!-- preenchido via JS -->
-        </div>
+        <div id="avaliacoes-list" class="review-list"></div>
       </div>
     </div>
   </div>
@@ -933,7 +807,7 @@
               Enviar avaliação
             </button>
             <div class="form-hint">
-              Obs.: Você só pode avaliar um mesmo SDR uma vez com o <strong>mesmo e-mail ou perfil de LinkedIn</strong>.
+              Você só pode avaliar um mesmo SDR uma vez com o <strong>mesmo e-mail ou perfil de LinkedIn</strong>.
               Em produção, isso será validado também do lado do servidor.
             </div>
           </div>
@@ -950,6 +824,7 @@
     let config = null;
     let ratingMap = new Map();
     let topPerformerId = null;
+    let rankingPositions = new Map(); // 🔹 id -> posição no ranking
 
     const sdrGrid = document.getElementById("sdr-grid");
     const sdrEmpty = document.getElementById("sdr-empty");
@@ -963,13 +838,14 @@
     const filterPremiumBtn = document.getElementById("filter-premium");
     const filterTopBtn = document.getElementById("filter-top");
 
-    // Modais
+    // Modais avaliações
     const modalAvaliacoesBackdrop = document.getElementById("modal-avaliacoes-backdrop");
     const modalAvaliacoesTitle = document.getElementById("modal-avaliacoes-title");
     const modalAvaliacoesSubtitle = document.getElementById("modal-avaliacoes-subtitle");
     const avaliacoesList = document.getElementById("avaliacoes-list");
     const closeAvaliacoes = document.getElementById("close-avaliacoes");
 
+    // Modal avaliar
     const modalAvaliarBackdrop = document.getElementById("modal-avaliar-backdrop");
     const modalAvaliarTitle = document.getElementById("modal-avaliar-title");
     const closeAvaliar = document.getElementById("close-avaliar");
@@ -1018,7 +894,6 @@
         sdrs = [];
       }
 
-      // normalizar estrutura
       sdrs = sdrs.map(s => ({
         premium: !!s.premium,
         verified: !!s.verified,
@@ -1029,12 +904,14 @@
 
       recomputeRatings();
       computeTopPerformer();
+      computeRankingPositions();
     }
 
     function saveSdrs() {
       localStorage.setItem(SDR_KEY, JSON.stringify(sdrs));
       recomputeRatings();
       computeTopPerformer();
+      computeRankingPositions();
       renderSdrs();
     }
 
@@ -1057,7 +934,7 @@
 
       sdrs.forEach(s => {
         const info = ratingMap.get(s.id) || { avg: 0, count: 0 };
-        if (info.count < 3) return; // mínimo de 3 avaliações
+        if (info.count < 3) return;
         if (info.avg > bestAvg) {
           bestAvg = info.avg;
           bestCount = info.count;
@@ -1069,6 +946,20 @@
       });
 
       topPerformerId = bestId;
+    }
+
+    // 🔹 Calcula ranking global (só SDRs com ao menos 1 avaliação)
+    function computeRankingPositions() {
+      rankingPositions.clear();
+      const withReviews = sdrs.filter(s => (s.reviews || []).length > 0);
+      withReviews.sort((a, b) => {
+        const ra = ratingMap.get(a.id) || { avg: 0, count: 0 };
+        const rb = ratingMap.get(b.id) || { avg: 0, count: 0 };
+        if (rb.avg !== ra.avg) return rb.avg - ra.avg;
+        if (rb.count !== ra.count) return rb.count - ra.count;
+        return normalizeText(a.nome).localeCompare(normalizeText(b.nome));
+      });
+      withReviews.forEach((s, idx) => rankingPositions.set(s.id, idx + 1));
     }
 
     function createStars(avg) {
@@ -1099,14 +990,12 @@
         opt.textContent = r;
         filterRegiao.appendChild(opt);
       });
-
       config.canais.forEach(c => {
         const opt = document.createElement("option");
         opt.value = c;
         opt.textContent = c;
         filterCanal.appendChild(opt);
       });
-
       config.nichos.forEach(n => {
         const opt = document.createElement("option");
         opt.value = n;
@@ -1166,19 +1055,16 @@
 
       const filtrados = sortSdrs(applyFilters(sdrs));
 
-      if (!filtrados.length) {
-        sdrEmpty.style.display = "block";
-      } else {
-        sdrEmpty.style.display = "none";
-      }
+      sdrEmpty.style.display = filtrados.length ? "none" : "block";
 
       sdrCount.textContent =
-        (filtrados.length || 0) +
+        filtrados.length +
         (filtrados.length === 1 ? " SDR encontrado" : " SDRs encontrados") +
         " (teste local).";
 
       filtrados.forEach(sdr => {
         const info = ratingMap.get(sdr.id) || { avg: 0, count: 0 };
+        const rank = rankingPositions.get(sdr.id); // 🔹 posição no ranking (se houver)
 
         const card = document.createElement("div");
         card.className = "sdr-card";
@@ -1241,6 +1127,13 @@
 
         hInfo.appendChild(name);
         hInfo.appendChild(meta);
+
+        if (rank) {
+          const rankEl = document.createElement("div");
+          rankEl.className = "sdr-ranking";
+          rankEl.textContent = "#" + rank + " no ranking INBOTIX";
+          hInfo.appendChild(rankEl);
+        }
 
         header.appendChild(avatar);
         header.appendChild(hInfo);
@@ -1531,8 +1424,8 @@
     });
 
     [filterNome, filterRegiao, filterCanal, filterStars, filterNicho].forEach(el => {
-      el.addEventListener("input", () => renderSdrs());
-      el.addEventListener("change", () => renderSdrs());
+      el.addEventListener("input", renderSdrs);
+      el.addEventListener("change", renderSdrs);
     });
 
     filterPremiumBtn.addEventListener("click", () => {
@@ -1558,3 +1451,4 @@
   </script>
 </body>
 </html>
+
