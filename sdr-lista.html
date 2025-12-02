@@ -7,6 +7,18 @@
   <meta name="description" content="Escolha um SDR parceiro da INBOTIX para gerar leads por performance.">
   <link rel="icon" type="image/png" href="logo-inbotix.png" />
 
+  <!-- 🔶 TAG PH3A / DATAUNION -->
+  <script async type="text/javascript" src="https://www.dataunion.com.br/bcf4a443-2a61-43a0-a3b7-b8ed1384c1a2"></script>
+
+  <!-- Google tag (gtag.js) – mesma do site principal -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17728268035"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-17728268035');
+  </script>
+
   <style>
     :root {
       --primary: #0f6fff;
@@ -631,7 +643,7 @@
       </div>
     </div>
     <div class="header-right">
-      <span class="badge-header">Teste local – dados salvos no navegador</span>
+      <span class="badge-header">Teste visual – dados também vão para a INBOTIX via API</span>
       <a href="sdr-ranking.html" class="btn-header">🏆 Ver ranking dos SDRs</a>
       <a href="sdr-cadastro.html" class="btn-header">Sou SDR e quero me cadastrar</a>
       <a href="sdr-admin.html" class="btn-header">Área interna (admin)</a>
@@ -866,7 +878,8 @@
   <script>
     const SDR_KEY = "inbotix_sdrs";
     const CONFIG_KEY = "inbotix_sdr_config";
-    const SDR_LEADS_KEY = "inbotix_sdr_leads"; // 🔹 cadastros de quem pediu telefone
+    const SDR_LEADS_KEY = "inbotix_sdr_leads"; // cadastros de quem pediu telefone
+    const APP_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzArSjYPNWvlaoO0Tj1MGs6CrTAPVyl098UloWEw6xidk6auK5jLNaR_7ilLAO1ekt0/exec";
 
     let sdrs = [];
     let config = null;
@@ -1122,7 +1135,7 @@
       sdrCount.textContent =
         filtrados.length +
         (filtrados.length === 1 ? " SDR encontrado" : " SDRs encontrados") +
-        " (teste local).";
+        " (teste visual + envio via API).";
 
       filtrados.forEach(sdr => {
         const info = ratingMap.get(sdr.id) || { avg: 0, count: 0 };
@@ -1428,7 +1441,49 @@
       });
     });
 
-    formAvaliar.addEventListener("submit", (e) => {
+    async function enviarAvaliacaoParaBackend(sdr, review) {
+      try {
+        await fetch(APP_SCRIPT_URL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            acao: "avaliacao_sdr",
+            origem: "sdr-lista.html",
+            sdrId: sdr.id,
+            sdrNome: sdr.nome,
+            sdrCidade: sdr.cidade,
+            sdrRegioes: sdr.regioes,
+            sdrCanais: sdr.canais,
+            sdrNicho: sdr.nicho,
+            review
+          })
+        });
+      } catch (err) {
+        console.error("Erro ao enviar avaliação para Apps Script:", err);
+      }
+    }
+
+    async function enviarLeadParaBackend(lead) {
+      try {
+        await fetch(APP_SCRIPT_URL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            acao: "lead_sdr",
+            origem: "sdr-lista.html",
+            lead
+          })
+        });
+      } catch (err) {
+        console.error("Erro ao enviar lead para Apps Script:", err);
+      }
+    }
+
+    formAvaliar.addEventListener("submit", async (e) => {
       e.preventDefault();
 
       const sdrId = Number(inputSdrId.value);
@@ -1481,6 +1536,10 @@
       sdrs[sdrIndex].reviews.push(newReview);
 
       saveSdrs();
+
+      // Envia para o Apps Script (banco)
+      enviarAvaliacaoParaBackend(sdrs[sdrIndex], newReview);
+
       alert("Avaliação enviada com sucesso. Obrigado por colaborar com a comunidade de SDRs da INBOTIX.");
       fecharModalAvaliar();
     });
@@ -1528,7 +1587,7 @@
       if (e.target === modalContatoBackdrop) fecharModalContato();
     });
 
-    formContato.addEventListener("submit", (e) => {
+    formContato.addEventListener("submit", async (e) => {
       e.preventDefault();
 
       const sdrId = Number(inputContatoSdrId.value);
@@ -1549,18 +1608,24 @@
         leads = [];
       }
 
-      leads.push({
+      const lead = {
         id: Date.now(),
         sdrId,
         sdrNome: contatoSdrAtual ? contatoSdrAtual.nome : "",
+        sdrCidade: contatoSdrAtual ? contatoSdrAtual.cidade : "",
+        sdrRegioes: contatoSdrAtual ? contatoSdrAtual.regioes : "",
         nome,
         empresa,
         email,
         telefone,
         createdAt: new Date().toISOString()
-      });
+      };
 
+      leads.push(lead);
       localStorage.setItem(SDR_LEADS_KEY, JSON.stringify(leads));
+
+      // Envia lead para Apps Script
+      enviarLeadParaBackend(lead);
 
       fecharModalContato();
 
@@ -1577,6 +1642,15 @@
     }
 
     init();
+  </script>
+
+  <!-- Microsoft Clarity -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "u833ulprni");
   </script>
 </body>
 </html>
