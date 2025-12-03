@@ -663,7 +663,7 @@
           </p>
           <div class="hero-highlight">
             Ao avaliar um SDR, você ajuda a construir o <strong>ranking oficial de SDRs da INBOTIX</strong>.
-            Quanto melhor a avaliação e quanto mais comentários, melhor a posição no ranking.
+            Só entram no ranking SDRs que usam a <strong>stack INBOTIX</strong> e possuem pelo menos <strong>3 avaliações válidas</strong>.
           </div>
         </div>
         <aside class="hero-right-card">
@@ -729,7 +729,7 @@
           ⭐ Mostrar apenas Premium
         </button>
         <button type="button" class="chip-filter" id="filter-top">
-          🏆 Mostrar apenas Top Performer
+          🏆 Mostrar apenas Top Performer (ranking INBOTIX)
         </button>
       </div>
     </section>
@@ -1002,6 +1002,7 @@
       sdrs.forEach(s => ratingMap.set(s.id, getRatingInfo(s)));
     }
 
+    // Top performer considera apenas SDRs que usam INBOTIX e têm pelo menos 3 avaliações
     function computeTopPerformer() {
       let bestId = null;
       let bestAvg = 0;
@@ -1009,7 +1010,10 @@
 
       sdrs.forEach(s => {
         const info = ratingMap.get(s.id) || { avg: 0, count: 0 };
-        if (info.count < 3) return;
+
+        if (!s.usaInbotix) return;     // precisa usar stack INBOTIX
+        if (info.count < 3) return;    // precisa ter 3+ avaliações
+
         if (info.avg > bestAvg) {
           bestAvg = info.avg;
           bestCount = info.count;
@@ -1023,18 +1027,24 @@
       topPerformerId = bestId;
     }
 
-    // Ranking global para exibir #posição no card
+    // Ranking oficial da INBOTIX: só SDRs com stack INBOTIX + 3+ avaliações
     function computeRankingPositions() {
       rankingPositions.clear();
-      const withReviews = sdrs.filter(s => (s.reviews || []).length > 0);
-      withReviews.sort((a, b) => {
-        const ra = ratingMap.get(a.id) || { avg: 0, count: 0 };
-        const rb = ratingMap.get(b.id) || { avg: 0, count: 0 };
-        if (rb.avg !== ra.avg) return rb.avg - ra.avg;
-        if (rb.count !== ra.count) return rb.count - ra.count;
-        return normalizeText(a.nome).localeCompare(normalizeText(b.nome));
-      });
-      withReviews.forEach((s, idx) => rankingPositions.set(s.id, idx + 1));
+
+      const ranked = sdrs
+        .filter(s => {
+          const info = ratingMap.get(s.id) || { avg: 0, count: 0 };
+          return s.usaInbotix && info.count >= 3;
+        })
+        .sort((a, b) => {
+          const ra = ratingMap.get(a.id) || { avg: 0, count: 0 };
+          const rb = ratingMap.get(b.id) || { avg: 0, count: 0 };
+          if (rb.avg !== ra.avg) return rb.avg - ra.avg;
+          if (rb.count !== ra.count) return rb.count - ra.count;
+          return normalizeText(a.nome).localeCompare(normalizeText(b.nome));
+        });
+
+      ranked.forEach((s, idx) => rankingPositions.set(s.id, idx + 1));
     }
 
     function createStars(avg) {
@@ -1153,10 +1163,10 @@
           bp.textContent = "Premium";
           badgeStrip.appendChild(bp);
         }
-        if (sdr.id === topPerformerId && info.count >= 3) {
+        if (sdr.id === topPerformerId && info.count >= 3 && sdr.usaInbotix) {
           const bt = document.createElement("span");
           bt.className = "badge badge-top";
-          bt.textContent = "Top Performer";
+          bt.textContent = "Top Performer (ranking INBOTIX)";
           badgeStrip.appendChild(bt);
         }
         if (sdr.verified) {
@@ -1206,7 +1216,7 @@
         if (rank) {
           const rankEl = document.createElement("div");
           rankEl.className = "sdr-ranking";
-          rankEl.textContent = "#" + rank + " no ranking INBOTIX";
+          rankEl.textContent = "#" + rank + " no ranking oficial INBOTIX";
           hInfo.appendChild(rankEl);
         }
 
