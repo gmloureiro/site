@@ -7,6 +7,18 @@
   <meta name="description" content="Ranking oficial dos SDRs parceiros da INBOTIX, baseado em avaliações de clientes.">
   <link rel="icon" type="image/png" href="logo-inbotix.png" />
 
+  <!-- 🔶 TAG PH3A / DATAUNION -->
+  <script async type="text/javascript" src="https://www.dataunion.com.br/bcf4a443-2a61-43a0-a3b7-b8ed1384c1a2"></script>
+
+  <!-- Google tag (gtag.js) – mesma do site/vitrine -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17728268035"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-17728268035');
+  </script>
+
   <style>
     :root {
       --primary: #0f6fff;
@@ -311,6 +323,8 @@
       align-items: center;
       gap: 4px;
       font-weight: 600;
+      margin-right: 4px;
+      margin-bottom: 4px;
     }
 
     .btn-small.whats {
@@ -472,7 +486,7 @@
           <div class="hero-right-text">
             • Só entram no ranking SDRs com <strong>stack INBOTIX ativa</strong> e no mínimo <strong>3 avaliações</strong>.<br/>
             • A ordem é definida por: média de estrelas, depois número de avaliações, depois nome.<br/>
-            • O ranking é atualizado automaticamente conforme novas avaliações são feitas.<br/>
+            • O ranking é atualizado automaticamente conforme novas avaliações são feitas – e os dados também vão para a base da INBOTIX via API.<br/>
           </div>
         </aside>
       </div>
@@ -517,9 +531,9 @@
     <div class="modal">
       <div class="modal-header">
         <div>
-          <div class="modal-title">Liberar telefone do SDR</div>
-          <div class="modal-subtitle">
-            Preencha seus dados para que a INBOTIX saiba quem está solicitando o contato. Em seguida o WhatsApp do SDR será liberado.
+          <div class="modal-title">Antes de falar com o SDR…</div>
+          <div class="modal-subtitle" id="modal-contato-subtitle">
+            Preencha seus dados para liberar o número de WhatsApp do SDR selecionado.
           </div>
         </div>
         <button type="button" class="modal-close" id="close-contato">Fechar</button>
@@ -547,7 +561,8 @@
         <div class="form-footer">
           <button type="submit" class="btn-primary">Liberar telefone do SDR</button>
           <div class="form-hint">
-            Esses dados ficam registrados na base da INBOTIX para controle de quem solicitou o telefone de cada SDR.
+            Esses dados ficam registrados na base da INBOTIX e também são enviados para o banco via API para controle
+            de quem solicitou o telefone de cada SDR.
           </div>
         </div>
       </form>
@@ -557,6 +572,7 @@
   <script>
     const SDR_KEY = "inbotix_sdrs";
     const SDR_LEADS_KEY = "inbotix_sdr_leads";
+    const APP_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzArSjYPNWvlaoO0Tj1MGs6CrTAPVyl098UloWEw6xidk6auK5jLNaR_7ilLAO1ekt0/exec";
 
     let sdrs = [];
     let ratingMap = new Map();
@@ -574,6 +590,7 @@
     const contatoEmpresa = document.getElementById("contato-empresa");
     const contatoEmail = document.getElementById("contato-email");
     const contatoTelefone = document.getElementById("contato-telefone");
+    const modalContatoSubtitle = document.getElementById("modal-contato-subtitle");
     const closeContato = document.getElementById("close-contato");
 
     function loadSdrs() {
@@ -647,9 +664,11 @@
       window.open("https://wa.me/" + num, "_blank");
     }
 
-    function abrirModalContato(sdrId) {
-      contatoSdrId.value = sdrId;
+    function abrirModalContato(sdr) {
+      contatoSdrId.value = sdr.id;
       formContato.reset();
+      modalContatoSubtitle.textContent =
+        "Preencha seus dados para liberar o número de WhatsApp de " + (sdr.nome || "este SDR") + ".";
       modalContatoBackdrop.style.display = "flex";
     }
 
@@ -665,7 +684,7 @@
       if (hasLeadForSdr(sdr.id)) {
         openWhats(sdr.whats);
       } else {
-        abrirModalContato(sdr.id);
+        abrirModalContato(sdr);
       }
     }
 
@@ -807,6 +826,24 @@
       });
     }
 
+    async function enviarLeadParaBackend(lead) {
+      try {
+        await fetch(APP_SCRIPT_URL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            acao: "lead_sdr",
+            origem: "sdr-ranking.html",
+            lead
+          })
+        });
+      } catch (err) {
+        console.error("Erro ao enviar lead para Apps Script:", err);
+      }
+    }
+
     // Eventos modal contato
     closeContato.addEventListener("click", fecharModalContato);
     modalContatoBackdrop.addEventListener("click", (e) => {
@@ -826,9 +863,15 @@
         return;
       }
 
+      const sdr = sdrs.find(s => s.id === sdrId);
+
       const lead = {
         id: Date.now(),
         sdrId,
+        sdrNome: sdr ? sdr.nome : "",
+        sdrCidade: sdr ? sdr.cidade : "",
+        sdrRegioes: sdr ? sdr.regioes : "",
+        sdrCanais: sdr ? sdr.canais : "",
         nome,
         empresa,
         email,
@@ -838,9 +881,12 @@
 
       sdrLeads.push(lead);
       saveLeads();
+
+      // Envia também para o Apps Script (banco)
+      enviarLeadParaBackend(lead);
+
       fecharModalContato();
 
-      const sdr = sdrs.find(s => s.id === sdrId);
       if (sdr && sdr.whats) {
         openWhats(sdr.whats);
       } else {
@@ -855,6 +901,15 @@
     }
 
     init();
+  </script>
+
+  <!-- Microsoft Clarity -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "u833ulprni");
   </script>
 </body>
 </html>
