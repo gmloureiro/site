@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <title>Cadastro de SDR – INBOTIX</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Cadastro oficial de SDRs para o marketplace INBOTIX.">
+  <meta name="description" content="Cadastro de SDRs para o marketplace da INBOTIX.">
   <link rel="icon" type="image/png" href="logo-inbotix.png" />
 
   <style>
@@ -43,25 +43,16 @@
       box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
       position: sticky;
       top: 0;
-      z-index: 10;
+      z-index: 20;
     }
 
-    .header-left {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .header-left img {
-      height: 32px;
-      width: auto;
-    }
+    .header-left { display: flex; align-items: center; gap: 10px; }
+    .header-left img { height: 32px; width: auto; }
 
     .header-title {
       font-size: 13px;
       color: var(--muted);
     }
-
     .header-title strong {
       display: block;
       font-size: 15px;
@@ -76,7 +67,7 @@
       justify-content: flex-end;
     }
 
-    .btn-header {
+    .btn-outline-header {
       border-radius: 999px;
       border: 1px solid rgba(15, 111, 255, 0.5);
       padding: 6px 12px;
@@ -96,74 +87,44 @@
       padding: 0 16px 40px;
     }
 
-    .hero {
-      background: linear-gradient(135deg, #ffffff, #e5edff);
-      border-radius: 18px;
-      border: 1px solid var(--border-soft);
-      box-shadow: 0 16px 32px rgba(15, 23, 42, 0.08);
-      padding: 16px 18px 18px;
-      margin-bottom: 18px;
-    }
-
-    .hero-pill {
-      font-size: 11px;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 4px 9px;
-      border-radius: 999px;
-      background: rgba(15, 111, 255, 0.09);
-      border: 1px solid rgba(15, 111, 255, 0.5);
-      color: var(--primary-dark);
-      margin-bottom: 6px;
-      font-weight: 500;
-    }
-
-    .hero-title {
-      font-size: 22px;
-      font-weight: 800;
-      margin-bottom: 4px;
-      color: #0f172a;
-    }
-
-    .hero-subtitle {
-      font-size: 12px;
-      color: var(--muted);
-      max-width: 70ch;
-    }
-
-    .hero-highlight {
-      margin-top: 8px;
-      font-size: 11px;
-      padding: 6px 8px;
-      border-radius: 10px;
-      background: #ecfdf3;
-      border: 1px solid #bbf7d0;
-      color: #166534;
-    }
-
     .card {
       background: var(--bg-card);
       border-radius: 18px;
       border: 1px solid var(--border-soft);
-      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.06);
-      padding: 16px 18px 18px;
+      box-shadow: 0 14px 32px rgba(15, 23, 42, 0.06);
+      padding: 18px 18px 20px;
+    }
+
+    .card-header {
+      margin-bottom: 12px;
     }
 
     .card-title {
-      font-size: 14px;
+      font-size: 16px;
       font-weight: 700;
       margin-bottom: 4px;
     }
 
     .card-subtitle {
-      font-size: 11px;
+      font-size: 12px;
       color: var(--muted);
-      margin-bottom: 12px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 3px 9px;
+      font-size: 11px;
+      border-radius: 999px;
+      border: 1px solid rgba(15, 111, 255, 0.35);
+      background: #eff6ff;
+      color: var(--primary-dark);
+      margin-bottom: 6px;
     }
 
     form {
-      font-size: 12px;
+      margin-top: 12px;
     }
 
     .form-grid {
@@ -195,7 +156,7 @@
       border-radius: 10px;
       border: 1px solid var(--border);
       padding: 6px 8px;
-      font-size: 11px;
+      font-size: 12px;
       outline: none;
       font-family: inherit;
       background: #ffffff;
@@ -204,40 +165,39 @@
     .form-control:focus,
     .form-select:focus {
       border-color: var(--primary);
-      box-shadow: 0 0 0 1px rgba(15, 111, 255, 0.5);
+      box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.4);
     }
 
-    .form-select[multiple] {
-      min-height: 70px;
-    }
-
-    .hint {
+    .form-help {
       font-size: 10px;
       color: var(--muted);
     }
 
-    .checkbox-row {
+    .form-row-inline {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 6px;
-      font-size: 11px;
+      gap: 14px;
+      margin-top: 10px;
+      align-items: center;
     }
 
-    .checkbox-row label {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      cursor: pointer;
+    .checkbox-group label {
+      font-size: 11px;
+      color: var(--muted);
+      margin-right: 12px;
+    }
+
+    .checkbox-group input {
+      margin-right: 4px;
     }
 
     .form-footer {
       margin-top: 14px;
       display: flex;
-      justify-content: space-between;
+      flex-wrap: wrap;
       gap: 10px;
       align-items: center;
-      flex-wrap: wrap;
+      justify-content: space-between;
     }
 
     .btn-primary {
@@ -246,26 +206,32 @@
       background: linear-gradient(135deg, var(--primary), var(--primary-dark));
       color: #ffffff;
       padding: 8px 18px;
-      font-size: 12px;
+      font-size: 13px;
       cursor: pointer;
-      font-weight: 700;
-      box-shadow: 0 12px 28px rgba(15, 111, 255, 0.7);
+      font-weight: 600;
+      box-shadow: 0 12px 28px rgba(15, 111, 255, 0.6);
       display: inline-flex;
       align-items: center;
       gap: 6px;
     }
 
-    .status {
+    .status-message {
       font-size: 11px;
+      max-width: 46ch;
     }
 
-    .status.ok {
-      color: var(--success);
+    .status-ok { color: var(--success); }
+    .status-err { color: var(--danger); }
+
+    .badge-soft {
+      border-radius: 999px;
+      font-size: 10px;
+      padding: 3px 7px;
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      color: #1d4ed8;
     }
 
-    .status.err {
-      color: var(--danger);
-    }
   </style>
 </head>
 <body>
@@ -276,159 +242,166 @@
       </a>
       <div class="header-title">
         <strong>Cadastro de SDR – INBOTIX</strong>
-        Preencha seus dados para entrar no marketplace de SDRs.
+        Preencha seus dados para entrar na vitrine e no ranking da plataforma.
       </div>
     </div>
     <div class="header-right">
-      <a href="sdr-lista.html" class="btn-header">👁 Ver vitrine</a>
-      <a href="sdr-ranking.html" class="btn-header">🏆 Ver ranking</a>
-      <a href="sdr-admin.html" class="btn-header">⚙ Admin</a>
+      <a href="sdr-lista.html" class="btn-outline-header">👁 Ver vitrine de SDRs</a>
+      <a href="sdr-ranking.html" class="btn-outline-header">🏆 Ver ranking de SDRs</a>
+      <a href="sdr-admin.html" class="btn-outline-header">⚙ Admin (interno)</a>
     </div>
   </header>
 
   <main>
-    <section class="hero">
-      <div class="hero-pill">🚀 Cadastro oficial de SDRs</div>
-      <h1 class="hero-title">Entre para o marketplace de SDRs da INBOTIX.</h1>
-      <p class="hero-subtitle">
-        Este cadastro alimenta diretamente a base da INBOTIX. Depois de aprovado, você poderá aparecer na
-        <strong>vitrine pública</strong> e no <strong>ranking</strong>, desde que use a stack INBOTIX e receba avaliações dos clientes.
-      </p>
-      <div class="hero-highlight">
-        Dica: preencha com atenção seus nichos, tipos de empresa e canais, porque isso será usado para te recomendar
-        para os clientes certos.
-      </div>
-    </section>
-
     <section class="card">
-      <div class="card-title">Dados do SDR</div>
-      <div class="card-subtitle">
-        Os campos abaixo são usados para apresentar o seu perfil para os clientes que buscam SDRs na plataforma.
+      <div class="card-header">
+        <div class="pill">✅ Somente SDRs que usam a stack INBOTIX podem entrar</div>
+        <div class="card-title">Cadastro para vitrine e ranking de SDRs</div>
+        <div class="card-subtitle">
+          Preencha com atenção. Seus dados serão usados para a vitrine pública, para o ranking e
+          para os clientes saberem em que você é especialista.
+        </div>
       </div>
 
       <form id="sdr-form">
         <div class="form-grid">
+          <!-- Dados principais -->
           <div class="form-group">
-            <label for="nome" class="form-label">Nome completo *</label>
+            <label class="form-label" for="nome">Nome completo *</label>
             <input type="text" id="nome" class="form-control" required />
+            <div class="form-help">Este nome aparece na vitrine e no ranking.</div>
           </div>
 
           <div class="form-group">
-            <label for="cidade" class="form-label">Cidade / Estado *</label>
-            <input type="text" id="cidade" class="form-control" placeholder="São Paulo - SP" required />
+            <label class="form-label" for="cidade">Cidade / UF *</label>
+            <input type="text" id="cidade" class="form-control" placeholder="São Paulo / SP" required />
           </div>
 
+          <!-- Região -->
           <div class="form-group">
-            <label for="regioes" class="form-label">Regiões que você atende *</label>
+            <label class="form-label" for="regioes">Região de atuação *</label>
             <select id="regioes" class="form-select" required></select>
-            <div class="hint">Mesma lista de regiões usada no Admin.</div>
+            <div class="form-help">Ex.: Brasil inteiro, Sudeste, LATAM...</div>
           </div>
 
+          <!-- Idiomas -->
           <div class="form-group">
-            <label for="idiomas" class="form-label">Idiomas que você domina *</label>
+            <label class="form-label" for="idiomas">Idiomas que você atende *</label>
             <select id="idiomas" class="form-select" multiple required></select>
-            <div class="hint">Selecione 1 ou mais idiomas.</div>
+            <div class="form-help">Segure CTRL (ou CMD no Mac) para selecionar mais de um.</div>
           </div>
 
+          <!-- Experiência -->
           <div class="form-group">
-            <label for="tempo-exp" class="form-label">Tempo de experiência *</label>
+            <label class="form-label" for="tempo-exp">Tempo de experiência *</label>
             <select id="tempo-exp" class="form-select" required></select>
           </div>
 
+          <!-- Nichos -->
           <div class="form-group">
-            <label for="nicho" class="form-label">Nichos de atuação *</label>
+            <label class="form-label" for="nicho">Nichos que você domina *</label>
             <select id="nicho" class="form-select" multiple required></select>
-            <div class="hint">Ex.: SaaS, Indústria, Educação, Saúde...</div>
+            <div class="form-help">Ex.: SaaS, Indústria, Educação, Saúde, Agro...</div>
           </div>
 
+          <!-- Tipos de empresa -->
           <div class="form-group">
-            <label for="tipos-empresa" class="form-label">Tipos de empresa que já atendeu *</label>
+            <label class="form-label" for="tipos-empresa">Tipos de empresa que você atende *</label>
             <select id="tipos-empresa" class="form-select" multiple required></select>
-            <div class="hint">Ex.: PME, Enterprise, Startups, Franquias...</div>
+            <div class="form-help">Ex.: PME, Enterprise, Startup, Franquia...</div>
           </div>
 
+          <!-- Canais -->
           <div class="form-group">
-            <label for="canais" class="form-label">Canais que você opera *</label>
+            <label class="form-label" for="canais">Canais que você usa para prospectar *</label>
             <select id="canais" class="form-select" multiple required></select>
-            <div class="hint">Ex.: LinkedIn, E-mail, WhatsApp, Telefone, URA.</div>
+            <div class="form-help">Ex.: LinkedIn, E-mail, WhatsApp, URA...</div>
+          </div>
+
+          <!-- Contato -->
+          <div class="form-group">
+            <label class="form-label" for="telefone">Telefone (opcional)</label>
+            <input type="text" id="telefone" class="form-control" placeholder="(11) 4000-0000" />
           </div>
 
           <div class="form-group">
-            <label for="telefone" class="form-label">Telefone (opcional)</label>
-            <input type="text" id="telefone" class="form-control" placeholder="(11) 99999-9999" />
-          </div>
-
-          <div class="form-group">
-            <label for="whats" class="form-label">WhatsApp (com DDI) *</label>
+            <label class="form-label" for="whats">WhatsApp para contatos *</label>
             <input type="text" id="whats" class="form-control" placeholder="5511999999999" required />
-            <div class="hint">Use apenas números, incluindo 55 + DDD. Ex.: 5511999999999.</div>
+            <div class="form-help">Somente números. Ex.: 5511999999999</div>
           </div>
 
           <div class="form-group">
-            <label for="linkedin" class="form-label">Link do seu LinkedIn *</label>
+            <label class="form-label" for="linkedin">Seu LinkedIn *</label>
             <input type="url" id="linkedin" class="form-control" placeholder="https://www.linkedin.com/in/seu-perfil/" required />
+          </div>
+
+          <!-- Foto URL -->
+          <div class="form-group">
+            <label class="form-label" for="foto-url">Foto (URL da imagem)</label>
+            <input type="url" id="foto-url" class="form-control" placeholder="https://.../sua-foto.jpg" />
+            <div class="form-help">
+              Coloque um link de foto (pode ser a foto do LinkedIn ou outra imagem). Se deixar em branco,
+              usamos suas iniciais no avatar.
+            </div>
           </div>
         </div>
 
-        <div class="form-group" style="margin-top: 12px;">
-          <label class="form-label">Selos e stack</label>
-          <div class="checkbox-row">
+        <!-- Selos / flags -->
+        <div class="form-row-inline">
+          <div class="checkbox-group">
             <label>
               <input type="checkbox" id="premium" />
-              Premium
-            </label>
-            <label>
-              <input type="checkbox" id="verified" />
-              Verificado INBOTIX
-            </label>
-            <label>
-              <input type="checkbox" id="usa-inbotix" />
-              Usa stack INBOTIX
+              Quero ser considerado para selo <strong>Premium</strong> (a validar pela INBOTIX)
             </label>
           </div>
-          <div class="hint">
-            Em produção, estes selos serão controlados pelo time da INBOTIX. Aqui podem ser usados para testes.
+        </div>
+
+        <div class="form-row-inline">
+          <div class="checkbox-group">
+            <label>
+              <input type="checkbox" id="usa-inbotix" checked />
+              Confirmo que uso a <strong>stack INBOTIX</strong> na operação de prospecção
+            </label>
           </div>
         </div>
 
         <div class="form-footer">
-          <button type="submit" class="btn-primary" id="btn-submit">
-            💾 Cadastrar SDR
+          <button type="submit" class="btn-primary">
+            🚀 Enviar cadastro
           </button>
-          <div class="status" id="status-msg"></div>
+          <div class="status-message" id="status-msg">
+            <span class="badge-soft">Dica</span> – Após cadastrar, você já aparece no admin e, depois de 3 avaliações,
+            entra no ranking automaticamente.
+          </div>
         </div>
       </form>
     </section>
   </main>
 
   <script>
-    // 🔗 URL DO SEU APPS SCRIPT (já publicado como web app)
-    const API_URL = 'https://script.google.com/macros/s/AKfycbzArSjYPNWvlaoO0Tj1MGs6CrTAPVyl098UloWEw6xidk6auK5jLNaR_7ilLAO1ekt0/exec';
+    // 🔧 Ajuste aqui a URL do seu Apps Script
+    const SCRIPT_URL = "https://script.google.com/macros/s/SEU_DEPLOY_AQUI/exec";
 
     const CONFIG_KEY = "inbotix_sdr_config";
-    const SDR_KEY = "inbotix_sdrs"; // opcional: mantém espelho local para vitrine/admin
+    const SDR_KEY = "inbotix_sdrs";
 
-    // DOM
     const form = document.getElementById("sdr-form");
     const statusMsg = document.getElementById("status-msg");
-    const btnSubmit = document.getElementById("btn-submit");
 
-    const inputNome = document.getElementById("nome");
-    const inputCidade = document.getElementById("cidade");
-    const selectRegioes = document.getElementById("regioes");
-    const selectIdiomas = document.getElementById("idiomas");
-    const selectTempoExp = document.getElementById("tempo-exp");
-    const selectNicho = document.getElementById("nicho");
-    const selectTiposEmpresa = document.getElementById("tipos-empresa");
-    const selectCanais = document.getElementById("canais");
-    const inputTelefone = document.getElementById("telefone");
-    const inputWhats = document.getElementById("whats");
-    const inputLinkedin = document.getElementById("linkedin");
-    const chkPremium = document.getElementById("premium");
-    const chkVerified = document.getElementById("verified");
-    const chkUsaInbotix = document.getElementById("usa-inbotix");
-
-    /* ---------- CONFIG (MESMA LÓGICA DO ADMIN) ---------- */
+    const nomeInput = document.getElementById("nome");
+    const cidadeInput = document.getElementById("cidade");
+    const regioesSelect = document.getElementById("regioes");
+    const idiomasSelect = document.getElementById("idiomas");
+    const tempoExpSelect = document.getElementById("tempo-exp");
+    const nichoSelect = document.getElementById("nicho");
+    const tiposEmpresaSelect = document.getElementById("tipos-empresa");
+    const canaisSelect = document.getElementById("canais");
+    const telefoneInput = document.getElementById("telefone");
+    const whatsInput = document.getElementById("whats");
+    const linkedinInput = document.getElementById("linkedin");
+    const fotoUrlInput = document.getElementById("foto-url");
+    const premiumInput = document.getElementById("premium");
+    const usaInbotixInput = document.getElementById("usa-inbotix");
 
     function defaultConfig() {
       return {
@@ -442,32 +415,27 @@
     }
 
     function loadConfig() {
-      let config;
+      let cfg;
       try {
         const raw = localStorage.getItem(CONFIG_KEY);
-        if (!raw) throw new Error("Sem config");
-        config = JSON.parse(raw);
+        if (!raw) throw new Error("sem config");
+        cfg = JSON.parse(raw);
       } catch (e) {
-        config = defaultConfig();
+        cfg = defaultConfig();
       }
-      fillSelect(selectRegioes, config.regioes || [], false);
-      fillSelect(selectIdiomas, config.idiomas || [], true);
-      fillSelect(selectTempoExp, config.experiencia || [], false);
-      fillSelect(selectNicho, config.nichos || [], true);
-      fillSelect(selectTiposEmpresa, config.tiposEmpresa || [], true);
-      fillSelect(selectCanais, config.canais || [], true);
+      return cfg;
     }
 
-    function fillSelect(selectElem, arr, multiple) {
+    function fillSelect(selectElem, items, { multiple = false, includeEmpty = false } = {}) {
       selectElem.innerHTML = "";
-      const values = Array.isArray(arr) ? arr : [];
-      if (!multiple) {
-        const optEmpty = document.createElement("option");
-        optEmpty.value = "";
-        optEmpty.textContent = "Selecione...";
-        selectElem.appendChild(optEmpty);
+      const list = Array.isArray(items) ? items : [];
+      if (!multiple && includeEmpty) {
+        const opt = document.createElement("option");
+        opt.value = "";
+        opt.textContent = "Selecione...";
+        selectElem.appendChild(opt);
       }
-      values.forEach(v => {
+      list.forEach(v => {
         const opt = document.createElement("option");
         opt.value = v;
         opt.textContent = v;
@@ -475,56 +443,113 @@
       });
     }
 
-    function getMultiSelectValue(select) {
-      const selected = Array.from(select.selectedOptions)
+    function getMultiSelectValue(selectElem) {
+      return Array.from(selectElem.selectedOptions)
         .map(o => o.value.trim())
-        .filter(Boolean);
-      return selected.join(", ");
+        .filter(Boolean)
+        .join(", ");
     }
 
-    /* ---------- SALVAR LOCAL (OPCIONAL, PARA TESTE) ---------- */
+    function showStatus(message, ok = true) {
+      statusMsg.textContent = message;
+      statusMsg.classList.remove("status-ok", "status-err");
+      statusMsg.classList.add(ok ? "status-ok" : "status-err");
+    }
 
-    function saveLocalMirror(sdr) {
+    function resetStatus() {
+      statusMsg.textContent =
+        "Após cadastrar, você já aparece no admin e, depois de 3 avaliações, entra no ranking automaticamente.";
+      statusMsg.classList.remove("status-ok", "status-err");
+    }
+
+    // Salva também no localStorage para uso imediato na vitrine / ranking
+    function saveToLocalStorage(sdrObj) {
+      let arr;
       try {
-        const raw = localStorage.getItem(SDR_KEY) || "[]";
-        const arr = JSON.parse(raw);
-        arr.push({
-          ...sdr,
-          id: sdr.id || ("SDR-" + Date.now()),
-          createdAt: sdr.created_at || new Date().toISOString()
-        });
-        localStorage.setItem(SDR_KEY, JSON.stringify(arr));
+        arr = JSON.parse(localStorage.getItem(SDR_KEY) || "[]");
       } catch (e) {
-        console.warn("Não foi possível salvar espelho local dos SDRs", e);
+        arr = [];
+      }
+      if (!Array.isArray(arr)) arr = [];
+      arr.push(sdrObj);
+      localStorage.setItem(SDR_KEY, JSON.stringify(arr));
+    }
+
+    async function sendToScript(payload) {
+      try {
+        const res = await fetch(SCRIPT_URL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(payload)
+        });
+        const json = await res.json();
+        if (!json.ok) {
+          throw new Error(json.error || "Erro desconhecido no backend");
+        }
+        return json;
+      } catch (err) {
+        console.error("Erro ao enviar para Apps Script:", err);
+        throw err;
       }
     }
 
-    /* ---------- SUBMIT DO FORM ---------- */
-
-    async function handleSubmit(e) {
+    form.addEventListener("submit", async (e) => {
       e.preventDefault();
-      statusMsg.textContent = "";
-      statusMsg.className = "status";
+      resetStatus();
 
-      const nome = inputNome.value.trim();
-      const cidade = inputCidade.value.trim();
-      const regioes = selectRegioes.value;
-      const idiomas = getMultiSelectValue(selectIdiomas);
-      const tempoExp = selectTempoExp.value;
-      const nicho = getMultiSelectValue(selectNicho);
-      const tiposEmpresa = getMultiSelectValue(selectTiposEmpresa);
-      const canais = getMultiSelectValue(selectCanais);
-      const telefone = inputTelefone.value.trim();
-      const whats = inputWhats.value.trim();
-      const linkedin = inputLinkedin.value.trim();
+      const nome = nomeInput.value.trim();
+      const cidade = cidadeInput.value.trim();
+      const regioes = regioesSelect.value;
+      const idiomas = getMultiSelectValue(idiomasSelect);
+      const tempoExp = tempoExpSelect.value;
+      const nicho = getMultiSelectValue(nichoSelect);
+      const tiposEmpresa = getMultiSelectValue(tiposEmpresaSelect);
+      const canais = getMultiSelectValue(canaisSelect);
+      const telefone = telefoneInput.value.trim();
+      const whats = whatsInput.value.trim();
+      const linkedin = linkedinInput.value.trim();
+      const fotoUrl = fotoUrlInput.value.trim();
+      const premium = premiumInput.checked;
+      const usaInbotix = usaInbotixInput.checked;
 
       if (!nome || !cidade || !regioes || !idiomas || !tempoExp || !nicho || !tiposEmpresa || !canais || !whats || !linkedin) {
-        statusMsg.textContent = "Preencha todos os campos obrigatórios (*).";
-        statusMsg.classList.add("err");
+        showStatus("Preencha todos os campos obrigatórios marcados com *.", false);
         return;
       }
 
+      const now = new Date();
+      const id = "SDR-" + now.getTime();
+      const createdAt = now.toISOString();
+
+      // Objeto usado pelo front (vitrine / admin / ranking)
+      const sdrLocal = {
+        id,
+        nome,
+        cidade,
+        regioes,
+        idiomas,
+        tempoExp,
+        nicho,
+        tiposEmpresa,
+        canais,
+        telefone,
+        whats,
+        linkedin,
+        // usando mesmo campo que seu ranking já usa como src:
+        fotoBase64: fotoUrl || "",
+        premium,
+        verified: false,
+        usaInbotix,
+        createdAt,
+        reviews: []
+      };
+
+      // Payload para o Apps Script (planilha)
       const payload = {
+        action: "cadastro_sdr",
+        id,
         nome,
         cidade,
         regioes,
@@ -536,65 +561,37 @@
         telefone,
         whats,
         linkedin,
-        premium: chkPremium.checked,
-        verified: chkVerified.checked,
-        usa_inbotix: chkUsaInbotix.checked
+        foto_url: fotoUrl,
+        premium,
+        verified: false,
+        usa_inbotix: usaInbotix,
+        created_at: createdAt
       };
 
-      btnSubmit.disabled = true;
-      btnSubmit.textContent = "Enviando...";
-      statusMsg.textContent = "Enviando cadastro...";
-      statusMsg.classList.remove("ok", "err");
+      // Salva local primeiro (para já aparecer no admin / vitrine)
+      saveToLocalStorage(sdrLocal);
+
+      showStatus("Salvando seu cadastro...", true);
 
       try {
-        const body = {
-          action: "criar_sdr",
-          payload
-        };
-
-        const res = await fetch(API_URL, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(body)
-        });
-
-        const data = await res.json();
-
-        if (!data.ok) {
-          throw new Error(data.error || "Erro ao salvar cadastro.");
-        }
-
-        // Espelho local (opcional)
-        saveLocalMirror({
-          ...payload,
-          id: data.id,
-          created_at: data.created_at
-        });
-
-        statusMsg.textContent = "Cadastro enviado com sucesso! ID: " + data.id;
-        statusMsg.classList.add("ok");
-
+        await sendToScript(payload);
+        showStatus("Cadastro enviado com sucesso! Agora é só aguardar as avaliações dos clientes. ✅", true);
         form.reset();
-        // mantém selects "Selecione..." visíveis
-        selectRegioes.selectedIndex = 0;
-        selectTempoExp.selectedIndex = 0;
-
+        usaInbotixInput.checked = true;
       } catch (err) {
-        console.error(err);
-        statusMsg.textContent = "Erro ao enviar cadastro: " + err.message;
-        statusMsg.classList.add("err");
-      } finally {
-        btnSubmit.disabled = false;
-        btnSubmit.textContent = "💾 Cadastrar SDR";
+        showStatus("Cadastro salvo localmente, mas houve erro ao enviar para o backend. Veja o console.", false);
       }
-    }
-
-    form.addEventListener("submit", handleSubmit);
+    });
 
     function init() {
-      loadConfig();
+      const cfg = loadConfig();
+
+      fillSelect(regioesSelect, cfg.regioes, { multiple: false, includeEmpty: true });
+      fillSelect(idiomasSelect, cfg.idiomas, { multiple: true });
+      fillSelect(tempoExpSelect, cfg.experiencia, { multiple: false, includeEmpty: true });
+      fillSelect(nichoSelect, cfg.nichos, { multiple: true });
+      fillSelect(tiposEmpresaSelect, cfg.tiposEmpresa, { multiple: true });
+      fillSelect(canaisSelect, cfg.canais, { multiple: true });
     }
 
     init();
