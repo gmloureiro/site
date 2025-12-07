@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Aviso de Privacidade – INBOTIX</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Aviso de Privacidade da INBOTIX. Entenda como tratamos seus dados pessoais, em conformidade com a LGPD e demais legislações aplicáveis." />
+  <link rel="icon" type="image/x-icon" href="logo-inbotix.ico" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Bicubik:wght@400;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --primary-dark: #041056;
+      --primary-deep: #07197E;
+      --primary-blue: #17ABE3;
+      --accent-green: #10B981;
+      --accent-orange: #F97316;
+      --white: #FFFFFF;
+      --bg-light: #F8F9FB;
+      --text-dark: #0f172a;
+      --text-muted: #6b7280;
+      --gray-100: #f3f4f6;
+      --gray-200: #e5e7eb;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg-light);
+      font-family: 'Barlow', sans-serif;
+      color: var(--text-dark);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 0 20px;
+    }
+
+    /* HEADER */
+    header {
+      background: var(--white);
+      border-bottom: 1px solid var(--gray-200);
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      box-shadow: 0 2px 8px rgba(4, 16, 86, 0.05);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 0;
+      gap: 12px;
+    }
+
+    .logo-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    .logo-link:hover {
+      opacity: 0.8;
+    }
+
+    .logo-img {
+      height: 36px;
+      width: auto;
+      max-width: 130px;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .logo-text span:first-child {
+      font-family: 'Bicubik', sans-serif;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      font-size: 12px;
+      color: var(--primary-dark);
+    }
+
+    .logo-text span:last-child {
+      font-size: 10px;
+      color: var(--text-muted);
+      font-family: 'Barlow', sans-serif;
+      font-weight: 500;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    nav a {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-dark);
+      font-family: 'Barlow', sans-serif;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: var(--primary-blue);
+    }
+
+    .nav-btn {
+      padding: 10px 18px;
+      border-radius: 6px;
+      border: none;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--white);
+      background: linear-gradient(135deg, var(--primary-deep), var(--primary-dark));
+      box-shadow: 0 10px 24px rgba(4, 16, 86, 0.25);
+      transition: all 0.2s;
+      cursor: pointer;
+      font-family: 'Barlow', sans-serif;
+    }
+
+    .nav-btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 14px 32px rgba(4, 16, 86, 0.35);
+    }
+
+    /* HERO / HEADER DA POLÍTICA */
+    .policy-hero {
+      padding: 50px 0 40px;
+      background: linear-gradient(135deg, #f0f4ff 0%, var(--bg-light) 100%);
+      border-bottom: 1px solid var(--gray-200);
+    }
+
+    .policy-hero-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .policy-kicker {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent-orange);
+      font-weight: 700;
+    }
+
+    .policy-title {
+      font-family: 'Bicubik', sans-serif;
+      font-size: 32px;
+      color: var(--primary-dark);
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    .policy-subtitle {
+      font-size: 14px;
+      color: var(--text-muted);
+      max-width: 700px;
+      line-height: 1.6;
+    }
+
+    .policy-meta {
+      margin-top: 8px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* CONTEÚDO DA POLÍTICA */
+    main {
+      padding: 40px 0 60px;
+    }
+
+    .policy-wrapper {
+      max-width: 900px;
+      margin: 0 auto;
+      background: var(--white);
+      border-radius: 12px;
+      padding: 32px 24px;
+      border: 1px solid var(--gray-200);
+      box-shadow: 0 10px 28px rgba(4, 16, 86, 0.05);
+    }
+
+    .policy-wrapper h1 {
+      font-family: 'Bicubik', sans-serif;
+      font-size: 26px;
+      color: var(--primary-dark);
+      margin-bottom: 20px;
+    }
+
+    .policy-wrapper h2 {
+      font-family: 'Bicubik', sans-serif;
+      font-size: 20px;
+      color: var(--primary-dark);
+      margin-top: 28px;
+      margin-bottom: 10px;
+    }
+
+    .policy-wrapper h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-top: 18px;
+      margin-bottom: 6px;
+    }
+
+    .policy-wrapper p {
+      font-size: 14px;
+      color: var(--text-dark);
+      line-height: 1.7;
+      margin-bottom: 10px;
+    }
+
+    .policy-wrapper ul,
+    .policy-wrapper ol {
+      margin: 6px 0 14px 20px;
+      font-size: 14px;
+      color: var(--text-dark);
+      line-height: 1.7;
+    }
+
+    .policy-wrapper li + li {
+      margin-top: 4px;
+    }
+
+    .policy-wrapper a {
+      color: var(--primary-blue);
+      text-decoration: underline;
+    }
+
+    .policy-wrapper a:hover {
+      color: var(--primary-dark);
+    }
+
+    .policy-highlight {
+      background: var(--gray-100);
+      border-radius: 8px;
+      padding: 12px 14px;
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .toc-box {
+      background: var(--bg-light);
+      border-radius: 8px;
+      border: 1px solid var(--gray-200);
+      padding: 12px 14px;
+      margin-bottom: 20px;
+      font-size: 13px;
+    }
+
+    .toc-title {
+      font-weight: 700;
+      font-size: 13px;
+      margin-bottom: 6px;
+      color: var(--primary-dark);
+    }
+
+    .toc-box ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .toc-box li {
+      margin: 2px 0;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 32px 0;
+      font-size: 12px;
+      color: var(--text-muted);
+      background: var(--white);
+      border-top: 1px solid var(--gray-200);
+      font-family: 'Barlow', sans-serif;
+    }
+
+    footer a {
+      color: var(--primary-blue);
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    footer a:hover {
+      color: var(--primary-dark);
+    }
+
+    /* RESPONSIVO */
+    @media (max-width: 768px) {
+      .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .policy-title {
+        font-size: 26px;
+      }
+
+      .policy-wrapper {
+        padding: 24px 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="header-inner">
+      <a href="index.html" class="logo-link">
+        <img src="logo-inbotix.png" alt="Logo Inbotix" class="logo-img" />
+        <div class="logo-text">
+          <span>INBOTIX</span>
+          <span>Aviso de Privacidade</span>
+        </div>
+      </a>
+      <nav>
+        <a href="index.html"><strong>Home</strong></a>
+        <a href="index.html#produtos"><strong>Produtos</strong></a>
+        <a href="index.html#sobre"><strong>Sobre</strong></a>
+        <a href="index.html#contato" class="nav-btn">Falar com o time</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<section class="policy-hero">
+  <div class="container">
+    <div class="policy-hero-inner">
+      <div class="policy-kicker">LGPD • PROTEÇÃO DE DADOS</div>
+      <h1 class="policy-title">Aviso de Privacidade da INBOTIX</h1>
+      <p class="policy-subtitle">
+        Este Aviso de Privacidade descreve como a INBOTIX coleta, utiliza, armazena e compartilha seus dados pessoais
+        no contexto das nossas plataformas, soluções e serviços.
+      </p>
+      <p class="policy-meta">
+        Última atualização: <!-- coloque aqui a data da última atualização, ex: --> 07 de dezembro de 2025
+      </p>
+    </div>
+  </div>
+</section>
+
+<main>
+  <div class="container">
+    <div class="policy-wrapper">
+
+      <div class="policy-highlight">
+        Este documento é um resumo organizado do conteúdo do seu Aviso de Privacidade oficial.
+        Se houver divergência entre versões, prevalece a versão mais atualizada aprovada pela INBOTIX.
+      </div>
+
+      <!-- CAIXA DE ÍNDICE (opcional – pode ajustar os itens conforme o texto do Google Docs) -->
+      <div class="toc-box">
+        <div class="toc-title">Índice</div>
+        <ul>
+          <li><a href="#introducao">1. Introdução</a></li>
+          <li><a href="#dados-coletados">2. Dados pessoais que coletamos</a></li>
+          <li><a href="#finalidades">3. Finalidades do tratamento</a></li>
+          <li><a href="#compartilhamento">4. Compartilhamento de dados</a></li>
+          <li><a href="#direitos-titulares">5. Direitos dos titulares (LGPD)</a></li>
+          <li><a href="#seguranca">6. Medidas de segurança</a></li>
+          <li><a href="#retencao">7. Prazo de guarda dos dados</a></li>
+          <li><a href="#cookies">8. Cookies e tecnologias semelhantes</a></li>
+          <li><a href="#contato">9. Canal de contato com o Encarregado</a></li>
+          <li><a href="#atualizacoes">10. Atualizações deste Aviso</a></li>
+        </ul>
+      </div>
+
+      <!-- A PARTIR DAQUI, COLE O TEXTO DO SEU AVISO DE PRIVACIDADE DO GOOGLE DOCS -->
+      <!-- Você pode substituir completamente os blocos abaixo pelo conteúdo exato do documento. -->
+
+      <h1 id="introducao">1. Introdução</h1>
+      <p>
+        <!-- Substitua este parágrafo pelo texto da seção de Introdução do seu Aviso de Privacidade. -->
+        Este Aviso de Privacidade tem como objetivo explicar de forma clara e transparente como a INBOTIX trata
+        os dados pessoais de clientes, potenciais clientes, usuários das plataformas e demais parceiros de negócio.
+      </p>
+
+      <h2 id="dados-coletados">2. Dados pessoais que coletamos</h2>
+      <p>
+        <!-- Substitua este texto pelos tipos de dados listados no seu documento (nome, e-mail, etc.). -->
+        A depender da relação estabelecida com a INBOTIX, podemos coletar diferentes tipos de dados pessoais,
+        tais como:
+      </p>
+      <ul>
+        <li>Dados de identificação: nome completo, CPF, cargo, empresa;</li>
+        <li>Dados de contato: e-mail, telefone, WhatsApp;</li>
+        <li>Dados de uso das plataformas: logs de acesso, interações e configurações;</li>
+        <li>Outros dados necessários para a prestação dos serviços descritos em contrato ou proposta comercial.</li>
+      </ul>
+
+      <h2 id="finalidades">3. Finalidades do tratamento</h2>
+      <p>
+        <!-- Ajuste conforme as finalidades do seu Aviso de Privacidade. -->
+        Os dados pessoais são tratados para finalidades legítimas e específicas, incluindo, mas não se limitando a:
+      </p>
+      <ul>
+        <li>Execução de contratos firmados com clientes e parceiros;</li>
+        <li>Envio de comunicações relacionadas aos serviços e suporte;</li>
+        <li>Manutenção, melhoria e segurança das plataformas da INBOTIX;</li>
+        <li>Atendimento de obrigações legais e regulatórias.</li>
+      </ul>
+
+      <h2 id="compartilhamento">4. Compartilhamento de dados</h2>
+      <p>
+        <!-- Substitua pelo texto exato do seu item de compartilhamento, se desejar. -->
+        Os dados pessoais poderão ser compartilhados com fornecedores, parceiros de tecnologia, prestadores de
+        serviço e autoridades competentes, sempre que necessário e em conformidade com a legislação aplicável.
+      </p>
+
+      <h2 id="direitos-titulares">5. Direitos dos titulares (LGPD)</h2>
+      <p>
+        <!-- Ajuste conforme a lista da sua política. -->
+        Nos termos da Lei nº 13.709/2018 (LGPD), o titular de dados pessoais possui, entre outros, os seguintes direitos:
+      </p>
+      <ul>
+        <li>Confirmação da existência de tratamento;</li>
+        <li>Acesso aos dados pessoais;</li>
+        <li>Correção de dados incompletos, inexatos ou desatualizados;</li>
+        <li>Anonimização, bloqueio ou eliminação de dados desnecessários, excessivos ou tratados em desconformidade;</li>
+        <li>Portabilidade dos dados, quando aplicável;</li>
+        <li>Informação sobre o compartilhamento de dados;</li>
+        <li>Revogação do consentimento, quando o tratamento se basear nessa hipótese.</li>
+      </ul>
+
+      <h2 id="seguranca">6. Medidas de segurança</h2>
+      <p>
+        <!-- Aqui você pode colar o parágrafo de segurança do seu documento. -->
+        A INBOTIX adota medidas técnicas e organizacionais de segurança da informação para proteger os dados pessoais
+        contra acessos não autorizados, perdas, uso indevido ou qualquer forma de tratamento inadequado ou ilícito.
+      </p>
+
+      <h2 id="retencao">7. Prazo de guarda dos dados</h2>
+      <p>
+        <!-- Substitua pela redação exata da sua política sobre retenção. -->
+        Os dados pessoais são mantidos pelo período necessário ao cumprimento das finalidades para as quais foram coletados,
+        bem como para atendimento de obrigações legais, regulatórias ou contratuais.
+      </p>
+
+      <h2 id="cookies">8. Cookies e tecnologias semelhantes</h2>
+      <p>
+        <!-- Adeque conforme a seção de cookies do seu Aviso de Privacidade. -->
+        As plataformas da INBOTIX podem utilizar cookies e tecnologias semelhantes para melhorar a experiência do usuário,
+        realizar medições de audiência e personalizar conteúdos e ofertas. Você pode gerenciar as preferências de cookies
+        diretamente no seu navegador.
+      </p>
+
+      <h2 id="contato">9. Canal de contato com o Encarregado</h2>
+      <p>
+        <!-- Coloque aqui o e-mail/contato do DPO/Encarregado que está no seu documento. -->
+        Em caso de dúvidas sobre este Aviso de Privacidade ou para exercer seus direitos enquanto titular de dados pessoais,
+        você poderá entrar em contato com o Encarregado pelo tratamento de dados pessoais (DPO) da INBOTIX por meio do e-mail:
+        <strong>privacidade@inbotix.com.br</strong> <!-- ajuste para o e-mail correto -->
+      </p>
+
+      <h2 id="atualizacoes">10. Atualizações deste Aviso</h2>
+      <p>
+        <!-- Substitua pela redação que consta no final do seu documento. -->
+        A INBOTIX poderá atualizar este Aviso de Privacidade a qualquer tempo, para refletir mudanças legislativas,
+        regulatórias ou operacionais. Recomendamos que você consulte periodicamente esta página para verificar a versão mais recente.
+      </p>
+
+      <!-- FIM DO CONTEÚDO. TROQUE TUDO ACIMA PELO TEXTO COMPLETO DO GOOGLE DOCS, SE QUISER. -->
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <p>© <span id="year"></span> INBOTIX · Todos os direitos reservados.</p>
+    <p style="margin-top: 12px; font-size: 11px;">
+      <a href="index.html">Home</a> · 
+      <a href="index.html#sobre">Sobre</a> · 
+      <a href="index.html#contato">Contato</a>
+    </p>
+  </div>
+</footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
