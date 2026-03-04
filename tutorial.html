@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Como Usar o DinbotFlow | Guia Completo INBOTIX — Máquina de Vendas</title>
+  <meta name="description" content="Guia completo de como utilizar o DinbotFlow. Do primeiro acesso até sua primeira campanha ativa." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/gmloureiro/dinbotflow_pricing/main/favicon.ico" />
+  <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/gmloureiro/dinbotflow_pricing/main/favicon.png" />
+  <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/gmloureiro/dinbotflow_pricing/main/apple-touch-icon.png" />
+  <meta property="og:image" content="https://raw.githubusercontent.com/gmloureiro/dinbotflow_pricing/main/logo-inbotix.png" />
+  <meta property="og:title" content="Como Usar — DinbotFlow | Guia Completo INBOTIX" />
+  <meta property="og:description" content="Guia completo de como utilizar o DinbotFlow. Do primeiro acesso até sua primeira campanha ativa." />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    /* ============================================================
+       INBOTIX BRAND PALETTE
+       Navy Primary + Cyan Accent
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy-900: #071b47;
+      --navy-800: #0a2458;
+      --navy-700: #0d2d6e;
+      --navy-600: #1a3a8f;
+      --navy-500: #2451b5;
+      --navy-400: #3b69d1;
+      --navy-300: #6490e8;
+      --navy-200: #a8c0f5;
+      --navy-100: #dce8ff;
+      --navy-50:  #eef4ff;
+
+      --cyan-600: #009aaa;
+      --cyan-500: #00b4c8;
+      --cyan-400: #00c4c4;
+      --cyan-300: #2dd4bf;
+      --cyan-200: #99e9e2;
+      --cyan-100: #ccf4f0;
+      --cyan-50:  #edfcfa;
+
+      --slate-900: #0f172a;
+      --slate-800: #1e293b;
+      --slate-700: #334155;
+      --slate-600: #475569;
+      --slate-500: #64748b;
+      --slate-400: #94a3b8;
+      --slate-300: #cbd5e1;
+      --slate-200: #e2e8f0;
+      --slate-100: #f1f5f9;
+      --slate-50:  #f8fafc;
+      --white: #ffffff;
+
+      --green-500: #22c55e;
+      --amber-500: #f59e0b;
+      --purple-500: #8b5cf6;
+      --rose-500:   #f43f5e;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, sans-serif; background: var(--slate-50); color: var(--slate-800); line-height: 1.6; overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    /* ============================================================
+       NAVBAR
+    ============================================================ */
+    .navbar {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--navy-900);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255,255,255,.10);
+      box-shadow: 0 2px 20px rgba(7,27,71,.4);
+    }
+
+
+    .navbar .btn-outline {
+      border-color: rgba(255,255,255,.3) !important;
+      color: rgba(255,255,255,.85) !important;
+    }
+    .navbar .btn-outline:hover {
+      background: rgba(255,255,255,.12) !important;
+      border-color: var(--cyan-400) !important;
+      color: var(--cyan-400) !important;
+    }
+    /* Logo branco no fundo escuro */
+    .navbar .logo img, .logo img { filter: brightness(0) invert(1); }
+
+    .navbar-inner {
+      max-width: 1200px; margin: 0 auto; padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between; height: 64px;
+    }
+
+    .logo { display: flex; align-items: center; gap: 10px; }
+
+
+    .logo img { height: 34px; width: auto; display: block; }
+    .logo .logo-text { display: none !important; }
+
+    .logo-icon {
+      width: 36px; height: 36px;
+      background: linear-gradient(135deg, var(--cyan-400), var(--navy-600));
+      border-radius: 10px; display: flex; align-items: center; justify-content: center;
+      color: white; font-size: .82rem; font-weight: 800;
+      box-shadow: 0 2px 10px rgba(13,45,110,.25);
+    }
+
+    .logo-text .brand  { font-size: .63rem; font-weight: 700; color: var(--slate-400); letter-spacing: .1em; text-transform: uppercase; }
+    .logo-text .product { font-size: .93rem; font-weight: 800; color: var(--navy-800); }
+    .logo-text .product span { color: var(--cyan-500); }
+
+    .nav-links { display: flex; gap: 2px; }
+    .nav-links a { font-size: .84rem; font-weight: 500; color: rgba(255,255,255,.8); padding: 7px 14px; border-radius: 999px; transition: .2s; }
+    .nav-links a:hover { color: var(--cyan-400); background: rgba(255,255,255,.08); }
+    .nav-links a.active { color: var(--cyan-400); background: rgba(0,196,196,.15); font-weight: 600; }
+
+    .nav-ctas { display: flex; gap: 8px; }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-family: inherit; font-weight: 600; border: none; cursor: pointer;
+      border-radius: 999px; transition: .22s; white-space: nowrap; text-decoration: none;
+    }
+
+    .btn-primary { background: linear-gradient(135deg, var(--navy-600), var(--navy-800)); color: white; padding: 10px 20px; font-size: .875rem; box-shadow: 0 3px 14px rgba(13,45,110,.3); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(13,45,110,.4); }
+
+    .btn-outline { background: transparent; color: var(--navy-600); padding: 9px 18px; font-size: .875rem; border: 2px solid var(--navy-200); }
+    .btn-outline:hover { background: var(--navy-50); border-color: var(--navy-400); transform: translateY(-1px); }
+
+    .btn-accent { background: linear-gradient(135deg, var(--cyan-400), var(--cyan-500)); color: var(--navy-900); padding: 10px 20px; font-size: .875rem; font-weight: 700; box-shadow: 0 3px 14px rgba(0,196,196,.3); }
+    .btn-accent:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,196,196,.4); }
+
+    .btn-manual { background: linear-gradient(135deg, var(--navy-700), var(--navy-900)); color: white; padding: 13px 26px; font-size: 1rem; box-shadow: 0 4px 20px rgba(13,45,110,.4); border-radius: 12px; }
+    .btn-manual:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(13,45,110,.5); }
+
+    /* ============================================================
+       HERO — dark navy
+    ============================================================ */
+    .hero {
+      position: relative; padding: 72px 0 80px;
+      background: linear-gradient(155deg, var(--navy-900) 0%, var(--navy-800) 55%, var(--navy-700) 100%);
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 65% 55% at 82% 25%, rgba(0,196,196,.15) 0%, transparent 62%),
+        radial-gradient(ellipse 45% 45% at 12% 78%, rgba(0,180,200,.10) 0%, transparent 58%);
+    }
+
+    .hero-grid {
+      position: relative; max-width: 1200px; margin: 0 auto; padding: 0 24px;
+      display: grid; grid-template-columns: 1fr auto; gap: 48px; align-items: center;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.18);
+      color: var(--cyan-200); font-size: .75rem; font-weight: 600;
+      padding: 5px 14px; border-radius: 999px; margin-bottom: 18px;
+      letter-spacing: .05em; text-transform: uppercase;
+    }
+
+    .hero-breadcrumb { display: flex; align-items: center; gap: 7px; margin-bottom: 20px; }
+    .hero-breadcrumb a { font-size: .76rem; color: var(--cyan-300); }
+    .hero-breadcrumb span { font-size: .76rem; color: rgba(255,255,255,.4); }
+    .hero-breadcrumb i { font-size: .62rem; color: rgba(255,255,255,.3); }
+
+    .hero-title { font-size: clamp(1.9rem, 3.8vw, 2.7rem); font-weight: 900; color: white; line-height: 1.2; letter-spacing: -.025em; margin-bottom: 14px; }
+    .hero-title .accent { background: linear-gradient(135deg, var(--cyan-300), var(--cyan-400)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero-sub { font-size: 1rem; color: rgba(255,255,255,.62); max-width: 510px; line-height: 1.7; margin-bottom: 30px; }
+
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    .hero-stats { display: flex; flex-direction: column; gap: 14px; min-width: 210px; }
+
+    .hero-stat-card {
+      background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12);
+      border-radius: 16px; padding: 16px 20px; backdrop-filter: blur(8px); text-align: center;
+    }
+
+    .hero-stat-card .num { font-size: 1.5rem; font-weight: 900; display: block; background: linear-gradient(135deg, var(--cyan-300), var(--cyan-400)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero-stat-card .lbl { font-size: .72rem; color: rgba(255,255,255,.45); text-transform: uppercase; letter-spacing: .05em; }
+
+    /* ============================================================
+       LAYOUT
+    ============================================================ */
+    .page-wrapper {
+      max-width: 1200px; margin: 0 auto; padding: 48px 24px 80px;
+      display: grid; grid-template-columns: 255px 1fr; gap: 32px; align-items: start;
+    }
+
+    /* ============================================================
+       SIDEBAR
+    ============================================================ */
+    .sidebar { position: sticky; top: 78px; }
+
+    .sidebar-card { background: white; border: 1px solid var(--slate-200); border-radius: 18px; overflow: hidden; box-shadow: 0 2px 16px rgba(13,45,110,.08); }
+
+    .sidebar-header { background: linear-gradient(135deg, var(--navy-800), var(--navy-700)); padding: 16px 18px; color: white; }
+    .sidebar-header h3 { font-size: .92rem; font-weight: 700; }
+    .sidebar-header p  { font-size: .73rem; color: rgba(255,255,255,.55); margin-top: 2px; }
+
+    .sidebar-nav { padding: 10px; }
+
+    .sidebar-item {
+      display: flex; align-items: center; gap: 9px;
+      padding: 9px 11px; border-radius: 9px; cursor: pointer; transition: .2s;
+      margin-bottom: 2px; color: var(--slate-600); font-size: .83rem; font-weight: 500;
+      text-decoration: none;
+    }
+    .sidebar-item:hover { background: var(--navy-50); color: var(--navy-700); }
+    .sidebar-item.active { background: var(--navy-100); color: var(--navy-700); font-weight: 600; }
+    .sidebar-item.done { color: var(--green-500); }
+    .sidebar-item.done .snum { background: var(--green-500); color: white; }
+
+    .snum {
+      width: 23px; height: 23px; background: var(--slate-200); color: var(--slate-500);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: .68rem; font-weight: 700; flex-shrink: 0; transition: .2s;
+    }
+    .sidebar-item.active .snum { background: var(--navy-700); color: white; }
+
+    .sidebar-divider { height: 1px; background: var(--slate-100); margin: 6px 10px; }
+
+    .progress-wrap { padding: 10px 14px; border-top: 1px solid var(--slate-100); }
+    .progress-label { display: flex; justify-content: space-between; font-size: .73rem; color: var(--slate-400); margin-bottom: 5px; }
+    .progress-bar   { height: 6px; background: var(--slate-200); border-radius: 999px; overflow: hidden; }
+    .progress-fill  { height: 100%; background: linear-gradient(90deg, var(--navy-600), var(--cyan-400)); border-radius: 999px; transition: width .5s ease; }
+
+    .sidebar-manual { padding: 10px; border-top: 1px solid var(--slate-100); }
+    .sidebar-manual .btn-manual { width: 100%; justify-content: center; font-size: .85rem; padding: 11px 18px; }
+
+    /* ============================================================
+       MAIN CONTENT
+    ============================================================ */
+    .main-content { display: flex; flex-direction: column; gap: 28px; }
+
+    .chapter {
+      background: white; border: 1px solid var(--slate-200);
+      border-radius: 20px; overflow: hidden; box-shadow: 0 2px 14px rgba(13,45,110,.05);
+      scroll-margin-top: 88px;
+    }
+
+    .chapter-header {
+      display: flex; align-items: center; gap: 14px; padding: 22px 26px;
+      border-bottom: 1px solid var(--slate-100); position: relative; overflow: hidden;
+    }
+
+    .chapter-header::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: var(--ch-color, linear-gradient(90deg, var(--navy-500), var(--cyan-400)));
+    }
+
+    .ch-icon {
+      width: 46px; height: 46px; border-radius: 13px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center; font-size: 1.15rem;
+      background: var(--ch-bg, var(--navy-50));
+      color: var(--ch-fg, var(--navy-600));
+      border: 1px solid var(--ch-border, var(--navy-200));
+    }
+
+    .ch-meta { flex: 1; }
+    .ch-num   { font-size: .67rem; font-weight: 700; color: var(--slate-400); text-transform: uppercase; letter-spacing: .07em; }
+    .ch-title { font-size: 1.05rem; font-weight: 800; color: var(--navy-900); line-height: 1.3; }
+    .ch-sub   { font-size: .8rem; color: var(--slate-400); margin-top: 1px; }
+
+    .ch-badge { font-size: .68rem; font-weight: 700; padding: 4px 11px; border-radius: 999px; background: var(--ch-bg); color: var(--ch-fg); border: 1px solid var(--ch-border); white-space: nowrap; }
+
+    .chapter-body { padding: 26px; display: flex; flex-direction: column; gap: 22px; }
+
+    .sub-section { display: flex; flex-direction: column; gap: 12px; }
+
+    .sub-title {
+      display: flex; align-items: center; gap: 9px;
+      font-size: .92rem; font-weight: 700; color: var(--navy-800);
+      padding-bottom: 9px; border-bottom: 1px dashed var(--slate-200);
+    }
+
+    .sub-title .sub-num {
+      width: 25px; height: 25px;
+      background: linear-gradient(135deg, var(--navy-600), var(--navy-800));
+      border-radius: 7px; display: flex; align-items: center; justify-content: center;
+      color: white; font-size: .7rem; font-weight: 800; flex-shrink: 0;
+    }
+
+    .step-list { display: flex; flex-direction: column; gap: 9px; }
+
+    .step-item {
+      display: flex; align-items: flex-start; gap: 11px;
+      padding: 12px 15px; background: var(--slate-50);
+      border: 1px solid var(--slate-200); border-radius: 11px; transition: .2s;
+    }
+
+    .step-item:hover { border-color: var(--navy-200); background: var(--navy-50); }
+
+    .step-bullet {
+      width: 27px; height: 27px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--navy-100), var(--navy-50));
+      border: 2px solid var(--navy-200);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--navy-600); font-size: .73rem; font-weight: 800; flex-shrink: 0; margin-top: 1px;
+    }
+
+    .step-text { font-size: .88rem; color: var(--slate-700); line-height: 1.55; flex: 1; }
+    .step-text strong { color: var(--navy-800); font-weight: 600; }
+    .step-text code { font-family: 'JetBrains Mono', monospace; background: var(--navy-100); color: var(--navy-800); padding: 1px 6px; border-radius: 5px; font-size: .8rem; }
+
+    .url-box { display: flex; align-items: center; gap: 10px; background: var(--navy-900); border-radius: 11px; padding: 13px 16px; }
+    .url-box i  { color: var(--cyan-400); flex-shrink: 0; }
+    .url-box a  { font-family: 'JetBrains Mono', monospace; font-size: .88rem; color: var(--cyan-300); font-weight: 500; }
+    .url-box a:hover { color: var(--cyan-200); text-decoration: underline; }
+
+    .tip-box { display: flex; align-items: flex-start; gap: 11px; padding: 13px 16px; border-radius: 11px; border: 1px solid; }
+    .tip-box.info    { background: var(--navy-50); border-color: var(--navy-200); color: var(--navy-800); }
+    .tip-box.warning { background: #fffbeb; border-color: #fde68a; color: #92400e; }
+    .tip-box.success { background: #f0fdf4; border-color: #bbf7d0; color: #166534; }
+    .tip-box.danger  { background: #fff1f2; border-color: #fecdd3; color: #9f1239; }
+    .tip-box i  { font-size: .92rem; margin-top: 2px; flex-shrink: 0; }
+    .tip-box p  { font-size: .855rem; line-height: 1.55; }
+    .tip-box p strong { font-weight: 700; }
+
+    .status-badge { display: inline-flex; align-items: center; gap: 6px; padding: 5px 13px; border-radius: 999px; font-size: .8rem; font-weight: 700; }
+    .status-badge.connected { background: #f0fdf4; color: #16a34a; border: 1px solid #bbf7d0; }
+    .status-badge.dot::before { content: ''; display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+
+    .option-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 9px; }
+
+    .option-card {
+      padding: 13px 14px; background: var(--slate-50); border: 2px solid var(--slate-200);
+      border-radius: 11px; text-align: center; cursor: pointer; transition: .2s;
+    }
+    .option-card:hover { border-color: var(--navy-300); background: var(--navy-50); }
+    .option-card.recommended { border-color: var(--navy-600); background: var(--navy-50); position: relative; }
+    .option-card.recommended::after { content: '✓ Recomendado'; position: absolute; top: -10px; left: 50%; transform: translateX(-50%); background: var(--navy-700); color: white; font-size: .63rem; font-weight: 700; padding: 2px 9px; border-radius: 999px; white-space: nowrap; }
+    .option-card i    { font-size: 1.4rem; margin-bottom: 7px; display: block; color: var(--navy-600); }
+    .option-card span { font-size: .8rem; font-weight: 600; color: var(--slate-700); }
+
+    .config-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 10px; }
+
+    .config-item { background: var(--slate-50); border: 1px solid var(--slate-200); border-radius: 11px; padding: 13px 15px; transition: .2s; }
+    .config-item:hover { border-color: var(--navy-200); }
+    .config-item .label { font-size: .75rem; font-weight: 600; color: var(--slate-400); text-transform: uppercase; letter-spacing: .05em; margin-bottom: 4px; }
+    .config-item .value { font-size: .9rem; font-weight: 700; color: var(--navy-900); }
+    .config-item .hint  { font-size: .76rem; color: var(--slate-400); margin-top: 2px; }
+
+    /* sequence */
+    .sequence { display: flex; flex-direction: column; gap: 0; position: relative; }
+    .sequence::before { content: ''; position: absolute; left: 22px; top: 30px; bottom: 30px; width: 2px; background: linear-gradient(to bottom, var(--navy-300), var(--cyan-300)); opacity: .4; }
+
+    .seq-step { display: flex; align-items: flex-start; gap: 14px; padding: 14px 0; position: relative; }
+
+    .seq-icon { width: 44px; height: 44px; border-radius: 13px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: .95rem; font-weight: 700; z-index: 1; }
+    .seq-icon.linkedin { background: #0a66c2; color: white; }
+    .seq-icon.email    { background: var(--navy-700); color: white; }
+    .seq-icon.delay    { background: var(--amber-500); color: white; }
+    .seq-icon.branch   { background: var(--purple-500); color: white; }
+    .seq-icon.engage   { background: var(--rose-500); color: white; }
+
+    .seq-body { flex: 1; padding-top: 4px; }
+    .seq-title { font-size: .9rem; font-weight: 700; color: var(--navy-900); margin-bottom: 3px; }
+    .seq-desc  { font-size: .82rem; color: var(--slate-500); line-height: 1.5; }
+
+    .practices-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 12px; }
+
+    .practice-card { display: flex; align-items: flex-start; gap: 12px; padding: 15px 16px; background: var(--slate-50); border: 1px solid var(--slate-200); border-radius: 13px; transition: .2s; }
+    .practice-card:hover { border-color: var(--navy-200); transform: translateY(-2px); box-shadow: 0 4px 16px rgba(13,45,110,.1); }
+    .practice-icon { width: 38px; height: 38px; border-radius: 9px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: .9rem; }
+    .practice-card h4 { font-size: .86rem; font-weight: 700; color: var(--navy-900); margin-bottom: 3px; }
+    .practice-card p  { font-size: .8rem; color: var(--slate-500); line-height: 1.5; }
+
+    /* ============================================================
+       MANUAL MODAL
+    ============================================================ */
+    .modal-overlay {
+      position: fixed; inset: 0; z-index: 9999;
+      background: rgba(7,27,71,.82); backdrop-filter: blur(6px);
+      display: flex; align-items: center; justify-content: center; padding: 20px;
+      opacity: 0; pointer-events: none; transition: opacity .3s ease;
+    }
+    .modal-overlay.open { opacity: 1; pointer-events: all; }
+
+    .modal {
+      background: white; border-radius: 22px; width: 100%; max-width: 840px; max-height: 90vh;
+      display: flex; flex-direction: column;
+      box-shadow: 0 24px 80px rgba(7,27,71,.4);
+      transform: translateY(28px); transition: transform .35s cubic-bezier(.4,0,.2,1);
+      overflow: hidden;
+    }
+    .modal-overlay.open .modal { transform: translateY(0); }
+
+    .modal-header { background: linear-gradient(135deg, var(--navy-800), var(--navy-900)); padding: 22px 26px; display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; }
+    .modal-header-left { display: flex; align-items: center; gap: 13px; }
+    .modal-icon { width: 46px; height: 46px; border-radius: 13px; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.18); display: flex; align-items: center; justify-content: center; color: var(--cyan-300); font-size: 1.25rem; }
+    .modal-title    { color: white; font-size: 1.05rem; font-weight: 800; }
+    .modal-subtitle { color: rgba(255,255,255,.55); font-size: .77rem; margin-top: 1px; }
+    .modal-close { width: 34px; height: 34px; background: rgba(255,255,255,.12); border: none; border-radius: 9px; color: white; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: .95rem; transition: .2s; }
+    .modal-close:hover { background: rgba(255,255,255,.22); }
+
+    .modal-tabs { display: flex; padding: 0 18px; border-bottom: 1px solid var(--slate-200); flex-shrink: 0; overflow-x: auto; background: var(--slate-50); }
+    .modal-tab { padding: 12px 16px; font-size: .83rem; font-weight: 600; color: var(--slate-500); cursor: pointer; white-space: nowrap; border-bottom: 2px solid transparent; transition: .2s; }
+    .modal-tab:hover { color: var(--navy-700); }
+    .modal-tab.active { color: var(--navy-700); border-bottom-color: var(--navy-600); }
+
+    .modal-body { flex: 1; overflow-y: auto; }
+
+    .manual-panel { display: none; padding: 26px; }
+    .manual-panel.active { display: block; }
+
+    .manual-chapter-title { display: flex; align-items: center; gap: 11px; font-size: .97rem; font-weight: 800; color: var(--navy-900); margin-bottom: 14px; padding-bottom: 11px; border-bottom: 2px solid var(--navy-100); }
+    .manual-chapter-title .badge { width: 28px; height: 28px; background: linear-gradient(135deg, var(--navy-700), var(--navy-600)); border-radius: 7px; display: flex; align-items: center; justify-content: center; color: white; font-size: .73rem; font-weight: 800; flex-shrink: 0; }
+
+    .manual-section { margin-bottom: 18px; }
+    .manual-section h4 { font-size: .85rem; font-weight: 700; color: var(--navy-700); margin-bottom: 9px; display: flex; align-items: center; gap: 7px; }
+    .manual-section h4 i { color: var(--cyan-500); }
+
+    .manual-list { display: flex; flex-direction: column; gap: 6px; }
+    .manual-list li { display: flex; align-items: flex-start; gap: 9px; font-size: .855rem; color: var(--slate-600); line-height: 1.55; padding: 7px 11px; background: var(--slate-50); border-radius: 7px; }
+    .manual-list li::before { content: '→'; color: var(--navy-500); font-weight: 700; flex-shrink: 0; }
+    .manual-list li strong { color: var(--navy-800); }
+
+    .manual-code { background: var(--navy-900); border-radius: 9px; padding: 13px 16px; font-family: 'JetBrains Mono', monospace; font-size: .83rem; color: var(--cyan-300); margin: 8px 0; }
+
+    .modal-footer { border-top: 1px solid var(--slate-200); padding: 14px 26px; display: flex; align-items: center; justify-content: space-between; background: var(--slate-50); flex-shrink: 0; }
+    .modal-footer p { font-size: .77rem; color: var(--slate-400); }
+
+    /* ============================================================
+       SCROLL REVEAL
+    ============================================================ */
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .5s ease, transform .5s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 900px) {
+      .page-wrapper { grid-template-columns: 1fr; }
+      .sidebar { position: static; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-stats { flex-direction: row; min-width: auto; }
+      .option-cards { grid-template-columns: 1fr; }
+      .config-grid { grid-template-columns: 1fr; }
+      .practices-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .hero-stats { display: none; }
+      .modal { border-radius: 14px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a href="index.html" class="logo">
+      <img src="https://raw.githubusercontent.com/gmloureiro/dinbotflow_pricing/main/logo-inbotix.png"
+           alt="INBOTIX — DinbotFlow"
+           style="height:34px;width:auto;display:block;"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+      <div class="logo-text" style="display:none;">
+        <div class="brand">INBOTIX</div>
+        <div class="product">Dinbot<span>Flow</span></div>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a href="index.html">← Início</a>
+      <a href="tutorial.html" class="active">Como Usar</a>
+      <a href="index.html#faq">Dúvidas</a>
+    </div>
+    <div class="nav-ctas">
+      <button class="btn btn-outline" onclick="openManual()"><i class="fas fa-book-open"></i> Manual Completo</button>
+      <a href="https://app.dinbotflow.app" target="_blank" class="btn btn-primary"><i class="fas fa-arrow-right"></i> Acessar App</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid">
+    <div>
+      <div class="hero-breadcrumb">
+        <a href="index.html">Início</a>
+        <i class="fas fa-chevron-right"></i>
+        <span>Como Usar</span>
+      </div>
+      <div class="hero-eyebrow"><i class="fas fa-book"></i> Guia Oficial DinbotFlow</div>
+      <h1 class="hero-title">Do zero à sua primeira<br/><span class="accent">campanha ativa.</span></h1>
+      <p class="hero-sub">Siga o guia passo a passo para configurar sua conta, conectar LinkedIn e Email, montar uma sequência e colocar a prospecção no piloto automático.</p>
+      <div class="hero-actions">
+        <button class="btn btn-manual" onclick="openManual()">
+          <i class="fas fa-book-open"></i> 📘 Manual Completo da Plataforma
+        </button>
+        <a href="https://app.dinbotflow.app" target="_blank" class="btn btn-outline" style="border-color:rgba(255,255,255,.25);color:rgba(255,255,255,.75);padding:13px 20px">
+          <i class="fas fa-external-link-alt"></i> Abrir App
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-stats">
+      <div class="hero-stat-card"><span class="num">10</span><span class="lbl">Capítulos</span></div>
+      <div class="hero-stat-card"><span class="num">&lt;1h</span><span class="lbl">Para configurar</span></div>
+      <div class="hero-stat-card"><span class="num">🇧🇷 PT</span><span class="lbl">Em português</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PAGE BODY -->
+<div class="page-wrapper">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-card">
+      <div class="sidebar-header"><h3>📋 Índice de Capítulos</h3><p>Clique para navegar</p></div>
+      <nav class="sidebar-nav">
+        <a href="#ch1" class="sidebar-item active"><span class="snum">1</span> Primeiro Acesso</a>
+        <a href="#ch2" class="sidebar-item"><span class="snum">2</span> Conectar LinkedIn</a>
+        <a href="#ch3" class="sidebar-item"><span class="snum">3</span> Modo de Automação</a>
+        <a href="#ch4" class="sidebar-item"><span class="snum">4</span> Conectar Email</a>
+        <a href="#ch5" class="sidebar-item"><span class="snum">5</span> Canal Ativo</a>
+        <a href="#ch6" class="sidebar-item"><span class="snum">6</span> Configurações</a>
+        <a href="#ch7" class="sidebar-item"><span class="snum">7</span> Criar Campanha</a>
+        <a href="#ch8" class="sidebar-item"><span class="snum">8</span> Sequência</a>
+        <a href="#ch9" class="sidebar-item"><span class="snum">9</span> Lançar Campanha</a>
+        <a href="#ch10" class="sidebar-item"><span class="snum">10</span> Boas Práticas</a>
+      </nav>
+      <div class="progress-wrap">
+        <div class="progress-label"><span>Progresso</span><span id="progressPct">0%</span></div>
+        <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+      </div>
+      <div class="sidebar-divider"></div>
+      <div class="sidebar-manual">
+        <button class="btn btn-manual" onclick="openManual()"><i class="fas fa-book-open"></i> 📘 Manual Completo</button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main-content">
+
+    <!-- CH 1 -->
+    <article class="chapter reveal" id="ch1" style="--ch-color:linear-gradient(90deg,var(--navy-600),var(--cyan-400));">
+      <div class="chapter-header" style="--ch-bg:var(--navy-50);--ch-fg:var(--navy-700);--ch-border:var(--navy-200);">
+        <div class="ch-icon"><i class="fas fa-door-open"></i></div>
+        <div class="ch-meta"><div class="ch-num">Capítulo 01</div><div class="ch-title">Primeiro Acesso à Plataforma</div><div class="ch-sub">Acesso, cadastro e login</div></div>
+        <span class="ch-badge" style="--ch-bg:var(--navy-50);--ch-fg:var(--navy-700);--ch-border:var(--navy-200);"><i class="fas fa-clock" style="margin-right:3px"></i> ~5 min</span>
+      </div>
+      <div class="chapter-body">
+        <div class="sub-section">
+          <div class="sub-title"><span class="sub-num">1.1</span> Acessando o Site</div>
+          <div class="step-list">
+            <div class="step-item"><div class="step-bullet">1</div><div class="step-text">Abra o navegador — recomendamos <strong>Google Chrome</strong>.</div></div>
+            <div class="step-item"><div class="step-bullet">2</div><div class="step-text">Digite na barra de endereço e pressione <code>Enter</code>:</div></div>
+          </div>
+          <div class="url-box"><i class="fas fa-globe"></i><a href="https://app.dinbotflow.app" target="_blank">https://app.dinbotflow.app</a></div>
+        </div>
+        <div class="sub-section">
+          <div class="sub-title"><span class="sub-num">1.2</span> Criando sua Conta</div>
+          <div class="step-list">
+            <div class="step-item"><div class="step-bullet">1</div><div class="step-text">Clique em <strong>Register</strong> ou <strong>Criar Conta</strong>.</div></div>
+            <div class="step-item"><div class="step-bullet">2</div><div class="step-text">Preencha: <strong>Nome</strong>, <strong>E-mail</strong> e <strong>Senha</strong>.</div></div>
+            <div class="step-item"><div class="step-bullet">3</div><div class="step-text">Verifique seu e-mail — pode chegar um <strong>código de verificação</strong>.</div></div>
+            <div class="step-item"><div class="step-bullet">4</div><div class="step-text">Após confirmar, retorne à tela de login.</div></div>
+          </div>
+        </div>
+        <div class="sub-section">
+          <div class="sub-title"><span class="sub-num">1.3</span> Fazendo Login</div>
+          <div class="step-list">
+            <div class="step-item"><div class="step-bullet">1</div><div class="step-text">Insira seu <strong>e-mail</strong> e sua <strong>senha</strong>.</div></div>
+            <div class="step-item"><div class="step-bullet">2</div><div class="step-text">Clique em <strong>Login</strong> — você entrará no painel principal.</div></div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- CH 2 -->
+    <article class="chapter reveal" id="ch2" style="--ch-color:linear-gradient(90deg,#0a66c2,var(--navy-500));">
+      <div class="chapter-header" style="--ch-bg:#eff6ff;--ch-fg:#1d4ed8;--ch-border:#bfdbfe;">
+        <div class="ch-icon"><i class="fab fa-linkedin-in"></i></div>
+        <div class="ch-meta"><div class="ch-num">Capítulo 02</div><div class="ch-title">Conectando sua Conta do LinkedIn</div><div class="ch-sub">Essencial — sem isso nada funciona</div></div>
+        <span class="ch-badge" style="--ch-bg:#eff6ff;--ch-fg:#1d4ed8;--ch-border:#bfdbfe;"><i class="fas fa-exclamation-circle" style="margin-right:3px"></i> Obrigatório</span>
+      </div>
+      <div class="chapter-body">
+        <div class="tip-box warning"><i class="fas fa-exclamation-triangle"></i><p><strong>Importante:</strong> Conectar o LinkedIn é o primeiro passo obrigatório. Sem ele, nenhuma campanha pode ser executada.</p></div>
+        <div class="sub-section">
+          <div class="sub-title"><span class="sub-num">2.1</span> Acessar Accounts</div>
+          <div class="step-list">
+            <div class="step-item"><div class="step-bullet">1</div><div class="step-text">Menu lateral esquerdo → <strong>Accounts</strong>.</div></div>
+            <div class="step-item"><div class="step-bullet">2</div><div class="step-text">Clique em <strong>Add Account</strong> → escolha <strong>LinkedIn</strong>.</div></div>
+          </div>
+        </div>
+        <div class="sub-section">
+          <div class="sub-title"><span class="sub-num">2.2–2.3</span> Inserir Credenciais e Verificar</div>
+          <div class="step-list">
+            <div class="step-item"><div class="step-bullet">1</div><div class="step-text">Insira o <strong>e-mail do LinkedIn</strong> e a <strong>senha</strong>.</div></div>
+            <div class="step-item"><div class="step-bullet">2</div><div class="step-text">O LinkedIn enviará um código de verificação para o seu e-mail.</div></div>
+            <div class="step-item"><div class="step-bullet">3</div><div class="step-text">Cole o código na plataforma e confirme. Status esperado:</div></div>
+          </div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:6px">
+            <span class="status-badge connected dot">Connected</span>
+            <span class="status-badge connected dot">Healthy</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- CH 3 -->
+    <article class="chapter reveal" id="ch3" style="--ch-color:linear-gradient(90deg,var(--navy-500),var(--cyan-400));">
+      <div class="chapter-header" style="--ch-bg:var(--navy-50);--ch-fg:var(--navy-700);--ch-border:var(--navy-200);">
+        <div class="ch-icon"><i class="fas fa-sliders-h"></i></div>
+        <div class="ch-meta"><div class="ch-num">Capítulo 03</div><div class="ch-title">Definindo o Modo de Automação</div><div class="ch-sub">LinkedIn Only · Email Only · LinkedIn + Email</div></div>
+        <span class="ch-badge" style="--ch-bg:var(--navy-50);--ch-fg:var(--navy-700);--ch-border:var(--navy-200);"><i class="fas fa-cog" style="margin-right:3px"></i> Settings</span>
+      </div>
+      <div class="chapter-body">
+        <div class="step-list">
+          <div class="step-item"><div class="step-bullet">1</div><div class="step-text">Menu lateral → <strong>Settings → Mode</strong>.</div></div>
+          <div class="step-item"><div class="step-bullet">2</div><div class="step-text">Escolha o modo desejado:</div></div>
+        </div>
+        <div class="option-cards">
+          <div class="option-card"><i class="fab fa-linkedin"></i><span>LinkedIn Only</span></div>
+          <div class="option-card"><i class="fas fa-envelope"></i><span>Email Only</span></div>
+          <div class="option-card recommended"><i class="fas fa-layer-group"></i><span>LinkedIn + Email</span></div>
+        </div>
+        <div class="step-list" style="margin-top:6px"><div class="step-item"><div class="step-bullet">3</div><div class="step-text">Clique em <strong>Update Mode</strong> para salvar.</div></div></div>
+        <div class="tip-box success"><i class="fas fa-lightbulb"></i><p><strong>Estratégia pro:</strong> Use sempre <strong>LinkedIn + Email</strong> para maximizar o alcance e as taxas de resposta.</p></div>
+      </div>
+    </article>
+
+    <!-- CH 4 -->
+    <article class="chapter reveal" id="ch4" style="--ch-color:linear-gradient(90deg,var(--cyan-500),var(--navy-500));">
+      <div class="chapter-header" style="--ch-bg:var(--cyan-50);--ch-fg:var(--cyan-600);--ch-border:var(--cyan-200);">
+        <div class="ch-icon"><i class="fas fa-envelope-open"></i></div>
+        <div class="ch-meta"><div class="ch-num">Capítulo 04</div><div class="ch-title">Conectando seu Email</div><div class="ch-sub">Necessário para o modo multicanal</div></div>
+        <span class="ch-badge" style="--ch-bg:var(--cyan-50);--ch-fg:var(--cyan-600);--ch-border:var(--cyan-200);"><i class="fas fa-wifi" style="margin-right:3px"></i> Multicanal</span>
+      </div>
+      <div class="chapter-body">
+        <div class="tip-box info"><i class="fas fa-info-circle"></i><p>Necessário apenas se você escolheu <strong>LinkedIn + Email</strong> ou <strong>Email Only</strong> no Capítulo 3.</p></div>
+        <div class="step-list">
+          <div class="step-item"><div class="step-bullet">1</div><div class="step-text">Accounts → aba <strong>Email</strong> → <strong>Add Account</strong>.</div></div>
+          <div class="step-item"><div class="step-bullet">2</div><div class="step-text">Escolha o provedor:</div></div>
+        </div>
+        <div class="option-cards" style="grid-template-columns:repeat(3,1fr)">
+          <div class="option-card"><i class="fab fa-google" style="color:#ea4335"></i><span>Gmail</span></div>
+          <div class="option-card"><i class="fab fa-microsoft" style="color:#0078d4"></i><span>Outlook</span></div>
+          <div class="option-card"><i class="fas fa-server" style="color:var(--slate-500)"></i><span>SMTP</span></div>
+        </div>
+        <div class="step-item" style="margin-top:8px"><div class="step-bullet">3</div><div class="step-text">Autorize a conexão → status: <span class="status-badge connected dot" style="display:inline-flex;font-size:.75rem;padding:3px 9px">Connected</span></div></div>
+      </div>
+    </article>
+
+    <!-- CH 5 -->
+    <article class="chapter reveal" id="ch5" style="--ch-color:linear-gradient(90deg,var(--amber-500),var(--navy-500));">
+      <div class="chapter-header" style="--ch-bg:#fffbeb;--ch-fg:#b45309;--ch-border:#fde68a;">
+        <div class="ch-icon"><i class="fas fa-toggle-on"></i></div>
+        <div class="ch-meta"><div class="ch-num">Capítulo 05</div><div class="ch-title">Entendendo o Canal Ativo</div><div class="ch-sub">Muito importante antes de criar campanhas</div></div>
+        <span class="ch-badge" style="--ch-bg:#fffbeb;--ch-fg:#b45309;--ch-border:#fde68a;"><i class="fas fa-exclamation" style="margin-right:3px"></i> Atenção</span>
+      </div>
+      <div class="chapter-body">
+        <div class="tip-box warning"><i class="fas fa-exclamation-triangle"></i><p><strong>A plataforma trabalha com um canal ativo por vez.</strong> Sempre verifique qual está ativo antes de criar campanhas.</p></div>
+        <div class="config-grid">
+          <div class="config-item"><div class="label"><i class="fab fa-linkedin" style="color:#0a66c2;margin-right:4px"></i> LinkedIn Ativo</div><div class="value">Tudo referente ao LinkedIn</div><div class="hint">Convites, mensagens, follow-ups, limites</div></div>
+          <div class="config-item"><div class="label"><i class="fas fa-envelope" style="color:var(--navy-600);margin-right:4px"></i> Email Ativo</div><div class="value">Tudo referente ao Email</div><div class="hint">Cadências, templates, limites de envio</div></div>
+        </div>
+      </div>
+    </article>
+
+    <!-- CH 6 -->
+    <article class="chapter reveal" id="ch6" style="--ch-color:linear-gradient(90deg,var(--navy-600),var(--cyan-500));">
+      <div class="chapter-header" style="--ch-bg:var(--navy-50);--ch-fg:var(--navy-700);--ch-border:var(--navy-200);">
+        <div class="ch-icon"><i class="fas fa-cogs"></i></div>
+        <div class="ch-meta"><div class="ch-num">Capítulo 06</div><div class="ch-title">Configurações Essenciais</div><div class="ch-sub">Daily Limit, Safe Mode, Schedule e mais</div></div>
+        <span class="ch-badge" style="--ch-bg:var(--navy-50);--ch-fg:var(--navy-700);--ch-border:var(--navy-200);"><i class="fas fa-wrench" style="margin-right:3px"></i> Configurar</span>
+      </div>
+      <div class="chapter-body">
+        <div class="sub-section">
+          <div class="sub-title"><span class="sub-num">6.1</span> Daily Limit — Settings → Configuration</div>
+          <div class="config-grid">
+            <div class="config-item"><div class="label">Convites / dia</div><div class="value">Comece baixo</div><div class="hint">Ex: 10–20 para aquecer a conta</div></div>
+            <div class="config-item"><div class="label">Emails / dia</div><div class="value">Conforme domínio</div><div class="hint">Domínio novo: 20–30/dia</div></div>
+            <div class="config-item"><div class="label">Mensagens LinkedIn</div><div class="value">Gradual</div><div class="hint">Aumente conforme resultado</div></div>
+            <div class="config-item"><div class="label">Follow / Curtidas</div><div class="value">Com moderação</div><div class="hint">Sinaliza interesse naturalmente</div></div>
+          </div>
+        </div>
+        <div class="sub-section">
+          <div class="sub-title"><span class="sub-num">6.2</span> Safe Mode</div>
+          <div class="tip-box success"><i class="fas fa-shield-alt"></i><p><strong>Mantenha SEMPRE ativado.</strong> Protege contra banimentos limitando ações a intervalos humanos.</p></div>
+        </div>
+        <div class="sub-section">
+          <div class="sub-title"><span class="sub-num">6.3</span> Schedule (Horário)</div>
+          <div class="step-list">
+            <div class="step-item"><div class="step-bullet"><i class="fas fa-globe" style="font-size:.65rem"></i></div><div class="step-text">Fuso horário correto: <code>America/Sao_Paulo</code></div></div>
+            <div class="step-item"><div class="step-bullet"><i class="fas fa-clock" style="font-size:.65rem"></i></div><div class="step-text">Horário comercial — ex: 8h–18h, seg–sex</div></div>
+          </div>
+          <div class="tip-box danger"><i class="fas fa-ban"></i><p><strong>Nunca rode 24h por dia.</strong> Comportamento humano tem horários. Isso pode acionar alarmes do LinkedIn.</p></div>
+        </div>
+        <div class="sub-section">
+          <div class="sub-title"><span class="sub-num">6.4–6.7</span> Outras Configurações</div>
+          <div class="config-grid">
+            <div class="config-item"><div class="label"><i class="fas fa-hourglass-half" style="color:var(--amber-500);margin-right:3px"></i> Pending Invites</div><div class="value">Máximo ~400</div><div class="hint">Evita bloqueio por excesso de pendentes</div></div>
+            <div class="config-item"><div class="label"><i class="fas fa-ban" style="color:var(--rose-500);margin-right:3px"></i> Blocklisting</div><div class="value">Adicione contatos</div><div class="hint">Clientes, parceiros, equipe interna</div></div>
+            <div class="config-item"><div class="label"><i class="fas fa-search-plus" style="color:var(--cyan-500);margin-right:3px"></i> Email Enrichment</div><div class="value">Ative (multicanal)</div><div class="hint">Enriquece e-mails de leads (requer créditos)</div></div>
+            <div class="config-item"><div class="label"><i class="fas fa-copy" style="color:var(--purple-500);margin-right:3px"></i> De-duplication</div><div class="value">Ative sempre</div><div class="hint">Impede lead em duas campanhas</div></div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- CH 7 -->
+    <article class="chapter reveal" id="ch7" style="--ch-color:linear-gradient(90deg,var(--navy-700),var(--cyan-500));">
+      <div class="chapter-header" style="--ch-bg:var(--navy-50);--ch-fg:var(--navy-700);--ch-border:var(--navy-200);">
+        <div class="ch-icon"><i class="fas fa-rocket"></i></div>
+        <div class="ch-meta"><div class="ch-num">Capítulo 07</div><div class="ch-title">Criando sua Primeira Campanha</div><div class="ch-sub">Nome, tipo e importação de leads</div></div>
+        <span class="ch-badge" style="--ch-bg:var(--navy-50);--ch-fg:var(--navy-700);--ch-border:var(--navy-200);"><i class="fas fa-star" style="margin-right:3px"></i> Principal</span>
+      </div>
+      <div class="chapter-body">
+        <div class="sub-section">
+          <div class="sub-title"><span class="sub-num">7.1</span> Criar Nova Campanha</div>
+          <div class="step-list">
+            <div class="step-item"><div class="step-bullet">1</div><div class="step-text">Clique em <strong>Create Campaign</strong>.</div></div>
+            <div class="step-item"><div class="step-bullet">2</div><div class="step-text">Escolha: <strong>LinkedIn + Email</strong> → <strong>Advanced Sequence From Scratch</strong>.</div></div>
+          </div>
+        </div>
+        <div class="sub-section">
+          <div class="sub-title"><span class="sub-num">7.2</span> Nome da Campanha</div>
+          <div class="url-box" style="background:var(--navy-800)"><i class="fas fa-tag" style="color:var(--cyan-400)"></i><span style="font-family:'JetBrains Mono',monospace;color:var(--cyan-300);font-size:.88rem">Diretores Comerciais – Indústria – Multicanal</span></div>
+        </div>
+        <div class="sub-section">
+          <div class="sub-title"><span class="sub-num">7.3–7.4</span> Importar Leads</div>
+          <div class="step-list">
+            <div class="step-item"><div class="step-bullet">1</div><div class="step-text">Clique em <strong>Add People → Add from LinkedIn Search</strong>.</div></div>
+            <div class="step-item"><div class="step-bullet">2</div><div class="step-text">Vá ao LinkedIn, faça a busca com filtros da sua ICP (cargo, setor, tamanho).</div></div>
+            <div class="step-item"><div class="step-bullet">3</div><div class="step-text"><strong>Copie a URL</strong> da busca e cole na plataforma → clique em <strong>Save</strong>.</div></div>
+          </div>
+          <div class="tip-box info"><i class="fas fa-filter"></i><p><strong>Dica:</strong> Uma lista menor e mais qualificada gera mais resultado que uma lista grande e genérica.</p></div>
+        </div>
+      </div>
+    </article>
+
+    <!-- CH 8 -->
+    <article class="chapter reveal" id="ch8" style="--ch-color:linear-gradient(90deg,var(--purple-500),var(--navy-500));">
+      <div class="chapter-header" style="--ch-bg:#f5f3ff;--ch-fg:#6d28d9;--ch-border:#ddd6fe;">
+        <div class="ch-icon"><i class="fas fa-code-branch"></i></div>
+        <div class="ch-meta"><div class="ch-num">Capítulo 08</div><div class="ch-title">Construindo a Sequência</div><div class="ch-sub">Ações, delays, condicionais e email</div></div>
+        <span class="ch-badge" style="--ch-bg:#f5f3ff;--ch-fg:#6d28d9;--ch-border:#ddd6fe;"><i class="fas fa-magic" style="margin-right:3px"></i> Fluxo</span>
+      </div>
+      <div class="chapter-body">
+        <div class="tip-box info"><i class="fas fa-info-circle"></i><p>Monte o fluxo na ordem abaixo para simular comportamento humano natural e maximizar taxas de aceite.</p></div>
+        <div class="sequence">
+          <div class="seq-step"><div class="seq-icon linkedin"><i class="fas fa-eye"></i></div><div class="seq-body"><div class="seq-title">1. View Profile — Visitar Perfil</div><div class="seq-desc">Visita o perfil naturalmente — sinaliza interesse antes de qualquer ação direta.</div></div></div>
+          <div class="seq-step"><div class="seq-icon linkedin"><i class="fas fa-user-plus"></i></div><div class="seq-body"><div class="seq-title">2. Follow — Seguir</div><div class="seq-desc">Segue o perfil para aumentar a familiaridade antes do convite de conexão.</div></div></div>
+          <div class="seq-step"><div class="seq-icon linkedin"><i class="fas fa-handshake"></i></div><div class="seq-body"><div class="seq-title">3. Send Connection Request — Convite</div><div class="seq-desc">Convite com mensagem personalizada. Use variáveis <code>{first_name}</code>, <code>{company}</code>. Considere A/B.</div></div></div>
+          <div class="seq-step"><div class="seq-icon delay"><i class="fas fa-clock"></i></div><div class="seq-body"><div class="seq-title">4. Delay — Aguardar</div><div class="seq-desc">Sempre coloque intervalo entre ações. Recomendado: 1–3 dias.</div></div></div>
+          <div class="seq-step"><div class="seq-icon email"><i class="fas fa-envelope"></i></div><div class="seq-body"><div class="seq-title">5. Send Email — Enviar Email</div><div class="seq-desc">Assunto e corpo personalizados. Teste A/B para otimizar a linha de assunto.</div></div></div>
+          <div class="seq-step"><div class="seq-icon engage"><i class="fas fa-heart"></i></div><div class="seq-body"><div class="seq-title">6. Like & Comment — Engajamento</div><div class="seq-desc">Curta e comente posts do lead com comentários inteligentes e relevantes.</div></div></div>
+          <div class="seq-step"><div class="seq-icon branch"><i class="fas fa-code-branch"></i></div><div class="seq-body"><div class="seq-title">7. Conditional Branch — Lógica</div><div class="seq-desc"><span style="color:var(--green-500);font-weight:600">✓ Aceitou →</span> mensagem de boas-vindas<br/><span style="color:var(--rose-500);font-weight:600">✓ Respondeu →</span> parar sequência automática</div></div></div>
+        </div>
+      </div>
+    </article>
+
+    <!-- CH 9 -->
+    <article class="chapter reveal" id="ch9" style="--ch-color:linear-gradient(90deg,var(--green-500),var(--cyan-500));">
+      <div class="chapter-header" style="--ch-bg:#f0fdf4;--ch-fg:#15803d;--ch-border:#bbf7d0;">
+        <div class="ch-icon"><i class="fas fa-play-circle"></i></div>
+        <div class="ch-meta"><div class="ch-num">Capítulo 09</div><div class="ch-title">Finalizando e Lançando a Campanha</div><div class="ch-sub">Revisão, seleção de conta e ativação</div></div>
+        <span class="ch-badge" style="--ch-bg:#f0fdf4;--ch-fg:#15803d;--ch-border:#bbf7d0;"><i class="fas fa-check-circle" style="margin-right:3px"></i> Finalizar</span>
+      </div>
+      <div class="chapter-body">
+        <div class="step-list">
+          <div class="step-item"><div class="step-bullet">1</div><div class="step-text">Clique em <strong>Save and Continue</strong>.</div></div>
+          <div class="step-item"><div class="step-bullet">2</div><div class="step-text"><strong>Select Account:</strong> escolha a conta LinkedIn e o e-mail corretos.</div></div>
+          <div class="step-item"><div class="step-bullet">3</div><div class="step-text"><strong>Preview:</strong> revise todo o fluxo, variáveis e textos.</div></div>
+          <div class="step-item"><div class="step-bullet">4</div><div class="step-text">Clique em <strong>Start Campaign</strong> — a campanha inicia automaticamente!</div></div>
+        </div>
+        <div class="tip-box success"><i class="fas fa-check-circle"></i><p><strong>🎉 Parabéns!</strong> Campanha ativa. Acompanhe as métricas no dashboard e otimize após os primeiros 50–100 contatos.</p></div>
+      </div>
+    </article>
+
+    <!-- CH 10 -->
+    <article class="chapter reveal" id="ch10" style="--ch-color:linear-gradient(90deg,var(--amber-500),var(--navy-600));">
+      <div class="chapter-header" style="--ch-bg:#fffbeb;--ch-fg:#b45309;--ch-border:#fde68a;">
+        <div class="ch-icon"><i class="fas fa-medal"></i></div>
+        <div class="ch-meta"><div class="ch-num">Capítulo 10</div><div class="ch-title">Boas Práticas Profissionais</div><div class="ch-sub">Faça sua prospecção ser referência</div></div>
+        <span class="ch-badge" style="--ch-bg:#fffbeb;--ch-fg:#b45309;--ch-border:#fde68a;"><i class="fas fa-star" style="margin-right:3px"></i> Pro Tips</span>
+      </div>
+      <div class="chapter-body">
+        <div class="practices-grid">
+          <div class="practice-card"><div class="practice-icon" style="background:#fff7ed;color:#ea580c"><i class="fas fa-heart"></i></div><div><h4>Não seja agressivo</h4><p>Nunca tente vender no primeiro contato. Construa relacionamento antes de fazer uma oferta.</p></div></div>
+          <div class="practice-card"><div class="practice-icon" style="background:#f0fdf4;color:#16a34a"><i class="fas fa-flask"></i></div><div><h4>Teste uma variável por vez</h4><p>Altere apenas um elemento por teste (assunto, CTA, mensagem) para identificar o que funciona.</p></div></div>
+          <div class="practice-card"><div class="practice-icon" style="background:var(--navy-50);color:var(--navy-600)"><i class="fas fa-crosshairs"></i></div><div><h4>Segmente bem</h4><p>Lista menor e qualificada gera mais resultado que lista grande e genérica.</p></div></div>
+          <div class="practice-card"><div class="practice-icon" style="background:#f5f3ff;color:#7c3aed"><i class="fas fa-clock"></i></div><div><h4>Use delays naturais</h4><p>1–3 dias entre ações simulam comportamento humano e evitam bloqueios.</p></div></div>
+          <div class="practice-card"><div class="practice-icon" style="background:var(--cyan-50);color:var(--cyan-600)"><i class="fas fa-chart-bar"></i></div><div><h4>Analise após 50–100 contatos</h4><p>Aguarde dados suficientes antes de tirar conclusões e ajustar a campanha.</p></div></div>
+          <div class="practice-card"><div class="practice-icon" style="background:#fff1f2;color:#e11d48"><i class="fas fa-user-check"></i></div><div><h4>Personalize de verdade</h4><p>Use {first_name}, {company}, {title}. Mensagens personalizadas têm 3x mais resposta.</p></div></div>
+        </div>
+      </div>
+    </article>
+
+    <!-- CTA FINAL -->
+    <div class="chapter reveal" style="background:linear-gradient(135deg,var(--navy-800),var(--navy-900));border:none;text-align:center;padding:38px 26px;">
+      <div style="font-size:1.8rem;margin-bottom:10px">🚀</div>
+      <h3 style="font-size:1.35rem;font-weight:900;color:white;margin-bottom:8px">Pronto para começar?</h3>
+      <p style="color:rgba(255,255,255,.65);font-size:.92rem;margin-bottom:22px;max-width:400px;margin-left:auto;margin-right:auto">Você tem tudo que precisa. Acesse a plataforma e lance sua primeira campanha hoje.</p>
+      <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+        <a href="https://app.dinbotflow.app" target="_blank" class="btn" style="background:linear-gradient(135deg,var(--cyan-400),var(--cyan-500));color:var(--navy-900);padding:13px 26px;font-size:.92rem;border-radius:11px;font-weight:700;box-shadow:0 4px 18px rgba(0,196,196,.3)"><i class="fas fa-external-link-alt"></i> Acessar Plataforma</a>
+        <button class="btn" onclick="openManual()" style="background:rgba(255,255,255,.1);color:white;border:2px solid rgba(255,255,255,.25);padding:13px 26px;font-size:.92rem;border-radius:11px"><i class="fas fa-book-open"></i> Ver Manual</button>
+        <a href="https://wa.me/5511972769986" target="_blank" class="btn" style="background:linear-gradient(135deg,#25d366,#128c7e);color:white;padding:13px 26px;font-size:.92rem;border-radius:11px"><i class="fab fa-whatsapp"></i> Suporte</a>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- MANUAL MODAL -->
+<div class="modal-overlay" id="manualOverlay" onclick="handleOverlayClick(event)">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-header-left">
+        <div class="modal-icon"><i class="fas fa-book-open"></i></div>
+        <div><div class="modal-title">📘 Manual Oficial Completo</div><div class="modal-subtitle">DinbotFlow — Plataforma de Automação LinkedIn + Email</div></div>
+      </div>
+      <button class="modal-close" onclick="closeManual()"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="modal-tabs">
+      <div class="modal-tab active" onclick="switchTab(0)">Cap. 1–3</div>
+      <div class="modal-tab" onclick="switchTab(1)">Cap. 4–6</div>
+      <div class="modal-tab" onclick="switchTab(2)">Cap. 7–8</div>
+      <div class="modal-tab" onclick="switchTab(3)">Cap. 9–10</div>
+    </div>
+    <div class="modal-body">
+
+      <div class="manual-panel active" id="tab0">
+        <div class="manual-chapter-title"><span class="badge">1</span> Primeiro Acesso</div>
+        <div class="manual-section"><h4><i class="fas fa-globe"></i> Acessando o Site</h4><ul class="manual-list"><li>Abra o Google Chrome (recomendado).</li><li>Acesse: <strong>https://app.dinbotflow.app</strong></li></ul></div>
+        <div class="manual-section"><h4><i class="fas fa-user-plus"></i> Criando sua Conta</h4><ul class="manual-list"><li>Clique em <strong>Register</strong> ou <strong>Criar Conta</strong>.</li><li>Preencha nome, e-mail e senha.</li><li>Confirme pelo e-mail de verificação.</li></ul></div>
+        <div class="manual-section"><h4><i class="fas fa-sign-in-alt"></i> Login</h4><ul class="manual-list"><li>Insira e-mail e senha → clique em <strong>Login</strong>.</li></ul></div>
+        <div class="manual-chapter-title" style="margin-top:22px"><span class="badge">2</span> Conectando o LinkedIn</div>
+        <div class="manual-section"><h4><i class="fab fa-linkedin"></i> Accounts → Add Account → LinkedIn</h4><ul class="manual-list"><li>Insira e-mail e senha do LinkedIn.</li><li>Cole o código de verificação enviado ao e-mail.</li><li>Status esperado: <strong>Connected / Healthy</strong>.</li></ul></div>
+        <div class="manual-chapter-title" style="margin-top:22px"><span class="badge">3</span> Modo de Automação</div>
+        <div class="manual-section"><h4><i class="fas fa-sliders-h"></i> Settings → Mode</h4><ul class="manual-list"><li>Opções: LinkedIn Only / Email Only / <strong>LinkedIn + Email (recomendado)</strong>.</li><li>Clique em <strong>Update Mode</strong>.</li></ul></div>
+      </div>
+
+      <div class="manual-panel" id="tab1">
+        <div class="manual-chapter-title"><span class="badge">4</span> Conectando o Email</div>
+        <div class="manual-section"><h4><i class="fas fa-envelope-open"></i> Accounts → Email → Add Account</h4><ul class="manual-list"><li>Escolha Gmail, Outlook ou SMTP.</li><li>Autorize a conexão → Status: <strong>Connected</strong>.</li></ul></div>
+        <div class="manual-chapter-title" style="margin-top:22px"><span class="badge">5</span> Canal Ativo</div>
+        <div class="manual-section"><ul class="manual-list"><li><strong>LinkedIn ativo</strong> → configs se referem ao LinkedIn.</li><li><strong>Email ativo</strong> → configs se referem ao Email.</li><li>Sempre verifique antes de criar campanhas!</li></ul></div>
+        <div class="manual-chapter-title" style="margin-top:22px"><span class="badge">6</span> Configurações Essenciais</div>
+        <div class="manual-section"><h4><i class="fas fa-tachometer-alt"></i> Daily Limit</h4><ul class="manual-list"><li>Settings → Configuration → <strong>Daily Limit</strong>.</li><li>Comece com limites baixos e aumente gradualmente.</li></ul></div>
+        <div class="manual-section"><h4><i class="fas fa-shield-alt"></i> Safe Mode</h4><ul class="manual-list"><li>Mantenha <strong>SEMPRE ativado</strong>.</li></ul></div>
+        <div class="manual-section"><h4><i class="fas fa-calendar-alt"></i> Schedule</h4><ul class="manual-list"><li>Fuso horário correto (America/Sao_Paulo).</li><li>Horário comercial — 8h–18h, seg–sex.</li><li>Nunca rode 24h/dia.</li></ul></div>
+        <div class="manual-section"><h4><i class="fas fa-ellipsis-h"></i> Outros</h4><ul class="manual-list"><li><strong>Pending Invites:</strong> limite de ~400.</li><li><strong>Blocklisting:</strong> clientes, parceiros, equipe.</li><li><strong>Email Enrichment:</strong> ative para multicanal.</li><li><strong>De-duplication:</strong> ative sempre.</li></ul></div>
+      </div>
+
+      <div class="manual-panel" id="tab2">
+        <div class="manual-chapter-title"><span class="badge">7</span> Criando a Campanha</div>
+        <div class="manual-section"><h4><i class="fas fa-rocket"></i> Create Campaign</h4><ul class="manual-list"><li>Escolha: <strong>LinkedIn + Email</strong> + <strong>Advanced Sequence From Scratch</strong>.</li><li>Nome: <strong>Diretores Comerciais – Indústria – Multicanal</strong></li></ul></div>
+        <div class="manual-section"><h4><i class="fas fa-users"></i> Importar Leads</h4><ul class="manual-list"><li>Add People → <strong>Add from LinkedIn Search</strong>.</li><li>Busque no LinkedIn com filtros da ICP, copie a URL e cole.</li><li>Clique em <strong>Save</strong>.</li></ul></div>
+        <div class="manual-chapter-title" style="margin-top:22px"><span class="badge">8</span> Sequência</div>
+        <div class="manual-section"><h4><i class="fas fa-list-ol"></i> Ordem dos Passos</h4><ul class="manual-list"><li><strong>View Profile</strong> — visitar naturalmente.</li><li><strong>Follow</strong> — seguir antes de conectar.</li><li><strong>Connection Request</strong> — com mensagem personalizada.</li><li><strong>Delay</strong> — 1–3 dias entre ações.</li><li><strong>Send Email</strong> — assunto e corpo personalizados.</li><li><strong>Like & Comment</strong> — engajamento com conteúdo.</li><li><strong>Conditional Branch</strong> — se aceitou → mensagem; se respondeu → parar.</li></ul></div>
+      </div>
+
+      <div class="manual-panel" id="tab3">
+        <div class="manual-chapter-title"><span class="badge">9</span> Lançando</div>
+        <div class="manual-section"><h4><i class="fas fa-play"></i> Passos Finais</h4><ul class="manual-list"><li>Clique em <strong>Save and Continue</strong>.</li><li>Select Account → conta LinkedIn + e-mail corretos.</li><li>Preview → revise tudo.</li><li>Clique em <strong>Start Campaign</strong>.</li></ul></div>
+        <div class="manual-chapter-title" style="margin-top:22px"><span class="badge">10</span> Boas Práticas</div>
+        <div class="manual-section"><ul class="manual-list"><li>Não venda no primeiro contato.</li><li>Teste uma variável por vez.</li><li>Segmente bem — lista qualificada > lista grande.</li><li>Use delays naturais de 1–3 dias.</li><li>Analise após 50–100 contatos antes de ajustar.</li><li>Personalize com {first_name}, {company}, {title}.</li></ul></div>
+        <div style="background:linear-gradient(135deg,var(--navy-800),var(--navy-900));border-radius:13px;padding:20px;margin-top:18px;text-align:center">
+          <p style="color:white;font-weight:700;font-size:.97rem;margin-bottom:7px">🎉 Você concluiu o Manual!</p>
+          <p style="color:rgba(255,255,255,.6);font-size:.83rem;margin-bottom:14px">Suporte em português via WhatsApp.</p>
+          <a href="https://wa.me/5511972769986" target="_blank" class="btn" style="background:linear-gradient(135deg,#25d366,#128c7e);color:white;padding:10px 20px;font-size:.85rem;border-radius:9px"><i class="fab fa-whatsapp"></i> Falar com Suporte</a>
+        </div>
+      </div>
+
+    </div>
+    <div class="modal-footer">
+      <p>© 2026 INBOTIX — DinbotFlow · +55 (11) 97276-9986</p>
+      <a href="https://app.dinbotflow.app" target="_blank" class="btn btn-primary" style="font-size:.8rem;padding:8px 16px"><i class="fas fa-external-link-alt"></i> Acessar App</a>
+    </div>
+  </div>
+</div>
+
+<!-- WA Float -->
+<a href="https://wa.me/5511972769986" target="_blank" style="position:fixed;right:24px;bottom:24px;z-index:300;width:50px;height:50px;background:linear-gradient(135deg,#25d366,#128c7e);border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-size:1.3rem;box-shadow:0 4px 18px rgba(37,211,102,.5);text-decoration:none;transition:.2s" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<script>
+  function openManual()  { document.getElementById('manualOverlay').classList.add('open'); document.body.style.overflow='hidden'; }
+  function closeManual() { document.getElementById('manualOverlay').classList.remove('open'); document.body.style.overflow=''; }
+  function handleOverlayClick(e) { if (e.target===document.getElementById('manualOverlay')) closeManual(); }
+
+  const tabs=document.querySelectorAll('.modal-tab'), panels=document.querySelectorAll('.manual-panel');
+  function switchTab(i){ tabs.forEach(t=>t.classList.remove('active')); panels.forEach(p=>p.classList.remove('active')); tabs[i].classList.add('active'); panels[i].classList.add('active'); document.querySelector('.modal-body').scrollTop=0; }
+
+  const reveals=document.querySelectorAll('.reveal');
+  const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});},{threshold:.08,rootMargin:'0px 0px -28px 0px'});
+  reveals.forEach(el=>io.observe(el));
+
+  const chapters=['ch1','ch2','ch3','ch4','ch5','ch6','ch7','ch8','ch9','ch10'];
+  const sItems=document.querySelectorAll('.sidebar-item');
+  const pFill=document.getElementById('progressFill'), pPct=document.getElementById('progressPct');
+  const chObs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        const idx=chapters.indexOf(e.target.id);
+        sItems.forEach(s=>s.classList.remove('active'));
+        if(sItems[idx]) sItems[idx].classList.add('active');
+        for(let i=0;i<idx;i++) sItems[i]&&sItems[i].classList.add('done');
+        const pct=Math.round(((idx+1)/chapters.length)*100);
+        pFill.style.width=pct+'%'; pPct.textContent=pct+'%';
+      }
+    });
+  },{threshold:.3});
+  chapters.forEach(id=>{const el=document.getElementById(id);if(el)chObs.observe(el);});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')closeManual();});
+</script>
+
+</body>
+</html>
