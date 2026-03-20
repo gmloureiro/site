@@ -9,7 +9,7 @@
   <meta property="og:url" content="https://inbotix.com.br/" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/gmloureiro/dinbotflow_pricing/main/favicon.ico" />
   <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/gmloureiro/dinbotflow_pricing/main/favicon.png" />
   <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/gmloureiro/dinbotflow_pricing/main/apple-touch-icon.png" />
@@ -30,9 +30,9 @@
 
     :root {
       /* === NAVY (PRIMARY) === */
-      --navy-900: #071b47;
-      --navy-800: #0a2458;
-      --navy-700: #0d2d6e;
+      --navy-900: #04185f;
+      --navy-800: #07257a;
+      --navy-700: #0b2f95;
       --navy-600: #1a3a8f;
       --navy-500: #2451b5;
       --navy-400: #3b69d1;
@@ -43,8 +43,8 @@
 
       /* === CYAN (ACCENT) === */
       --cyan-600: #009aaa;
-      --cyan-500: #00b4c8;
-      --cyan-400: #00c4c4;
+      --cyan-500: #17c8f2;
+      --cyan-400: #21d6ff;
       --cyan-300: #2dd4bf;
       --cyan-200: #99e9e2;
       --cyan-100: #ccf4f0;
@@ -85,7 +85,7 @@
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Inter', system-ui, sans-serif;
+      font-family: 'Barlow', 'Inter', system-ui, sans-serif;
       background: var(--slate-50);
       color: var(--slate-800);
       line-height: 1.6;
@@ -427,6 +427,101 @@
     /* ============================================================
        SOCIAL PROOF BAR
     ============================================================ */
+
+
+    .hero-title, .section-title, .card-title, .final-title, .benefit-title, .step-title {
+      font-family: 'Barlow', 'Inter', system-ui, sans-serif;
+    }
+
+    .hero-title, .section-title, .card-title, .final-title {
+      text-transform: none;
+    }
+
+    /* ============================================================
+       VIDEO HIGHLIGHT
+    ============================================================ */
+    .video-highlight {
+      padding: 34px 0 18px;
+      background: linear-gradient(180deg, #ffffff 0%, var(--navy-50) 100%);
+    }
+
+    .video-highlight-card {
+      display: grid; grid-template-columns: 1.1fr 1fr; gap: 26px; align-items: center;
+      background: linear-gradient(135deg, var(--navy-900) 0%, var(--navy-800) 55%, #0a3aa7 100%);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 28px; padding: 28px;
+      box-shadow: 0 20px 55px rgba(4,24,95,.22);
+      overflow: hidden; position: relative;
+    }
+
+    .video-highlight-card::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 55% 55% at 85% 15%, rgba(33,214,255,.16) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .video-copy, .video-player { position: relative; z-index: 1; }
+
+    .video-kicker {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 12px; border-radius: 999px;
+      background: rgba(33,214,255,.12); border: 1px solid rgba(33,214,255,.24);
+      color: #a9f1ff; font-size: .78rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .video-title {
+      font-size: clamp(1.55rem, 3vw, 2.2rem); font-weight: 900; line-height: 1.18;
+      color: #fff; margin-bottom: 12px;
+    }
+
+    .video-title span {
+      background: linear-gradient(135deg, var(--cyan-300), var(--cyan-400));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+
+    .video-desc {
+      color: rgba(255,255,255,.74); font-size: 1rem; line-height: 1.65; margin-bottom: 18px;
+      max-width: 510px;
+    }
+
+    .video-points { display: grid; gap: 10px; margin-bottom: 20px; }
+    .video-point {
+      display: flex; align-items: flex-start; gap: 10px; color: rgba(255,255,255,.82);
+      font-size: .96rem;
+    }
+    .video-point i {
+      color: var(--cyan-400); margin-top: 4px; flex-shrink: 0;
+    }
+
+    .video-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+
+    .video-note {
+      margin-top: 12px; color: rgba(255,255,255,.48); font-size: .8rem;
+      display: flex; align-items: center; gap: 7px;
+    }
+
+    .video-frame-wrap {
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 20px; padding: 12px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.08);
+    }
+
+    .video-frame {
+      position: relative; padding-top: 56.25%; border-radius: 14px; overflow: hidden;
+      background: #020b2c;
+    }
+    .video-frame iframe {
+      position: absolute; inset: 0; width: 100%; height: 100%; border: 0;
+    }
+
+    .video-proof {
+      display: flex; gap: 14px; flex-wrap: wrap; margin-top: 12px;
+      color: rgba(255,255,255,.58); font-size: .8rem;
+    }
+    .video-proof span { display: inline-flex; align-items: center; gap: 6px; }
+
     .proof-bar { background: white; border-bottom: 1px solid var(--slate-200); padding: 18px 0; }
 
     .proof-bar-inner {
@@ -780,6 +875,7 @@
        RESPONSIVE
     ============================================================ */
     @media (max-width: 1024px) {
+      .video-highlight-card { grid-template-columns: 1fr; }
       .benefits-grid     { grid-template-columns: repeat(2,1fr); }
       .steps             { grid-template-columns: repeat(2,1fr); }
       .steps::before     { display:none; }
@@ -790,6 +886,8 @@
       .navbar-nav { display:none; }
       .navbar-ctas .btn-outline { display:none; }
       .hero { padding:44px 0 56px; }
+      .video-highlight { padding-top: 24px; }
+      .video-highlight-card { padding: 20px; border-radius: 22px; }
       .hero-inner { grid-template-columns:1fr; gap:36px; }
       .hero-card { order:-1; }
       .proof-bar-inner { gap:20px; }
@@ -808,6 +906,8 @@
     @media (max-width: 480px) {
       .hero-ctas { flex-direction:column; }
       .hero-ctas .btn { width:100%; }
+      .video-actions { flex-direction:column; }
+      .video-actions .btn { width:100%; }
       .final-ctas { flex-direction:column; }
       .final-ctas .btn { width:100%; max-width:300px; }
       .steps { grid-template-columns:1fr; }
@@ -872,7 +972,7 @@
             <a href="https://app.dinbotflow.app" target="_blank" rel="noopener">DINBOTFLOW <small>LinkedIn + Email automação</small></a>
           </div>
         </div>
-        <a href="tutorial.html" class="btn btn-outline"><i class="fas fa-book-open"></i> Como Usar</a>
+        <a href="#como-usar-video" class="btn btn-outline"><i class="fas fa-book-open"></i> Ver Demonstração</a>
         <a href="https://app.dinbotflow.app/" target="_blank" rel="noopener" class="btn btn-primary">Começar Agora</a>
       </div>
     </div>
@@ -899,7 +999,7 @@
           Automatize sua prospecção com dados empresariais reais,
           e-mails corporativos enriquecidos, integração com CRMs e
           <strong>suporte em português</strong>.
-          Receba <strong>5 aulas rápidas</strong> e coloque a operação no ar em menos de 1h.
+          Receba <strong>5 aulas rápidas</strong>, assista ao vídeo de demonstração e coloque a operação no ar em menos de 1h.
         </p>
 
         <div class="hero-ctas fade-up delay-3">
@@ -982,6 +1082,43 @@
       <div class="proof-stat"><span class="number">🇧🇷 PT</span><span class="label">Suporte em PT</span></div>
     </div>
   </div>
+
+
+
+  <!-- VIDEO HIGHLIGHT -->
+  <section class="video-highlight" id="como-usar-video">
+    <div class="container">
+      <div class="video-highlight-card reveal">
+        <div class="video-copy">
+          <div class="video-kicker"><i class="fas fa-play-circle"></i> Veja o DinbotFlow em ação</div>
+          <h2 class="video-title">Entenda <span>como usar</span> e perceba em poucos minutos por que tanta gente já começa testando.</h2>
+          <p class="video-desc">Mantivemos a estrutura do site e trouxemos o tutorial para mais perto da decisão. Assim, quem entra já enxerga o produto funcionando, entende a lógica da operação e sente segurança para iniciar o teste.</p>
+          <div class="video-points">
+            <div class="video-point"><i class="fas fa-check-circle"></i><span>Veja a plataforma funcionando de verdade, sem promessa vaga.</span></div>
+            <div class="video-point"><i class="fas fa-check-circle"></i><span>Entenda como subir leads, ativar cadências e acelerar o começo da operação.</span></div>
+            <div class="video-point"><i class="fas fa-check-circle"></i><span>Saia do vídeo já pronto para testar, com menos atrito e mais clareza.</span></div>
+          </div>
+          <div class="video-actions">
+            <a href="https://app.dinbotflow.app/" target="_blank" rel="noopener" class="btn btn-accent"><i class="fas fa-rocket"></i> Quero testar agora</a>
+            <a href="https://youtu.be/JLylystTk18" target="_blank" rel="noopener" class="btn btn-ghost"><i class="fab fa-youtube"></i> Abrir no YouTube</a>
+          </div>
+          <div class="video-note"><i class="fas fa-bolt"></i> Demonstração em destaque para aumentar confiança e acelerar a ativação.</div>
+        </div>
+        <div class="video-player">
+          <div class="video-frame-wrap">
+            <div class="video-frame">
+              <iframe src="https://www.youtube.com/embed/JLylystTk18" title="Como usar o DinbotFlow" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+          </div>
+          <div class="video-proof">
+            <span><i class="fas fa-eye"></i> Tutorial em destaque</span>
+            <span><i class="fab fa-linkedin"></i> LinkedIn + Email</span>
+            <span><i class="fas fa-headset"></i> Suporte em português</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- BENEFITS -->
   <section class="benefits" id="beneficios">
